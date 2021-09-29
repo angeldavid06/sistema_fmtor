@@ -11,8 +11,7 @@
             echo 'el método no existe';
         }
     } else {
-        // require_once 'views/login.php';
-        echo 'Controlador no existe';
+        require_once 'views/login.php';
     }
     
 ?> 
