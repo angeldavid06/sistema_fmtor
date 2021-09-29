@@ -10,7 +10,7 @@
         }
 
         public function mostrar ($tabla){
-            $sql="SELECT * FROM $tabla ";
+            $sql="SELECT * FROM $tabla";
             $mostrar = $this->db->query($sql);
             return $mostrar;
         }
