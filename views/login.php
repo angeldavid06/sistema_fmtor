@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="../public/css/default.css?1.1">
+    <link rel="stylesheet" href="../public/css/default.css?1.2">
 </head>
 <body>
     <div class="welcome">
@@ -30,10 +30,10 @@
                 <h1>Iniciar Sesión</h1>
                 <form id="form_login">
                     <div class="inputs">
-                        <label for="">Nombre de usuario:</label>
-                        <input type="text" name="nombre" id="nombre">
-                        <label for="">Contraseña: </label>
-                        <input type="password" name="password" id="password">
+                        <label for="nombre">Nombre de usuario:</label>
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingresa el nombre de usuario">
+                        <label for="password">Contraseña: </label>
+                        <input type="password" name="password" id="password" placeholder="Ingresa la contraseña del usuario">
                     </div>
                     <div class="options">
                         <!-- <input type="checkbox" name="remember" id="remember">
@@ -47,6 +47,6 @@
     </div>
     
     <script src="../public/js/fmtor_libreria.js?1.1"></script>
-    <script src="../public/js/login.js?1.1"></script>
+    <script src="../public/js/login.js?1.2"></script>
 </body>
 </html>

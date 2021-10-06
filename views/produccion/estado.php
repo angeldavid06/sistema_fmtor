@@ -18,7 +18,7 @@
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
-                <h1>Producción</h1>
+                <h1>Estado de las O.P.</h1>
                 <div class="tarjeta">
                 </div>
             </div>

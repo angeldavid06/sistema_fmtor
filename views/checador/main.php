@@ -14,7 +14,7 @@
             <i class="material-icons">expand_less</i> 
             Subir
         </a>
-        <?php require_once 'public/modules/menus/calidad.php'; ?>
+        <?php require_once 'public/modules/menus/checador.php'; ?>
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">

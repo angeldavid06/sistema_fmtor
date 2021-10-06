@@ -13,7 +13,11 @@ if (document.getElementsByClassName('btn-login-form')) {
 const iniciar_sesion = () => {
     const response = fetchAPI(form,'http://localhost/sistema_fmtor/main/iniciar','POST');
     response.then(json => {
-        window.location.href = 'http://localhost/sistema_fmtor/'+json.depto.toLowerCase()+'/main/mostrar'
+        if (json.depto) {
+            window.location.href = 'http://localhost/sistema_fmtor/'+json.depto.toLowerCase()+'/main/mostrar'
+        } else {
+            render_alert('Error al iniciar sesión:','El usuario o contraseña introducidos son incorrectos','rojo');
+        }
     })
 }
 
