@@ -28,7 +28,7 @@
                         $sesiones = [
                             "nombre" => 'Nombre de usuario',
                             "rol" => 'ADMINISTRADOR',
-                            "depto" => 'ventas'
+                            "depto" => 'produccion'
                         ];
                         echo json_encode($sesiones);
                     } else {

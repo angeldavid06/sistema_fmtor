@@ -73,6 +73,7 @@ const abrir_cerrar_menu = () => {
 // Peticiones
 
 const fetchAPI = async (form,ruta,metodo) => {
+    preloader()
     if (metodo != '') {
         const data = new FormData(form)
         const opciones = {
@@ -83,18 +84,22 @@ const fetchAPI = async (form,ruta,metodo) => {
         await fetch(ruta,opciones)
         .then(res => (res.ok ? res.json() : Promise.reject(res)))
         .then(json => {
+            ocultarPreloader() 
             resJSON = json;
         })
         .catch(err => {
+            ocultarPreloader() 
             resJSON = err;
         })
     } else if (metodo == '') {
         await fetch(ruta)
         .then(res => (res.ok ? res.json() : Promise.reject(res)))
         .then(json => {
+            ocultarPreloader() 
             resJSON = json;
         })
         .catch(err => {
+            ocultarPreloader() 
             resJSON = err;
         })
     }
@@ -122,3 +127,78 @@ document.addEventListener('click', (evt) => {
         abrir_cerrar_menu()
     }
 });
+
+let contador = 0;
+
+const render_titulo = (titulo) => {
+    const h3 = document.createElement('h3');
+    h3.classList.add('titulo');
+    h3.innerHTML = titulo;
+    return h3;
+}
+
+const render_descripcion = (descripcion) => {
+    const p = document.createElement('p');
+    p.classList.add('descripcion');
+    p.innerHTML = descripcion;
+    return p;
+}
+
+const render_contenedor = () => {
+    const div = document.createElement('div');
+    div.classList.add('contenido');
+    return div;
+}
+
+const render_alert_con = (color) => {
+    const div = document.createElement('div');
+    div.classList.add('alert');
+    div.classList.add('alert-'+color);
+    return div;
+}
+
+const render_alert = (titulo, descripcion, color) => {
+    if (contador == 0) {
+        contador = 1;
+        const t = render_titulo(titulo);
+        const d = render_descripcion(descripcion);
+        const c = render_contenedor();
+        const a = render_alert_con(color);
+        c.appendChild(t)
+        c.appendChild(d)
+        a.appendChild(c)
+        document.body.appendChild(a)
+        
+        window.setTimeout(() => {
+            a.classList.add('show-alert')
+        },300);
+    
+        window.setTimeout(() => {
+            a.classList.remove('show-alert')
+        },4000);
+        
+        window.setTimeout(() => {  
+            contador = 0;
+            document.body.removeChild(a)
+        },4300);
+    }
+}
+
+const preloader = () => {
+    const div_content = document.createElement('div')
+    const div_preloader = document.createElement('div')
+    const div_progress = document.createElement('div')
+
+    div_content.classList.add('content_preloader')
+    div_preloader.classList.add('preloader')
+    div_progress.classList.add('progress')
+
+    div_preloader.appendChild(div_progress)
+    div_content.appendChild(div_preloader)
+    document.body.appendChild(div_content)
+}
+
+const ocultarPreloader = () => {
+    const preloader = document.getElementsByClassName('content_preloader')
+    document.body.removeChild(preloader[0])
+}

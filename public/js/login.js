@@ -24,13 +24,13 @@ form.addEventListener('submit', (evt) => {
     if (usu.value == '' && pass.value == '') {
         usu.classList.add('input-error')
         pass.classList.add('input-error')
-        // render_alert('Error al iniciar sesión:','No ha introducido el nombre de usuario o contraseña','rojo');
+        render_alert('Error al iniciar sesión:','No ha introducido el nombre de usuario o contraseña','rojo');
     } else if (pass.value == '') {
         pass.classList.add('input-error')
-        // render_alert('Error al iniciar sesión:','No ha introducido la contraseña','rojo');
+        render_alert('Error al iniciar sesión:','No ha introducido la contraseña','rojo');
     } else if (usu.value == '') {
         usu.classList.add('input-error')
-        // render_alert('Error al iniciar sesión:','No ha introducido el nombre de usuario','rojo');
+        render_alert('Error al iniciar sesión:','No ha introducido el nombre de usuario','rojo');
     } else {
         iniciar_sesion()
     }

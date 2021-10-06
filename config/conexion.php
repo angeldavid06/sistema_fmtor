@@ -3,7 +3,7 @@
     class Conexion {
         public static function conectar () {
             $conexion = mysqli_connect(
-                'localhost',
+                'localhost:3307',
                 'root',
                 '',
                 'db_scp'
