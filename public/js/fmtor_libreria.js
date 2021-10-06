@@ -1,7 +1,6 @@
+let resJSON = ''
 const btn_menu_toggle = document.getElementById('btn-menu-toggle')
-
 const menu = document.getElementById('menu')
-const contenido = document.getElementById('contenido')
 
 const show_btn = () => {
     if (document.getElementById("btn-subir")) {
@@ -71,13 +70,48 @@ const abrir_cerrar_menu = () => {
     menu.classList.toggle('hidde_menu')
 }
 
-contenido.addEventListener('scroll', () => {
-    if (contenido.scrollTop > 150) {
-        show_btn()
-    } else {
-        hidde_btn()
+// Peticiones
+
+const fetchAPI = async (form,ruta,metodo) => {
+    if (metodo != '') {
+        const data = new FormData(form)
+        const opciones = {
+            method: metodo,
+            body: data
+        }
+
+        await fetch(ruta,opciones)
+        .then(res => (res.ok ? res.json() : Promise.reject(res)))
+        .then(json => {
+            resJSON = json;
+        })
+        .catch(err => {
+            resJSON = err;
+        })
+    } else if (metodo == '') {
+        await fetch(ruta)
+        .then(res => (res.ok ? res.json() : Promise.reject(res)))
+        .then(json => {
+            resJSON = json;
+        })
+        .catch(err => {
+            resJSON = err;
+        })
     }
-});
+
+    return resJSON
+}
+
+if (document.getElementById('contenido')) {
+    const contenido = document.getElementById('contenido')
+    contenido.addEventListener('scroll', () => {
+        if (contenido.scrollTop > 150) {
+            show_btn()
+        } else {
+            hidde_btn()
+        }
+    });
+}
 
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.opciones) {

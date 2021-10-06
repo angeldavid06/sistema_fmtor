@@ -1,9 +1,9 @@
 <?php
 
     class Web {
-        public function View ($system,$view,$data) {
-            if (file_exists('views/'.$system.'/'.$view.'.php')) {
-                require_once 'views/'.$system.'/'.$view.'.php';
+        public function View ($view,$data) {
+            if (file_exists('views/'.$view.'.php')) {
+                require_once 'views/'.$view.'.php';
             } else {    
                 echo 'La vista no existe';
             }

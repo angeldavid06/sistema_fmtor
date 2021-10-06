@@ -3,7 +3,7 @@
     require_once "models/calidad/model.php";
     require_once "routes/web.php";
 
-    class CalidadController {
+    class Main {
         public $model;
         public $web;
 
@@ -13,7 +13,7 @@
         }
 
         public function mostrar () {
-            $this->web->View('calidad','main','');
+            $this->web->View('checador/main','');
         }
     }
 ?>

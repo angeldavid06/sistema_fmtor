@@ -3,7 +3,7 @@
     require_once "models/ventas/model.php";
     require_once "routes/web.php";
 
-    class VentasController {
+    class Main {
         public $model;
         public $web;
 
@@ -13,7 +13,7 @@
         }
 
         public function mostrar () {
-            $this->web->View('ventas','main','');
+            $this->web->View('ventas/main','');
         }
     }
 ?>

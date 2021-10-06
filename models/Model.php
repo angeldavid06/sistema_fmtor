@@ -32,6 +32,32 @@
             $eliminar=$this->db->query($sql);
             return $eliminar;
         }
+        
+        public function buscar ($tabla,$condicion) {
+            $sql = "SELECT * FROM $tabla WHERE $condicion";
+            $buscar = mysqli_query($this->db,$sql);
+            $assoc = self::getAssoc($buscar);
+            return $assoc;
+        }
+        
+        public function buscar_personalizado ($tabla,$campos,$condicion) {
+            $sql = "SELECT $campos FROM $tabla WHERE $condicion";
+            $buscar = mysqli_query($this->db,$sql);
+            $assoc = self::getAssoc($buscar);
+            return $assoc;
+        }
+
+        public function validar_password ($tabla,$condicion) {
+            $sql = "SELECT password FROM $tabla WHERE $condicion";
+            $validar_password = mysqli_query($this->db,$sql);
+            $assoc = self::getAssoc($validar_password);
+            return $assoc;
+        }
+
+        public function getAssoc ($query) {
+            $assoc = mysqli_fetch_assoc($query);
+            return $assoc;
+        }
     }
 
 ?>

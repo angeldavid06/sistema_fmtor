@@ -3,7 +3,7 @@
     require_once "models/sii/model.php";
     require_once "routes/web.php";
 
-    class SiiController {
+    class Main {
         public $model;
         public $web;
 
@@ -13,7 +13,7 @@
         }
 
         public function mostrar () {
-            $this->web->View('sii','main','');
+            $this->web->View('sii/main','');
         }
     }
 ?>
