@@ -2,8 +2,12 @@
 
     class App {
         public function __construct() {
+            require_once 'controllers/error.php';
+            $error = new Errores();
+
             $url = $_GET['url'];
             $url = rtrim($url,'/');
+            $url_div = rtrim($url,'/');
             $url = explode('/', $url);
 
             if (count($url) == 2) {
@@ -14,10 +18,10 @@
                     if (isset($url[1]) && method_exists($controller,$url[1])) {
                         $controller->{$url[1]}();
                     } else {
-                        echo '<p>Error: el método no existe</p>';
+                        $error->error_404($url_div);
                     }
                 } else {
-                    echo '<p>El controlador no existe</p>';
+                    $error->error_404($url_div);
                 }
             } else if (count($url) == 3) {
                 $archivoController = 'controllers/'.$url[0].'/'.$url[1].'.php';
@@ -27,12 +31,13 @@
                     if (isset($url[2]) && method_exists($controller,$url[2])) {
                         $controller->{$url[2]}();
                     } else {
-                        echo '<p>Error: el método no existe</p>';
+                        $error->error_404($url_div);
                     }
                 } else {
-                    echo '<p>'.$archivoController.'</p>';
-                    echo '<p>El controlador no existe</p>';
+                    $error->error_404($url_div);
                 }
+            } else {
+                $error->error_404($url_div);
             }
 
         }
