@@ -1,43 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require_once 'public/modules/head.php' ?>
-    <title>Sistema Integral de Información</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="../../public/css/default.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div class="contenedor principal">
+    <div class="contenedor">
         <a href="#top" class="btn btn-icon btn-flotante" id="btn-subir">
             <i class="material-icons">expand_less</i> 
             Subir
         </a>
+        <?php require_once 'public/modules/menus/sii.php'; ?>
         <div class="contenido hidde_menu" id="contenido">
-            <?php require_once 'public/modules/depto.php'; ?>
+            <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
-                <h2>Sistema Integral de Información</h2>
-                <main>
-                    <nav class="d-grid g-2">
-                        <a href="http://localhost/sistema_fmtor/produccion/main/control"
-                            class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
-                        </a>
-                        <a href="http://localhost/sistema_fmtor/produccion/main/ordenes"
-                        class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
-                        </a>
-                        <a href="http://localhost/sistema_fmtor/produccion/main/maquinas"
-                        class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
-                        </a>
-                        <a href="http://localhost/sistema_fmtor/produccion/main/estados"
-                        class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
-                        </a>
-                    </nav>
-                </main>
+                <h1>Sistema Integral de Información</h1>
+                <div class="tarjeta">
+                </div>
             </div>
         </div>
     </div>
