@@ -116,10 +116,10 @@ const time_notification = (not) => {
     },300);
     window.setTimeout(() => {
         not.classList.remove('show-alert');
-    },2500);
-    window.setTimeout(() => {
-        document.body.removeChild(not);
-    },2800);
+    },3500);
+    // window.setTimeout(() => {
+    //     document.body.removeChild(not);
+    // },3800);
 }
 
 const open_alert = (title,description) => {   
@@ -132,7 +132,7 @@ const open_alert = (title,description) => {
     div.innerHTML = '<div class="contenido">'+
                         '<h3 class="txt-center">'+title+'</h3>'+
                         '<div class="descripcion">'+
-                            '<p>'+description+'</p>'+
+                            '<p class="txt-center">'+description+'</p>'+
                         '</div>'+
                     '</div>'
 
