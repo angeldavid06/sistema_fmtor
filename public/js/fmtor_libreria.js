@@ -107,6 +107,63 @@ const fetchAPI = async (form,ruta,metodo) => {
     return resJSON
 }
 
+// Alertas
+
+const time_notification = (not) => {
+    document.body.appendChild(not);
+    window.setTimeout(() => {
+        not.classList.add('show-alert');
+    },300);
+    window.setTimeout(() => {
+        not.classList.remove('show-alert');
+    },2500);
+    window.setTimeout(() => {
+        document.body.removeChild(not);
+    },2800);
+}
+
+const open_alert = (title,description) => {   
+    const div = document.createElement('div')
+    div.classList.add('alert')
+    div.classList.add('d-flex')
+    div.classList.add('justify-center')
+    div.classList.add('flex-wrap')
+
+    div.innerHTML = '<div class="contenido">'+
+                        '<h3 class="txt-center">'+title+'</h3>'+
+                        '<div class="descripcion">'+
+                            '<p>'+description+'</p>'+
+                        '</div>'+
+                    '</div>'
+
+    time_notification(div)
+}
+
+const open_confirm = (title,callback) => {
+    const div = document.createElement('div')
+    div.classList.add('confirm')
+    div.classList.add('d-flex')
+    div.classList.add('justify-center')
+
+    div.innerHTML = '<div class="contenido d-flex justify-between align-content-center flex-nowrap btn-confirm-sm-cancel">'+
+                        '<div class="titulo">'+
+                            '<h3>'+title+'</h3>'+
+                        '</div>'+
+                        '<div class="opciones">'+
+                            '<button class="btn btn-icon-self btn-transparent material-icons btn-confirm-sm-accept">done</button>'+
+                            '<button class="btn btn-icon-self btn-transparent material-icons btn-confirm-sm-cancel">close</button>'+
+                        '</div>'+
+                    '</div>'
+
+    document.body.appendChild(div)
+    
+    window.setTimeout(() => {
+        div.classList.add('show-alert');
+    },300);
+
+    sharedFunction = callback;
+}
+
 if (document.getElementById('contenido')) {
     const contenido = document.getElementById('contenido')
     contenido.addEventListener('scroll', () => {
@@ -125,6 +182,20 @@ document.addEventListener('click', (evt) => {
         quitar_mas_opciones(evt.target)
     } else if (evt.target.dataset.menu) {
         abrir_cerrar_menu()
+    } else if (evt.target.matches('.btn-confirm-sm-accept')) {
+        sharedFunction();
+        const not = document.getElementsByClassName('confirm')
+        window.setTimeout(() => {
+            not[0].classList.remove('show-alert')
+        },100)
+    } else if (evt.target.matches('.btn-confirm-sm-cancel')) {
+        const not = document.getElementsByClassName('confirm')
+        window.setTimeout(() => {
+            not[0].classList.remove('show-alert')
+        },100)
+        window.setTimeout(() => {
+            document.body.removeChild(not[0])
+        },500)
     }
 });
 

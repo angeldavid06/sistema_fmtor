@@ -33,6 +33,7 @@
     :root {
         --background-body: #2F3134;
         --background-aux: #252729;
+        --background-aux-05: rgba(37, 39, 41, 0.5);
         --background-button:#004A77;
 
         --color-button: #C2E7FF;
@@ -46,6 +47,7 @@
     :root {
         --background-body: #FFFFFF;
         --background-aux: #F1F5FB;
+        --background-aux-05: rgba(241, 245, 251,0.5);
         --background-button:#C2E7FF;
 
         --color-button: #001D35;
@@ -110,38 +112,39 @@
     padding: 30px 0px 45px 0px;
 }
 
-.alert {
-    position: fixed;
-    width: 500px;
-    padding: 20px;
-    top: -30px;
-    left: calc(50% - 250px);
-    text-align: center;
-    border-radius: var(--border-radius);
+.alert,
+.confirm {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
     visibility: hidden;
     opacity: 0;
-    z-index: 99999;
-    transition: all .3s;
+    z-index: 999999999999;
+    background-color: var(--background-aux-05);
+    padding: 30px 0px;
+    transition: all .5s;
+}
+
+.alert .contenido,
+.confirm .contenido {
+    width: 50%;
+    position: fixed;
+    padding: 20px 20px 20px 30px;
+    border-radius: var(--border-radius);
+    background-color: var(--background-aux);
+}
+
+.alert .descripcion {
+    padding: 15px 0px 0px 0px;
 }
 
 .show-alert {
-    top: 30px;
+    top: 0px;
     visibility: visible;
     opacity: 1;
-}
-
-.alert .contenido {
-    width: 100%;
-}
-
-.alert .contenido h3,
-.alert .contenido p {
-    font-family: 'Inter', sans-serif; 
-}
-
-.alert .contenido h3 {
-    padding: 0px 0px 10px 0px;
-    font-weight:bolder;
 }
 
 .alert-rojo {
@@ -964,6 +967,10 @@ body {
     justify-content: flex-end;
 }
 
+.justify-between {
+    justify-content: space-between;
+}
+
 .align-content-top {
     align-items: flex-start;
     align-content: flex-start;
@@ -1185,6 +1192,18 @@ body {
         max-width: 80%;
         min-height: 100vh;
         margin: auto;
+    }
+
+    .alert .contenido,
+    .confirm .contenido {
+        width: 95%;  
+        max-width: 95%;
+        top: 10px;  
+        padding: 10px 0px 10px 20px;   
+    }
+
+    .confirm .contenido .opciones {
+        padding: 0px 0px 0px 10px;
     }
 
     .welcome .row-con {

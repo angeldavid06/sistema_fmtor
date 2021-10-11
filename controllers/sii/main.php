@@ -13,7 +13,7 @@
             $this->model = new usuario();
         }
 
-        public function Main() {
+        public function mostrar() {
             $this->web->View('sii/main','');
         }
 
