@@ -19,11 +19,19 @@
 
         public function Registro()
         {
-            $data = $this->model->mostrar('puesto');
-            $this->web->View('sii/register',$data);
+            $this->web->View('sii/register','');
         }
 
-        
+        public function buscarPuesto(){
+            $data = $this->model->mostrar('t_puesto');
+            echo $data;
+        }
+
+        public function buscarRol(){
+            $data = $this->model->mostrar('t_rol');
+            echo $data;
+        }
+
         function newUser()
         {
             if (isset($_POST['nombre']) && $_POST['nombre'] != '') {
@@ -99,6 +107,18 @@
             }
             
         }
-        
+        function new_only_user() {
+            if(isset($_POST['usuario']) && $_POST['usuario'] != ''){
+                $this->model->setUsuario($_POST['usuario']);
+                if(isset($_POST['contrasena']) && $_POST['contrasena'] != ''){
+                    $this->model->setContrasena($_POST['contrasena']);
+                    echo $this->model->insertar_soloUsuario();
+                }else{
+                    echo 1;
+                }
+            }else{
+                echo 0;
+            }
+        }
     }
 ?>

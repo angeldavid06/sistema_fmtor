@@ -19,7 +19,8 @@ CREATE TABLE `t_usuario` (
   `id_usuario` int PRIMARY KEY AUTO_INCREMENT,
   `id_empleado` int,
   `usuario` varchar(255),
-  `contrasena` varchar(255)
+  `contrasena` varchar(255),
+  `id_rol` int
 );
 
 CREATE TABLE `t_direccion` (
@@ -430,6 +431,8 @@ CREATE TABLE `t_residentes` (
 ALTER TABLE `t_empleados` ADD FOREIGN KEY (`id_puesto`) REFERENCES `t_puesto` (`id_puesto`);
 
 ALTER TABLE `t_usuario` ADD FOREIGN KEY (`id_empleado`) REFERENCES `t_empleados` (`id_empleado`);
+
+ALTER TABLE `t_usuario` ADD FOREIGN KEY (`id_rol`) REFERENCES `t_rol` (`id_rol`);
 
 ALTER TABLE `t_direccion` ADD FOREIGN KEY (`id_empleado`) REFERENCES `t_empleados` (`id_empleado`);
 

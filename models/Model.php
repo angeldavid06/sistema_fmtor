@@ -13,7 +13,7 @@
         public function mostrar ($tabla){
             $sql="SELECT * FROM $tabla";
             $mostrar = $this->db->query($sql);
-            return $mostrar;
+            return $mostrar;    
         }
 
         public function insertar ($tabla,$columnas,$valores){
@@ -47,6 +47,7 @@
             $assoc = self::getAssoc($buscar);
             return $assoc;
         }
+
 
         public function validar_password ($tabla,$condicion) {
             $sql = "SELECT password FROM $tabla WHERE $condicion";

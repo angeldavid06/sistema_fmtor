@@ -6,7 +6,7 @@
                 'localhost',
                 'root',
                 '',
-                'db_fmtor'
+                'db_rdg'
             );
             return $conexion;
         }

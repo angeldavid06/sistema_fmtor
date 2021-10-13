@@ -18,6 +18,7 @@
      public $usuario;
      public $contrasena;
      public $nombrePuesto;
+    public $nombreRol;
 
 
     public function getNombre(){return $this->nombre;}
@@ -48,7 +49,8 @@
     public function setContrasena($contrasena): void{$this->contrasena = $contrasena;}
     public function getNombrePuesto(){return $this->nombrePuesto;}
     public function setNombrePuesto ($nombrePuesto): void{$this->nombrePuesto = $nombrePuesto;}
-
+    public function getNombreRol(){return $this->nombreRol;}
+    public function setNombreRol ($nombreRol): void{$this->nombreRol = $nombreRol;}
 
     public function insertarEmpleado()
     {
@@ -80,7 +82,7 @@
         if (!empty($id_empleado)) {
             $id = $id_empleado['id_empleado'];
             $tabla = 't_usuario';
-            $parametros = 'id_empleado,usuario,contrasena';
+            $parametros = 'id_empleado,usuario,contrasena,id_rol';
             $password = password_hash($this->contrasena, PASSWORD_DEFAULT, ['cost'=>10] );
             $values = "'$id','$this->usuario','$password'";
             return Model::insertar($tabla,$parametros,$values);
@@ -88,6 +90,17 @@
             echo 0;
         }
         
+    }
+    
+
+    public function insertar_soloUsuario()
+    {
+        
+            $tabla = 't_usuario';
+            $columnas = 'usuario,contrasena';
+            $password = password_hash($this->contrasena, PASSWORD_DEFAULT,['cost=>']);
+            $valores = "'$this->usuario','$this->password'";
+            return Model::insertar($tabla,$columnas,$valores);
     }
 
 
