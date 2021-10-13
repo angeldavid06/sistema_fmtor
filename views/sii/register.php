@@ -32,13 +32,22 @@
         <label for="">Contraseña</label>
             <input type="password" name="contrasena" id="contrasena">
         <select name="nombrePuesto" id="nombrePuesto">
-            <?php while($puesto = $data->fetch_object()): ?>
-                <option value="<?=$puesto->id_puesto;?>"><?=$puesto->nombrePuesto;?></option>
-            <?php endwhile;?>
+            
         </select>
+        
         <button>ingresar</button>
     </form>
-    <script src="../../public/js/sii/register.js"></script>
+    <br>
+    <form action="only_user_register">
+        <label for="usuario_only"></label><input type="text" name="usuario" id="usuario">
+        <label for="password"></label><input type="password" name="password" id="password">
+        <select name="nombreRol" id="nombreRol">
+           
+        </select>
+        <button>Ingresar</button>
+    </form>
     <script src="../../public/js/fmtor_libreria.js?1.2"></script>
+    <script src="../../public/js/sii/register.js?1.1"></script>
+    
 </body>
 </html>

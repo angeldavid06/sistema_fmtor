@@ -6,7 +6,7 @@
                 'localhost',
                 'root',
                 '',
-                'db_scp'
+                'db_fmtor'
             );
             return $conexion;
         }

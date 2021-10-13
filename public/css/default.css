@@ -39,6 +39,8 @@
         --color-button: #C2E7FF;
         --color-text: #FFFFFF;
         
+        --color-logo: #FFFFFF;
+
         --border-color: #36393f;
     }
 }
@@ -49,6 +51,8 @@
         --background-aux: #F1F5FB;
         --background-aux-05: rgba(241, 245, 251,0.5);
         --background-button:#C2E7FF;
+
+        --color-logo: #014975;
 
         --color-button: #001D35;
         --color-text: #383838;
@@ -926,8 +930,13 @@ body {
 }
 
 .contenido header .logos .logo {
-    width: 200px;
+    width: 260px;
     height: 50px;
+}
+
+.contenido header .logos .logo svg {
+    height: 100%;
+    width: 100%;
 }
 
 .contenido .informacion {
@@ -1243,6 +1252,16 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+    .contenido header .logos .logo {
+        width: 180px;
+        height: 60px;
+    }
+
+    .contenido header .logos .logo svg {
+        height: 100%;
+        width: 100%;
+    }
+
     a, p, label, input, textarea, select, button {
         font-size: 0.9rem;
     }
@@ -1312,7 +1331,12 @@ body {
     }
 
     .menu .informacion {
-        padding: 15px;
+        padding: 30px 15px 30px 15px;
+    }
+    
+    .menu .informacion .foto {
+        width: 100px;
+        height: 100px;
     }
 
     .menu .titulo_categoria_menu {
@@ -1383,8 +1407,6 @@ body {
     }
 
     .contenido header .logos .logo {
-        width: 150px;
-        height: 50px;
         display: flex;
         justify-content: flex-end;
         align-items: center;
