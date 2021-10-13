@@ -84,23 +84,25 @@ const fetchAPI = async (form,ruta,metodo) => {
         await fetch(ruta,opciones)
         .then(res => (res.ok ? res.json() : Promise.reject(res)))
         .then(json => {
-            ocultarPreloader() 
             resJSON = json;
         })
         .catch(err => {
-            ocultarPreloader() 
             resJSON = err;
+        })
+        .finally(() => {
+            ocultarPreloader() 
         })
     } else if (metodo == '') {
         await fetch(ruta)
         .then(res => (res.ok ? res.json() : Promise.reject(res)))
         .then(json => {
-            ocultarPreloader() 
             resJSON = json;
         })
         .catch(err => {
-            ocultarPreloader() 
             resJSON = err;
+        })
+        .finally(() => {
+            ocultarPreloader() 
         })
     }
 
@@ -116,10 +118,10 @@ const time_notification = (not) => {
     },300);
     window.setTimeout(() => {
         not.classList.remove('show-alert');
-    },2500);
+    },3500);
     window.setTimeout(() => {
         document.body.removeChild(not);
-    },2800);
+    },3800);
 }
 
 const open_alert = (title,description) => {   
@@ -132,7 +134,7 @@ const open_alert = (title,description) => {
     div.innerHTML = '<div class="contenido">'+
                         '<h3 class="txt-center">'+title+'</h3>'+
                         '<div class="descripcion">'+
-                            '<p>'+description+'</p>'+
+                            '<p class="txt-center">'+description+'</p>'+
                         '</div>'+
                     '</div>'
 

@@ -147,30 +147,30 @@
     opacity: 1;
 }
 
-.alert-rojo {
+.alert-rojo .contenido {
     background-color: var(--background-red-main);
 }
 
-.alert-rojo h3,
-.alert-rojo p {
+.alert-rojo .contenido h3,
+.alert-rojo .contenido p {
     color: var(--color-red-main);
 }
 
-.alert-amarillo {
+.alert-amarillo .contenido {
     background-color: var(--color-yellow);
 }
 
-.alert-amarillo h3,
-.alert-amarillo p {
+.alert-amarillo .contenido h3,
+.alert-amarillo .contenido p {
     color: var(--color-text);
 }
 
-.alert-azul {
+.alert-azul .contenido {
     background-color: var(--color-blue-button);
 }
 
-.alert-azul h3,
-.alert-azul p {
+.alert-azul .contenido h3,
+.alert-azul .contenido p {
     color: white;
 }
 
@@ -296,7 +296,7 @@ h3 {
 }
 
 a, p, label, input, textarea, select, button {
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 label {
@@ -1063,6 +1063,13 @@ body {
 }
 
 @media screen and (max-width: 1366px) {
+    a, p, label, input, textarea, select, button {
+        font-size: 0.9rem;
+    }
+
+    a, p, label, input, textarea, select, button {
+        font-size: 0.9rem;
+    }
  
     .card-sm {
         width: 150px;
@@ -1188,6 +1195,14 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+    a, p, label, input, textarea, select, button {
+        font-size: 0.9rem;
+    }
+
+    a, p, label, input, textarea, select, button {
+        font-size: 0.9rem;
+    }
+
     .error_404 {
         max-width: 80%;
         min-height: 100vh;

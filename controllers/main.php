@@ -62,6 +62,14 @@
 
             return $sesiones;
         }
+
+        public function prueba () {
+            $this->web->View('prueba','');
+        }
+
+        public function op () {
+            echo json_encode($this->model->mostrar('ordenes'));
+        }
     }
 
 ?>

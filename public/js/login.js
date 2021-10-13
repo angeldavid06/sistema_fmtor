@@ -16,7 +16,9 @@ const iniciar_sesion = () => {
         if (json.depto) {
             window.location.href = 'http://localhost/sistema_fmtor/'+json.depto.toLowerCase()+'/main/mostrar'
         } else {
-            render_alert('Error al iniciar sesión:','El usuario o contraseña introducidos son incorrectos','rojo');
+            usu.classList.add('input-error')
+            pass.classList.add('input-error')
+            open_alert('Error al iniciar sesión:','El usuario o contraseña introducidos son incorrectos','rojo');
         }
     })
 }
@@ -28,20 +30,20 @@ form.addEventListener('submit', (evt) => {
     if (usu.value == '' && pass.value == '') {
         usu.classList.add('input-error')
         pass.classList.add('input-error')
-        render_alert('Error al iniciar sesión:','No ha introducido el nombre de usuario o contraseña','rojo');
+        open_alert('Error al iniciar sesión:','No ha introducido el nombre de usuario o contraseña','rojo');
     } else if (pass.value == '') {
         pass.classList.add('input-error')
-        render_alert('Error al iniciar sesión:','No ha introducido la contraseña','rojo');
+        open_alert('Error al iniciar sesión:','No ha introducido la contraseña','rojo');
     } else if (usu.value == '') {
         usu.classList.add('input-error')
-        render_alert('Error al iniciar sesión:','No ha introducido el nombre de usuario','rojo');
+        open_alert('Error al iniciar sesión:','No ha introducido el nombre de usuario','rojo');
     } else {
         iniciar_sesion()
     }
 })
 
-const error_incio_sesion = () => {
+const error_inicio_sesion = () => {
     usu.classList.add('input-error')
     pass.classList.add('input-error')
-    render_alert('Error al iniciar sesión:','El usuario o contraseña introducidos son incorrectos','rojo');
+    open_alert('Error al iniciar sesión:','El usuario o contraseña introducidos son incorrectos','rojo');
 }
