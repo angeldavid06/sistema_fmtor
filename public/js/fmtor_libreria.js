@@ -198,6 +198,8 @@ document.addEventListener('click', (evt) => {
         window.setTimeout(() => {
             document.body.removeChild(not[0])
         },500)
+    } else if (evt.target.dataset.modal) {
+        abrir_modal(evt.target.dataset.modal)
     }
 });
 
@@ -257,6 +259,8 @@ const render_alert = (titulo, descripcion, color) => {
     }
 }
 
+// Preloader
+
 const preloader = () => {
     const div_content = document.createElement('div')
     const div_preloader = document.createElement('div')
@@ -274,4 +278,11 @@ const preloader = () => {
 const ocultarPreloader = () => {
     const preloader = document.getElementsByClassName('content_preloader')
     document.body.removeChild(preloader[0])
+}
+
+// Ventanas modales
+
+const abrir_modal = (id) => {
+    const modal = document.getElementById(id)
+    modal.classList.toggle('abrir_modal')
 }

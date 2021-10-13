@@ -115,13 +115,45 @@
 .modal {
     position: fixed;
     top: 30px;
-    right: 30px;
     padding: 30px;
     width: 500px;
     max-height: calc(100vh - 60px);
     overflow-y: auto;
     background-color: var(--background-aux);
     border-radius: var(--border-radius);
+    visibility: hidden;
+    opacity: 0;
+    transition: all .4s ease-in-out;
+}
+
+.modal.modal-derecha {
+    right: -100%;
+}
+
+.modal.modal-centro {
+    top: -100%;
+    left: calc(50% - 250px);
+}
+
+.modal.modal-izquierda {
+    left: -100%;
+}
+
+.modal.abrir_modal {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal.modal-derecha.abrir_modal {
+    right: 30px;
+}
+
+.modal.modal-centro.abrir_modal {
+    top: 30px;
+}
+
+.modal.modal-izquierda.abrir_modal {
+    left: 30px;
 }
 
 .modal .titulo_modal {
