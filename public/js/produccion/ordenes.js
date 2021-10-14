@@ -1,10 +1,3 @@
-const btn_cancel_filtrar = document.getElementsByClassName('btn-cancel');
-
-btn_cancel_filtrar[0].addEventListener('click', () => {
-    const filtrar = document.getElementsByClassName('filtrar');
-    filtrar[0].classList.toggle('open');
-});
-
 const quitar_filas = (t_body) => {
     while(t_body.firstChild){
         t_body.removefirstChild(t_body.firstChild)
@@ -13,7 +6,6 @@ const quitar_filas = (t_body) => {
 
 const render_ordenes = (json) => {
     const t_body= document.getElementsByClassName('body')
-    const fragmento = document.createDocumentFragment()
     json.forEach(el => {
         const tr = document.createElement('tr')
 
@@ -68,7 +60,8 @@ const render_reporte_diario = (json) => {
 const obtener_ordenes = () => {
     const respuesta = fetchAPI('',url+'/scp_fmtor/?controller=opController&action=obtener_ordenes','')
     respuesta.then(json => {
-        render_ordenes(json)
+        // render_ordenes(json)
+        console.log(json);
     })
 }
 
