@@ -31,12 +31,12 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-body: #2F3134;
-        --background-aux: #252729;
+        --background-body: #252729;
+        --background-aux: #2F3134;
         --background-aux-05: rgba(37, 39, 41, 0.5);
-        --background-button:#004A77;
+        --background-button:#5AB3F0;
 
-        --color-button: #C2E7FF;
+        --color-button: #02203A;
         --color-text: #FFFFFF;
         
         --color-logo: #FFFFFF;
