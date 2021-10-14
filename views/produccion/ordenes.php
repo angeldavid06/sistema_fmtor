@@ -13,7 +13,7 @@
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
                 <h1>Ordenes de Producción</h1>
-                <div class="tarjeta d-flex justify-right">
+                <div class="tarjeta-transparente d-flex justify-right">
                     <button class="btn btn-icon-self btn_filtrar_open material-icons" data-modal="modal-filtrar">filter_alt</button>
                     <button class="btn btn-icon-self material-icons">print</button>
                 </div>

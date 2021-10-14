@@ -966,6 +966,10 @@ body {
     overflow-x: auto;
 }
 
+.contenido .informacion .tarjeta-transparente {
+    padding-top: 30px;
+}
+
 .contenido .informacion .tarjeta:hover {
     border: 2px solid var(--border-color);
 }

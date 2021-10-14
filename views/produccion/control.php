@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php require_once 'public/modules/head.php' ?>
     <title>Página Principal</title>
-    <link rel="stylesheet" href="../../public/css/default.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="contenedor">
@@ -34,7 +30,7 @@
                         </div>
                     </div>
                     <div class="info_control" style="grid-area: 1 / 2 / 2 / 4;">
-                        <div class="tarjeta estados">
+                        <div class="tarjeta-transparente estados">
                             <div class="options d-flex align-content-center">
                                 <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
                                 <button class="btn btn-icon-self material-icons">print</button>
