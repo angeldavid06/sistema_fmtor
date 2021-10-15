@@ -1,8 +1,8 @@
 <?php
-    require_once "../../models/Model.php";
+    require_once "models/Model.php";
     require_once "routes/web.php";
 
-    class opController{
+    class op {
         public $model;
         public $web;
     
@@ -16,13 +16,13 @@
         }
         
         public function obtener_ordenes () {
-            $ops = $this->model->mostrar('ordenes');
+            $ops = $this->model->mostrar('v_ordenes');
             $json = json_encode($ops);
             echo $json;
         }
 
         public function obtener_reporte_diario () {
-            $ops = $this->model->mostrar('reporte_diario');
+            $ops = $this->model->mostrar('v_reporte_diario');
             $json = json_encode($ops);
             echo $json;
         }
@@ -33,7 +33,11 @@
                     $op = $this->model->buscar($_POST['tabla'],'op',$_POST['f_op']);
                     $json = json_encode($op);
                     echo $json;
+                } else {
+                    echo 2;
                 }
+            } else {
+                echo 1;
             }
         }
 

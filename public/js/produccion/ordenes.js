@@ -6,6 +6,7 @@ const quitar_filas = (t_body) => {
 
 const render_ordenes = (json) => {
     const t_body= document.getElementsByClassName('body')
+    
     json.forEach(el => {
         const tr = document.createElement('tr')
 
@@ -18,7 +19,7 @@ const render_ordenes = (json) => {
         }
 
         tr.innerHTML += '<td>'+el.calibre+'</td>'+
-                        '<td>'+el.kilos+'</td>'+
+                        '<td>'+el.kilos_acumulados+'</td>'+
                         '<td>'+el.factor+'</td>'+
                         '<td>'+el.op+'</td>'+
                         '<td>'+el.fecha+'</td>'+
@@ -30,7 +31,7 @@ const render_ordenes = (json) => {
                         '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio)+'</td>'+
                         '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.Total)+'</td>'+
                         '<td class="number">' + new Intl.NumberFormat('es-MX').format(el.Acumulado)+'</td>'+
-                        '<td>'+el.estado+'</p>'
+                        '<td>'+el.estado+'</td>'
 
         t_body[0].appendChild(tr)
     })
@@ -42,14 +43,14 @@ const render_reporte_diario = (json) => {
         const tr = document.createElement('tr')
         tr.classList.add('tr')
 
-        tr.innerHTML += '<td>'+el.Fecha+'</td>'+
+        tr.innerHTML += '<td>'+el.fecha+'</td>'+
                         '<td>'+el.turno+'</td>'+
-                        '<td>'+el.estado+'</td>'+
-                        '<td>'+el.Orden_de_producción+'</td>'+
+                        '<td>'+el.Departamento+'</td>'+
+                        '<td>'+el.Orden_de_produccion+'</td>'+
                         '<td>'+el.Cliente+'</td>'+
                         '<td>'+el.kilos+'</td>'+
                         '<td>'+el.pzas+'</td>'+
-                        '<td>'+el.Maquina+'</td>'
+                        '<td>'+el.Maquina+'</td>'+
                         '<td>'+el.Descripcion+'</td>'+
                         '<td>'+el.observaciones+'</td>'
                         
@@ -58,15 +59,14 @@ const render_reporte_diario = (json) => {
 }
 
 const obtener_ordenes = () => {
-    const respuesta = fetchAPI('',url+'/scp_fmtor/?controller=opController&action=obtener_ordenes','')
+    const respuesta = fetchAPI('',url+'/produccion/op/obtener_ordenes','')
     respuesta.then(json => {
-        // render_ordenes(json)
-        console.log(json);
+        render_ordenes(json)
     })
 }
 
 const obtener_reporte_diario = () => {
-    const respuesta = fetchAPI('',url+'/scp_fmtor/?controller=opController&action=obtener_reporte_diario','')
+    const respuesta = fetchAPI('',url+'/produccion/op/obtener_reporte_diario','')
     respuesta.then(json => {
         render_reporte_diario(json)
     })

@@ -1,5 +1,5 @@
 let resJSON = ''
-const url = 'http://localhost'
+const url = 'http://localhost/sistema_fmtor'
 const btn_menu_toggle = document.getElementById('btn-menu-toggle')
 const menu = document.getElementById('menu')
 
