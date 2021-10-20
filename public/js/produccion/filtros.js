@@ -19,13 +19,23 @@ const cabecera_op = (titulos) => {
     limpiar_cabecera();
     const fragmento = document.createDocumentFragment();
     const thead = document.getElementsByClassName('cabecera');
+<<<<<<< HEAD
+=======
+    const tr = document.createElement('tr');
+>>>>>>> 34034953a1efbd5d12149f41b8c6ddc2fb904c3c
     
     for (let i = 0; i < titulos.length; i++) {
         const th = document.createElement('th');
         th.innerHTML = titulos[i];
+<<<<<<< HEAD
         fragmento.appendChild(th);
     }
     
+=======
+        tr.appendChild(th);
+    }
+    fragmento.appendChild(tr);
+>>>>>>> 34034953a1efbd5d12149f41b8c6ddc2fb904c3c
     thead[0].appendChild(fragmento);
 }
 

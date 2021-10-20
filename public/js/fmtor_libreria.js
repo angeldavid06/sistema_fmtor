@@ -61,7 +61,7 @@ const render_mas_opciones = (texto) => {
     mas_opciones.appendChild(opciones)                        
     document.body.appendChild(mas_opciones)
 
-    setTimeout(() => { 
+    window.setTimeout(() => { 
         mas_opciones.classList.add('mostrar')
     }, 300);
 }
