@@ -140,15 +140,8 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <script src="../../public/js/fmtor_libreria.js?1.3"></script>
-    <!-- <script src="../../public/js/origin.js"></script> -->
-    <script src="../../public/js/produccion/filtros.js"></script>
-    <script src="../../public/js/produccion/ordenes.js?1.4"></script>
-=======
     <script src="../../public/js/fmtor_libreria.js?1.4"></script>
     <script src="../../public/js/produccion/filtros.js?1.1"></script>
     <script src="../../public/js/produccion/ordenes.js?1.5"></script>
->>>>>>> 34034953a1efbd5d12149f41b8c6ddc2fb904c3c
 </body>
 </html>
