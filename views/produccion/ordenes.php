@@ -22,7 +22,7 @@
                         <div class="row-con">
                             <div class="tabla">
                                 <table>
-                                    <thead>
+                                    <thead class="cabecera">
                                         <th>CAL.</th>
                                         <th>Kg.</th>
                                         <th>Factor</th>
@@ -56,18 +56,17 @@
                                 <select name="seleccion_formato" id="seleccion_formato">
                                     <option value="0">Ordenes de Producción</option>
                                     <option value="1">Reporte Diario</option>
-                                    <option value="2">Reporte Diario por Máquina</option>
                                 </select>
                             </div>
                         </form>
                         <form id="form-filtros">
                             <div class="contenedor_filtros">
-                                <input type="text" name="tabla" id="tabla" value="ordenes" hidden>
+                                <input type="text" name="tabla" id="tabla" value="v_ordenes" hidden>
                                 <h2>Filtrar Ordenes de Producción</h2>
                                 <h3>Filtrar por O.P.:</h3>
                                 <div class="filtro fecha">
                                     <input type="checkbox" data-check="f_op" class="checkbox" name="check_op" id="check_op">
-                                    <label class=lbl-checkboxk" id="lbl_check_op"  for="check_op">Buscar O.P.:</label>
+                                    <label class="lbl-checkbox" id="lbl_check_op"  for="check_op">Buscar O.P.:</label>
                                     <input class="input" type="number" name="f_op" id="f_op" disabled>
                                     <input type="checkbox" data-check="f_r_op" data-rango="true" class="checkbox" name="check_rango_op" id="check_rango_op">
                                     <label class="lbl-checkbox" id="lbl_check_rango_op"  for="check_rango_op">Filtrar por rango de O.P.: </label>
@@ -141,9 +140,9 @@
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js?1.2"></script>
-    <!-- <script src="../../public/js/origin.js"></script>
-    <script src="../../public/js/filtros.js"></script> -->
-    <script src="../../public/js/produccion/ordenes.js?1.2"></script>
+    <script src="../../public/js/fmtor_libreria.js?1.3"></script>
+    <!-- <script src="../../public/js/origin.js"></script> -->
+    <script src="../../public/js/produccion/filtros.js"></script>
+    <script src="../../public/js/produccion/ordenes.js?1.4"></script>
 </body>
 </html>
