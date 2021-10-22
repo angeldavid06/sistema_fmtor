@@ -6,7 +6,6 @@ const quitar_filas = (t_body) => {
 
 const render_ordenes = (json) => {
     const t_body= document.getElementsByClassName('body')
-    
     json.forEach(el => {
         const tr = document.createElement('tr')
 

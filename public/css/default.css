@@ -286,11 +286,22 @@ button {
 .btn {
     font-family: 'Rubik', sans-serif;
     padding: 15px 20px;
+    margin: 0px 5px;
     border: none;
     border-radius: var(--border-radius);
     background-color: var(--background-button);
     color: var(--color-button);
     cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--background-aux-05);
+    color: var(--color-text);
+}
+
+.btn:hover i {
+    color: var(--color-text);
 }
 
 .btn-icon {
@@ -320,7 +331,7 @@ button {
 }
 
 .btn-transparent:hover {
-    background-color: var(--background-body);
+    background-color: var(--background-aux-05);
 }
 
 .btn-transparent i {
@@ -1115,6 +1126,42 @@ body {
     grid-template-columns: repeat(2,1fr);
 }
 
+.g2-1-9 {
+    grid-template-columns: 0.2fr 1.8fr;
+}
+
+.g2-2-8 {
+    grid-template-columns: 0.4fr 1.6fr;
+}
+
+.g2-3-7 {
+    grid-template-columns: 0.6fr 1.4fr;
+}
+
+.g2-4-6 {
+    grid-template-columns: 0.8fr 1.2fr;
+}
+
+.g2-5-5 {
+    grid-template-columns: 1fr 1fr;
+}
+
+.g2-6-4 {
+    grid-template-columns: 1.2fr 0.8fr;
+}
+
+.g2-7-3 {
+    grid-template-columns: 1.4fr 0.6fr;
+}
+
+.g2-8-2 {
+    grid-template-columns: 1.6fr 0.4fr;
+}
+
+.g2-9-1 {
+    grid-template-columns: 1.8fr 0.2fr;
+}
+
 .g-1 {
     grid-template-columns: 1fr;
 }
@@ -1132,6 +1179,13 @@ body {
     padding: 0px 20px 0px 0px;
     font-size: 1.7rem;
 }
+
+.ov_x_auto {
+    min-width: 300px;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
 
 @media screen and (max-width: 1366px) {
     a, p, label, input, textarea, select, button {
@@ -1266,6 +1320,15 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+    .btn-flotante {
+        bottom: 15px;
+    }
+
+    #btn-subir.mostrar {
+        right: 15px;
+        opacity: 1;
+    }
+
     .modal {
         top: 20px;
         padding: 20px;
@@ -1448,7 +1511,7 @@ body {
 
     .contenido .informacion {
         min-width: 250px;
-        padding: 15px;
+        padding: 15px 15px 80px 15px;
     }
 
     .contenido header {
@@ -1481,7 +1544,8 @@ body {
         grid-gap: 15px;
     }
 
-    .g-12, .g-11, .g-10, .g-9, .g-8, .g-7, .g-6, .g-5, .g-4, .g-3, .g-2, .g-1 {
+    .g-12, .g-11, .g-10, .g-9, .g-8, .g-7, .g-6, .g-5, .g-4, .g-3, .g-2, .g-1,
+    .g2-1-9, .g2-2-8, .g2-3-7, .g2-4-6, .g2-5-5, .g2-6-4, .g2-7-3, .g2-8-2, .g2-9-1 {
         grid-template-columns: 1fr;
     }
 

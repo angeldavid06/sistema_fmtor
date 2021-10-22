@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/default.css?1.1">
+    <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/default.css?2.1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>ERROR 404</title>
 </head>
@@ -24,7 +24,7 @@
             <path d="M609.75 238.091H709.057V279H739.227V238.091H766.943V211.295H739.227V69.5454H700.261L609.75 212.523V238.091ZM709.261 211.295H642.886V209.659L707.625 107.182H709.261V211.295Z" fill="var(--color-text)"/>
         </svg>
         <h3 class="txt-center">No se pudo cargar el recurso</h3>
-        <h3 class="txt-center"><?php echo $data;?></h3>
+        <h3 class="txt-center"><?php echo $data;?><br><br><a href="http://localhost/sistema_fmtor/main/login" class="btn">Regresar al sistema</a></h3>
     </div>
 </body>
 </html>
