@@ -59,7 +59,6 @@
                             <div class="tabla">
                                 <table class="table table-control estado_v_forjado">
                                     <thead>
-                                        <th></th>
                                         <th>Botes</th>
                                         <th>Fecha</th>
                                         <th>Pzas. Producidas</th>
@@ -70,7 +69,6 @@
                                 </table>
                                 <table class="table table-control estado_v_ranurado">
                                     <thead>
-                                        <th></th>
                                         <th>Botes</th>
                                         <th>Fecha</th>
                                         <th>Pzas. Producidas</th>
@@ -81,7 +79,6 @@
                                 </table>
                                 <table class="table table-control estado_v_rolado">
                                     <thead>
-                                        <th></th>
                                         <th>Botes</th>
                                         <th>Fecha</th>
                                         <th>Pzas. Producidas</th>
@@ -92,7 +89,6 @@
                                 </table>
                                 <table class="table table-control estado_v_shank">
                                     <thead>
-                                        <th></th>
                                         <th>Botes</th>
                                         <th>Fecha</th>
                                         <th>Pzas. Producidas</th>
@@ -103,7 +99,6 @@
                                 </table>
                                 <table class="table table-control estado_v_cementado">
                                     <thead>
-                                        <th></th>
                                         <th>Botes</th>
                                         <th>Fecha</th>
                                         <th>Pzas. Producidas</th>
@@ -114,7 +109,6 @@
                                 </table>
                                 <table class="table table-control estado_v_acabado">
                                     <thead>
-                                        <th></th>
                                         <th>Botes</th>
                                         <th>Fecha</th>
                                         <th>Pzas. Producidas</th>
