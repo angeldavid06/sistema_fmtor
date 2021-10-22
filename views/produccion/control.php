@@ -36,7 +36,7 @@
                     <div class="info_control ov_x_auto">
                         <div class="tarjeta-transparente estados">
                             <div class="botones ov_x_auto d-flex">
-                                <button class="btn btn-transparent boton_estado" data-estado="v_forjado" data-titulo="FORJADO" data-id="1">FORJADO</button>
+                                <button class="btn btn-transparent boton_estado active" data-estado="v_forjado" data-titulo="FORJADO" data-id="1">FORJADO</button>
                                 <button class="btn btn-transparent boton_estado" data-estado="v_ranurado" data-titulo="RANURADO" data-id="2">RANURADO</button>
                                 <button class="btn btn-transparent boton_estado" data-estado="v_rolado" data-titulo="ROLADO" data-id="3">ROLADO</button>
                                 <button class="btn btn-transparent boton_estado" data-estado="v_shank" data-titulo="SHANK" data-id="4">SHANK</button>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="estado_tabla tarjeta d-grid g2-3-7">
                             <div class="titulo d-flex align-content-center">
-                                <button class="material-icons btn btn-icon-self" id="btn-form-control">add</button>
+                                <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-ingresar">add</button>
                                 <h2 class="titulo_estado">No seleccionado</h2>
                             </div>
                             <div class="info_total d-flex align-content-center justify-right">
@@ -121,9 +121,41 @@
                         </div>
                     </div>
                 </div>
+                <div id="modal-ingresar" class="modal modal-derecha">
+                    <div class="titulo_modal d-flex justify-between align-content-center">
+                        <h2>Nuevo Registro</h2>
+                        <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
+                    </div>
+                    <div class="contenido_modal">
+                    <form id="form-control">
+                        <input type="text" name="estado" id="estado" hidden>
+                        <input type="text" name="op" id="op" hidden>
+                        <p>Número de máquina:</p>
+                        <input class="input" type="number" name="no_maquina" id="no_maquina" placeholder="Ingresa el número de máquina">
+                        <p>Número de botes:</p>
+                        <input class="input" type="number" name="no_botes" id="no_botes" placeholder="Ingresa el número de botes entregados">
+                        <p>Fecha:</p>
+                        <input class="input" type="date" name="fecha" id="fecha" placeholder="Ingresa la fecha de entrega">
+                        <p>Pzas. entregadas:</p>
+                        <input class="input" type="number" name="pzas" id="pzas" placeholder="Ingresa la cantidad de pzas. entregadas">
+                        <p>Kg. entregados:</p>
+                        <input class="input" type="text" name="kg" id="kg" placeholder="Ingresa los kg. entregados">
+                        <p>Turno:</p>
+                        <input type="text" name="turno" id="turno" placeholder="Ingresa el turno">
+                        <p>Observaciones:</p>
+                        <textarea name="observaciones" id="observaciones" cols="30" rows="10" placeholder="Ingresa las observaciones"></textarea>
+                        <div class="opciones d-flex flex-column">
+                            <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Registrar</button>
+                            <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-ingresar">Cancelar</label>
+                        </div>
+                    </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js"></script>
+    <script src="../../public/js/fmtor_libreria.js?1.1"></script>
+    <script src="../../public/js/produccion/control.js"></script>
+    <script src="../../public/js/produccion/estados.js?1.1"></script>
 </body>
 </html>

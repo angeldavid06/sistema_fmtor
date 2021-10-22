@@ -1,13 +1,13 @@
 <?php
-    require_once "models/Model_t_control_op.php";
+    require_once "models/Model.php";
     require_once "routes/web.php";
 
-    class controlController{
+    class control{
         public $model;
         public $web;
 
         public function __construct(){
-            $this->model= new TcontrolOp();
+            $this->model= new Model();
             $this->web = new Web();
         }
 
@@ -20,23 +20,15 @@
             $vista = $control->vista;
             $op = $control->op;
             $ops = $this->model->filtrar($vista,'op',$op);
-            $Array = array();
-            while ($row = $ops->fetch_array(MYSQLI_ASSOC)) {
-                $Array[] = $row;
-            }
-            $json = json_encode($Array);
+            $json = json_encode($ops);
             echo $json;
         }
 
         public function obtener_info_op () {
             if (isset($_GET['op'])) {
                 $op = $_GET['op'];
-                $ops = $this->model->filtrar('control','op',$op);
-                $Array = array();
-                while ($row = $ops->fetch_array(MYSQLI_ASSOC)) {
-                    $Array[] = $row;
-                }
-                $json = json_encode($Array);
+                $ops = $this->model->filtrar('v_control','op',$op);
+                $json = json_encode($ops);
                 echo $json;
             }
         }

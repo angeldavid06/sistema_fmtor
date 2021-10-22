@@ -15,7 +15,7 @@ form_control.addEventListener('submit', (evt)=> {
     try {
         for (let i = 0; i < inputs.length; i++) {
             if (inputs[i].value == '') {
-                inputs[i].classList.add('input-errvor');
+                inputs[i].classList.add('input-error');
                 aux = false;
             }
         }
@@ -32,13 +32,11 @@ form_control.addEventListener('submit', (evt)=> {
 const btn_form_control = document.getElementById('btn-form-control');
 
 btn_form_control.addEventListener('click', () => {
-    const form = document.getElementsByClassName('ingresar');
     const estado = document.getElementsByClassName('active')
     const op_control = document.getElementById('op_control')
     const op = document.getElementById('op')
     const input = document.getElementById('estado')
     
-    form[0].classList.toggle('open');
     input.value = estado[0].dataset.id
     op.value = op_control.dataset.control
 });
@@ -51,26 +49,15 @@ btn_form_control_cancel.addEventListener('click', () => {
 });
 
 const registrar_control = () => {
-    const data = new FormData(form_control)
-    const options = {
-        method: 'POST',
-        body: data
-    }
-    preloader()
-    fetch('http://localhost/scp_fmtor/?controller=controlController&action=insertar', options)
-    .then(res => (res.ok ? res.text() : Promise.reject(res)))
-    .then(res => {
-        ocultarPreloader()
-        if (res == 1) {
+    const respuesta = fetchAPI(form_control,url+'/produccion/control/insertar','POST')
+    respuesta.then(json => {
+        if (json == '1') {
             render_alert('Registro exitoso:','El usuario se añadio correctamente', 'azul')
             const estado = document.getElementsByClassName('active')
             obtener_control(estado[0].dataset.estado)
         } else {
             render_alert('Registro no exitoso:','Algo ocurrio', 'rojo')
         }
-    })
-    .catch(err => {
-        console.log(err);
     })
 }
 
