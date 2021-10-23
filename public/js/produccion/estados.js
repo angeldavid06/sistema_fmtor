@@ -5,10 +5,13 @@ document.addEventListener('click', (evt) => {
     if (evt.target.dataset.estado) {
         quit_class();
         evt.target.classList.add('active')
+        
         const estado = document.getElementsByClassName('estado_'+evt.target.dataset.estado);
         const titulo_estado = document.getElementsByClassName('titulo_estado');
+        
         estado[0].classList.add('show')
         titulo_estado[0].innerHTML = evt.target.dataset.titulo;
+        
         if (document.getElementById('op_control').value != '') {
             obtener_control(evt.target.dataset.estado)
         }

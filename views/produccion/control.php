@@ -55,9 +55,10 @@
                                 <p class="total_kg">Total Kg: 000.00</p>
                             </div>
                         </div>
-                        <div class="tarjeta">
-                            <div class="tabla">
-                                <table class="table table-control estado_v_forjado">
+                        <div class="tarjeta ov_hidden">
+                            <div class="tabla d-flex nowrap">
+                                <!-- Cambiar todo a una sola tabla -->
+                                <table class="table table-control tabla-oculta estado_v_forjado">
                                     <thead>
                                         <th>Botes</th>
                                         <th>Fecha</th>
@@ -67,7 +68,7 @@
                                     </thead>
                                     <tbody class="body body_v_forjado"></tbody>
                                 </table>
-                                <table class="table table-control estado_v_ranurado">
+                                <table class="table table-control tabla-oculta estado_v_ranurado">
                                     <thead>
                                         <th>Botes</th>
                                         <th>Fecha</th>
@@ -77,7 +78,7 @@
                                     </thead>
                                     <tbody class="body body_v_ranurado"></tbody>
                                 </table>
-                                <table class="table table-control estado_v_rolado">
+                                <table class="table table-control tabla-oculta estado_v_rolado">
                                     <thead>
                                         <th>Botes</th>
                                         <th>Fecha</th>
@@ -87,7 +88,7 @@
                                     </thead>
                                     <tbody class="body body_v_rolado"></tbody>
                                 </table>
-                                <table class="table table-control estado_v_shank">
+                                <table class="table table-control tabla-oculta estado_v_shank">
                                     <thead>
                                         <th>Botes</th>
                                         <th>Fecha</th>
@@ -97,7 +98,7 @@
                                     </thead>
                                     <tbody class="body body_v_shank"></tbody>
                                 </table>
-                                <table class="table table-control estado_v_cementado">
+                                <table class="table table-control tabla-oculta estado_v_cementado">
                                     <thead>
                                         <th>Botes</th>
                                         <th>Fecha</th>
@@ -107,7 +108,7 @@
                                     </thead>
                                     <tbody class="body body_v_cementado"></tbody>
                                 </table>
-                                <table class="table table-control estado_v_acabado">
+                                <table class="table table-control tabla-oculta estado_v_acabado">
                                     <thead>
                                         <th>Botes</th>
                                         <th>Fecha</th>

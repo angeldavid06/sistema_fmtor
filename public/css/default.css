@@ -31,8 +31,8 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-body: #1F1F1F;
-        --background-aux: #2F3134;
+        --background-body: #212121;
+        --background-aux: #2B2B2B;
         --background-aux-05: rgba(37, 39, 41, 0.5);
         --background-button:#5AB3F0;
 
@@ -997,6 +997,14 @@ body {
 .contenido .informacion .tarjeta table {
     width: 100%;
     border-collapse: collapse;
+}
+
+.contenido .informacion .tarjeta table.tabla-oculta {
+    min-width: 0px;
+    width: 0px;
+    max-width: 0px;
+    height: 0;
+    overflow: hidden;
 }
 
 .contenido .informacion .tarjeta table thead tr th,
