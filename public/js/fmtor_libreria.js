@@ -287,3 +287,37 @@ const abrir_modal = (id) => {
     const modal = document.getElementById(id)
     modal.classList.toggle('abrir_modal')
 }
+
+// Script para poder generar reportes
+
+function closePrint () {
+    document.body.removeChild(this.__container__);
+}
+
+function setPrint () {
+    this.contentWindow.__container__ = this;
+    this.contentWindow.onbeforeunload = closePrint;
+    this.contentWindow.onafterprint = closePrint;
+    this.contentWindow.focus(); // Required for IE
+    this.contentWindow.print();
+}
+
+function printPage (sURL) {
+    const oHideFrame = document.createElement("iframe");
+    oHideFrame.onload = setPrint;
+    oHideFrame.style.position = "fixed";
+    oHideFrame.style.right = "0";
+    oHideFrame.style.bottom = "0";
+    oHideFrame.style.width = "0";
+    oHideFrame.style.height = "0";
+    oHideFrame.style.border = "0";
+    oHideFrame.src = sURL
+    document.body.appendChild(oHideFrame);
+}
+
+if (document.getElementsByClassName('getPDF')) {
+    const btn = document.getElementsByClassName('getPDF');
+    btn.addEventListener('click', () => {
+        printPage('tests.php?op=')          
+    });
+}
