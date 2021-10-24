@@ -29,7 +29,7 @@ const quitar_mas_opciones = () => {
     }
 }
 
-const render_mas_opciones = (texto) => {
+const render_mas_opciones = (texto, registro) => {
     quitar_mas_opciones()
     const mas_opciones = document.createElement('div')
     const titulo = document.createElement('titulo')
@@ -49,10 +49,10 @@ const render_mas_opciones = (texto) => {
                             '</div>'
                             
     opciones.innerHTML = '<div class="opciones">'+
-                                '<button class="btn btn-icon-self btn-transparent material-icons" data-id="1">'+
+                                '<button class="btn btn-icon-self btn-transparent material-icons" data-id="'+registro+'" data-opcion="borrar">'+
                                     'delete'+
                                 '</button>'+
-                                '<button class="btn btn-icon-self btn-transparent material-icons" data-id="1">'+
+                                '<button class="btn btn-icon-self btn-transparent material-icons" data-id="'+registro+'" data-opcion="editar">'+
                                     'edit'+
                                 '</button>'+
                             '</div>'
@@ -191,8 +191,8 @@ if (document.getElementById('contenido')) {
 }
 
 document.addEventListener('click', (evt) => {
-    if (evt.target.dataset.opciones) {
-        render_mas_opciones(evt.target.textContent)
+    if (evt.target.dataset.registro) {
+        render_mas_opciones(evt.target.textContent,evt.target.dataset.registro)
     } else if (evt.target.dataset.quitar) {
         quitar_mas_opciones(evt.target)
     } else if (evt.target.dataset.menu) {
@@ -213,6 +213,8 @@ document.addEventListener('click', (evt) => {
         },500)
     } else if (evt.target.dataset.modal) {
         abrir_modal(evt.target.dataset.modal)
+    } else if (evt.target.dataset.opcion) {
+        console.log(evt.target.dataset.opcion);
     }
 });
 

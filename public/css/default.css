@@ -584,6 +584,15 @@ body {
     background-color: var(--background-body);
 }
 
+.position-relative {
+    position: relative;
+}
+
+.position-sticky {
+    position: sticky;
+    top: 30px;
+}
+
 .welcome {
     width: 100%;
     min-height: 100vh;
