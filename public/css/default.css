@@ -31,14 +31,16 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-body: #2F3134;
-        --background-aux: #252729;
+        --background-body: #212121;
+        --background-aux: #2B2B2B;
         --background-aux-05: rgba(37, 39, 41, 0.5);
-        --background-button:#004A77;
+        --background-button:#5AB3F0;
 
-        --color-button: #C2E7FF;
+        --color-button: #02203A;
         --color-text: #FFFFFF;
         
+        --color-logo: #FFFFFF;
+
         --border-color: #36393f;
     }
 }
@@ -49,6 +51,8 @@
         --background-aux: #F1F5FB;
         --background-aux-05: rgba(241, 245, 251,0.5);
         --background-button:#C2E7FF;
+
+        --color-logo: #014975;
 
         --color-button: #001D35;
         --color-text: #383838;
@@ -110,6 +114,63 @@
 
 .error_404 svg {
     padding: 30px 0px 45px 0px;
+}
+
+.modal {
+    position: fixed;
+    top: 30px;
+    padding: 30px;
+    width: 500px;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    background-color: var(--background-aux);
+    border-radius: var(--border-radius);
+    border: 2px solid transparent;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .4s ease-in-out;
+}
+
+.modal:hover {
+    border: 2px solid var(--border-color);
+}
+
+.modal.modal-derecha {
+    right: -100%;
+}
+
+.modal.modal-centro {
+    top: -100%;
+    left: calc(50% - 250px);
+}
+
+.modal.modal-izquierda {
+    left: -100%;
+}
+
+.modal.abrir_modal {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal.modal-derecha.abrir_modal {
+    right: 30px;
+}
+
+.modal.modal-centro.abrir_modal {
+    top: 30px;
+}
+
+.contenido.hidde_menu .modal.modal-izquierda.abrir_modal {
+    left: 100px;
+}
+
+.contenido .modal.modal-izquierda.abrir_modal {
+    left: calc(20% + 90px);
+}
+
+.modal .titulo_modal {
+    padding: 0px 0px 30px 0px;
 }
 
 .alert,
@@ -225,11 +286,22 @@ button {
 .btn {
     font-family: 'Rubik', sans-serif;
     padding: 15px 20px;
+    margin: 0px 5px;
     border: none;
     border-radius: var(--border-radius);
     background-color: var(--background-button);
     color: var(--color-button);
     cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--background-aux-05);
+    color: var(--color-text);
+}
+
+.btn:hover i {
+    color: var(--color-text);
 }
 
 .btn-icon {
@@ -259,7 +331,7 @@ button {
 }
 
 .btn-transparent:hover {
-    background-color: var(--background-body);
+    background-color: var(--background-aux-05);
 }
 
 .btn-transparent i {
@@ -878,8 +950,13 @@ body {
 }
 
 .contenido header .logos .logo {
-    width: 200px;
+    width: 260px;
     height: 50px;
+}
+
+.contenido header .logos .logo svg {
+    height: 100%;
+    width: 100%;
 }
 
 .contenido .informacion {
@@ -897,6 +974,11 @@ body {
     border: 2px solid var(--background-aux); 
     border-radius: var(--border-radius);
     transition: all .3s;
+    overflow-x: auto;
+}
+
+.contenido .informacion .tarjeta-transparente {
+    padding-top: 30px;
 }
 
 .contenido .informacion .tarjeta:hover {
@@ -915,6 +997,14 @@ body {
 .contenido .informacion .tarjeta table {
     width: 100%;
     border-collapse: collapse;
+}
+
+.contenido .informacion .tarjeta table.tabla-oculta {
+    min-width: 0px;
+    width: 0px;
+    max-width: 0px;
+    height: 0;
+    overflow: hidden;
 }
 
 .contenido .informacion .tarjeta table thead tr th,
@@ -1044,6 +1134,42 @@ body {
     grid-template-columns: repeat(2,1fr);
 }
 
+.g2-1-9 {
+    grid-template-columns: 0.2fr 1.8fr;
+}
+
+.g2-2-8 {
+    grid-template-columns: 0.4fr 1.6fr;
+}
+
+.g2-3-7 {
+    grid-template-columns: 0.6fr 1.4fr;
+}
+
+.g2-4-6 {
+    grid-template-columns: 0.8fr 1.2fr;
+}
+
+.g2-5-5 {
+    grid-template-columns: 1fr 1fr;
+}
+
+.g2-6-4 {
+    grid-template-columns: 1.2fr 0.8fr;
+}
+
+.g2-7-3 {
+    grid-template-columns: 1.4fr 0.6fr;
+}
+
+.g2-8-2 {
+    grid-template-columns: 1.6fr 0.4fr;
+}
+
+.g2-9-1 {
+    grid-template-columns: 1.8fr 0.2fr;
+}
+
 .g-1 {
     grid-template-columns: 1fr;
 }
@@ -1061,6 +1187,13 @@ body {
     padding: 0px 20px 0px 0px;
     font-size: 1.7rem;
 }
+
+.ov_x_auto {
+    min-width: 300px;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
 
 @media screen and (max-width: 1366px) {
     a, p, label, input, textarea, select, button {
@@ -1195,6 +1328,70 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+    .btn-flotante {
+        bottom: 15px;
+    }
+
+    #btn-subir.mostrar {
+        right: 15px;
+        opacity: 1;
+    }
+
+    .modal {
+        top: 20px;
+        padding: 20px;
+        width: calc(100% - 40px);
+        max-height: calc(100vh - 60px);
+    }
+
+    .modal.modal-derecha {
+        right: -100%;
+    }
+
+    .modal.modal-centro {
+        top: -100%;
+        left: 20px;
+    }
+
+    .modal.modal-izquierda {
+        left: -100%;
+    }
+
+    .modal.abrir_modal {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .modal.modal-derecha.abrir_modal {
+        right: 20px;
+    }
+
+    .modal.modal-centro.abrir_modal {
+        top: 20px;
+    }
+
+    .contenido.hidde_menu .modal.modal-izquierda.abrir_modal {
+        left: 20px;
+    }
+
+    .contenido .modal.modal-izquierda.abrir_modal {
+        left: calc(75% + 30px);
+    }
+
+    .modal .titulo_modal {
+        padding: 0px 0px 20px 0px;
+    }
+
+    .contenido header .logos .logo {
+        width: 180px;
+        height: 60px;
+    }
+
+    .contenido header .logos .logo svg {
+        height: 100%;
+        width: 100%;
+    }
+
     a, p, label, input, textarea, select, button {
         font-size: 0.9rem;
     }
@@ -1264,7 +1461,12 @@ body {
     }
 
     .menu .informacion {
-        padding: 15px;
+        padding: 30px 15px 30px 15px;
+    }
+    
+    .menu .informacion .foto {
+        width: 100px;
+        height: 100px;
     }
 
     .menu .titulo_categoria_menu {
@@ -1317,7 +1519,7 @@ body {
 
     .contenido .informacion {
         min-width: 250px;
-        padding: 15px;
+        padding: 15px 15px 80px 15px;
     }
 
     .contenido header {
@@ -1335,8 +1537,6 @@ body {
     }
 
     .contenido header .logos .logo {
-        width: 150px;
-        height: 50px;
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -1352,7 +1552,8 @@ body {
         grid-gap: 15px;
     }
 
-    .g-12, .g-11, .g-10, .g-9, .g-8, .g-7, .g-6, .g-5, .g-4, .g-3, .g-2, .g-1 {
+    .g-12, .g-11, .g-10, .g-9, .g-8, .g-7, .g-6, .g-5, .g-4, .g-3, .g-2, .g-1,
+    .g2-1-9, .g2-2-8, .g2-3-7, .g2-4-6, .g2-5-5, .g2-6-4, .g2-7-3, .g2-8-2, .g2-9-1 {
         grid-template-columns: 1fr;
     }
 

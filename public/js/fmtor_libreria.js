@@ -1,4 +1,5 @@
 let resJSON = ''
+const url = 'http://localhost/sistema_fmtor'
 const btn_menu_toggle = document.getElementById('btn-menu-toggle')
 const menu = document.getElementById('menu')
 
@@ -60,7 +61,7 @@ const render_mas_opciones = (texto) => {
     mas_opciones.appendChild(opciones)                        
     document.body.appendChild(mas_opciones)
 
-    setTimeout(() => { 
+    window.setTimeout(() => { 
         mas_opciones.classList.add('mostrar')
     }, 300);
 }
@@ -198,6 +199,8 @@ document.addEventListener('click', (evt) => {
         window.setTimeout(() => {
             document.body.removeChild(not[0])
         },500)
+    } else if (evt.target.dataset.modal) {
+        abrir_modal(evt.target.dataset.modal)
     }
 });
 
@@ -257,6 +260,8 @@ const render_alert = (titulo, descripcion, color) => {
     }
 }
 
+// Preloader
+
 const preloader = () => {
     const div_content = document.createElement('div')
     const div_preloader = document.createElement('div')
@@ -275,3 +280,46 @@ const ocultarPreloader = () => {
     const preloader = document.getElementsByClassName('content_preloader')
     document.body.removeChild(preloader[0])
 }
+
+// Ventanas modales
+
+const abrir_modal = (id) => {
+    const modal = document.getElementById(id)
+    modal.classList.toggle('abrir_modal')
+}
+
+// Script para poder generar reportes
+
+function closePrint () {
+    document.body.removeChild(this.__container__);
+}
+
+function setPrint () {
+    this.contentWindow.__container__ = this;
+    this.contentWindow.onbeforeunload = closePrint;
+    this.contentWindow.onafterprint = closePrint;
+    this.contentWindow.focus(); // Required for IE
+    this.contentWindow.print();
+}
+
+function printPage (sURL) {
+    const oHideFrame = document.createElement("iframe");
+    oHideFrame.onload = setPrint;
+    oHideFrame.style.position = "fixed";
+    oHideFrame.style.right = "0";
+    oHideFrame.style.bottom = "0";
+    oHideFrame.style.width = "0";
+    oHideFrame.style.height = "0";
+    oHideFrame.style.border = "0";
+    oHideFrame.src = sURL
+    document.body.appendChild(oHideFrame);
+}
+
+// Ejemplo
+
+// if (document.getElementsByClassName('getPDF')) {
+//     const btn = document.getElementsByClassName('getPDF');
+//     btn.addEventListener('click', () => {
+//         printPage('tests.php?op=')          
+//     });
+// }

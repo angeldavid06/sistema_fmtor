@@ -35,12 +35,12 @@
             return $eliminar;
         }
         
-        public function buscar ($tabla,$condicion) {
-            $sql = "SELECT * FROM $tabla WHERE $condicion";
-            $buscar = $this->db->query($sql);
+        public function buscar ($tabla,$campo,$valor) {
+            $sql="SELECT * FROM $tabla WHERE $campo = '$valor'";
+            $buscar=$this->db->query($sql);
             $assoc = self::getAssoc($buscar);
             return $assoc;
-        }
+        } 
         
         public function buscar_personalizado ($tabla,$campos,$condicion) {
             $sql = "SELECT $campos FROM $tabla WHERE $condicion";
@@ -49,13 +49,26 @@
             return $assoc;
         }
 
-
         public function validar_password ($tabla,$condicion) {
             $sql = "SELECT password FROM $tabla WHERE $condicion";
             $validar_password = $this->db->query($sql);
             $assoc = self::getAssoc($validar_password);
             return $assoc;
         }
+
+        public function filtrar_rango ($tabla,$campo,$d1,$d2) {
+            $sql = "SELECT * FROM $tabla WHERE $campo BETWEEN '$d1' AND '$d2' ORDER BY $campo ASC";
+            $filtrar = $this->db->query($sql);
+            $assoc = self::getAssoc($filtrar);
+            return $assoc;
+         }
+         
+         public function filtrar ($tabla,$campo,$valor) { 
+            $sql = "SELECT * FROM $tabla WHERE $campo LIKE '%$valor%'";
+            $filtrar = $this->db->query($sql);
+            $assoc = self::getAssoc($filtrar);
+            return $assoc;
+         }
 
         public function getAssoc ($query) {
             $assoc = array();
