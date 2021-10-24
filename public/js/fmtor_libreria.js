@@ -315,9 +315,11 @@ function printPage (sURL) {
     document.body.appendChild(oHideFrame);
 }
 
-if (document.getElementsByClassName('getPDF')) {
-    const btn = document.getElementsByClassName('getPDF');
-    btn.addEventListener('click', () => {
-        printPage('tests.php?op=')          
-    });
-}
+// Ejemplo
+
+// if (document.getElementsByClassName('getPDF')) {
+//     const btn = document.getElementsByClassName('getPDF');
+//     btn.addEventListener('click', () => {
+//         printPage('tests.php?op=')          
+//     });
+// }
