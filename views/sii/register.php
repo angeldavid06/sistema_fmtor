@@ -34,20 +34,23 @@
         <select name="nombrePuesto" id="nombrePuesto">
             
         </select>
-        
+        <select name="nombreRol" id="nombreRol">
+
+        </select>
         <button>ingresar</button>
     </form>
     <br>
-    <form action="only_user_register">
-        <label for="usuario_only"></label><input type="text" name="usuario" id="usuario">
-        <label for="password"></label><input type="password" name="password" id="password">
-        <select name="nombreRol" id="nombreRol">
-           
+    <form id="only_user_register">
+        <label for="usuario_only">Usuario</label><input type="text" name="usuario" id="usuario">
+        <label for="password">Contraseña</label><input type="password" name="password" id="password">
+        <select name="nombreRol2" id="nombreRol2">
+
         </select>
+        <label for="curp_empleado">CURP</label><input type="text" name="curp_empleado" id="curp_empleado">
         <button>Ingresar</button>
     </form>
     <script src="../../public/js/fmtor_libreria.js?1.2"></script>
-    <script src="../../public/js/sii/register.js?1.1"></script>
+    <script src="../../public/js/sii/register.js?1.2"></script>
     
 </body>
 </html>

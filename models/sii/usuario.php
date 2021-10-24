@@ -57,13 +57,17 @@
         $tabla = 't_empleados';
         $parametros = 'nombre,apellidoP,apellidoM,fechaNacimiento,telefono,correo,fechaIngreso,curp,rfc,nss,estado,id_puesto';
         $values = "'$this->nombre','$this->apellidoP','$this->apellidoM','$this->fechaNacimiento','$this->telefono','$this->correo','$this->fechaIngreso','$this->curp','$this->rfc','$this->nss','$this->estado','$this->nombrePuesto'";
+        $validar_curp = Model::buscar_personalizado($tabla,'curp',"curp = '$this->curp'");
+        if (!empty($validar_curp[0]['curp'])) {
+            echo 'el empleado ya esta registrado';
+        }else {
         $validacion = Model::insertar($tabla,$parametros,$values);
         if ($validacion) {
             $campo = 'id_empleado';
             $nombre = "curp = '$this->curp'";
             $consulta = self::buscar_personalizado($tabla,$campo,$nombre);
             if(!empty($consulta)) {
-                $id = $consulta['id_empleado'];
+                $id = $consulta[0]['id_empleado'];
                 $condicion = "id_empleado = '$id'";
                 return self::insertarUsuario($tabla,$campo,$condicion);
             } else{
@@ -73,6 +77,7 @@
         }else{
             echo 0;
         }
+    }
         
         
     }
@@ -80,12 +85,19 @@
     public function insertarUsuario($tabla,$campo,$condicion){
         $id_empleado = Model::buscar_personalizado($tabla,$campo,$condicion);
         if (!empty($id_empleado)) {
-            $id = $id_empleado['id_empleado'];
-            $tabla = 't_usuario';
-            $parametros = 'id_empleado,usuario,contrasena,id_rol';
-            $password = password_hash($this->contrasena, PASSWORD_DEFAULT, ['cost'=>10] );
-            $values = "'$id','$this->usuario','$password'";
-            return Model::insertar($tabla,$parametros,$values);
+            $id = $id_empleado[0]['id_empleado'];
+            $condicion = "id_empleado = '$this->id'";
+            $validacion = Model::buscar_personalizado('t_usuario','id_empleado',$condicion);
+            if(!empty($validacion['id_empleado'])) {
+                echo 'El id ya esta relacionado con otro';
+                
+            }else {
+                $tabla = 't_usuario';
+                $parametros = 'id_empleado,usuario,contrasena,id_rol';
+                $password = password_hash($this->contrasena, PASSWORD_DEFAULT, ['cost'=>10] );
+                $values = "'$id','$this->usuario','$password',$this->nombreRol";
+                return Model::insertar($tabla,$parametros,$values);
+            }
         } else {
             echo 0;
         }
@@ -95,12 +107,26 @@
 
     public function insertar_soloUsuario()
     {
-        
-            $tabla = 't_usuario';
-            $columnas = 'usuario,contrasena';
-            $password = password_hash($this->contrasena, PASSWORD_DEFAULT,['cost=>']);
-            $valores = "'$this->usuario','$this->password'";
+            $empleado = 't_empleados';
+            $condicion = "curp = '$this->curp'";
+            $campo = 'id_empleado';
+            $consulta = Model::buscar_personalizado($empleado,$campo,$condicion);
+            $id_empleado = $consulta[0]['id_empleado'];
+            $usuario = Model::buscar_personalizado('t_usuario','id_empleado',"id_empleado = '$id_empleado'");
+            if (!empty($usuario[0]['id_empleado'])) {
+                echo 'el usuario ya se registro';
+            }else {
+                    if(!empty($consulta)){
+                        $id = $consulta[0]['id_empleado'];
+                        $tabla = 't_usuario';
+                        $columnas = 'id_empleado,usuario,contrasena,id_rol';
+                        $password = password_hash($this->contrasena, PASSWORD_DEFAULT,['cost'=>10]);
+                        $valores = "'$id','$this->usuario','$password','$this->nombreRol'";
             return Model::insertar($tabla,$columnas,$valores);
+            }else {
+            echo 0;
+        }  
+    }
     }
 
 

@@ -14,39 +14,35 @@
             </a>
         </nav>
         <div class="titulo_categoria_menu">
-            <p>Nombre de la categoría</p>
+            <p>Informacion del Personal</p>
         </div>
         <nav class="opciones">
-            <a href="http://">
+            <a href="http://localhost/sistema_fmtor/sii/main/datosEmpleados">
                 <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 1
+                Datos Personales
             </a>
-            <a href="http://">
+            <a href="http://localhost/sistema_fmtor/sii/main/datosAdmin">
                 <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 2
-            </a>
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 3
+                Datos de los Empleados
             </a>
         </nav>
     </div>
     <div class="categoria_menu">
         <div class="titulo_categoria_menu">
-            <p>Nombre de la categoría</p>
+            <p>Informacion Financiera</p>
         </div>
         <nav class="opciones">
             <a href="http://">
                 <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 1
+                Informacion financiera
             </a>
             <a href="http://">
                 <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 2
+                Caja de ahorro
             </a>
             <a href="http://">
                 <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 3
+                Informacion financiera de los Empleados
             </a>
         </nav>
     </div>

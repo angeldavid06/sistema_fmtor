@@ -24,12 +24,44 @@
 
         public function buscarPuesto(){
             $data = $this->model->mostrar('t_puesto');
-            echo $data;
+            echo json_encode($data);
         }
 
         public function buscarRol(){
             $data = $this->model->mostrar('t_rol');
-            echo $data;
+            echo json_encode($data);
+        }
+
+        public function datosAdmin()
+        {
+            $this->web->View('sii/datosAdmin','');
+        }
+
+        public function datosEmpleados()
+        {
+            $this->web->View('sii/datosEmpleados','');
+        }
+
+        public function EjemploPDF()
+        {
+            $this->web->View('sii/EjemploPDF');
+        }
+
+        public function cajaAhorro()
+        {
+            $this->web->View('sii/cajaAhorro');
+        }
+
+        public function inicio()
+        {
+            $this->web->View('sii/inicio');
+        }
+
+        public function mostarDatos()
+        {
+           $data =  $this->model->mostrar('t_empleados');
+           echo json_encode($data);
+
         }
 
         function newUser()
@@ -62,7 +94,17 @@
                                                                 $this->model->setContrasena($_POST['contrasena']);
                                                                 if (isset($_POST['nombrePuesto']) && $_POST['nombrePuesto'] != '') {
                                                                     $this->model->setNombrePuesto($_POST['nombrePuesto']);
-                                                                    echo $this->model->insertarEmpleado();
+                                                                    if (isset($_POST['nombreRol']) && $_POST['nombreRol'] != '') {
+                                                                        $this->model->setNombreRol($_POST['nombreRol']);
+                                                                        if (isset($_POST['nombreRol']) && $_POST['nombreRol'] != '') {
+                                                                            $this->model->setNombreRol($_POST['nombreRol']);
+                                                                        echo $this->model->insertarEmpleado();
+                                                                    }else {
+                                                                        echo 15;
+                                                                    }
+                                                                }else {
+                                                                    echo 14;
+                                                                }
                                                                 }else{
                                                                     echo 13;
                                                                 } 
@@ -110,9 +152,19 @@
         function new_only_user() {
             if(isset($_POST['usuario']) && $_POST['usuario'] != ''){
                 $this->model->setUsuario($_POST['usuario']);
-                if(isset($_POST['contrasena']) && $_POST['contrasena'] != ''){
-                    $this->model->setContrasena($_POST['contrasena']);
-                    echo $this->model->insertar_soloUsuario();
+                if(isset($_POST['password']) && $_POST['password'] != ''){
+                    $this->model->setContrasena($_POST['password']);
+                    if (isset($_POST['nombreRol2']) && $_POST['nombreRol2'] != '') {
+                        $this->model->setNombreRol($_POST['nombreRol2']);
+                        if(isset($_POST['curp_empleado']) && $_POST['curp_empleado'] != ''){
+                            $this->model->setCurp($_POST['curp_empleado']);
+                            echo $this->model->insertar_soloUsuario();
+                    }else {
+                        echo 3;
+                    }
+                    }else {
+                        echo 2;
+                    }
                 }else{
                     echo 1;
                 }
@@ -120,5 +172,7 @@
                 echo 0;
             }
         }
+
+
     }
 ?>

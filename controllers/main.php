@@ -17,7 +17,7 @@
 
         public function iniciar () {
             if (isset($_POST['nombre']) && isset($_POST['password'])) {
-                if ($_POST['nombre'] != '' && $_POST['password'] != '') {
+                if ($_POST['nombre' ] != '' && $_POST['password'] != '') {
                     $nombre = $_POST['nombre'];
                     $password = $_POST['password'];
                     
