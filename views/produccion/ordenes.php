@@ -142,6 +142,6 @@
     </div>
     <script src="../../public/js/fmtor_libreria.js?1.4"></script>
     <script src="../../public/js/produccion/filtros.js?1.1"></script>
-    <script src="../../public/js/produccion/ordenes.js?1.6"></script>
+    <script src="../../public/js/produccion/ordenes.js?1.7"></script>
 </body>
 </html>

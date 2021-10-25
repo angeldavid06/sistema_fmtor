@@ -139,6 +139,6 @@
     </div>
     <script src="../../public/js/fmtor_libreria.js?1.2"></script>
     <script src="../../public/js/produccion/control.js?1.3"></script>
-    <script src="../../public/js/produccion/estados.js?1.4"></script>
+    <script src="../../public/js/produccion/estados.js?1.5"></script>
 </body>
 </html>

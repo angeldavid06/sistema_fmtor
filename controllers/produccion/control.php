@@ -63,6 +63,9 @@
        }
 
        public function eliminar(){
-           
+           if (isset($_POST['registro_diario'])) {
+               $id = $_POST['registro_diario'];
+               $this->model->eliminar('','');
+           }
        }
     }

@@ -62,7 +62,11 @@ general[0].addEventListener('click', () => {
 })
 
 function funcion() {
-    open_alert('Dato eliminado','verde')
+    const respuesta = fetchAPI('','','')
+    respuesta.then(json => {
+        console.log(json);
+        open_alert('Dato eliminado','verde')
+    })
 }
 
 document.addEventListener('click', (evt) => {
