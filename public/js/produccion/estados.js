@@ -92,8 +92,8 @@ const render_control = (vista,json) => {
 
     json.forEach(el => {
         body[0].innerHTML += '<tr>'+
-                                    '<td><button class="btn btn-icon-self btn-rojo material-icons">delete</button></td>'+
-                                    '<td><button class="btn btn-icon-self material-icons" data-modal="modal-actualizar">edit</button></td>'+
+                                    '<td><button class="btn btn-icon-self btn-rojo material-icons" data-opcion="cerrar">delete</button></td>'+
+                                    '<td><button class="btn btn-icon-self material-icons" data-modal="modal-actualizar" data-edit="'+el.control+'">edit</button></td>'+
                                     '<td>'+el.botes+'</td>'+
                                     '<td>'+el.fecha+'</td>'+
                                     '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+

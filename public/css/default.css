@@ -212,7 +212,7 @@
     opacity: 1;
 }
 
-.alert-rojo .contenido p {
+.alert .contenido p {
     font-weight: 500;
     font-size: 1.2em;
 }

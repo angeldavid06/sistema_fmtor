@@ -106,7 +106,7 @@
                 </div>
                 <div id="modal-actualizar" class="modal modal-derecha">
                     <div class="titulo_modal d-flex justify-between align-content-center">
-                        <h2>Nuevo Registro</h2>
+                        <h2>Actualizar Registro</h2>
                         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-actualizar">close</button>
                     </div>
                     <div class="contenido_modal">
@@ -129,7 +129,7 @@
                         <textarea name="observaciones" id="observaciones" cols="30" rows="10" placeholder="Ingresa las observaciones"></textarea>
                         <div class="opciones d-flex flex-column">
                             <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Registrar</button>
-                            <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-ingresar">Cancelar</label>
+                            <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-actualizar">Cancelar</label>
                         </div>
                     </form>
                     </div>
@@ -137,8 +137,8 @@
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js?1.1"></script>
-    <script src="../../public/js/produccion/control.js?1.2"></script>
-    <script src="../../public/js/produccion/estados.js?1.3"></script>
+    <script src="../../public/js/fmtor_libreria.js?1.2"></script>
+    <script src="../../public/js/produccion/control.js?1.3"></script>
+    <script src="../../public/js/produccion/estados.js?1.4"></script>
 </body>
 </html>

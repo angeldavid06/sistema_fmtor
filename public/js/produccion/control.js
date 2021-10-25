@@ -60,3 +60,13 @@ const general = document.getElementsByClassName('info_general')
 general[0].addEventListener('click', () => {
     general[0].classList.toggle('hidden')
 })
+
+function funcion() {
+    open_alert('Dato eliminado','verde')
+}
+
+document.addEventListener('click', (evt) => {
+    if (evt.target.dataset.opcion) {
+        open_confirm('¿Estas seguro de realizar esta opción?', funcion)
+    }
+})
