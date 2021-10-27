@@ -21,7 +21,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Dibujo: 035-10-32</td>
+                        <td>Dibujo:</td>
                         <td>Cantidad: 40,000</td>
                         <td colspan="3" class="OP">Orden de Producción: OP10863</td>
                     </tr>
@@ -36,6 +36,7 @@
                         <td>TROPICALIZADO</td>
                         <td>0</td>
                     </tr>
+                    <?php //endwhile; ?>
                 </tbody>
             </table>
         </div>

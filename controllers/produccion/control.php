@@ -15,6 +15,10 @@
             $this->web->View('control','');
         }
 
+        public function mostrarV_forjado(){
+            $this->web->View('v_control','');
+        } 
+
         public function obtener_control() {
             $control = json_decode($_GET['control']);
             $vista = $control->vista;
