@@ -38,17 +38,6 @@ const tablaRol = () =>{
     })
 }
 
-const tablaEmpleados = () =>{
-    const tabla = fetchAPI('','http://localhost/sistema_fmtor/sii/datos/mostrarDatos','');
-    tabla.then(json => {
-        mostrarEmpleados(json);
-    })
-}
-
-const mostarEmpleados = (json) =>{
-    const nombre = document.getElementById('nombre');
-}
-
 
 const mostrarPuesto = (json) => {
     const lista = document.getElementById('nombrePuesto');

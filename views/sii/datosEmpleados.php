@@ -23,64 +23,55 @@
                 </div>
                
                 <div class="d-grid tarjeta g-4">
-                    <div class="tarjeta">
+                    <div class="">
                         <h3>nombre</h3>
                         <h4 id="nombre"></h4>
                     </div>
-                    <div class="tarjeta">
+                    <div class="">
                         <h3>Apellido Paterno</h3>
                         <h4 id="apellidoP"></h4>
                     </div>
-                    <div  class="tarjeta">
+                    <div  class="">
                         <h3>Apellido Materno</h3>
                         <h4 id="apellidoM"></h4>
                     </div>
-                    <div  class="tarjeta">
+                    <div  class="">
                         <h3>Fecha de Nacimiento</h3>
                         <h4 id="fechaNacimiento"></h4>
                     </div>
-                </div>
-
-                <div class="d-grid tarjeta g-4">
-                    <div class="tarjeta">
+                    <div class="">
                         <h3>Telefono</h3>
                         <h4 id="telefono"></h4>
                     </div>
-                    <div  class="tarjeta">
+                    <div  class="">
                         <h3>Correo Electronico</h3>
                         <h4 id="correo"></h4>
                     </div>
-                    <div  class="tarjeta">
+                    <div  class="">
                         <h3>CURP</h3>
                         <h4 id="CURP"></h4>
                     </div>
-                    <div  class="tarjeta">
+                    <div  class="">
                         <h3>RFC</h3>
                         <h4 id="RFC"></h4>
                     </div>
-                </div>
-                
-                <div class="d-grid tarjeta g-4">
-                    <div class="tarjeta">
+                    <div class="">
                         <h3>NSS</h3>
                         <h4 id="NSS"></h4>
                     </div>
-                    <div  class="tarjeta">
+                    <div  class="">
                         <h3>Estado</h3>
                         <h4 id="estado"></h4>
                     </div>
-                    <div  class="tarjeta">
+                    <div >
                         <h3>Fecha de Ingreso</h3>
                         <h4 id="fechaIngreso"></h4>
-                    </div>
-                    <div  class="tarjeta">
-                        <h3>hola</h3>
-                        <h4 id=""></h4>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
+    <script src="../../public/js/sii/datosPersonales.js"></script>
 </body>
 </html>

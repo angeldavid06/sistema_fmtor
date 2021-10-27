@@ -57,12 +57,25 @@
             $this->web->View('sii/inicio');
         }
 
-        public function mostarDatos()
+        public function buscarEmpleados()
         {
-           $data =  $this->model->mostrar('t_empleados');
-           echo json_encode($data);
-
+            $data = $this->model->mostrar('nombre_empleado');
+            echo json_encode($data);
         }
+
+        public function mostrarDatos()
+        {
+           $data =  $this->model->mostrar('datos_personales');
+           echo json_encode($data);
+        }
+
+        public function encontrarEmpleado()
+        {
+            $data = $this->model->buscar_personalizado('datos_personales','*','id_empleado = '.$_GET['id_empleado']);
+            echo json_encode($data);
+        }
+
+ 
 
         function newUser()
         {
