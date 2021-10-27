@@ -109,55 +109,38 @@
                                     transform="translate(-194.554 -10.691)" fill="var(--color-text)" />
                             </g>
                         </svg>
-    
+
                     </div>
                 </div>
             </header>
             <div class="informacion">
-                <h1>Ventana Modal</h1>
-                <div class="tarjeta">
-                    <div class="d-flex">
-                        <button class="btn" data-modal="modal-2">Abrir Modal Izquierdo</button>
-                        <button class="btn btn-verde" data-modal="modal-3">Abrir Modal Central</button>
-                        <button class="btn btn-rojo" data-modal="modal-1">Abrir Modal Derecho</button>
-                    </div>
-                </div>
-            </div>
-            <div id="modal-3" class="modal modal-centro">
-                <div class="titulo_modal d-flex justify-between align-content-center">
-                    <h2>Título</h2>
-                    <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-3">close</button>
-                </div>
-                <div class="contenido_modal">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur voluptatem nulla sint eveniet vero, quam temporibus nam dolor quisquam, vitae ipsa quasi quis quidem adipisci, exercitationem fugit quod tempore enim.</p>
-                    <br>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur voluptatem nulla sint eveniet vero, quam temporibus nam dolor quisquam, vitae ipsa quasi quis quidem adipisci, exercitationem fugit quod tempore enim.</p>
-                </div>
-            </div>
-            <div id="modal-2" class="modal modal-izquierda">
-                <div class="titulo_modal d-flex justify-between align-content-center">
-                    <h2>Título</h2>
-                    <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-2">close</button>
-                </div>
-                <div class="contenido_modal">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur voluptatem nulla sint eveniet vero, quam temporibus nam dolor quisquam, vitae ipsa quasi quis quidem adipisci, exercitationem fugit quod tempore enim.</p>
-                    <br>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur voluptatem nulla sint eveniet vero, quam temporibus nam dolor quisquam, vitae ipsa quasi quis quidem adipisci, exercitationem fugit quod tempore enim.</p>
-                </div>
-            </div>
-            <div id="modal-1" class="modal modal-derecha">
-                <div class="titulo_modal d-flex justify-between align-content-center">
-                    <h2>Título</h2>
-                    <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-1">close</button>
-                </div>
-                <div class="contenido_modal">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur voluptatem nulla sint eveniet vero, quam temporibus nam dolor quisquam, vitae ipsa quasi quis quidem adipisci, exercitationem fugit quod tempore enim.</p>
-                    <br>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur voluptatem nulla sint eveniet vero, quam temporibus nam dolor quisquam, vitae ipsa quasi quis quidem adipisci, exercitationem fugit quod tempore enim.</p>
+                <h1>GRID</h1>
+                <div class="tarjeta d-flex">
+                    <div class="btn btn-verde" id="btn-confirm">Confirm</div>
+                    <div class="btn btn-rojo" id="btn-alert">Alert</div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="alert d-flex justify-between align-content-bottom alert-rojo">
+        <div class="contenido d-flex align-content-center">
+            <i class="material-icons">warning</i>
+            <p class="txt-left">Título </p>
+        </div>
+    </div>
+
+    <div class="confirm d-flex justify-center align-content-top">
+        <div class="contenido d-flex justify-center align-content-center flex-wrap btn-confirm-sm-cancel">
+            <div class="titulo">
+                <h3 class="txt-center">¿Estas seguro de realizar esta opción?</h3>
+            </div>
+            <div class="opciones">
+                <button class="btn btn-icon-self btn-azul material-icons btn-confirm-sm-accept">done</button>
+                <button class="btn btn-icon-self btn-rojo material-icons btn-confirm-sm-cancel">close</button>
+            </div>
+        </div>
+    </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
+    <script src="../../public/js/produccion/prueba.js"></script>
 </body>
 </html>

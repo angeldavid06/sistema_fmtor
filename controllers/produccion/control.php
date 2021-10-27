@@ -50,6 +50,8 @@
                 $result = $this->model->insertar('t_registro_diario',$campos,$values);
                 if ($result) {
                     echo 1;
+                } else {
+                    echo 2;
                 }
             } else {
                 echo 0;
@@ -61,6 +63,9 @@
        }
 
        public function eliminar(){
-           
+           if (isset($_POST['registro_diario'])) {
+               $id = $_POST['registro_diario'];
+               $this->model->eliminar('','');
+           }
        }
     }

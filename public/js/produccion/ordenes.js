@@ -18,7 +18,7 @@ const render_ordenes = (json) => {
         }
 
         tr.innerHTML += '<td>'+el.calibre+'</td>'+
-                        '<td>'+el.kilos_acumulados+'</td>'+
+                        '<td>'+new Intl.NumberFormat('es-MX').format(el.kilos_acumulados)+'</td>'+
                         '<td>'+el.factor+'</td>'+
                         '<td>'+el.op+'</td>'+
                         '<td>'+el.fecha+'</td>'+
