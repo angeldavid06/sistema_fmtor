@@ -337,12 +337,12 @@ button {
 }
 
 .btn:hover {
-    background-color: var(--background-aux-05);
-    color: var(--color-text);
+    background-color: var(--background-blue-main);
+    color: var(--color-button);
 }
 
 .btn:hover i {
-    color: var(--color-text);
+    color: var(--color-button);
 }
 
 .btn-icon {
@@ -372,7 +372,12 @@ button {
 }
 
 .btn-transparent:hover {
-    background-color: var(--background-aux-05);
+    background-color: var(--background-blue-main);
+    color: var(--color-button);
+}
+
+.btn-transparent:hover i {
+    color: var(--color-button);
 }
 
 .btn-transparent i {
@@ -450,6 +455,7 @@ input[type="email"],
 input[type="month"],
 input[type="number"],
 input[type="password"],
+input[type="search"],
 input[type="file"],
 select,
 textarea{
@@ -470,6 +476,7 @@ input[type="email"]:focus,
 input[type="month"]:focus,
 input[type="number"]:focus,
 input[type="password"]:focus,
+input[type="search"]:focus,
 input[type="file"]:focus,
 select:focus,
 textarea:focus {
@@ -484,6 +491,7 @@ input[type="email"].input-error,
 input[type="month"].input-error,
 input[type="number"].input-error,
 input[type="password"].input-error,
+input[type="search"].input-error,
 input[type="file"].input-error,
 select.input-error,
 textarea.input-error {
