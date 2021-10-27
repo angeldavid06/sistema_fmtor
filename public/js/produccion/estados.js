@@ -3,14 +3,16 @@ let total_pzas = 0;
 
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.estado) {
-        quit_class();
-        evt.target.classList.add('active')
-        const estado = document.getElementsByClassName('estado_'+evt.target.dataset.estado);
-        const titulo_estado = document.getElementsByClassName('titulo_estado');
-        estado[0].classList.add('show')
-        titulo_estado[0].innerHTML = evt.target.dataset.titulo;
         if (document.getElementById('op_control').value != '') {
+            quit_class()
+            evt.target.classList.add('active')
+            
+            const titulo_estado = document.getElementsByClassName('titulo_estado');
+        
+            titulo_estado[0].innerHTML = evt.target.dataset.titulo;
             obtener_control(evt.target.dataset.estado)
+        } else {
+            open_alert('No ha introducido la Orden de Producción', 'rojo')
         }
     } 
 });
@@ -74,7 +76,7 @@ const render_info = (json) => {
 }
 
 const quitar_filas = (tabla) => {
-    const body = document.getElementsByClassName('body_'+tabla)
+    const body = document.getElementsByClassName('body')
     while (body[0].firstChild) {
         body[0].removeChild(body[0].firstChild)
     }
@@ -83,27 +85,31 @@ const quitar_filas = (tabla) => {
 const render_control = (vista,json) => {
     total_kg = 0.0;
     total_pzas = 0;
-    const body = document.getElementsByClassName('body_'+vista)
+    const body = document.getElementsByClassName('body')
     const op_control = document.getElementById('op_control')
 
     quitar_filas(vista)
 
     json.forEach(el => {
         body[0].innerHTML += '<tr>'+
+                                    '<td><button class="btn btn-icon-self btn-rojo material-icons" data-opcion="cerrar">delete</button></td>'+
+                                    '<td><button class="btn btn-icon-self material-icons" data-modal="modal-actualizar" data-edit="'+el.control+'">edit</button></td>'+
                                     '<td>'+el.botes+'</td>'+
                                     '<td>'+el.fecha+'</td>'+
-                                    '<td>'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+
-                                    '<td>'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
-                                    '<td>'+el.no_maquina+'</td>'+
+                                    '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+
+                                    '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
+                                    '<td class="txt-right">'+el.no_maquina+'</td>'+
                                 '</tr>';
         total_kg += parseFloat(el.kilos)
         total_pzas += parseInt(el.pzas)
         op_control.dataset.control = el.control
     });
 
+    const factor = document.getElementsByClassName('factor')
     const total_kilogramos = document.getElementsByClassName('total_kg')
     const total_acumuladas = document.getElementsByClassName('total_acumuladas')
 
-    total_kilogramos[0].innerHTML = 'Total k.g.: ' + new Intl.NumberFormat('es-MX').format(total_kg)
-    total_acumuladas[0].innerHTML = 'Pzas. Acumuladas: ' + new Intl.NumberFormat('es-MX').format(total_pzas)
+    factor[0].innerHTML = 'Factor: <br> 00.00'
+    total_kilogramos[0].innerHTML = 'Total k.g.: <br>' + new Intl.NumberFormat('es-MX').format(total_kg)
+    total_acumuladas[0].innerHTML = 'Pzas. Acumuladas: <br>' + new Intl.NumberFormat('es-MX').format(total_pzas)
 }

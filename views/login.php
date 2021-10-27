@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="../public/css/default.css?2.1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="welcome">
@@ -46,7 +47,7 @@
         </div>
     </div>
     
-    <script src="../public/js/fmtor_libreria.js?2.1"></script>
-    <script src="../public/js/login.js?2.0"></script>
+    <script src="../public/js/fmtor_libreria.js?2.3"></script>
+    <script src="../public/js/login.js?2.1"></script>
 </body>
 </html>

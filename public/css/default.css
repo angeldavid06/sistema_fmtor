@@ -23,18 +23,20 @@
 
     --background-blue-main: #8FC3EC;
     --color-blue-main: #3066A6;
-    --background-red-main: #FFC4BE;
-    --color-red-main: #D95548;
-    --background-green-main: #C0EAF0;
-    --color-green-main: #2F959F;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-body: #1F1F1F;
-        --background-aux: #2F3134;
+        --background-body: #212121;
+        --background-aux: #2B2B2B;
         --background-aux-05: rgba(37, 39, 41, 0.5);
         --background-button:#5AB3F0;
+
+        --background-red-main: #F2B8B5;
+        --color-red-main: #731F1F;
+
+        --background-green-main: #81C995;
+        --color-green-main: #282E2D;
 
         --color-button: #02203A;
         --color-text: #FFFFFF;
@@ -51,6 +53,12 @@
         --background-aux: #F1F5FB;
         --background-aux-05: rgba(241, 245, 251,0.5);
         --background-button:#C2E7FF;
+
+        --background-red-main: #B3261E;
+        --color-red-main: #FBF6F5;
+
+        --background-green-main: #81C995;
+        --color-green-main: #212325;
 
         --color-logo: #014975;
 
@@ -185,21 +193,17 @@
     opacity: 0;
     z-index: 999999999999;
     background-color: var(--background-aux-05);
-    padding: 30px 0px;
+    padding: 30px 30px;
     transition: all .5s;
 }
 
 .alert .contenido,
 .confirm .contenido {
-    width: 50%;
+    max-width: 50%;
     position: fixed;
     padding: 20px 20px 20px 30px;
     border-radius: var(--border-radius);
     background-color: var(--background-aux);
-}
-
-.alert .descripcion {
-    padding: 15px 0px 0px 0px;
 }
 
 .show-alert {
@@ -208,12 +212,23 @@
     opacity: 1;
 }
 
+.alert .contenido p {
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.alert .contenido i {
+    font-size: 2em;
+    padding: 0px 20px 0px 0px;
+}
+
 .alert-rojo .contenido {
     background-color: var(--background-red-main);
 }
 
-.alert-rojo .contenido h3,
-.alert-rojo .contenido p {
+
+.alert-rojo .contenido p,
+.alert-rojo .contenido i {
     color: var(--color-red-main);
 }
 
@@ -221,18 +236,43 @@
     background-color: var(--color-yellow);
 }
 
-.alert-amarillo .contenido h3,
-.alert-amarillo .contenido p {
+.alert-amarillo .contenido p,
+.alert-amarillo .contenido i {
     color: var(--color-text);
 }
 
 .alert-azul .contenido {
-    background-color: var(--color-blue-button);
+    background-color: var(--background-blue-main);
 }
 
-.alert-azul .contenido h3,
-.alert-azul .contenido p {
-    color: white;
+.alert-azul .contenido p,
+.alert-azul .contenido i {
+    color: var(--color-blue-main);
+}
+
+.alert-verde .contenido {
+    background-color: var(--background-green-main);
+}
+
+.alert-verde .contenido p,
+.alert-verde .contenido i {
+    color: var(--color-green-main);
+}
+
+.confirm .contenido .titulo {
+    width: 100%;
+}
+
+.confirm .contenido .titulo p {
+    font-weight: 500;
+}
+
+.confirm .contenido .opciones {
+    padding: 15px 0px 0px 0px;
+}
+
+.confirm .contenido .opciones .btn {
+    padding: 10px;
 }
 
 .content_preloader {
@@ -285,6 +325,7 @@ button {
 
 .btn {
     font-family: 'Rubik', sans-serif;
+    font-weight: 500;
     padding: 15px 20px;
     margin: 0px 5px;
     border: none;
@@ -296,12 +337,12 @@ button {
 }
 
 .btn:hover {
-    background-color: var(--background-aux-05);
-    color: var(--color-text);
+    background-color: var(--background-blue-main);
+    color: var(--color-button);
 }
 
 .btn:hover i {
-    color: var(--color-text);
+    color: var(--color-button);
 }
 
 .btn-icon {
@@ -331,11 +372,34 @@ button {
 }
 
 .btn-transparent:hover {
-    background-color: var(--background-aux-05);
+    background-color: var(--background-blue-main);
+    color: var(--color-button);
+}
+
+.btn-transparent:hover i {
+    color: var(--color-button);
 }
 
 .btn-transparent i {
     color: var(--color-text);
+}
+
+.btn-verde {
+    background-color: var(--background-green-main);
+    color: var(--color-green-main);
+}
+
+.btn-verde i {
+    color: var(--color-green-main);
+}
+
+.btn-rojo {
+    background-color: var(--background-red-main);
+    color: var(--color-red-main);
+}
+
+.btn-rojo i {
+    color: var(--color-red-main);
 }
 
 #btn-subir {
@@ -391,6 +455,7 @@ input[type="email"],
 input[type="month"],
 input[type="number"],
 input[type="password"],
+input[type="search"],
 input[type="file"],
 select,
 textarea{
@@ -411,6 +476,7 @@ input[type="email"]:focus,
 input[type="month"]:focus,
 input[type="number"]:focus,
 input[type="password"]:focus,
+input[type="search"]:focus,
 input[type="file"]:focus,
 select:focus,
 textarea:focus {
@@ -425,6 +491,7 @@ input[type="email"].input-error,
 input[type="month"].input-error,
 input[type="number"].input-error,
 input[type="password"].input-error,
+input[type="search"].input-error,
 input[type="file"].input-error,
 select.input-error,
 textarea.input-error {
@@ -523,6 +590,15 @@ form button {
 
 body {
     background-color: var(--background-body);
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-sticky {
+    position: sticky;
+    top: 30px;
 }
 
 .welcome {
@@ -999,6 +1075,14 @@ body {
     border-collapse: collapse;
 }
 
+.contenido .informacion .tarjeta table.tabla-oculta {
+    min-width: 0px;
+    width: 0px;
+    max-width: 0px;
+    height: 0;
+    overflow: hidden;
+}
+
 .contenido .informacion .tarjeta table thead tr th,
 .contenido .informacion .tarjeta table tbody tr td {
     padding: 10px;
@@ -1400,14 +1484,13 @@ body {
 
     .alert .contenido,
     .confirm .contenido {
-        width: 95%;  
-        max-width: 95%;
-        top: 10px;  
-        padding: 10px 0px 10px 20px;   
+        width: calc(100% - 60px);  
+        max-width: calc(100% - 60px);
+        padding: 20px 20px 20px 20px;   
     }
 
     .confirm .contenido .opciones {
-        padding: 0px 0px 0px 10px;
+        padding: 15px 0px 0px 15px;
     }
 
     .welcome .row-con {
