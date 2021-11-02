@@ -13,7 +13,6 @@
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
                 <h1>Control de Producción</h1>
-<<<<<<< HEAD
                 <div class="d-grid g-3">
                     <div class="info_general hidden">
                         <div class="tarjeta info">
@@ -125,11 +124,6 @@
                             </table>
                         </div>
                     </div>
-=======
-                <div class="d-flex align-content-center tarjeta-transparente">
-                    <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
-                    <button class="btn btn-icon-self material-icons">print</button>
->>>>>>> 4993f99d8607ea7c4b3c5cd431400b679f275718
                 </div>
                 <div class="d-grid g2-2-8">
                     <div class="info_general hidden position-relative">

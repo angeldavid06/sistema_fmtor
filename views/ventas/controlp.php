@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-    <link rel="stylesheet" href="../../public/css/default.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
-    <div class="contenedor">
-        <a href="#top" class="btn btn-icon btn-flotante" id="btn-subir">
-            <i class="material-icons">expand_less</i> 
-            Subir
-        </a>
-        <?php require_once 'public/modules/menus/ventas.php'; ?>
-=======
     <?php require_once 'public/modules/head.php' ?>
     <title>Página Principal</title>
 </head>
@@ -25,14 +9,10 @@
         <a href="#top" class="btn btn-icon btn-flotante btn-icon-self material-icons" id="btn-subir">expand_less
         </a>
         <?php require_once 'public/modules/menus/produccion.php'; ?>
->>>>>>> 4993f99d8607ea7c4b3c5cd431400b679f275718
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
                 <h1>Control de Producción</h1>
-<<<<<<< HEAD
-                <div class="tarjeta">
-=======
                 <div class="d-grid g-3">
                     <div class="info_general hidden">
                         <div class="tarjeta info">
@@ -144,7 +124,6 @@
                             </table>
                         </div>
                     </div>
->>>>>>> 4993f99d8607ea7c4b3c5cd431400b679f275718
                 </div>
             </div>
         </div>

@@ -16,20 +16,12 @@
                 <h2>Producción</h2>
                 <main>
                     <nav class="d-grid g-2">
-<<<<<<< HEAD
                         <a href="http://:8080/sistema_fmtor/produccion/main/control"
-=======
-                        <a href="http://localhost/sistema_fmtor/produccion/main/ordenes"
->>>>>>> 4993f99d8607ea7c4b3c5cd431400b679f275718
                             class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">engineering</i>
                             ORDENES DE PRODUCCIÓN
                         </a>
-<<<<<<< HEAD
                         <a href="http://:8080/sistema_fmtor/produccion/main/ordenes"
-=======
-                        <a href="http://localhost/sistema_fmtor/produccion/main/control"
->>>>>>> 4993f99d8607ea7c4b3c5cd431400b679f275718
                         class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">supervisor_account</i>
                             CONTROL DE PRODUCCIÓN
