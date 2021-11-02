@@ -14,9 +14,10 @@
             </a>
         </nav>
         <div class="titulo_categoria_menu">
-            <p>Control de Producción</p>
+            <p>Información personal</p>
         </div>
         <nav class="opciones">
+<<<<<<< HEAD
             <a href="http://:8080/sistema_fmtor/produccion/main/control">
                 <i class="material-icons">supervisor_account</i>
                 Registro Diario
@@ -26,6 +27,26 @@
                 Ordenes de Producción
             </a>
             <a href="http://:8080/sistema_fmtor/produccion/main/maquinas">
+=======
+            <a href="http://localhost/sistema_fmtor/produccion/main/ordenes">
+                <i class="material-icons">photo</i>
+                Información
+            </a>
+        </nav>
+        <div class="titulo_categoria_menu">
+            <p>Producción</p>
+        </div>
+        <nav class="opciones">
+            <a href="http://localhost/sistema_fmtor/produccion/main/ordenes">
+                <i class="material-icons">engineering</i>
+                Ordenes de Producción
+            </a>
+            <a href="http://localhost/sistema_fmtor/produccion/main/control">
+                <i class="material-icons">supervisor_account</i>
+                Registro Diario
+            </a>
+            <a href="http://localhost/sistema_fmtor/produccion/main/maquinas">
+>>>>>>> 4993f99d8607ea7c4b3c5cd431400b679f275718
                 <i class="material-icons">precision_manufacturing</i>
                 Reporte por Máquina
             </a>

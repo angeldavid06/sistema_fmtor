@@ -1,4 +1,5 @@
 let resJSON = ''
+const url = 'http://localhost/sistema_fmtor'
 const btn_menu_toggle = document.getElementById('btn-menu-toggle')
 const menu = document.getElementById('menu')
 
@@ -28,7 +29,7 @@ const quitar_mas_opciones = () => {
     }
 }
 
-const render_mas_opciones = (texto) => {
+const render_mas_opciones = (texto, registro) => {
     quitar_mas_opciones()
     const mas_opciones = document.createElement('div')
     const titulo = document.createElement('titulo')
@@ -48,10 +49,10 @@ const render_mas_opciones = (texto) => {
                             '</div>'
                             
     opciones.innerHTML = '<div class="opciones">'+
-                                '<button class="btn btn-icon-self btn-transparent material-icons" data-id="1">'+
+                                '<button class="btn btn-icon-self btn-transparent material-icons" data-id="'+registro+'" data-opcion="borrar">'+
                                     'delete'+
                                 '</button>'+
-                                '<button class="btn btn-icon-self btn-transparent material-icons" data-id="1">'+
+                                '<button class="btn btn-icon-self btn-transparent material-icons" data-id="'+registro+'" data-opcion="editar">'+
                                     'edit'+
                                 '</button>'+
                             '</div>'
@@ -60,7 +61,7 @@ const render_mas_opciones = (texto) => {
     mas_opciones.appendChild(opciones)                        
     document.body.appendChild(mas_opciones)
 
-    setTimeout(() => { 
+    window.setTimeout(() => { 
         mas_opciones.classList.add('mostrar')
     }, 300);
 }
@@ -84,23 +85,25 @@ const fetchAPI = async (form,ruta,metodo) => {
         await fetch(ruta,opciones)
         .then(res => (res.ok ? res.json() : Promise.reject(res)))
         .then(json => {
-            ocultarPreloader() 
             resJSON = json;
         })
         .catch(err => {
-            ocultarPreloader() 
             resJSON = err;
+        })
+        .finally(() => {
+            ocultarPreloader() 
         })
     } else if (metodo == '') {
         await fetch(ruta)
         .then(res => (res.ok ? res.json() : Promise.reject(res)))
         .then(json => {
-            ocultarPreloader() 
             resJSON = json;
         })
         .catch(err => {
-            ocultarPreloader() 
             resJSON = err;
+        })
+        .finally(() => {
+            ocultarPreloader() 
         })
     }
 
@@ -116,24 +119,35 @@ const time_notification = (not) => {
     },300);
     window.setTimeout(() => {
         not.classList.remove('show-alert');
-    },2500);
+    },3500);
     window.setTimeout(() => {
         document.body.removeChild(not);
-    },2800);
+    },3800);
 }
 
-const open_alert = (title,description) => {   
+const open_alert = (titulo,color) => {   
     const div = document.createElement('div')
+    let icono = 'info'
+
     div.classList.add('alert')
     div.classList.add('d-flex')
-    div.classList.add('justify-center')
-    div.classList.add('flex-wrap')
+    div.classList.add('justify-between')
+    div.classList.add('align-content-bottom')
+    div.classList.add('alert-'+color)
 
-    div.innerHTML = '<div class="contenido">'+
-                        '<h3 class="txt-center">'+title+'</h3>'+
-                        '<div class="descripcion">'+
-                            '<p>'+description+'</p>'+
-                        '</div>'+
+    if (color == 'rojo') {
+        icono = 'warning';
+    } else if (color == 'verde') {
+        icono = 'check';
+    } else if (color == 'azul') {
+        icono = 'info';
+    } else {
+        icono = 'info';
+    }
+
+    div.innerHTML = '<div class="contenido d-flex align-content-center">'+
+                        '<i class="material-icons">'+icono+'</i>'+
+                        '<p class="txt-left">'+titulo+'</p>'+
                     '</div>'
 
     time_notification(div)
@@ -144,14 +158,15 @@ const open_confirm = (title,callback) => {
     div.classList.add('confirm')
     div.classList.add('d-flex')
     div.classList.add('justify-center')
+    div.classList.add('align-content-top')
 
-    div.innerHTML = '<div class="contenido d-flex justify-between align-content-center flex-nowrap btn-confirm-sm-cancel">'+
+    div.innerHTML = '<div class="contenido d-flex justify-center align-content-center flex-wrap">'+
                         '<div class="titulo">'+
-                            '<h3>'+title+'</h3>'+
+                            '<h3 class="txt-center">'+title+'</h3>'+
                         '</div>'+
                         '<div class="opciones">'+
-                            '<button class="btn btn-icon-self btn-transparent material-icons btn-confirm-sm-accept">done</button>'+
-                            '<button class="btn btn-icon-self btn-transparent material-icons btn-confirm-sm-cancel">close</button>'+
+                            '<button class="btn btn-icon-self btn-azul material-icons btn-confirm-sm-accept">done</button>'+
+                            '<button class="btn btn-icon-self btn-rojo material-icons btn-confirm-sm-cancel">close</button>'+
                         '</div>'+
                     '</div>'
 
@@ -176,8 +191,8 @@ if (document.getElementById('contenido')) {
 }
 
 document.addEventListener('click', (evt) => {
-    if (evt.target.dataset.opciones) {
-        render_mas_opciones(evt.target.textContent)
+    if (evt.target.dataset.registro) {
+        render_mas_opciones(evt.target.textContent,evt.target.dataset.registro)
     } else if (evt.target.dataset.quitar) {
         quitar_mas_opciones(evt.target)
     } else if (evt.target.dataset.menu) {
@@ -196,64 +211,14 @@ document.addEventListener('click', (evt) => {
         window.setTimeout(() => {
             document.body.removeChild(not[0])
         },500)
+    } else if (evt.target.dataset.modal) {
+        abrir_modal(evt.target.dataset.modal)
+    } else if (evt.target.dataset.opcion) {
+        console.log(evt.target.dataset.opcion);
     }
 });
 
-let contador = 0;
-
-const render_titulo = (titulo) => {
-    const h3 = document.createElement('h3');
-    h3.classList.add('titulo');
-    h3.innerHTML = titulo;
-    return h3;
-}
-
-const render_descripcion = (descripcion) => {
-    const p = document.createElement('p');
-    p.classList.add('descripcion');
-    p.innerHTML = descripcion;
-    return p;
-}
-
-const render_contenedor = () => {
-    const div = document.createElement('div');
-    div.classList.add('contenido');
-    return div;
-}
-
-const render_alert_con = (color) => {
-    const div = document.createElement('div');
-    div.classList.add('alert');
-    div.classList.add('alert-'+color);
-    return div;
-}
-
-const render_alert = (titulo, descripcion, color) => {
-    if (contador == 0) {
-        contador = 1;
-        const t = render_titulo(titulo);
-        const d = render_descripcion(descripcion);
-        const c = render_contenedor();
-        const a = render_alert_con(color);
-        c.appendChild(t)
-        c.appendChild(d)
-        a.appendChild(c)
-        document.body.appendChild(a)
-        
-        window.setTimeout(() => {
-            a.classList.add('show-alert')
-        },300);
-    
-        window.setTimeout(() => {
-            a.classList.remove('show-alert')
-        },4000);
-        
-        window.setTimeout(() => {  
-            contador = 0;
-            document.body.removeChild(a)
-        },4300);
-    }
-}
+// Preloader
 
 const preloader = () => {
     const div_content = document.createElement('div')
@@ -273,3 +238,46 @@ const ocultarPreloader = () => {
     const preloader = document.getElementsByClassName('content_preloader')
     document.body.removeChild(preloader[0])
 }
+
+// Ventanas modales
+
+const abrir_modal = (id) => {
+    const modal = document.getElementById(id)
+    modal.classList.toggle('abrir_modal')
+}
+
+// Script para poder generar reportes
+
+function closePrint () {
+    document.body.removeChild(this.__container__);
+}
+
+function setPrint () {
+    this.contentWindow.__container__ = this;
+    this.contentWindow.onbeforeunload = closePrint;
+    this.contentWindow.onafterprint = closePrint;
+    this.contentWindow.focus(); // Required for IE
+    this.contentWindow.print();
+}
+
+function printPage (sURL) {
+    const oHideFrame = document.createElement("iframe");
+    oHideFrame.onload = setPrint;
+    oHideFrame.style.position = "fixed";
+    oHideFrame.style.right = "0";
+    oHideFrame.style.bottom = "0";
+    oHideFrame.style.width = "0";
+    oHideFrame.style.height = "0";
+    oHideFrame.style.border = "0";
+    oHideFrame.src = sURL
+    document.body.appendChild(oHideFrame);
+}
+
+// Ejemplo
+
+// if (document.getElementsByClassName('getPDF')) {
+//     const btn = document.getElementsByClassName('getPDF');
+//     btn.addEventListener('click', () => {
+//         printPage('tests.php?op=')          
+//     });
+// }

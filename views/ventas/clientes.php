@@ -18,6 +18,7 @@
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
+<<<<<<< HEAD
                 <h1>Lista de clientes</h1>
                 <div class="tarjeta">
     <table class =" table table-light ">
@@ -49,6 +50,14 @@
         </div>
     </div>
 
+=======
+                <h1>Ordenes de Produccion </h1>
+                <div class="tarjeta">
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> 4993f99d8607ea7c4b3c5cd431400b679f275718
     <script src="../../public/js/fmtor_libreria.js"></script>
 </body>
 </html>

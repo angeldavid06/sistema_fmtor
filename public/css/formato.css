@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', sans-serif; 
+    -webkit-print-color-adjust: exact;
+}
+
+/* @media print { */
+
+    .reporte {
+        width: 100%;
+        min-height: 100vh;
+    }
+    
+    .encabezado {
+        width: 100%;
+    }
+    
+    .encabezado table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .encabezado table th {
+        padding: 10px;
+        font-size: 2em;
+        border: 1px solid black;
+    }
+    
+    .encabezado table tbody td {
+        border: 1px solid hsl(0, 0%, 0%);
+    }
+    
+    .encabezado table tbody .logo {
+        width: 350px;
+        height: 100px;
+        background-color: hsl(0, 49%, 40%);
+        margin: auto;
+    }
+    
+    .reporte_producción .encabezado table tbody td,
+    .reporte_producción .seguimiento table thead th,
+    .reporte_producción .seguimiento table tbody td,
+    .reporte_producción .seguimiento table tfoot td,
+    .reporte_diario .encabezado table tbody td,
+    .reporte_diario .seguimiento table thead th,
+    .reporte_diario .seguimiento table tbody td,
+    .reporte_diario .seguimiento table tfoot td,
+    .reporte_maquina .seguimiento table thead th,
+    .reporte_maquina .seguimiento table tbody td,
+    .reporte_maquina .seguimiento table tfoot td {
+        padding: 5px;
+        font-size: 0.7em;
+    }
+    
+    .reporte_producción .seguimiento {
+        width: 100%;
+        padding-top: 20px;
+        display: grid;
+        grid-gap: 20px;
+        grid-template: repeat(2,1fr) / repeat(3, 1fr);
+    }
+    
+    .reporte_diario .seguimiento {
+        width: 100%;
+        padding-top: 20px;
+    }
+
+    .reporte_maquina .seguimiento {
+        width: 100%;
+        padding-top: 20px;
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .reporte_diario .seguimiento table {
+        width: 100%;
+    }
+    
+    .reporte_diario .encabezado table tbody td,
+    .reporte_diario .seguimiento table thead th,
+    .reporte_diario .seguimiento table tbody td,
+    .reporte_diario .seguimiento table tfoot td,
+    .reporte_maquina .encabezado table tbody td,
+    .reporte_maquina .seguimiento table thead th,
+    .reporte_maquina .seguimiento table tbody td,
+    .reporte_maquina .seguimiento table tfoot td {
+        font-size: 1em;
+    }
+
+    .reporte_maquina .seguimiento table thead th {
+        height: 50px;
+    }
+    
+    .reporte_producción .seguimiento table,
+    .reporte_diario .seguimiento table,
+    .reporte_maquina .seguimiento table {
+        border-collapse: collapse;
+    }
+    
+    .reporte_producción .seguimiento table th,
+    .reporte_producción .seguimiento table td,
+    .reporte_diario .seguimiento table th,
+    .reporte_diario .seguimiento table td,
+    .reporte_maquina .seguimiento table th,
+    .reporte_maquina .seguimiento table td {
+        border: 1px solid black;
+    }
+/* } */
