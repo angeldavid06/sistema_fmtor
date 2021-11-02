@@ -31,5 +31,7 @@
         public function maquinas () {
             $this->web->View('produccion/maquinas','');
         }
+
+        
     }
 ?>

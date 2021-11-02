@@ -8,7 +8,7 @@
     </div>
     <div class="categoria_menu">
         <nav class="opciones">
-            <a href="http://localhost/sistema_fmtor/produccion/main/mostrar">
+            <a href="http://:8080/sistema_fmtor/produccion/main/mostrar">
                 <i class="material-icons">apps</i>
                 Menú pricipal
             </a>
@@ -17,19 +17,19 @@
             <p>Control de Producción</p>
         </div>
         <nav class="opciones">
-            <a href="http://localhost/sistema_fmtor/produccion/main/control">
+            <a href="http://:8080/sistema_fmtor/produccion/main/control">
                 <i class="material-icons">supervisor_account</i>
                 Registro Diario
             </a>
-            <a href="http://localhost/sistema_fmtor/produccion/main/ordenes">
+            <a href="http://:8080/sistema_fmtor/produccion/main/ordenes">
                 <i class="material-icons">engineering</i>
                 Ordenes de Producción
             </a>
-            <a href="http://localhost/sistema_fmtor/produccion/main/maquinas">
+            <a href="http://:8080/sistema_fmtor/produccion/main/maquinas">
                 <i class="material-icons">precision_manufacturing</i>
                 Reporte por Máquina
             </a>
-            <a href="http://localhost/sistema_fmtor/produccion/main/estados">
+            <a href="http://:8080/sistema_fmtor/produccion/main/estados">
                 <i class="material-icons">verified</i>
                 Estado O.P.
             </a>

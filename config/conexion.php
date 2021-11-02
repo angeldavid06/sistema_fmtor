@@ -6,7 +6,7 @@
                 'localhost',
                 'root',
                 '',
-                'db_fmtor'
+                'unificacion'
             );
             return $conexion;
         }
