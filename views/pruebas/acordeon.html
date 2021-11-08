@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ventanas modales</title>
+    <title>Acordeon</title>
     <link rel="stylesheet" href="../../public/css/default.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -109,38 +109,40 @@
                                     transform="translate(-194.554 -10.691)" fill="var(--color-text)" />
                             </g>
                         </svg>
-
+    
                     </div>
                 </div>
             </header>
             <div class="informacion">
-                <h1>GRID</h1>
-                <div class="tarjeta d-flex">
-                    <div class="btn btn-verde" id="btn-confirm">Confirm</div>
-                    <div class="btn btn-rojo" id="btn-alert">Alert</div>
+                <h1>Acordeon</h1>
+                <!-- <div class="tarjeta">
+                    <h3>Hola</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit eos non soluta consequuntur asperiores, rem voluptas. Quas illum consectetur tenetur vel ab, nostrum non, sint sed autem quod numquam?</p>
+                </div> -->
+                <div class="acordeon tarjeta-transparente">
+                    <div class="acordeon_opcion">
+                        <div class="titulo_acordeon">
+                            <h3 data-acordeon="primero">Este es un título</h3>
+                        </div>
+                        <div id="primero" class="contenido_acordeon mostrar_contenido">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur blanditiis fugit autem dolorum ipsam voluptate, magnam labore pariatur dolores necessitatibus nam nobis perferendis iste veniam inventore dolor explicabo vitae hic.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur blanditiis fugit autem dolorum ipsam voluptate, magnam labore pariatur dolores necessitatibus nam nobis perferendis iste veniam inventore dolor explicabo vitae hic.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur blanditiis fugit autem dolorum ipsam voluptate, magnam labore pariatur dolores necessitatibus nam nobis perferendis iste veniam inventore dolor explicabo vitae hic.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur blanditiis fugit autem dolorum ipsam voluptate, magnam labore pariatur dolores necessitatibus nam nobis perferendis iste veniam inventore dolor explicabo vitae hic.</p>
+                        </div>
+                    </div>
+                    <div class="acordeon_opcion">
+                        <div class="titulo_acordeon">
+                            <h3 data-acordeon="segundo">Este es un título</h3>
+                        </div>
+                        <div id="segundo" class="contenido_acordeon">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur blanditiis fugit autem dolorum ipsam voluptate, magnam labore pariatur dolores necessitatibus nam nobis perferendis iste veniam inventore dolor explicabo vitae hic.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div class="alert d-flex justify-between align-content-bottom alert-rojo">
-        <div class="contenido d-flex align-content-center">
-            <i class="material-icons">warning</i>
-            <p class="txt-left">Título </p>
-        </div>
-    </div>
-
-    <div class="confirm d-flex justify-center align-content-top">
-        <div class="contenido d-flex justify-center align-content-center flex-wrap btn-confirm-sm-cancel">
-            <div class="titulo">
-                <h3 class="txt-center">¿Estas seguro de realizar esta opción?</h3>
-            </div>
-            <div class="opciones">
-                <button class="btn btn-icon-self btn-azul material-icons btn-confirm-sm-accept">done</button>
-                <button class="btn btn-icon-self btn-rojo material-icons btn-confirm-sm-cancel">close</button>
-            </div>
-        </div>
-    </div> -->
     <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/produccion/prueba.js"></script>
 </body>
 </html>

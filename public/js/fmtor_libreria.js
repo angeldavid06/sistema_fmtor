@@ -179,6 +179,13 @@ const open_confirm = (title,callback) => {
     sharedFunction = callback;
 }
 
+// Acordeon
+
+const acordeon = (id) => {
+    const div = document.getElementById(id)
+    div.classList.toggle('mostrar_contenido')
+}
+
 if (document.getElementById('contenido')) {
     const contenido = document.getElementById('contenido')
     contenido.addEventListener('scroll', () => {
@@ -213,8 +220,8 @@ document.addEventListener('click', (evt) => {
         },500)
     } else if (evt.target.dataset.modal) {
         abrir_modal(evt.target.dataset.modal)
-    } else if (evt.target.dataset.opcion) {
-        console.log(evt.target.dataset.opcion);
+    } else if (evt.target.dataset.acordeon) {
+        acordeon(evt.target.dataset.acordeon);
     }
 });
 

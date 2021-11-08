@@ -1100,6 +1100,38 @@ body {
     width: 100%;
 }
 
+.contenido .informacion .acordeon {
+    width: 100%;
+    padding: 0px;
+    margin: 30px 0px 0px 0px;
+    border-radius: var(--border-radius);
+    background-color: var(--background-aux);
+    overflow: hidden;
+    transition: all .5s;
+}
+
+.contenido .informacion .acordeon .titulo_acordeon {
+    padding: 30px;
+}
+
+.contenido .informacion .acordeon .titulo_acordeon * {
+    cursor: pointer;
+}
+
+.contenido .informacion .acordeon .contenido_acordeon {
+    padding: 0px 30px 0px 30px;
+    height: 0px;
+    overflow-y: hidden;
+    background-color: var(--background-body);
+    transition: all .2s;
+}
+
+.contenido .informacion .acordeon .mostrar_contenido {
+    padding: 30px 30px 30px 30px;
+    height: auto;
+    overflow-y: hidden;
+}
+
 .d-flex {
     display: flex;
     width: 100%;
@@ -1642,5 +1674,19 @@ body {
 
     .contenedor .contenido .informacion main nav .tarjeta {
         padding: 30px;
+    }
+
+    .contenido .informacion .acordeon .titulo_acordeon {
+        padding: 20px;
+    }
+
+    .contenido .informacion .acordeon .contenido_acordeon {
+        padding: 0px 20px 0px 20px;
+    }
+
+    .contenido .informacion .acordeon .mostrar_contenido {
+        padding: 20px 20px 20px 20px;
+        height: auto;
+        overflow-y: hidden;
     }
 }
