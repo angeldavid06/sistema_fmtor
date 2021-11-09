@@ -67,11 +67,11 @@ const render_info = (json) => {
                             '<p>Cliente:</p>'+
                             '<label class="cliente">'+el.Cliente+'</label>'+
                             '<p>Fecha:</p>'+
-                            '<label class="fecha">'+el.fecha+'</label>'+
+                            '<label class="fecha">'+el.Fecha+'</label>'+
                             '<p>Cantidad:</p>'+
-                            '<label class="cantidad">'+el.cantidad+'</label>'+
+                            '<label class="cantidad">'+el.cantidad_millares+'</label>'+
                             '<p>Descripción:</p>'+
-                            '<label class="descripcion">'+el.Descripción+'</label>';
+                            '<label class="descripcion">'+el.descripcion+'</label>';
     })
 }
 

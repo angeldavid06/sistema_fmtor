@@ -22,8 +22,8 @@ const render_ordenes = (json) => {
                         '<td>'+el.factor+'</td>'+
                         '<td>'+el.Id_Folio+'</td>'+
                         '<td>'+el.Fecha+'</td>'+
-                        '<td>'+el.Cliente+'</td>'+
-                        '<td>'+el.descripción+'</td>'+
+                        '<td>'+el.Clientes+'</td>'+
+                        '<td>'+el.descripcion+'</td>'+
                         '<td>'+el.acabados+'</td>'+
                         '<td class="number">'+el.cantidad_elaborar+'</td>'+
                         '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
