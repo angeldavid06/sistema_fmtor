@@ -20,6 +20,7 @@
                             <div></div>
                         </td>
                     </tr>
+                    <?php ?>
                     <tr>
                         <td>Dibujo:</td>
                         <td>Cantidad: 40,000</td>
@@ -36,14 +37,14 @@
                         <td>TROPICALIZADO</td>
                         <td>0</td>
                     </tr>
-                    <?php //endwhile; ?>
+                    <?php /*endwhile; */?> 
                 </tbody>
             </table>
         </div>
         <div class="seguimiento">
             <table>
                 <thead>
-                    <th colspan="4">titulo</th>
+                    <th colspan="4">Forjado</th>
                     <th colspan="2">Factor:</th>
                 </thead>
                 <tbody>
