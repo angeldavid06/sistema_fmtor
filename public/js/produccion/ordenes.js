@@ -18,20 +18,17 @@ const render_ordenes = (json) => {
         }
 
         tr.innerHTML += '<td>'+el.calibre+'</td>'+
-                        '<td>'+new Intl.NumberFormat('es-MX').format(el.kilos_acumulados)+'</td>'+
+                        '<td>'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
                         '<td>'+el.factor+'</td>'+
-                        '<td>'+el.op+'</td>'+
-                        '<td>'+el.fecha+'</td>'+
+                        '<td>'+el.Id_Folio+'</td>'+
+                        '<td>'+el.Fecha+'</td>'+
                         '<td>'+el.Cliente+'</td>'+
-                        '<td>'+el.Medida+'</td>'+
-                        '<td>'+el.Descripción+'</td>'+
-                        '<td>'+el.Acabado+'</td>'+
-                        '<td class="number">'+el.cantidad+'</td>'+
-                        '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio)+'</td>'+
-                        '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.Total)+'</td>'+
-                        '<td class="number">' + new Intl.NumberFormat('es-MX').format(el.Acumulado)+'</td>'+
-                        '<td>'+el.estado+'</td>'
-
+                        '<td>'+el.descripción+'</td>'+
+                        '<td>'+el.acabados+'</td>'+
+                        '<td class="number">'+el.cantidad_elaborar+'</td>'+
+                        '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
+                        '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.TOTAL)+'</td>'+
+                        '<td class="number">' + /*new Intl.NumberFormat('es-MX').format(Acumulado)*/'Acumulado'+'</td>'
         t_body[0].appendChild(tr)
     })
 }
@@ -44,13 +41,13 @@ const render_reporte_diario = (json) => {
 
         tr.innerHTML += '<td>'+el.fecha+'</td>'+
                         '<td>'+el.turno+'</td>'+
-                        '<td>'+el.Departamento+'</td>'+
-                        '<td>'+el.Orden_de_produccion+'</td>'+
-                        '<td>'+el.Cliente+'</td>'+
+                        '<td>'+el.estados+'</td>'+
+                        '<td>'+el.Orden_Produccion+'</td>'+
+                        '<td>'+el.Id_Clientes+'</td>'+
                         '<td>'+el.kilos+'</td>'+
                         '<td>'+el.pzas+'</td>'+
                         '<td>'+el.Maquina+'</td>'+
-                        '<td>'+el.Descripcion+'</td>'+
+                        '<td>'+el.descripcion+'</td>'+
                         '<td>'+el.observaciones+'</td>'
                         
         t_body[0].appendChild(tr)

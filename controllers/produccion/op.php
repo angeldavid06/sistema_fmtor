@@ -22,7 +22,7 @@
         }
 
         public function obtener_reporte_diario () {
-            $ops = $this->model->mostrar('v_reporte_diario');
+            $ops = $this->model->mostrar('v_reportediario');
             $json = json_encode($ops);
             echo $json;
         }

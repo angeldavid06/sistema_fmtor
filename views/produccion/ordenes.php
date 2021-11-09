@@ -29,7 +29,6 @@
                                         <th>N° O.P.</th>
                                         <th>Fecha de O.P.</th>
                                         <th>Cliente</th>
-                                        <th>Medida</th>
                                         <th>Descripción</th>
                                         <th>Acabado</th>
                                         <th>Cant</th>
@@ -50,6 +49,6 @@
     </div>
     <script src="../../public/js/fmtor_libreria.js?1.4"></script>
     <script src="../../public/js/produccion/filtros.js?1.1"></script>
-    <script src="../../public/js/produccion/ordenes.js?1.7"></script>
+    <script src="../../public/js/produccion/ordenes.js?1.8"></script>
 </body>
 </html>
