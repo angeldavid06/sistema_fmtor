@@ -1,4 +1,7 @@
 const form_control = document.getElementById('form-control');
+const data_aux = {
+    dato: ""
+}
 
 const quitar_clase = () => {
     const inputs = document.getElementsByClassName('input');
@@ -11,13 +14,13 @@ form_control.addEventListener('submit', (evt)=> {
     evt.preventDefault();
     let aux = true;
     quitar_clase();
-    const inputs = document.getElementsByClassName('input');
+    const inputs = form_control.getElementsByClassName('input')
     try {
         for (let i = 0; i < inputs.length; i++) {
             if (inputs[i].value == '') {
                 inputs[i].classList.add('input-error');
                 aux = false;
-            }
+            } 
         }
         if (aux) {
             registrar_control()
@@ -38,8 +41,8 @@ btn_form_control.addEventListener('click', () => {
     const op = document.getElementById('op')
     const input = document.getElementById('estado')
     
+    op.value = op_control.value
     input.value = estado[0].dataset.id
-    op.value = op_control.dataset.control
 });
 
 const registrar_control = () => {
@@ -55,22 +58,26 @@ const registrar_control = () => {
     })
 }
 
-const general = document.getElementsByClassName('info_general')
-
-general[0].addEventListener('click', () => {
-    general[0].classList.toggle('hidden')
-})
-
 function funcion() {
-    const respuesta = fetchAPI('','','')
+    const respuesta = fetchAPI('',url+'/produccion/control/eliminar?dato='+data_aux.dato,'')
     respuesta.then(json => {
-        console.log(json);
-        open_alert('Dato eliminado','verde')
+        if (json == 1) {
+            const estado = document.getElementsByClassName('active')
+            obtener_control(estado[0].dataset.estado)
+            open_alert('Registro eliminado correctamente','verde')
+        } else {
+            open_alert('Ocurrio un error al intentar realizar la consulta','rojo')
+        }
     })
+}
+
+const eliminar_registro = () => {
+    open_confirm('¿Estas seguro de realizar esta opción?', funcion)
 }
 
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.opcion) {
-        open_confirm('¿Estas seguro de realizar esta opción?', funcion)
+        data_aux.dato = evt.target.dataset.eliminar
+        eliminar_registro()
     }
 })

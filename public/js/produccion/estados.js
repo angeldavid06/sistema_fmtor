@@ -46,8 +46,8 @@ const obtener_op_control = (op) => {
     const info = document.getElementsByClassName('info')
     const respuesta = fetchAPI('',url+'/produccion/control/obtener_info_op?op='+op,'');
     respuesta.then(json => {
-            quitar_info(info[0])
-            render_info(json)
+        quitar_info(info[0])
+        render_info(json)
     })
 }
 
@@ -61,17 +61,11 @@ const render_info = (json) => {
     const info = document.getElementsByClassName('info')
 
     json.forEach(el => {
-        info[0].innerHTML = '<h3>Información de la O.P.</h3>'+
-                            '<p>Código Del Dibujo:</p>'+
-                            '<label class="cod_dibujo">'+el.Código_de_dibujo+'</label>'+
-                            '<p>Cliente:</p>'+
-                            '<label class="cliente">'+el.Cliente+'</label>'+
-                            '<p>Fecha:</p>'+
-                            '<label class="fecha">'+el.Fecha+'</label>'+
-                            '<p>Cantidad:</p>'+
-                            '<label class="cantidad">'+el.cantidad_millares+'</label>'+
-                            '<p>Descripción:</p>'+
-                            '<label class="descripcion">'+el.descripcion+'</label>';
+        info[0].innerHTML = '<label>Código Del Dibujo:  '+el.plano+'</label>'+
+                            '<label>Cliente:  '+el.Cliente+'</label>'+
+                            '<label>Fecha:  '+el.Fecha+'</label>'+
+                            '<label>Cantidad:  '+el.cantidad_millares+'</label>'+
+                            '<label>Descripción:  '+el.descripcion+'</label>';
     })
 }
 
@@ -92,7 +86,7 @@ const render_control = (vista,json) => {
 
     json.forEach(el => {
         body[0].innerHTML += '<tr>'+
-                                    '<td><button class="btn btn-icon-self btn-rojo material-icons" data-opcion="cerrar">delete</button></td>'+
+                                    '<td><button class="btn btn-icon-self btn-rojo material-icons" data-opcion="cerrar" data-eliminar='+el.id_registro_diario+'>delete</button></td>'+
                                     '<td><button class="btn btn-icon-self material-icons" data-modal="modal-actualizar" data-edit="'+el.control+'">edit</button></td>'+
                                     '<td>'+el.botes+'</td>'+
                                     '<td>'+el.fecha+'</td>'+

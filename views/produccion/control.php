@@ -18,25 +18,26 @@
                     <button class="btn btn-icon-self material-icons">print</button>
                 </div>
                 <div class="d-grid g2-2-8">
-                    <div class="info_general hidden position-relative">
-                        <div class="tarjeta info position-sticky">
-                            <h3>Información de la O.P.</h3>
-                            <p>Código Del Dibujo:</p>
-                            <label class="cod_dibujo"></label>
-                            <p>Cliente:</p>
-                            <label class="cliente"></label>
-                            <p>Fecha:</p>
-                            <label class="fecha"></label>
-                            <p>Cantidad:</p>
-                            <label class="cantidad"></label>
-                            <p>Descripción:</p>
-                            <label class="descripcion"></label>
+                    <div class="position-relative">
+                        <div class="acordeon tarjeta-transparente position-sticky">
+                            <div class="acordeon_opcion">
+                                <div class="titulo_acordeon">
+                                    <h3 data-acordeon="informacion">Información de la O.P.</h3>
+                                </div>
+                                <div id="informacion" class="contenido_acordeon info">
+                                    <label>Código Del Dibujo:</label>
+                                    <label>Cliente:</label>
+                                    <label>Fecha:</label>
+                                    <label>Cantidad:</label>
+                                    <label>Descripción:</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="info_control ov_x_auto">
                         <div class="tarjeta-transparente estados">
                             <div class="botones ov_x_auto d-flex">
-                                <button class="btn btn-transparent boton_estado active" data-estado="v_forjado" data-titulo="FORJADO" data-id="1">FORJADO</button>
+                                <button class="btn btn-transparent boton_estado" data-estado="v_forjado" data-titulo="FORJADO" data-id="1">FORJADO</button>
                                 <button class="btn btn-transparent boton_estado" data-estado="v_ranurado" data-titulo="RANURADO" data-id="2">RANURADO</button>
                                 <button class="btn btn-transparent boton_estado" data-estado="v_rolado" data-titulo="ROLADO" data-id="3">ROLADO</button>
                                 <button class="btn btn-transparent boton_estado" data-estado="v_shank" data-titulo="SHANK" data-id="4">SHANK</button>
@@ -78,8 +79,8 @@
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js?1.2"></script>
-    <script src="../../public/js/produccion/control.js?1.3"></script>
-    <script src="../../public/js/produccion/estados.js?1.5"></script>
+    <script src="../../public/js/fmtor_libreria.js?1.3"></script>
+    <script src="../../public/js/produccion/control.js?1.5"></script>
+    <script src="../../public/js/produccion/estados.js?1.7"></script>
 </body>
 </html>
