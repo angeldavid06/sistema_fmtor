@@ -37,8 +37,9 @@ const obtener_control = (vista) => {
     const control = JSON.stringify(data);
     const respuesta = fetchAPI('',url+'/produccion/control/obtener_control?control='+control,'');
     respuesta.then(json => {
-        render_control(vista,json)
-        obtener_op_control(op_control.value)
+        console.log(json);
+        // render_control(vista,json)
+        // obtener_op_control(op_control.value)
     })
 }
 
@@ -46,8 +47,9 @@ const obtener_op_control = (op) => {
     const info = document.getElementsByClassName('info')
     const respuesta = fetchAPI('',url+'/produccion/control/obtener_info_op?op='+op,'');
     respuesta.then(json => {
-        quitar_info(info[0])
-        render_info(json)
+        console.log(json);
+        // quitar_info(info[0])
+        // render_info(json)
     })
 }
 
