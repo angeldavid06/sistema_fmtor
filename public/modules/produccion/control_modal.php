@@ -7,8 +7,6 @@
     <form id="form-control">
         <input type="text" name="op" id="op" hidden>
         <input type="text" name="estado" id="estado" hidden>
-        <p>Factor:</p>
-        <input class="input" type="text" name="factor" id="factor" placeholder="Ingresa el factor del tornillo">
         <p>Número de máquina:</p>
         <input class="input" type="number" name="no_maquina" id="no_maquina" placeholder="Ingresa el número de máquina">
         <p>Número de botes:</p>

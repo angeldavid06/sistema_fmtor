@@ -4,7 +4,7 @@ const data_aux = {
 }
 
 const quitar_clase = () => {
-    const inputs = document.getElementsByClassName('input');
+    const inputs = form_control.getElementsByClassName('input-error');
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].classList.remove('input-error');
     }

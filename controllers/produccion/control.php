@@ -19,7 +19,7 @@
             $control = json_decode($_GET['control']);
             $vista = $control->vista;
             $op = $control->op;
-            $ops = $this->model->buscar($vista,'Id_Folio',$op);
+            $ops = $this->model->buscar($vista,'Id_Folio_1',$op);
             $json = json_encode($ops);
             echo $json;
         }
@@ -27,7 +27,7 @@
         public function obtener_info_op () {
             if (isset($_GET['op'])) {
                 $op = $_GET['op'];
-                $ops = $this->model->filtrar('v_control','Orden_Produccion',$op);
+                $ops = $this->model->buscar('v_control','Orden_Produccion',$op);
                 $json = json_encode($ops);
                 echo $json;
             }
@@ -35,7 +35,6 @@
 
         public function insertar() {
             if (isset($_POST['estado']) && isset($_POST['op'])) {
-                $factor = $_POST['factor'];
                 $no_maquina = $_POST['no_maquina'];
                 $fecha = $_POST['fecha'];
                 $no_botes = $_POST['no_botes'];
@@ -47,8 +46,8 @@
                 $id_folio = $_POST['op'];
                 $estado = $_POST['estado'];
 
-                $campos = 'factor,no_maquina,fecha,botes,pzas,kilos,turno,observaciones,estado_general,id_estados_1,Id_Folio_1';
-                $values = "'$factor','$no_maquina','$fecha','$no_botes','$fecha','$kg','$turno','$observaciones','PENDIENTE','$estado','$id_folio'";
+                $campos = 'no_maquina,fecha,botes,pzas,kilos,turno,observaciones,estado_general,id_estados_1,Id_control_produccion_1';
+                $values = "'$no_maquina','$fecha','$no_botes','$fecha','$kg','$turno','$observaciones','PENDIENTE','$estado','$id_folio'";
                 $result = $this->model->insertar('t_registro_diario',$campos,$values);
                 if ($result) {
                     echo 1;

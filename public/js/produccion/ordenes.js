@@ -28,7 +28,8 @@ const render_ordenes = (json) => {
                         '<td class="number">'+el.cantidad_elaborar+'</td>'+
                         '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
                         '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.TOTAL)+'</td>'+
-                        '<td class="number">' + /*new Intl.NumberFormat('es-MX').format(Acumulado)*/'Acumulado'+'</td>'
+                        '<td class="number">' + /*new Intl.NumberFormat('es-MX').format(Acumulado)*/'Acumulado'+'</td>'+
+                        '<td>' + el.estado_general+'</td>'
         t_body[0].appendChild(tr)
     })
 }

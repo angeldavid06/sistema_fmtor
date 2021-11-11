@@ -37,9 +37,8 @@ const obtener_control = (vista) => {
     const control = JSON.stringify(data);
     const respuesta = fetchAPI('',url+'/produccion/control/obtener_control?control='+control,'');
     respuesta.then(json => {
-        console.log(json);
-        // render_control(vista,json)
-        // obtener_op_control(op_control.value)
+        render_control(vista,json)
+        obtener_op_control(op_control.value)
     })
 }
 
@@ -47,9 +46,8 @@ const obtener_op_control = (op) => {
     const info = document.getElementsByClassName('info')
     const respuesta = fetchAPI('',url+'/produccion/control/obtener_info_op?op='+op,'');
     respuesta.then(json => {
-        console.log(json);
-        // quitar_info(info[0])
-        // render_info(json)
+        quitar_info(info[0])
+        render_info(json)
     })
 }
 
@@ -60,6 +58,7 @@ const quitar_info = (info) => {
 }
 
 const render_info = (json) => {
+    const op_control = document.getElementById('op_control')
     const info = document.getElementsByClassName('info')
 
     json.forEach(el => {
@@ -68,6 +67,7 @@ const render_info = (json) => {
                             '<label>Fecha:  '+el.Fecha+'</label>'+
                             '<label>Cantidad:  '+el.cantidad_millares+'</label>'+
                             '<label>Descripción:  '+el.descripcion+'</label>';
+        op_control.value = el.id_control_produccion
     })
 }
 
@@ -89,7 +89,7 @@ const render_control = (vista,json) => {
     json.forEach(el => {
         body[0].innerHTML += '<tr>'+
                                     '<td><button class="btn btn-icon-self btn-rojo material-icons" data-opcion="cerrar" data-eliminar='+el.id_registro_diario+'>delete</button></td>'+
-                                    '<td><button class="btn btn-icon-self material-icons" data-modal="modal-actualizar" data-edit="'+el.control+'">edit</button></td>'+
+                                    '<td><button class="btn btn-icon-self material-icons" data-modal="modal-actualizar" data-edit="'+el.id_registro_diario+'">edit</button></td>'+
                                     '<td>'+el.botes+'</td>'+
                                     '<td>'+el.fecha+'</td>'+
                                     '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+
@@ -98,7 +98,6 @@ const render_control = (vista,json) => {
                                 '</tr>';
         total_kg += parseFloat(el.kilos)
         total_pzas += parseInt(el.pzas)
-        op_control.dataset.control = el.control
     });
 
     const factor = document.getElementsByClassName('factor')
