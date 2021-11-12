@@ -80,7 +80,7 @@
         </div>
     </div>
     <script src="../../public/js/fmtor_libreria.js?1.3"></script>
-    <script src="../../public/js/produccion/control.js?1.6"></script>
+    <script src="../../public/js/produccion/control.js?1.9"></script>
     <script src="../../public/js/produccion/estados.js?2.0"></script>
 </body>
 </html>

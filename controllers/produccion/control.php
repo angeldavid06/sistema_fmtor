@@ -47,7 +47,7 @@
                 $estado = $_POST['estado'];
 
                 $campos = 'no_maquina,fecha,botes,pzas,kilos,turno,observaciones,estado_general,id_estados_1,Id_control_produccion_1';
-                $values = "'$no_maquina','$fecha','$no_botes','$fecha','$kg','$turno','$observaciones','PENDIENTE','$estado','$id_folio'";
+                $values = "'$no_maquina','$fecha','$no_botes','$pzas','$kg','$turno','$observaciones','PENDIENTE','$estado','$id_folio'";
                 $result = $this->model->insertar('t_registro_diario',$campos,$values);
                 if ($result) {
                     echo 1;
@@ -59,9 +59,39 @@
             }
         }
 
-       public function actualizar(){
+        public function obtener_registro () {
+            if (isset($_GET['registro'])) {
+                $id = $_GET['registro'];
+                $result = $this->model->buscar('t_registro_diario','id_registro_diario',$id);
+                echo json_encode($result);
+            }
+        }
 
-       }
+        public function actualizar(){
+            if (isset($_POST['a_estado']) && isset($_POST['a_op'])) {
+                $no_maquina = $_POST['a_no_maquina'];
+                $fecha = $_POST['a_fecha'];
+                $no_botes = $_POST['a_no_botes'];
+                $pzas = $_POST['a_pzas'];
+                $kg = $_POST['a_kg'];
+                $turno = $_POST['a_turno'];
+                $observaciones = $_POST['a_observaciones'];
+
+                $id_folio = $_POST['a_op'];
+                $estado = $_POST['a_estado'];
+
+                $valores = "no_maquina = '$no_maquina', fecha = '$fecha', botes = '$no_botes', pzas = '$pzas', kilos = '$kg', turno = '$turno', observaciones = '$observaciones',estado_general = 'PENDIENTE', id_estados_1 = '$estado'";
+                $condicion = "id_registro_diario = '$id_folio'";
+                $result = $this->model->actualizar('t_registro_diario',$valores,$condicion);
+                if ($result) {
+                    echo 1;
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 0;
+            }
+        }
 
        public function eliminar(){
            if (isset($_GET['dato'])) {
