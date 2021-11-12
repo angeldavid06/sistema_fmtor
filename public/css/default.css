@@ -1057,6 +1057,11 @@ body {
     padding-top: 30px;
 }
 
+.contenido .informacion .tarjeta-transparente input,
+.contenido .informacion .tarjeta-transparente select {
+    background-color: var(--background-aux);
+}
+
 .contenido .informacion .tarjeta:hover {
     border: 2px solid var(--border-color);
 }

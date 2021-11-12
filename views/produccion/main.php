@@ -31,11 +31,6 @@
                             <i class="material-icons icon">precision_manufacturing</i>
                             REPORTE POR MÁQUINA
                         </a>
-                        <a href="http://localhost/sistema_fmtor/produccion/main/estados"
-                        class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">verified</i>
-                            ESTADOS DE O.P.
-                        </a>
                     </nav>
                 </main>
             </div>

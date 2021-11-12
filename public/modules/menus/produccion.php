@@ -18,7 +18,7 @@
         </div>
         <nav class="opciones">
             <a href="http://localhost/sistema_fmtor/produccion/main/ordenes">
-                <i class="material-icons">photo</i>
+                <i class="material-icons">person</i>
                 Información
             </a>
         </nav>
