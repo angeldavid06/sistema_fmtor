@@ -18,7 +18,7 @@
         </div>
         <nav class="opciones">
             <a href="http://localhost/sistema_fmtor/produccion/main/ordenes">
-                <i class="material-icons">photo</i>
+                <i class="material-icons">person</i>
                 Información
             </a>
         </nav>
@@ -37,10 +37,6 @@
             <a href="http://localhost/sistema_fmtor/produccion/main/maquinas">
                 <i class="material-icons">precision_manufacturing</i>
                 Reporte por Máquina
-            </a>
-            <a href="http://localhost/sistema_fmtor/produccion/main/estados">
-                <i class="material-icons">verified</i>
-                Estado O.P.
             </a>
         </nav>
     </div>
