@@ -8,7 +8,6 @@
         public $web;
 
         public function __construct(){
-            // $this->model= new NombreDelModelo();
             $this->web = new Web();
         }
 

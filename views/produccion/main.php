@@ -29,7 +29,7 @@
                         <a href="http://localhost/sistema_fmtor/produccion/main/maquinas"
                         class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">precision_manufacturing</i>
-                            REPORTE POR MÁQUINA
+                            MÁQUINAS DE PRODUCCIÓN
                         </a>
                     </nav>
                 </main>

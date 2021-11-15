@@ -36,7 +36,7 @@
             </a>
             <a href="http://localhost/sistema_fmtor/produccion/main/maquinas">
                 <i class="material-icons">precision_manufacturing</i>
-                Reporte por Máquina
+                Máquinas de Producción
             </a>
         </nav>
     </div>

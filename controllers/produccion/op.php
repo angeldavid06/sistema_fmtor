@@ -10,10 +10,6 @@
             $this->model = new Model();
             $this->web = new Web();
         }
-
-        public function mostrar(){
-            $this->web->View('ordenes','');
-        }
         
         public function obtener_ordenes () {
             $ops = $this->model->mostrar('v_ordenes');

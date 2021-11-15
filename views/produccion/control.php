@@ -24,7 +24,7 @@
                                 <div class="titulo_acordeon">
                                     <h3 data-acordeon="informacion">Información de la O.P.</h3>
                                 </div>
-                                <div id="informacion" class="contenido_acordeon info">
+                                <div id="informacion" class="contenido_acordeon info mostrar_contenido">
                                     <label>Código Del Dibujo:</label>
                                     <label>Cliente:</label>
                                     <label>Fecha:</label>
