@@ -12,10 +12,12 @@
             $this->web = new Web();
         }
 
-        public function obtener_reporte_kilos () {
-            if (isset($_GET['fecha'])) {
-                $condicion = $_GET['fecha'];
-                $result = $this->model->filtrar('v_reporte_kilos','fecha',$condicion);
+        public function obtener_reporte () {
+            if (isset($_GET['inicio']) && isset($_GET['fin']) && isset($_GET['concepto'])) {
+                $inicio = $_GET['inicio'];
+                $fin = $_GET['fin'];
+                $concepto = $_GET['concepto'];
+                $result = $this->model->filtrar_rango('v_reporte_'.$concepto,'fecha',$inicio,$fin);
                 echo json_encode($result);
             } else {
                 echo 0;
