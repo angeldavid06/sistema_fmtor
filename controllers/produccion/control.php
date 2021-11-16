@@ -49,8 +49,8 @@
             $op = $control->op;
             $ops = $this->model->filtrar($vista,'op',$op);
             $json = json_encode($ops);
-            /*$archivo='../../public/control.js';
-            file_put_contents($archivo,$json);*/
+            $archivo='../../public/control.js';
+            file_put_contents($archivo,$json);
             echo $json;
         }
 
@@ -59,6 +59,8 @@
                 $op = $_GET['op'];
                 $ops = $this->model->filtrar('v_control','op',$op);
                 $json = json_encode($ops);
+                $archivo='../../public/control.js';
+                file_put_contents($archivo,$json);
                 echo $json;
             }
         }
