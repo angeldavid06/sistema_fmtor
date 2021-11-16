@@ -3,6 +3,68 @@
 <head>
     <?php require_once 'public/modules/head.php' ?>
     <title>Página Principal</title>
+    <style>
+
+        .Mantenimiento {
+            color: white;
+            background-color: #FF0000;
+            text-align: center;
+        }
+    
+        .Falta_de_Alambre {
+            background-color: #0000FF;
+            text-align: center;
+        }
+    
+        .Ajuste {
+            background-color: #CC0099;
+            text-align: center;
+        }
+    
+        .Herramental {
+            background-color: #00FF00;
+            color: black;
+            font-weight: 500;
+            text-align: center;
+        }
+    
+        .Festivo {
+            background-color: #00FFCC;
+            color: black;
+            font-weight: 500;
+            text-align: center;
+        }
+    
+        .Falto_Operador {
+            background-color: #666699;
+            text-align: center;
+        }
+    
+        .No_se_libero_Tornillo_Laton {
+            background-color: #FFC000;
+            text-align: center;
+        }
+    
+        .No_hubo_punch {
+            background-color: #6B16AA;
+            text-align: center;
+        }
+    
+        .Sin_OP {
+            background-color: gray;
+            text-align: center;
+        }
+    
+        .Ajuste_OTM {
+            background-color: #548235;
+            text-align: center;
+        }
+    
+        .H_Quebrado {
+            background-color: #F4B084;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="contenedor">
@@ -59,6 +121,6 @@
         </div>
     </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/produccion/maquinas.js?1.3"></script>
+    <script src="../../public/js/produccion/maquinas.js?1.7"></script>
 </body>
 </html>

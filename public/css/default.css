@@ -1091,16 +1091,24 @@ body {
 
 .contenido .informacion .tarjeta table thead tr th,
 .contenido .informacion .tarjeta table tbody tr td,
+.contenido .informacion .tarjeta table tfoot tr td,
 .contenido .informacion .acordeon .contenido_acordeon table thead tr th,
-.contenido .informacion .acordeon .contenido_acordeon table tbody tr td {
+.contenido .informacion .acordeon .contenido_acordeon table tbody tr td,
+.contenido .informacion .acordeon .contenido_acordeon table tfoot tr td {
     padding: 10px;
 }
 
+.contenido .informacion .tarjeta table tfoot tr td,
 .contenido .informacion .tarjeta table tbody tr td {
     cursor: pointer;
 }
 
+.contenido .informacion .tarjeta table tfoot tr:nth-child(even),
 .contenido .informacion .tarjeta table tbody tr:nth-child(even) {
+    background-color: var(--background-body);
+}
+
+.contenido .informacion .acordeon .contenido_acordeon table tbody tr:nth-child(even) {
     background-color: var(--background-body);
 }
 

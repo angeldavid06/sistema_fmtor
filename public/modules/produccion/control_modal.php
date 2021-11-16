@@ -25,7 +25,7 @@
             <option value="Mantenimiento">Mantenimiento</option>
             <option value="Falta de Alambre">Falta de Alambre</option>
             <option value="Ajuste">Ajuste</option>
-            <option value="Harramental">Harramental</option>
+            <option value="Herramental">Herramental</option>
             <option value="Festivo">Festivo</option>
             <option value="Falto Operador">Falto Operador</option>
             <option value="No se libero Tornillo Laton">No se libero Tornillo Laton</option>
@@ -70,7 +70,7 @@
             <option value="Mantenimiento">Mantenimiento</option>
             <option value="Falta de Alambre">Falta de Alambre</option>
             <option value="Ajuste">Ajuste</option>
-            <option value="Harramental">Harramental</option>
+            <option value="Herramental">Herramental</option>
             <option value="Festivo">Festivo</option>
             <option value="Falto Operador">Falto Operador</option>
             <option value="No se libero Tornillo Laton">No se libero Tornillo Laton</option>
@@ -80,7 +80,7 @@
             <option value="H-Quebrado">H-Quebrado</option>
         </select>
         <div class="opciones d-flex flex-column">
-            <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Registrar</button>
+            <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Actualizar</button>
             <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-actualizar">Cancelar</label>
         </div>
     </form>

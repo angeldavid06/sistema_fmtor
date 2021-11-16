@@ -114,7 +114,8 @@ const cargar_registro = (json) => {
         estado.value = el.id_estados_1
         op.value = el.id_registro_diario
         no_maquina.value = el.no_maquina
-        fecha.value = el.fecha
+        fecha.value = el.fecha.split(' ')[0]
+        console.log(el.fecha.split(' ')[0]);
         no_botes.value = el.botes
         pzas.value = el.pzas
         kg.value = el.kilos
