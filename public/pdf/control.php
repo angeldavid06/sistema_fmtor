@@ -20,7 +20,7 @@
                             <div></div>
                         </td>
                     </tr>
-                    <?php /*while()*/?>
+                    <?php ?>
                     <tr>
                         <td>Dibujo:</td>
                         <td>Cantidad:</td>
@@ -37,7 +37,7 @@
                         <td></td>
                         <td></td>
                     </tr>
-                    <?php /*endwhile; */?>  
+                    <?php ?>  
                 </tbody>
             </table>
         </div>

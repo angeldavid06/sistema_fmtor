@@ -26,6 +26,22 @@
         public function mostrarV_ranurado(){
             $this->web->View('v_ranurado','');
         }
+
+        public function mostrarV_rolado(){
+            $this->web->View('v_rolado','');
+        }
+
+        public function mostrarV_shank(){
+            $this->web->View('v_shank','');
+        }
+
+        public function mostrarV_cementado(){
+            $this->web->View('v_cementado','');
+        }
+
+        public function mostrarV_acabado(){
+            $this->web->View('v_acabado','');
+        }
         
         public function obtener_control() {
             $control = json_decode($_GET['control']);
