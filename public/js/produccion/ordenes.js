@@ -21,7 +21,7 @@ const render_ordenes = (json) => {
                         '<td>'+new Intl.NumberFormat('es-MX').format(el.factor*el.cantidad_elaborar)+'</td>'+
                         '<td>'+el.factor+'</td>'+
                         '<td>'+el.Id_Folio+'</td>'+
-                        '<td>'+el.Fecha+'</td>'+
+                        '<td>'+el.Fecha.split(' ')[0]+'</td>'+
                         '<td>'+el.Clientes+'</td>'+
                         '<td>'+el.descripcion+'</td>'+
                         '<td>'+el.acabados+'</td>'+
@@ -40,7 +40,7 @@ const render_reporte_diario = (json) => {
         const tr = document.createElement('tr')
         tr.classList.add('tr')
 
-        tr.innerHTML += '<td>'+el.fecha+'</td>'+
+        tr.innerHTML += '<td>'+el.fecha.split(' ')[0]+'</td>'+
                         '<td>'+el.turno+'</td>'+
                         '<td>'+el.estado_general+'</td>'+
                         '<td>'+el.Id_Folio+'</td>'+

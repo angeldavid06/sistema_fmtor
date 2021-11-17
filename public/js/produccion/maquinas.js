@@ -16,7 +16,7 @@ const quitar_semanas = () => {
 const render_semana = (json,semana) => {
     const turnos = []
 
-    let totales_semanales = [0,0,0,0,0,0,0,0,0]
+    let totales_semanales = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     let aux = []
     let observaciones = []
     let contador = 1
@@ -59,18 +59,32 @@ const render_semana = (json,semana) => {
             aux = []
     
             const fecha = turnos[i][9].split(' ')
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])+parseInt(turnos[i][7])+parseInt(turnos[i][8])
     
             document.getElementById('body_'+semana).innerHTML += '<tr>'+
                                                                     '<td>'+fecha[0]+'</td>' +
-                                                                    '<td class="'+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
-                                                                    '<td class="'+observaciones[contador+1]+'">'+turnos[i][1]+'</td>' +
-                                                                    '<td class="'+observaciones[contador+2]+'">'+turnos[i][2]+'</td>' +
-                                                                    '<td class="'+observaciones[contador+3]+'">'+turnos[i][3]+'</td>' +
-                                                                    '<td class="'+observaciones[contador+4]+'">'+turnos[i][4]+'</td>' +
-                                                                    '<td class="'+observaciones[contador+5]+'">'+turnos[i][5]+'</td>' +
-                                                                    '<td class="'+observaciones[contador+6]+'">'+turnos[i][6]+'</td>' +
-                                                                    '<td class="'+observaciones[contador+7]+'">'+turnos[i][7]+'</td>' +
-                                                                    '<td class="'+observaciones[contador+8]+'">'+turnos[i][8]+'</td>'+
+                                                                    '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+1]+'">'+turnos[i][1]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][2]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+3]+'">'+turnos[i][3]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+4]+'">'+turnos[i][4]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+5]+'">'+turnos[i][5]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+6]+'">'+turnos[i][6]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+7]+'">'+turnos[i][7]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+8]+'">'+turnos[i][8]+'</td>' +
+                                                                    '<td class="txt-center"></td>' +
+                                                                    '<td class="txt-center">'+total_semana+'</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">0</td>' +
                                                                 '</tr>';
             totales_semanales[0] += parseInt(turnos[i][0],10)
             totales_semanales[1] += parseInt(turnos[i][1],10)
@@ -81,6 +95,7 @@ const render_semana = (json,semana) => {
             totales_semanales[6] += parseInt(turnos[i][6],10)
             totales_semanales[7] += parseInt(turnos[i][7],10)
             totales_semanales[8] += parseInt(turnos[i][8],10)
+            totales_semanales[10] += parseInt(total_semana)
             contador+=9
         }
 
@@ -88,7 +103,11 @@ const render_semana = (json,semana) => {
         const tr = document.createElement('tr')
         tr.innerHTML += '<td>Total:</td>'
         for (let i = 0; i < totales_semanales.length; i++) {
-            tr.innerHTML += '<td>'+ new Intl.NumberFormat('es-MX').format(totales_semanales[i])+'</td>'
+            if (i > 9 || i < 9) {
+                tr.innerHTML += '<td class="txt-center">'+ new Intl.NumberFormat('es-MX').format(totales_semanales[i])+'</td>'
+            } else {
+                tr.innerHTML += '<td></td>';
+            }
         }
         tfoot.appendChild(tr)
         document.getElementById('tabla_'+semana).appendChild(tfoot)
@@ -96,7 +115,7 @@ const render_semana = (json,semana) => {
         console.log(totales_semanales);
     } else {
         document.getElementById('body_'+semana).innerHTML += '<tr>'+
-                                                                '<td colspan="10" class="txt-center">No existe ningún registro</td>' +
+                                                                '<td colspan="25" class="txt-center">No existe ningún registro</td>' +
                                                             '</tr>';
     }
 }
@@ -134,16 +153,28 @@ const obtener_semanas = (anio, mes) => {
                                             '<table id="tabla_'+(i+1)+'">'+
                                                 '<thead>'+
                                                     '<tr>'+
-                                                        '<th>Día</th>'+
-                                                        '<th>Máquina 1</th>'+
-                                                        '<th>Máquina 2</th>'+
-                                                        '<th>Máquina 3</th>'+
-                                                        '<th>Máquina 4</th>'+
-                                                        '<th>Máquina 5</th>'+
-                                                        '<th>Máquina 6</th>'+
-                                                        '<th>Máquina 7</th>'+
-                                                        '<th>Máquina 8</th>'+
-                                                        '<th>Máquina 9</th>'+
+                                                        '<th rowspan="2">Día</th>'+
+                                                        '<th colspan="9">REPORTE DIARIO POR MAQUINA</th>'+
+                                                        '<th></th>'+
+                                                        '<th colspan="14">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
+                                                    '</tr>'+
+                                                    '<tr>'+
+                                                        '<th>1</th>'+
+                                                        '<th>2</th>'+
+                                                        '<th>3</th>'+
+                                                        '<th>4</th>'+
+                                                        '<th>5</th>'+
+                                                        '<th>6</th>'+
+                                                        '<th>7</th>'+
+                                                        '<th>8</th>'+
+                                                        '<th>9</th>'+
+                                                        '<th></th>'+
+                                                        '<th colspan="2">FORJADO</th>'+
+                                                        '<th colspan="2">RANURADO</th>'+
+                                                        '<th colspan="2">SHANK</th>'+
+                                                        '<th colspan="2">TOTAL RANURADO</th>'+
+                                                        '<th colspan="2">ROLADO</th>'+
+                                                        '<th colspan="2">Acabado</th>'+
                                                     '</tr>'+
                                                 '</thead>'+
                                                 '<tbody id="body_'+(i+1)+'">'+

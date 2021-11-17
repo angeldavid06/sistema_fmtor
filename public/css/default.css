@@ -1090,6 +1090,16 @@ body {
 }
 
 .contenido .informacion .tarjeta table thead tr th,
+.contenido .informacion .acordeon .contenido_acordeon table thead tr th {
+    border-bottom: 1px solid var(--color-text);
+}
+
+.contenido .informacion .tarjeta table tfoot tr td,
+.contenido .informacion .acordeon .contenido_acordeon table tfoot tr td {
+    border-top: 1px solid var(--color-text);
+}
+
+.contenido .informacion .tarjeta table thead tr th,
 .contenido .informacion .tarjeta table tbody tr td,
 .contenido .informacion .tarjeta table tfoot tr td,
 .contenido .informacion .acordeon .contenido_acordeon table thead tr th,

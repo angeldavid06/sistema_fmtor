@@ -77,7 +77,7 @@
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
                 <h1>Máquinas de Producción</h1>
-                <div class="tarjeta-transparente d-grid g2-9-1">
+                <div class="tarjeta-transparente d-grid g2-8-2">
                     <div class="d-grid g-2">
                         <input type="month" name="fecha_reporte" id="fecha_reporte">
                         <select name="pzas_kilos" id="pzas_kilos">
@@ -87,7 +87,10 @@
                         </select>
                     </div>
                     <div class="d-flex align-content-center justify-right">
-                        <button class="btn btn-icon-self material-icons">description</button>
+                        <button class="btn btn-icon">
+                            <i class="material-icons">description</i>
+                            Generar Documento
+                        </button>
                     </div>
                 </div>
                 <!-- <div class="acordeon tarjeta-transparente">
@@ -121,6 +124,6 @@
         </div>
     </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/produccion/maquinas.js?1.8"></script>
+    <script src="../../public/js/produccion/maquinas.js?1.9"></script>
 </body>
 </html>
