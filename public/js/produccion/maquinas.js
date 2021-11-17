@@ -88,7 +88,7 @@ const render_semana = (json,semana) => {
         const tr = document.createElement('tr')
         tr.innerHTML += '<td>Total:</td>'
         for (let i = 0; i < totales_semanales.length; i++) {
-            tr.innerHTML += '<td>'+totales_semanales[i]+'</td>'
+            tr.innerHTML += '<td>'+ new Intl.NumberFormat('es-MX').format(totales_semanales[i])+'</td>'
         }
         tfoot.appendChild(tr)
         document.getElementById('tabla_'+semana).appendChild(tfoot)

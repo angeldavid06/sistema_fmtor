@@ -18,7 +18,7 @@ const render_ordenes = (json) => {
         }
 
         tr.innerHTML += '<td>'+el.calibre+'</td>'+
-                        '<td>'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
+                        '<td>'+new Intl.NumberFormat('es-MX').format(el.factor*el.cantidad_elaborar)+'</td>'+
                         '<td>'+el.factor+'</td>'+
                         '<td>'+el.Id_Folio+'</td>'+
                         '<td>'+el.Fecha+'</td>'+
@@ -42,9 +42,9 @@ const render_reporte_diario = (json) => {
 
         tr.innerHTML += '<td>'+el.fecha+'</td>'+
                         '<td>'+el.turno+'</td>'+
-                        '<td>'+el.estados+'</td>'+
-                        '<td>'+el.Orden_Produccion+'</td>'+
-                        '<td>'+el.Id_Clientes+'</td>'+
+                        '<td>'+el.estado_general+'</td>'+
+                        '<td>'+el.Id_Folio+'</td>'+
+                        '<td>'+el.Clientes+'</td>'+
                         '<td>'+el.kilos+'</td>'+
                         '<td>'+el.pzas+'</td>'+
                         '<td>'+el.Maquina+'</td>'+

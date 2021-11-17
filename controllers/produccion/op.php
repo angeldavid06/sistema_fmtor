@@ -26,7 +26,7 @@
         public function buscar_op () { 
             if (isset($_POST['check_op'])) {
                 if (isset($_POST['f_op'])) {
-                    $op = $this->model->buscar($_POST['tabla'],'op',$_POST['f_op']);
+                    $op = $this->model->buscar($_POST['tabla'],'Id_Folio',$_POST['f_op']);
                     $json = json_encode($op);
                     echo $json;
                 } else {
@@ -40,7 +40,7 @@
         public function buscar_rango_op () {
             if(isset($_POST['check_rango_op'])){
                 if(isset($_POST['f_r_op_m'])&& isset($_POST['f_r_op_M'])){
-                    $r_op=$this->model->filtrar_rango($_POST['tabla'],'op',$_POST['f_r_op_m'],$_POST['f_r_op_M']);
+                    $r_op=$this->model->filtrar_rango($_POST['tabla'],'Id_Folio',$_POST['f_r_op_m'],$_POST['f_r_op_M']);
                     $json=json_encode($r_op);
                     echo $json;
                 }
@@ -93,7 +93,7 @@
         public function buscar_cliente(){
             if(isset($_POST['check_cliente'])){
                 if(isset($_POST['f_cliente'])){
-                    $cliente=$this->model->buscar($_POST['tabla'],'Cliente',$_POST['f_cliente']);
+                    $cliente=$this->model->buscar($_POST['tabla'],'Clientes',$_POST['f_cliente']);
                     $json=json_encode($cliente);
                     echo $json;
                 }
@@ -103,7 +103,7 @@
         public function buscar_estado(){
             if(isset($_POST['check_estado'])){
                 if(isset($_POST['f_estado'])){
-                    $estado=$this->model->buscar($_POST['tabla'],'estado',$_POST['f_estado']);
+                    $estado=$this->model->buscar($_POST['tabla'],'estado_general',$_POST['f_estado']);
                     $json=json_encode($estado);
                     echo $json;
                 }

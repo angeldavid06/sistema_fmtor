@@ -121,6 +121,6 @@
         </div>
     </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/produccion/maquinas.js?1.7"></script>
+    <script src="../../public/js/produccion/maquinas.js?1.8"></script>
 </body>
 </html>

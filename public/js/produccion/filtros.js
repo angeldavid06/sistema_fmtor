@@ -81,7 +81,7 @@ const buscar_dato = (metodo) => {
         const input_tabla = document.getElementById('tabla')
         if (input_tabla.value == 'v_ordenes') {
             render_ordenes(json)
-        } else if (input_tabla.value == 'v_reporte_diario') {
+        } else if (input_tabla.value == 'v_reportediario') {
             render_reporte_diario(json)
         }
     })
@@ -95,10 +95,8 @@ form_formatos.addEventListener('submit', (evt) => {
     cabecera_op(cabeceras[select.value]);
     limpiar_tabla();
     if (select.value == 0) {
-        input_tabla.value = 'v_ordenes'
         obtener_ordenes()
     } else if (select.value == 1) {
-        input_tabla.value = 'v_reporte_diario'
         obtener_reporte_diario()
     }
 });
@@ -107,12 +105,13 @@ const select_formatos = document.getElementById('seleccion_formato')
 select_formatos.addEventListener('change', () => {
     cabecera_op(cabeceras[select_formatos.value]);
     const input_tabla = document.getElementById('tabla')
+    input_tabla.removeAttribute('value')
     limpiar_tabla();
     if (select_formatos.value == 0) {
-        input_tabla.value = 'ordenes'
+        input_tabla.setAttribute('value','v_ordenes')
         obtener_ordenes()
     } else if (select_formatos.value == 1) {
-        input_tabla.value = 'reporte_diario'
+        input_tabla.setAttribute('value','v_reportediario')
         obtener_reporte_diario()
     }
 })
