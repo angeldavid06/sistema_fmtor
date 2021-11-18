@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php require_once 'public/modules/head.php' ?>
-    <title>Página Principal</title>
+    <title>Control de Producción</title>
 </head>
 <body>
     <div class="contenedor">
@@ -15,7 +15,10 @@
                 <h1>Control de Producción</h1>
                 <div class="d-flex align-content-center tarjeta-transparente">
                     <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
-                    <button class="btn btn-icon-self material-icons">print</button>
+                    <button class="btn btn-icon">
+                        <i class="material-icons">description</i>
+                        Generar documento
+                    </button>
                 </div>
                 <div class="d-grid g2-2-8">
                     <div class="position-relative">
@@ -61,13 +64,13 @@
                                 <!-- Cambiar todo a una sola tabla -->
                                 <table class="table table-control">
                                     <thead>
-                                        <th width="80px"></th>
-                                        <th width="80px"></th>
                                         <th width="100px">Botes</th>
                                         <th>Fecha</th>
                                         <th>Pzas. Producidas</th>
                                         <th>Kg.</th>
                                         <th width="100px">Máquina</th>
+                                        <th width="80px"></th>
+                                        <th width="80px"></th>
                                     </thead>
                                     <tbody class="body"></tbody>
                                 </table>
@@ -81,6 +84,6 @@
     </div>
     <script src="../../public/js/fmtor_libreria.js?1.3"></script>
     <script src="../../public/js/produccion/control.js?2.0"></script>
-    <script src="../../public/js/produccion/estados.js?2.0"></script>
+    <script src="../../public/js/produccion/estados.js?2.2"></script>
 </body>
 </html>

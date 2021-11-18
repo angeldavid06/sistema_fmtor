@@ -67,7 +67,7 @@ const render_info = (json) => {
         info[0].innerHTML = '<label>Código Del Dibujo:  '+el.plano+'</label>'+
                             '<label>Cliente:  '+el.Cliente+'</label>'+
                             '<label>Fecha:  '+el.Fecha+'</label>'+
-                            '<label>Cantidad:  '+el.cantidad_millares+'</label>'+
+                            '<label>Cantidad:  '+el.cantidad_elaborar+'</label>'+
                             '<label>Descripción:  '+el.descripcion+'</label>';
         op_control.value = el.id_control_produccion
     })
@@ -90,13 +90,13 @@ const render_control = (vista,json) => {
 
     json.forEach(el => {
         body[0].innerHTML += '<tr>'+
-                                    '<td><button class="btn btn-icon-self btn-rojo material-icons" data-opcion="cerrar" data-eliminar='+el.id_registro_diario+'>delete</button></td>'+
-                                    '<td><button class="btn btn-icon-self material-icons" data-modal="modal-actualizar" data-opcion="actualizar"  data-edit="'+el.id_registro_diario+'">edit</button></td>'+
-                                    '<td>'+el.botes+'</td>'+
-                                    '<td>'+el.fecha+'</td>'+
-                                    '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+
-                                    '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
-                                    '<td class="txt-right">'+el.no_maquina+'</td>'+
+                                '<td>'+el.botes+'</td>'+
+                                '<td>'+el.fecha+'</td>'+
+                                '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+
+                                '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
+                                '<td class="txt-right">'+el.no_maquina+'</td>'+
+                                '<td><button class="btn btn-icon-self btn-rojo material-icons" data-opcion="cerrar" data-eliminar='+el.id_registro_diario+'>delete</button></td>'+
+                                '<td><button class="btn btn-icon-self material-icons" data-modal="modal-actualizar" data-opcion="actualizar"  data-edit="'+el.id_registro_diario+'">edit</button></td>'+
                                 '</tr>';
         totales.total_kg += parseFloat(el.kilos)
         totales.total_pzas  += parseInt(el.pzas)
