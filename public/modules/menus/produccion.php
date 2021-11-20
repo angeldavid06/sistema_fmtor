@@ -32,7 +32,7 @@
             </a>
             <a href="http://localhost/sistema_fmtor/produccion/main/control">
                 <i class="material-icons">supervisor_account</i>
-                Registro Diario
+                Registro Diario de Producción
             </a>
             <a href="http://localhost/sistema_fmtor/produccion/main/maquinas">
                 <i class="material-icons">precision_manufacturing</i>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php require_once 'public/modules/head.php' ?>
-    <title>Control de Producción</title>
+    <title>Registro Diario de Producción</title>
 </head>
 <body>
     <div class="contenedor">
@@ -12,7 +12,7 @@
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
-                <h1>Control de Producción</h1>
+                <h1>Registro Diario de Producción</h1>
                 <div class="d-flex align-content-center tarjeta-transparente">
                     <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
                     <button class="btn btn-icon">

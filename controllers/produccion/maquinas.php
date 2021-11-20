@@ -13,11 +13,22 @@
         }
 
         public function obtener_reporte () {
-            if (isset($_GET['inicio']) && isset($_GET['fin']) && isset($_GET['concepto'])) {
+            if (isset($_GET['inicio']) && isset($_GET['fin']) && isset($_GET['concepto']) && isset($_GET['vista'])) {
                 $inicio = $_GET['inicio'];
                 $fin = $_GET['fin'];
                 $concepto = $_GET['concepto'];
-                $result = $this->model->filtrar_rango('v_reporte_'.$concepto,'fecha',$inicio,$fin);
+                $id_vista = $_GET['vista'];
+                $vista = '';
+                if ($id_vista == 1) {
+                    $vista = 'forjado';
+                } else if ($id_vista == 2) {
+                    $vista = 'ranurado';
+                } else if ($id_vista == 3) {
+                    $vista = 'rolado';
+                } else if ($id_vista == 6) {
+                    $vista = 'acabado';
+                }
+                $result = $this->model->filtrar_rango('v_reporte_'.$vista.'_'.$concepto,'fecha',$inicio,$fin);
                 echo json_encode($result);
             } else {
                 echo 0;

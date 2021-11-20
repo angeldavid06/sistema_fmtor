@@ -42,8 +42,8 @@
                 $id_folio = $_POST['op'];
                 $estado = $_POST['estado'];
 
-                $campos = 'no_maquina,fecha,botes,pzas,kilos,turno,observaciones,estado_general,id_estados_1,Id_control_produccion_1';
-                $values = "'$no_maquina','$fecha','$no_botes','$pzas','$kg','$turno','$observaciones','PENDIENTE','$estado','$id_folio'";
+                $campos = 'no_maquina,fecha,botes,pzas,kilos,turno,observaciones,id_estados_1,Id_control_produccion_1';
+                $values = "'$no_maquina','$fecha','$no_botes','$pzas','$kg','$turno','$observaciones','$estado','$id_folio'";
                 $result = $this->model->insertar('t_registro_diario',$campos,$values);
                 if ($result) {
                     echo 1;

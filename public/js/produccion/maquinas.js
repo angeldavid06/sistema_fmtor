@@ -4,6 +4,7 @@ const dias = {
 
 const input = document.getElementById('fecha_reporte')
 const select = document.getElementById('pzas_kilos')
+const estado = document.getElementById('estado')
         
 const quitar_semanas = () => {
     if (document.getElementById('acordeon')) {
@@ -16,7 +17,7 @@ const quitar_semanas = () => {
 const render_semana = (json,semana) => {
     const turnos = []
 
-    let totales_semanales = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let totales_semanales = [0,0,0,0,0,0,0,0,0,0,0,0]
     let aux = []
     let observaciones = []
     let contador = 1
@@ -75,16 +76,6 @@ const render_semana = (json,semana) => {
                                                                     '<td class="txt-center"></td>' +
                                                                     '<td class="txt-center">'+total_semana+'</td>' +
                                                                     '<td class="txt-center">0</td>' +
-                                                                    '<td class="txt-center">0</td>' +
-                                                                    '<td class="txt-center">0</td>' +
-                                                                    '<td class="txt-center">0</td>' +
-                                                                    '<td class="txt-center">0</td>' +
-                                                                    '<td class="txt-center">0</td>' +
-                                                                    '<td class="txt-center">0</td>' +
-                                                                    '<td class="txt-center">0</td>' +
-                                                                    '<td class="txt-center">0</td>' +
-                                                                    '<td class="txt-center">0</td>' +
-                                                                    '<td class="txt-center">0</td>' +
                                                                 '</tr>';
             totales_semanales[0] += parseInt(turnos[i][0],10)
             totales_semanales[1] += parseInt(turnos[i][1],10)
@@ -111,8 +102,6 @@ const render_semana = (json,semana) => {
         }
         tfoot.appendChild(tr)
         document.getElementById('tabla_'+semana).appendChild(tfoot)
-
-        console.log(totales_semanales);
     } else {
         document.getElementById('body_'+semana).innerHTML += '<tr>'+
                                                                 '<td colspan="25" class="txt-center">No existe ningún registro</td>' +
@@ -120,22 +109,13 @@ const render_semana = (json,semana) => {
     }
 }
 
-const obtener_semanas = (anio, mes) => {    
-    let limite_semana = []
+const render_encabezado_forjado = (limite_semana,anio, mes) => {
     let inicio = 1
     let fin = 0
 
     const informacion = document.getElementsByClassName('informacion')
-    const dias_mes = new Date(anio, mes, 0).getDate()
-
-    for (let i = 1; i <= dias_mes; i++) {
-        const dia = new Date(anio, mes-1, i)
-        if (dia.getDay() == 6 || i == dias_mes) {
-            limite_semana.push(dia.getDate())
-        }
-    }
-
     const acordeon_div = document.createElement('div')
+
     acordeon_div.classList.add('acordeon')
     acordeon_div.classList.add('tarjeta_transparente')
     acordeon_div.setAttribute('id','acordeon')
@@ -156,7 +136,7 @@ const obtener_semanas = (anio, mes) => {
                                                         '<th rowspan="2">Día</th>'+
                                                         '<th colspan="9">REPORTE DIARIO POR MAQUINA</th>'+
                                                         '<th></th>'+
-                                                        '<th colspan="14">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
+                                                        '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
                                                     '</tr>'+
                                                     '<tr>'+
                                                         '<th>1</th>'+
@@ -170,11 +150,6 @@ const obtener_semanas = (anio, mes) => {
                                                         '<th>9</th>'+
                                                         '<th></th>'+
                                                         '<th colspan="2">FORJADO</th>'+
-                                                        '<th colspan="2">RANURADO</th>'+
-                                                        '<th colspan="2">SHANK</th>'+
-                                                        '<th colspan="2">TOTAL RANURADO</th>'+
-                                                        '<th colspan="2">ROLADO</th>'+
-                                                        '<th colspan="2">Acabado</th>'+
                                                     '</tr>'+
                                                 '</thead>'+
                                                 '<tbody id="body_'+(i+1)+'">'+
@@ -199,31 +174,256 @@ const obtener_semanas = (anio, mes) => {
             fin = (limite_semana[i])
         }
 
-        obtener_dias(select.value,anio+'-'+mes+'-'+inicio,anio+'-'+mes+'-'+fin, (i+1))
+        obtener_dias(estado.value, select.value,anio+'-'+mes+'-'+inicio,anio+'-'+mes+'-'+fin, (i+1))
     }
 }
 
-const obtener_dias = (concepto, inicio, fin, semana) => {
-    const respuesta = fetchAPI('',url+'/produccion/maquinas/obtener_reporte?concepto='+concepto+'&inicio='+inicio+'&fin='+fin,'')
+const render_encabezado_ranurado_shank = (limite_semana,anio, mes) => {
+    let inicio = 1
+    let fin = 0
+
+    const informacion = document.getElementsByClassName('informacion')
+    const acordeon_div = document.createElement('div')
+
+    acordeon_div.classList.add('acordeon')
+    acordeon_div.classList.add('tarjeta_transparente')
+    acordeon_div.setAttribute('id','acordeon')
+    informacion[1].appendChild(acordeon_div)
+
+    const acordeon = document.getElementsByClassName('acordeon')
+
+    for (let i = 0; i < limite_semana.length; i++) {
+        const div = document.createElement('div')
+        div.innerHTML += '<div class="acordeon_opcion">'+
+                                        '<div class="titulo_acordeon">'+
+                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+'</h3>'+
+                                        '</div>'+
+                                        '<div id="semana_'+i+'" class="contenido_acordeon mostrar_contenido">'+
+                                            '<table id="tabla_'+(i+1)+'">'+
+                                                '<thead>'+
+                                                    '<tr>'+
+                                                        '<th rowspan="2">Día</th>'+
+                                                        '<th colspan="3">REPORTE DIARIO POR MAQUINA</th>'+
+                                                        '<th></th>'+
+                                                        '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
+                                                    '</tr>'+
+                                                    '<tr>'+
+                                                        '<th>1</th>'+
+                                                        '<th>2</th>'+
+                                                        '<th>3</th>'+
+                                                        '<th></th>'+
+                                                        '<th colspan="2">RANURADO y SHANK</th>'+
+                                                    '</tr>'+
+                                                '</thead>'+
+                                                '<tbody id="body_'+(i+1)+'">'+
+                                                '</tbody>'+
+                                            '</table>'+
+                                        '</div>'+
+                                    '</div>'
+        acordeon[0].appendChild(div)
+        if (i == 0) {
+            inicio = '01'
+        } else {
+            if (limite_semana[i-1] < 10) {
+                inicio = '0'+(limite_semana[i-1]+1)
+            } else {
+                inicio = limite_semana[i-1]+1
+            }
+        }
+
+        if (limite_semana[i] < 10) {
+            fin = '0'+(limite_semana[i])
+        } else {
+            fin = (limite_semana[i])
+        }
+    }
+}
+
+const render_encabezado_rolado = (limite_semana,anio,mes) => {
+    let inicio = 1
+    let fin = 0
+
+    const informacion = document.getElementsByClassName('informacion')
+    const acordeon_div = document.createElement('div')
+
+    acordeon_div.classList.add('acordeon')
+    acordeon_div.classList.add('tarjeta_transparente')
+    acordeon_div.setAttribute('id','acordeon')
+    informacion[1].appendChild(acordeon_div)
+
+    const acordeon = document.getElementsByClassName('acordeon')
+
+    for (let i = 0; i < limite_semana.length; i++) {
+        const div = document.createElement('div')
+        div.innerHTML += '<div class="acordeon_opcion">'+
+                                        '<div class="titulo_acordeon">'+
+                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+'</h3>'+
+                                        '</div>'+
+                                        '<div id="semana_'+i+'" class="contenido_acordeon mostrar_contenido">'+
+                                            '<table id="tabla_'+(i+1)+'">'+
+                                                '<thead>'+
+                                                    '<tr>'+
+                                                        '<th rowspan="2">Día</th>'+
+                                                        '<th colspan="6">REPORTE DIARIO POR MAQUINA</th>'+
+                                                        '<th></th>'+
+                                                        '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
+                                                    '</tr>'+
+                                                    '<tr>'+
+                                                        '<th>1</th>'+
+                                                        '<th>2</th>'+
+                                                        '<th>3</th>'+
+                                                        '<th>4</th>'+
+                                                        '<th>5</th>'+
+                                                        '<th>6</th>'+
+                                                        '<th></th>'+
+                                                        '<th colspan="2">ROLADO</th>'+
+                                                    '</tr>'+
+                                                '</thead>'+
+                                                '<tbody id="body_'+(i+1)+'">'+
+                                                '</tbody>'+
+                                            '</table>'+
+                                        '</div>'+
+                                    '</div>'
+        acordeon[0].appendChild(div)
+        if (i == 0) {
+            inicio = '01'
+        } else {
+            if (limite_semana[i-1] < 10) {
+                inicio = '0'+(limite_semana[i-1]+1)
+            } else {
+                inicio = limite_semana[i-1]+1
+            }
+        }
+
+        if (limite_semana[i] < 10) {
+            fin = '0'+(limite_semana[i])
+        } else {
+            fin = (limite_semana[i])
+        }
+
+        obtener_dias(estado.value, select.value,anio+'-'+mes+'-'+inicio,anio+'-'+mes+'-'+fin, (i+1))
+    }
+}
+
+const render_encabezado_acabado = (limite_semana,anio,mes) => {
+    let inicio = 1
+    let fin = 0
+
+    const informacion = document.getElementsByClassName('informacion')
+    const acordeon_div = document.createElement('div')
+
+    acordeon_div.classList.add('acordeon')
+    acordeon_div.classList.add('tarjeta_transparente')
+    acordeon_div.setAttribute('id','acordeon')
+    informacion[1].appendChild(acordeon_div)
+
+    const acordeon = document.getElementsByClassName('acordeon')
+
+    for (let i = 0; i < limite_semana.length; i++) {
+        const div = document.createElement('div')
+        div.innerHTML += '<div class="acordeon_opcion">'+
+                                        '<div class="titulo_acordeon">'+
+                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+'</h3>'+
+                                        '</div>'+
+                                        '<div id="semana_'+i+'" class="contenido_acordeon mostrar_contenido">'+
+                                            '<table id="tabla_'+(i+1)+'">'+
+                                                '<thead>'+
+                                                    '<tr>'+
+                                                        '<th rowspan="2">Día</th>'+
+                                                        '<th colspan="3">REPORTE DIARIO POR TINA</th>'+
+                                                        '<th></th>'+
+                                                        '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
+                                                    '</tr>'+
+                                                    '<tr>'+
+                                                        '<th>1</th>'+
+                                                        '<th>2</th>'+
+                                                        '<th>3</th>'+
+                                                        '<th></th>'+
+                                                        '<th colspan="2">ACABADO</th>'+
+                                                    '</tr>'+
+                                                '</thead>'+
+                                                '<tbody id="body_'+(i+1)+'">'+
+                                                '</tbody>'+
+                                            '</table>'+
+                                        '</div>'+
+                                    '</div>'
+        acordeon[0].appendChild(div)
+        if (i == 0) {
+            inicio = '01'
+        } else {
+            if (limite_semana[i-1] < 10) {
+                inicio = '0'+(limite_semana[i-1]+1)
+            } else {
+                inicio = limite_semana[i-1]+1
+            }
+        }
+
+        if (limite_semana[i] < 10) {
+            fin = '0'+(limite_semana[i])
+        } else {
+            fin = (limite_semana[i])
+        }
+
+        obtener_dias(estado.value, select.value,anio+'-'+mes+'-'+inicio,anio+'-'+mes+'-'+fin, (i+1))
+    }
+}
+
+const obtener_semanas = (anio, mes, estado_seleccionado) => {    
+    let limite_semana = []
+
+    const dias_mes = new Date(anio, mes, 0).getDate()
+
+    for (let i = 1; i <= dias_mes; i++) {
+        const dia = new Date(anio, mes-1, i)
+        if (dia.getDay() == 6 || i == dias_mes) {
+            limite_semana.push(dia.getDate())
+        }
+    }
+
+    if (estado_seleccionado == 1) {
+        render_encabezado_forjado(limite_semana,anio, mes)
+    } else if (estado_seleccionado == 2) {
+        render_encabezado_ranurado_shank(limite_semana,anio,mes)
+    } else if (estado_seleccionado == 3) {
+        render_encabezado_rolado(limite_semana,anio,mes)
+    } else if (estado_seleccionado == 6) {
+        render_encabezado_acabado(limite_semana,anio,mes)
+    }
+}
+
+const obtener_dias = (vista, concepto, inicio, fin, semana) => {
+    const respuesta = fetchAPI('',url+'/produccion/maquinas/obtener_reporte?vista='+vista+'&concepto='+concepto+'&inicio='+inicio+'&fin='+fin,'')
     respuesta.then(json => {
-        render_semana(json,semana)
+        if (vista == 1) {
+            render_semana(json,semana)
+        } else if (vista == 2) {
+            render_semana(json,semana)
+        } else if (vista == 3) {
+            render_semana(json,semana)
+        } else if (vista == 6) {
+            render_semana(json,semana)
+        }
     })
 }
 
-const generar_reporte = (input,select) => {
-    if (input != '' && select != '') {
+const generar_reporte = (input,select,estado) => {
+    if (input != '' && select != '' && estado != '') {
         const fecha = input.split('-')
         quitar_semanas()
-        obtener_semanas(fecha[0],fecha[1])
+        obtener_semanas(fecha[0],fecha[1],estado)
     }
 }
 
 input.addEventListener('change', () => {
-    generar_reporte(input.value,select.value)
+    generar_reporte(input.value,select.value,estado.value)
 }) 
 
 select.addEventListener('change', () => {
-    generar_reporte(input.value,select.value)
+    generar_reporte(input.value,select.value,estado.value)
+})
+
+estado.addEventListener('change', () => {
+    generar_reporte(input.value,select.value,estado.value)
 })
 
 const auto = () => {
