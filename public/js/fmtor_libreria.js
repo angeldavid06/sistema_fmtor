@@ -284,12 +284,3 @@ function printPage (sURL) {
     oHideFrame.src = sURL
     document.body.appendChild(oHideFrame);
 }
-
-// Ejemplo
-
-// if (document.getElementsByClassName('getPDF')) {
-//     const btn = document.getElementsByClassName('getPDF');
-//     btn.addEventListener('click', () => {
-//         printPage('tests.php?op=')          
-//     });
-// }

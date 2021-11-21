@@ -49,15 +49,17 @@
             }
         }
 
-        public function generar_sesiones ($nombre,$rol,$depto) {
+        public function generar_sesiones ($nombre,$rol,$depto,$foto) {
             $_SESSION['nombre_usuario'] = $nombre;
             $_SESSION['rol'] = $rol;
             $_SESSION['depto'] = $depto;
+            $_SESSION['foto'] = $foto;
 
             $sesiones = [
                 "nombre" => $_SESSION['nombre_usuario'],
                 "rol" => $_SESSION['rol'],
-                "depto" => $_SESSION['depto']
+                "depto" => $_SESSION['depto'],
+                "foto" => $_SESSION['foto']
             ];
 
             return $sesiones;

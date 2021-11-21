@@ -109,6 +109,261 @@ const render_semana = (json,semana) => {
     }
 }
 
+const render_semana_ranurado_shank = (json,semana) => {
+    const turnos = []
+
+    let totales_semanales = [0,0,0,0,0,0]
+    let aux = []
+    let observaciones = []
+    let contador = 1
+    let a = ''
+
+    if (json.length > 0) {
+        json.forEach(el => {
+            if (contador == 9) {
+                if (select.value == 'kilos') {
+                    aux.push(el.kilos)
+                } else if (select.value == 'pzas') {
+                    aux.push(el.pzas)
+                }
+                aux.push(el.fecha)
+                aux.push(el.turno)
+                turnos.push(aux)
+                a = el.observaciones.replace(/\s+/g, '_')
+                observaciones.push(a)
+                aux = []
+                contador = 1;
+            } else {
+                if (select.value == 'kilos') {
+                    aux.push(el.kilos)
+                } else if (select.value == 'pzas') {
+                    aux.push(el.pzas)
+                }
+                a = el.observaciones.replace(/\s+/g, '_')
+                observaciones.push(a)
+                contador++
+            }
+        });
+    
+        aux = []
+        contador = 0;
+    
+        for (let i = 0; i < turnos.length; i++) {
+            for (let j = 0; j < 10; j++) {
+                aux.push(turnos[i][j])
+            }
+            aux = []
+    
+            const fecha = turnos[i][9].split(' ')
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])+parseInt(turnos[i][7])+parseInt(turnos[i][8])
+    
+            document.getElementById('body_'+semana).innerHTML += '<tr>'+
+                                                                    '<td>'+fecha[0]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+1]+'">'+turnos[i][1]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][2]+'</td>' +
+                                                                    '<td class="txt-center"></td>' +
+                                                                    '<td class="txt-center">'+total_semana+'</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                '</tr>';
+            totales_semanales[0] += parseInt(turnos[i][0],10)
+            totales_semanales[1] += parseInt(turnos[i][1],10)
+            totales_semanales[2] += parseInt(turnos[i][2],10)
+            totales_semanales[4] += parseInt(total_semana)
+            contador+=3
+        }
+
+        const tfoot = document.createElement('tfoot')
+        const tr = document.createElement('tr')
+        tr.innerHTML += '<td>Total:</td>'
+        for (let i = 0; i < totales_semanales.length; i++) {
+            if (i > 3 || i < 3) {
+                tr.innerHTML += '<td class="txt-center">'+ new Intl.NumberFormat('es-MX').format(totales_semanales[i])+'</td>'
+            } else {
+                tr.innerHTML += '<td></td>';
+            }
+        }
+        tfoot.appendChild(tr)
+        document.getElementById('tabla_'+semana).appendChild(tfoot)
+    } else {
+        document.getElementById('body_'+semana).innerHTML += '<tr>'+
+                                                                '<td colspan="25" class="txt-center">No existe ningún registro</td>' +
+                                                            '</tr>';
+    }
+}
+
+const render_semana_acabo = (json,semana) => {
+    const turnos = []
+
+    let totales_semanales = [0,0,0,0,0,0]
+    let aux = []
+    let observaciones = []
+    let contador = 1
+    let a = ''
+
+    if (json.length > 0) {
+        json.forEach(el => {
+            if (contador == 9) {
+                if (select.value == 'kilos') {
+                    aux.push(el.kilos)
+                } else if (select.value == 'pzas') {
+                    aux.push(el.pzas)
+                }
+                aux.push(el.fecha)
+                aux.push(el.turno)
+                turnos.push(aux)
+                a = el.observaciones.replace(/\s+/g, '_')
+                observaciones.push(a)
+                aux = []
+                contador = 1;
+            } else {
+                if (select.value == 'kilos') {
+                    aux.push(el.kilos)
+                } else if (select.value == 'pzas') {
+                    aux.push(el.pzas)
+                }
+                a = el.observaciones.replace(/\s+/g, '_')
+                observaciones.push(a)
+                contador++
+            }
+        });
+    
+        aux = []
+        contador = 0;
+    
+        for (let i = 0; i < turnos.length; i++) {
+            for (let j = 0; j < 10; j++) {
+                aux.push(turnos[i][j])
+            }
+            aux = []
+    
+            const fecha = turnos[i][9].split(' ')
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])+parseInt(turnos[i][7])+parseInt(turnos[i][8])
+    
+            document.getElementById('body_'+semana).innerHTML += '<tr>'+
+                                                                    '<td>'+fecha[0]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+1]+'">'+turnos[i][1]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][2]+'</td>' +
+                                                                    '<td class="txt-center"></td>' +
+                                                                    '<td class="txt-center">'+total_semana+'</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                '</tr>';
+            totales_semanales[0] += parseInt(turnos[i][0],10)
+            totales_semanales[1] += parseInt(turnos[i][1],10)
+            totales_semanales[2] += parseInt(turnos[i][2],10)
+            totales_semanales[4] += parseInt(total_semana)
+            contador+=3
+        }
+
+        const tfoot = document.createElement('tfoot')
+        const tr = document.createElement('tr')
+        tr.innerHTML += '<td>Total:</td>'
+        for (let i = 0; i < totales_semanales.length; i++) {
+            if (i > 3 || i < 3) {
+                tr.innerHTML += '<td class="txt-center">'+ new Intl.NumberFormat('es-MX').format(totales_semanales[i])+'</td>'
+            } else {
+                tr.innerHTML += '<td></td>';
+            }
+        }
+        tfoot.appendChild(tr)
+        document.getElementById('tabla_'+semana).appendChild(tfoot)
+    } else {
+        document.getElementById('body_'+semana).innerHTML += '<tr>'+
+                                                                '<td colspan="25" class="txt-center">No existe ningún registro</td>' +
+                                                            '</tr>';
+    }
+}
+
+const render_semana_rolado = (json,semana) => {
+    const turnos = []
+
+    let totales_semanales = [0,0,0,0,0,0,0,0,0]
+    let aux = []
+    let observaciones = []
+    let contador = 1
+    let a = ''
+
+    if (json.length > 0) {
+        json.forEach(el => {
+            if (contador == 9) {
+                if (select.value == 'kilos') {
+                    aux.push(el.kilos)
+                } else if (select.value == 'pzas') {
+                    aux.push(el.pzas)
+                }
+                aux.push(el.fecha)
+                aux.push(el.turno)
+                turnos.push(aux)
+                a = el.observaciones.replace(/\s+/g, '_')
+                observaciones.push(a)
+                aux = []
+                contador = 1;
+            } else {
+                if (select.value == 'kilos') {
+                    aux.push(el.kilos)
+                } else if (select.value == 'pzas') {
+                    aux.push(el.pzas)
+                }
+                a = el.observaciones.replace(/\s+/g, '_')
+                observaciones.push(a)
+                contador++
+            }
+        });
+    
+        aux = []
+        contador = 0;
+    
+        for (let i = 0; i < turnos.length; i++) {
+            for (let j = 0; j < 10; j++) {
+                aux.push(turnos[i][j])
+            }
+            aux = []
+    
+            const fecha = turnos[i][9].split(' ')
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])+parseInt(turnos[i][7])+parseInt(turnos[i][8])
+    
+            document.getElementById('body_'+semana).innerHTML += '<tr>'+
+                                                                    '<td>'+fecha[0]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+1]+'">'+turnos[i][1]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][1]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+3]+'">'+turnos[i][1]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+4]+'">'+turnos[i][2]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+5]+'">'+turnos[i][2]+'</td>' +
+                                                                    '<td class="txt-center"></td>' +
+                                                                    '<td class="txt-center">'+total_semana+'</td>' +
+                                                                    '<td class="txt-center">0</td>' +
+                                                                '</tr>';
+            totales_semanales[0] += parseInt(turnos[i][0],10)
+            totales_semanales[1] += parseInt(turnos[i][1],10)
+            totales_semanales[2] += parseInt(turnos[i][2],10)
+            totales_semanales[3] += parseInt(turnos[i][3],10)
+            totales_semanales[4] += parseInt(turnos[i][4],10)
+            totales_semanales[5] += parseInt(turnos[i][5],10)
+            totales_semanales[7] += parseInt(total_semana)
+            contador+=3
+        }
+
+        const tfoot = document.createElement('tfoot')
+        const tr = document.createElement('tr')
+        tr.innerHTML += '<td>Total:</td>'
+        for (let i = 0; i < totales_semanales.length; i++) {
+            if (i > 6 || i < 6) {
+                tr.innerHTML += '<td class="txt-center">'+ new Intl.NumberFormat('es-MX').format(totales_semanales[i])+'</td>'
+            } else {
+                tr.innerHTML += '<td></td>';
+            }
+        }
+        tfoot.appendChild(tr)
+        document.getElementById('tabla_'+semana).appendChild(tfoot)
+    } else {
+        document.getElementById('body_'+semana).innerHTML += '<tr>'+
+                                                                '<td colspan="25" class="txt-center">No existe ningún registro</td>' +
+                                                            '</tr>';
+    }
+}
+
 const render_encabezado_forjado = (limite_semana,anio, mes) => {
     let inicio = 1
     let fin = 0
@@ -236,6 +491,7 @@ const render_encabezado_ranurado_shank = (limite_semana,anio, mes) => {
         } else {
             fin = (limite_semana[i])
         }
+        obtener_dias(estado.value, select.value,anio+'-'+mes+'-'+inicio,anio+'-'+mes+'-'+fin, (i+1))
     }
 }
 
@@ -397,11 +653,11 @@ const obtener_dias = (vista, concepto, inicio, fin, semana) => {
         if (vista == 1) {
             render_semana(json,semana)
         } else if (vista == 2) {
-            render_semana(json,semana)
+            render_semana_ranurado_shank(json,semana)
         } else if (vista == 3) {
-            render_semana(json,semana)
+            render_semana_rolado(json,semana)
         } else if (vista == 6) {
-            render_semana(json,semana)
+            render_semana_acabo(json,semana)
         }
     })
 }

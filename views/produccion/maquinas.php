@@ -101,6 +101,6 @@
         </div>
     </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/produccion/maquinas.js?2.2"></script>
+    <script src="../../public/js/produccion/maquinas.js?2.4"></script>
 </body>
 </html>
