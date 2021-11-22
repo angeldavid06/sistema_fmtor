@@ -150,6 +150,14 @@ const actualizar_registro = () => {
     })
 }
 
+const generar_PDF = (valor) => {
+    if (valor != '') {
+        printPage(url+'/public/pdf/produccion/control.php?valor='+valor);
+    } else {
+        open_alert('No ha introducido la orden de producción','naranja')
+    }
+}
+
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.opcion) {
         if (evt.target.dataset.eliminar) {
@@ -158,5 +166,7 @@ document.addEventListener('click', (evt) => {
         } else if (evt.target.dataset.edit) {
             obtener_registro(evt.target.dataset.edit)
         }
+    } else if (evt.target.dataset.impresion) {
+        generar_PDF(document.getElementById('op_control').value)
     }
 })

@@ -17,9 +17,9 @@
                     <div>
                         <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
                     </div>
-                    <div class="d-flex align-content-center justify-right">
-                        <button class="btn btn-icon">
-                            <i class="material-icons">description</i>
+                    <div class="d-flex align-content-center justify-right" >
+                        <button class="btn btn-icon" data-impresion="documento">
+                            <i class="material-icons" data-impresion="documento">description</i>
                             Generar documento
                         </button>
                     </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <script src="../../public/js/fmtor_libreria.js?2.0"></script>
-    <script src="../../public/js/produccion/control.js?2.1"></script>
+    <script src="../../public/js/produccion/control.js?2.3"></script>
     <script src="../../public/js/produccion/estados.js?2.3"></script>
 </body>
 </html>
