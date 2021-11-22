@@ -17,18 +17,18 @@ const render_ordenes = (json) => {
             tr.classList.add('cancelado')
         }
 
-        tr.innerHTML += '<td>'+el.calibre+'</td>'+
-                        '<td>'+new Intl.NumberFormat('es-MX').format(el.factor*el.cantidad_elaborar)+'</td>'+
-                        '<td>'+el.factor+'</td>'+
-                        '<td>'+el.Id_Folio+'</td>'+
-                        '<td>'+el.Fecha.split(' ')[0]+'</td>'+
-                        '<td>'+el.Clientes+'</td>'+
-                        '<td>'+el.descripcion+'</td>'+
-                        '<td>'+el.acabados+'</td>'+
-                        '<td class="number">'+el.cantidad_elaborar+'</td>'+
-                        '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
-                        '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.TOTAL)+'</td>'+
-                        '<td class="number">' + /*new Intl.NumberFormat('es-MX').format(Acumulado)*/'Acumulado'+'</td>'+
+        tr.innerHTML += '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.calibre+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+new Intl.NumberFormat('es-MX').format(el.factor*el.cantidad_elaborar)+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.factor+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.Id_Folio+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.Fecha.split(' ')[0]+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.Clientes+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.descripcion+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.acabados+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">'+el.cantidad_elaborar+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.TOTAL)+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">' + /*new Intl.NumberFormat('es-MX').format(Acumulado)*/'Acumulado'+'</td>'+
                         '<td>' + el.estado_general+'</td>'
         t_body[0].appendChild(tr)
     })
@@ -69,7 +69,28 @@ const obtener_reporte_diario = () => {
     })
 }
 
+const obtener_plano = (id_catalogo) => {
+    const plano = fetchBlob(url+'/produccion/op/obtener_plano?id_plano='+id_catalogo)
+    plano.then(blob => {
+        const div_plano = document.getElementById('plano')
+        const embed = document.createElement('embed')
+
+        div_plano.innerHTML='';
+        
+        embed.classList.add('height-100');
+        embed.setAttribute('type','application/pdf')
+        embed.setAttribute('src','data:application/pdf;base64,'+encodeURI(blob))
+        
+        div_plano.appendChild(embed)
+    })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     obtener_ordenes()
 });
 
+document.addEventListener('click', (evt) => {
+    if (evt.target.dataset.plano) {
+        obtener_plano(evt.target.dataset.plano)
+    }
+})

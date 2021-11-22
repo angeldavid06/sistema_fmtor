@@ -85,8 +85,9 @@
                         <select name="estado" id="estado">
                             <option value="">Selecciona un estado</option>
                             <option value="1">FORJADO</option>
-                            <option value="2">RANURADO y SHANK</option>
+                            <option value="2">RANURADO</option>
                             <option value="3">ROLADO</option>
+                            <option value="4">SHANK</option>
                             <option value="6">ACABADO</option>
                         </select>
                     </div>
@@ -101,6 +102,6 @@
         </div>
     </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/produccion/maquinas.js?2.4"></script>
+    <script src="../../public/js/produccion/maquinas.js?2.6"></script>
 </body>
 </html>

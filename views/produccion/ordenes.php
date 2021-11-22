@@ -50,11 +50,12 @@
                     </div>
                 </div>
                 <?php require_once 'public/modules/produccion/ordenes_modal.php'; ?>
+                <?php require_once 'public/modules/produccion/plano_modal.php'; ?>
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js?1.4"></script>
-    <script src="../../public/js/produccion/filtros.js?2.0"></script>
-    <script src="../../public/js/produccion/ordenes.js?2.2"></script>
+    <script src="../../public/js/fmtor_libreria.js?1.5"></script>
+    <script src="../../public/js/produccion/filtros.js?2.1"></script>
+    <script src="../../public/js/produccion/ordenes.js?2.3"></script>
 </body>
 </html>

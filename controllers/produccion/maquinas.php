@@ -25,6 +25,8 @@
                     $vista = 'ranurado';
                 } else if ($id_vista == 3) {
                     $vista = 'rolado';
+                } else if ($id_vista == 4) {
+                    $vista = 'shank';
                 } else if ($id_vista == 6) {
                     $vista = 'acabado';
                 }

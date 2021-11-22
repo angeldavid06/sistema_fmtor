@@ -1,4 +1,5 @@
 let resJSON = ''
+let resBLOB 
 const url = 'http://localhost/sistema_fmtor'
 const btn_menu_toggle = document.getElementById('btn-menu-toggle')
 const menu = document.getElementById('menu')
@@ -72,6 +73,22 @@ const abrir_cerrar_menu = () => {
 }
 
 // Peticiones
+
+const fetchBlob = async (ruta) => {
+    preloader()
+    await fetch(ruta)
+    .then(res => (res.ok ? res.text() : Promise.reject(res)))
+    .then(blob => {
+        resBLOB = blob;
+    })
+    .catch(err => {
+        resBLOB = err;
+    })
+    .finally(() => {
+        ocultarPreloader() 
+    })
+    return resBLOB
+}
 
 const fetchAPI = async (form,ruta,metodo) => {
     preloader()
@@ -226,7 +243,7 @@ document.addEventListener('click', (evt) => {
     } else if (evt.target.dataset.modal) {
         abrir_modal(evt.target.dataset.modal)
     } else if (evt.target.dataset.acordeon) {
-        acordeon(evt.target.dataset.acordeon);
+        acordeon(evt.target.dataset.acordeon)
     }
 });
 

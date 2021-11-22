@@ -31,6 +31,11 @@
                             <i class="material-icons icon">precision_manufacturing</i>
                             MÁQUINAS DE PRODUCCIÓN
                         </a>
+                        <a href="http://localhost/sistema_fmtor/produccion/main/estados"
+                        class="tarjeta d-flex align-content-center">
+                            <i class="material-icons icon">new_releases</i>
+                            ESTADO DE LAS ORDENES DE PRODUCCIÓN
+                        </a>
                     </nav>
                 </main>
             </div>

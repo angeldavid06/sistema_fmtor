@@ -18,6 +18,7 @@ const render_semana = (json,semana) => {
     const turnos = []
 
     let totales_semanales = [0,0,0,0,0,0,0,0,0,0,0,0]
+    let acumulado = 0
     let aux = []
     let observaciones = []
     let contador = 1
@@ -60,8 +61,14 @@ const render_semana = (json,semana) => {
             aux = []
     
             const fecha = turnos[i][9].split(' ')
-            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])+parseInt(turnos[i][7])+parseInt(turnos[i][8])
-    
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][1])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])+parseInt(turnos[i][7])+parseInt(turnos[i][8])
+            
+            if (i == 0) {
+                acumulado = total_semana
+            } else {
+                acumulado += total_semana
+            }
+
             document.getElementById('body_'+semana).innerHTML += '<tr>'+
                                                                     '<td>'+fecha[0]+'</td>' +
                                                                     '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
@@ -75,7 +82,7 @@ const render_semana = (json,semana) => {
                                                                     '<td class="txt-center '+observaciones[contador+8]+'">'+turnos[i][8]+'</td>' +
                                                                     '<td class="txt-center"></td>' +
                                                                     '<td class="txt-center">'+total_semana+'</td>' +
-                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">'+new Intl.NumberFormat('es-MX').format(acumulado)+'</td>' +
                                                                 '</tr>';
             totales_semanales[0] += parseInt(turnos[i][0],10)
             totales_semanales[1] += parseInt(turnos[i][1],10)
@@ -87,6 +94,7 @@ const render_semana = (json,semana) => {
             totales_semanales[7] += parseInt(turnos[i][7],10)
             totales_semanales[8] += parseInt(turnos[i][8],10)
             totales_semanales[10] += parseInt(total_semana)
+            totales_semanales[11] += parseInt(acumulado)
             contador+=9
         }
 
@@ -113,6 +121,7 @@ const render_semana_ranurado_shank = (json,semana) => {
     const turnos = []
 
     let totales_semanales = [0,0,0,0,0,0]
+    let acumulado = 0
     let aux = []
     let observaciones = []
     let contador = 1
@@ -120,7 +129,7 @@ const render_semana_ranurado_shank = (json,semana) => {
 
     if (json.length > 0) {
         json.forEach(el => {
-            if (contador == 9) {
+            if (contador == 3) {
                 if (select.value == 'kilos') {
                     aux.push(el.kilos)
                 } else if (select.value == 'pzas') {
@@ -147,6 +156,7 @@ const render_semana_ranurado_shank = (json,semana) => {
     
         aux = []
         contador = 0;
+        console.log(turnos);
     
         for (let i = 0; i < turnos.length; i++) {
             for (let j = 0; j < 10; j++) {
@@ -154,9 +164,15 @@ const render_semana_ranurado_shank = (json,semana) => {
             }
             aux = []
     
-            const fecha = turnos[i][9].split(' ')
-            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])+parseInt(turnos[i][7])+parseInt(turnos[i][8])
+            const fecha = turnos[i][3].split(' ')
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][1])+parseInt(turnos[i][2])
     
+            if (i == 0) {
+                acumulado = total_semana
+            } else {
+                acumulado += total_semana
+            }
+
             document.getElementById('body_'+semana).innerHTML += '<tr>'+
                                                                     '<td>'+fecha[0]+'</td>' +
                                                                     '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
@@ -164,12 +180,13 @@ const render_semana_ranurado_shank = (json,semana) => {
                                                                     '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][2]+'</td>' +
                                                                     '<td class="txt-center"></td>' +
                                                                     '<td class="txt-center">'+total_semana+'</td>' +
-                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">'+new Intl.NumberFormat('es-MX').format(acumulado)+'</td>' +
                                                                 '</tr>';
             totales_semanales[0] += parseInt(turnos[i][0],10)
             totales_semanales[1] += parseInt(turnos[i][1],10)
             totales_semanales[2] += parseInt(turnos[i][2],10)
             totales_semanales[4] += parseInt(total_semana)
+            totales_semanales[5] += parseInt(acumulado)
             contador+=3
         }
 
@@ -196,6 +213,7 @@ const render_semana_acabo = (json,semana) => {
     const turnos = []
 
     let totales_semanales = [0,0,0,0,0,0]
+    let acumulado = 0
     let aux = []
     let observaciones = []
     let contador = 1
@@ -203,7 +221,7 @@ const render_semana_acabo = (json,semana) => {
 
     if (json.length > 0) {
         json.forEach(el => {
-            if (contador == 9) {
+            if (contador == 3) {
                 if (select.value == 'kilos') {
                     aux.push(el.kilos)
                 } else if (select.value == 'pzas') {
@@ -237,9 +255,15 @@ const render_semana_acabo = (json,semana) => {
             }
             aux = []
     
-            const fecha = turnos[i][9].split(' ')
-            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])+parseInt(turnos[i][7])+parseInt(turnos[i][8])
+            const fecha = turnos[i][3].split(' ')
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][1])+parseInt(turnos[i][2])
     
+            if (i == 0) {
+                acumulado = total_semana
+            } else {
+                acumulado += total_semana
+            }
+
             document.getElementById('body_'+semana).innerHTML += '<tr>'+
                                                                     '<td>'+fecha[0]+'</td>' +
                                                                     '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
@@ -247,12 +271,13 @@ const render_semana_acabo = (json,semana) => {
                                                                     '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][2]+'</td>' +
                                                                     '<td class="txt-center"></td>' +
                                                                     '<td class="txt-center">'+total_semana+'</td>' +
-                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">'+new Intl.NumberFormat('es-MX').format(acumulado)+'</td>' +
                                                                 '</tr>';
             totales_semanales[0] += parseInt(turnos[i][0],10)
             totales_semanales[1] += parseInt(turnos[i][1],10)
             totales_semanales[2] += parseInt(turnos[i][2],10)
             totales_semanales[4] += parseInt(total_semana)
+            totales_semanales[5] += parseInt(acumulado)
             contador+=3
         }
 
@@ -279,6 +304,7 @@ const render_semana_rolado = (json,semana) => {
     const turnos = []
 
     let totales_semanales = [0,0,0,0,0,0,0,0,0]
+    let acumulado = 0
     let aux = []
     let observaciones = []
     let contador = 1
@@ -286,7 +312,7 @@ const render_semana_rolado = (json,semana) => {
 
     if (json.length > 0) {
         json.forEach(el => {
-            if (contador == 9) {
+            if (contador == 6) {
                 if (select.value == 'kilos') {
                     aux.push(el.kilos)
                 } else if (select.value == 'pzas') {
@@ -320,9 +346,15 @@ const render_semana_rolado = (json,semana) => {
             }
             aux = []
     
-            const fecha = turnos[i][9].split(' ')
-            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])+parseInt(turnos[i][7])+parseInt(turnos[i][8])
-    
+            const fecha = turnos[i][6].split(' ')
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])
+            
+            if (i == 0) {
+                acumulado = total_semana
+            } else {
+                acumulado += total_semana
+            }
+            
             document.getElementById('body_'+semana).innerHTML += '<tr>'+
                                                                     '<td>'+fecha[0]+'</td>' +
                                                                     '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
@@ -333,7 +365,7 @@ const render_semana_rolado = (json,semana) => {
                                                                     '<td class="txt-center '+observaciones[contador+5]+'">'+turnos[i][2]+'</td>' +
                                                                     '<td class="txt-center"></td>' +
                                                                     '<td class="txt-center">'+total_semana+'</td>' +
-                                                                    '<td class="txt-center">0</td>' +
+                                                                    '<td class="txt-center">'+new Intl.NumberFormat('es-MX').format(acumulado)+'</td>' +
                                                                 '</tr>';
             totales_semanales[0] += parseInt(turnos[i][0],10)
             totales_semanales[1] += parseInt(turnos[i][1],10)
@@ -342,6 +374,7 @@ const render_semana_rolado = (json,semana) => {
             totales_semanales[4] += parseInt(turnos[i][4],10)
             totales_semanales[5] += parseInt(turnos[i][5],10)
             totales_semanales[7] += parseInt(total_semana)
+            totales_semanales[8] += parseInt(acumulado)
             contador+=3
         }
 
@@ -433,7 +466,7 @@ const render_encabezado_forjado = (limite_semana,anio, mes) => {
     }
 }
 
-const render_encabezado_ranurado_shank = (limite_semana,anio, mes) => {
+const render_encabezado_ranurado = (limite_semana,anio, mes) => {
     let inicio = 1
     let fin = 0
 
@@ -467,7 +500,69 @@ const render_encabezado_ranurado_shank = (limite_semana,anio, mes) => {
                                                         '<th>2</th>'+
                                                         '<th>3</th>'+
                                                         '<th></th>'+
-                                                        '<th colspan="2">RANURADO y SHANK</th>'+
+                                                        '<th colspan="2">RANURADO</th>'+
+                                                    '</tr>'+
+                                                '</thead>'+
+                                                '<tbody id="body_'+(i+1)+'">'+
+                                                '</tbody>'+
+                                            '</table>'+
+                                        '</div>'+
+                                    '</div>'
+        acordeon[0].appendChild(div)
+        if (i == 0) {
+            inicio = '01'
+        } else {
+            if (limite_semana[i-1] < 10) {
+                inicio = '0'+(limite_semana[i-1]+1)
+            } else {
+                inicio = limite_semana[i-1]+1
+            }
+        }
+
+        if (limite_semana[i] < 10) {
+            fin = '0'+(limite_semana[i])
+        } else {
+            fin = (limite_semana[i])
+        }
+        obtener_dias(estado.value, select.value,anio+'-'+mes+'-'+inicio,anio+'-'+mes+'-'+fin, (i+1))
+    }
+}
+
+const render_encabezado_shank = (limite_semana,anio, mes) => {
+    let inicio = 1
+    let fin = 0
+
+    const informacion = document.getElementsByClassName('informacion')
+    const acordeon_div = document.createElement('div')
+
+    acordeon_div.classList.add('acordeon')
+    acordeon_div.classList.add('tarjeta_transparente')
+    acordeon_div.setAttribute('id','acordeon')
+    informacion[1].appendChild(acordeon_div)
+
+    const acordeon = document.getElementsByClassName('acordeon')
+
+    for (let i = 0; i < limite_semana.length; i++) {
+        const div = document.createElement('div')
+        div.innerHTML += '<div class="acordeon_opcion">'+
+                                        '<div class="titulo_acordeon">'+
+                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+'</h3>'+
+                                        '</div>'+
+                                        '<div id="semana_'+i+'" class="contenido_acordeon mostrar_contenido">'+
+                                            '<table id="tabla_'+(i+1)+'">'+
+                                                '<thead>'+
+                                                    '<tr>'+
+                                                        '<th rowspan="2">Día</th>'+
+                                                        '<th colspan="3">REPORTE DIARIO POR MAQUINA</th>'+
+                                                        '<th></th>'+
+                                                        '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
+                                                    '</tr>'+
+                                                    '<tr>'+
+                                                        '<th>1</th>'+
+                                                        '<th>2</th>'+
+                                                        '<th>3</th>'+
+                                                        '<th></th>'+
+                                                        '<th colspan="2">SHANK</th>'+
                                                     '</tr>'+
                                                 '</thead>'+
                                                 '<tbody id="body_'+(i+1)+'">'+
@@ -639,10 +734,12 @@ const obtener_semanas = (anio, mes, estado_seleccionado) => {
     if (estado_seleccionado == 1) {
         render_encabezado_forjado(limite_semana,anio, mes)
     } else if (estado_seleccionado == 2) {
-        render_encabezado_ranurado_shank(limite_semana,anio,mes)
+        render_encabezado_ranurado(limite_semana,anio,mes)
     } else if (estado_seleccionado == 3) {
         render_encabezado_rolado(limite_semana,anio,mes)
-    } else if (estado_seleccionado == 6) {
+    } else if (estado_seleccionado == 4) {
+        render_encabezado_shank(limite_semana,anio,mes)
+    }else if (estado_seleccionado == 6) {
         render_encabezado_acabado(limite_semana,anio,mes)
     }
 }
@@ -656,6 +753,8 @@ const obtener_dias = (vista, concepto, inicio, fin, semana) => {
             render_semana_ranurado_shank(json,semana)
         } else if (vista == 3) {
             render_semana_rolado(json,semana)
+        } else if (vista == 4) {
+            render_semana_ranurado_shank(json,semana)
         } else if (vista == 6) {
             render_semana_acabo(json,semana)
         }

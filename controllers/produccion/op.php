@@ -23,6 +23,16 @@
             echo $json;
         }
 
+        public function obtener_plano () {
+            if (isset($_GET['id_plano'])) {
+                $plano = $this->model->buscar('v_planos','Id_Catalogo',$_GET['id_plano']);
+                // echo $plano[0]['PDF'];
+                echo base64_encode($plano[0]['PDF']);
+            } else {
+                echo 2;
+            }
+        }
+
         public function buscar_op () { 
             if (isset($_POST['check_op'])) {
                 if (isset($_POST['f_op'])) {
