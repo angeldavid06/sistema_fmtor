@@ -13,12 +13,16 @@
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
                 <h1>Registro Diario de Producción</h1>
-                <div class="d-flex align-content-center tarjeta-transparente">
-                    <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
-                    <button class="btn btn-icon">
-                        <i class="material-icons">description</i>
-                        Generar documento
-                    </button>
+                <div class="d-grid g2-8-2 tarjeta-transparente">
+                    <div>
+                        <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
+                    </div>
+                    <div class="d-flex align-content-center justify-right">
+                        <button class="btn btn-icon">
+                            <i class="material-icons">description</i>
+                            Generar documento
+                        </button>
+                    </div>
                 </div>
                 <div class="d-grid g2-2-8">
                     <div class="position-relative">
@@ -82,8 +86,8 @@
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js?1.3"></script>
-    <script src="../../public/js/produccion/control.js?2.0"></script>
-    <script src="../../public/js/produccion/estados.js?2.2"></script>
+    <script src="../../public/js/fmtor_libreria.js?2.0"></script>
+    <script src="../../public/js/produccion/control.js?2.1"></script>
+    <script src="../../public/js/produccion/estados.js?2.3"></script>
 </body>
 </html>

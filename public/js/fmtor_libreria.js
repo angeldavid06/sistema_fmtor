@@ -158,6 +158,8 @@ const open_alert = (titulo,color) => {
         icono = 'check';
     } else if (color == 'azul') {
         icono = 'info';
+    } else if (color == 'naranja') {
+        icono = 'feedback';
     } else {
         icono = 'info';
     }

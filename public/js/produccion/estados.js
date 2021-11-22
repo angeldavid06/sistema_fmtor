@@ -14,7 +14,7 @@ document.addEventListener('click', (evt) => {
             titulo_estado[0].innerHTML = evt.target.dataset.titulo;
             obtener_control(evt.target.dataset.estado)
         } else {
-            open_alert('No ha introducido la Orden de Producción', 'rojo')
+            open_alert('No ha introducido la Orden de Producción', 'naranja')
         }
     } 
 });
@@ -96,7 +96,7 @@ const render_control = (vista,json) => {
                                 '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
                                 '<td class="txt-right">'+el.no_maquina+'</td>'+
                                 '<td><button class="btn btn-icon-self btn-rojo material-icons" data-opcion="cerrar" data-eliminar='+el.id_registro_diario+'>delete</button></td>'+
-                                '<td><button class="btn btn-icon-self material-icons" data-modal="modal-actualizar" data-opcion="actualizar"  data-edit="'+el.id_registro_diario+'">edit</button></td>'+
+                                '<td><button class="btn btn-icon-self btn-amarillo material-icons" data-modal="modal-actualizar" data-opcion="actualizar"  data-edit="'+el.id_registro_diario+'">edit</button></td>'+
                                 '</tr>';
         totales.total_kg += parseFloat(el.kilos)
         totales.total_pzas  += parseInt(el.pzas)

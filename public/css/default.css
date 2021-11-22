@@ -33,7 +33,13 @@
         --background-button:#5AB3F0;
 
         --background-red-main: #F2B8B5;
-        --color-red-main: #731F1F;
+        --color-red-main: #964b19;
+
+        --background-orange-main: #e9b07a;
+        --color-orange-main: #a8401d;
+
+        --background-yellow-main: #eed17a;
+        --color-yellow-main: #836610;
 
         --background-green-main: #81C995;
         --color-green-main: #282E2D;
@@ -56,6 +62,12 @@
 
         --background-red-main: #B3261E;
         --color-red-main: #FBF6F5;
+        
+        --background-orange-main: #F4511E;
+        --color-orange-main: #EEF3FB;
+
+        --background-yellow-main: #EDB303;
+        --color-yellow-main: #413205;
 
         --background-green-main: #81C995;
         --color-green-main: #212325;
@@ -80,8 +92,8 @@
 }
 
 *::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
 }
 
 *::-webkit-scrollbar-thumb:active {
@@ -94,7 +106,6 @@
 
 *::-webkit-scrollbar-track {
     background: var(--background-aux); 
-    border-radius: var(--border-radius);
 }
 
 *::-webkit-scrollbar-track:hover,
@@ -104,7 +115,6 @@
 
 *::-webkit-scrollbar-thumb {
     background: var(--background-button);
-    border-radius: var(--border-radius);
 }
 
 .error_404 {
@@ -232,13 +242,22 @@
     color: var(--color-red-main);
 }
 
+.alert-naranja .contenido {
+    background-color: var(--background-orange-main);
+}
+
+.alert-naranja .contenido p,
+.alert-naranja .contenido i{
+    color: var(--color-orange-main);
+}
+
 .alert-amarillo .contenido {
-    background-color: var(--color-yellow);
+    background-color: var(--background-yellow-main);
 }
 
 .alert-amarillo .contenido p,
 .alert-amarillo .contenido i {
-    color: var(--color-text);
+    color: var(--color-yellow-main);
 }
 
 .alert-azul .contenido {
@@ -400,6 +419,24 @@ button {
 
 .btn-rojo i {
     color: var(--color-red-main);
+}
+
+.btn-naranja {
+    background-color: var(--background-orange-main);
+    color: var(--color-orange-main);
+}
+
+.btn-naranja i {
+    color: var(--color-orange-main);
+}
+
+.btn-amarillo {
+    background-color: var(--background-yellow-main);
+    color: var(--color-yellow-main);
+}
+
+.btn-amarillo i {
+    color: var(--color-yellow-main);
 }
 
 #btn-subir {
@@ -1306,6 +1343,10 @@ embed {
     display: grid;
     grid-gap: 30px;
     width: 100%;
+}
+
+.grid-gap-0 {
+    grid-gap: 0;
 }
 
 .g-12 {
