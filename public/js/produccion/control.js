@@ -152,7 +152,7 @@ const actualizar_registro = () => {
 
 const generar_PDF = (valor) => {
     if (valor != '') {
-        printPage(url+'/public/pdf/produccion/control.php?valor='+valor);
+        printPage(url+'/produccion/control/pdf_control?valor='+valor);
     } else {
         open_alert('No ha introducido la orden de producción','naranja')
     }

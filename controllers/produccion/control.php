@@ -20,6 +20,35 @@
             echo $json;
         }
 
+        public function pdf_control () {
+            if (isset($_GET['valor'])) {
+                $forjado = $this->model->buscar('v_forjado','Id_Folio_1',$_GET['valor']);
+                $this->model= new Model();
+                $ranurado = $this->model->buscar('v_ranurado','Id_Folio_1',$_GET['valor']);
+                $this->model= new Model();
+                $rolado = $this->model->buscar('v_rolado','Id_Folio_1',$_GET['valor']);
+                $this->model= new Model();
+                $shank = $this->model->buscar('v_shank','Id_Folio_1',$_GET['valor']);
+                $this->model= new Model();
+                $cementado = $this->model->buscar('v_cementado','Id_Folio_1',$_GET['valor']);
+                $this->model= new Model();
+                $acabado = $this->model->buscar('v_acabado','Id_Folio_1',$_GET['valor']);
+
+                $data = [
+                    "forjado" => $forjado,
+                    "ranurado" => $ranurado,
+                    "rolado" => $rolado,
+                    "shank" => $shank,
+                    "cementado" => $cementado,
+                    "acabado" => $acabado
+                ];
+
+                $this->web->PDF('produccion/control',$data);
+            } else {
+                echo 0;
+            }
+        }
+
         public function obtener_info_op () {
             if (isset($_GET['op'])) {
                 $op = $_GET['op'];

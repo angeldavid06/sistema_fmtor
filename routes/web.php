@@ -8,6 +8,14 @@
                 echo 'La vista no existe';
             }
         } 
+        
+        public function PDF ($view,$data) {
+            if (file_exists('public/pdf/'.$view.'.php')) {
+                require_once 'public/pdf/'.$view.'.php';
+            } else {    
+                echo 'La vista no existe';
+            }
+        }
     }
 
 ?>

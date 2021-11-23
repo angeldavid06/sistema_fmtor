@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control de Producción</title>
-    <link rel="stylesheet" href="../../css/formato.css">
+    <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css">
 </head>
 <body>
     <div class="reporte reporte_producción">
@@ -40,12 +40,13 @@
             </table>
         </div>
         <div class="seguimiento">
+            <?php require_once 'modules_pdf/v_forjado.php'; ?>
             <table>
                 <thead>
                     <th colspan="4">titulo</th>
                     <th colspan="2">Factor:</th>
                 </thead>
-                <tbody>
+                <tbody id="v_ranurado">
                 </tbody>
                 <tfoot>
                     <tr>
@@ -59,7 +60,7 @@
                     <th colspan="4">titulo</th>
                     <th colspan="2">Factor:</th>
                 </thead>
-                <tbody>
+                <tbody id="v_rolado">
                 </tbody>
                 <tfoot>
                     <tr>
@@ -73,7 +74,7 @@
                     <th colspan="4">titulo</th>
                     <th colspan="2">Factor:</th>
                 </thead>
-                <tbody>
+                <tbody  id="v_shank">
                 </tbody>
                 <tfoot>
                     <tr>
@@ -87,7 +88,7 @@
                     <th colspan="4">titulo</th>
                     <th colspan="2">Factor:</th>
                 </thead>
-                <tbody>
+                <tbody id="v_cementado">
                 </tbody>
                 <tfoot>
                     <tr>
@@ -101,21 +102,7 @@
                     <th colspan="4">titulo</th>
                     <th colspan="2">Factor:</th>
                 </thead>
-                <tbody>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5">Total:</td>
-                        <td>00.00</td>
-                    </tr>
-                </tfoot>
-            </table>
-            <table>
-                <thead>
-                    <th colspan="4">titulo</th>
-                    <th colspan="2">Factor:</th>
-                </thead>
-                <tbody>
+                <tbody id="v_acabado">
                 </tbody>
                 <tfoot>
                     <tr>
@@ -125,24 +112,6 @@
                 </tfoot>
             </table>
         </div>
-        <div id="aux"></div>
     </div>
-    <script src="../../js/fmtor_libreria.js"></script>
-    <script>
-        const vistas = ['v_forjado', 'v_ranurado', 'v_rolado', 'v_shank', 'v_cementado', 'v_acabado']
-
-        const buscar_datos = (valor) => {
-            for (let i = 0; i < vistas.length; i++) {
-                const respuesta = fetchAPI('',url+'/produccion/control/obtener_control?control='+control,'');
-                respuesta.then(json => {
-                    document.getElementById('aux').innerText = json;
-                })
-            }
-        }
-
-        (() => {
-            buscar_datos(<?php echo $_GET['valor'];?>)
-        })()
-    </script>
 </body>
 </html>

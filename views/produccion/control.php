@@ -86,8 +86,8 @@
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js?2.0"></script>
-    <script src="../../public/js/produccion/control.js?2.3"></script>
+    <script src="../../public/js/fmtor_libreria.js?2.1"></script>
+    <script src="../../public/js/produccion/control.js?2.5"></script>
     <script src="../../public/js/produccion/estados.js?2.3"></script>
 </body>
 </html>
