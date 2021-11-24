@@ -17,6 +17,8 @@
             $op = $control->op;
             $ops = $this->model->buscar($vista,'Id_Folio_1',$op);
             $json = json_encode($ops);
+            $archivo='../../public/control.js';
+            file_put_contents($archivo,$json);
             echo $json;
         }
 
@@ -54,6 +56,8 @@
                 $op = $_GET['op'];
                 $ops = $this->model->buscar('v_control','Orden_Produccion',$op);
                 $json = json_encode($ops);
+                $archivo='../../public/control.js';
+                file_put_contents($archivo,$json);
                 echo $json;
             }
         }
