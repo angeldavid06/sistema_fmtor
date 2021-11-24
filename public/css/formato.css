@@ -3,30 +3,60 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Inter', sans-serif; 
-    -webkit-print-color-adjust: exact;
+    font-family: 'Century Gothic', sans-serif;; 
 }
 
 /* @media print { */
+/* @page { padding: 70px 0px 70px 0px; } */
 
-    .reporte {
+@page  
+{ 
+    size: auto;   /* auto is the initial value */ 
+
+    /* this affects the margin in the printer settings */ 
+    /* margin: 25mm 0mm 25mm 0mm;   */
+} 
+
+    /* .reporte {
         width: 100%;
         min-height: 100vh;
     }
     
     .encabezado {
         width: 100%;
+        height: 80px;
     }
     
     .encabezado table {
         width: 100%;
+        position: fixed;
+        top: 0mm;
+        min-width: 100%;
         border-collapse: collapse;
     }
     
-    .encabezado table th {
-        padding: 10px;
-        font-size: 2em;
-        border: 1px solid black;
+    .encabezado table th div {
+        width: 100%;
+        padding: 10px 0px;
+    }
+    
+    .encabezado table th .empresa {
+        border-bottom: 3px solid #0070BF;
+    }
+
+    .encabezado table th p {
+        width: 100%;
+        padding: 10px 0px;
+        font-weight: 500;
+        font-size: 1.2em;
+        line-height: 0;
+        font-family: 'bahnschrift', sans-serif;
+    }
+
+    .encabezado table th span {
+        width: 100%;
+        font-weight: 500;
+        font-family: 'bahnschrift', sans-serif;
     }
     
     .encabezado table tbody td {
@@ -36,21 +66,13 @@
     .encabezado table tbody .logo {
         width: 350px;
         height: 100px;
-        background-color: hsl(0, 49%, 40%);
         margin: auto;
     }
     
-    .reporte_producción .encabezado table tbody td,
-    .reporte_producción .seguimiento table thead th,
-    .reporte_producción .seguimiento table tbody td,
-    .reporte_producción .seguimiento table tfoot td,
-    .reporte_diario .encabezado table tbody td,
-    .reporte_diario .seguimiento table thead th,
-    .reporte_diario .seguimiento table tbody td,
-    .reporte_diario .seguimiento table tfoot td,
-    .reporte_maquina .seguimiento table thead th,
-    .reporte_maquina .seguimiento table tbody td,
-    .reporte_maquina .seguimiento table tfoot td {
+    .reporte .encabezado table tbody td,
+    .reporte .seguimiento table thead th,
+    .reporte .seguimiento table tbody td,
+    .reporte .seguimiento table tfoot td {
         padding: 5px;
         font-size: 0.7em;
     }
@@ -63,7 +85,7 @@
         grid-template: repeat(2,1fr) / repeat(3, 1fr);
     }
     
-    .reporte_diario .seguimiento {
+    .reporte .seguimiento {
         width: 100%;
         padding-top: 20px;
     }
@@ -76,37 +98,290 @@
         grid-template-columns: repeat(2, 1fr);
     }
     
-    .reporte_diario .seguimiento table {
+    .reporte .seguimiento table {
         width: 100%;
-    }
-    
-    .reporte_diario .encabezado table tbody td,
-    .reporte_diario .seguimiento table thead th,
-    .reporte_diario .seguimiento table tbody td,
-    .reporte_diario .seguimiento table tfoot td,
-    .reporte_maquina .encabezado table tbody td,
-    .reporte_maquina .seguimiento table thead th,
-    .reporte_maquina .seguimiento table tbody td,
-    .reporte_maquina .seguimiento table tfoot td {
-        font-size: 1em;
+        min-width: 100%;
     }
 
     .reporte_maquina .seguimiento table thead th {
         height: 50px;
     }
     
-    .reporte_producción .seguimiento table,
-    .reporte_diario .seguimiento table,
-    .reporte_maquina .seguimiento table {
+    .reporte .seguimiento table {
         border-collapse: collapse;
     }
     
-    .reporte_producción .seguimiento table th,
-    .reporte_producción .seguimiento table td,
-    .reporte_diario .seguimiento table th,
-    .reporte_diario .seguimiento table td,
-    .reporte_maquina .seguimiento table th,
-    .reporte_maquina .seguimiento table td {
+    .reporte .seguimiento table th,
+    .reporte .seguimiento table td {
         border: 1px solid black;
+    } */
+
+    .txt-left {
+        text-align: left;
+    }
+
+    .txt-center {
+        text-align: center;
+    }
+
+    .txt-justify {
+        text-align: justify;
+    }
+
+    .txt-right {
+        text-align: right;
+    }
+
+    .txt-lowercase {
+        text-transform: lowercase;
+    }
+
+    .txt-capitalize {
+        text-transform: capitalize;
+    }
+
+    .txt-uppercase {
+        text-transform: uppercase;
+    }
+
+    .d-grid {
+        display: grid;
+        grid-gap: 30px;
+        width: 100%;
+    }
+
+    .grid-gap-0 {
+        grid-gap: 0;
+    }
+
+    .g-12 {
+        grid-template-columns: repeat(12,1fr);
+    }
+
+    .g-11 {
+        grid-template-columns: repeat(11,1fr);
+    }
+
+    .g-10 {
+        grid-template-columns: repeat(10,1fr);
+    }
+
+    .g-9 {
+        grid-template-columns: repeat(9,1fr);
+    }
+
+    .g-8 {
+        grid-template-columns: repeat(8,1fr);
+    }
+
+    .g-7 {
+        grid-template-columns: repeat(7,1fr);
+    }
+
+    .g-6 {
+        grid-template-columns: repeat(6,1fr);
+    }
+
+    .g-5 {
+        grid-template-columns: repeat(5,1fr);
+    }
+
+    .g-4 {
+        grid-template-columns: repeat(4,1fr);
+    }
+
+    .g-3 {
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .g-2 {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .g2-1-9 {
+        grid-template-columns: 0.2fr 1.8fr;
+    }
+
+    .g2-2-8 {
+        grid-template-columns: 0.4fr 1.6fr;
+    }
+
+    .g2-3-7 {
+        grid-template-columns: 0.6fr 1.4fr;
+    }
+
+    .g2-4-6 {
+        grid-template-columns: 0.8fr 1.2fr;
+    }
+
+    .g2-5-5 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .g2-6-4 {
+        grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .g2-7-3 {
+        grid-template-columns: 1.4fr 0.6fr;
+    }
+
+    .g2-8-2 {
+        grid-template-columns: 1.6fr 0.4fr;
+    }
+
+    .g2-9-1 {
+        grid-template-columns: 1.8fr 0.2fr;
+    }
+
+    .g-1 {
+        grid-template-columns: 1fr;
+    }
+
+    .d-flex {
+        display: flex;
+        width: 100%;
+    }
+
+    .flex-column {
+        flex-direction: column;
+    }
+
+    .flex-column-reverse {
+        flex-direction: column-reverse;
+    }
+
+    .flex-row {
+        flex-direction: row;
+    }
+
+    .flex-row-reverse {
+        flex-direction: row-reverse;
+    }
+
+    .justify-left {
+        justify-content: flex-start;
+    }
+
+    .justify-center {
+        justify-content: center;
+    }
+
+    .justify-right {
+        justify-content: flex-end;
+    }
+
+    .justify-between {
+        justify-content: space-between;
+    }
+
+    .align-content-top {
+        align-items: flex-start;
+        align-content: flex-start;
+    }
+
+    .align-content-center {
+        align-items: center;
+        align-content: center;
+    }
+
+    .align-content-bottom {
+        align-items: flex-end;
+        align-content: flex-end;
+    }
+
+    .flex-wrap {
+        flex-wrap: wrap;
+    }
+
+    .flex-nowrap {
+        flex-wrap: nowrap;
+    }
+
+    .formato {
+        width: 100%;
+        min-width: 100%;
+        border-collapse: collapse;
+    }
+
+    thead .th {
+        height: 120px;
+    }
+
+    tfoot .tf {
+        height: 30px;
+    }
+
+    thead .th-normal {
+        padding: 5px;
+        font-size: 0.7em;
+        border: 1px solid black;
+    }
+
+    tbody.informacion td {
+        padding: 5px;
+        font-size: 0.7em;
+        border: 1px solid black;
+    }
+
+    .header {
+        width: 100%;
+        height: 80px;
+    }
+    
+    .header table {
+        width: 100%;
+        position: fixed;
+        top: 0mm;
+        min-width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .header table th div {
+        width: 100%;
+        padding: 10px 0px;
+    }
+    
+    .header table th .empresa {
+        border-bottom: 3px solid #0070BF;
+    }
+
+    .header table th p {
+        width: 100%;
+        padding: 10px 0px;
+        font-weight: 500;
+        font-size: 1.2em;
+        line-height: 0;
+        font-family: 'bahnschrift', sans-serif;
+    }
+
+    .header table th span {
+        width: 100%;
+        font-weight: 500;
+        font-family: 'bahnschrift', sans-serif;
+    }
+
+    .footer {
+        width: 100%;
+        min-width: 100%;
+        position: fixed;
+        bottom: 0;
+        font-size: 0.7em;
+    }
+
+    @media print {
+        /* footer {
+            position: fixed;
+            bottom: 0;
+        }
+
+        .content-block, p {
+            page-break-inside: avoid;
+        }
+
+        html, body {
+            width: 210mm;
+            height: 297mm;
+        } */
     }
 /* } */

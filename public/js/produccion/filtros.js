@@ -76,7 +76,6 @@ const enviar_datos = () => {
 const buscar_dato = (metodo) => {
     const respuesta = fetchAPI(form_filtros, url+'/produccion/op/'+metodo, 'POST');
     respuesta.then(json => {
-        console.log(json);
         limpiar_tabla()
         const input_tabla = document.getElementById('tabla')
         if (input_tabla.value == 'v_ordenes') {
