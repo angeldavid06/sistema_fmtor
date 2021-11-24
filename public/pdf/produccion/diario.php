@@ -12,8 +12,23 @@
         <div class="encabezado">
             <table>
                 <thead>
-                    <th colspan="6">REPORTE DIARIO DE PRODUCCIÓN</th>
+                    <tr class="d-flex justify-between">
+                        <th class="d-flex align-content-top justify-left" width="270px">
+                            <img width="270px" src="http://localhost/sistema_fmtor/public/img/logo_formato.png" alt="" srcset="">
+                        </th>
+                        <th class="d-flex align-content-center flex-wrap justify-right txt-right">
+                            <div class="empresa">
+                                <p>FORJADORA MEXICANADA DE TORNILLOS</p>
+                                <span>S.A. DE C.V.</span>
+                            </div>
+                            <div class="titulo">
+                                <p>REPORTE DIARIO DE PRODUCCIÓN</p>
+                            </div>
+                        </th>
+                    </tr>
                 </thead>
+            </table>
+            <table>
                 <tbody>
                     <tr>
                         <td rowspan="4" colspan="0" class="logo">
@@ -39,6 +54,7 @@
                 </tbody>
             </table>
         </div>
+        
         <div class="seguimiento">
             <?php require_once 'modules_pdf/tabla_diario.php'; ?>
         </div>
