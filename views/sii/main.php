@@ -16,25 +16,30 @@
                 <h2>Sistema Integral de Información</h2>
                 <main>
                     <nav class="d-grid g-2">
-                        <a href="http://localhost/sistema_fmtor/produccion/main/control"
+                        <a href="http://localhost/sistema_fmtor/sii/main/datosEmpleados"
                             class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
+                            Datos Personales
                         </a>
-                        <a href="http://localhost/sistema_fmtor/produccion/main/ordenes"
+                        <a href="http://localhost/sistema_fmtor/sii/main/datosAdmin"
                         class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
+                            Datos de los Empleados
                         </a>
                         <a href="http://localhost/sistema_fmtor/produccion/main/maquinas"
                         class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
+                            Informacion Financiera
                         </a>
                         <a href="http://localhost/sistema_fmtor/produccion/main/estados"
                         class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
+                            Caja de Ahorro
+                        </a>
+                        <a href="http://localhost/sistema_fmtor/produccion/main/estados"
+                        class="tarjeta d-flex align-content-center">
+                            <i class="material-icons icon">insert_emoticon</i>
+                            Informacion financiera de los empleados
                         </a>
                     </nav>
                 </main>

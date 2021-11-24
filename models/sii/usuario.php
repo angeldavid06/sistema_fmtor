@@ -18,7 +18,8 @@
      public $usuario;
      public $contrasena;
      public $nombrePuesto;
-    public $nombreRol;
+     public $nombreRol;
+     public $nombreDepartamento;
 
 
     public function getNombre(){return $this->nombre;}
@@ -51,43 +52,57 @@
     public function setNombrePuesto ($nombrePuesto): void{$this->nombrePuesto = $nombrePuesto;}
     public function getNombreRol(){return $this->nombreRol;}
     public function setNombreRol ($nombreRol): void{$this->nombreRol = $nombreRol;}
+    public function getNombreDepartamento(){return $this->nombreDepartamento;}
+    public function setNombreDepartamento($nombreDepartamento): void{$this->nombreDepartamento = $nombreDepartamento;}
+    public function getFoto(){return $this->foto;}
+    public function setFoto($foto) :void{$this->foto = $foto;}
 
     public function insertarEmpleado()
     {
         $tabla = 't_empleados';
-        $parametros = 'nombre,apellidoP,apellidoM,fechaNacimiento,telefono,correo,fechaIngreso,curp,rfc,nss,estado,id_puesto';
-        $values = "'$this->nombre','$this->apellidoP','$this->apellidoM','$this->fechaNacimiento','$this->telefono','$this->correo','$this->fechaIngreso','$this->curp','$this->rfc','$this->nss','$this->estado','$this->nombrePuesto'";
-        $validacion = Model::insertar($tabla,$parametros,$values);
-        if ($validacion) {
-            $campo = 'id_empleado';
-            $nombre = "curp = '$this->curp'";
-            $consulta = self::buscar_personalizado($tabla,$campo,$nombre);
-            if(!empty($consulta)) {
-                $id = $consulta['id_empleado'];
-                $condicion = "id_empleado = '$id'";
-                return self::insertarUsuario($tabla,$campo,$condicion);
-            } else{
-                echo 0;
-            }
+        $parametros = 'nombre,apellidoP,apellidoM,fechaNacimiento,telefono,correo,fechaIngreso,curp,rfc,nss,estado,id_puesto_1,foto,id_departamento_2'; 
+        $values = "'$this->nombre','$this->apellidoP','$this->apellidoM','$this->fechaNacimiento','$this->telefono','$this->correo','$this->fechaIngreso','$this->curp','$this->rfc','$this->nss','$this->estado','$this->nombrePuesto','$this->foto','$this->nombreDepartamento'";
+        $validar_curp = Model::buscar_personalizado($tabla,'curp',"curp = '$this->curp'");
+        if (!empty($validar_curp[0]['curp'])) {
+            echo 'el empleado ya esta registrado';
+            }else {
+                $validacion = self::insertar($tabla,$parametros,$values);
+                if ($validacion) {
+                $campo = 'id_empleados';
+                $nombre = "curp = '$this->curp'";
+                $consulta = self::buscar_personalizado($tabla,$campo,$nombre);
+                if(!empty($consulta)) {
+                    $id = $consulta[0]['id_empleados'];
+                    $condicion = "id_empleados = '$id'";
+                    return self::insertarUsuario($tabla,$campo,$condicion);
+                        } else{
+                            echo 'No se inserto';
+                        }
             
-        }else{
-            echo 0;
+                        }else{
+                            echo 'consulta fallida';
+                        }
+            }    
         }
-        
-        
-    }
 
     public function insertarUsuario($tabla,$campo,$condicion){
         $id_empleado = Model::buscar_personalizado($tabla,$campo,$condicion);
         if (!empty($id_empleado)) {
-            $id = $id_empleado['id_empleado'];
-            $tabla = 't_usuario';
-            $parametros = 'id_empleado,usuario,contrasena,id_rol';
-            $password = password_hash($this->contrasena, PASSWORD_DEFAULT, ['cost'=>10] );
-            $values = "'$id','$this->usuario','$password'";
-            return Model::insertar($tabla,$parametros,$values);
+            $id = $id_empleado[0]['id_empleados'];
+            $condicion = "id_empleado_1 = '$this->id'";
+            $validacion = Model::buscar_personalizado('t_usuario','id_empleado_1',$condicion);
+                if(!empty($validacion['id_empleado_1'])) {
+                    echo 'El id ya esta relacionado con otro';
+                    
+                }else {
+                    $tabla = 't_usuario';
+                    $parametros = 'usuario,id_empleado_2,id_rol_1,contrasena';
+                    $password = password_hash($this->contrasena, PASSWORD_DEFAULT, ['cost'=>10] );
+                    $values = "'$this->usuario','$id','$this->nombreRol','$this->nombreDepartamento'";
+                    return Model::insertar($tabla,$parametros,$values);
+                }
         } else {
-            echo 0;
+            echo 'No se inserto 2';
         }
         
     }
@@ -95,12 +110,26 @@
 
     public function insertar_soloUsuario()
     {
-        
-            $tabla = 't_usuario';
-            $columnas = 'usuario,contrasena';
-            $password = password_hash($this->contrasena, PASSWORD_DEFAULT,['cost=>']);
-            $valores = "'$this->usuario','$this->password'";
+            $empleado = 't_empleados';
+            $condicion = "curp = '$this->curp'";
+            $campo = 'id_empleados';
+            $consulta = Model::buscar_personalizado($empleado,$campo,$condicion);
+            $id_empleado = $consulta[0]['id_empleados'];
+            $usuario = Model::buscar_personalizado('t_usuario','id_empleado_2',"id_empleado_1 = '$id_empleado'");
+            if (!empty($usuario[0]['id_empleado_1'])) {
+                echo 'el usuario ya se registro';
+            }else {
+                    if(!empty($consulta)){
+                        $id = $consulta[0]['id_empleado_1'];
+                        $tabla = 't_usuario';
+                        $columnas = 'id_empleado_2,usuario,contrasena,id_rol';
+                        $password = password_hash($this->contrasena, PASSWORD_DEFAULT,['cost'=>10]);
+                        $valores = "'$id','$this->usuario','$password','$this->nombreRol'";
             return Model::insertar($tabla,$columnas,$valores);
+            }else {
+            echo 'No se inserto 3';
+        }  
+    }
     }
 
 

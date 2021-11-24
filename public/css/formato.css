@@ -3,60 +3,31 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Century Gothic', sans-serif;; 
+    font-family: 'Inter', sans-serif; 
+    -webkit-print-color-adjust: exact;
 }
 
 /* @media print { */
-/* @page { padding: 70px 0px 70px 0px; } */
 
-@page  
-{ 
-    size: auto;   /* auto is the initial value */ 
-
-    /* this affects the margin in the printer settings */ 
-    /* margin: 25mm 0mm 25mm 0mm;   */
-} 
-
-    /* .reporte {
+    .reporte {
         width: 100%;
         min-height: 100vh;
     }
     
     .encabezado {
         width: 100%;
-        height: 80px;
     }
     
     .encabezado table {
         width: 100%;
-        position: fixed;
-        top: 0mm;
         min-width: 100%;
         border-collapse: collapse;
     }
     
-    .encabezado table th div {
-        width: 100%;
-        padding: 10px 0px;
-    }
-    
-    .encabezado table th .empresa {
-        border-bottom: 3px solid #0070BF;
-    }
-
-    .encabezado table th p {
-        width: 100%;
-        padding: 10px 0px;
-        font-weight: 500;
-        font-size: 1.2em;
-        line-height: 0;
-        font-family: 'bahnschrift', sans-serif;
-    }
-
-    .encabezado table th span {
-        width: 100%;
-        font-weight: 500;
-        font-family: 'bahnschrift', sans-serif;
+    .encabezado table th {
+        padding: 10px;
+        font-size: 2em;
+        border: 1px solid black;
     }
     
     .encabezado table tbody td {
@@ -66,6 +37,7 @@
     .encabezado table tbody .logo {
         width: 350px;
         height: 100px;
+        background-color: hsl(0, 49%, 40%);
         margin: auto;
     }
     
@@ -114,7 +86,7 @@
     .reporte .seguimiento table th,
     .reporte .seguimiento table td {
         border: 1px solid black;
-    } */
+    }
 
     .txt-left {
         text-align: left;
@@ -236,152 +208,5 @@
 
     .g-1 {
         grid-template-columns: 1fr;
-    }
-
-    .d-flex {
-        display: flex;
-        width: 100%;
-    }
-
-    .flex-column {
-        flex-direction: column;
-    }
-
-    .flex-column-reverse {
-        flex-direction: column-reverse;
-    }
-
-    .flex-row {
-        flex-direction: row;
-    }
-
-    .flex-row-reverse {
-        flex-direction: row-reverse;
-    }
-
-    .justify-left {
-        justify-content: flex-start;
-    }
-
-    .justify-center {
-        justify-content: center;
-    }
-
-    .justify-right {
-        justify-content: flex-end;
-    }
-
-    .justify-between {
-        justify-content: space-between;
-    }
-
-    .align-content-top {
-        align-items: flex-start;
-        align-content: flex-start;
-    }
-
-    .align-content-center {
-        align-items: center;
-        align-content: center;
-    }
-
-    .align-content-bottom {
-        align-items: flex-end;
-        align-content: flex-end;
-    }
-
-    .flex-wrap {
-        flex-wrap: wrap;
-    }
-
-    .flex-nowrap {
-        flex-wrap: nowrap;
-    }
-
-    .formato {
-        width: 100%;
-        min-width: 100%;
-        border-collapse: collapse;
-    }
-
-    thead .th {
-        height: 120px;
-    }
-
-    tfoot .tf {
-        height: 30px;
-    }
-
-    thead .th-normal {
-        padding: 5px;
-        font-size: 0.7em;
-        border: 1px solid black;
-    }
-
-    tbody.informacion td {
-        padding: 5px;
-        font-size: 0.7em;
-        border: 1px solid black;
-    }
-
-    .header {
-        width: 100%;
-        height: 80px;
-    }
-    
-    .header table {
-        width: 100%;
-        position: fixed;
-        top: 0mm;
-        min-width: 100%;
-        border-collapse: collapse;
-    }
-    
-    .header table th div {
-        width: 100%;
-        padding: 10px 0px;
-    }
-    
-    .header table th .empresa {
-        border-bottom: 3px solid #0070BF;
-    }
-
-    .header table th p {
-        width: 100%;
-        padding: 10px 0px;
-        font-weight: 500;
-        font-size: 1.2em;
-        line-height: 0;
-        font-family: 'bahnschrift', sans-serif;
-    }
-
-    .header table th span {
-        width: 100%;
-        font-weight: 500;
-        font-family: 'bahnschrift', sans-serif;
-    }
-
-    .footer {
-        width: 100%;
-        min-width: 100%;
-        position: fixed;
-        bottom: 0;
-        font-size: 0.7em;
-    }
-
-    @media print {
-        /* footer {
-            position: fixed;
-            bottom: 0;
-        }
-
-        .content-block, p {
-            page-break-inside: avoid;
-        }
-
-        html, body {
-            width: 210mm;
-            height: 297mm;
-        } */
     }
 /* } */

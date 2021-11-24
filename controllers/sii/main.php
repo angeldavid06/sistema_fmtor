@@ -24,13 +24,93 @@
 
         public function buscarPuesto(){
             $data = $this->model->mostrar('t_puesto');
-            echo $data;
+            echo json_encode($data);
         }
 
         public function buscarRol(){
             $data = $this->model->mostrar('t_rol');
-            echo $data;
+            echo json_encode($data);
         }
+
+        public function buscarDepto()
+        {
+            $data = $this->model->mostrar('t_departamento');
+            echo json_encode($data);
+        }
+
+        public function datosAdmin()
+        {
+            $this->web->View('sii/datosAdmin','');
+        }
+
+        public function reglamento(){
+            $this->web->View('sii/reglamento','');
+        }
+
+        public function caja_ahorro(){
+            $this->web->View('sii/caja_ahorro','');
+        }
+
+        public function caja_ahorro_usuario(){
+            $this->web->View('sii/caja_ahorro_usuario','');
+        }
+        
+        public function prestamos(){
+            $this->web->view('sii/prestamos','');
+        }
+
+        public function prestamos_usuario(){
+            $this->web->view('sii/prestamos_usuario','');
+        }
+
+        public function datosEmpleados()
+        {
+            $this->web->View('sii/datosEmpleados','');
+        }
+
+        public function informacionEmpleado()
+        {
+            $data = $this->model->buscar_personalizado('informacionempleados','*','id_empleados = '.$_GET['aux']);
+            echo json_encode($data);
+            
+            
+        }
+
+        public function EjemploPDF()
+        {
+            $this->web->View('sii/EjemploPDF');
+        }
+
+        public function cajaAhorro()
+        {
+            $this->web->View('sii/cajaAhorro');
+        }
+
+        public function inicio()
+        {
+            $this->web->View('sii/inicio');
+        }
+
+        public function buscarEmpleados()
+        {
+            $data = $this->model->mostrar('nombre_empleado');
+            echo json_encode($data);
+        }
+
+        public function mostrarDatos()
+        {
+           $data =  $this->model->mostrar('informacionempleados');
+           echo json_encode($data);
+        }
+
+        public function encontrarEmpleado()
+        {
+            $data = $this->model->buscar_personalizado('datos_personales','*','nombre LIKE '."'%".$_GET['nombre']."%'");
+            echo json_encode($data);
+            
+        }
+
+ 
 
         function newUser()
         {
@@ -61,8 +141,23 @@
                                                             if (isset($_POST['contrasena']) && $_POST['contrasena'] != '') {
                                                                 $this->model->setContrasena($_POST['contrasena']);
                                                                 if (isset($_POST['nombrePuesto']) && $_POST['nombrePuesto'] != '') {
-                                                                    $this->model->setNombrePuesto($_POST['nombrePuesto']);
-                                                                    echo $this->model->insertarEmpleado();
+                                                                    $this->model->setNombrePuesto($_POST['nombrePuesto']);  
+                                                                            if (isset($_POST['nombreDepartamento']) && $_POST['nombreDepartamento'] != '') {
+                                                                                $this->model->setNombreDepartamento($_POST['nombreDepartamento']);
+                                                                                if (isset($_POST['nombreRol']) && $_POST['nombreRol'] != '') {
+                                                                                    $this->model->setNombreRol($_POST['nombreRol']);
+                                                                                        if(isset($_FILES['foto']) && !empty($_FILES['foto'])){
+                                                                                            $this->model->setFoto($_FILES['foto']);
+                                                                                            echo $this->model->insertarEmpleado();
+                                                                                        }else {
+                                                                                            echo 16;
+                                                                                        }
+                                                                            }else {
+                                                                                echo 15;
+                                                                            }
+                                                                    }else {
+                                                                        echo 14;
+                                                                }
                                                                 }else{
                                                                     echo 13;
                                                                 } 
@@ -103,16 +198,26 @@
                     echo 1;
                 }
             }else{
-                echo 0;
+                echo 'No hay registro';
             }
             
         }
         function new_only_user() {
             if(isset($_POST['usuario']) && $_POST['usuario'] != ''){
                 $this->model->setUsuario($_POST['usuario']);
-                if(isset($_POST['contrasena']) && $_POST['contrasena'] != ''){
-                    $this->model->setContrasena($_POST['contrasena']);
-                    echo $this->model->insertar_soloUsuario();
+                if(isset($_POST['password']) && $_POST['password'] != ''){
+                    $this->model->setContrasena($_POST['password']);
+                    if (isset($_POST['nombreRol2']) && $_POST['nombreRol2'] != '') {
+                        $this->model->setNombreRol($_POST['nombreRol2']);
+                        if(isset($_POST['curp_empleado']) && $_POST['curp_empleado'] != ''){
+                            $this->model->setCurp($_POST['curp_empleado']);
+                            echo $this->model->insertar_soloUsuario();
+                    }else {
+                        echo 3;
+                    }
+                    }else {
+                        echo 2;
+                    }
                 }else{
                     echo 1;
                 }
@@ -120,5 +225,7 @@
                 echo 0;
             }
         }
+
+
     }
 ?>
