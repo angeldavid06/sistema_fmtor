@@ -11,6 +11,38 @@
             $this->web = new Web();
         }
         
+        public function pdf_ordenes () {
+            if (isset($_GET['formato'])) {
+                if ($_GET['filtro'] == 'op') {
+                    $data = $this->model->buscar($_GET['formato'],'Id_Folio',$_GET['f_op']);
+                } else if($_GET['filtro'] == 'r_op'){
+                    $data = $this->model->filtrar_rango($_GET['formato'],'Id_Folio',$_GET['f_r_op_m'],$_GET['f_r_op_M']);
+                } else if($_GET['filtro'] == 'r_fecha'){
+                    $data = $this->model->filtrar_rango($_GET['formato'],'fecha',$_GET['f_r_fecha_m'],$_GET['f_r_fecha_M']);
+                } else if($_GET['filtro'] == 'fecha'){
+                    $data = $this->model->buscar($_GET['formato'],'fecha',$_GET['f_fecha']);
+                } else if($_GET['filtro'] == 'cliente'){
+                    $data = $this->model->buscar($_GET['formato'],'Clientes',$_GET['f_cliente']);
+                } else if($_GET['filtro'] == 'estado'){
+                    $data = $this->model->buscar($_GET['formato'],'estado_general',$_GET['f_estado']);
+                } else if($_GET['filtro'] == 'mes'){
+                    $value ='-'.$_GET['f_mes'].'-';
+                    $data = $this->model->filtrar($_GET['formato'],'fecha',$value);
+                } else if($_GET['filtro'] == 'anio'){
+                    $value = $_GET['f_anio'].'-';
+                    $data = $this->model->filtrar($_GET['formato'],'fecha',$value);
+                } else {
+                    $data = $this->model->mostrar($_GET['formato']);
+                }
+
+                if ($_GET['formato'] == 'v_ordenes') {
+                    $this->web->PDF('produccion/ordenes',$data);
+                } else {
+                    $this->web->PDF('produccion/diario',$data);
+                }
+            }
+        }
+
         public function obtener_ordenes () {
             $ops = $this->model->mostrar('v_ordenes');
             $json = json_encode($ops);
@@ -26,7 +58,6 @@
         public function obtener_plano () {
             if (isset($_GET['id_plano'])) {
                 $plano = $this->model->buscar('v_planos','Id_Catalogo',$_GET['id_plano']);
-                // echo $plano[0]['PDF'];
                 echo base64_encode($plano[0]['PDF']);
             } else {
                 echo 2;

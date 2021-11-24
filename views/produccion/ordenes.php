@@ -18,8 +18,8 @@
                         <i class="material-icons"  data-modal="modal-filtrar">filter_alt</i>
                         Filtrar
                     </button>
-                    <button class="btn btn-icon">
-                        <i class="material-icons">description</i>
+                    <button class="btn btn-icon" data-impresion="documento">
+                        <i class="material-icons" data-impresion="documento">description</i>
                         Generar Documento
                     </button>
                 </div>
@@ -54,8 +54,8 @@
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js?1.5"></script>
+    <script src="../../public/js/fmtor_libreria.js?1.6"></script>
     <script src="../../public/js/produccion/filtros.js?2.1"></script>
-    <script src="../../public/js/produccion/ordenes.js?2.3"></script>
+    <script src="../../public/js/produccion/ordenes.js?2.4"></script>
 </body>
 </html>

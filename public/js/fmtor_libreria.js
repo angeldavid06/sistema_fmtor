@@ -92,27 +92,7 @@ const fetchBlob = async (ruta) => {
 
 const fetchAPI = async (form,ruta,metodo) => {
     preloader()
-    if (typeof form === 'object' && metodo != '') {
-        const opciones = {
-            method: metodo,
-            body: JSON.stringify(form),
-            headers: {
-                'Content-type': 'application/json'
-            }
-        }
-
-        await fetch(ruta,opciones)
-        .then(res => (res.ok ? res.json() : Promise.reject(res)))
-        .then(json => {
-            resJSON = json;
-        })
-        .catch(err => {
-            resJSON = err;
-        })
-        .finally(() => {
-            ocultarPreloader() 
-        })
-    } else if (metodo != '') {
+    if (metodo != '') {
         const data = new FormData(form)
         const opciones = {
             method: metodo,
