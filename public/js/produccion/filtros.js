@@ -1,5 +1,5 @@
 const checkbox = ['check_op','check_rango_op','check_fecha','check_fecha_mes','check_fecha_anio','check_rango_fecha','check_cliente','check_estado'];
-let cabeceras = [['Cal.', 'Kg.', 'Factor', 'N°. O.P.', 'Fecha de O.P.', 'Cliente', 'Medida', 'Descripción', 'Acabado', 'Cant.', 'Precio', 'Total', 'Acumulado', 'Estado'],['Fecha','Turno','Departamento','O.P.', 'Cliente', 'Kg.', 'Pzas. Producidas', 'Máquina', 'Descripción', 'Observaciones']];
+let cabeceras = [['Cal.', 'Kg.', 'Factor', 'N°. O.P.', 'Fecha de O.P.', 'Cliente', 'Descripción', 'Acabado', 'Cant.', 'Precio', 'Total', 'Acumulado', 'Estado'],['Fecha','Turno','Departamento','O.P.', 'Cliente', 'Kg.', 'Pzas. Producidas', 'Máquina', 'Descripción', 'Observaciones']];
 
 const limpiar_cabecera = () => {
     const thead = document.getElementsByClassName('cabecera');
@@ -76,12 +76,11 @@ const enviar_datos = () => {
 const buscar_dato = (metodo) => {
     const respuesta = fetchAPI(form_filtros, url+'/produccion/op/'+metodo, 'POST');
     respuesta.then(json => {
-        console.log(json);
         limpiar_tabla()
         const input_tabla = document.getElementById('tabla')
         if (input_tabla.value == 'v_ordenes') {
             render_ordenes(json)
-        } else if (input_tabla.value == 'v_reporte_diario') {
+        } else if (input_tabla.value == 'v_reportediario') {
             render_reporte_diario(json)
         }
     })
@@ -95,10 +94,8 @@ form_formatos.addEventListener('submit', (evt) => {
     cabecera_op(cabeceras[select.value]);
     limpiar_tabla();
     if (select.value == 0) {
-        input_tabla.value = 'v_ordenes'
         obtener_ordenes()
     } else if (select.value == 1) {
-        input_tabla.value = 'v_reporte_diario'
         obtener_reporte_diario()
     }
 });
@@ -107,12 +104,13 @@ const select_formatos = document.getElementById('seleccion_formato')
 select_formatos.addEventListener('change', () => {
     cabecera_op(cabeceras[select_formatos.value]);
     const input_tabla = document.getElementById('tabla')
+    input_tabla.removeAttribute('value')
     limpiar_tabla();
     if (select_formatos.value == 0) {
-        input_tabla.value = 'ordenes'
+        input_tabla.setAttribute('value','v_ordenes')
         obtener_ordenes()
     } else if (select_formatos.value == 1) {
-        input_tabla.value = 'reporte_diario'
+        input_tabla.setAttribute('value','v_reportediario')
         obtener_reporte_diario()
     }
 })

@@ -16,25 +16,25 @@
                 <h2>Producción</h2>
                 <main>
                     <nav class="d-grid g-2">
-                        <a href="http://localhost/sistema_fmtor/produccion/main/ordenes"
+                        <a href="http://:8080/sistema_fmtor/produccion/main/control"
                             class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">engineering</i>
                             ORDENES DE PRODUCCIÓN
                         </a>
-                        <a href="http://localhost/sistema_fmtor/produccion/main/control"
+                        <a href="http://:8080/sistema_fmtor/produccion/main/ordenes"
                         class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">supervisor_account</i>
                             CONTROL DE PRODUCCIÓN
                         </a>
-                        <a href="http://localhost/sistema_fmtor/produccion/main/maquinas"
+                        <a href="http://:8080/sistema_fmtor/produccion/main/maquinas"
                         class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">precision_manufacturing</i>
-                            REPORTE POR MÁQUINA
+                            MÁQUINAS DE PRODUCCIÓN
                         </a>
-                        <a href="http://localhost/sistema_fmtor/produccion/main/estados"
+                        <a href="http://:8080/sistema_fmtor/produccion/main/estados"
                         class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">verified</i>
-                            ESTADOS DE O.P.
+                            <i class="material-icons icon">new_releases</i>
+                            ESTADO DE LAS ORDENES DE PRODUCCIÓN
                         </a>
                     </nav>
                 </main>

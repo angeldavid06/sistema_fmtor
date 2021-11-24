@@ -8,7 +8,7 @@
     </div>
     <div class="categoria_menu">
         <nav class="opciones">
-            <a href="http://localhost/sistema_fmtor/produccion/main/mostrar">
+            <a href="http://:8080/sistema_fmtor/produccion/main/mostrar">
                 <i class="material-icons">apps</i>
                 Menú pricipal
             </a>
@@ -17,8 +17,19 @@
             <p>Información personal</p>
         </div>
         <nav class="opciones">
+<<<<<<< HEAD
+            <a href="http://:8080/sistema_fmtor/produccion/main/control">
+                <i class="material-icons">supervisor_account</i>
+                Registro Diario
+            </a>
+            <a href="http://:8080/sistema_fmtor/produccion/main/ordenes">
+                <i class="material-icons">engineering</i>
+                Ordenes de Producción
+            </a>
+            <a href="http://:8080/sistema_fmtor/produccion/main/maquinas">
+=======
             <a href="http://localhost/sistema_fmtor/produccion/main/ordenes">
-                <i class="material-icons">photo</i>
+                <i class="material-icons">person</i>
                 Información
             </a>
         </nav>
@@ -32,15 +43,22 @@
             </a>
             <a href="http://localhost/sistema_fmtor/produccion/main/control">
                 <i class="material-icons">supervisor_account</i>
-                Registro Diario
+                Registro Diario de Producción
             </a>
             <a href="http://localhost/sistema_fmtor/produccion/main/maquinas">
+>>>>>>> 4993f99d8607ea7c4b3c5cd431400b679f275718
                 <i class="material-icons">precision_manufacturing</i>
-                Reporte por Máquina
+                Máquinas de Producción
             </a>
+<<<<<<< HEAD
             <a href="http://localhost/sistema_fmtor/produccion/main/estados">
+                <i class="material-icons">new_releases</i>
+                Estado de las Ordenes de Producción
+=======
+            <a href="http://:8080/sistema_fmtor/produccion/main/estados">
                 <i class="material-icons">verified</i>
                 Estado O.P.
+>>>>>>> ab262c7e2f052172979f4cc1e1f7e685595f931a
             </a>
         </nav>
     </div>

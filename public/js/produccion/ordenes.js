@@ -17,21 +17,19 @@ const render_ordenes = (json) => {
             tr.classList.add('cancelado')
         }
 
-        tr.innerHTML += '<td>'+el.calibre+'</td>'+
-                        '<td>'+new Intl.NumberFormat('es-MX').format(el.kilos_acumulados)+'</td>'+
-                        '<td>'+el.factor+'</td>'+
-                        '<td>'+el.op+'</td>'+
-                        '<td>'+el.fecha+'</td>'+
-                        '<td>'+el.Cliente+'</td>'+
-                        '<td>'+el.Medida+'</td>'+
-                        '<td>'+el.Descripción+'</td>'+
-                        '<td>'+el.Acabado+'</td>'+
-                        '<td class="number">'+el.cantidad+'</td>'+
-                        '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio)+'</td>'+
-                        '<td class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.Total)+'</td>'+
-                        '<td class="number">' + new Intl.NumberFormat('es-MX').format(el.Acumulado)+'</td>'+
-                        '<td>'+el.estado+'</td>'
-
+        tr.innerHTML += '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.calibre+'</td>'+
+                        '<td class="txt-right" data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+new Intl.NumberFormat('es-MX').format(el.factor*el.cantidad_elaborar)+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.factor+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.Id_Folio+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.Fecha.split(' ')[0]+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.Clientes+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.descripcion+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano">'+el.acabados+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">'+el.cantidad_elaborar+'</td>'+
+                        '<td class="txt-right" data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
+                        '<td class="txt-right" data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.TOTAL)+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">' + /*new Intl.NumberFormat('es-MX').format(Acumulado)*/'Acumulado'+'</td>'+
+                        '<td>' + el.estado_general+'</td>'
         t_body[0].appendChild(tr)
     })
 }
@@ -42,15 +40,15 @@ const render_reporte_diario = (json) => {
         const tr = document.createElement('tr')
         tr.classList.add('tr')
 
-        tr.innerHTML += '<td>'+el.fecha+'</td>'+
+        tr.innerHTML += '<td>'+el.fecha.split(' ')[0]+'</td>'+
                         '<td>'+el.turno+'</td>'+
-                        '<td>'+el.Departamento+'</td>'+
-                        '<td>'+el.Orden_de_produccion+'</td>'+
-                        '<td>'+el.Cliente+'</td>'+
+                        '<td>'+el.estado_general+'</td>'+
+                        '<td>'+el.Id_Folio+'</td>'+
+                        '<td>'+el.Clientes+'</td>'+
                         '<td>'+el.kilos+'</td>'+
                         '<td>'+el.pzas+'</td>'+
                         '<td>'+el.Maquina+'</td>'+
-                        '<td>'+el.Descripcion+'</td>'+
+                        '<td>'+el.descripcion+'</td>'+
                         '<td>'+el.observaciones+'</td>'
                         
         t_body[0].appendChild(tr)
@@ -71,7 +69,81 @@ const obtener_reporte_diario = () => {
     })
 }
 
+const obtener_plano = (id_catalogo) => {
+    const plano = fetchBlob(url+'/produccion/op/obtener_plano?id_plano='+id_catalogo)
+    plano.then(blob => {
+        const div_plano = document.getElementById('plano')
+        const embed = document.createElement('embed')
+
+        div_plano.innerHTML='';
+        
+        embed.classList.add('height-100');
+        embed.setAttribute('type','application/pdf')
+        embed.setAttribute('src','data:application/pdf;base64,'+encodeURI(blob))
+        
+        div_plano.appendChild(embed)
+    })
+}
+
+const tipo_consulta = (url_pdf) => {
+    const op = document.getElementById('check_op')
+    const fecha = document.getElementById('check_fecha')
+    const cliente = document.getElementById('check_cliente')
+    const estado = document.getElementById('check_estado')
+    const mes = document.getElementById('check_fecha_mes')
+    const anio = document.getElementById('check_fecha_anio')
+    const r_op = document.getElementById('check_rango_op')
+    const r_fecha = document.getElementById('check_rango_fecha')
+
+    if (op.checked) {
+        url_pdf += '&filtro=op&f_op='+document.getElementById('f_op').value
+    } else if(r_op.checked){
+        url_pdf += '&filtro=r_op&f_r_op_m='+document.getElementById('f_r_op_m').value+'&f_r_op_M='+document.getElementById('f_r_op_M').value
+    } else if(r_fecha.checked){
+        url_pdf += '&filtro=r_fecha&f_r_fecha_m='+document.getElementById('f_r_fecha_m').value+'&f_r_fecha_M='+document.getElementById('f_r_fecha_M').value
+    } else if(fecha.checked){
+        url_pdf += '&filtro=fecha&f_fecha='+document.getElementById('f_fecha').value
+    } else if(cliente.checked){
+        url_pdf += '&filtro=cliente&f_cliente='+document.getElementById('f_cliente').value
+    } else if(estado.checked){
+        url_pdf += '&filtro=estado&f_estado='+document.getElementById('f_estado').value
+    } else if(mes.checked){
+        url_pdf += '&filtro=mes&f_mes='+document.getElementById('f_mes').value
+    } else if(anio.checked){
+        url_pdf += '&filtro=anio&f_anio='+document.getElementById('f_anio').value
+    } else {
+        url_pdf += '&filtro=todo'
+    }
+
+    f_r_op_m
+    f_r_op_M
+
+    printPage(url_pdf);
+    console.log(url_pdf);
+}
+
+const consulta_PDF = () => {
+    const select_formatos = document.getElementById('seleccion_formato')
+    if (select_formatos.value == 0) {
+        tipo_consulta(url+'/produccion/op/pdf_ordenes?formato=v_ordenes')
+    } else if (select_formatos.value == 1) {
+        tipo_consulta(url+'/produccion/op/pdf_ordenes?formato=v_reportediario')
+    }
+    // printPage(url+'/produccion/op/pdf_ordenes?formato=v_reportediario');
+}
+
+const generar_PDF = () => {
+    consulta_PDF()
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     obtener_ordenes()
 });
 
+document.addEventListener('click', (evt) => {
+    if (evt.target.dataset.plano) {
+        obtener_plano(evt.target.dataset.plano)
+    } else if (evt.target.dataset.impresion) {
+        generar_PDF()
+    }
+})

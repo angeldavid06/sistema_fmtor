@@ -8,7 +8,6 @@
         public $web;
 
         public function __construct(){
-            // $this->model= new NombreDelModelo();
             $this->web = new Web();
         }
 
@@ -31,5 +30,7 @@
         public function maquinas () {
             $this->web->View('produccion/maquinas','');
         }
+
+        
     }
 ?>

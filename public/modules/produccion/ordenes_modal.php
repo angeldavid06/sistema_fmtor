@@ -17,7 +17,6 @@
             <div class="contenedor_filtros">
                 <input type="text" name="tabla" id="tabla" value="v_ordenes" hidden>
                 <h2>Filtrar Ordenes de Producción</h2>
-                <h3>Filtrar por O.P.:</h3>
                 <div class="filtro fecha">
                     <input type="checkbox" data-check="f_op" class="checkbox" name="check_op" id="check_op">
                     <label class="lbl-checkbox" id="lbl_check_op"  for="check_op">Buscar O.P.:</label>

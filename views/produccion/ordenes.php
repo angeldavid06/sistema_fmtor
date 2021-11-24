@@ -14,8 +14,14 @@
             <div class="informacion">
                 <h1>Ordenes de Producción</h1>
                 <div class="tarjeta-transparente d-flex justify-right">
-                    <button class="btn btn-icon-self btn_filtrar_open material-icons" data-modal="modal-filtrar">filter_alt</button>
-                    <button class="btn btn-icon-self material-icons">print</button>
+                    <button class="btn btn-icon btn_filtrar_open" data-modal="modal-filtrar">
+                        <i class="material-icons"  data-modal="modal-filtrar">filter_alt</i>
+                        Filtrar
+                    </button>
+                    <button class="btn btn-icon" data-impresion="documento">
+                        <i class="material-icons" data-impresion="documento">description</i>
+                        Generar Documento
+                    </button>
                 </div>
                 <div class="tarjeta">
                     <div class="main">
@@ -29,7 +35,6 @@
                                         <th>N° O.P.</th>
                                         <th>Fecha de O.P.</th>
                                         <th>Cliente</th>
-                                        <th>Medida</th>
                                         <th>Descripción</th>
                                         <th>Acabado</th>
                                         <th>Cant</th>
@@ -45,11 +50,12 @@
                     </div>
                 </div>
                 <?php require_once 'public/modules/produccion/ordenes_modal.php'; ?>
+                <?php require_once 'public/modules/produccion/plano_modal.php'; ?>
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js?1.4"></script>
-    <script src="../../public/js/produccion/filtros.js?1.1"></script>
-    <script src="../../public/js/produccion/ordenes.js?1.7"></script>
+    <script src="../../public/js/fmtor_libreria.js?1.6"></script>
+    <script src="../../public/js/produccion/filtros.js?2.1"></script>
+    <script src="../../public/js/produccion/ordenes.js?2.4"></script>
 </body>
 </html>

@@ -16,25 +16,25 @@
                 <h2>Calidad</h2>
                 <main>
                     <nav class="d-grid g-2">
-                        <a href="http://localhost/sistema_fmtor/produccion/main/control"
+                        <a href="http://localhost:8080/sistema_fmtor/calidad/main/catalogo"
                             class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
+                            <i class="material-icons icon">description</i>
+                            CATALOGO
                         </a>
-                        <a href="http://localhost/sistema_fmtor/produccion/main/ordenes"
+                        <a href="http://localhost:8080/sistema_fmtor/calidad/main/certificados"
                         class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
+                            <i class="material-icons icon">verified</i>
+                            CERTIFICADOS
                         </a>
-                        <a href="http://localhost/sistema_fmtor/produccion/main/maquinas"
+                        <a href="http://localhost:8080/sistema_fmtor/calidad/main/rechazos"
                         class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
+                            <i class="material-icons icon">report_problem</i>
+                            RECHAZOS
                         </a>
-                        <a href="http://localhost/sistema_fmtor/produccion/main/estados"
+                        <a href="http://localhost:8080/sistema_fmtor/calidad/main/iso"
                         class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">insert_emoticon</i>
-                            OPCIÓN DEL MENÚ
+                            <i class="material-icons icon">event</i>
+                            FORMULARIO MENSUAL ISO
                         </a>
                     </nav>
                 </main>

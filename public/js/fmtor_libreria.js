@@ -1,4 +1,5 @@
 let resJSON = ''
+let resBLOB 
 const url = 'http://localhost/sistema_fmtor'
 const btn_menu_toggle = document.getElementById('btn-menu-toggle')
 const menu = document.getElementById('menu')
@@ -73,6 +74,22 @@ const abrir_cerrar_menu = () => {
 
 // Peticiones
 
+const fetchBlob = async (ruta) => {
+    preloader()
+    await fetch(ruta)
+    .then(res => (res.ok ? res.text() : Promise.reject(res)))
+    .then(blob => {
+        resBLOB = blob;
+    })
+    .catch(err => {
+        resBLOB = err;
+    })
+    .finally(() => {
+        ocultarPreloader() 
+    })
+    return resBLOB
+}
+
 const fetchAPI = async (form,ruta,metodo) => {
     preloader()
     if (metodo != '') {
@@ -119,10 +136,10 @@ const time_notification = (not) => {
     },300);
     window.setTimeout(() => {
         not.classList.remove('show-alert');
-    },3500);
+    },2000);
     window.setTimeout(() => {
         document.body.removeChild(not);
-    },3800);
+    },2800);
 }
 
 const open_alert = (titulo,color) => {   
@@ -141,6 +158,8 @@ const open_alert = (titulo,color) => {
         icono = 'check';
     } else if (color == 'azul') {
         icono = 'info';
+    } else if (color == 'naranja') {
+        icono = 'feedback';
     } else {
         icono = 'info';
     }
@@ -160,7 +179,7 @@ const open_confirm = (title,callback) => {
     div.classList.add('justify-center')
     div.classList.add('align-content-top')
 
-    div.innerHTML = '<div class="contenido d-flex justify-center align-content-center flex-wrap">'+
+    div.innerHTML = '<div id="confirm" class="contenido d-flex justify-center align-content-center flex-wrap">'+
                         '<div class="titulo">'+
                             '<h3 class="txt-center">'+title+'</h3>'+
                         '</div>'+
@@ -177,6 +196,13 @@ const open_confirm = (title,callback) => {
     },300);
 
     sharedFunction = callback;
+}
+
+// Acordeon
+
+const acordeon = (id) => {
+    const div = document.getElementById(id)
+    div.classList.toggle('mostrar_contenido')
 }
 
 if (document.getElementById('contenido')) {
@@ -198,13 +224,18 @@ document.addEventListener('click', (evt) => {
     } else if (evt.target.dataset.menu) {
         abrir_cerrar_menu()
     } else if (evt.target.matches('.btn-confirm-sm-accept')) {
-        sharedFunction();
         const not = document.getElementsByClassName('confirm')
+        console.log('l');
+        sharedFunction();
         window.setTimeout(() => {
             not[0].classList.remove('show-alert')
         },100)
+        window.setTimeout(() => {
+            document.body.removeChild(not[0])
+        },500)
     } else if (evt.target.matches('.btn-confirm-sm-cancel')) {
         const not = document.getElementsByClassName('confirm')
+
         window.setTimeout(() => {
             not[0].classList.remove('show-alert')
         },100)
@@ -213,8 +244,8 @@ document.addEventListener('click', (evt) => {
         },500)
     } else if (evt.target.dataset.modal) {
         abrir_modal(evt.target.dataset.modal)
-    } else if (evt.target.dataset.opcion) {
-        console.log(evt.target.dataset.opcion);
+    } else if (evt.target.dataset.acordeon) {
+        acordeon(evt.target.dataset.acordeon)
     }
 });
 
@@ -272,12 +303,3 @@ function printPage (sURL) {
     oHideFrame.src = sURL
     document.body.appendChild(oHideFrame);
 }
-
-// Ejemplo
-
-// if (document.getElementsByClassName('getPDF')) {
-//     const btn = document.getElementsByClassName('getPDF');
-//     btn.addEventListener('click', () => {
-//         printPage('tests.php?op=')          
-//     });
-// }

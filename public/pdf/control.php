@@ -20,29 +20,31 @@
                             <div></div>
                         </td>
                     </tr>
+                    <?php ?>
                     <tr>
-                        <td>Dibujo: 035-10-32</td>
-                        <td>Cantidad: 40,000</td>
-                        <td colspan="3" class="OP">Orden de Producción: OP10863</td>
+                        <td>Dibujo:</td>
+                        <td>Cantidad:</td>
+                        <td colspan="3" class="OP">Orden de Producción: </td>
                     </tr>
                     <tr>
-                        <td>Fecha: 04/08/2021</td>
-                        <td colspan="4">Cliente: 296 MULTIELECTRICA</td>
+                        <td>Fecha: </td>
+                        <td colspan="4">Cliente: </td>
                     </tr>
                     <tr>
                         <td>Descripción:</td>
-                        <td>C/FIJ PH</td>
-                        <td>10-32X1</td>
-                        <td>TROPICALIZADO</td>
-                        <td>0</td>
+                        <td> </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
+                    <?php ?>  
                 </tbody>
             </table>
         </div>
         <div class="seguimiento">
             <table>
                 <thead>
-                    <th colspan="4">titulo</th>
+                    <th colspan="4">Forjado</th>
                     <th colspan="2">Factor:</th>
                 </thead>
                 <tbody>
