@@ -8,46 +8,35 @@
     </div>
     <div class="categoria_menu">
         <nav class="opciones">
-            <a href="http://localhost/sistema_fmtor/calidad/main/mostrar">
+            <a href="http://localhost:8080/sistema_fmtor/calidad/main/mostrar">
                 <i class="material-icons">apps</i>
                 Menú pricipal
             </a>
         </nav>
         <div class="titulo_categoria_menu">
-            <p>Nombre de la categoría</p>
+            <p>Departamento de Calidad</p>
         </div>
         <nav class="opciones">
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 1
-            </a>
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 2
-            </a>
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 3
-            </a>
-        </nav>
-    </div>
-    <div class="categoria_menu">
-        <div class="titulo_categoria_menu">
-            <p>Nombre de la categoría</p>
-        </div>
-        <nav class="opciones">
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 1
-            </a>
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 2
-            </a>
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 3
-            </a>
+            <a href="http://localhost:8080/sistema_fmtor/calidad/main/catalogo">
+                            <i class="material-icons icon">description</i>
+                            Catalogo 
+                        </a>
+                        <a href="http://localhost:8080/sistema_fmtor/calidad/main/certificados"
+                       >
+                            <i class="material-icons icon">verified</i>
+                            Certificados
+                        </a>
+                        <a href="http://localhost:8080/sistema_fmtor/calidad/main/rechazos"
+                        >
+                            <i class="material-icons icon">report_problem</i>
+                            Rechazos 
+                        </a>
+                        <a href="http://localhost:8080/sistema_fmtor/calidad/main/iso"
+                       >
+                            <i class="material-icons icon">event</i>
+                            Formulario Mensual ISO
+                        </a>
+                        
         </nav>
     </div>
 </div>

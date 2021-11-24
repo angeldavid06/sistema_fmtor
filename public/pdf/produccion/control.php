@@ -41,76 +41,11 @@
         </div>
         <div class="seguimiento">
             <?php require_once 'modules_pdf/v_forjado.php'; ?>
-            <table>
-                <thead>
-                    <th colspan="4">titulo</th>
-                    <th colspan="2">Factor:</th>
-                </thead>
-                <tbody id="v_ranurado">
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5">Total:</td>
-                        <td>00.00</td>
-                    </tr>
-                </tfoot>
-            </table>
-            <table>
-                <thead>
-                    <th colspan="4">titulo</th>
-                    <th colspan="2">Factor:</th>
-                </thead>
-                <tbody id="v_rolado">
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5">Total:</td>
-                        <td>00.00</td>
-                    </tr>
-                </tfoot>
-            </table>
-            <table>
-                <thead>
-                    <th colspan="4">titulo</th>
-                    <th colspan="2">Factor:</th>
-                </thead>
-                <tbody  id="v_shank">
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5">Total:</td>
-                        <td>00.00</td>
-                    </tr>
-                </tfoot>
-            </table>
-            <table>
-                <thead>
-                    <th colspan="4">titulo</th>
-                    <th colspan="2">Factor:</th>
-                </thead>
-                <tbody id="v_cementado">
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5">Total:</td>
-                        <td>00.00</td>
-                    </tr>
-                </tfoot>
-            </table>
-            <table>
-                <thead>
-                    <th colspan="4">titulo</th>
-                    <th colspan="2">Factor:</th>
-                </thead>
-                <tbody id="v_acabado">
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5">Total:</td>
-                        <td>00.00</td>
-                    </tr>
-                </tfoot>
-            </table>
+            <?php require_once 'modules_pdf/v_ranurado.php'; ?>
+            <?php require_once 'modules_pdf/v_rolado.php'; ?>
+            <?php require_once 'modules_pdf/v_shank.php'; ?>
+            <?php require_once 'modules_pdf/v_cementado.php'; ?>
+            <?php require_once 'modules_pdf/v_acabado.php'; ?>
         </div>
     </div>
 </body>

@@ -39,21 +39,28 @@
             return $eliminar;
         }
         
+<<<<<<< HEAD
+        public function buscar ($tabla,$condicion) {
+            $sql = "SELECT * FROM $tabla WHERE $condicion";
+            $buscar = $this->db->query($sql);
+=======
         public function buscar ($tabla,$campo,$valor) {
             $sql="SELECT * FROM $tabla WHERE $campo = '$valor'";
             $buscar=$this->db->query($sql);
             mysqli_close($this->db);
+>>>>>>> 7b2d3b08abefb44e7e5b1c13811adc5cb883ea09
             $assoc = self::getAssoc($buscar);
             return $assoc;
-        } 
+        }
         
-        public function buscar_personalizado ($tabla,$campos,$condicion) {
+        public function buscar_personalizado($tabla,$campos,$condicion) {
             $sql = "SELECT $campos FROM $tabla WHERE $condicion";
             $buscar = $this->db->query($sql);
             mysqli_close($this->db);
             $assoc = self::getAssoc($buscar);
             return $assoc;
         }
+
 
         public function validar_password ($tabla,$condicion) {
             $sql = "SELECT password FROM $tabla WHERE $condicion";
@@ -63,6 +70,8 @@
             return $assoc;
         }
 
+<<<<<<< HEAD
+=======
         public function filtrar_rango ($tabla,$campo,$d1,$d2) {
             $sql = "SELECT * FROM $tabla WHERE $campo BETWEEN '$d1' AND '$d2'";
             $filtrar = $this->db->query($sql);
@@ -79,6 +88,7 @@
             return $assoc;
          }
 
+>>>>>>> 7b2d3b08abefb44e7e5b1c13811adc5cb883ea09
         public function getAssoc ($query) {
             $assoc = array();
             if (is_object($query)) {
