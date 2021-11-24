@@ -11,12 +11,49 @@
             $this->web = new Web();
         }
 
+<<<<<<< HEAD
+=======
+        public function mostrar () {
+            $this->web->View('control','');
+        }
+
+        public function mostrarV_forjado(){
+            $this->web->View('v_control','');
+        } 
+
+        public function mostrarV_for(){
+            $this->web->View('v_forjado','');
+        }
+
+        public function mostrarV_ranurado(){
+            $this->web->View('v_ranurado','');
+        }
+
+        public function mostrarV_rolado(){
+            $this->web->View('v_rolado','');
+        }
+
+        public function mostrarV_shank(){
+            $this->web->View('v_shank','');
+        }
+
+        public function mostrarV_cementado(){
+            $this->web->View('v_cementado','');
+        }
+
+        public function mostrarV_acabado(){
+            $this->web->View('v_acabado','');
+        }
+        
+>>>>>>> ab262c7e2f052172979f4cc1e1f7e685595f931a
         public function obtener_control() {
             $control = json_decode($_GET['control']);
             $vista = $control->vista;
             $op = $control->op;
             $ops = $this->model->buscar($vista,'Id_Folio_1',$op);
             $json = json_encode($ops);
+            $archivo='../../public/control.js';
+            file_put_contents($archivo,$json);
             echo $json;
         }
 
@@ -54,6 +91,8 @@
                 $op = $_GET['op'];
                 $ops = $this->model->buscar('v_control','Orden_Produccion',$op);
                 $json = json_encode($ops);
+                $archivo='../../public/control.js';
+                file_put_contents($archivo,$json);
                 echo $json;
             }
         }
