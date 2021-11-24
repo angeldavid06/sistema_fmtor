@@ -5,40 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control de Producción</title>
-    <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css?1.3">
+    <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css?1.4">
     <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
 </head>
 <body>
-    <!-- <div class="reporte ">
-        <div class="encabezado">
-            <table>
-                <thead>
-                    <tr class="d-flex justify-between">
-                        <th class="d-flex align-content-top justify-left" width="270px">
-                            <img width="270px" src="http://localhost/sistema_fmtor/public/img/logo_formato.png" alt="" srcset="">
-                        </th>
-                        <th class="d-flex align-content-center flex-wrap justify-right txt-right">
-                            <div class="empresa">
-                                <p>FORJADORA MEXICANADA DE TORNILLOS</p>
-                                <span>S.A. DE C.V.</span>
-                            </div>
-                            <div class="titulo">
-                                <p>ORDENES DE PRODUCCIÓN</p>
-                            </div>
-                        </th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <div class="seguimiento"> -->
-            <?php 
-                // require_once 'modules_pdf/tabla_ordenes.php'; 
-            ?>
-        <!-- </div>
-    </div>
-    <footer>
-        <h1>Hola</h1>
-    </footer> -->
     <table class="formato">
         <thead>
             <tr>
@@ -93,16 +63,16 @@
     <div class="footer">
         <div class="d-grid g-4">
             <div class="pie">
-                <p>Código:</p>
+                <p>Código: PRO-F-000</p>
             </div>
             <div class="pie">
-                <p>Vesión:</p>
+                <p>Vesión: </p>
             </div>
             <div class="pie">
-                <p>Fecha de Aprobación:</p>
+                <p>Fecha de Aprobación: 00-00-0000</p>
             </div>
             <div class="pie">
-                <p>Página:</p>
+                <p>Página: 1 - 1</p>
             </div>
         </div>
     </div>

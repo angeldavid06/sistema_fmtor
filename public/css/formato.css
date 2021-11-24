@@ -6,116 +6,6 @@
     font-family: 'Century Gothic', sans-serif;; 
 }
 
-/* @media print { */
-/* @page { padding: 70px 0px 70px 0px; } */
-
-@page  
-{ 
-    size: auto;   /* auto is the initial value */ 
-
-    /* this affects the margin in the printer settings */ 
-    /* margin: 25mm 0mm 25mm 0mm;   */
-} 
-
-    /* .reporte {
-        width: 100%;
-        min-height: 100vh;
-    }
-    
-    .encabezado {
-        width: 100%;
-        height: 80px;
-    }
-    
-    .encabezado table {
-        width: 100%;
-        position: fixed;
-        top: 0mm;
-        min-width: 100%;
-        border-collapse: collapse;
-    }
-    
-    .encabezado table th div {
-        width: 100%;
-        padding: 10px 0px;
-    }
-    
-    .encabezado table th .empresa {
-        border-bottom: 3px solid #0070BF;
-    }
-
-    .encabezado table th p {
-        width: 100%;
-        padding: 10px 0px;
-        font-weight: 500;
-        font-size: 1.2em;
-        line-height: 0;
-        font-family: 'bahnschrift', sans-serif;
-    }
-
-    .encabezado table th span {
-        width: 100%;
-        font-weight: 500;
-        font-family: 'bahnschrift', sans-serif;
-    }
-    
-    .encabezado table tbody td {
-        border: 1px solid hsl(0, 0%, 0%);
-    }
-    
-    .encabezado table tbody .logo {
-        width: 350px;
-        height: 100px;
-        margin: auto;
-    }
-    
-    .reporte .encabezado table tbody td,
-    .reporte .seguimiento table thead th,
-    .reporte .seguimiento table tbody td,
-    .reporte .seguimiento table tfoot td {
-        padding: 5px;
-        font-size: 0.7em;
-    }
-    
-    .reporte_producción .seguimiento {
-        width: 100%;
-        padding-top: 20px;
-        display: grid;
-        grid-gap: 20px;
-        grid-template: repeat(2,1fr) / repeat(3, 1fr);
-    }
-    
-    .reporte .seguimiento {
-        width: 100%;
-        padding-top: 20px;
-    }
-
-    .reporte_maquina .seguimiento {
-        width: 100%;
-        padding-top: 20px;
-        display: grid;
-        grid-gap: 20px;
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .reporte .seguimiento table {
-        width: 100%;
-        min-width: 100%;
-    }
-
-    .reporte_maquina .seguimiento table thead th {
-        height: 50px;
-    }
-    
-    .reporte .seguimiento table {
-        border-collapse: collapse;
-    }
-    
-    .reporte .seguimiento table th,
-    .reporte .seguimiento table td {
-        border: 1px solid black;
-    } */
-
     .txt-left {
         text-align: left;
     }
@@ -365,8 +255,10 @@
         width: 100%;
         min-width: 100%;
         position: fixed;
+        padding: 10px 0px 5px 0px;
         bottom: 0;
         font-size: 0.7em;
+        border-top: 3px solid #0070BF;
     }
 
     @media print {
