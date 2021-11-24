@@ -1,7 +1,6 @@
 <table>
     <thead>
         <tr>
-<<<<<<< HEAD
             <th colspan="5">RANURADO</th>
         </tr>
         <tr>
@@ -86,17 +85,3 @@
         </tr>
         </tfood>
 </table>
-=======
-            <th colspan="5">RANURADO</th>    
-       </tr>
-       <tr>
-           <th> </th>
-               
-       </tr>        
-    </thead>
-    <tbody>
-    </tbody>
-    <tfoot>
-    </tfood>
-</table>
->>>>>>> a9ac079427bcd759bd9e4f3be936d577599c91cf
