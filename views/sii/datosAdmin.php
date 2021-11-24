@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-    <link rel="stylesheet" href="../../public/css/default.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<?php require_once 'public/modules/head.php' ?>
+<title>Datos RH</title>
 </head>
 <body>
     <div class="contenedor">
@@ -18,11 +14,14 @@
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
-                <h1>Datos Personales</h1>
-                <div class="d-grid g-2">
-                    <input type="search" name="" id="buscadorSII">
+                <h1>Recursos Humanos - Datos Personales</h1>
+                <div class="d-grid g2-9-1">
+                    <input type="search" name="" id="buscadorSII" class="">
+                    <div class="opciones d-flex align-content-center justify-right">
+                        <button class="btn btn-icon-self btn_filtrar material-icons" id="filtro_nombre"data-modal="modal-1" >filter_alt</button>
+                    </div>
                 </div>
-               
+                
                 <div class="tarjeta">
                 <table>
                     <thead>
@@ -37,7 +36,8 @@
                             <th>RFC</th>
                             <th>NSS</th>
                             <th>Estado</th>
-                            <th>fecha de Ingreso</th>
+                            <th>Fecha de Ingreso</th>
+                            <th>Nombre del Puesto</th>
                         </tr>
                     </thead>
                     <tbody class="t_body">
@@ -56,11 +56,21 @@
                         </tr> -->
                     </tbody>
                 </table>
+                <div id="modal-1" class="modal modal-derecha">
+                <div class="titulo_modal d-flex justify-between align-content-center">
+                    <h2>Filtros</h2>
+                    <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-1">close</button>
+                </div>
+                <div class="contenido_modal">
+                    <div class="filtro-puesto"></div>
+                    <div class="filtros"></div>
+                </div>
+            </div>
                 </div>
             </div>
         </div>
     </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/sii/datosPersonales.js?1.4"></script>
+    <script src="../../public/js/sii/datosPersonales.js?1.9"></script>
 </body>
 </html>

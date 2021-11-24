@@ -18,12 +18,16 @@
         </div>
         <nav class="opciones">
             <a href="http://localhost/sistema_fmtor/sii/main/datosEmpleados">
-                <i class="material-icons">insert_emoticon</i>
+                <i class="material-icons">contact_mail</i>
                 Datos Personales
             </a>
             <a href="http://localhost/sistema_fmtor/sii/main/datosAdmin">
-                <i class="material-icons">insert_emoticon</i>
+                <i class="material-icons">recent_actors</i>
                 Datos de los Empleados
+            </a>
+            <a href="http://localhost/sistema_fmtor/sii/main/reglamento">
+                <i class="material-icons">recent_actors</i>
+                Reglamento
             </a>
         </nav>
     </div>
@@ -36,9 +40,9 @@
                 <i class="material-icons">insert_emoticon</i>
                 Informacion financiera
             </a>
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Caja de ahorro
+            <a href="http://localhost/sistema_fmtor/sii/main/prestamos">
+                <i class="material-icons">payments</i>
+                Prestamos
             </a>
             <a href="http://">
                 <i class="material-icons">insert_emoticon</i>
@@ -53,15 +57,15 @@
         </div>
         <nav class="opciones">
             <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
+                <i class="material-icons">savings</i>
                 Aportaciond e la empresa
             </a>
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
+            <a href="http://localhost/sistema_fmtor/sii/main/caja_ahorro">
+                <i class="material-icons">savings</i>
                 Ahorro
             </a>
             <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
+                <i class="material-icons">poll</i>
                Graficas
             </a>
         </nav>

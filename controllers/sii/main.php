@@ -32,14 +32,48 @@
             echo json_encode($data);
         }
 
+        public function buscarDepto()
+        {
+            $data = $this->model->mostrar('t_departamento');
+            echo json_encode($data);
+        }
+
         public function datosAdmin()
         {
             $this->web->View('sii/datosAdmin','');
         }
 
+        public function reglamento(){
+            $this->web->View('sii/reglamento','');
+        }
+
+        public function caja_ahorro(){
+            $this->web->View('sii/caja_ahorro','');
+        }
+
+        public function caja_ahorro_usuario(){
+            $this->web->View('sii/caja_ahorro_usuario','');
+        }
+        
+        public function prestamos(){
+            $this->web->view('sii/prestamos','');
+        }
+
+        public function prestamos_usuario(){
+            $this->web->view('sii/prestamos_usuario','');
+        }
+
         public function datosEmpleados()
         {
             $this->web->View('sii/datosEmpleados','');
+        }
+
+        public function informacionEmpleado()
+        {
+            $data = $this->model->buscar_personalizado('informacionempleados','*','id_empleados = '.$_GET['aux']);
+            echo json_encode($data);
+            
+            
         }
 
         public function EjemploPDF()
@@ -65,14 +99,15 @@
 
         public function mostrarDatos()
         {
-           $data =  $this->model->mostrar('datos_personales');
+           $data =  $this->model->mostrar('informacionempleados');
            echo json_encode($data);
         }
 
         public function encontrarEmpleado()
         {
-            $data = $this->model->buscar_personalizado('datos_personales','*','id_empleado = '.$_GET['id_empleado']);
+            $data = $this->model->buscar_personalizado('datos_personales','*','nombre LIKE '."'%".$_GET['nombre']."%'");
             echo json_encode($data);
+            
         }
 
  
@@ -106,17 +141,22 @@
                                                             if (isset($_POST['contrasena']) && $_POST['contrasena'] != '') {
                                                                 $this->model->setContrasena($_POST['contrasena']);
                                                                 if (isset($_POST['nombrePuesto']) && $_POST['nombrePuesto'] != '') {
-                                                                    $this->model->setNombrePuesto($_POST['nombrePuesto']);
-                                                                    if (isset($_POST['nombreRol']) && $_POST['nombreRol'] != '') {
-                                                                        $this->model->setNombreRol($_POST['nombreRol']);
-                                                                        if (isset($_POST['nombreRol']) && $_POST['nombreRol'] != '') {
-                                                                            $this->model->setNombreRol($_POST['nombreRol']);
-                                                                        echo $this->model->insertarEmpleado();
+                                                                    $this->model->setNombrePuesto($_POST['nombrePuesto']);  
+                                                                            if (isset($_POST['nombreDepartamento']) && $_POST['nombreDepartamento'] != '') {
+                                                                                $this->model->setNombreDepartamento($_POST['nombreDepartamento']);
+                                                                                if (isset($_POST['nombreRol']) && $_POST['nombreRol'] != '') {
+                                                                                    $this->model->setNombreRol($_POST['nombreRol']);
+                                                                                        if(isset($_FILES['foto']) && !empty($_FILES['foto'])){
+                                                                                            $this->model->setFoto($_FILES['foto']);
+                                                                                            echo $this->model->insertarEmpleado();
+                                                                                        }else {
+                                                                                            echo 16;
+                                                                                        }
+                                                                            }else {
+                                                                                echo 15;
+                                                                            }
                                                                     }else {
-                                                                        echo 15;
-                                                                    }
-                                                                }else {
-                                                                    echo 14;
+                                                                        echo 14;
                                                                 }
                                                                 }else{
                                                                     echo 13;
@@ -158,7 +198,7 @@
                     echo 1;
                 }
             }else{
-                echo 0;
+                echo 'No hay registro';
             }
             
         }

@@ -21,6 +21,9 @@
                 <h1>Datos Personales</h1>
                 <div class="d-grid g-2">
                 </div>
+                    <div class="d-grid tarjeta d-4" id="">
+                        <select name="idUsuario" id="idUsuario"></select>
+                    </div>
                
                 <div class="d-grid tarjeta g-4">
                     <div class="">
@@ -63,15 +66,27 @@
                         <h3>Estado</h3>
                         <h4 id="estado"></h4>
                     </div>
-                    <div >
+                    <div class="">
                         <h3>Fecha de Ingreso</h3>
                         <h4 id="fechaIngreso"></h4>
+                    </div>
+                    <div class="">
+                        <h3>Direccion</h3>
+                        <h4 id="direccion"></h4>
+                    </div>
+                    <div class="">
+                        <h3>Puesto</h3>
+                        <h4 id="nombrePuesto"></h4>
+                    </div>
+                    <div class="">
+                        <h3>Departamento</h3>
+                        <h4 id="nombreDepto"></h4>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/sii/datosPersonales.js"></script>
+    <script src="../../public/js/sii/datosPersonales.js?1.8"></script>
 </body>
 </html>
