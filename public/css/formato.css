@@ -190,9 +190,10 @@
     }
 
     .formato {
-        width: 100%;
-        min-width: 100%;
+        width: 99.5%;
+        min-width: 99.5%;
         border-collapse: collapse;
+        margin: auto;
     }
 
     .formato thead .th {
@@ -201,6 +202,7 @@
 
     .formato tfoot .td {
         height: 25px;
+        background-color: transparent;
     }
 
     .formato thead th,
@@ -242,7 +244,7 @@
     .header {
         width: 100%;
         position: fixed;
-        top: 0;
+        top: 0;page-break-before: always;
     }
 
     .header .logo-formato img {
@@ -280,9 +282,15 @@
         position: fixed;
         bottom: 0;
         padding: 5px 0px;
+        display: table-footer-group;
     }
 
     .footer p {
         font-size: 0.7em;
     }
 
+    #numero_pagina:after {
+        counter-increment: page;
+        /* counter-reset: page 3; */
+        content: "Page " counter(page) " of " counter(pages);
+    }

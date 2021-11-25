@@ -36,6 +36,10 @@
                 echo 0;
             }
         }
+
+        public function pdf_maquinas () {
+            $this->web->PDF('produccion/maquinas','$data');
+        }
     }
 
 ?>

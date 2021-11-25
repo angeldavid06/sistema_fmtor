@@ -769,6 +769,11 @@ const generar_reporte = (input,select,estado) => {
     }
 }
 
+const generar_PDF = () => {
+    console.log('Imprimir');
+    printPage(url+'/produccion/maquinas/pdf_maquinas');
+}
+
 input.addEventListener('change', () => {
     generar_reporte(input.value,select.value,estado.value)
 }) 
@@ -779,6 +784,12 @@ select.addEventListener('change', () => {
 
 estado.addEventListener('change', () => {
     generar_reporte(input.value,select.value,estado.value)
+})
+
+document.addEventListener('click', (evt) => {
+    if (evt.target.dataset.impresion) {
+        generar_PDF()
+    }
 })
 
 const auto = () => {

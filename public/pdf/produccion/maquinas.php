@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte Diario de Producción</title>
-    <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css?1.4">
+    <title>Reporte Diario de Máquinas de Producción</title>
+    <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css?1.3">
 </head>
 <body>
     <table class="formato">
@@ -16,7 +16,7 @@
             <tr>
                 <th colspan="2">Fecha: </th>
                 <th colspan="4">Turno: </th>
-                <th colspan="4">Departamento:  <div class="page-number"></div></th>
+                <th colspan="4">Departamento: </th>
             </tr>
             <tr>
                 <th colspan="10"></th>
@@ -35,7 +35,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php require_once 'modules_pdf/tabla_diario.php';  ?>
+            <?php require_once 'modules_pdf/tabla_maquinas.php';  ?>
         </tbody>
         <tfoot>
             <tr>

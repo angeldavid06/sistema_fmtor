@@ -92,8 +92,8 @@
                         </select>
                     </div>
                     <div class="d-flex align-content-center justify-right">
-                        <button class="btn btn-icon">
-                            <i class="material-icons">description</i>
+                        <button class="btn btn-icon" data-impresion="imprimir">
+                            <i class="material-icons" data-impresion="imprimir">description</i>
                             Generar Documento
                         </button>
                     </div>
