@@ -1,7 +1,7 @@
 <table>
     <thead>
         <tr>
-            <th colspan="5">ACABADO</th>
+            <th colspan="5" class="th-estado">ACABADO</th>
         </tr>
         <tr>
             <th>Botes</th>
@@ -69,12 +69,12 @@
 
         for($i = 0; $i < count($fechas); $i++){
             $fila = '<tr>' .
-                '<td>' . $botes[$i] . '</td>' .
-                '<td>' . $fechas[$i] . '</td>' .
-                '<td>' . $pzas[$i] . '</td>' .
-                '<td>' . $total_pzas[$i] . '</td>' .
-                '<td>' . $kilos[$i] . '</td>' .
-                '</tr>';
+                        '<td class="txt-right">' . $botes[$i] . '</td>' .
+                        '<td>' . $fechas[$i] . '</td>' .
+                        '<td class="txt-right">' . $pzas[$i] . '</td>' .
+                        '<td class="txt-right">' . $total_pzas[$i] . '</td>' .
+                        '<td class="txt-right">' . $kilos[$i] . '</td>' .
+                    '</tr>';
             echo $fila;
 
         }

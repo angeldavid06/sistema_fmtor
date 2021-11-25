@@ -7,87 +7,6 @@
     -webkit-print-color-adjust: exact;
 }
 
-/* @media print { */
-
-    .reporte {
-        width: 100%;
-        min-height: 100vh;
-    }
-    
-    .encabezado {
-        width: 100%;
-    }
-    
-    .encabezado table {
-        width: 100%;
-        min-width: 100%;
-        border-collapse: collapse;
-    }
-    
-    .encabezado table th {
-        padding: 10px;
-        font-size: 2em;
-        border: 1px solid black;
-    }
-    
-    .encabezado table tbody td {
-        border: 1px solid hsl(0, 0%, 0%);
-    }
-    
-    .encabezado table tbody .logo {
-        width: 350px;
-        height: 100px;
-        background-color: hsl(0, 49%, 40%);
-        margin: auto;
-    }
-    
-    .reporte .encabezado table tbody td,
-    .reporte .seguimiento table thead th,
-    .reporte .seguimiento table tbody td,
-    .reporte .seguimiento table tfoot td {
-        padding: 5px;
-        font-size: 0.7em;
-    }
-    
-    .reporte_producción .seguimiento {
-        width: 100%;
-        padding-top: 20px;
-        display: grid;
-        grid-gap: 20px;
-        grid-template: repeat(2,1fr) / repeat(3, 1fr);
-    }
-    
-    .reporte .seguimiento {
-        width: 100%;
-        padding-top: 20px;
-    }
-
-    .reporte_maquina .seguimiento {
-        width: 100%;
-        padding-top: 20px;
-        display: grid;
-        grid-gap: 20px;
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .reporte .seguimiento table {
-        width: 100%;
-        min-width: 100%;
-    }
-
-    .reporte_maquina .seguimiento table thead th {
-        height: 50px;
-    }
-    
-    .reporte .seguimiento table {
-        border-collapse: collapse;
-    }
-    
-    .reporte .seguimiento table th,
-    .reporte .seguimiento table td {
-        border: 1px solid black;
-    }
-
     .txt-left {
         text-align: left;
     }
@@ -209,4 +128,161 @@
     .g-1 {
         grid-template-columns: 1fr;
     }
-/* } */
+
+    .d-flex {
+        display: flex;
+        width: 100%;
+    }
+
+    .flex-column {
+        flex-direction: column;
+    }
+
+    .flex-column-reverse {
+        flex-direction: column-reverse;
+    }
+
+    .flex-row {
+        flex-direction: row;
+    }
+
+    .flex-row-reverse {
+        flex-direction: row-reverse;
+    }
+
+    .justify-left {
+        justify-content: flex-start;
+    }
+
+    .justify-center {
+        justify-content: center;
+    }
+
+    .justify-right {
+        justify-content: flex-end;
+    }
+
+    .justify-between {
+        justify-content: space-between;
+    }
+
+    .align-content-top {
+        align-items: flex-start;
+        align-content: flex-start;
+    }
+
+    .align-content-center {
+        align-items: center;
+        align-content: center;
+    }
+
+    .align-content-bottom {
+        align-items: flex-end;
+        align-content: flex-end;
+    }
+
+    .flex-wrap {
+        flex-wrap: wrap;
+    }
+
+    .flex-nowrap {
+        flex-wrap: nowrap;
+    }
+
+    .formato {
+        width: 100%;
+        min-width: 100%;
+        border-collapse: collapse;
+    }
+
+    .formato thead .th {
+        height: 100px;
+    }
+
+    .formato tfoot .td {
+        height: 25px;
+    }
+
+    .formato thead th,
+    .formato tbody td {
+        border: 1px solid black;
+        padding: 3px 3px;
+        font-size: 0.7em;
+        font-family: 'Century Gothic', sans-serif;
+    } 
+
+    .formato tbody td table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .formato tbody td table th,
+    .formato tbody td table td {
+        border: 1px solid black;
+        font-size: 1em;
+    }
+
+    .formato thead .th,
+    .formato tfoot .td {
+        border: none;
+        padding: 0px;
+        font-size: 1em;
+    } 
+
+    .formato tbody .td-sn-pd {
+        padding: 5px;
+        border: none;
+    }
+
+    .formato tbody table .th-estado {
+        background-color: rgb(199, 199, 199);
+        border: 1px solid black;
+    }
+
+    .header {
+        width: 100%;
+        position: fixed;
+        top: 0;
+    }
+
+    .header .logo-formato img {
+        width: 270px;
+    }
+
+    .header .titulo {
+        border-bottom: 3px solid #0071C0;
+        padding: 0px 0px 5px 0px;
+    }
+
+    .header .nombre {
+        padding: 5px 0px 0px 0px;
+    }
+
+    .header .titulo,
+    .header .nombre {
+        width: 100%;
+    }
+
+    .header .titulo p,
+    .header .titulo span,
+    .header .nombre p {
+        font-family: 'Bahnschrift';
+    }
+
+    .header .titulo p,
+    .header .nombre p {
+        font-size: 1.2em;
+    }
+
+    .footer {
+        border-top: 3px solid #0071C0;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        padding: 5px 0px;
+    }
+
+    .footer p {
+        font-size: 0.7em;
+    }
+

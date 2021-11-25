@@ -17,13 +17,13 @@
             $op = $control->op;
             $ops = $this->model->buscar($vista,'Id_Folio_1',$op);
             $json = json_encode($ops);
-            $archivo='../../public/control.js';
-            file_put_contents($archivo,$json);
             echo $json;
         }
 
         public function pdf_control () {
             if (isset($_GET['valor'])) {
+                $control = $this->model->buscar('v_control','Orden_Produccion',$_GET['valor']);
+                $this->model= new Model();
                 $forjado = $this->model->buscar('v_forjado','Id_Folio_1',$_GET['valor']);
                 $this->model= new Model();
                 $ranurado = $this->model->buscar('v_ranurado','Id_Folio_1',$_GET['valor']);
@@ -37,6 +37,7 @@
                 $acabado = $this->model->buscar('v_acabado','Id_Folio_1',$_GET['valor']);
 
                 $data = [
+                    "control" => $control,
                     "forjado" => $forjado,
                     "ranurado" => $ranurado,
                     "rolado" => $rolado,
@@ -56,8 +57,6 @@
                 $op = $_GET['op'];
                 $ops = $this->model->buscar('v_control','Orden_Produccion',$op);
                 $json = json_encode($ops);
-                $archivo='../../public/control.js';
-                file_put_contents($archivo,$json);
                 echo $json;
             }
         }

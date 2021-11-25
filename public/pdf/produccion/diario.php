@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css?1.2">
 </head>
 <body>
-    <div class="reporte reporte_diario">
+    <!-- <div class="reporte reporte_diario">
         <div class="encabezado">
             <table>
                 <thead>
@@ -39,8 +39,77 @@
                 </tbody>
             </table>
         </div>
-        <div class="seguimiento">
-            <?php require_once 'modules_pdf/tabla_diario.php'; ?>
+        <div class="seguimiento"> -->
+            <?php 
+                // require_once 'modules_pdf/tabla_diario.php'; 
+            ?>
+        <!-- </div>
+    </div> -->
+        <table class="formato">
+        <thead>
+            <tr>
+                <th class="th"></th>
+            </tr>
+            <tr>
+                <th colspan="2">Fecha: </th>
+                <th colspan="4">Turno: </th>
+                <th colspan="4">Departamento: </th>
+            </tr>
+            <tr>
+                <th colspan="10"></th>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <th>Turno</th>
+                <th>Departamento</th>
+                <th>O.P.</th>
+                <th>CLIENTE</th>
+                <th>KILOS</th>
+                <th>PIEZAS PRODUCIDAS</th>
+                <th>NO. MÁQUINA</th>
+                <th>DESCRIPCIÓN</th>
+                <th>OBSERVACIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php require_once 'modules_pdf/tabla_diario.php';  ?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="td"></td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="header">
+        <div class="d-grid g-2">
+            <div class="logo-formato">
+                <img src="http://localhost/sistema_fmtor/public/img/logo_formato.png" alt="">
+            </div>
+            <div class="d-flex flex-wrap justify-right">
+                <div class="titulo txt-right">
+                    <p>FORJADORA MEXICANA DE TORNILLOS</p>
+                    <span>S.A. DE C.V.</span>
+                </div>
+                <div class="nombre txt-right">
+                    <p>REPORTE DIARIO DE PRODUCCIÓN</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="d-grid g-4">
+            <div class="d-flex align-content-bottom">
+                <p>Clave: </p>
+            </div>
+            <div class="d-flex align-content-bottom">
+                <p>Versión: </p>
+            </div>
+            <div class="d-flex align-content-bottom">
+                <p>Fecha de validación: </p>
+            </div>
+            <div class="d-flex align-content-bottom">
+                <p>Página: </p>
+            </div>
         </div>
     </div>
 </body>
