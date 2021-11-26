@@ -997,7 +997,7 @@ embed {
 
 .menu .titulo_categoria_menu {
     width: 100%;
-    padding: 30px;
+    padding: 20px;
     border-top: 2px solid var(--border-color);
     border-bottom: 2px solid var(--border-color);
 }
@@ -1019,7 +1019,7 @@ embed {
 }
 
 .menu nav a {
-    width: 80%;
+    width: 90%;
     display: flex;
     align-items: center;
     padding: 20px;
@@ -1032,7 +1032,7 @@ embed {
 }
 
 .menu nav a i {
-    padding: 0px 20px 0px 0px;
+    padding: 0px 10px 0px 0px;
 }
 
 .contenedor .menu.hidde_menu a i {

@@ -16,7 +16,7 @@
             <tr>
                 <th colspan="2">Fecha: </th>
                 <th colspan="4">Turno: </th>
-                <th colspan="4">Departamento:  <div class="page-number"></div></th>
+                <th colspan="4">Departamento: </th>
             </tr>
             <tr>
                 <th colspan="10"></th>
