@@ -50,6 +50,8 @@
         --color-logo: #FFFFFF;
 
         --border-color: #36393f;
+
+        --login: url('../img/login-background.png');
     }
 }
 
@@ -78,6 +80,8 @@
         --color-text: #383838;
         
         --border-color: #EFEFEF;
+
+        --login: url('../img/login-background-light-blue.png');
     }
 }
 
@@ -364,6 +368,14 @@ button {
     color: var(--color-button);
 }
 
+a.btn {
+    background-color: transparent;
+}
+
+a.btn:hover {
+    text-decoration: underline;
+}
+
 .btn-icon {
     display: flex;
     align-content: center;
@@ -580,7 +592,9 @@ input[type="radio"] {
 
 input[type="checkbox"]:checked + label,
 input[type="radio"]:checked + label {
+    font-weight: 500;
     background-color: var(--background-button);
+    color: var(--color-button);
     padding: 15px 15px 15px 15px;
 }
 
@@ -722,207 +736,78 @@ embed {
     height: 100vh;
 }
 
-.welcome {
+.login {
+    width: 70%;
+    max-width: 100%;
+    padding: 0% 15%;
+}
+
+.empresa {
     width: 100%;
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden;
-}
-
-.welcome .row-con {
-    margin: auto;
-    width: 80%;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 0.7fr 0fr;
-}
-
-.welcome .hidden {
-    grid-template-columns: 0fr 1fr 1fr;
-}
-
-.left {
-    grid-column: 1 / 2;
-    min-height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: center;
-}
-
-.left p {
-    font-size: 1.5em;
-}
-
-.hidden .left {
-    width: 0;
-    overflow: hidden;
-    display: none;
-}
-
-.center {
-    grid-column: 2 / 3;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: center;
-    position: relative;
-}
-
-.card-sm {
-    width: 200px;
-    height: 360px;
+    height: 60%;
     border-radius: var(--border-radius);
+    background-image: var(--login);
+    background-size: cover;
+    padding: 0px 80px;
 }
 
-.card-sm-1 {
-    position: absolute;
-    left: 50px;
-    top: calc(50% - 380px);
-    background-color: var(--background-tornillo-1);
-    transition: all .6s;
+.empresa h1 {
+    font-size: 3.5em;
+    text-align: right;
+    font-weight: 500;
+    font-family: 'Bahnschrift', sans-serif;
+    color: white;
 }
 
-.hidden .card-sm-1 {
-    left: 100px;
-    top: calc(50% - 200px);
-}
-
-.card-sm-2 {
-    position: absolute;
-    left: 200px;
-    top: calc(50% - 200px);
-    background-color: var(--background-tornillo-2);
-    transition: all .6s;
-}
-
-.hidden .card-sm-2 {
-    left: 260px;
-    top: calc(50% - 80px);
-}
-
-.card-sm-3 {
-    position: absolute;
-    left: 370px;
-    top: calc(50% - 50px);
-    background-color: var(--background-tornillo-3);
-    transition: all .6s;
-}
-
-.hidden .card-sm-3 {
-    left: 420px;
-    top: calc(50% - 300px);
-}
-
-.tornillo {
-    width: 220px;
-}
-
-.tornillo-1 {
-    position: absolute;
-    left: -100px;
-    top: 10px;
-    animation: tornillo-1 2.5s infinite ease-in-out;
-}
-
-@keyframes tornillo-1 {
-    0% {
-        top: 10px;
-    }
-
-    50% {
-        top: 70px;
-    }
-
-    100% {
-        top: 10px;
-    }
-}
-
-.tornillo-2 {
-    position: absolute;
-    left: -30px;
-    top: 30px;
-    z-index: 2;
-    transform: rotate(225deg);
-    animation: tornillo-2 6s infinite ease-in-out;
-}
-
-@keyframes tornillo-2 {
-    0% {
-        top: 30px;
-    }
-
-    50% {
-        top: 90px;
-    }
-
-    100% {
-        top: 30px;
-    }
-}
-
-.tornillo-3 {
-    position: absolute;
-    left: 30px;
-    top: 60px;
-    animation: tornillo-3 4s infinite ease-in-out;
-}
-
-@keyframes tornillo-3 {
-    0% {
-      top: 70px;
-    }
-
-    50% {
-      top: 10px;
-    }
-
-    100% {
-        top: 70px;
-    }
+.empresa h2 {
+    text-align: right;
+    font-weight: 500;
+    font-family: 'Bahnschrift', sans-serif;
+    color: white;
 }
 
 .form-login {
-    padding: 0px 50px 50px 50px;
-    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 50px;
+}
+
+.form-login h1 {
+    font-size: 3.5em;
+    font-family: 'Bahnschrift', sans-serif;
+    padding: 0px 0px 30px 0px;
+}
+
+#form-login {
+    padding: 0px 10px;
     margin: auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
     align-content: center;
-    transition: width .3s,
-                opacity 1.4s;
-    width: 0;
-    opacity: 0;
-    overflow: hidden;
-    visibility: hidden;
-}
-
-.hidden .form-login {
-    width: 80%;
     opacity: 1;
     overflow: hidden;
     visibility: visible;
 }
 
-.form-login input {
-    margin: 10px 0px;
+#form-login input {
     background-color: var(--background-aux);
 }
 
-.form-login .lbl-checkbox {
+#form-login .lbl-checkbox {
     background-color: var(--background-body);
 }
 
-.form-login .options {
+#form-login .options {
     display: grid;
     grid-template-rows: repeat(1,1fr);
 }
 
-.form-login .options a {
-    padding: 20px;
+#form-login .options a {
     text-align: center;
 }
 
@@ -1455,110 +1340,37 @@ embed {
 
 
 @media screen and (max-width: 1366px) {
-    a, p, label, input, textarea, select, button {
-        font-size: 0.9rem;
-    }
-
-    a, p, label, input, textarea, select, button {
-        font-size: 0.9rem;
-    }
- 
-    .card-sm {
-        width: 150px;
-        height: 200px;
-        border-radius: var(--border-radius);
-    }
-
-    .card-sm-1 {
-        left: 60px;
-        top: calc(50% - 230px);
-    }
-    
-    .card-sm-2 {
-        left: 160px;
-        top: calc(50% - 95px);
-    }
-    
-    .card-sm-3 {
-        left: 260px;
-        top: calc(50% + 30px);
-    }
-
-    .tornillo {
-        width: 150px;
-    }
-
-    .tornillo-1 {
-        left: -50px;
-    }
-
-    .tornillo-2 {
-        left: -10px;
-    }
-
-    .tornillo-3 {
-        left: 30px;
-    }
-
-    @keyframes tornillo-1 {
-        0% {
-            top: 10px;
-        }
-
-        50% {
-            top: 70px;
-        }
-
-        100% {
-            top: 10px;
-        }
-    }
-
-    @keyframes tornillo-2 {
-        0% {
-            top: 20px;
-        }
-
-        50% {
-            top: 80px;
-        }
-
-        100% {
-            top: 20px;
-        }
-    }
-
-    @keyframes tornillo-3 {
-        0% {
-            top: 70px;
-        }
-
-        50% {
-            top: 10px;
-        }
-
-        100% {
-            top: 70px;
-        }
-    }
-
-    .hidden .card-sm-1 {
-        left: -0px;
-        top: calc(50% - 160px);
-    }
-
-    .hidden .card-sm-2 {
-        left: 110px;
-        top: calc(50% - 40px);
-    }
-
-    .hidden .card-sm-3 {
-        left: 200px;
-        top: calc(50% - 200px);
-    }
-
-    .hidden .form-login {
+    .login {
+        background-size: cover;
         width: 100%;
+        max-width: 100%;
+        padding: 0%;
+    }
+
+    .empresa {
+        margin: auto;
+        width: 85%;
+        height: 80%;
+    }
+
+    .empresa h1 {
+        font-size: 3em;
+    }
+
+    .empresa h2 {
+        font-size: 1.8em;
+    }
+
+    .form-login h1 {
+        font-size: 3em;
+    }
+
+    a, p, label, input, textarea, select, button {
+        font-size: 0.9rem;
+    }
+
+    a, p, label, input, textarea, select, button {
+        font-size: 0.9rem;
     }
 
     .contenido {
@@ -1582,6 +1394,14 @@ embed {
     .w-100 {
         width: calc(100% - 80px);
         left: 80px;
+    }
+
+    .d-grid {
+        grid-gap: 20px;
+    }
+
+    .grid-gap-0 {
+        grid-gap: 0;
     }
     
 }
@@ -1676,28 +1496,66 @@ embed {
         padding: 15px 0px 0px 15px;
     }
 
-    .welcome .row-con {
-        width: 90%;
-        max-width: 90%;
-        padding: 10px;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 0fr;
-    }
-    .welcome .hidden {
-        grid-template-columns: 1fr;
-        grid-template-rows: 0fr 1fr;
+    .login {
+        padding: 5%;
     }
 
-    .hidden .form-login {
-        padding: 10px;
+    .form-login {
+        width: 100%;
+        height: 45vh;
+        padding: 0;
+        align-items: flex-end;
+        align-content: flex-end;
     }
 
-    .welcome .left {
-        grid-column: 1 / 2;
+    .form-login h1 {
+        display: none;
     }
 
-    .welcome .right {
-        grid-column: 1 / 2;
+    .empresa {
+        width: 100%;
+        height: 45vh;
+        padding: 0% 5% 5% 5%;
+        align-content: flex-end;
+    }
+
+    .empresa h1 {
+        font-size: 3em;
+    }
+
+    .empresa h2 {
+        display: none;
+    }
+
+    #form-login {
+        max-height: 100%;
+        padding: 0px 10px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        align-content: flex-end;
+        opacity: 1;
+        overflow: hidden;
+        visibility: visible;
+    }
+
+    #form-login input {
+        background-color: var(--background-aux);
+    }
+
+    #form-login .lbl-checkbox {
+        background-color: var(--background-body);
+    }
+
+    #form-login .options {
+        display: grid;
+        grid-template-rows: repeat(1,1fr);
+    }
+
+    #form-login .options a {
+        text-align: center;
     }
 
     .card-sm {
@@ -1840,5 +1698,9 @@ embed {
         padding: 20px 20px 20px 20px;
         height: auto;
         overflow-y: hidden;
+    }
+
+    .grid-gap-0 {
+        grid-gap: 0;
     }
 }
