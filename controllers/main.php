@@ -26,8 +26,6 @@
                         // $informacion = $this->model->buscar_personalizado('t_usuarios','nombre,rol,',"nombre = '$nombre'");
                         // $sesiones = self::generar_sesiones('','','');
                         $sesiones = [
-                            "nombre" => 'Nombre de usuario',
-                            "rol" => 'ADMINISTRADOR',
                             "depto" => 'ventas'
                         ];
                         echo json_encode($sesiones);

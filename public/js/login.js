@@ -1,14 +1,6 @@
-const form = document.getElementById('form_login');
+const form = document.getElementById('form-login');
 const usu = document.getElementById('nombre');
 const pass = document.getElementById('password');
-
-if (document.getElementsByClassName('btn-login-form')) {
-    const btn_login_open = document.getElementsByClassName('btn-login-form');
-    btn_login_open[0].addEventListener('click', () => {
-        const row = document.getElementsByClassName('row-con');
-        row[0].classList.toggle('hidden');
-    });
-}
 
 const iniciar_sesion = () => {
     const response = fetchAPI(form,'http://localhost/sistema_fmtor/main/iniciar','POST');
