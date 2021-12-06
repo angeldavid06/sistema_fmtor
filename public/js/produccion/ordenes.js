@@ -115,9 +115,6 @@ const tipo_consulta = (url_pdf) => {
         url_pdf += '&filtro=todo'
     }
 
-    f_r_op_m
-    f_r_op_M
-
     printPage(url_pdf);
     console.log(url_pdf);
 }

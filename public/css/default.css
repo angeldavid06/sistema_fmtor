@@ -368,14 +368,6 @@ button {
     color: var(--color-button);
 }
 
-a.btn {
-    background-color: transparent;
-}
-
-a.btn:hover {
-    text-decoration: underline;
-}
-
 .btn-icon {
     display: flex;
     align-content: center;
@@ -1318,6 +1310,10 @@ embed {
     grid-template-columns: 1fr;
 }
 
+.informacion .tarjeta-transparente .tarjeta {
+    margin: 0px 0px 0px 0px;
+}
+
 .contenedor .contenido .informacion main nav {
     padding: 30px 0px 0px 0px;
 }
@@ -1398,6 +1394,10 @@ embed {
 
     .d-grid {
         grid-gap: 20px;
+    }
+
+    .d-grid .tarjeta {
+        margin: 0px 0px 0px 0px;
     }
 
     .grid-gap-0 {
@@ -1676,6 +1676,10 @@ embed {
     .g-12, .g-11, .g-10, .g-9, .g-8, .g-7, .g-6, .g-5, .g-4, .g-3, .g-2, .g-1,
     .g2-1-9, .g2-2-8, .g2-3-7, .g2-4-6, .g2-5-5, .g2-6-4, .g2-7-3, .g2-8-2, .g2-9-1 {
         grid-template-columns: 1fr;
+    }
+
+    .d-grid .tarjeta {
+        margin: 0px 0px 0px 0px;
     }
 
     .contenido .informacion .tarjeta  {

@@ -54,7 +54,7 @@
                     <span>S.A. DE C.V.</span>
                 </div>
                 <div class="nombre txt-right">
-                    <p>REPORTE DIARIO DE PRODUCCIÓN</p>
+                    <p>REPORTE DIARIO DE PRODUCCIÓN POR MÁQUINA</p>
                 </div>
             </div>
         </div>

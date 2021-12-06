@@ -769,9 +769,8 @@ const generar_reporte = (input,select,estado) => {
     }
 }
 
-const generar_PDF = () => {
-    console.log('Imprimir');
-    printPage(url+'/produccion/maquinas/pdf_maquinas');
+const generar_PDF = (fecha,kilos_pzas,estado) => {
+    printPage(url+'/produccion/maquinas/pdf_maquinas?fecha_reporte='+fecha.value+'&kilos_pzas='+kilos_pzas.value+'&estado='+estado.value);
 }
 
 input.addEventListener('change', () => {
@@ -788,7 +787,14 @@ estado.addEventListener('change', () => {
 
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.impresion) {
-        generar_PDF()
+        const fecha = document.getElementById('fecha_reporte')
+        const kilos_pzas = document.getElementById('pzas_kilos')
+        const estado = document.getElementById('estado')
+        if (fecha.value != '' && kilos_pzas.value != '' && estado != '') {
+            generar_PDF(fecha,kilos_pzas,estado)
+        } else {
+            open_alert('No ha seleccionado ningún campo', 'naranja')
+        }
     }
 })
 
