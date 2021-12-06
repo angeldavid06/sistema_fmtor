@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="../public/css/default.css?2.3">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="fmtor_16.png">
+    <link rel="apple-touch-startup-image" href="fmtor_16.png">
+    <link rel="apple-touch-icon" href="fmtor_16.png">
+
+    <link rel="manifest" href="http://localhost/sistema_fmtor/manifest.json">
 </head>
 <body>
     <div class="d-grid g2-6-4 grid-gap-0 height-100 login">
@@ -108,6 +113,7 @@
             </div>
     </div>
     <script src="../public/js/fmtor_libreria.js?2.3"></script>
+    <script src="http://localhost/sistema_fmtor/script.js"></script> 
     <script src="../public/js/login.js?2.1"></script>
 </body>
 </html>
