@@ -1,6 +1,5 @@
 const CACHE_NAME = 'cache_fmtor_v2',
 urlsToCache = [
-    './',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     url+'/fmtor_1024.png',
     url+'/fmtor_512.png',
