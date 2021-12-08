@@ -956,9 +956,12 @@ embed {
 
 .menu nav a:hover {
     background-color: var(--background-body);
-    color: var(--background-button);
+    color: var(--color-button);
 }
 
+.contenedor .menu.hidde_menu a {
+    background-color: transparent;
+}
 
 .contenedor .menu.hidde_menu a,
 .contenedor .menu.hidde_menu a.active {
@@ -977,6 +980,21 @@ embed {
 .contenido.hidde_menu {
     width: calc(100% - 80px);
     max-width: calc(100% - 80px);
+}
+
+.contenido.pagina-sola {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 10%;
+}
+
+.contenido.pagina-sola header {
+    grid-template-columns: 1fr;
+}
+
+.contenido.pagina-sola header .logos {
+    justify-content: center;
 }
 
 .principal .contenido {
@@ -1409,7 +1427,7 @@ embed {
         min-width: 50px;
     }
 
-    .contenido {
+    .principal .contenido {
         width: 75%;
         max-width: 75%;
         max-height: 100vh;
@@ -1622,19 +1640,15 @@ embed {
     }
 
     .menu .informacion {
-        padding: 30px 15px 30px 15px;
+        padding: 30px 15px 0px 15px;
     }
     
     .menu .informacion .foto {
-        width: 100px;
-        height: 100px;
+        width: 40px;
+        height: 50px;
     }
 
     .menu .titulo_categoria_menu {
-        padding: 15px;
-    }
-
-    .menu nav a {
         padding: 15px;
     }
 

@@ -60,6 +60,12 @@
             </div>
         </div>
     </div>
+    <div class="alert d-flex justify-between align-content-bottom alert-rojo">
+        <div class="contenido d-flex align-content-center">
+            <i class="material-icons">warning</i>
+            <p class="txt-left">Título </p>
+        </div>
+    </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
 </body>
 </html>
