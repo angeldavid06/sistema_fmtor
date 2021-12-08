@@ -50,7 +50,7 @@
                                 <button class="btn btn-transparent boton_estado" data-estado="v_shank" data-titulo="SHANK" data-id="4">SHANK</button>
                                 <button class="btn btn-transparent boton_estado" data-estado="v_cementado" data-titulo="CEMENTADO" data-id="5">CEMENTADO</button>
                                 <button class="btn btn-transparent boton_estado" data-estado="v_acabado" data-titulo="ACABADO" data-id="6">ACABADO</button>
-                                <button class="btn btn-transparent">TERMINADO</button>
+                                <button class="btn ">TERMINADO</button>
                             </div>
                         </div>
                         <div class="estado_tabla tarjeta d-grid g2-6-4">

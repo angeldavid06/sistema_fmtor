@@ -51,7 +51,7 @@
 
         --border-color: #36393f;
 
-        --login: url('../img/login-background.png');
+        --login: rgba(9, 96, 167, 0.8);
     }
 }
 
@@ -81,7 +81,7 @@
         
         --border-color: #EFEFEF;
 
-        --login: url('../img/login-background-light-blue.png');
+        --login: rgba(9, 96, 167, 0.8);
     }
 }
 
@@ -188,7 +188,7 @@
 }
 
 .contenido .modal.modal-izquierda.abrir_modal {
-    left: calc(20% + 90px);
+    left: calc(20% + 30px);
 }
 
 .modal .titulo_modal {
@@ -738,9 +738,19 @@ embed {
     width: 100%;
     height: 60%;
     border-radius: var(--border-radius);
-    background-image: var(--login);
-    background-size: cover;
+    background-color: var(--login);
     padding: 0px 80px;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+}
+
+.empresa video {
+    z-index: -1;
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
 }
 
 .empresa h1 {
@@ -824,12 +834,15 @@ embed {
 .menu.hidde_menu {
     width: 79px;
     max-width: 79px;
-    overflow-x: hidden;
 }
 
 .menu .informacion {
-    padding: 30px;
+    padding: 30px 30px 0px 30px;
+    display: flex;
+    overflow-x: hidden;
+    min-width: 300px;
     width: 100%;
+    max-width: 100%;
 }
 
 .contenedor .menu.hidde_menu .informacion {
@@ -838,30 +851,24 @@ embed {
 }
 
 .menu .informacion .foto {
-    width: 150px;
-    height: 150px;
+    width: 50px;
+    height: 50px;
     background-color: var(--color-text);
-    margin: 0px auto 30px auto;
+    margin: 0px 30px 30px 0px;
     border-radius: 50%;
 }
 
 .contenedor .menu.hidde_menu .informacion .foto {
     width: 40px;
+    min-width: 40px;
+    max-width: 40px;
     height: 40px;
     margin: 10px 15px 10px 15px;
 }
 
-.menu .informacion h3 {
-    text-align: center;
-}
-
-.contenedor .menu.hidde_menu .informacion h3 {
-    display: none;
-}
-
 .menu .informacion p {
-    padding: 15px 0px 0px 0px;
-    text-align: center;
+    padding: 5px 0px 0px 0px;
+    text-align: left;
 }
 
 .contenedor .menu.hidde_menu .informacion p {
@@ -869,7 +876,10 @@ embed {
 }
 
 .menu .categoria_menu {
+    overflow-x: hidden;
+    min-width: 300px;
     width: 100%;
+    max-width: 100%;
 }
 
 .menu .titulo_categoria_menu {
@@ -892,35 +902,46 @@ embed {
 }
 
 .menu nav {
+    overflow-x: hidden;
+    min-width: 300px;
     width: 100%;
+    max-width: 100%;
+}
+
+.contenedor .menu.hidde_menu nav {
+    width: 300px;
 }
 
 .menu nav a {
-    width: 90%;
+    width: 95%;
+    margin: auto;
     display: flex;
     align-items: center;
-    padding: 20px;
     transition: all .3s;
+    border-radius: var(--border-radius);
+    padding: 5px;
 }
 
 .contenedor .menu.hidde_menu a {
     width: 300px;
-    padding: 20px 8px;
+    padding: 5px 0px 5px 10px;
 }
 
 .menu nav a i {
-    padding: 0px 10px 0px 0px;
+    transition: all .3s;
+    padding: 15px;
+    margin: 0px 0px 0px 0px;
+    border-radius: var(--border-radius);
 }
 
 .contenedor .menu.hidde_menu a i {
-    padding: 0px 25px 0px 20px;
+    padding: 15px;
+    margin: 0px 20px 0px 0px;
 }
 
 .menu nav a.active {
-    width: 90%;
     background-color: var(--background-button);
     color: var(--color-button);
-    border-radius: 0px var(--border-radius) var(--border-radius) 0px;
 }
 
 .menu nav a.active i {
@@ -928,16 +949,18 @@ embed {
 }
 
 .menu nav a:hover i {
-    color: var(--background-button);
+    margin: 0px 10px 0px 0px;
+    background-color: var(--background-button);
+    color: var(--color-button);
 }
 
 .menu nav a:hover {
-    width: 90%;
-    background-color: var(--color-button);
+    background-color: var(--background-body);
     color: var(--background-button);
-    border-radius: 0px var(--border-radius) var(--border-radius) 0px;
 }
 
+
+.contenedor .menu.hidde_menu a,
 .contenedor .menu.hidde_menu a.active {
     border-radius: 0;
 }
@@ -1010,7 +1033,7 @@ embed {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 30px;
+    padding: 20px 30px;
     border-bottom: 2px solid var(--border-color);
 }
 
@@ -1367,6 +1390,23 @@ embed {
 
     a, p, label, input, textarea, select, button {
         font-size: 0.9rem;
+    }
+
+    .menu .categoria_menu {
+        min-width: 250px;
+    }
+
+    .menu nav {
+        min-width: 250px;
+    }
+
+    .menu .informacion {
+        min-width: 300px;
+    }
+
+    .menu .informacion .foto {
+        max-width: 50px;
+        min-width: 50px;
     }
 
     .contenido {

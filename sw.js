@@ -1,13 +1,13 @@
 const CACHE_NAME = 'cache_fmtor_v2',
 urlsToCache = [
     'https://fonts.googleapis.com/icon?family=Material+Icons',
-    url+'/fmtor_1024.png',
-    url+'/fmtor_512.png',
-    url+'/fmtor_256.png',
-    url+'/fmtor_128.png',
-    url+'/fmtor_64.png',
-    url+'/fmtor_32.png',
-    url+'/fmtor_16.png'
+    'http://localhost/sistema_fmtor/fmtor_1024.png',
+    'http://localhost/sistema_fmtor/fmtor_512.png',
+    'http://localhost/sistema_fmtor/fmtor_256.png',
+    'http://localhost/sistema_fmtor/fmtor_128.png',
+    'http://localhost/sistema_fmtor/fmtor_64.png',
+    'http://localhost/sistema_fmtor/fmtor_32.png',
+    'http://localhost/sistema_fmtor/fmtor_16.png'
 ]
 
 self.addEventListener('install', e => {

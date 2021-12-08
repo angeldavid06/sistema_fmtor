@@ -43,6 +43,19 @@
             }
         }
 
+        public function acumulado () {
+            if (isset($_GET['Id_Folio'])) {
+                $pzas = $this->model->buscar_personalizado('t_registro_diario','SUM(pzas) AS acumulado', "Id_control_produccion_1 = '".$_GET['Id_Folio']."'");
+                $json = json_encode($pzas);
+                echo $json;
+            } else {
+                echo 0;
+            }
+        }
+
+        // public function buscar_personalizado ($tabla,$campos,$condicion) {
+        //     $sql = "SELECT $campos FROM $tabla WHERE $condicion";
+
         public function obtener_ordenes () {
             $ops = $this->model->mostrar('v_ordenes');
             $json = json_encode($ops);

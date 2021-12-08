@@ -3,8 +3,10 @@
         <div class="foto">
             <img src="" alt="">
         </div>
-        <h3>Nombre del empleado</h3>
-        <p>Puesto</p>
+        <div class="nombre">
+            <p>Angel David Martinez Mendoza</p>
+            <p>Puesto</p>
+        </div>
     </div>
     <div class="categoria_menu">
         <nav class="opciones">

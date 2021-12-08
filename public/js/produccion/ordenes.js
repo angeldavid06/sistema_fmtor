@@ -6,9 +6,10 @@ const quitar_filas = (t_body) => {
 
 const render_ordenes = (json) => {
     const t_body= document.getElementsByClassName('body')
+    let total_acumulado = 0
     json.forEach(el => {
         const tr = document.createElement('tr')
-
+    
         tr.classList.add('tr')
 
         if (el.estado == 'TERMINADO') {
@@ -28,7 +29,7 @@ const render_ordenes = (json) => {
                         '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">'+el.cantidad_elaborar+'</td>'+
                         '<td class="txt-right" data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
                         '<td class="txt-right" data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.TOTAL)+'</td>'+
-                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">' + /*new Intl.NumberFormat('es-MX').format(Acumulado)*/'Acumulado'+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">'+total_acumulado+'</td>'+
                         '<td>' + el.estado_general+'</td>'
         t_body[0].appendChild(tr)
     })
@@ -116,7 +117,6 @@ const tipo_consulta = (url_pdf) => {
     }
 
     printPage(url_pdf);
-    console.log(url_pdf);
 }
 
 const consulta_PDF = () => {
@@ -126,7 +126,6 @@ const consulta_PDF = () => {
     } else if (select_formatos.value == 1) {
         tipo_consulta(url+'/produccion/op/pdf_ordenes?formato=v_reportediario')
     }
-    // printPage(url+'/produccion/op/pdf_ordenes?formato=v_reportediario');
 }
 
 const generar_PDF = () => {

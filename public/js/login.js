@@ -1,18 +1,26 @@
 const form = document.getElementById('form-login');
 const usu = document.getElementById('nombre');
 const pass = document.getElementById('password');
+const auxiliar = {
+    intentos: 0
+}
 
 const iniciar_sesion = () => {
-    const response = fetchAPI(form,'http://localhost/sistema_fmtor/main/iniciar','POST');
-    response.then(json => {
-        if (json.depto) {
-            window.location.href = 'http://localhost/sistema_fmtor/'+json.depto.toLowerCase()+'/main/mostrar'
-        } else {
-            usu.classList.add('input-error')
-            pass.classList.add('input-error')
-            open_alert('El usuario o contraseña introducidos son incorrectos','rojo');
-        }
-    })
+    if (auxiliar.intentos < 3) {
+        const respuesta = fetchAPI(form,url+'/main/iniciar','POST');
+        respuesta.then(json => {
+            if (json.depto) {
+                window.location.href = url+'/'+json.depto.toLowerCase()+'/main/mostrar'
+            } else {
+                auxiliar.intentos++
+                usu.classList.add('input-error')
+                pass.classList.add('input-error')
+                open_alert('El usuario o contraseña introducidos son incorrectos','rojo');
+            }
+        })
+    } else {
+        open_alert('Excediste el número de intentos para poder iniciar sesión','rojo');
+    }
 }
 
 form.addEventListener('submit', (evt) => {
@@ -22,7 +30,7 @@ form.addEventListener('submit', (evt) => {
     if (usu.value == '' && pass.value == '') {
         usu.classList.add('input-error')
         pass.classList.add('input-error')
-        open_alert('No ha introducido el nombre de usuario o contraseña','rojo');
+        open_alert('No ha introducido el nombre de usuario y contraseña','rojo');
     } else if (pass.value == '') {
         pass.classList.add('input-error')
         open_alert('No ha introducido la contraseña','rojo');
