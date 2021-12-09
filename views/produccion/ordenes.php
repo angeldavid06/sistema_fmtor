@@ -14,14 +14,28 @@
             <div class="informacion">
                 <h1>Ordenes de Producción</h1>
                 <div class="tarjeta-transparente d-flex justify-right">
-                    <button class="btn btn-icon btn_filtrar_open" data-modal="modal-filtrar">
-                        <i class="material-icons"  data-modal="modal-filtrar">filter_alt</i>
-                        Filtrar
-                    </button>
-                    <button class="btn btn-icon" data-impresion="documento">
-                        <i class="material-icons" data-impresion="documento">description</i>
-                        Generar Documento
-                    </button>
+                    <div class="d-grid g-2">
+                        <div class="d-flex align-content-center">
+                            <!-- <label for="cantidad_resultados">Cantidad de resultados:</label>
+                            <select data-select="" name="cantidad_resultados" id="cantidad_resultados">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select> -->
+                        </div>
+                        <div class="d-flex align-content-center justify-right">
+                            <button class="btn btn-icon btn_filtrar_open" data-modal="modal-filtrar">
+                                <i class="material-icons"  data-modal="modal-filtrar">filter_alt</i>
+                                Filtrar
+                            </button>
+                            <button class="btn btn-icon" data-impresion="documento">
+                                <i class="material-icons" data-impresion="documento">description</i>
+                                Generar Documento
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="tarjeta">
                     <div class="main">

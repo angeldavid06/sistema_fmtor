@@ -66,9 +66,14 @@
                 <p>Fecha de validación: </p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>Página: </p>
+                <p class="page" id="pageNumber">Página: </p>
             </div>
         </div>
     </div>
+    <script>
+        const totalPages = document.querySelectorAll('.page').length;
+        document.documentElement.style.setProperty('--total-pages', totalPages);
+        console.log(totalPages);
+    </script>
 </body>
 </html>

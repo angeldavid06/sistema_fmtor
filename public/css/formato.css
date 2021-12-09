@@ -289,8 +289,19 @@
         font-size: 0.7em;
     }
 
-    #numero_pagina:after {
-        counter-increment: page;
-        /* counter-reset: page 3; */
-        content: "Page " counter(page) " of " counter(pages);
+    :root {
+        --total-pages: 0;
+    }
+
+    body {
+        counter-reset: page-counter 0 total-pages var(--total-pages);
+    }
+
+    .page {
+        min-height: 1vh;
+    }
+
+    .page::before {
+        counter-increment: page-counter;
+        content: counter(page-counter);
     }

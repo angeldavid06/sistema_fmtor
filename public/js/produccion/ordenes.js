@@ -1,8 +1,5 @@
-const quitar_filas = (t_body) => {
-    while(t_body.firstChild){
-        t_body.removefirstChild(t_body.firstChild)
-    }
-}
+let paginas = []
+const total_resultados = 35
 
 const render_ordenes = (json) => {
     const t_body= document.getElementsByClassName('body')
@@ -56,10 +53,76 @@ const render_reporte_diario = (json) => {
     });
 }
 
+const pagina_selecionada = (numero_pagina) => {
+    const t_body= document.getElementsByClassName('body')
+    let total_acumulado = 0
+    
+    limpiar_tabla();
+
+    for (let i = 0; i < paginas[numero_pagina-1].length; i++) {
+        const tr = document.createElement('tr')
+        tr.classList.add('tr')
+    
+        tr.innerHTML += '<td data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano">'+paginas[numero_pagina-1][i].calibre+'</td>'+
+                        '<td class="txt-right" data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano">'+new Intl.NumberFormat('es-MX').format(paginas[numero_pagina-1][i].factor*paginas[numero_pagina-1][i].cantidad_elaborar)+'</td>'+
+                        '<td data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano">'+paginas[numero_pagina-1][i].factor+'</td>'+
+                        '<td data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano">'+paginas[numero_pagina-1][i].Id_Folio+'</td>'+
+                        '<td data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano">'+paginas[numero_pagina-1][i].Fecha.split(' ')[0]+'</td>'+
+                        '<td data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano">'+paginas[numero_pagina-1][i].Clientes+'</td>'+
+                        '<td data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano">'+paginas[numero_pagina-1][i].descripcion+'</td>'+
+                        '<td data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano">'+paginas[numero_pagina-1][i].acabados+'</td>'+
+                        '<td data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano" class="number">'+paginas[numero_pagina-1][i].cantidad_elaborar+'</td>'+
+                        '<td class="txt-right" data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano" class="number">$ ' + new Intl.NumberFormat('es-MX').format(paginas[numero_pagina-1][i].precio_millar)+'</td>'+
+                        '<td class="txt-right" data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano" class="number">$ ' + new Intl.NumberFormat('es-MX').format(paginas[numero_pagina-1][i].TOTAL)+'</td>'+
+                        '<td data-plano="'+paginas[numero_pagina-1][i].Id_Catalogo+'" data-modal="modal-plano" class="number">'+total_acumulado+'</td>'+
+                        '<td>' + paginas[numero_pagina-1][i].estado_general+'</td>'
+        t_body[0].appendChild(tr)
+    }
+}
+
+const paginar_informacion = (json) => {
+    const contenedor = document.getElementsByClassName('informacion')
+    let pagina = []
+    let aux = 1
+    let total_paginas = json.length / parseInt(total_resultados);
+
+    contenedor[1].innerHTML += '<div class="tarjeta-transparente d-flex" id="paginacion">'+
+                                '</div>'
+
+    const paginacion = document.getElementById('paginacion')
+
+    if (parseInt(total_paginas) < total_paginas) {
+        total_paginas = parseInt(total_paginas)+1
+    } else {
+        total_paginas = parseInt(total_paginas)
+    }
+
+    paginacion.innerHTML = ''
+
+    for (let i = 0; i < total_paginas; i++) {
+        paginacion.innerHTML += '<button data-pagina="'+(i+1)+'" class="btn btn-transparent">'+(i+1)+'</button>'
+    }
+
+    json.forEach(el => {
+        if (aux == parseInt(total_resultados)) {
+            pagina.push(el)
+            paginas.push(pagina)
+            pagina = []
+            aux = 1
+        } else {
+            pagina.push(el)
+            aux++        
+        }
+    })
+
+    paginas.push(pagina)
+}
+
 const obtener_ordenes = () => {
     const respuesta = fetchAPI('',url+'/produccion/op/obtener_ordenes','')
     respuesta.then(json => {
-        render_ordenes(json)
+        paginar_informacion(json)
+        pagina_selecionada(1)
     })
 }
 
@@ -141,5 +204,7 @@ document.addEventListener('click', (evt) => {
         obtener_plano(evt.target.dataset.plano)
     } else if (evt.target.dataset.impresion) {
         generar_PDF()
+    } else if (evt.target.dataset.pagina) {
+        pagina_selecionada(evt.target.dataset.pagina)
     }
 })
