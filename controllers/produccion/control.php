@@ -121,11 +121,16 @@
             }
         }
 
-       public function eliminar(){
+        public function eliminar(){
            if (isset($_GET['dato'])) {
                $id = $_GET['dato'];
                $result = $this->model->eliminar('t_registro_diario',"id_registro_diario = '$id'");
                echo $result;
            }
-       }
+        }
+
+        public function estados () {
+            $json = $this->model->mostrar('t_estados');
+            echo json_encode($json);
+        }
     }

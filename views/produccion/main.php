@@ -17,15 +17,15 @@
                 <div class="tarjeta-transparente">
                     <div class="d-flex flex-nowrap justify-left">
                         <button class="btn btn-transparent btn-icon">
-                            <i class="material-icons">description</i>
+                            <i class="material-icons-round">description</i>
                             Ordenes de Producción
                         </button>
                         <button class="btn btn-transparent btn-icon">
-                            <i class="material-icons">add</i>
+                            <i class="material-icons-round">add</i>
                             Control de Producción
                         </button>
                         <button class="btn btn-transparent btn-icon">
-                            <i class="material-icons">description</i>
+                            <i class="material-icons-round">description</i>
                             Reporte Diario de Producción
                         </button>
                     </div>
@@ -36,22 +36,22 @@
                         <nav class="d-grid g-2">
                             <a href="http://localhost/sistema_fmtor/produccion/main/ordenes"
                                 class="tarjeta d-flex align-content-center">
-                                <i class="material-icons icon">engineering</i>
+                                <i class="material-icons-round icon">engineering</i>
                                 ORDENES DE PRODUCCIÓN
                             </a>
                             <a href="http://localhost/sistema_fmtor/produccion/main/control"
                             class="tarjeta d-flex align-content-center">
-                                <i class="material-icons icon">supervisor_account</i>
+                                <i class="material-icons-round icon">supervisor_account</i>
                                 CONTROL DE PRODUCCIÓN
                             </a>
                             <a href="http://localhost/sistema_fmtor/produccion/main/maquinas"
                             class="tarjeta d-flex align-content-center">
-                                <i class="material-icons icon">precision_manufacturing</i>
+                                <i class="material-icons-round icon">precision_manufacturing</i>
                                 MÁQUINAS DE PRODUCCIÓN
                             </a>
                             <a href="http://localhost/sistema_fmtor/produccion/main/estados"
                             class="tarjeta d-flex align-content-center">
-                                <i class="material-icons icon">new_releases</i>
+                                <i class="material-icons-round icon">new_releases</i>
                                 ESTADO DE LAS ORDENES DE PRODUCCIÓN
                             </a>
                         </nav>

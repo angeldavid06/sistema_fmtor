@@ -44,13 +44,6 @@
                     <div class="info_control ov_x_auto">
                         <div class="tarjeta-transparente estados">
                             <div class="botones ov_x_auto d-flex">
-                                <button class="btn btn-transparent boton_estado" data-estado="v_forjado" data-titulo="FORJADO" data-id="1">FORJADO</button>
-                                <button class="btn btn-transparent boton_estado" data-estado="v_ranurado" data-titulo="RANURADO" data-id="2">RANURADO</button>
-                                <button class="btn btn-transparent boton_estado" data-estado="v_rolado" data-titulo="ROLADO" data-id="3">ROLADO</button>
-                                <button class="btn btn-transparent boton_estado" data-estado="v_shank" data-titulo="SHANK" data-id="4">SHANK</button>
-                                <button class="btn btn-transparent boton_estado" data-estado="v_cementado" data-titulo="CEMENTADO" data-id="5">CEMENTADO</button>
-                                <button class="btn btn-transparent boton_estado" data-estado="v_acabado" data-titulo="ACABADO" data-id="6">ACABADO</button>
-                                <button class="btn ">TERMINADO</button>
                             </div>
                         </div>
                         <div class="estado_tabla tarjeta d-grid g2-6-4">
@@ -87,8 +80,8 @@
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js?2.1"></script>
-    <script src="../../public/js/produccion/control.js?2.5"></script>
-    <script src="../../public/js/produccion/estados.js?2.3"></script>
+    <script src="../../public/js/fmtor_libreria.js"></script>
+    <script src="../../public/js/produccion/control.js"></script>
+    <script src="../../public/js/produccion/estados.js"></script>
 </body>
 </html>

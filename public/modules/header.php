@@ -1,6 +1,6 @@
 <header id="top">
     <div class="opciones">
-        <button class="btn btn-icon-self material-icons" id="btn-menu-toggle" data-menu="btn-menu-toggle">menu</button>
+        <button class="btn btn-icon-self material-icons-round" id="btn-menu-toggle" data-menu="btn-menu-toggle">menu</button>
     </div>
     <div class="logos">
         <div class="logo">

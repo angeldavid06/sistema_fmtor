@@ -21,7 +21,7 @@
                         Generar Documento
                     </button>
                 </div>
-                <div class="tarjeta-transparente d-grid g-3" id="estados">
+                <div class="tarjeta-transparente d-grid g-2" id="estados">
                 </div>
             </div>
         </div>

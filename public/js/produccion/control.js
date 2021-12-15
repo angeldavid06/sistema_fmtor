@@ -158,6 +158,31 @@ const generar_PDF = (valor) => {
     }
 }
 
+const render_botones_estados = (json) => {
+    const botones = document.getElementsByClassName("botones")
+    json.forEach(el => {
+        console.log(el.estados != 'CANCELADO', el.estados != 'TERMINADO');
+        if (el.estados != 'CANCELADO' && el.estados != 'TERMINADO') {
+            botones[0].innerHTML += '<button class="btn btn-transparent boton_estado" data-estado="v_'+el.estados.toLowerCase()+'" data-titulo="'+el.estados+'" data-id="'+el.id_estados+'">'+el.estados+'</button>'
+        }
+        
+        if (el.estados == 'TERMINADO') {
+            botones[0].innerHTML += '<button class="btn">'+el.estados+'</button>'
+        }
+    })
+}
+
+const obtener_estados = () => {
+    const respuesta = fetchAPI('',url+'/produccion/control/estados','')
+    respuesta.then(json => {
+        render_botones_estados(json)
+    })
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    obtener_estados()
+})
+
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.opcion) {
         if (evt.target.dataset.eliminar) {

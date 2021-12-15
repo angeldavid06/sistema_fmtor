@@ -2,7 +2,7 @@
 <html lang="es">
 <head> 
     <?php require_once 'public/modules/head.php' ?>
-    <title>Página Principal</title>
+    <title>Ordenes de Producción</title>
 </head>
 <body>
     <div class="contenedor">

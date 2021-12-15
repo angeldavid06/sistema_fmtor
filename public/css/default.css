@@ -832,8 +832,8 @@ embed {
 }
 
 .menu.hidde_menu {
-    width: 79px;
-    max-width: 79px;
+    width: 82px;
+    max-width: 82px;
 }
 
 .menu .informacion {
@@ -956,7 +956,7 @@ embed {
 
 .menu nav a:hover {
     background-color: var(--background-body);
-    color: var(--color-button);
+    color: var(--color-text);
 }
 
 .contenedor .menu.hidde_menu a {
@@ -1628,6 +1628,7 @@ embed {
     .menu {
         width: 75%;
         max-width: 75%;
+        border: none;
     }
 
     .menu.hidde_menu {

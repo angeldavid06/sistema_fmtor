@@ -53,9 +53,6 @@
             }
         }
 
-        // public function buscar_personalizado ($tabla,$campos,$condicion) {
-        //     $sql = "SELECT $campos FROM $tabla WHERE $condicion";
-
         public function obtener_ordenes () {
             $ops = $this->model->mostrar('v_ordenes');
             $json = json_encode($ops);
