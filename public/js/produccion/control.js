@@ -51,7 +51,6 @@ form_actualizar.addEventListener('submit', (evt) => {
             open_alert('Debes llenar los campos correctamente','rojo')
         }
     } catch (error) {
-        console.log(error);
         open_alert('Debes seleccionar alguna etapa antes de enviar el formulario','rojo')
     }
 })
@@ -115,7 +114,6 @@ const cargar_registro = (json) => {
         op.value = el.id_registro_diario
         no_maquina.value = el.no_maquina
         fecha.value = el.fecha.split(' ')[0]
-        console.log(el.fecha.split(' ')[0]);
         no_botes.value = el.botes
         pzas.value = el.pzas
         kg.value = el.kilos
@@ -161,7 +159,6 @@ const generar_PDF = (valor) => {
 const render_botones_estados = (json) => {
     const botones = document.getElementsByClassName("botones")
     json.forEach(el => {
-        console.log(el.estados != 'CANCELADO', el.estados != 'TERMINADO');
         if (el.estados != 'CANCELADO' && el.estados != 'TERMINADO') {
             botones[0].innerHTML += '<button class="btn btn-transparent boton_estado" data-estado="v_'+el.estados.toLowerCase()+'" data-titulo="'+el.estados+'" data-id="'+el.id_estados+'">'+el.estados+'</button>'
         }

@@ -375,7 +375,7 @@ const render_semana_rolado = (json,semana) => {
             totales_semanales[5] += parseInt(turnos[i][5],10)
             totales_semanales[7] += parseInt(total_semana)
             totales_semanales[8] += parseInt(acumulado)
-            contador+=3
+            contador+=6
         }
 
         const tfoot = document.createElement('tfoot')
@@ -790,10 +790,18 @@ document.addEventListener('click', (evt) => {
         const fecha = document.getElementById('fecha_reporte')
         const kilos_pzas = document.getElementById('pzas_kilos')
         const estado = document.getElementById('estado')
-        if (fecha.value != '' && kilos_pzas.value != '' && estado != '') {
+        if (fecha.value != '' && kilos_pzas.value != '' && estado.value != '') {
             generar_PDF(fecha,kilos_pzas,estado)
         } else {
-            open_alert('No ha seleccionado ningún campo', 'naranja')
+            if (fecha.value == '') {
+                open_alert('No ha seleccionado el mes','naranja')
+            } else if (kilos_pzas.value == '') {
+                open_alert('No ha seleccionado el tipo de reporte','naranja')
+            } else if (estado.value == '') {
+                open_alert('No ha seleccionado el departamento.','naranja')
+            } else {
+                open_alert('No ha seleccionado ningún campo', 'naranja')
+            }
         }
     }
 })

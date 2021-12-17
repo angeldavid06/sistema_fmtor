@@ -6,8 +6,4 @@
 
     }
 
-    // echo '<td>'.$_GET['fecha_reporte'].'</td>';
-    // echo '<td>'.$_GET['kilos_pzas'].'</td>';
-    // echo '<td>'.$_GET['estado'].'</td>';
-
 ?>

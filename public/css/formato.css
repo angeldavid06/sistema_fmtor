@@ -288,20 +288,3 @@
     .footer p {
         font-size: 0.7em;
     }
-
-    :root {
-        --total-pages: 0;
-    }
-
-    body {
-        counter-reset: page-counter 0 total-pages var(--total-pages);
-    }
-
-    .page {
-        min-height: 1vh;
-    }
-
-    .page::before {
-        counter-increment: page-counter;
-        content: counter(page-counter);
-    }

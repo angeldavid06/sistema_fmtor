@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control de Producción</title>
+    <title>_</title>
     <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css?1.3">
 </head>
 <body>
@@ -55,7 +55,7 @@
         </div>
     </div>
     <div class="footer">
-        <div class="d-grid g-4">
+        <div class="d-grid g-3">
             <div class="d-flex align-content-bottom">
                 <p>Clave: </p>
             </div>
@@ -65,9 +65,9 @@
             <div class="d-flex align-content-bottom">
                 <p>Fecha de validación: </p>
             </div>
-            <div class="d-flex align-content-bottom">
+            <!-- <div class="d-flex align-content-bottom">
                 <p class="page" id="pageNumber">Página: </p>
-            </div>
+            </div> -->
         </div>
     </div>
     <script>

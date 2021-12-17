@@ -136,10 +136,10 @@ const time_notification = (not) => {
     },300);
     window.setTimeout(() => {
         not.classList.remove('show-alert');
-    },2000);
+    },5000);
     window.setTimeout(() => {
         document.body.removeChild(not);
-    },2800);
+    },5800);
 }
 
 const open_alert = (titulo,color) => {   

@@ -813,6 +813,28 @@ embed {
     text-align: center;
 }
 
+.menu-principal h2 {
+    padding: 0px 0px 30px 0px;
+}
+
+.menu-principal .btn {
+    padding: 30px;
+}
+
+.menu-principal .btn {
+    background-color: var(--background-button);
+}
+
+.menu-principal .btn i {
+    font-size: 2.7em;
+    color: var(--color-button);
+}
+
+.menu-principal .btn p {
+    color: var(--color-button);
+    font-weight: 600;
+}
+
 .contenedor {
     max-width: 100%;
     width: 100%;
@@ -1000,6 +1022,10 @@ embed {
 .principal .contenido {
     width: 70%;
     margin: 0px auto auto auto;
+}
+
+.principal .contenido .informacion {
+    padding: 0px 30px 30px 30px;
 }
 
 .mas_opciones {
@@ -1739,11 +1765,6 @@ embed {
 
     .contenido .informacion .tarjeta  {
         overflow-x: auto;
-    }
-
-    .contenido .informacion .tarjeta table thead tr th,
-    .contenido .informacion .acordeon .contenido_acordeon table thead tr th {
-        min-width: 150px;
     }
 
     .contenedor .contenido .informacion main nav .tarjeta {

@@ -108,7 +108,7 @@
                 $id_folio = $_POST['a_op'];
                 $estado = $_POST['a_estado'];
 
-                $valores = "no_maquina = '$no_maquina', fecha = '$fecha', botes = '$no_botes', pzas = '$pzas', kilos = '$kg', turno = '$turno', observaciones = '$observaciones',estado_general = 'PENDIENTE', id_estados_1 = '$estado'";
+                $valores = "no_maquina = '$no_maquina', fecha = '$fecha', botes = '$no_botes', pzas = '$pzas', kilos = '$kg', turno = '$turno', observaciones = '$observaciones', id_estados_1 = '$estado'";
                 $condicion = "id_registro_diario = '$id_folio'";
                 $result = $this->model->actualizar('t_registro_diario',$valores,$condicion);
                 if ($result) {

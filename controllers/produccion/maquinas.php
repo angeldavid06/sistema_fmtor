@@ -38,11 +38,10 @@
         }
 
         public function pdf_maquinas () {
-            if (isset($_GET['fecha_reporte']) && $_GET['fecha_reporte'] != '' && isset($_GET['kilos_pzas']) && $_GET['kilos_pzas'] != '' && isset($_GET['estado'])  && $_GET['estado'] != '') {
-                $inicio = $_GET['inicio'];
-                $fin = $_GET['fin'];
-                $concepto = $_GET['concepto'];
-                $id_vista = $_GET['vista'];
+            if (isset($_GET['fecha_reporte']) && isset($_GET['kilos_pzas']) && isset($_GET['estado'])) {
+                $fecha = $_GET['fecha_reporte'];
+                $kilos_pzas = $_GET['kilos_pzas'];
+                $id_vista = $_GET['estado'];
                 $vista = '';
                 if ($id_vista == 1) {
                     $vista = 'forjado';
@@ -55,7 +54,7 @@
                 } else if ($id_vista == 6) {
                     $vista = 'acabado';
                 }
-                $data = $this->model->filtrar_rango('v_reporte_'.$vista.'_'.$concepto,'fecha',$inicio,$fin);
+                $data = $this->model->filtrar('v_reporte_'.$vista.'_'.$kilos_pzas,'fecha',$fecha.'-');
                 $this->web->PDF('produccion/maquinas',$data);
             } else {
                 echo 0;

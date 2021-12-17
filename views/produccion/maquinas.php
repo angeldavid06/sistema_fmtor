@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php require_once 'public/modules/head.php' ?>
-    <title>Página Principal</title>
+    <title>Máquinas de Producción</title>
     <style>
 
         .Mantenimiento {
@@ -76,13 +76,13 @@
                 <h1>Máquinas de Producción</h1>
                 <div class="tarjeta-transparente d-grid g2-8-2">
                     <div class="d-grid g-3">
-                        <input type="month" name="fecha_reporte" id="fecha_reporte">
-                        <select name="pzas_kilos" id="pzas_kilos">
+                        <input type="month" name="fecha_reporte" id="fecha_reporte" class="print-hidde">
+                        <select name="pzas_kilos" id="pzas_kilos" class="print-hidde">
                             <option value="">Selecciona el tipo de reporte</option>
                             <option value="kilos">Kilos</option>
                             <option value="pzas">Piezas</option>
                         </select>
-                        <select name="estado" id="estado">
+                        <select name="estado" id="estado" class="print-hidde">
                             <option value="">Selecciona un estado</option>
                             <option value="1">FORJADO</option>
                             <option value="2">RANURADO</option>
