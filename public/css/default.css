@@ -105,11 +105,11 @@
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-text);
+    background-color: var(--background-button);
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--background-aux); 
+    background: var(--background-aux-05); 
 }
 
 *::-webkit-scrollbar-track:hover,
@@ -118,7 +118,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-    background: var(--background-button);
+    background: var(--background-aux);
 }
 
 .error_404 {
@@ -819,20 +819,49 @@ embed {
 
 .menu-principal .btn {
     padding: 30px;
+    background-color: var(--background-aux);
+    position: relative;
+    overflow: hidden;
+    margin: 0;
 }
 
-.menu-principal .btn {
+.menu-principal .btn:hover {
     background-color: var(--background-button);
+}
+
+.menu-principal .btn:hover i,
+.menu-principal .btn:hover span,
+.menu-principal .btn:hover p {
+    color: var(--color-button);
+}
+
+.menu-principal .btn:hover span {
+    right: -90px;
+    top: -60px;
+    opacity: 0.15;
+    font-size: 20em;
 }
 
 .menu-principal .btn i {
     font-size: 2.7em;
-    color: var(--color-button);
+    color: var(--color-text);
+    z-index: 2;
+}
+
+.menu-principal .btn span {
+    position: absolute;
+    right: -100%;
+    top: -15px;
+    font-size: 15em;
+    opacity: 0.05;
+    color: var(--color-text);
+    transition: all .5s;
 }
 
 .menu-principal .btn p {
-    color: var(--color-button);
+    color: var(--color-text);
     font-weight: 600;
+    z-index: 2;
 }
 
 .contenedor {
@@ -1543,6 +1572,26 @@ embed {
 
     .modal .titulo_modal {
         padding: 0px 0px 20px 0px;
+    }
+
+    .principal .contenido .informacion {
+        padding: 0px 20px 80px 20px;
+    }
+
+    .menu-principal .btn {
+        padding: 20px;
+    }
+
+    .menu-principal .btn span {
+        right: -150%;
+    }
+
+    .menu-principal .d-grid {
+        grid-gap: 10px;
+    }
+
+    .menu-principal .g-3 {
+        grid-template-columns: 1fr 1fr;
     }
 
     .contenido header .logos .logo {
