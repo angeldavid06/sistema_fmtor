@@ -13,6 +13,15 @@
             <tr>
                 <th class="th"></th>
             </tr>
+            <tr>
+                <th>O.P.</th>
+                <th>Cliente</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Total</th>
+                <th>Estado</th>
+            </tr>
         </thead>
         <tbody>
             <?php require_once 'modules_pdf/tabla_estado.php'; ?>
@@ -23,7 +32,7 @@
             </tr>
         </tfoot>
     </table>
-    <!-- <div class="header">
+    <div class="header">
         <div class="d-grid g-2">
             <div class="logo-formato">
                 <img src="http://localhost/sistema_fmtor/public/img/logo_formato.png" alt="">
@@ -38,7 +47,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <div class="footer">
         <div class="d-grid g-3">
             <div class="d-flex align-content-bottom">
