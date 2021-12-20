@@ -16,6 +16,11 @@
             $data = $this->model->mostrar('v_estado_op');
             echo json_encode($data);
         }
+
+        public function pdf_estado () {
+            $data = $this->model->mostrar('v_estado_op');
+            $this->web->PDF('produccion/estado',$data);
+        }
     }
 
 ?>

@@ -102,11 +102,9 @@ const render_control = (vista,json) => {
         totales.total_pzas  += parseInt(el.pzas)
     });
 
-    const factor = document.getElementsByClassName('factor')
     const total_kilogramos = document.getElementsByClassName('total_kg')
     const total_acumuladas = document.getElementsByClassName('total_acumuladas')
 
-    factor[0].innerHTML = 'Factor: <br> 00.00'
     total_kilogramos[0].innerHTML = 'Total k.g.: <br>' + new Intl.NumberFormat('es-MX').format(totales.total_kg)
     total_acumuladas[0].innerHTML = 'Pzas. Acumuladas: <br>' + new Intl.NumberFormat('es-MX').format(totales.total_pzas)
 }

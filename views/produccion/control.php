@@ -37,6 +37,7 @@
                                     <label>Fecha:</label>
                                     <label>Cantidad:</label>
                                     <label>Descripción:</label>
+                                    <label>Factor:</label>
                                 </div>
                             </div>
                         </div>
@@ -51,8 +52,7 @@
                                 <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-ingresar">add</button>
                                 <h2 class="titulo_estado">No seleccionado</h2>
                             </div>
-                            <div class="info_total d-flex justify-between align-content-center justify-right">
-                                <p class="factor">Factor: <br> 00.00</p>
+                            <div class="info_total d-flex align-content-center justify-between">
                                 <p class="total_acumuladas">Pzas. Acumuladas: <br> 0000</p>
                                 <p class="total_kg">Total Kg: <br> 000.00</p>
                             </div>

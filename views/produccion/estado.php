@@ -16,9 +16,9 @@
             <div class="informacion">
                 <h1>Estado de las Ordenes de Producción</h1>
                 <div class="tarjeta-transparente d-flex justify-right">
-                    <button class="btn btn-icon">
+                    <button class="btn btn-icon" data-impresion="documento">
                         <i class="material-icons">description</i>
-                        Generar Documento
+                        Generar Documento 
                     </button>
                 </div>
                 <div class="tarjeta-transparente d-grid g-2" id="estados">

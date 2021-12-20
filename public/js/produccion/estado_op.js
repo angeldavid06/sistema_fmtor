@@ -26,7 +26,6 @@ const render_retrasos = (ops) => {
                                 '</table>'
 
     const t_body = document.getElementById('body_retrasos') 
-    // retrasos.forEach(retraso => {})
     ops.forEach(el => {
         t_body.innerHTML += '<tr>'+
                                 '<td>'+el.Id_Folio+'</td>'+
@@ -221,7 +220,6 @@ const dividir_registros = (json,meses) => {
 
     registros.push(aux)
     semanas = obtener_semanas(meses)
-    // console.log(registros);
 
     agrupar_registros(registros,semanas)
 }
@@ -254,8 +252,6 @@ const extraer_meses = (json) => {
         meses.push((meses[meses.length-1].split('-')[0])+'-'+(meses[meses.length-1].split('-')[1]+1));
     }
 
-    // console.log(meses);
-
     dividir_registros(json,meses)
 }
 
@@ -266,13 +262,12 @@ const obtener_ordenes = () => {
     })
 };
 
- function getMonday( date ) {
-    var day = date.getDay() || 7;  
-    if( day !== 1 ) 
-        date.setHours(-24 * (day - 1)); 
-    return date;
-}
+document.addEventListener('click', (evt) => {
+    if (evt.target.dataset.impresion) {
+        printPage(url+'/produccion/estado/pdf_estado');
+    }
+})
 
-(() => {
+document.addEventListener('DOMContentLoaded', () => {
     obtener_ordenes()
-})()
+})

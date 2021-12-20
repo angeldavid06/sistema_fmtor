@@ -359,10 +359,10 @@ const render_semana_rolado = (json,semana) => {
                                                                     '<td>'+fecha[0]+'</td>' +
                                                                     '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
                                                                     '<td class="txt-center '+observaciones[contador+1]+'">'+turnos[i][1]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][1]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+3]+'">'+turnos[i][1]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+4]+'">'+turnos[i][2]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+5]+'">'+turnos[i][2]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][2]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+3]+'">'+turnos[i][3]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+4]+'">'+turnos[i][4]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+5]+'">'+turnos[i][5]+'</td>' +
                                                                     '<td class="txt-center"></td>' +
                                                                     '<td class="txt-center">'+total_semana+'</td>' +
                                                                     '<td class="txt-center">'+new Intl.NumberFormat('es-MX').format(acumulado)+'</td>' +

@@ -76,26 +76,68 @@
                 <th class="th"></th>
             </tr>
             <tr>
-                <th colspan="14">TIPO DE REPORTE: <?php echo strtoupper($_GET['kilos_pzas']); ?></th>
+                <?php 
+                    if ($_GET['estado'] == 1) {
+                        $cant_th = 9;
+                    } else if ($_GET['estado'] == 2) {
+                        $cant_th = 3;
+                    } else if ($_GET['estado'] == 3) {
+                        $cant_th = 6;
+                    } else if ($_GET['estado'] == 4) {
+                        $cant_th = 3;
+                    } else if ($_GET['estado'] == 6) {
+                        $cant_th = 3;
+                    }
+                    echo '<th colspan="'.($cant_th+5).'">TIPO DE REPORTE: '.strtoupper($_GET['kilos_pzas']).'</th>';
+                ?>
             </tr>
             <tr>
-                    <th class="th-estado"  rowspan="2">Día</th>
-                    <th class="th-estado"  colspan="9">REPORTE DIARIO POR MAQUINA</th>
-                    <th class="th-estado" ></th>
-                    <th class="th-estado"  colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>
-                </tr>
-                <tr>
-                    <th class="th-estado">1</th>
-                    <th class="th-estado">2</th>
-                    <th class="th-estado">3</th>
-                    <th class="th-estado">4</th>
-                    <th class="th-estado">5</th>
-                    <th class="th-estado">6</th>
-                    <th class="th-estado">7</th>
-                    <th class="th-estado">8</th>
-                    <th class="th-estado">9</th>
-                    <th class="th-estado"></th>
-                    <th class="th-estado" colspan="2">FORJADO</th>
+                <th class="th-estado" rowspan="2">Día</th>
+                <th class="th-estado" colspan="<?php echo $cant_th;?>">REPORTE DIARIO POR MAQUINA</th>
+                <th class="th-estado" ></th>
+                <th class="th-estado" colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>
+            </tr>
+            <tr>
+                <?php 
+                
+                    if ($_GET['estado'] == 1) {
+                        $cantidad_de_m = 9;
+                        for ($i=1; $i <= $cant_th; $i++) { 
+                            echo '<th class="th-estado">'.$i.'</th>';
+                        }
+                        echo '<th></th>';
+                        echo '<th class="th-estado" colspan="2">FORJADO</th>';
+                    } else if ($_GET['estado'] == 2) {
+                        $cantidad_de_m = 3;
+                        for ($i=1; $i <= $cant_th; $i++) { 
+                            echo '<th class="th-estado">'.$i.'</th>';
+                        }
+                        echo '<th></th>';
+                        echo '<th class="th-estado" colspan="2">RANURADO</th>';
+                    } else if ($_GET['estado'] == 3) {
+                        $cantidad_de_m = 6;
+                        for ($i=1; $i <= $cant_th; $i++) { 
+                            echo '<th class="th-estado">'.$i.'</th>';
+                        }
+                        echo '<th></th>';
+                        echo '<th class="th-estado" colspan="2">ROLADO</th>';
+                    } else if ($_GET['estado'] == 4) {
+                        $cantidad_de_m = 3;
+                        for ($i=1; $i <= $cant_th; $i++) { 
+                            echo '<th class="th-estado">'.$i.'</th>';
+                        }
+                        echo '<th></th>';
+                        echo '<th class="th-estado" colspan="2">SHANK</th>';
+                    } else if ($_GET['estado'] == 6) {
+                        $cantidad_de_m = 3;
+                        for ($i=1; $i <= $cant_th; $i++) { 
+                            echo '<th class="th-estado">'.$i.'</th>';
+                        }
+                        echo '<th></th>';
+                        echo '<th class="th-estado" colspan="2">ACABADO</th>';
+                    }
+                    
+                ?>
             </tr>
         </thead>
         <tbody>

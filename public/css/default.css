@@ -1139,7 +1139,7 @@ embed {
 
 .contenido .informacion .tarjeta {
     background-color: var(--background-aux);
-    padding: 30px;
+    padding: 20px;
     margin: 30px 0px 0px 0px;
     border: 2px solid var(--background-aux); 
     border-radius: var(--border-radius);
