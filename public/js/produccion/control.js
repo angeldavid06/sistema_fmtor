@@ -164,7 +164,7 @@ const render_botones_estados = (json) => {
         }
         
         if (el.estados == 'TERMINADO') {
-            botones[0].innerHTML += '<button class="btn">'+el.estados+'</button>'
+            botones[0].innerHTML += '<button class="btn" data-terminar="terminar">'+el.estados+'</button>'
         }
     })
 }
@@ -173,6 +173,16 @@ const obtener_estados = () => {
     const respuesta = fetchAPI('',url+'/produccion/control/estados','')
     respuesta.then(json => {
         render_botones_estados(json)
+    })
+}
+
+const terminar_orden = (orden) => {
+    const respuesta = fetchAPI('',url+'/produccion/op/terminar?orden='+orden,'')
+    respuesta.then(json => {
+        console.log(json);
+        if (json) {
+            open_alert('Orden de Producción terminada','verde');
+        }
     })
 }
 
@@ -190,5 +200,12 @@ document.addEventListener('click', (evt) => {
         }
     } else if (evt.target.dataset.impresion) {
         generar_PDF(document.getElementById('op_control').value)
+    } else if (evt.target.dataset.terminar) {
+        const input = document.getElementById('op_control');
+        if (input.value != '') {
+            terminar_orden(input.value);
+        } else {
+            open_alert('No ha introducido la orden de producción','rojo')
+        }
     }
 })

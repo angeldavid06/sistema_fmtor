@@ -23,7 +23,7 @@ const render_ordenes = (json) => {
                         '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">'+el.cantidad_elaborar+'</td>'+
                         '<td class="txt-right" data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
                         '<td class="txt-right" data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.TOTAL)+'</td>'+
-                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number">'+total_acumulado+'</td>'+
+                        '<td data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" class="number txt-right">' + new Intl.NumberFormat('es-MX').format(el.acumulado) + '</td>'+
                         '<td>' + el.estado_general+'</td>'
         t_body[0].appendChild(tr)
     })

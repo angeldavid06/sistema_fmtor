@@ -12,7 +12,7 @@
                 '<td class="txt-right">'.$data[$i]['cantidad_elaborar'].'</td>'.
                 '<td class="txt-right">'.$data[$i]['precio_millar'].'</td>'.
                 '<td class="txt-right">'.number_format($data[$i]['TOTAL'], 2, '.', '').'</td>'.
-                '<td class="txt-right">'.'Acumulado'.'</td>'.
+                '<td class="txt-right">'.number_format($data[$i]['acumulado'],0,'.','').'</td>'.
                 '<td>'.$data[$i]['estado_general'].'</td>'.
             '</tr>';
     }

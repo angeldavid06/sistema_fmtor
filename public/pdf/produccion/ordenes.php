@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>_</title>
+    <title>.</title>
     <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css?1.3">
 </head>
 <body>
@@ -25,7 +25,7 @@
                 <th>Cant</th>
                 <th>Precio</th>
                 <th>Total</th>
-                <th>Acumulado</th>
+                <th>Acumulado<br>(Acabado)</th>
                 <th>Estado</th>
             </tr>
         </thead>
@@ -57,17 +57,14 @@
     <div class="footer">
         <div class="d-grid g-3">
             <div class="d-flex align-content-bottom">
-                <p>Clave: </p>
+                <p>CLAVE: PRO-F-000</p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>Versión: </p>
+                <p>VERSIÓN: 1</p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>Fecha de validación: </p>
+                <p>FECHA DE APROBACIÓN: </p>
             </div>
-            <!-- <div class="d-flex align-content-bottom">
-                <p class="page" id="pageNumber">Página: </p>
-            </div> -->
         </div>
     </div>
     <script>

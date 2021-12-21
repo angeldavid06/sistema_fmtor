@@ -99,7 +99,7 @@
 
     $tablas[] = $aux_tablas;
 
-    echo '<tr><td class="txt-center" colspan="7">RETRASOS</td></tr>';
+    echo '<tr><td class="txt-center th-estado" colspan="7">RETRASOS</td></tr>';
     echo '<tr>';
     for ($i=0; $i < count($retrasos); $i++) {
             echo '<td>'.$retrasos[$i]['Id_Folio'].'</td>';
@@ -115,7 +115,7 @@
     for ($i=0; $i < count($tablas); $i++) {
         echo '<tr><td class="txt-center" colspan="7"></td></tr>';
         for ($l=0; $l < count($rango_tablas[$i]); $l++) {
-            echo '<tr><td class="txt-center" colspan="7">'.$rango_tablas[$i][$l][0].'  -  '.$rango_tablas[$i][$l][1].'</td></tr>';
+            echo '<tr><td class="txt-center th-estado" colspan="7">'.$rango_tablas[$i][$l][0].'  -  '.$rango_tablas[$i][$l][1].'</td></tr>';
         }
         echo '<tr><td class="txt-center" colspan="7"></td></tr>';
         for ($j=0; $j < count($tablas[$i]); $j++) { 

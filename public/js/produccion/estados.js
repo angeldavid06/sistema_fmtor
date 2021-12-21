@@ -66,14 +66,15 @@ const render_info = (json) => {
     json.forEach(el => {
         info[0].innerHTML = '<label>Código Del Dibujo:  '+el.plano+'</label>'+
                             '<label>Cliente:  '+el.Cliente+'</label>'+
-                            '<label>Fecha:  '+el.Fecha+'</label>'+
+                            '<label>Fecha:  '+el.Fecha.split(' ')[0]+'</label>'+
                             '<label>Cantidad:  '+el.cantidad_elaborar+'</label>'+
-                            '<label>Descripción:  '+el.descripcion+'</label>';
+                            '<label>Descripción:  '+el.descripcion+'</label>'+
+                            '<label>Factor:  '+el.factor+'</label>';
         op_control.value = el.id_control_produccion
     })
 }
 
-const quitar_filas = (tabla) => {
+const quitar_filas = () => {
     const body = document.getElementsByClassName('body')
     while (body[0].firstChild) {
         body[0].removeChild(body[0].firstChild)
@@ -84,7 +85,6 @@ const render_control = (vista,json) => {
     totales.total_kg = 0.0;
     totales.total_pzas = 0;
     const body = document.getElementsByClassName('body')
-    const op_control = document.getElementById('op_control')
 
     quitar_filas(vista)
 

@@ -236,7 +236,8 @@
         border: none;
     }
 
-    .formato tbody table .th-estado {
+    .formato tbody table .th-estado,
+    .formato tbody .th-estado {
         background-color: rgb(199, 199, 199);
         border: 1px solid black;
     }

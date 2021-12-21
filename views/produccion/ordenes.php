@@ -54,7 +54,7 @@
                                         <th>Cant</th>
                                         <th>Precio</th>
                                         <th>Total</th>
-                                        <th>Acumulado</th>
+                                        <th>Acumulado<br>(Acabado)</th>
                                         <th>Estado</th>
                                     </thead>
                                     <tbody class="body"></tbody>

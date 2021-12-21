@@ -168,13 +168,13 @@
     <div class="footer">
         <div class="d-grid g-3">
             <div class="d-flex align-content-bottom">
-                <p>Clave: </p>
+                <p>CLAVE: PRO-F-000</p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>Versión: </p>
+                <p>VERSIÓN: 1</p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>Fecha de validación: </p>
+                <p>FECHA DE APROBACIÓN: </p>
             </div>
         </div>
     </div>
