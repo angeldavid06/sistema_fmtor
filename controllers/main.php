@@ -10,7 +10,7 @@
             $this->web = new Web();
             $this->model = new Model();
         }
-
+        
         public function login () {
             $this->web->View('login','');
         }

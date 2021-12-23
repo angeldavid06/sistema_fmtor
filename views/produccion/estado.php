@@ -6,9 +6,8 @@
 </head>
 <body>
     <div class="contenedor">
-        <a href="#top" class="btn btn-icon btn-flotante" id="btn-subir">
-            <i class="material-icons">expand_less</i> 
-            Subir
+        <a href="#top" class="btn btn-icon-self btn-flotante material-icons" id="btn-subir">
+            expand_less
         </a>
         <?php require_once 'public/modules/menus/produccion.php'; ?>
         <div class="contenido hidde_menu" id="contenido">

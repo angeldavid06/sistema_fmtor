@@ -23,9 +23,9 @@
                     <input class="input" type="number" name="f_op" id="f_op" disabled>
                     <input type="checkbox" data-check="f_r_op" data-rango="true" class="checkbox" name="check_rango_op" id="check_rango_op">
                     <label class="lbl-checkbox" id="lbl_check_rango_op"  for="check_rango_op">Filtrar por rango de O.P.: </label>
-                    <div class="d-flex justify-between align-content-center">
+                    <div class="d-grid g-2">
                         <input class="input" type="number" name="f_r_op_m" id="f_r_op_m" disabled>
-                        <p>-</p>
+
                         <input class="input" type="number" name="f_r_op_M" id="f_r_op_M" disabled>
                     </div>
                 </div>
@@ -55,9 +55,8 @@
                     <input class="input" type="number" name="f_anio" id="f_anio" disabled>
                     <input type="checkbox" data-check="f_r_fecha" data-rango="true" class="checkbox" name="check_rango_fecha" id="check_rango_fecha">
                     <label class="lbl-checkbox" id="lbl_check_rango_fecha" for="check_rango_fecha">Filtrar por rango de fecha: </label>
-                    <div class="d-flex justify-between align-content-center">
+                    <div class="d-grid g-2">
                         <input class="input" type="date" name="f_r_fecha_m" id="f_r_fecha_m" disabled>
-                        <p>-</p>
                         <input class="input" type="date" name="f_r_fecha_M" id="f_r_fecha_M" disabled>
                     </div>
                 </div>

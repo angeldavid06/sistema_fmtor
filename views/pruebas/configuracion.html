@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ventanas modales</title>
+    <title>Conf.</title>
     <link rel="stylesheet" href="../../public/css/default.css">
-    <link rel="stylesheet" href="../../public/css/tema_claro.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../public/css/tema_oscuro.css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
 </head>
 <body>
     <div class="contenedor">
@@ -20,8 +22,10 @@
                 <div class="foto">
                     <img src="" alt="">
                 </div>
-                <p>Nombre del empleado</p>
-                <p>Puesto</p>
+                <div class="nombre">
+                    <p>Angel David Martinez Mendoza</p>
+                    <p>Puesto</p>
+                </div>
             </div>
             <div class="categoria_menu">
                 <div class="titulo_categoria_menu">
@@ -110,38 +114,63 @@
                                     transform="translate(-194.554 -10.691)" fill="var(--color-text)" />
                             </g>
                         </svg>
-
+    
                     </div>
                 </div>
             </header>
             <div class="informacion">
-                <h1>GRID</h1>
-                <div class="tarjeta d-flex">
-                    <div class="btn btn-verde" id="btn-confirm">Confirm</div>
-                    <div class="btn btn-rojo" id="btn-alert">Alert</div>
+                <h1>Configuración</h1>
+                <div class="tarjeta-transparente d-flex justify-right">
+                    <button class="btn btn-icon">
+                        <i class="material-icons-outlined">
+                            save
+                        </i>
+                        Guardar cambios
+                    </button>
+                </div>
+                <div class="d-grid g2-2-8">
+                    <div class="tarjeta-transparente">
+                        <nav class="d-grid g-1">
+                            <a href="http://">Apariencia</a>
+                            <a href="http://">Apariencia</a>
+                            <a href="http://">Apariencia</a>
+                        </nav>
+                    </div>
+                    <div class="tarjeta-transparente">
+                        <div class="tarjeta-transparete">
+                            <h2>Tema</h2>
+                            <div class="d-grid g-3">
+                                <div class="tarjeta-transparente d-grid g-1">
+                                    <input type="radio" name="tema" id="tema_claro">
+                                    <label class="lbl-radio" for="tema_claro">Claro</label>
+                                    <div class="tarjeta">
+                                        <img class="width-100" src="../../public/img/tema_claro.png" alt="" srcset="">
+                                    </div>
+                                </div>
+                                <div class="tarjeta-transparente d-grid g-1">
+                                    <input type="radio" name="tema" id="tema_oscuro">
+                                    <label class="lbl-radio" for="tema_oscuro">Oscuro</label>
+                                    <div class="tarjeta">
+                                        <img class="width-100" src="../../public/img/tema_oscuro.png" alt="" srcset="">
+                                    </div>
+                                </div>
+                                <div class="tarjeta-transparente d-grid g-1">
+                                    <input type="radio" name="tema" id="tema_auto">
+                                    <label class="lbl-radio" for="tema_auto">Auto</label>
+                                    <div class="tarjeta">
+                                        <img class="width-100" src="../../public/img/tema_automatico.png" alt="" srcset="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tarjeta-transparente">
+                            <h2>Tamaño de fuente</h2>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="alert d-flex justify-between align-content-bottom alert-rojo">
-        <div class="contenido d-flex align-content-center">
-            <i class="material-icons">warning</i>
-            <p class="txt-left">Título </p>
-        </div>
-    </div>
-
-    <div class="confirm show-alert d-flex justify-center align-content-top">
-        <div class="contenido d-flex justify-center align-content-center flex-wrap btn-confirm-sm-cancel">
-            <div class="titulo">
-                <h3 class="txt-center">¿Estas seguro de realizar esta opción?</h3>
-            </div>
-            <div class="opciones">
-                <button class="btn btn-icon-self btn-azul material-icons btn-confirm-sm-accept">done</button>
-                <button class="btn btn-icon-self btn-rojo material-icons btn-confirm-sm-cancel">close</button>
-            </div>
-        </div>
-    </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/produccion/prueba.js"></script>
 </body>
 </html>
