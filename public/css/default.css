@@ -982,6 +982,11 @@ embed {
     position: relative;
 }
 
+.principal .contenido {
+    max-height: inherit;
+    overflow: auto;
+}
+
 .contenido.hidde_menu {
     width: calc(100% - 80px);
     max-width: calc(100% - 80px);
@@ -1448,7 +1453,6 @@ embed {
     .principal .contenido {
         width: 75%;
         max-width: 75%;
-        max-height: 100vh;
         overflow: auto;
         transition: all .3s;
     }
