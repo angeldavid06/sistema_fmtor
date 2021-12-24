@@ -1,63 +1,85 @@
 <?php
-  require_once "../Model.php";
+    require_once "models/Model.php";
     
-     class Top extends Model{
-         public $op;
-         public $n_pedido;
-         public $fecha;
-         public $cantidad;
-         public $codigo_dibujo;
-         public $autorizacion;
-         public $agente;
-         public $id_tornillo;
-         public $id_cliente;
+    class t_op extends Model {
+        public $op;
+        public $op_fin;
+        public $fecha;
+        public $fecha_fin;
+        public $plano;
+        public $cliente;
+        public $estado;
+        public $vista;
+        public $campo;
+        public $valor_buscar;
 
+        public function __construct(){
+            parent::__construct();
+        }
 
-         public function __construct(){
-             parent::__construct();
-         }
+        public function setOp($op) : void{
+            $this->op = $op;
+        }
+        
+        public function setOpFin($op_fin) : void{
+            $this->op_fin = $op_fin;
+        }
 
-         public function getOp(){
-             return $this->op;
-         }
+        public function setFecha($fecha) : void{
+            $this->fecha = $fecha;
+        }
 
-         public function getNPedido(){
-             return $this->n_pedido;
-         }
+        public function setFechaFin($fecha_fin) : void{
+            $this->fecha_fin = $fecha_fin;
+        }
 
-         public function getFecha(){
-             return $this->fecha;
-         }
+        public function setPlano($plano) : void{
+            $this->plano = $plano;
+        }
 
-         public function getCantidad(){
-             return $this->cantidad;
-            
-         }
+        public function setCliente($cliente) : void{
+            $this->cliente = $cliente;
+        }
 
-         public function getCodigoDibujo(){
-             return $this->codigo_dibujo;
-         }
+        public function setEstado($estado) : void{
+            $this->estado = $estado;
+        }
 
-         public function getAutorizacion(){
-             return $this->autorizacion;
-         }
+        public function setVista($vista) : void{
+            $this->vista = $vista;
+        }
 
-         public function getAgente(){
-             return $this->agente;
-         }
+        public function setCampo($campo) : void{
+            $this->campo = $campo;
+        }
 
-         public function getIdTornillo(){
-             return $this->id_tornillo;
-         }
+        public function setValorBuscar($valor_buscar) : void{
+            $this->valor_buscar = $valor_buscar;
+        }
 
-         public function getIdCliente(){
-            return $this->id_cliente;
-         }
+        public function obtener_informacion () {
+            $result = Model::mostrar($this->vista);
+            return $result;
+        }
 
-         public function setOp($op):void{
-             $this->op=$op;
-         }
+        public function buscar_informacion () {
+            $result = Model::buscar($this->vista,$this->campo,$this->valor_buscar);
+            return $result;
+        }
+        
+        public function filtrar_informacion () {
+            $result = Model::filtrar($this->vista,$this->campo,$this->valor_buscar);
+            return $result;
+        }
 
-         
+        public function rango_op () {
+            $result = Model::filtrar_rango($this->vista,$this->campo,$this->op,$this->op_fin);
+            return $result;
+        }
 
-}
+        public function rango_fecha () {
+            $result = Model::filtrar_rango($this->vista,$this->campo,$this->fecha,$this->fecha_fin);
+            return $result;
+        }
+    }
+?>

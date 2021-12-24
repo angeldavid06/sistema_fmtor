@@ -1,13 +1,16 @@
 <?php
     require_once "models/Model.php";
+    require_once "models/produccion/t_op.php";
     require_once "routes/web.php";
 
     class op {
         public $model;
+        public $model_op;
         public $web;
     
         public function __construct(){
             $this->model = new Model();
+            $this->model_op = new t_op();
             $this->web = new Web();
         }
         
@@ -64,13 +67,17 @@
         }
 
         public function obtener_ordenes () {
-            $ops = $this->model->mostrar('v_ordenes');
+            $this->model_op->setVista('v_ordenes');
+            $ops = $this->model_op->obtener_informacion();
+            
             $json = json_encode($ops);
             echo $json;
         }
 
         public function obtener_reporte_diario () {
-            $ops = $this->model->mostrar('v_reportediario');
+            $this->model_op->setVista('v_reportediario');
+            $ops = $this->model_op->obtener_informacion();
+
             $json = json_encode($ops);
             echo $json;
         }
@@ -87,7 +94,11 @@
         public function buscar_op () { 
             if (isset($_POST['check_op'])) {
                 if (isset($_POST['f_op'])) {
-                    $op = $this->model->buscar($_POST['tabla'],'Id_Folio',$_POST['f_op']);
+                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setCampo('Id_Folio');
+                    $this->model_op->setValorBuscar($_POST['f_op']);
+                    $op = $this->model_op->buscar_informacion();
+
                     $json = json_encode($op);
                     echo $json;
                 } else {
@@ -101,8 +112,13 @@
         public function buscar_rango_op () {
             if(isset($_POST['check_rango_op'])){
                 if(isset($_POST['f_r_op_m'])&& isset($_POST['f_r_op_M'])){
-                    $r_op=$this->model->filtrar_rango($_POST['tabla'],'Id_Folio',$_POST['f_r_op_m'],$_POST['f_r_op_M']);
-                    $json=json_encode($r_op);
+                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setCampo('Id_Folio');
+                    $this->model_op->setOp($_POST['f_r_op_m']);
+                    $this->model_op->setOpFin($_POST['f_r_op_M']);
+                    $result = $this->model_op->rango_op();
+                    
+                    $json=json_encode($result);
                     echo $json;
                 }
             }  
@@ -111,8 +127,13 @@
         public function buscar_rango_fecha(){
             if(isset($_POST['check_rango_fecha'])){
                 if(isset($_POST['f_r_fecha_m'])&& isset($_POST['f_r_fecha_M'])){
-                    $r_op=$this->model->filtrar_rango($_POST['tabla'],'fecha',$_POST['f_r_fecha_m'],$_POST['f_r_fecha_M']);
-                    $json=json_encode($r_op);
+                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setCampo('fecha');
+                    $this->model_op->setFecha($_POST['f_r_fecha_m']);
+                    $this->model_op->setFechaFin($_POST['f_r_fecha_M']);
+                    $result = $this->model_op->rango_fecha();
+                    
+                    $json=json_encode($result);
                     echo $json;
                 }
             }  
@@ -121,8 +142,12 @@
         public function buscar_fecha(){
             if(isset($_POST['check_fecha'])){
                 if(isset($_POST['f_fecha'])){
-                    $fecha=$this->model->buscar($_POST['tabla'],'fecha',$_POST['f_fecha']);
-                    $json=json_encode($fecha);
+                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setCampo('fecha');
+                    $this->model_op->setValorBuscar($_POST['f_fecha']);
+                    $result = $this->model_op->buscar_informacion();
+
+                    $json=json_encode($result);
                     echo $json;
                 }
             }
@@ -132,8 +157,13 @@
             if(isset($_POST['check_fecha_mes'])){
                 if(isset($_POST['f_mes'])){
                     $value ='-'.$_POST['f_mes'].'-';
-                    $mes = $this->model->filtrar($_POST['tabla'],'fecha',$value);
-                    $json=json_encode($mes);
+                    
+                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setCampo('fecha');
+                    $this->model_op->setValorBuscar($value);
+                    $result = $this->model_op->filtrar_informacion();
+
+                    $json=json_encode($result);
                     echo $json;
                 }
             }
@@ -143,8 +173,13 @@
             if(isset($_POST['check_fecha_anio'])){
                 if(isset($_POST['f_anio'])){
                     $value=$_POST['f_anio'].'-';
-                    $anio=$this->model->filtrar($_POST['tabla'],'fecha',$value);
-                    $json=json_encode($anio);
+                    
+                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setCampo('fecha');
+                    $this->model_op->setValorBuscar($value);
+                    $result = $this->model_op->filtrar_informacion();
+
+                    $json=json_encode($result);
                     echo $json;
 
                 }
@@ -154,8 +189,12 @@
         public function buscar_cliente(){
             if(isset($_POST['check_cliente'])){
                 if(isset($_POST['f_cliente'])){
-                    $cliente=$this->model->buscar($_POST['tabla'],'Clientes',$_POST['f_cliente']);
-                    $json=json_encode($cliente);
+                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setCampo('Clientes');
+                    $this->model_op->setValorBuscar($_POST['f_cliente']);
+                    $result = $this->model_op->buscar_informacion();
+                    
+                    $json=json_encode($result);
                     echo $json;
                 }
             }
@@ -164,8 +203,12 @@
         public function buscar_estado(){
             if(isset($_POST['check_estado'])){
                 if(isset($_POST['f_estado'])){
-                    $estado=$this->model->buscar($_POST['tabla'],'estado_general',$_POST['f_estado']);
-                    $json=json_encode($estado);
+                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setCampo('estado_general');
+                    $this->model_op->setValorBuscar($_POST['f_estado']);
+                    $result = $this->model_op->buscar_informacion();
+
+                    $json=json_encode($result);
                     echo $json;
                 }
             }

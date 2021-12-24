@@ -1,23 +1,32 @@
 <?php
     require_once "models/Model.php";
+    require_once "models/produccion/t_control_op.php";
     require_once "routes/web.php";
 
-    class control{
+    class control {
         public $model;
+        public $model_control;
         public $web;
 
         public function __construct(){
-            $this->model= new Model();
+            $this->model = new Model();
+            $this->model_control = new TcontrolOp();
             $this->web = new Web();
         }
 
         public function obtener_control() {
-            $control = json_decode($_GET['control']);
-            $vista = $control->vista;
-            $op = $control->op;
-            $ops = $this->model->buscar($vista,'Id_Folio_1',$op);
-            $json = json_encode($ops);
-            echo $json;
+            if (isset($_GET['control']) && $_GET['control'] != '') {
+                $control = json_decode($_GET['control']);
+
+                $this->model_control->setOp($control->op);
+                $this->model_control->setVista($control->vista);
+                
+                $result = $this->model_control->obtener_control();
+                $json = json_encode($result);
+                echo $json;
+            } else {
+                echo 0;
+            }
         }
 
         public function pdf_control () {
@@ -53,30 +62,27 @@
         }
 
         public function obtener_info_op () {
-            if (isset($_GET['op'])) {
-                $op = $_GET['op'];
-                $ops = $this->model->buscar('v_control','Orden_Produccion',$op);
-                $json = json_encode($ops);
-                echo $json;
+            if (isset($_GET['op']) && $_GET['op'] != '') {
+                $this->model_control->setOp($_GET['op']);
+                $result = $this->model_control->obtener_informacion_op();
+                echo json_encode($result);
             }
         }
 
         public function insertar() {
             if (isset($_POST['estado']) && isset($_POST['op'])) {
-                $no_maquina = $_POST['no_maquina'];
-                $fecha = $_POST['fecha'];
-                $no_botes = $_POST['no_botes'];
-                $pzas = $_POST['pzas'];
-                $kg = $_POST['kg'];
-                $turno = $_POST['turno'];
-                $observaciones = $_POST['observaciones'];
+                $this->model_control->setNoMaquina($_POST['no_maquina']);
+                $this->model_control->setFechaEntrega($_POST['fecha']);
+                $this->model_control->setBote($_POST['no_botes']);
+                $this->model_control->setPzas($_POST['pzas']);
+                $this->model_control->setKilos($_POST['kg']);
+                $this->model_control->setTurno($_POST['turno']);
+                $this->model_control->setObservaciones($_POST['observaciones']);
 
-                $id_folio = $_POST['op'];
-                $estado = $_POST['estado'];
+                $this->model_control->setOp($_POST['op']);
+                $this->model_control->setIdEstado($_POST['estado']);
 
-                $campos = 'no_maquina,fecha,botes,pzas,kilos,turno,observaciones,id_estados_1,Id_control_produccion_1';
-                $values = "'$no_maquina','$fecha','$no_botes','$pzas','$kg','$turno','$observaciones','$estado','$id_folio'";
-                $result = $this->model->insertar('t_registro_diario',$campos,$values);
+                $result = $this->model_control->insertar_registro();
                 if ($result) {
                     echo 1;
                 } else {
@@ -89,28 +95,27 @@
 
         public function obtener_registro () {
             if (isset($_GET['registro'])) {
-                $id = $_GET['registro'];
-                $result = $this->model->buscar('t_registro_diario','id_registro_diario',$id);
+                $this->model_control->setId($_GET['registro']);
+                $result = $this->model_control->obtener_registro_diario();
                 echo json_encode($result);
             }
         }
 
         public function actualizar(){
             if (isset($_POST['a_estado']) && isset($_POST['a_op'])) {
-                $no_maquina = $_POST['a_no_maquina'];
-                $fecha = $_POST['a_fecha'];
-                $no_botes = $_POST['a_no_botes'];
-                $pzas = $_POST['a_pzas'];
-                $kg = $_POST['a_kg'];
-                $turno = $_POST['a_turno'];
-                $observaciones = $_POST['a_observaciones'];
+                $this->model_control->setNoMaquina($_POST['a_no_maquina']);
+                $this->model_control->setFechaEntrega($_POST['a_fecha']);
+                $this->model_control->setBote($_POST['a_no_botes']);
+                $this->model_control->setPzas($_POST['a_pzas']);
+                $this->model_control->setKilos($_POST['a_kg']);
+                $this->model_control->setTurno($_POST['a_turno']);
+                $this->model_control->setObservaciones($_POST['a_observaciones']);
 
-                $id_folio = $_POST['a_op'];
-                $estado = $_POST['a_estado'];
+                $this->model_control->setOp($_POST['a_op']);
+                $this->model_control->setIdEstado($_POST['a_estado']);
 
-                $valores = "no_maquina = '$no_maquina', fecha = '$fecha', botes = '$no_botes', pzas = '$pzas', kilos = '$kg', turno = '$turno', observaciones = '$observaciones', id_estados_1 = '$estado'";
-                $condicion = "id_registro_diario = '$id_folio'";
-                $result = $this->model->actualizar('t_registro_diario',$valores,$condicion);
+                $result = $this->model_control->actualizar_registro();
+
                 if ($result) {
                     echo 1;
                 } else {
@@ -122,15 +127,16 @@
         }
 
         public function eliminar(){
-           if (isset($_GET['dato'])) {
-               $id = $_GET['dato'];
-               $result = $this->model->eliminar('t_registro_diario',"id_registro_diario = '$id'");
+           if (isset($_GET['dato']) && $_GET['dato'] != '') {
+               $this->model_control->setId($_GET['dato']);
+               $result = $this->model_control->eliminar_registro();
                echo $result;
            }
         }
 
         public function estados () {
-            $json = $this->model->mostrar('t_estados');
-            echo json_encode($json);
+            $this->model_control->setVista('t_estados');
+            $result = $this->model_control->obtener_registros();
+            echo json_encode($result);
         }
     }

@@ -1,10 +1,8 @@
 <?php
 
-    require_once "models/produccion/model.php";
     require_once "routes/web.php";
 
     class Main {
-        public $model;
         public $web;
 
         public function __construct(){
@@ -30,7 +28,5 @@
         public function maquinas () {
             $this->web->View('produccion/maquinas','');
         }
-
-        
     }
 ?>

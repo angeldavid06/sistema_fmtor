@@ -1,22 +1,22 @@
 <?php 
 
-    require_once 'models/Model.php';
+    require_once 'models/produccion/t_maquinas.php';
     require_once 'routes/web.php';
 
     class Maquinas {
-        public $model;
+        public $model_maquinas;
         public $web;
 
         public function __construct() {
-            $this->model = new Model();
+            $this->model_maquinas = new t_maquinas();
             $this->web = new Web();
         }
 
         public function obtener_reporte () {
             if (isset($_GET['inicio']) && isset($_GET['fin']) && isset($_GET['concepto']) && isset($_GET['vista'])) {
-                $inicio = $_GET['inicio'];
-                $fin = $_GET['fin'];
-                $concepto = $_GET['concepto'];
+                $this->model_maquinas->setFechaInicio($_GET['inicio']);
+                $this->model_maquinas->setFechaFin($_GET['fin']);
+                $this->model_maquinas->setConcepto($_GET['concepto']);
                 $id_vista = $_GET['vista'];
                 $vista = '';
                 if ($id_vista == 1) {
@@ -30,7 +30,8 @@
                 } else if ($id_vista == 6) {
                     $vista = 'acabado';
                 }
-                $result = $this->model->filtrar_rango('v_reporte_'.$vista.'_'.$concepto,'fecha',$inicio,$fin);
+                $this->model_maquinas->setVista($vista);
+                $result = $this->model_maquinas->obtener_reporte_maquinas();
                 echo json_encode($result);
             } else {
                 echo 0;
@@ -39,22 +40,22 @@
 
         public function pdf_maquinas () {
             if (isset($_GET['fecha_reporte']) && isset($_GET['kilos_pzas']) && isset($_GET['estado'])) {
-                $fecha = $_GET['fecha_reporte'];
-                $kilos_pzas = $_GET['kilos_pzas'];
-                $id_vista = $_GET['estado'];
+                $this->model_maquinas->setFechaInicio($_GET['fecha_reporte']);
+                $this->model_maquinas->setConcepto($_GET['kilos_pzas']);
                 $vista = '';
-                if ($id_vista == 1) {
+                if ($_GET['estado'] == 1) {
                     $vista = 'forjado';
-                } else if ($id_vista == 2) {
+                } else if ($_GET['estado'] == 2) {
                     $vista = 'ranurado';
-                } else if ($id_vista == 3) {
+                } else if ($_GET['estado'] == 3) {
                     $vista = 'rolado';
-                } else if ($id_vista == 4) {
+                } else if ($_GET['estado'] == 4) {
                     $vista = 'shank';
-                } else if ($id_vista == 6) {
+                } else if ($_GET['estado'] == 6) {
                     $vista = 'acabado';
                 }
-                $data = $this->model->filtrar('v_reporte_'.$vista.'_'.$kilos_pzas,'fecha',$fecha.'-');
+                $this->model_maquinas->setVista($vista);
+                $data = $this->model_maquinas->obtener_informacion_PDF();
                 $this->web->PDF('produccion/maquinas',$data);
             } else {
                 echo 0;
