@@ -26,8 +26,10 @@
                             </select> -->
                         </div>
                         <div class="d-flex align-content-center justify-right">
+                            <button class="btn btn-icon-self material-icons-outlined">loop
+                            </button>
                             <button class="btn btn-icon btn_filtrar_open" data-modal="modal-filtrar">
-                                <i class="material-icons"  data-modal="modal-filtrar">filter_alt</i>
+                                <i class="material-icons-outlined"  data-modal="modal-filtrar">filter_alt</i>
                                 Filtrar
                             </button>
                             <button class="btn btn-icon" data-impresion="documento">

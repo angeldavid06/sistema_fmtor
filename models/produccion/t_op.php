@@ -17,43 +17,43 @@
             parent::__construct();
         }
 
-        public function setOp($op) : void{
+        public function setOp($op) : void {
             $this->op = $op;
         }
         
-        public function setOpFin($op_fin) : void{
+        public function setOpFin($op_fin) : void {
             $this->op_fin = $op_fin;
         }
 
-        public function setFecha($fecha) : void{
+        public function setFecha($fecha) : void {
             $this->fecha = $fecha;
         }
 
-        public function setFechaFin($fecha_fin) : void{
+        public function setFechaFin($fecha_fin) : void {
             $this->fecha_fin = $fecha_fin;
         }
 
-        public function setPlano($plano) : void{
+        public function setPlano($plano) : void {
             $this->plano = $plano;
         }
 
-        public function setCliente($cliente) : void{
+        public function setCliente($cliente) : void {
             $this->cliente = $cliente;
         }
 
-        public function setEstado($estado) : void{
+        public function setEstado($estado) : void {
             $this->estado = $estado;
         }
 
-        public function setVista($vista) : void{
+        public function setVista($vista) : void {
             $this->vista = $vista;
         }
 
-        public function setCampo($campo) : void{
+        public function setCampo($campo) : void {
             $this->campo = $campo;
         }
 
-        public function setValorBuscar($valor_buscar) : void{
+        public function setValorBuscar($valor_buscar) : void {
             $this->valor_buscar = $valor_buscar;
         }
 
