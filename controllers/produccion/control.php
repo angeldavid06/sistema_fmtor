@@ -61,6 +61,21 @@
             }
         }
 
+        public function pdf_reporte_diario () {
+            if (isset($_GET['fecha']) && isset($_GET['estado']) && isset($_GET['turno'])) {
+                $fecha = $_GET['fecha'];
+                $turno = $_GET['turno'];
+                $estado = $_GET['estado'];
+
+                $campos = '*';
+                $tabla = 'v_reportediario';
+                $condicion = "fecha = '".$fecha."' AND turno = '".$turno."' AND estado_general = '".$estado."'";
+                
+                $data = $this->model->buscar_personalizado($tabla,$campos,$condicion);
+                $this->web->PDF('produccion/diario',$data);
+            }
+        }
+
         public function obtener_info_op () {
             if (isset($_GET['op']) && $_GET['op'] != '') {
                 $this->model_control->setOp($_GET['op']);

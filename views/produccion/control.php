@@ -13,14 +13,18 @@
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
                 <h1>Registro Diario de Producción</h1>
-                <div class="d-grid g2-8-2 tarjeta-transparente">
+                <div class="d-grid g2-6-4 tarjeta-transparente">
                     <div>
                         <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
                     </div>
                     <div class="d-flex align-content-center justify-right" >
-                        <button class="btn btn-icon" data-impresion="documento">
-                            <i class="material-icons" data-impresion="documento">description</i>
-                            Generar documento
+                        <button class="btn btn-icon" data-impresion="control">
+                            <i class="material-icons" data-impresion="control">description</i>
+                            Control de Producción
+                        </button>
+                        <button class="btn btn-icon" data-modal="modal-filtrar-diario">
+                            <i class="material-icons-outlined" data-modal="modal-filtrar-diario">description</i>
+                            Reporte Diario
                         </button>
                     </div>
                 </div>
@@ -77,6 +81,7 @@
                     </div>
                 </div>
                 <?php require_once 'public/modules/produccion/control_modal.php'; ?>
+                <?php require_once 'public/modules/produccion/diario_modal.php'; ?>
             </div>
         </div>
     </div>

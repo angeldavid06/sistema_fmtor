@@ -70,8 +70,8 @@
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js?1.6"></script>
-    <script src="../../public/js/produccion/filtros.js?2.1"></script>
-    <script src="../../public/js/produccion/ordenes.js?2.4"></script>
+    <script src="../../public/js/fmtor_libreria.js"></script>
+    <script src="../../public/js/produccion/filtros.js"></script>
+    <script src="../../public/js/produccion/ordenes.js"></script>
 </body>
 </html>

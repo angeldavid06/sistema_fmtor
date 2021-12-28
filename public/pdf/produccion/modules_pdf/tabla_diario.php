@@ -1,9 +1,6 @@
 <?php 
     for ($i=0; $i < count($data); $i++) { 
         echo '<tr>'.
-                '<td>'.$data[$i]['fecha'].'</td>'.
-                '<td>'.$data[$i]['turno'].'</td>'.
-                '<td>'.$data[$i]['estado_general'].'</td>'.
                 '<td>'.$data[$i]['Id_Folio'].'</td>'.
                 '<td>'.$data[$i]['Clientes'].'</td>'.
                 '<td class="txt-right">'.$data[$i]['kilos'].'</td>'.

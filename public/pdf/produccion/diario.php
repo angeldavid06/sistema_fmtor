@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>_</title>
+    <title>.</title>
     <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css?1.4">
 </head>
 <body>
@@ -14,17 +14,20 @@
                 <th class="th"></th>
             </tr>
             <tr>
-                <th colspan="2">Fecha: </th>
-                <th colspan="4">Turno: </th>
-                <th colspan="4">Departamento: </th>
+                <th colspan="2">Fecha: 
+                    <?php if (count($data) > 1) { echo $data[0]['fecha']; } ?>
+                </th>
+                <th colspan="4">Turno: 
+                    <?php if (count($data) > 1) { echo $data[0]['turno']; } ?>
+                </th>
+                <th colspan="4">Departamento: 
+                    <?php if (count($data) > 1) { echo $data[0]['estado_general']; } ?>
+                </th>
             </tr>
             <tr>
                 <th colspan="10"></th>
             </tr>
             <tr>
-                <th>Fecha</th>
-                <th>Turno</th>
-                <th>Departamento</th>
                 <th>O.P.</th>
                 <th>CLIENTE</th>
                 <th>KILOS</th>

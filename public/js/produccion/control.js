@@ -148,7 +148,7 @@ const actualizar_registro = () => {
     })
 }
 
-const generar_PDF = (valor) => {
+const generar_control_produccion = (valor) => {
     if (valor != '') {
         printPage(url+'/produccion/control/pdf_control?valor='+valor);
     } else {
@@ -186,6 +186,34 @@ const terminar_orden = (orden) => {
     })
 }
 
+const generar_reporte_diario = (fecha,turno,estado) => {
+    printPage(url+'/produccion/control/pdf_reporte_diario?fecha='+fecha+'&turno='+turno+'&estado='+estado);
+}
+
+const form_diario = document.getElementById('form-reporte-diario')
+
+form_diario.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    const fecha = document.getElementById('diario_fecha').value 
+    const turno = document.getElementById('diario_turno').value 
+    const estado = document.getElementById('diario_estado').value
+
+    if (fecha != '') {
+        if (turno != '') {
+            if (estado != '') {
+                generar_reporte_diario(fecha,turno,estado)
+            } else {
+                open_alert('No ha seleccionado el estado de producción','rojo')
+            }
+        } else {
+            open_alert('No ha introducido el turno de producción','rojo')
+        }
+    } else {
+        open_alert('No ha seleccionado la fecha','rojo')
+    }
+})
+
 document.addEventListener('DOMContentLoaded', () => {
     obtener_estados()
 })
@@ -199,7 +227,9 @@ document.addEventListener('click', (evt) => {
             obtener_registro(evt.target.dataset.edit)
         }
     } else if (evt.target.dataset.impresion) {
-        generar_PDF(document.getElementById('op_control').value)
+        if (evt.target.dataset.impresion == 'control') {
+            generar_control_produccion(document.getElementById('op_control').value)
+        } 
     } else if (evt.target.dataset.terminar) {
         const input = document.getElementById('op_control');
         if (input.value != '') {
