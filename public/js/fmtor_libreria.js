@@ -303,3 +303,17 @@ function printPage (sURL) {
     oHideFrame.src = sURL
     document.body.appendChild(oHideFrame);
 }
+
+// cerrar sesión
+
+if (document.getElementById('cerrar-sesion')) {
+    const btn_close_session = document.getElementById('cerrar-sesion');
+    btn_close_session.addEventListener('click', () => {
+        const respuesta = fetchAPI('',url+'/main/cerrar_sesion','')
+        respuesta.then(json => {
+            if (json == 1) {
+                window.location.href = url+'/main/login';
+            }
+        })
+    });
+}

@@ -4,15 +4,6 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-filtrar">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form-formatos">
-            <div class="contenedor_filtros">
-                <h2>Formatos pre establecidos</h2>
-                <select name="seleccion_formato" id="seleccion_formato">
-                    <option value="0">Ordenes de Producción</option>
-                    <option value="1">Reporte Diario</option>
-                </select>
-            </div>
-        </form>
         <form id="form-filtros">
             <div class="contenedor_filtros">
                 <input type="text" name="tabla" id="tabla" value="v_ordenes" hidden>

@@ -1,3 +1,4 @@
+<?php require_once 'public/modules/sesion_depto.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

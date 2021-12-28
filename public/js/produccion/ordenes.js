@@ -114,17 +114,23 @@ const tipo_consulta = (url_pdf) => {
 }
 
 const consulta_PDF = () => {
-    const select_formatos = document.getElementById('seleccion_formato')
-    if (select_formatos.value == 0) {
+    // const select_formatos = document.getElementById('seleccion_formato')
         tipo_consulta(url+'/produccion/op/pdf_ordenes?formato=v_ordenes')
-    } else if (select_formatos.value == 1) {
-        tipo_consulta(url+'/produccion/op/pdf_ordenes?formato=v_reportediario')
-    }
+    // if (select_formatos.value == 0) {
+    // } else if (select_formatos.value == 1) {
+    //     tipo_consulta(url+'/produccion/op/pdf_ordenes?formato=v_reportediario')
+    // }
 }
 
 const generar_PDF = () => {
     consulta_PDF()
 }
+
+const btn_reset = document.getElementById('btn_resetear');
+
+btn_reset.addEventListener('click', () => {
+    obtener_ordenes()
+})
 
 document.addEventListener('DOMContentLoaded', () => {
     obtener_ordenes()

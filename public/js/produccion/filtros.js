@@ -76,43 +76,45 @@ const buscar_dato = (metodo) => {
     const respuesta = fetchAPI(form_filtros, url+'/produccion/op/'+metodo, 'POST');
     respuesta.then(json => {
         limpiar_tabla()
-        const input_tabla = document.getElementById('tabla')
-        if (input_tabla.value == 'v_ordenes') {
-            render_ordenes(json)
-        } else if (input_tabla.value == 'v_reportediario') {
-            render_reporte_diario(json)
-        }
+        render_ordenes(json)
+        // const input_tabla = document.getElementById('tabla')
+        // if (input_tabla.value == 'v_ordenes') {
+        //     render_ordenes(json)
+        // } else if (input_tabla.value == 'v_reportediario') {
+        //     render_reporte_diario(json)
+        // }
     })
 }
 
-const form_formatos = document.getElementById('form-formatos');
-form_formatos.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const select = document.getElementById('seleccion_formato')
-    const input_tabla = document.getElementById('tabla')
-    cabecera_op(cabeceras[select.value]);
-    limpiar_tabla();
-    if (select.value == 0) {
-        obtener_ordenes()
-    } else if (select.value == 1) {
-        obtener_reporte_diario()
-    }
-});
+// const form_formatos = document.getElementById('form-formatos');
+// form_formatos.addEventListener('submit', (evt) => {
+//     evt.preventDefault();
+    // const select = document.getElementById('seleccion_formato')
+    // const input_tabla = document.getElementById('tabla')
+    // cabecera_op(cabeceras[select.value]);
+    // limpiar_tabla();
+        // obtener_ordenes()
+    // if (select.value == 0) {
+    //     obtener_ordenes()
+    // } else if (select.value == 1) {
+    //     obtener_reporte_diario()
+    // }
+// });
 
-const select_formatos = document.getElementById('seleccion_formato')
-select_formatos.addEventListener('change', () => {
-    cabecera_op(cabeceras[select_formatos.value]);
-    const input_tabla = document.getElementById('tabla')
-    input_tabla.removeAttribute('value')
-    limpiar_tabla();
-    if (select_formatos.value == 0) {
-        input_tabla.setAttribute('value','v_ordenes')
-        obtener_ordenes()
-    } else if (select_formatos.value == 1) {
-        input_tabla.setAttribute('value','v_reportediario')
-        obtener_reporte_diario()
-    }
-})
+// const select_formatos = document.getElementById('seleccion_formato')
+// select_formatos.addEventListener('change', () => {
+//     cabecera_op(cabeceras[select_formatos.value]);
+//     const input_tabla = document.getElementById('tabla')
+//     input_tabla.removeAttribute('value')
+//     limpiar_tabla();
+//     if (select_formatos.value == 0) {
+//         input_tabla.setAttribute('value','v_ordenes')
+//         obtener_ordenes()
+//     } else if (select_formatos.value == 1) {
+//         input_tabla.setAttribute('value','v_reportediario')
+//         obtener_reporte_diario()
+//     }
+// })
 
 const filtros_personalizados = (check, filtro) => {
     if (check && (filtro == 'f_op' || filtro == 'f_fecha')) {

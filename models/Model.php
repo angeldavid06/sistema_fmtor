@@ -55,8 +55,8 @@
             return $assoc;
         }
 
-        public function validar_password ($tabla,$condicion) {
-            $sql = "SELECT password FROM $tabla WHERE $condicion";
+        public function validar_password ($condicion) {
+            $sql = "SELECT contrasena FROM t_usuario WHERE $condicion";
             $validar_password = $this->db->query($sql);
             mysqli_close($this->db);
             $assoc = self::getAssoc($validar_password);
@@ -87,6 +87,14 @@
                 }
             } 
             return $assoc;
+        }
+
+        public function cerrar_sesion () {
+            session_unset();
+            session_reset();
+            session_destroy();
+
+            return 1;
         }
     }
 

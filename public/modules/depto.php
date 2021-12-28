@@ -1,6 +1,6 @@
 <header id="top">
     <div class="opciones d-flex align-content-center">
-        <button class="material-icons btn btn-icon-self">logout</button>
+        <button id="cerrar-sesion" class="material-icons btn btn-icon-self">logout</button>
     </div>
     <div class="logos">
         <div class="logo">
