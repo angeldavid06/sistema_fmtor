@@ -13,9 +13,19 @@ const iniciar_sesion = () => {
                 window.location.href = url+'/'+json.depto.toLowerCase()+'/main/mostrar'
             } else {
                 auxiliar.intentos++
-                usu.classList.add('input-error')
-                pass.classList.add('input-error')
-                open_alert('El usuario o contraseña introducidos son incorrectos','rojo');
+                if (json == 0) {
+                    usu.classList.add('input-error')
+                    pass.classList.add('input-error')
+                    open_alert('El usuario o contraseña introducidos son incorrectos','rojo');
+                } else if (json == 2) {
+                    usu.classList.add('input-error')
+                    open_alert('El usuario introducido es incorrecto','rojo');
+                } else if (json == 3) {
+                    pass.classList.add('input-error')
+                    open_alert('La contraseña introducida es incorrecta','rojo');
+                } else if (json == 4) {
+                    open_alert('Este usuario ya inicio sesión en otro dispositivo','amarillo');
+                }
             }
         })
     } else {

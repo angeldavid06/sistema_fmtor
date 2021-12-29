@@ -26,15 +26,27 @@
                     $nombre = $_POST['nombre'];
                     $password = $_POST['password'];
                     
-                    $valiacion = self::validar_usuario($nombre,$password);
-                    if ($valiacion > 0) {
-                        $this->model = new Model();
-                        $informacion = $this->model->buscar('v_login','usuario',$nombre);
-                        $sesiones = self::generar_sesiones($informacion[0]['id_empleados'],$informacion[0]['nombre_completo'],$informacion[0]['nombreRol'],$informacion[0]['nombre_departamento'],$informacion[0]['foto']);
-                    
-                        echo json_encode($sesiones);
+                    $status = self::comprobar_estado($nombre);
+                    if ($status == 1) {
+                        $validar_existencia_usuario = self::usuario_existe($nombre);
+                        if ($validar_existencia_usuario == 1) {
+                            $valiacion_contrasena = self::validar_contrasena($nombre,$password);
+                            if ($valiacion_contrasena > 0) {
+                                $this->model = new Model();
+                                $act_status = $this->model->actualizar('t_usuario', "estatus = 'activo'", "usuario = '".$nombre."'");
+                                $this->model = new Model();
+                                $informacion = $this->model->buscar('v_login','usuario',$nombre);
+                                
+                                $sesiones = self::generar_sesiones($informacion[0]['id_empleados'],$informacion[0]['nombre_completo'],$informacion[0]['nombreRol'],$informacion[0]['nombre_departamento'],$informacion[0]['foto'],$informacion[0]['nombrePuesto']);
+                                echo json_encode($sesiones);
+                            } else {
+                                echo 3;
+                            }
+                        } else {
+                            echo 2;
+                        }
                     } else {
-                        echo 2;
+                        echo 4;
                     }
                 } else {
                     echo 0;
@@ -42,7 +54,27 @@
             } 
         }
 
-        public function validar_usuario ($nombre,$password) {
+        public function comprobar_estado ($nombre) {
+            $estado = $this->model->buscar_personalizado('t_usuario','estatus',"usuario = '".$nombre."'");
+            if ($estado[0]['estatus'] == 'inactivo') {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+        public function usuario_existe ($nombre) {
+            $this->model = new Model();
+            $existe = $this->model->buscar_personalizado('v_login','count(usuario) AS total',"usuario = '".$nombre."'");
+            if ($existe[0]['total'] > 0) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+        public function validar_contrasena ($nombre,$password) {
+            $this->model = new Model();
             $resultado = $this->model->validar_password("usuario = '$nombre'");
             if (password_verify($password,$resultado[0]['contrasena'])) {
                 return 1;
@@ -51,18 +83,9 @@
             }
         }
 
-        public function generar_sesiones ($empleado,$nombre,$rol,$depto,$foto) {
-            $_SESSION['empleado'] = $empleado;
-            $_SESSION['nombre_usuario'] = $nombre;
-            $_SESSION['rol'] = $rol;
-            $_SESSION['depto'] = $depto;
-            $_SESSION['foto'] = $foto;
-
-            $depto = [
-                "depto" => $_SESSION['depto']
-            ];
-
-            return $depto;
+        public function generar_sesiones ($empleado,$nombre,$rol,$depto,$foto,$puesto) {
+            $result = $this->model->sesiones($empleado,$nombre,$rol,$depto,$foto,$puesto);
+            return $result;
         }
 
         public function prueba () {

@@ -856,6 +856,11 @@ embed {
     background-color: var(--color-text);
     margin: 0px 30px 30px 0px;
     border-radius: 50%;
+    overflow: hidden;
+}
+
+.menu .informacion .foto img {
+    width: 100%;
 }
 
 .contenedor .menu.hidde_menu .informacion .foto {

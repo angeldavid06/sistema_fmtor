@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="../public/css/default.css">
     <link rel="stylesheet" href="../public/css/tema_automatico.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="fmtor_16.png">
-    <link rel="apple-touch-startup-image" href="fmtor_16.png">
-    <link rel="apple-touch-icon" href="fmtor_16.png">
+    <link rel="shortcut icon" type="image/png" href="../fmtor_64.png">
+    <link rel="apple-touch-startup-image" href="../fmtor_64.png">
+    <link rel="apple-touch-icon" href="../fmtor_64.png">
 
     <link rel="manifest" href="http://localhost/sistema_fmtor/manifest.json">
 </head>

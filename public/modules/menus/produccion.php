@@ -1,11 +1,15 @@
 <div class="menu hidde_menu" id="menu">
     <div class="informacion">
         <div class="foto">
-            <img src="" alt="">
+            <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['foto'])?>" alt="">
         </div>
         <div class="nombre">
-            <p>Angel David Martinez Mendoza</p>
-            <p>Puesto</p>
+            <p>
+                <?php echo $_SESSION['nombre_usuario']; ?>
+            </p>
+            <p>
+                <?php echo $_SESSION['puesto']; ?>
+            </p>
         </div>
     </div>
     <div class="categoria_menu">
@@ -61,7 +65,7 @@
                 <i class="material-icons-round">help</i>
                 Ayuda
             </a>
-            <a href="">
+            <a  id="cerrar-sesion">
                 <i class="material-icons-round">logout</i>
                 Cerrar Sesión
             </a>

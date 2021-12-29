@@ -80,31 +80,3 @@ const quitar_filas = () => {
         body[0].removeChild(body[0].firstChild)
     }
 }
-
-const render_control = (vista,json) => {
-    totales.total_kg = 0.0;
-    totales.total_pzas = 0;
-    const body = document.getElementsByClassName('body')
-
-    quitar_filas(vista)
-
-    json.forEach(el => {
-        body[0].innerHTML += '<tr>'+
-                                '<td>'+el.botes+'</td>'+
-                                '<td>'+el.fecha+'</td>'+
-                                '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+
-                                '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
-                                '<td class="txt-right">'+el.no_maquina+'</td>'+
-                                '<td><button class="btn btn-icon-self btn-rojo material-icons" data-opcion="cerrar" data-eliminar='+el.id_registro_diario+'>delete</button></td>'+
-                                '<td><button class="btn btn-icon-self btn-amarillo material-icons" data-modal="modal-actualizar" data-opcion="actualizar"  data-edit="'+el.id_registro_diario+'">edit</button></td>'+
-                                '</tr>';
-        totales.total_kg += parseFloat(el.kilos)
-        totales.total_pzas  += parseInt(el.pzas)
-    });
-
-    const total_kilogramos = document.getElementsByClassName('total_kg')
-    const total_acumuladas = document.getElementsByClassName('total_acumuladas')
-
-    total_kilogramos[0].innerHTML = 'Total k.g.: <br>' + new Intl.NumberFormat('es-MX').format(totales.total_kg)
-    total_acumuladas[0].innerHTML = 'Pzas. Acumuladas: <br>' + new Intl.NumberFormat('es-MX').format(totales.total_pzas)
-}

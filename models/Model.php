@@ -1,5 +1,4 @@
 <?php
-    session_start();
 
     require_once "config/conexion.php";
 
@@ -89,7 +88,24 @@
             return $assoc;
         }
 
+        public function sesiones ($empleado,$nombre,$rol,$depto,$foto,$puesto) {
+            $_SESSION['empleado'] = $empleado;
+            $_SESSION['nombre_usuario'] = $nombre;
+            $_SESSION['rol'] = $rol;
+            $_SESSION['depto'] = $depto;
+            $_SESSION['foto'] = $foto;
+            $_SESSION['puesto'] = $puesto;
+
+            $departamento = [
+                "depto" => $_SESSION['depto']
+            ];
+
+            return $departamento;
+        }
+
         public function cerrar_sesion () {
+            self::actualizar('t_usuario', "estatus = 'inactivo'", "id_empleado_2 = '".$_SESSION['empleado']."'");
+
             session_unset();
             session_reset();
             session_destroy();

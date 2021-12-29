@@ -54,7 +54,9 @@
                         </div>
                         <div class="estado_tabla tarjeta d-grid g2-6-4">
                             <div class="titulo d-flex align-content-center">
-                                <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-ingresar">add</button>
+                                <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+                                    <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-ingresar">add</button>
+                                <?php } ?>
                                 <h2 class="titulo_estado">No seleccionado</h2>
                             </div>
                             <div class="info_total d-flex align-content-center justify-between">
@@ -69,11 +71,14 @@
                                     <thead>
                                         <th width="100px">Botes</th>
                                         <th>Fecha</th>
+                                        <th>Observaciones</th>
                                         <th>Pzas. Producidas</th>
                                         <th>Kg.</th>
                                         <th width="100px">Máquina</th>
-                                        <th width="80px"></th>
-                                        <th width="80px"></th>
+                                        <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+                                            <th width="80px"></th>
+                                            <th width="80px"></th>
+                                        <?php } ?>
                                     </thead>
                                     <tbody class="body"></tbody>
                                 </table>
@@ -88,6 +93,11 @@
     </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
     <script src="../../public/js/produccion/control.js"></script>
+    <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+        <script src="../../public/js/produccion/render_control_admin.js"></script>
+    <?php } else { ?>
+        <script src="../../public/js/produccion/render_control_usuario.js"></script>
+    <?php } ?>
     <script src="../../public/js/produccion/estados.js"></script>
 </body>
 </html>

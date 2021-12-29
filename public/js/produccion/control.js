@@ -55,19 +55,6 @@ form_actualizar.addEventListener('submit', (evt) => {
     }
 })
 
-const btn_form_control = document.getElementById('btn-form-control');
-
-btn_form_control.addEventListener('click', () => {
-    const estado = document.getElementsByClassName('active')
-    const op_control = document.getElementById('op_control')
-    
-    const op = document.getElementById('op')
-    const input = document.getElementById('estado')
-    
-    op.value = op_control.value
-    input.value = estado[0].dataset.id
-});
-
 const registrar_control = () => {
     const respuesta = fetchAPI(form_control,url+'/produccion/control/insertar','POST')
     respuesta.then(json => {
@@ -154,19 +141,6 @@ const generar_control_produccion = (valor) => {
     } else {
         open_alert('No ha introducido la orden de producción','naranja')
     }
-}
-
-const render_botones_estados = (json) => {
-    const botones = document.getElementsByClassName("botones")
-    json.forEach(el => {
-        if (el.estados != 'CANCELADO' && el.estados != 'TERMINADO') {
-            botones[0].innerHTML += '<button class="btn btn-transparent boton_estado" data-estado="v_'+el.estados.toLowerCase()+'" data-titulo="'+el.estados+'" data-id="'+el.id_estados+'">'+el.estados+'</button>'
-        }
-        
-        if (el.estados == 'TERMINADO') {
-            botones[0].innerHTML += '<button class="btn" data-terminar="terminar">'+el.estados+'</button>'
-        }
-    })
 }
 
 const obtener_estados = () => {
