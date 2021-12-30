@@ -92,7 +92,7 @@
         }
 
         public function buscar_op () { 
-            if (isset($_POST['check_op'])) {
+            if (isset($_POST['buscar_por'])) {
                 if (isset($_POST['f_op'])) {
                     $this->model_op->setVista($_POST['tabla']);
                     $this->model_op->setCampo('Id_Folio');
@@ -110,7 +110,7 @@
         }
 
         public function buscar_rango_op () {
-            if(isset($_POST['check_rango_op'])){
+            if(isset($_POST['buscar_por'])){
                 if(isset($_POST['f_r_op_m'])&& isset($_POST['f_r_op_M'])){
                     $this->model_op->setVista($_POST['tabla']);
                     $this->model_op->setCampo('Id_Folio');
@@ -125,7 +125,7 @@
         }  
 
         public function buscar_rango_fecha(){
-            if(isset($_POST['check_rango_fecha'])){
+            if(isset($_POST['buscar_por'])){
                 if(isset($_POST['f_r_fecha_m'])&& isset($_POST['f_r_fecha_M'])){
                     $this->model_op->setVista($_POST['tabla']);
                     $this->model_op->setCampo('fecha');
@@ -140,7 +140,7 @@
         }  
 
         public function buscar_fecha(){
-            if(isset($_POST['check_fecha'])){
+            if(isset($_POST['buscar_por'])){
                 if(isset($_POST['f_fecha'])){
                     $this->model_op->setVista($_POST['tabla']);
                     $this->model_op->setCampo('fecha');
@@ -154,9 +154,9 @@
         }
 
         public function buscar_mes(){
-            if(isset($_POST['check_fecha_mes'])){
-                if(isset($_POST['f_mes'])){
-                    $value ='-'.$_POST['f_mes'].'-';
+            if(isset($_POST['buscar_por'])){
+                if(isset($_POST['f_fecha_mes'])){
+                    $value ='-'.$_POST['f_fecha_mes'].'-';
                     
                     $this->model_op->setVista($_POST['tabla']);
                     $this->model_op->setCampo('fecha');
@@ -170,9 +170,9 @@
         }
 
         public function buscar_anio(){
-            if(isset($_POST['check_fecha_anio'])){
-                if(isset($_POST['f_anio'])){
-                    $value=$_POST['f_anio'].'-';
+            if(isset($_POST['buscar_por'])){
+                if(isset($_POST['f_fecha_anio'])){
+                    $value=$_POST['f_fecha_anio'].'-';
                     
                     $this->model_op->setVista($_POST['tabla']);
                     $this->model_op->setCampo('fecha');
@@ -187,7 +187,7 @@
         }
 
         public function buscar_cliente(){
-            if(isset($_POST['check_cliente'])){
+            if(isset($_POST['buscar_por'])){
                 if(isset($_POST['f_cliente'])){
                     $this->model_op->setVista($_POST['tabla']);
                     $this->model_op->setCampo('Clientes');
@@ -201,7 +201,7 @@
         }
 
         public function buscar_estado(){
-            if(isset($_POST['check_estado'])){
+            if(isset($_POST['buscar_por'])){
                 if(isset($_POST['f_estado'])){
                     $this->model_op->setVista($_POST['tabla']);
                     $this->model_op->setCampo('estado_general');

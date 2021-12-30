@@ -28,10 +28,7 @@
                         </div>
                         <div class="d-flex align-content-center justify-right">
                             <button id="btn_resetear" class="btn btn-transparent btn-icon-self material-icons-outlined">loop</button>
-                            <button class="btn btn-icon btn_filtrar_open" data-modal="modal-filtrar">
-                                <i class="material-icons-outlined"  data-modal="modal-filtrar">filter_alt</i>
-                                Filtrar
-                            </button>
+                            <button class="btn btn-transparent btn-icon-self btn_filtrar_open material-icons-outlined" data-modal="modal-filtrar">filter_alt</button>
                             <button class="btn btn-icon" data-impresion="documento">
                                 <i class="material-icons" data-impresion="documento">description</i>
                                 Generar Documento

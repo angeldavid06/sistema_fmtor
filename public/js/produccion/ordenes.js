@@ -81,14 +81,14 @@ const obtener_plano = (id_catalogo) => {
 }
 
 const tipo_consulta = (url_pdf) => {
-    const op = document.getElementById('check_op')
-    const fecha = document.getElementById('check_fecha')
-    const cliente = document.getElementById('check_cliente')
-    const estado = document.getElementById('check_estado')
-    const mes = document.getElementById('check_fecha_mes')
-    const anio = document.getElementById('check_fecha_anio')
-    const r_op = document.getElementById('check_rango_op')
-    const r_fecha = document.getElementById('check_rango_fecha')
+    const op = document.getElementById('op')
+    const fecha = document.getElementById('fecha')
+    const cliente = document.getElementById('cliente')
+    const estado = document.getElementById('estado')
+    const mes = document.getElementById('fecha_mes')
+    const anio = document.getElementById('fecha_anio')
+    const r_op = document.getElementById('rango_op')
+    const r_fecha = document.getElementById('rango_fecha')
 
     if (op.checked) {
         url_pdf += '&filtro=op&f_op='+document.getElementById('f_op').value
@@ -103,9 +103,9 @@ const tipo_consulta = (url_pdf) => {
     } else if(estado.checked){
         url_pdf += '&filtro=estado&f_estado='+document.getElementById('f_estado').value
     } else if(mes.checked){
-        url_pdf += '&filtro=mes&f_mes='+document.getElementById('f_mes').value
+        url_pdf += '&filtro=mes&f_mes='+document.getElementById('f_fecha_mes').value
     } else if(anio.checked){
-        url_pdf += '&filtro=anio&f_anio='+document.getElementById('f_anio').value
+        url_pdf += '&filtro=anio&f_anio='+document.getElementById('f_fecha_anio').value
     } else {
         url_pdf += '&filtro=todo'
     }
@@ -126,10 +126,23 @@ const generar_PDF = () => {
     consulta_PDF()
 }
 
+const restaurar_formulario = () => {
+    const inputs_radio = document.getElementsByName('buscar_por');
+    for (let i = 0; i < inputs_radio.length; i++) {
+        inputs_radio[i].checked = false;
+    }
+
+    const inputs = document.getElementsByClassName('input');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs_radio.value = '';
+    }
+}
+
 const btn_reset = document.getElementById('btn_resetear');
 
 btn_reset.addEventListener('click', () => {
     obtener_ordenes()
+    restaurar_formulario()
 })
 
 document.addEventListener('DOMContentLoaded', () => {
