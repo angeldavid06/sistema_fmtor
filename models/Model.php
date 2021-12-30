@@ -102,7 +102,7 @@
 
             return $departamento;
         }
-
+        
         public function cerrar_sesion () {
             self::actualizar('t_usuario', "estatus = 'inactivo'", "id_empleado_2 = '".$_SESSION['empleado']."'");
 

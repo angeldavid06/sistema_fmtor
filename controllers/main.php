@@ -46,7 +46,11 @@
                             echo 2;
                         }
                     } else {
-                        echo 4;
+                        if ($status == 0) {
+                            echo 5;
+                        } else {
+                            echo 4;
+                        }
                     }
                 } else {
                     echo 0;
@@ -56,8 +60,12 @@
 
         public function comprobar_estado ($nombre) {
             $estado = $this->model->buscar_personalizado('t_usuario','estatus',"usuario = '".$nombre."'");
-            if ($estado[0]['estatus'] == 'inactivo') {
-                return 1;
+            if(count($estado) > 0) {
+                if ($estado[0]['estatus'] == 'inactivo') {
+                    return 1;
+                } else {
+                    return 2;
+                }
             } else {
                 return 0;
             }

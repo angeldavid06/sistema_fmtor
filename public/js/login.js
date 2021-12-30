@@ -25,6 +25,9 @@ const iniciar_sesion = () => {
                     open_alert('La contraseña introducida es incorrecta','rojo');
                 } else if (json == 4) {
                     open_alert('Este usuario ya inicio sesión en otro dispositivo','amarillo');
+                } else if (json == 5) {
+                    usu.classList.add('input-error')
+                    open_alert('El usuario "'+usu.value+'" no existe','rojo');
                 }
             }
         })
