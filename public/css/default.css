@@ -146,16 +146,16 @@
     visibility: hidden;
     opacity: 0;
     z-index: 999999999999;
-    background-color: var(--background-aux-05);
+    background-color: var(--color-gray-3);
     padding: 30px 30px;
     transition: all .5s;
 }
 
 .alert .contenido,
 .confirm .contenido {
-    max-width: 50%;
+    max-width: 40%;
     position: fixed;
-    padding: 20px 20px 20px 30px;
+    padding: 30px;
     border-radius: var(--border-radius);
     background-color: var(--background-aux);
 }
@@ -164,6 +164,10 @@
     top: 0px;
     visibility: visible;
     opacity: 1;
+}
+
+.alert .contenido {
+    margin-left: 80px;
 }
 
 .alert .contenido p {
@@ -179,7 +183,6 @@
 .alert-rojo .contenido {
     background-color: var(--background-red-main);
 }
-
 
 .alert-rojo .contenido p,
 .alert-rojo .contenido i {
@@ -231,42 +234,43 @@
 }
 
 .confirm .contenido .opciones {
-    padding: 15px 0px 0px 0px;
-}
-
-.confirm .contenido .opciones .btn {
-    padding: 10px;
+    width: 100%;
+    padding: 30px 0px 0px 0px;
 }
 
 .content_preloader {
     width: 100%;
     height: 100%;
     position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    align-content: flex-end;
     background-color: var(--color-gray-3);
+    padding: 30px 30px 30px 110px;
     left: 0;
     top: 0;
     z-index: 99999;
 }
 
 .preloader {
-    width: 60px;
-    height: 60px;
-    position: fixed;
-    top: calc(50vh - 60px);
-    left: calc(50% - 90px);
+    position: relative;
+    width: 50%;
+    height: 90px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     background-color: var(--background-aux);
-    border-radius: 50%;
+    border-radius: var(--border-radius);
     z-index: 999999;
+    padding: 30px;
 }
 
 .preloader::after {
     content: 'Cargando...';
     position: absolute;
-    left: calc(100% + 20px);
-    font-size: 1.5em;
+    left: 100px;
+    font-size: 1.2em;
     font-weight: 500;
 }
 
@@ -323,11 +327,13 @@ button {
 }
 
 .btn-icon i {
+    font-size: 20px;
     padding: 0px 15px 0px 0px;
     color: var(--color-button);
 }
 
 .btn-icon-self {
+    font-size: 20px;
     padding: 15px;
 }
 
@@ -364,6 +370,19 @@ button {
     color: var(--color-green-main);
 }
 
+.btn-verde:hover {
+    background-color: var(--background-green-hover);
+    color: var(--color-green-hover);
+}
+
+.btn-verde:hover i {
+    color: var(--color-green-hover);
+}
+
+.btn-verde i:hover {
+    color: var(--color-green-hover);
+}
+
 .btn-rojo {
     background-color: var(--background-red-main);
     color: var(--color-red-main);
@@ -371,6 +390,19 @@ button {
 
 .btn-rojo i {
     color: var(--color-red-main);
+}
+
+.btn-rojo:hover {
+    background-color: var(--background-red-hover);
+    color: var(--color-red-hover);
+}
+
+.btn-rojo:hover i {
+    color: var(--color-red-hover);
+}
+
+.btn-rojo i:hover {
+    color: var(--color-red-hover);
 }
 
 .btn-naranja {
@@ -382,6 +414,19 @@ button {
     color: var(--color-orange-main);
 }
 
+.btn-naranja:hover {
+    background-color: var(--background-orange-hover);
+    color: var(--color-orange-hover);
+}
+
+.btn-naranja:hover i {
+    color: var(--color-orange-hover);
+}
+
+.btn-naranja i:hover {
+    color: var(--color-orange-hover);
+}
+
 .btn-amarillo {
     background-color: var(--background-yellow-main);
     color: var(--color-yellow-main);
@@ -389,6 +434,19 @@ button {
 
 .btn-amarillo i {
     color: var(--color-yellow-main);
+}
+
+.btn-amarillo:hover {
+    background-color: var(--background-yellow-hover);
+    color: var(--color-yellow-hover);
+}
+
+.btn-amarillo:hover i {
+    color: var(--color-yellow-hover);
+}
+
+.btn-amarillo i:hover {
+    color: var(--color-yellow-hover);
 }
 
 #btn-subir {
@@ -1495,6 +1553,14 @@ embed {
 }
 
 @media screen and (max-width: 768px) {
+    .content_preloader {
+        padding: 10px;
+    }
+
+    .preloader {
+        width: 100%;
+    }
+
     .btn-flotante {
         bottom: 10px;
     }
@@ -1620,7 +1686,15 @@ embed {
     }
 
     .confirm .contenido .opciones {
-        padding: 15px 0px 0px 15px;
+        padding: 20px 0px 0px 0px;
+    }
+
+    .alert .contenido {
+        margin-left: 0px;
+    }
+
+    .confirm .contenido .opciones {
+        width: 100%;
     }
 
     .login {

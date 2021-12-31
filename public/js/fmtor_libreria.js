@@ -179,13 +179,21 @@ const open_confirm = (title,callback) => {
     div.classList.add('justify-center')
     div.classList.add('align-content-top')
 
-    div.innerHTML = '<div id="confirm" class="contenido d-flex justify-center align-content-center flex-wrap">'+
-                        '<div class="titulo">'+
-                            '<h3 class="txt-center">'+title+'</h3>'+
-                        '</div>'+
-                        '<div class="opciones">'+
-                            '<button class="btn btn-icon-self btn-azul material-icons btn-confirm-sm-accept">done</button>'+
-                            '<button class="btn btn-icon-self btn-rojo material-icons btn-confirm-sm-cancel">close</button>'+
+    div.innerHTML = '<div class="confirm show-alert d-flex justify-center align-content-center">'+
+                        '<div class="contenido d-flex justify-center align-content-center flex-wrap btn-confirm-sm-cancel">'+
+                            '<div class="titulo">'+
+                                '<h3 class="txt-center">'+title+'</h3>'+
+                            '</div>'+
+                            '<div class="opciones d-flex justify-center">'+
+                                '<button class="btn btn-icon btn-azul btn-confirm-sm-accept">'+
+                                    '<i class="material-icons-round">done</i>'+
+                                    'Confirmar'+
+                                '</button>'+
+                                '<button class=" btn btn-icon btn-rojo btn-confirm-sm-cancel">'+
+                                    '<i class="material-icons-round">close</i>'+
+                                    'Cancelar'+
+                                '</button>'+
+                            '</div>'+
                         '</div>'+
                     '</div>'
 
