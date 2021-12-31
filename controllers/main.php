@@ -95,14 +95,6 @@
             $result = $this->model->sesiones($empleado,$nombre,$rol,$depto,$foto,$puesto);
             return $result;
         }
-
-        public function prueba () {
-            $this->web->View('prueba','');
-        }
-
-        public function op () {
-            echo json_encode($this->model->mostrar('ordenes'));
-        }
     }
 
 ?>
