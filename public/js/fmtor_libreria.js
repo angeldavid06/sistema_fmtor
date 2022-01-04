@@ -148,7 +148,6 @@ const time_notification = (div,not) => {
 
 const open_alert = (titulo,color) => {  
     if (document.getElementById('contenedor_alert')) {
-        console.log('si hay');
         const contenedor = document.getElementById('contenedor_alert')
         const contenido = document.createElement('div')
         let icono = 'info'
@@ -176,7 +175,6 @@ const open_alert = (titulo,color) => {
 
         time_notification(contenedor,contenido)
     } else {
-        console.log('no hay');
         const div = document.createElement('div')
         const contenido = document.createElement('div')
         let icono = 'info'
@@ -212,7 +210,6 @@ const open_alert = (titulo,color) => {
         div.appendChild(contenido)
         document.body.appendChild(div);
 
-        console.log(div);
         time_notification(div,contenido)
     }
 
