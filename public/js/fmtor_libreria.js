@@ -129,8 +129,7 @@ const fetchAPI = async (form,ruta,metodo) => {
 
 // Alertas
 
-const time_notification = (not) => {
-    document.body.appendChild(not);
+const time_notification = (div,not) => {
     window.setTimeout(() => {
         not.classList.add('show-alert');
     },300);
@@ -138,38 +137,85 @@ const time_notification = (not) => {
         not.classList.remove('show-alert');
     },5000);
     window.setTimeout(() => {
-        document.body.removeChild(not);
+        div.removeChild(not);
+        const cantidad = div.getElementsByClassName('contenido')
+        if (cantidad.length == 0) {
+            div.classList.remove('show-alert')
+            document.body.removeChild(div)
+        }
     },5800);
 }
 
-const open_alert = (titulo,color) => {   
-    const div = document.createElement('div')
-    let icono = 'info'
+const open_alert = (titulo,color) => {  
+    if (document.getElementById('contenedor_alert')) {
+        console.log('si hay');
+        const contenedor = document.getElementById('contenedor_alert')
+        const contenido = document.createElement('div')
+        let icono = 'info'
+    
+        if (color == 'rojo') {
+            icono = 'warning';
+        } else if (color == 'verde') {
+            icono = 'check';
+        } else if (color == 'azul') {
+            icono = 'info';
+        } else if (color == 'naranja') {
+            icono = 'feedback';
+        } else {
+            icono = 'info';
+        }
+    
+        contenido.classList.add('contenido')
+        contenido.classList.add('d-flex')
+        contenido.classList.add('align-content-center')
+        contenido.innerHTML += '<i class="material-icons">'+icono+'</i>'+
+                                '<p class="txt-left">'+titulo+'</p>'
+    
+        contenedor.appendChild(contenido)
+        document.body.appendChild(contenedor);
 
-    div.classList.add('alert')
-    div.classList.add('d-flex')
-    div.classList.add('justify-between')
-    div.classList.add('align-content-bottom')
-    div.classList.add('alert-'+color)
-
-    if (color == 'rojo') {
-        icono = 'warning';
-    } else if (color == 'verde') {
-        icono = 'check';
-    } else if (color == 'azul') {
-        icono = 'info';
-    } else if (color == 'naranja') {
-        icono = 'feedback';
+        time_notification(contenedor,contenido)
     } else {
-        icono = 'info';
+        console.log('no hay');
+        const div = document.createElement('div')
+        const contenido = document.createElement('div')
+        let icono = 'info'
+
+        div.setAttribute('id','contenedor_alert')
+        div.classList.add('alert')
+        div.classList.add('show-alert')
+        div.classList.add('d-flex')
+        div.classList.add('justify-right')
+        div.classList.add('flex-column')
+        div.classList.add('align-content-top')
+        div.classList.add('flex-nowrap')
+        div.classList.add('alert-'+color)
+
+        if (color == 'rojo') {
+            icono = 'warning';
+        } else if (color == 'verde') {
+            icono = 'check';
+        } else if (color == 'azul') {
+            icono = 'info';
+        } else if (color == 'naranja') {
+            icono = 'feedback';
+        } else {
+            icono = 'info';
+        }
+    
+        contenido.classList.add('contenido');
+        contenido.classList.add('d-flex');
+        contenido.classList.add('align-content-center');
+        contenido.innerHTML = '<i class="material-icons">'+icono+'</i>'+
+                                '<p class="txt-left">'+titulo+'</p>';
+                                
+        div.appendChild(contenido)
+        document.body.appendChild(div);
+
+        console.log(div);
+        time_notification(div,contenido)
     }
 
-    div.innerHTML = '<div class="contenido d-flex align-content-center">'+
-                        '<i class="material-icons">'+icono+'</i>'+
-                        '<p class="txt-left">'+titulo+'</p>'+
-                    '</div>'
-
-    time_notification(div)
 }
 
 const open_confirm = (title,callback) => {

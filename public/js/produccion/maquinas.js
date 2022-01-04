@@ -811,7 +811,11 @@ const auto = () => {
     const year = hoy.getFullYear();
     const month = hoy.getMonth();
 
-    input.value = year+'-'+(month+1)
+    if (month < 10) {
+        input.value = year+'-0'+(month+1)
+    } else {
+        input.value = year+'-'+(month+1)
+    }
 }
 
 (() => {

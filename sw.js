@@ -7,7 +7,10 @@ urlsToCache = [
     'http://localhost/sistema_fmtor/fmtor_128.png',
     'http://localhost/sistema_fmtor/fmtor_64.png',
     'http://localhost/sistema_fmtor/fmtor_32.png',
-    'http://localhost/sistema_fmtor/fmtor_16.png'
+    'http://localhost/sistema_fmtor/fmtor_16.png',
+    'http://localhost/sistema_fmtor/public/css/default.css',
+    'http://localhost/sistema_fmtor/public/css/formato.css',
+    'http://localhost/sistema_fmtor/public/js/libreria_fmtor.js',
 ]
 
 self.addEventListener('install', e => {
