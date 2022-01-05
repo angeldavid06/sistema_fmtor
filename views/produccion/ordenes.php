@@ -45,14 +45,14 @@
                                         <th>CAL.</th>
                                         <th>Kg.</th>
                                         <th>Factor</th>
-                                        <th>N° O.P.</th>
-                                        <th>Fecha de O.P.</th>
-                                        <th>Cliente</th>
-                                        <th>Descripción</th>
-                                        <th>Acabado</th>
+                                        <th style="min-width: 80px;">N° O.P.</th>
+                                        <th style="min-width: 110px;">Fecha de O.P.</th>
+                                        <th style="min-width: 80px;">Cliente</th>
+                                        <th style="min-width: 170px;">Descripción</th>
+                                        <th style="min-width: 130px;">Acabado</th>
                                         <th>Cant</th>
-                                        <th>Precio</th>
-                                        <th>Total</th>
+                                        <th style="min-width: 80px;">Precio</th>
+                                        <th style="min-width: 100px;">Total</th>
                                         <th>Acumulado<br>(Acabado)</th>
                                         <th>Estado</th>
                                     </thead>

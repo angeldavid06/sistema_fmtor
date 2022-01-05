@@ -1,9 +1,15 @@
+const contenedor = document.getElementsByClassName('form-login');
 const form = document.getElementById('form-login');
 const usu = document.getElementById('nombre');
 const pass = document.getElementById('password');
+const btn_iniciar = document.getElementById('iniciar');
 const auxiliar = {
     intentos: 0
 }
+
+btn_iniciar.addEventListener('click', () => {
+    contenedor[0].classList.add('mostrar')
+})
 
 const iniciar_sesion = () => {
     if (auxiliar.intentos < 3) {

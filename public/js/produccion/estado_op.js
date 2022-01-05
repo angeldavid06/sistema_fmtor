@@ -14,7 +14,7 @@ const render_retrasos = (ops) => {
                                         '<tr>'+
                                             '<th>O.P.</th>'+
                                             '<th>Cliente</th>'+
-                                            '<th>Descripción</th>'+
+                                            '<th style="min-width: 170px;">Descripción</th>'+
                                             '<th>Cantidad</th>'+
                                             '<th>Precio</th>'+
                                             '<th>Total</th>'+
@@ -60,7 +60,7 @@ const render_estado = (semana_1,semana_3,semana_5,ops) => {
                                         '<tr>'+
                                             '<th>O.P.</th>'+
                                             '<th>Cliente</th>'+
-                                            '<th>Descripción</th>'+
+                                            '<th style="min-width: 170px;">Descripción</th>'+
                                             '<th>Cantidad</th>'+
                                             '<th>Precio</th>'+
                                             '<th>Total</th>'+
