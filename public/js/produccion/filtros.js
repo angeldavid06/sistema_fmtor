@@ -1,8 +1,13 @@
 const limpiar_tabla = () => {
     const tbody = document.getElementsByClassName('body');
+    const table = document.getElementById('table')
+    const tfoot = document.getElementsByClassName('tfoot')
     while (tbody[0].firstChild) {
         tbody[0].removeChild(tbody[0].firstChild);
     }
+
+    table.removeChild(tfoot[0])
+    // console.log(tfoot);
 }
 
 const form_filtros = document.getElementById('form-filtros');

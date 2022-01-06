@@ -40,20 +40,21 @@
                     <div class="main">
                         <div class="row-con">
                             <div class="tabla">
-                                <table>
+                                <table id="table">
                                     <thead class="cabecera">
                                         <th>CAL.</th>
-                                        <th>Kg.</th>
+                                        <th style="min-width: 80px;">Kg.</th>
                                         <th>Factor</th>
                                         <th style="min-width: 80px;">N° O.P.</th>
                                         <th style="min-width: 110px;">Fecha de O.P.</th>
                                         <th style="min-width: 80px;">Cliente</th>
+                                        <th style="min-width: 100px;">Medida</th>
                                         <th style="min-width: 170px;">Descripción</th>
                                         <th style="min-width: 130px;">Acabado</th>
-                                        <th>Cant</th>
+                                        <th>Cant.</th>
                                         <th style="min-width: 80px;">Precio</th>
                                         <th style="min-width: 100px;">Total</th>
-                                        <th>Acumulado<br>(Acabado)</th>
+                                        <th>Acumulado</th>
                                         <th>Estado</th>
                                     </thead>
                                     <tbody class="body"></tbody>
