@@ -39,8 +39,9 @@ const render_ordenes = (json) => {
             tr_totales.innerHTML = '<tr>'+
                                         '<td class="txt-right">Kilos mensuales: </td>'+
                                         '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(total_kilos_mensual)+'</td>'+
-                                        '<td colspan="10" class="txt-right">Acumulado mensual:</td>'+
+                                        '<td colspan="9" class="txt-right">Acumulado mensual:</td>'+
                                         '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado_mensual) + '</td>'+
+                                        '<td></td>'+
                                         '<td></td>'+
                                     '</tr>';
             t_body[0].appendChild(tr_totales)
@@ -83,12 +84,14 @@ const render_ordenes = (json) => {
     tr_totales.innerHTML = '<tr>'+
                                 '<td class="txt-right">Kilos mensuales: </td>'+
                                 '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(total_kilos_mensual)+'</td>'+
-                                '<td colspan="10" class="txt-right">Acumulado mensual:</td>'+
+                                '<td colspan="9" class="txt-right">Acumulado mensual:</td>'+
                                 '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado_mensual) + '</td>'+
+                                '<td></td>'+
                                 '<td></td>'+
                             '</tr>';
     t_body[0].appendChild(tr_totales)
     total_acumulado_mensual = 0
+    
     const table = document.getElementById('table')
     const tfoot = document.createElement('tfoot');
     tfoot.classList.add('tfoot')

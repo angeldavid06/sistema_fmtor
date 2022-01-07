@@ -14,23 +14,25 @@
                 <th class="th"></th>
             </tr>
             <tr>
-                <th>CAL.</th>
-                <th>Kg.</th>
-                <th>Factor</th>
-                <th>N° O.P.</th>
-                <th>Fecha de O.P.</th>
-                <th>Cliente</th>
-                <th>Descripción</th>
-                <th>Acabado</th>
-                <th>Cant</th>
-                <th>Precio</th>
-                <th>Total</th>
-                <th>Acumulado<br>(Acabado)</th>
-                <th>Estado</th>
+                <th class="th-estado">CAL.</th>
+                <th class="th-estado">Kg.</th>
+                <th class="th-estado">Factor</th>
+                <th class="th-estado">N° O.P.</th>
+                <th class="th-estado">Fecha de O.P.</th>
+                <th class="th-estado">Cliente</th>
+                <th class="th-estado">Medida</th>
+                <th class="th-estado">Descripción</th>
+                <th class="th-estado">Acabado</th>
+                <th class="th-estado">Cant</th>
+                <th class="th-estado">Precio</th>
+                <th class="th-estado">Total</th>
+                <th class="th-estado">Acumulado</th>
+                <th class="th-estado">Estado</th>
             </tr>
         </thead>
         <tbody>
             <?php require_once 'modules_pdf/tabla_ordenes.php'; ?>
+            
         </tbody>
         <tfoot>
             <tr>
