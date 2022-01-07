@@ -43,8 +43,8 @@
                 </form>
             </div>
     </div>
-    <script src="../public/js/fmtor_libreria.js?2.3"></script>
+    <script src="../public/js/fmtor_libreria.js"></script>
     <script src="http://localhost/sistema_fmtor/script.js"></script> 
-    <script src="../public/js/login.js?2.1"></script>
+    <script src="../public/js/login.js"></script>
 </body>
 </html>

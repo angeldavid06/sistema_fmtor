@@ -7,17 +7,17 @@
         <form id="form-reporte-diario">
             <div class="contenedor_filtros">
                 <input type="text" name="tabla" id="tabla" value="v_ordenes" hidden>
-                <div class="filtro fecha">
-                    <div class="d-grid g-2">
-                        <div class="d-grid g-1">
-                            <label for="lbl_diario_fecha">Fecha:</label>
-                            <input class="input" type="date" name="diario_fecha" id="diario_fecha" >
-                        </div>
-                        <div class="d-grid g-1">
-                            <label for="lbl_diario_turno">Turno:</label>
-                            <input class="input" type="number" name="diario_turno" id="diario_turno" >
-                        </div>
+                <div class="d-grid g-2">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label for="lbl_diario_fecha">Fecha:</label>
+                        <input class="input" type="date" name="diario_fecha" id="diario_fecha" >
                     </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label for="lbl_diario_turno">Turno:</label>
+                        <input class="input" type="number" name="diario_turno" id="diario_turno" >
+                    </div>
+                </div>
+                <div class="d-grid g-1 grid-gap-0">
                     <label id="lbl_diario_estado" for="diario_estado">Estado de producción:</label>
                     <select name="diario_estado" id="diario_estado">
                         <option value="">Selecciona el estado de producción</option>
