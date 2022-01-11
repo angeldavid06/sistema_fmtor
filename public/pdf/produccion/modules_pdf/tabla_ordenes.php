@@ -21,7 +21,7 @@
 
     for ($i=0; $i < count($data); $i++) { 
         $fecha = (explode(' ',$data[$i]['Fecha']))[0];
-        if ($aux > 0 && $fecha_anterior != (explode('-',$fecha)[0].'-'.explode('-',$fecha)[1])) {
+        if ($aux > 0 && $fecha_anterior != (explode('-',$fecha)[0].'-'.explode('-',$fecha)[1]) && (explode('-',$fecha)[0].'-'.explode('-',$fecha)[1]) != '0000-00') {
             echo '<tr>'.
                     '<td class="txt-right th-estado">Kilos mensuales: </td>'.
                     '<td class="txt-right th-estado">'.number_format($total_kilos_mensual, 2, '.', '').'</td>'.
@@ -38,7 +38,7 @@
             $total_kilos_mensual += (floatval($data[$i]['factor'])*floatval($data[$i]['cantidad_elaborar']));
         }
 
-        if ($aux == 0 || $fecha_anterior != (explode('-',$fecha)[0].'-'.explode('-',$fecha)[1])) {
+        if ($aux == 0 || $fecha_anterior != (explode('-',$fecha)[0].'-'.explode('-',$fecha)[1])  && (explode('-',$fecha)[0].'-'.explode('-',$fecha)[1]) != '0000-00') {
             echo '<tr><td class="txt-center th-estado" colspan="14">'.$meses[explode('-',$fecha)[1]-1].' '.explode('-',$fecha)[0].'</td></tr>';
             $fecha_anterior = explode('-',$fecha)[0].'-'.explode('-',$fecha)[1];
             $aux++;

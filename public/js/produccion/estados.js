@@ -12,12 +12,50 @@ document.addEventListener('click', (evt) => {
             const titulo_estado = document.getElementsByClassName('titulo_estado');
         
             titulo_estado[0].innerHTML = evt.target.dataset.titulo;
+
+            if (document.getElementById('nuevo_factor')) {
+                document.getElementById('nuevo_factor').dataset.est = evt.target.dataset.id
+            }
+
             obtener_control(evt.target.dataset.estado)
+            obtener_op_control(op_control.value);
+            obtener_factor(evt.target.dataset.id)
         } else {
             open_alert('No ha introducido la Orden de Producción', 'naranja')
         }
     } 
 });
+
+if (document.getElementById('nuevo_factor')) {
+    const btn_nuevo_factor = document.getElementById('nuevo_factor')
+    btn_nuevo_factor.addEventListener('click', () => {
+        actualizar_factor(btn_nuevo_factor.dataset.est);
+    })
+}
+
+const actualizar_factor = (estado) => {
+    const op_control = document.getElementById('op_control')
+    const factor_control = document.getElementById('factor_control')
+    if (factor_control.value != '') {
+        factor_control.classList.remove('input-error')
+        const respuesta =fetchAPI('',url+'/produccion/control/actualizar_factor?estado='+estado+'&op='+op_control.value+'&factor='+factor_control.value,'')
+        respuesta.then(json => {
+            obtener_factor(estado)
+        })
+    } else {
+        open_alert('No ha introducido el factor','naranja')
+        factor_control.classList.add('input-error')
+    }
+}
+
+const obtener_factor = (estado) => {
+    const op_control = document.getElementById('op_control')
+    const factor_control = document.getElementById('factor_control')
+    const respuesta = fetchAPI('',url+'/produccion/control/obtener_factor?estado='+estado+'&op='+op_control.value,'')
+    respuesta.then(json => {
+        factor_control.value = json.factor;
+    })
+}
 
 const quit_class = () => {
     const botones = document.getElementsByClassName('boton_estado');
@@ -40,7 +78,6 @@ const obtener_control = (vista) => {
     const respuesta = fetchAPI('',url+'/produccion/control/obtener_control?control='+control,'');
     respuesta.then(json => {
         render_control(vista,json)
-        obtener_op_control(op_control.value)
     })
 }
 
@@ -60,7 +97,6 @@ const quitar_info = (info) => {
 }
 
 const render_info = (json) => {
-    const op_control = document.getElementById('op_control')
     const info = document.getElementsByClassName('info')
 
     json.forEach(el => {
@@ -70,7 +106,6 @@ const render_info = (json) => {
                             '<label>Cantidad:  '+el.cantidad_elaborar+'</label>'+
                             '<label>Descripción:  '+el.descripcion+'</label>'+
                             '<label>Factor:  '+el.factor+'</label>';
-        op_control.value = el.id_control_produccion
     })
 }
 
@@ -80,3 +115,14 @@ const quitar_filas = () => {
         body[0].removeChild(body[0].firstChild)
     }
 }
+
+const btn_informacion = document.getElementById('informacion_op')
+
+btn_informacion.addEventListener('click', () => {
+    const op_control = document.getElementById('op_control')
+    if (op_control.value == '') {
+        open_alert('No ha introducido la orden de producción','naranja')
+    } else {
+        obtener_op_control(op_control.value);
+    }
+})

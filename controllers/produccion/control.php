@@ -117,7 +117,7 @@
         }
 
         public function actualizar(){
-            if (isset($_POST['a_estado']) && isset($_POST['a_op'])) {
+            if (isset($_POST['a_op'])) {
                 $this->model_control->setNoMaquina($_POST['a_no_maquina']);
                 $this->model_control->setFechaEntrega($_POST['a_fecha']);
                 $this->model_control->setBote($_POST['a_no_botes']);
@@ -127,7 +127,6 @@
                 $this->model_control->setObservaciones($_POST['a_observaciones']);
 
                 $this->model_control->setOp($_POST['a_op']);
-                $this->model_control->setIdEstado($_POST['a_estado']);
 
                 $result = $this->model_control->actualizar_registro();
 
@@ -147,6 +146,39 @@
                $result = $this->model_control->eliminar_registro();
                echo $result;
            }
+        }
+
+        public function obtener_factor () {
+            if (isset($_GET['estado']) && isset($_GET['op'])){
+                if ($_GET['estado'] != '' && $_GET['op'] != '') {
+                    $this->model_control->setOp($_GET['op']);
+                    $this->model_control->setIdEstado($_GET['estado']);
+                    $result = $this->model_control->factor();
+
+                    echo json_encode($result[0]);
+                } else {
+                    echo 2; 
+                }
+            } else {
+                echo 0;
+            }
+        }
+
+        public function actualizar_factor () {
+            if (isset($_GET['estado']) && isset($_GET['op']) && isset($_GET['factor'])){
+                if ($_GET['estado'] != '' && $_GET['op'] != '' && $_GET['factor'] != '') {
+                    $this->model_control->setOp($_GET['op']);
+                    $this->model_control->setIdEstado($_GET['estado']);
+                    $this->model_control->setFactor($_GET['factor']);
+                    $result = $this->model_control->nuevo_factor();
+
+                    echo json_encode($result);
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 0;
+            }
         }
 
         public function estados () {

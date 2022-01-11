@@ -35,7 +35,7 @@ const render_ordenes = (json) => {
 
         let fecha = el.Fecha.split(' ')[0].split('-')
 
-        if (aux > 0 && mes != (fecha[0]+'-'+fecha[1])) {
+        if (aux > 0 && mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
             tr_totales.innerHTML = '<tr>'+
                                         '<td class="txt-right">Kilos mensuales: </td>'+
                                         '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(total_kilos_mensual)+'</td>'+
@@ -54,7 +54,7 @@ const render_ordenes = (json) => {
             total_kilos_mensual += (el.factor*el.cantidad_elaborar)
         }
 
-        if (aux == 0 || mes != (fecha[0]+'-'+fecha[1])) {
+        if (aux == 0 || mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
             tr_mes.innerHTML = '<tr><td class="txt-center" colspan="14">'+meses[fecha[1]-1]+' '+fecha[0]+'</td></tr>'
             mes = (fecha[0]+'-'+fecha[1])
             aux++;

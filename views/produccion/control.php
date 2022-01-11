@@ -15,8 +15,9 @@
             <div class="informacion">
                 <h1>Registro Diario de Producción</h1>
                 <div class="d-grid g2-6-4 tarjeta-transparente">
-                    <div>
+                    <div class="d-flex align-content-center">
                         <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
+                        <button id="informacion_op" class="btn btn-icon-self material-icons">search</button>
                     </div>
                     <div class="d-flex align-content-center justify-right" >
                         <button class="btn btn-icon" data-impresion="control">
@@ -52,16 +53,22 @@
                             <div class="botones ov_x_auto d-flex">
                             </div>
                         </div>
-                        <div class="estado_tabla tarjeta d-grid g2-6-4">
+                        <div class="estado_tabla tarjeta d-grid g2-5-5">
                             <div class="titulo d-flex align-content-center">
                                 <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
                                     <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-ingresar">add</button>
                                 <?php } ?>
                                 <h2 class="titulo_estado">No seleccionado</h2>
                             </div>
-                            <div class="info_total d-flex align-content-center justify-between">
-                                <p class="total_acumuladas">Pzas. Acumuladas: <br> 0000</p>
-                                <p class="total_kg">Total Kg: <br> 000.00</p>
+                            <div class="d-flex align-content-center justify-between">
+                                <div style="width: 200px;" class="d-flex align-content-center">
+                                    <input style="width: 130px;" type="text" name="factor_control" id="factor_control" placeholder="Factor: 0.0">
+                                    <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+                                        <button id="nuevo_factor" class="btn btn-icon-self material-icons">update</button>
+                                    <?php } ?>
+                                </div>
+                                <p style="padding: 0px;" class="total_acumuladas">Pzas. Acumuladas: <br> 0000</p>
+                                <p style="padding: 0px;" class="total_kg">Total Kg: <br> 000.00</p>
                             </div>
                         </div>
                         <div class="tarjeta ov_hidden">

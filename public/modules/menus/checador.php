@@ -1,53 +1,26 @@
 <div class="menu hidde_menu" id="menu">
     <div class="informacion">
         <div class="foto">
-            <img src="" alt="">
+            <img src="" alt=""><span class="material-icons-outlined"></span>
         </div>
         <h3>Nombre del empleado</h3>
         <p>Puesto</p>
     </div>
-    <div class="categoria_menu">
-        <nav class="opciones">
-            <a href="http://localhost/sistema_fmtor/checador/main/mostrar">
-                <i class="material-icons">apps</i>
-                Menú pricipal
-            </a>
-        </nav>
-        <div class="titulo_categoria_menu">
-            <p>Nombre de la categoría</p>
-        </div>
-        <nav class="opciones">
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 1
-            </a>
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 2
-            </a>
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 3
-            </a>
-        </nav>
-    </div>
+    <br><br>
     <div class="categoria_menu">
         <div class="titulo_categoria_menu">
-            <p>Nombre de la categoría</p>
+            <a href="http://localhost/sistema_fmtor/checador/main/listas">
+                <i class="material-icons"><img src="../../public/img/checador/lista.png" width="50" height="60"> LISTAS</i>
+            </a>
         </div>
-        <nav class="opciones">
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 1
-            </a>
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 2
-            </a>
-            <a href="http://">
-                <i class="material-icons">insert_emoticon</i>
-                Opción del menu - 3
-            </a>
-        </nav>
     </div>
+    <br> 
+    <div class="categoria_menu">
+        <div class="titulo_categoria_menu">
+            <a href="http://localhost/sistema_fmtor/checador/main/incidencias">
+                <i class="material-icons"> <img src="../../public/img/checador/estadisticas.png" width="50" height="60"> INCIDENCIAS</i>
+            </a>
+        </div>
+    </div>
+   
 </div>

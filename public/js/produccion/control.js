@@ -97,7 +97,6 @@ const cargar_registro = (json) => {
     const observaciones = document.getElementById('a_observaciones')
 
     json.forEach(el => {
-        estado.value = el.id_estados_1
         op.value = el.id_registro_diario
         no_maquina.value = el.no_maquina
         fecha.value = el.fecha.split(' ')[0]

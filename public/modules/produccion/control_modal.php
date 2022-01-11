@@ -67,7 +67,6 @@
     </div>
     <div class="contenido_modal">
     <form id="form-control-actualizar">
-        <input type="text" name="a_estado" id="a_estado" hidden>
         <input type="text" name="a_op" id="a_op" hidden>
         <div class="d-grid g-2">
             <div class="d-grid g-1 grid-gap-0">
