@@ -7,17 +7,15 @@
         <form id="form_actualizar">
             <p>Numero de Incidencia:</p>
                 <input class="input " type="text" name="id_incidencias" id="id_incidencias" placeholder="Ingresar numero de incidencia ">
-            <p>Empleado:</p>
-                <select name="id_empleado" id="id_empleado"> </select>
             <p>Incapacidad:</p>
-                <select name="incapacidad" id="incapacidad">
-                    <option value="0">Enfermedad General</option>
-                    <option value="1">Riesgo de trabajo</option>
-                    <option value="2">Finamiento</option>
-                    <option value="3">Emergencia Familiar</option>
-                    <option value="4">Falta dia completo</option>
-                    <option value="5">Descanso por permiso</option>
-                    <option value="6">Vacaciones</option>
+                <select name="tipo_incidencia" id="tipo_incidencia">
+                <option value="Enfermedad General">Enfermedad General</option>
+                    <option value="Riesgo de trabajo">Riesgo de trabajo</option>
+                    <option value="Emergencia Familiar">Emergencia Familiar</option>
+                    <option value="Falta dia completo">Falta dia completo</option>
+                    <option value="Descanso por permiso">Descanso por permiso</option>
+                    <option value="Vacaciones">Vacaciones</option>
+                    <option value="Finamiento">Finamiento</option>
                 </select>
                 <p>Inicio Incapacidad:</p>
             <input class="input" type="date" name="inicio_in" id="inicio_in" placeholder="Ingrese fecha inicio Incidencia">

@@ -16,29 +16,47 @@
             $this->mo = new registrosModel();
         }
 
+        // Función que consulta si un empleado ya registro su entrada
+        public function comprobar () {
+            if (isset($_GET['fecha']) && isset($_GET['id'])) {
+                $this->mo->setfecha($_GET['fecha']);
+                $this->mo->setUsuario($_GET['id']);
+                
+                echo $this->mo->consultar_entrada_empleado();
+            } else {
+                echo 0;
+            }
+        }
+
         //funcion insertar hora en la tabla registro
         public function insertarh(){
-            $json = $_GET['json'];
-            $data = json_decode($json);
-
-            //$this->model->setIdRegistro($data->id);
-            $this->mo->setUsuario($data->id);
-            $this->mo->setfecha($data->entrada);
-            $this->mo->setTipoRegistro($data->tipo);
-   
-            echo $this->mo->insertar1();
+            if(isset($_GET['json'])){
+                $json = $_GET['json'];
+                $data = json_decode($json);
+    
+                //$this->model->setIdRegistro($data->id);
+                $this->mo->setUsuario($data->id);
+                $this->mo->setfecha($data->entrada);
+                $this->mo->setTipoRegistro($data->tipo);
+                echo $this->mo->insertar1();
+            }else{
+                echo 0;
+            }
+           
         }
 
         public function consultarh(){
-            $json = $_GET['json'];
-            $data = json_decode($json);
-
-            $this->mo->setUsuario($data->id);
-            echo $this->mo->consultar();
+            if(isset($_GET['json'])){
+                $json = $_GET['json'];
+                $data = json_decode($json);
+    
+                $this->mo->setUsuario($data->id);
+               echo $this->mo->consultar();
+            }else{
+                echo 0;
+            }
+           
         }
-
-        //En esta funcion 
-
     }
 
     

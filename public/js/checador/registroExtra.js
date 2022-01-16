@@ -50,6 +50,12 @@ scanner.addListener('scan', function (content) {
                sonido.setAttribute("playsinline", true); 
                sonido.play();
                sonido.play();
+
+               open_alert('Registro realizado con exito','verde');
+               window.setTimeout(() => {
+                window.location.href = "http://localhost/sistema_fmtor/checador/main/registrar"; 
+            },3000);
+            
         })
     }
 });
@@ -61,6 +67,7 @@ Instascan.Camera.getCameras().then(function (cameras) {
     } else {
         //si no encuentra nada en la camara manda un mensaje en consola
         console.error('No encuentra ninguna camara en tu dispositivo');
+        open_alert('No se encuentra ninguna camara en tu dispositivo');
     }
 }).catch(function (e) {
     console.error(e);

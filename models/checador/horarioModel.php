@@ -100,9 +100,9 @@
 
         public function actualizarHorario(){
             $tabla = 't_horario';
-            $parametros = 'id_horario,usuario,entrada,almuerzoS,almuerzoR,salida';
-            $values = "'$this->id_horario','$this->usuario','$this->entrada','$this->almuerzoS','$this->almuerzoR','$this->salida'";
-            $validacion = Model::actualizar($tabla,$parametros,$values);
+            $valores = "entrada = '$this->entrada',almuerzoS = '$this->almuerzoS',almuerzoR = '$this->almuerzoR',salida = '$this->salida'";
+            $condicion = "id_horario = '$this->id_horario', usuario = '$this->usuario'";
+            $validacion = Model::actualizar($tabla,$valores,$condicion);
             return $validacion;
         }
  

@@ -14,7 +14,7 @@
             Subir
         </a>
         <div class="contenido pagina-sola" id="contenido">
-            <header id="top" class="d-grid g-1 justify-center">
+        <header id="top" class="d-grid g-1 justify-center">
                 <div class="logos d-flex justify-center">
                     <div class="logo d-flex justify-center">
                         <svg width="2095" height="397" viewBox="0 0 2095 397" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +88,7 @@
                     <div class="d-grid g-2">
                         <div class="d-flex align-content-center justify-center">
                             <!-- CAPTURA QR</div> -->
-                            <video id="preview" height="550" width="400" ></video>
+                            <video id="preview" height="250" width="100%"></video>
                             <!--Sonido de Lectura-->
                             <div class="sonido">
                                 <audio controls id="sonido_qr" hidden>
@@ -108,8 +108,8 @@
         </div>
     </div>
     <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/checador/instascan.min.js"></script>
-    <script src="../../public/js/checador/validaQR.js"></script>
+    <script type="text/javascript" src="../../public/js/checador/instascan.min.js"></script>
+    <script src="../../public/js/checador/validaQR.js?1.1"></script>
    
 </body>
 </html>

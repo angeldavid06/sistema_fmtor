@@ -21,8 +21,8 @@
                      <!-- boton de agregar -->
                     <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-ingresar">group_add</button>
                     <button class="btn btn-icon-self btn_filtra_open material-icons" data-modal="modal-filtrar">filter_alt</button>
-                    <button class="btn btn-icon-self btn_gen_exc material-icons" id="btn-gen-excel" data-modal="modal-excel">print</button>
-                    <button clas="btn btn-icon-self "></button>    
+                    <button class="btn btn-icon-self btn_gen_exc material-icons" id="btn-gen-excel" data-modal="modal-excel">picture_as_pdf</button>
+                    <a href="http://localhost/sistema_fmtor/checador/main/excel_incide" class="btn btn-icon-self  material-icons">article</article> </a>
                 </div>
                 <div class="tabla tarjeta">
                     <table> 

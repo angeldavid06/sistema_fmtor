@@ -1,5 +1,5 @@
 const checkbox= ['check_incidenciasMostrar','check_incidenciasEdit'];
-let cabeceras = [['Id_incidencia','Id_empleado','Tipo Incidencia','Inicio Incidencia','Fin Incidencia','Editar','Eliminar'],['Nombre','Apellido Paterno','Apellido Materno','Tipo Incidencia','Inicio Incidencia','Fin Incidencia']];
+let cabeceras = [['Id_incidencia','Tipo Incidencia','Inicio Incidencia','Fin Incidencia','Editar','Eliminar'],['Nombre','Apellido Paterno','Apellido Materno','Tipo Incidencia','Inicio Incidencia','Fin Incidencia']];
 
 const limpiar_cabecera = () => {
     const thead = document.getElementsByClassName('cabecera');

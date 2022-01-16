@@ -14,10 +14,6 @@
             $this->model= new Model();
             $this->web = new Web();
         }
-
-        public function pdf_listas () {
-
-        }
         
         public function obtener()
         {
@@ -62,6 +58,16 @@
             }
         }
 
+        public function buscar_incidencia(){
+            if(isset($_GET['registro'])){
+                $lisd = $this->model->buscar('t_incidencias','id_incidencias',$_GET['registro']);
+                $json = json_encode($lisd);
+                echo $json;
+            }else{
+                echo 1;
+            }
+        }
+
         public function buscarEmpleado(){
             $result = $this->model->buscar_personalizado('t_empleados','id_empleados,nombre,apellidoP,apellidoM','1');
             echo json_encode($result);
@@ -102,16 +108,18 @@
         public function actualizarIncidencia()
         {
             if (isset($_POST['id_incidencias'])) {
-                $id_empleados = $_POST['id_empleado'];
+                $id_incidencias =$_POST['id_incidencias'];
                 $tipo_incidencia = $_POST['tipo_incidencia'];
                 $inicio_in = $_POST['inicio_in'];
                 $fin_in = $_POST['fin_in'];
-          
-                $id_incidencias = $_POST['id_incidencia_edit'];
+
+                $this->incidenciasModel->setIdIncidencia($id_incidencias);
+                $this->incidenciasModel->setTipoIncidencia($tipo_incidencia);
+                $this->incidenciasModel->setInicioIn($inicio_in);
+                $this->incidenciasModel->setFinIn($fin_in);
+                
+                $result = $this->incidenciasModel->actualizarIncidencias();
     
-                $valores = "id_empleados = '$id_empleados', tipo_incidencia = '$tipo_incidencia', inicio_in = '$inicio_in', fin_in= '$fin_in'";
-                $condicion = "id_incidencias = '$id_incidencias'";
-                $result = $this->incidenciasModel->actualizarIncidencias('t_incidencias', $valores, $condicion);
                 if ($result) {
                     echo 1;
                 } else {
@@ -131,5 +139,11 @@
             }
         }
 
+        public function pdf_incidencias () {
+            if(isset($_GET['valor'])){
+                $data = $this->model->mostrar('v_incidencias');
+                $this->web->PDF('checador/incidenciasPDF',$data);
+            }
+        }
         
     }

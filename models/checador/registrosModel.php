@@ -1,5 +1,5 @@
 <?php 
-    require_once 'Model.php';
+    require_once "models/Model.php";
     class registrosModel extends Model{
      public $id_registro;
      public $usuario;
@@ -41,7 +41,7 @@
     public function insertar1(){
         $tabla = "t_usuario";
         $columnas = "usuario";
-        $condicion = "id_empleado_2 = '".$this->usuario."'";
+        $condicion = "id_empleado_2 = '$this->usuario'";
         $resultado = Model::buscar_personalizado($tabla, $columnas, $condicion);
 
         $usuario = $resultado[0]['usuario'];
@@ -58,7 +58,7 @@
         if ($resultado) {
             return 1;
         }else {
-            return "no";
+            return 0;
         }
     }
 
@@ -68,6 +68,15 @@
         $condicion = "t_horario.usuario = t_usuario.usuario AND t_usuario.id_empleado_2 = t_empleados.id_empleados AND t_empleados.id_empleados = '$this->usuario'";
 
         $resultado = Model::buscar_personalizado($tabla, $columnas, $condicion);
+        return json_encode($resultado);
+    }
+
+    public function consultar_entrada_empleado () {
+        $tabla = 'v_listaentrada';
+        $columnas = 'count(*) AS total';
+        $condicion = "id_empleados = '$this->usuario' AND fecha LIKE '%".$this->fecha."%'";
+
+        $resultado = Model::buscar_personalizado($tabla,$columnas,$condicion);
         return json_encode($resultado);
     }
 /*

@@ -1,10 +1,16 @@
 <div class="menu hidde_menu" id="menu">
     <div class="informacion">
         <div class="foto">
-            <img src="" alt=""><span class="material-icons-outlined"></span>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['foto'])?>" alt="">
         </div>
-        <h3>Nombre del empleado</h3>
-        <p>Puesto</p>
+        <div class="nombre">
+            <p>
+                Carolina Reyes Rosas
+            </p>
+            <p>
+                
+            </p>
+        </div>
     </div>
     <br><br>
     <div class="categoria_menu">

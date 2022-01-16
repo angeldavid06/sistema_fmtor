@@ -34,7 +34,7 @@
             echo $json;
         }
         public function obtener_lista_diaria () {
-            $lis = $this->model->mostrar('v_lista');
+            $lis = $this->model->mostrar('v_listaentrada');
             $json = json_encode($lis);
             echo $json;
         }
@@ -61,7 +61,7 @@
         }
 
         public function obtener_empleados() {
-            $data = $this->model->mostrar('t_empleados');
+            $data = $this->model->mostrar('v_lista');
             echo json_encode($data);
         }
 
@@ -219,6 +219,16 @@
             echo json_encode($result);
         }
 
+        public function buscar_h(){
+            if(isset($_GET['horario'])){
+                $lisd = $this->model->buscar('t_horario','usuario',$_GET['horario']);
+                $json = json_encode($lisd);
+                echo $json;
+            }else{
+                echo 1;
+            }
+        }
+
         public function NuevoHorario()
         { //datos de formulario 
             if (isset($_POST['usuario']) && $_POST['usuario'] != '') {
@@ -263,9 +273,14 @@
                 $almuerzoR = $_POST['almuerzoR'];
                 $salida = $_POST['salida'];
 
-                $valores =  " usuario = '$usuario', entrada = '$entrada', almuerzoS = '$almuerzoS', almuerzoR = '$almuerzoR', salida = '$salida'";
-                $condicion = "id_horario = '$id_horario'";
-                $result = $this->model->actualizar('t_horario',$valores,$condicion);
+                $this->horarioModel->setIdHorario($id_horario);
+                $this->horarioModel->setUsuario($usuario);
+                $this->horarioModel->setEntrada($entrada);
+                $this->horarioModel->setAlmuerzoS($almuerzoS);
+                $this->horarioModel->setAlmuerzoR($almuerzoR);
+                $this->horarioModel->setSalida($salida);
+
+                $result = $this->horarioModel->actualizarHorario();
     
                 if ($result) {
                     echo 1;
@@ -290,7 +305,7 @@
                 if('vista' == 0){
 
                 }
-                $lista_diaria = $this->model->mostrar('v_lista');
+                $lista_diaria = $this->model->mostrar('v_listaentrada');
                 $this->model = new Model();
                 $lista_almuerzo = $this->model->buscar('v_listaa');
                 $this->model = new Model();

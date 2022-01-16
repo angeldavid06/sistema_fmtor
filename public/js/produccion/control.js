@@ -63,7 +63,7 @@ const registrar_control = () => {
             const estado = document.getElementsByClassName('active')
             obtener_control(estado[0].dataset.estado)
         } else {
-            open_alert('Registro no exitoso','rojo')
+            open_alert('El registro no pudo ser realizado','rojo')
         }
     })
 }
@@ -137,8 +137,10 @@ const actualizar_registro = () => {
 const generar_control_produccion = (valor) => {
     if (valor != '') {
         printPage(url+'/produccion/control/pdf_control?valor='+valor);
+        op_control.classList.remove('input-error')
     } else {
-        open_alert('No ha introducido la orden de producción','naranja')
+        open_alert('No ha introducido la Orden de Producción','naranja')
+        op_control.classList.add('input-error')
     }
 }
 
@@ -155,6 +157,8 @@ const terminar_orden = (orden) => {
         console.log(json);
         if (json) {
             open_alert('Orden de Producción terminada','verde');
+        } else {
+            open_alert('No se pudo terminar la Orden de Producción', 'naranja')
         }
     })
 }
@@ -167,22 +171,32 @@ const form_diario = document.getElementById('form-reporte-diario')
 
 form_diario.addEventListener('submit', (evt) => {
     evt.preventDefault();
-
-    const fecha = document.getElementById('diario_fecha').value 
-    const turno = document.getElementById('diario_turno').value 
-    const estado = document.getElementById('diario_estado').value
-
-    if (fecha != '') {
-        if (turno != '') {
-            if (estado != '') {
+    
+    const fecha = document.getElementById('diario_fecha')
+    const turno = document.getElementById('diario_turno')
+    const estado = document.getElementById('diario_estado')
+    
+    fecha.classList.remove('input-error')
+    turno.classList.remove('input-error')
+    estado.classList.remove('input-error')
+    
+    if (fecha.value != '') {
+        if (turno.value != '') {
+            if (estado.value != '') {
+                fecha.classList.remove('input-error')
+                turno.classList.remove('input-error')
+                estado.classList.remove('input-error')
                 generar_reporte_diario(fecha,turno,estado)
             } else {
+                estado.classList.add('input-error')
                 open_alert('No ha seleccionado el estado de producción','rojo')
             }
         } else {
+            turno.classList.add('input-error')
             open_alert('No ha introducido el turno de producción','rojo')
         }
     } else {
+        fecha.classList.add('input-error')
         open_alert('No ha seleccionado la fecha','rojo')
     }
 })
@@ -207,8 +221,10 @@ document.addEventListener('click', (evt) => {
         const input = document.getElementById('op_control');
         if (input.value != '') {
             terminar_orden(input.value);
+            op_control.classList.remove('input-error')
         } else {
-            open_alert('No ha introducido la orden de producción','rojo')
+            open_alert('No ha introducido la Orden de Producción','rojo')
+            op_control.classList.add('input-error')
         }
     }
 })

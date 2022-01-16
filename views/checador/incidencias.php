@@ -24,9 +24,8 @@
                     <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-ingresar">group_add</button> 
                     <!-- boton de buscar e imprimir -->
                     <button class="btn btn-icon-self btn_filtra_open material-icons" data-modal="modal-filtrar">filter_alt</button>
-                    <button class="btn btn-icon-self material-icons">print</button>    
-                    <!--<button class="btn btn-icon-self btn_gen_exc material-icons" id="btn-gen-excel" data-modal="modal-excel">print</button> -->
-                   <a href="http://localhost/sistema_fmtor/checador/main/excel_incidencias" class="btn btn-icon-self material-icons"> Generar Excel </a>
+                    <button class="btn btn-icon-self material-icons" data-impresion="documento" id="incidencia">picture_as_pdf</button>    
+                   <a href="http://localhost/sistema_fmtor/checador/main/excel_incidencias" class="btn btn-icon-self  material-icons">article</article> </a>
                    </div>
                        
                 <!-- Tabla -->
@@ -34,7 +33,6 @@
                     <table>
                         <thead class="cabecera">
                             <th>Id incidencia</th>
-                            <th>Id Empleado</th>
                             <th>Tipo de Incidencia</th>
                             <th>Inicio indicencia</th>
                             <th>Fin incidencia</th>
@@ -51,7 +49,7 @@
         <h2>Crear Incidencia</h2>
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
     </div>
-    <div class="contenido_modal">
+    <div class="contenido_modal"> 
         <form id="form_reg_incidencias">
             <p>Empleado:</p>
                 <select name="id_empleado" id="id_empleado"> </select>

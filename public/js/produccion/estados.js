@@ -20,8 +20,10 @@ document.addEventListener('click', (evt) => {
             obtener_control(evt.target.dataset.estado)
             obtener_op_control(op_control.value);
             obtener_factor(evt.target.dataset.id)
+            .classList.remove('input-error')
         } else {
             open_alert('No ha introducido la Orden de Producción', 'naranja')
+            op_control.classList.add('input-error')
         }
     } 
 });
@@ -37,11 +39,18 @@ const actualizar_factor = (estado) => {
     const op_control = document.getElementById('op_control')
     const factor_control = document.getElementById('factor_control')
     if (factor_control.value != '') {
-        factor_control.classList.remove('input-error')
-        const respuesta =fetchAPI('',url+'/produccion/control/actualizar_factor?estado='+estado+'&op='+op_control.value+'&factor='+factor_control.value,'')
-        respuesta.then(json => {
-            obtener_factor(estado)
-        })
+        if (op_control.value != '') {
+            factor_control.classList.remove('input-error')
+            const respuesta =fetchAPI('',url+'/produccion/control/actualizar_factor?estado='+estado+'&op='+op_control.value+'&factor='+factor_control.value,'')
+            respuesta.then(json => {
+                obtener_factor(estado)
+                op_control.classList.remove('input-error')
+                factor_control.classList.remove('input-error')
+            })
+        } else {
+            open_alert('No ha introducido la Orden de Producción','naranja')
+            op_control.classList.add('input-error')
+        }
     } else {
         open_alert('No ha introducido el factor','naranja')
         factor_control.classList.add('input-error')
@@ -100,12 +109,12 @@ const render_info = (json) => {
     const info = document.getElementsByClassName('info')
 
     json.forEach(el => {
-        info[0].innerHTML = '<label>Código Del Dibujo:  '+el.plano+'</label>'+
-                            '<label>Cliente:  '+el.Cliente+'</label>'+
-                            '<label>Fecha:  '+el.Fecha.split(' ')[0]+'</label>'+
-                            '<label>Cantidad:  '+el.cantidad_elaborar+'</label>'+
-                            '<label>Descripción:  '+el.descripcion+'</label>'+
-                            '<label>Factor:  '+el.factor+'</label>';
+        info[0].innerHTML = '<label>Código Del Dibujo: <br> '+el.plano+'</label>'+
+                            '<label>Cliente: <br> '+el.Cliente+'</label>'+
+                            '<label>Fecha: <br> '+el.Fecha.split(' ')[0]+'</label>'+
+                            '<label>Cantidad: <br> '+el.cantidad_elaborar+'</label>'+
+                            '<label>Descripción: <br> '+el.descripcion+'</label>'+
+                            '<label>Factor: <br> '+el.factor+'</label>';
     })
 }
 
@@ -121,8 +130,10 @@ const btn_informacion = document.getElementById('informacion_op')
 btn_informacion.addEventListener('click', () => {
     const op_control = document.getElementById('op_control')
     if (op_control.value == '') {
-        open_alert('No ha introducido la orden de producción','naranja')
+        open_alert('No ha introducido la Orden de Producción','naranja')
+        op_control.classList.add('input-error')
     } else {
         obtener_op_control(op_control.value);
+        op_control.classList.remove('input-error')
     }
 })

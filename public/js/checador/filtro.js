@@ -91,7 +91,7 @@ const buscar_dato = (metodo) => {
         const input_tabla = document.getElementById('tabla')
         if(input_tabla.value == 'v_horario'){
             render_horarioV(json)
-        }else if(input_tabla.value == 'v_lista'){
+        }else if(input_tabla.value == 'v_listaentrada'){
             render_lista_diaria(json)
         }else if(input_tabla.value == 'v_listaa'){
             render_lista_almuerzo(json)
@@ -144,7 +144,7 @@ select_formatos.addEventListener('change', () => {
         input_tabla.value = ('value','v_horario')
         obtener_horario()
     }else if (select_formatos.value == 1) {
-        input_tabla.value = ('value','v_lista')
+        input_tabla.value = ('value','v_listaentrada')
         obtener_lista_diaria()
     } else if (select_formatos.value == 2) {
         input_tabla.value = ('value','v_listaa')

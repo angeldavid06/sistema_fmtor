@@ -8,7 +8,6 @@
       <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="../../public/img/checador/LOGO2.png" />
     <link rel="stylesheet" href="../../public/css/default.css">
-    <link rel="stylesheet" href="../../public/css/tema_automatico.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
 </head>

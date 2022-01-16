@@ -88,7 +88,7 @@
                     <div class="d-grid g-2">
                         <div class="d-flex align-content-center justify-center">
                             <!-- CAPTURA QR</div> -->
-                            <video id="preview" height="550" width="400" ></video>
+                            <video id="preview" height="250" width="100%" ></video>
                             <!--Sonido de Lectura-->
                             <div class="sonido">
                                 <audio controls id="sonido_qr" hidden>

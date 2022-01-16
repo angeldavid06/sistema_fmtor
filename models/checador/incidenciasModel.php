@@ -76,18 +76,18 @@
 
         public function actualizarIncidencias(){
             $tabla = 't_incidencias';
-            $parametros = 'id_incidencias,id_empleados,tipo_incidencia,inicio_in,fin_in';
-            $values = "'$this->id_incidencias','$this->id_empleados','$this->tipo_incidencia','$this->inicio_in','$this->fin_in'";
-            $validacion = Model::actualizar($tabla,$parametros,$values);
+            $valores = "tipo_incidencia = '$this->tipo_incidencia',inicio_in = '$this->inicio_in',fin_in = '$this->fin_in'";
+            $condicion = "id_incidencias = '$this->id_incidencias' ";
+            $validacion = Model::actualizar($tabla,$valores,$condicion);
             return $validacion;
         }
 
-       /* public function mostrarIncidencias(){
+        public function mostrarIncidencias(){
             $tabla = "t_incidencias,t_empleados";
             $columnas = "id_incidencias,id_empleados,apellidoP,apellidoM,tipo_incidencia,inicio_in,fin_in";
             $condicion = "t_incidencias.id_empleados = t_empleados.id_empleados = '$this->id_empleados'";
 
             $resultado = Model::buscar_personalizado($tabla, $columnas, $condicion);
             echo json_encode($resultado);
-        } */
+        }  
 }
