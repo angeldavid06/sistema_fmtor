@@ -93,15 +93,36 @@ const render_lista_salidaExtra = (json) => {
 const render_lista_semanal = (horario) => {
     const t_body= document.getElementsByClassName('body')
     const tr = document.createElement('tr')
+    const semana = ['','','','','','']
+    for (let j = 0; j < semana.length; j++) {
+        if (horario[0][j].split(' ').length >= 2) {
+            const fecha = horario[0][j].split(' ')[0]
+            const dia_semana = new Date(fecha.split('-')[0],fecha.split('-')[1]-1,fecha.split('-')[2])
+            if (dia_semana.getDay() == 2) {
+                semana[0] = horario[0][j].split(' ')[1]
+            } else if (dia_semana.getDay() == 3) {
+                semana[1] = horario[0][j].split(' ')[1]
+            } else if (dia_semana.getDay() == 4) {
+                semana[2] = horario[0][j].split(' ')[1]
+            } else if (dia_semana.getDay() == 5) {
+                semana[3] = horario[0][j].split(' ')[1]
+            } else if (dia_semana.getDay() == 6) {
+                semana[4] = horario[0][j].split(' ')[1]
+            } else if (dia_semana.getDay() == 1) {
+                semana[5] = horario[0][j].split(' ')[1]
+            }
+        }
+    }
+    
     tr.classList.add('tr')
     tr.innerHTML += '<td>'+empleados[i][0]+'</td>'+
                     '<td>'+empleados[i][1]+'</td>'+
-                    '<td>'+horario[0][0].split(' ')[1]+'</td>'+   //Martes
-                    '<td>'+horario[0][1].split(' ')[1]+'</td>'+   //Miercoles
-                    '<td>'+horario[0][2].split(' ')[1]+'</td>'+   //Jueves
-                    '<td>'+horario[0][3].split(' ')[1]+'</td>'+   //Viernes
-                    '<td>'+horario[0][4].split(' ')[1]+'</td>'+   //Sabado
-                    '<td>'+horario[0][5].split(' ')[1]+'</td>'+   //Lunes
+                    '<td>'+semana[0]+'</td>'+   //Martes
+                    '<td>'+semana[1]+'</td>'+   //Miercoles
+                    '<td>'+semana[2]+'</td>'+   //Jueves
+                    '<td>'+semana[3]+'</td>'+   //Viernes
+                    '<td>'+semana[4]+'</td>'+   //Sabado
+                    '<td>'+semana[5]+'</td>'+   //Lunes
                     '<td>'+'</td>'+  //Descuento
                     '<td>'+'</td>'; //Nota
     t_body[0].appendChild(tr)
@@ -155,11 +176,11 @@ const obtener_registro = (id) => {
         
         if ((aux.length < 6)) {
             for (let i = aux.length; i < 6; i++) {
-                aux.push(' ')
+                aux.push('')
             }
         } else if (json.length == 0) {
             for (let i = 0; i < 6; i++) {
-                aux.push(' ')
+                aux.push('')
             }
         }
         horario.push(aux)

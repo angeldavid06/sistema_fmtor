@@ -157,9 +157,9 @@ scanner.addListener('scan', function (content) {
                 })
             } else {
                 open_alert('Este usuario ya registró su hora de entrada','naranja')
-                // window.setTimeout(() => {
-                //     window.location.href = "http://localhost/sistema_fmtor/checador/main/registrar"; 
-                // },3000); 
+                window.setTimeout(() => {
+                    window.location.href = "http://localhost/sistema_fmtor/checador/main/registrar"; 
+                },3000); 
             }
         })
     }

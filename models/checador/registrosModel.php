@@ -41,7 +41,7 @@
     public function insertar1(){
         $tabla = "t_usuario";
         $columnas = "usuario";
-        $condicion = "id_empleado_2 = '$this->usuario'";
+        $condicion = "id_empleado_1 = '$this->usuario'";
         $resultado = Model::buscar_personalizado($tabla, $columnas, $condicion);
 
         $usuario = $resultado[0]['usuario'];
@@ -65,7 +65,7 @@
     public function consultar(){
         $tabla = "t_horario, t_usuario, t_empleados";
         $columnas = "entrada";
-        $condicion = "t_horario.usuario = t_usuario.usuario AND t_usuario.id_empleado_2 = t_empleados.id_empleados AND t_empleados.id_empleados = '$this->usuario'";
+        $condicion = "t_horario.usuario = t_usuario.usuario AND t_usuario.id_empleado_1 = t_empleados.id_empleados AND t_empleados.id_empleados = '$this->usuario'";
 
         $resultado = Model::buscar_personalizado($tabla, $columnas, $condicion);
         return json_encode($resultado);
