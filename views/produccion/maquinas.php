@@ -74,8 +74,18 @@
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
-                <h1>Máquinas de Producción</h1>
-                <div class="tarjeta-transparente d-grid g2-8-2">
+                <div class="d-grid g2-5-5">
+                    <div style="padding-top: 0px;" class="tarjeta-transparente">
+                        <h1>Máquinas de Producción</h1>
+                    </div>
+                    <div style="padding-top: 0px;" class="tarjeta-transparente d-flex justify-right align-content-center flex-wrap">
+                        <button class="btn btn-icon btn-transparent" data-impresion="imprimir">
+                            <i class="material-icons" data-impresion="imprimir">description</i>
+                            Generar Documento
+                        </button>
+                    </div>
+                </div>
+                <div class="tarjeta-transparente">
                     <div class="d-grid g-3">
                         <input type="month" name="fecha_reporte" id="fecha_reporte" class="print-hidde">
                         <select name="pzas_kilos" id="pzas_kilos" class="print-hidde">
@@ -91,12 +101,6 @@
                             <option value="4">SHANK</option>
                             <option value="6">ACABADO</option>
                         </select>
-                    </div>
-                    <div class="d-flex align-content-center justify-right">
-                        <button class="btn btn-icon" data-impresion="imprimir">
-                            <i class="material-icons" data-impresion="imprimir">description</i>
-                            Generar Documento
-                        </button>
                     </div>
                 </div>
             </div>

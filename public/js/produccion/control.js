@@ -167,6 +167,47 @@ const generar_reporte_diario = (fecha,turno,estado) => {
     printPage(url+'/produccion/control/pdf_reporte_diario?fecha='+fecha+'&turno='+turno+'&estado='+estado);
 }
 
+const form_reporte_sin_op = document.getElementById('form-reporte-diario-sop')
+
+const registrar_sin_op = () => {
+    const respuesta = fetchAPI(form_reporte_sin_op,url+'/produccion/control/insertar_sin_op', 'POST')
+    respuesta.then(json => {
+        if (json == 1) {
+            open_alert('Registro exitoso','verde')
+        } else {
+            open_alert('Registro no exitoso','rojo')
+        }
+    })
+}
+
+
+form_reporte_sin_op.addEventListener('submit', (evt) => {
+    evt.preventDefault()
+
+    const inputs = form_reporte_sin_op.getElementsByClassName('input')
+    let aux = true
+
+    if (inputs.length > 0) {
+        for (let i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == '') {
+                inputs[i].classList.add('input-error')
+                aux = false
+            } else {
+                inputs[i].classList.remove('input-error')
+            }
+        }
+
+        if (aux) {
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value == '') {
+                    inputs[i].classList.remove('input-error')
+                }
+            }
+            registrar_sin_op()
+        }
+    }
+})
+
 const form_diario = document.getElementById('form-reporte-diario')
 
 form_diario.addEventListener('submit', (evt) => {
@@ -186,7 +227,7 @@ form_diario.addEventListener('submit', (evt) => {
                 fecha.classList.remove('input-error')
                 turno.classList.remove('input-error')
                 estado.classList.remove('input-error')
-                generar_reporte_diario(fecha,turno,estado)
+                generar_reporte_diario(fecha.value,turno.value,estado.value)
             } else {
                 estado.classList.add('input-error')
                 open_alert('No ha seleccionado el estado de producción','rojo')

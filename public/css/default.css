@@ -15,7 +15,7 @@
     --color-yellow: #EDB303;
     
     --color-gray-1: rgba(125, 125, 125, 0.1);
-    --color-gray-3: rgba(125, 125, 125, 0.5);
+    --color-gray-3: rgba(73, 73, 73, 0.5);
     --color-blue-3: rgba(45, 159, 252, 0.3);
     --color-green-3: rgba(49, 158, 79, 0.3);
     --color-red-3: rgba(217, 85, 72, 0.3);
@@ -2036,5 +2036,9 @@ embed {
 
     .grid-gap-0 {
         grid-gap: 0;
+    }
+
+    .contenido .informacion .tarjeta-transparente {
+        padding-top: 10px;
     }
 }

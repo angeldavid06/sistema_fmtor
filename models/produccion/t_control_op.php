@@ -84,6 +84,13 @@
             return $result;
         }
 
+        public function insertar_registro_sin_op () {
+            $campos = 'no_maquina,fecha,botes,pzas,kilos,turno,observaciones,Id_control_produccion_1';
+            $values = "'$this->no_maquina','$this->fecha_entrega','$this->bote','$this->pzas','$this->kilos','$this->turno','$this->observaciones','$this->id_estado'";
+            $result = Model::insertar('t_registro_diario',$campos,$values);
+            return $result;
+        }
+
         public function actualizar_registro () {
             $valores = "no_maquina = '$this->no_maquina', fecha = '$this->fecha_entrega', botes = '$this->bote', pzas = '$this->pzas', kilos = '$this->kilos', turno = '$this->turno', observaciones = '$this->observaciones'";
             $condicion = "id_registro_diario = '$this->op'";

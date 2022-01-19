@@ -13,21 +13,28 @@
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
-                <h1>Registro Diario de Producción</h1>
-                <div class="d-grid g2-6-4 tarjeta-transparente">
-                    <div class="d-flex align-content-center">
-                        <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
-                        <button id="informacion_op" class="btn btn-icon-self material-icons">search</button>
+                <div class="d-grid g2-5-5">
+                    <div style="padding-top: 0px;" class="tarjeta-transparente">
+                        <h1>Registro Diario de Producción</h1>
                     </div>
-                    <div class="d-flex align-content-center justify-right" >
-                        <button class="btn btn-icon" data-impresion="control">
-                            <i class="material-icons" data-impresion="control">description</i>
+                    <div style="padding-top: 0px;" class="tarjeta-transparente d-flex justify-right align-content-center flex-wrap">
+                        <button title="Generar Control de Producción" class="btn btn-icon btn-transparent" data-impresion="control">
+                            <i class="material-icons" data-impresion="control">calendar_view_month</i>
                             Control de Producción
                         </button>
-                        <button class="btn btn-icon" data-modal="modal-filtrar-diario">
-                            <i class="material-icons-outlined" data-modal="modal-filtrar-diario">description</i>
+                        <button title="Generar Reporte Diario de Producción" class="btn btn-icon btn-transparent" data-modal="modal-filtrar-diario">
+                            <i class="material-icons-outlined" data-modal="modal-filtrar-diario">today</i>
                             Reporte Diario
                         </button>
+                    </div>
+                </div>
+                <div class="tarjeta-transparente">
+                    <div class="d-flex align-content-center">
+                        <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
+                        <button title="Buscar información" id="informacion_op" class="btn btn-icon-self material-icons">search</button>
+                        <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+                            <button title="Nuevo registro diario" class="material-icons btn btn-icon-self" id="btn-form-control">add</button>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="d-grid g2-2-8">
@@ -55,16 +62,13 @@
                         </div>
                         <div class="estado_tabla tarjeta d-grid g2-5-5">
                             <div class="titulo d-flex align-content-center">
-                                <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
-                                    <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-ingresar">add</button>
-                                <?php } ?>
                                 <h2 class="titulo_estado">No seleccionado</h2>
                             </div>
                             <div class="d-flex align-content-center justify-between">
                                 <div style="width: 200px;" class="d-flex align-content-center">
                                     <input style="width: 130px;" type="text" name="factor_control" id="factor_control" placeholder="Factor: 0.0">
                                     <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
-                                        <button id="nuevo_factor" class="btn btn-icon-self material-icons">update</button>
+                                        <button title="Actualizar el factor" id="nuevo_factor" class="btn btn-icon-self material-icons">update</button>
                                     <?php } ?>
                                 </div>
                                 <p style="padding: 0px;" class="total_acumuladas">Pzas. Acumuladas: <br> 0000</p>
@@ -93,8 +97,13 @@
                         </div>
                     </div>
                 </div>
-                <?php require_once 'public/modules/produccion/control_modal.php'; ?>
-                <?php require_once 'public/modules/produccion/diario_modal.php'; ?>
+                <?php
+                    if ($_SESSION['rol'] == 'Administrativo') {
+                        require_once 'public/modules/produccion/control_modal.php';
+                        require_once 'public/modules/produccion/diario_modal.php';
+                        require_once 'public/modules/produccion/registro_modal.php'; 
+                    } 
+                ?>
             </div>
         </div>
     </div>

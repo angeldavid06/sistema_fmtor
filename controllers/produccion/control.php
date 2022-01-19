@@ -108,6 +108,29 @@
             }
         }
 
+        public function insertar_sin_op () {
+            if (isset($_POST['diario_estado_sn_op']) && $_POST['diario_estado_sn_op'] != '') {
+                $this->model_control->setNoMaquina($_POST['no_maquina_sn_op']);
+                $this->model_control->setFechaEntrega($_POST['fecha_sn_op']);
+                $this->model_control->setBote($_POST['no_botes_sn_op']);
+                $this->model_control->setPzas($_POST['pzas_sn_op']);
+                $this->model_control->setKilos($_POST['kg_sn_op']);
+                $this->model_control->setTurno($_POST['turno_sn_op']);
+                $this->model_control->setObservaciones($_POST['observaciones_sn_op']);
+
+                $this->model_control->setIdEstado($_POST['diario_estado_sn_op']);
+
+                $result = $this->model_control->insertar_registro_sin_op();
+                if ($result) {
+                    echo 1;
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 0;
+            }
+        }
+
         public function obtener_registro () {
             if (isset($_GET['registro'])) {
                 $this->model_control->setId($_GET['registro']);

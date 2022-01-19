@@ -13,27 +13,17 @@
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
-                <h1>Ordenes de Producción</h1>
-                <div class="tarjeta-transparente d-flex justify-right">
-                    <div class="d-grid g-2">
-                        <div class="d-flex align-content-center">
-                            <!-- <label for="cantidad_resultados">Cantidad de resultados:</label>
-                            <select data-select="" name="cantidad_resultados" id="cantidad_resultados">
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select> -->
-                        </div>
-                        <div class="d-flex align-content-center justify-right">
-                            <button id="btn_resetear" class="btn btn-transparent btn-icon-self material-icons-outlined">loop</button>
-                            <button class="btn btn-transparent btn-icon-self btn_filtrar_open material-icons-outlined" data-modal="modal-filtrar">filter_alt</button>
-                            <button class="btn btn-icon" data-impresion="documento">
-                                <i class="material-icons" data-impresion="documento">description</i>
-                                Generar Documento
-                            </button>
-                        </div>
+                <div class="d-grid g2-5-5">
+                    <div style="padding-top: 0px;" class="tarjeta-transparente">
+                        <h1>Ordenes de Producción</h1>
+                    </div>
+                    <div style="padding-top: 0px;" class="tarjeta-transparente d-flex justify-right align-content-center flex-wrap">
+                        <button id="btn_resetear" class="btn btn-transparent btn-icon-self material-icons-outlined">loop</button>
+                        <button class="btn btn-transparent btn-icon-self btn_filtrar_open material-icons-outlined" data-modal="modal-filtrar">filter_alt</button>
+                        <button class="btn btn-icon" data-impresion="documento">
+                            <i class="material-icons" data-impresion="documento">description</i>
+                            Generar Documento
+                        </button>
                     </div>
                 </div>
                 <div class="tarjeta">

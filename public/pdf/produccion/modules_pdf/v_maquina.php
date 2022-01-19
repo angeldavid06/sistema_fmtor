@@ -27,11 +27,12 @@
             $dia_semana = date('l', strtotime($fecha));
             if ($dia_semana == 'Saturday' || $i == $total_dias) {
                 $aux[] = $i;
+                if (count($aux) == 1) {
+                    $aux[] = $i;
+                }
                 $limite_semanas[] = $aux;
                 $aux = array();
-            }
-    
-            if ($dia_semana == 'Sunday' || $i == 1) {
+            } else if ($dia_semana == 'Sunday' || $i == 1) {
                 $aux[] = $i;
             }
         }

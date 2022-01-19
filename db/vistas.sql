@@ -1,1 +1,7 @@
-CREATE or REPLACE view informacionEmpleados as select nombre,apellidoP,apellidoM,fechaNacimiento,telefono,correo,fechaIngreso,curp,rfc,nss,estado,nombrePuesto,concat(calle,' ',noInt,' ',noExt,' ',colonia,' ',cp,' ',alcaldia) AS direccion FROM t_empleados,t_direccion,t_puesto,t_departamento WHERE t_direccion.id_empleados_1 = t_empleados.id_empleados AND t_empleados.id_puesto_1 = t_puesto.id_puesto AND t_empleados.id_departamento_2 = t_departamento.id_departamento;
+INSERT INTO t_control_produccion VALUES 
+(1, 0, 1, NULL),
+(2, 0, 2, NULL),
+(3, 0, 3, NULL),
+(4, 0, 4, NULL),
+(5, 0, 5, NULL),
+(6, 0, 6, NULL);

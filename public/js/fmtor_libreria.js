@@ -372,7 +372,6 @@ if (document.getElementById('cerrar-sesion')) {
 if (document.getElementById('btn-toggle-iniciar')) {
     const btn_abrir_form = document.getElementById('btn-toggle-iniciar');
     btn_abrir_form.addEventListener('click', () => {
-        alert('Clickeado')
         const empresa = document.getElementsByClassName('empresa')
         empresa[0].classList.add('quitar_empresa')
         const form_login = document.getElementsByClassName('f-login')

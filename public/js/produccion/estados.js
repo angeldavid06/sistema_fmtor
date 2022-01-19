@@ -20,7 +20,7 @@ document.addEventListener('click', (evt) => {
             obtener_control(evt.target.dataset.estado)
             obtener_op_control(op_control.value);
             obtener_factor(evt.target.dataset.id)
-            .classList.remove('input-error')
+            document.getElementById('op_control').classList.remove('input-error')
         } else {
             open_alert('No ha introducido la Orden de Producción', 'naranja')
             op_control.classList.add('input-error')
@@ -46,6 +46,9 @@ const actualizar_factor = (estado) => {
                 obtener_factor(estado)
                 op_control.classList.remove('input-error')
                 factor_control.classList.remove('input-error')
+                if (json) {
+                    open_alert('Factor actualizado correctamente','verde')
+                }
             })
         } else {
             open_alert('No ha introducido la Orden de Producción','naranja')
