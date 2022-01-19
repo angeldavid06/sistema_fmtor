@@ -303,7 +303,7 @@ const render_semana_acabo = (json,semana) => {
 const render_semana_rolado = (json,semana) => {
     const turnos = []
 
-    let totales_semanales = [0,0,0,0,0,0,0,0,0]
+    let totales_semanales = [0,0,0,0,0,0,0,0,0,0]
     let acumulado = 0
     let aux = []
     let observaciones = []
@@ -312,7 +312,7 @@ const render_semana_rolado = (json,semana) => {
 
     if (json.length > 0) {
         json.forEach(el => {
-            if (contador == 6) {
+            if (contador == 7) {
                 if (select.value == 'kilos') {
                     aux.push(el.kilos)
                 } else if (select.value == 'pzas') {
@@ -341,13 +341,13 @@ const render_semana_rolado = (json,semana) => {
         contador = 0;
     
         for (let i = 0; i < turnos.length; i++) {
-            for (let j = 0; j < 10; j++) {
+            for (let j = 0; j < 11; j++) {
                 aux.push(turnos[i][j])
             }
             aux = []
     
-            const fecha = turnos[i][6].split(' ')
-            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])
+            const fecha = turnos[i][7].split(' ')
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])
             
             if (i == 0) {
                 acumulado = total_semana
@@ -363,6 +363,7 @@ const render_semana_rolado = (json,semana) => {
                                                                     '<td class="txt-center '+observaciones[contador+3]+'">'+turnos[i][3]+'</td>' +
                                                                     '<td class="txt-center '+observaciones[contador+4]+'">'+turnos[i][4]+'</td>' +
                                                                     '<td class="txt-center '+observaciones[contador+5]+'">'+turnos[i][5]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+6]+'">'+turnos[i][6]+'</td>' +
                                                                     '<td class="txt-center"></td>' +
                                                                     '<td class="txt-center">'+total_semana+'</td>' +
                                                                     '<td class="txt-center">'+new Intl.NumberFormat('es-MX').format(acumulado)+'</td>' +
@@ -373,16 +374,17 @@ const render_semana_rolado = (json,semana) => {
             totales_semanales[3] += parseInt(turnos[i][3],10)
             totales_semanales[4] += parseInt(turnos[i][4],10)
             totales_semanales[5] += parseInt(turnos[i][5],10)
-            totales_semanales[7] += parseInt(total_semana)
-            totales_semanales[8] += parseInt(acumulado)
-            contador+=6
+            totales_semanales[6] += parseInt(turnos[i][6],10)
+            totales_semanales[8] += parseInt(total_semana)
+            totales_semanales[9] += parseInt(acumulado)
+            contador+=7
         }
 
         const tfoot = document.createElement('tfoot')
         const tr = document.createElement('tr')
         tr.innerHTML += '<td>Total:</td>'
         for (let i = 0; i < totales_semanales.length; i++) {
-            if (i > 6 || i < 6) {
+            if (i > 7 || i < 7) {
                 tr.innerHTML += '<td class="txt-center">'+ new Intl.NumberFormat('es-MX').format(totales_semanales[i])+'</td>'
             } else {
                 tr.innerHTML += '<td></td>';
@@ -626,6 +628,7 @@ const render_encabezado_rolado = (limite_semana,anio,mes) => {
                                                         '<th>4</th>'+
                                                         '<th>5</th>'+
                                                         '<th>6</th>'+
+                                                        '<th>7</th>'+
                                                         '<th></th>'+
                                                         '<th colspan="2">ROLADO</th>'+
                                                     '</tr>'+

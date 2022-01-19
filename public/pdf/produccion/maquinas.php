@@ -82,7 +82,7 @@
                     } else if ($_GET['estado'] == 2) {
                         $cant_th = 3;
                     } else if ($_GET['estado'] == 3) {
-                        $cant_th = 6;
+                        $cant_th = 7;
                     } else if ($_GET['estado'] == 4) {
                         $cant_th = 3;
                     } else if ($_GET['estado'] == 6) {
@@ -115,7 +115,7 @@
                         echo '<th></th>';
                         echo '<th class="th-estado" colspan="2">RANURADO</th>';
                     } else if ($_GET['estado'] == 3) {
-                        $cantidad_de_m = 6;
+                        $cantidad_de_m = 7;
                         for ($i=1; $i <= $cant_th; $i++) { 
                             echo '<th class="th-estado">'.$i.'</th>';
                         }
