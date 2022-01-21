@@ -92,10 +92,14 @@
                 ?>
             </tr>
             <tr>
-                <th class="th-estado" rowspan="2">Día</th>
-                <th class="th-estado" colspan="<?php echo $cant_th;?>">REPORTE DIARIO POR MAQUINA</th>
-                <th class="th-estado" ></th>
-                <th class="th-estado" colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>
+                <?php if ($_GET['estado'] != 6) { ?>
+                    <th class="th-estado" rowspan="2">Día</th>
+                    <th class="th-estado" colspan="<?php echo $cant_th;?>">REPORTE DIARIO POR MAQUINA</th>
+                    <th class="th-estado" ></th>
+                    <th class="th-estado" colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>
+                <?php } else { ?>
+                        <th class="th-estado" rowspan="2">Día</th>
+                <?php } ?>
             </tr>
             <tr>
                 <?php 
@@ -130,10 +134,6 @@
                         echo '<th class="th-estado" colspan="2">SHANK</th>';
                     } else if ($_GET['estado'] == 6) {
                         $cantidad_de_m = 3;
-                        for ($i=1; $i <= $cant_th; $i++) { 
-                            echo '<th class="th-estado">'.$i.'</th>';
-                        }
-                        echo '<th></th>';
                         echo '<th class="th-estado" colspan="2">ACABADO</th>';
                     }
                     

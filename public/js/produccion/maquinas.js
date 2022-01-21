@@ -117,7 +117,100 @@ const render_semana = (json,semana) => {
     }
 }
 
-const render_semana_ranurado_shank = (json,semana) => {
+const render_semana_ranurado = (json,semana) => {
+    const turnos = []
+
+    let totales_semanales = [0,0,0,0,0,0,0]
+    let acumulado = 0
+    let aux = []
+    let observaciones = []
+    let contador = 1
+    let a = ''
+
+    if (json.length > 0) {
+        json.forEach(el => {
+            if (contador == 4) {
+                if (select.value == 'kilos') {
+                    aux.push(el.kilos)
+                } else if (select.value == 'pzas') {
+                    aux.push(el.pzas)
+                }
+                aux.push(el.fecha)
+                aux.push(el.turno)
+                turnos.push(aux)
+                a = el.observaciones.replace(/\s+/g, '_')
+                observaciones.push(a)
+                aux = []
+                contador = 1;
+            } else {
+                if (select.value == 'kilos') {
+                    aux.push(el.kilos)
+                } else if (select.value == 'pzas') {
+                    aux.push(el.pzas)
+                }
+                a = el.observaciones.replace(/\s+/g, '_')
+                observaciones.push(a)
+                contador++
+            }
+        });
+    
+        aux = []
+        contador = 0;
+    
+        for (let i = 0; i < turnos.length; i++) {
+            for (let j = 0; j < 4; j++) {
+                aux.push(turnos[i][j])
+            }
+            aux = []
+    
+            const fecha = turnos[i][3].split(' ')
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][1])+parseInt(turnos[i][2])
+    
+            if (i == 0) {
+                acumulado = total_semana
+            } else {
+                acumulado += total_semana
+            }
+
+            document.getElementById('body_'+semana).innerHTML += '<tr>'+
+                                                                    '<td>'+fecha[0]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+1]+'">'+turnos[i][1]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][2]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[contador+3]+'">'+turnos[i][3]+'</td>' +
+                                                                    '<td class="txt-center"></td>' +
+                                                                    '<td class="txt-center">'+total_semana+'</td>' +
+                                                                    '<td class="txt-center">'+new Intl.NumberFormat('es-MX').format(acumulado)+'</td>' +
+                                                                '</tr>';
+            totales_semanales[0] += parseInt(turnos[i][0],10)
+            totales_semanales[1] += parseInt(turnos[i][1],10)
+            totales_semanales[2] += parseInt(turnos[i][2],10)
+            totales_semanales[3] += parseInt(turnos[i][3],10)
+            totales_semanales[4] += parseInt(total_semana)
+            totales_semanales[5] += parseInt(acumulado)
+            contador+=4
+        }
+
+        const tfoot = document.createElement('tfoot')
+        const tr = document.createElement('tr')
+        tr.innerHTML += '<td>Total:</td>'
+        for (let i = 0; i < totales_semanales.length; i++) {
+            if (i > 4 || i < 4) {
+                tr.innerHTML += '<td class="txt-center">'+ new Intl.NumberFormat('es-MX').format(totales_semanales[i])+'</td>'
+            } else {
+                tr.innerHTML += '<td></td>';
+            }
+        }
+        tfoot.appendChild(tr)
+        document.getElementById('tabla_'+semana).appendChild(tfoot)
+    } else {
+        document.getElementById('body_'+semana).innerHTML += '<tr>'+
+                                                                '<td colspan="25" class="txt-center">No existe ningún registro</td>' +
+                                                            '</tr>';
+    }
+}
+
+const render_semana_shank = (json,semana) => {
     const turnos = []
 
     let totales_semanales = [0,0,0,0,0,0]
@@ -156,7 +249,6 @@ const render_semana_ranurado_shank = (json,semana) => {
     
         aux = []
         contador = 0;
-        console.log(turnos);
     
         for (let i = 0; i < turnos.length; i++) {
             for (let j = 0; j < 10; j++) {
@@ -211,91 +303,67 @@ const render_semana_ranurado_shank = (json,semana) => {
 
 const render_semana_acabo = (json,semana) => {
     const turnos = []
+    let turno = 0;
+    let fecha = '';
+    let kilos = 0;
+    let pzas = 0;
+    let fechas = [];
 
-    let totales_semanales = [0,0,0,0,0,0]
     let acumulado = 0
-    let aux = []
-    let observaciones = []
-    let contador = 1
-    let a = ''
 
     if (json.length > 0) {
         json.forEach(el => {
-            if (contador == 3) {
+            if ((turno == 0 || turno == el.turno) && (fecha == '' || fecha == el.fecha)) {
                 if (select.value == 'kilos') {
-                    aux.push(el.kilos)
+                    kilos += parseInt(el.kilos)
                 } else if (select.value == 'pzas') {
-                    aux.push(el.pzas)
+                    pzas += parseInt(el.pzas)
                 }
-                aux.push(el.fecha)
-                aux.push(el.turno)
-                turnos.push(aux)
-                a = el.observaciones.replace(/\s+/g, '_')
-                observaciones.push(a)
-                aux = []
-                contador = 1;
-            } else {
+                turno = el.turno
+                fecha = el.fecha
+            } else if ((turno != el.turno) || (fecha != el.fecha)){
                 if (select.value == 'kilos') {
-                    aux.push(el.kilos)
+                    turnos.push(kilos)
                 } else if (select.value == 'pzas') {
-                    aux.push(el.pzas)
+                    turnos.push(pzas)
                 }
-                a = el.observaciones.replace(/\s+/g, '_')
-                observaciones.push(a)
-                contador++
+                kilos = 0;
+                pzas = 0;
+                turno = 0;
+                fechas.push(fecha)
+                fecha = '';
+                turno = el.turno
+                fecha = el.fecha
+                kilos += parseInt(el.kilos)
+                pzas += parseInt(el.pzas)
             }
         });
-    
-        aux = []
-        contador = 0;
-    
-        for (let i = 0; i < turnos.length; i++) {
-            for (let j = 0; j < 10; j++) {
-                aux.push(turnos[i][j])
-            }
-            aux = []
-    
-            const fecha = turnos[i][3].split(' ')
-            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][1])+parseInt(turnos[i][2])
-    
-            if (i == 0) {
-                acumulado = total_semana
-            } else {
-                acumulado += total_semana
-            }
 
-            document.getElementById('body_'+semana).innerHTML += '<tr>'+
-                                                                    '<td>'+fecha[0]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+1]+'">'+turnos[i][1]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][2]+'</td>' +
-                                                                    '<td class="txt-center"></td>' +
-                                                                    '<td class="txt-center">'+total_semana+'</td>' +
-                                                                    '<td class="txt-center">'+new Intl.NumberFormat('es-MX').format(acumulado)+'</td>' +
-                                                                '</tr>';
-            totales_semanales[0] += parseInt(turnos[i][0],10)
-            totales_semanales[1] += parseInt(turnos[i][1],10)
-            totales_semanales[2] += parseInt(turnos[i][2],10)
-            totales_semanales[4] += parseInt(total_semana)
-            totales_semanales[5] += parseInt(acumulado)
-            contador+=3
+        if (select.value == 'kilos') {
+            turnos.push(kilos)
+        } else if (select.value == 'pzas') {
+            turnos.push(pzas)
         }
+        fechas.push(fecha)
 
+        for (let r = 0; r < turnos.length; r++) {
+            document.getElementById('body_'+semana).innerHTML += '<tr>'+
+                                                                    '<td>'+fechas[r]+'</td>' +
+                                                                    '<td class="txt-center">'+turnos[r]+'</td>' +
+                                                                    // '<td class="txt-center">'+new Intl.NumberFormat('es-MX').format(acumulado)+'</td>' +
+                                                                '</tr>';
+            acumulado+=turnos[r];
+        }
+        
         const tfoot = document.createElement('tfoot')
         const tr = document.createElement('tr')
-        tr.innerHTML += '<td>Total:</td>'
-        for (let i = 0; i < totales_semanales.length; i++) {
-            if (i > 3 || i < 3) {
-                tr.innerHTML += '<td class="txt-center">'+ new Intl.NumberFormat('es-MX').format(totales_semanales[i])+'</td>'
-            } else {
-                tr.innerHTML += '<td></td>';
-            }
-        }
+        tr.innerHTML += '<td>Total acumulado:</td>'
+        tr.innerHTML += '<td class="txt-center">'+acumulado+'</td>'
         tfoot.appendChild(tr)
         document.getElementById('tabla_'+semana).appendChild(tfoot)
     } else {
         document.getElementById('body_'+semana).innerHTML += '<tr>'+
-                                                                '<td colspan="25" class="txt-center">No existe ningún registro</td>' +
+                                                                '<td colspan="7" class="txt-center">No existe ningún registro</td>' +
                                                             '</tr>';
     }
 }
@@ -493,7 +561,7 @@ const render_encabezado_ranurado = (limite_semana,anio, mes) => {
                                                 '<thead>'+
                                                     '<tr>'+
                                                         '<th rowspan="2">Día</th>'+
-                                                        '<th colspan="3">REPORTE DIARIO POR MAQUINA</th>'+
+                                                        '<th colspan="4">REPORTE DIARIO POR MAQUINA</th>'+
                                                         '<th></th>'+
                                                         '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
                                                     '</tr>'+
@@ -501,6 +569,7 @@ const render_encabezado_ranurado = (limite_semana,anio, mes) => {
                                                         '<th>1</th>'+
                                                         '<th>2</th>'+
                                                         '<th>3</th>'+
+                                                        '<th>4</th>'+
                                                         '<th></th>'+
                                                         '<th colspan="2">RANURADO</th>'+
                                                     '</tr>'+
@@ -617,7 +686,7 @@ const render_encabezado_rolado = (limite_semana,anio,mes) => {
                                                 '<thead>'+
                                                     '<tr>'+
                                                         '<th rowspan="2">Día</th>'+
-                                                        '<th colspan="6">REPORTE DIARIO POR MAQUINA</th>'+
+                                                        '<th colspan="7">REPORTE DIARIO POR MAQUINA</th>'+
                                                         '<th></th>'+
                                                         '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
                                                     '</tr>'+
@@ -684,16 +753,10 @@ const render_encabezado_acabado = (limite_semana,anio,mes) => {
                                                 '<thead>'+
                                                     '<tr>'+
                                                         '<th rowspan="2">Día</th>'+
-                                                        '<th colspan="3">REPORTE DIARIO POR TINA</th>'+
-                                                        '<th></th>'+
-                                                        '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
+                                                        '<th colspan="1">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
                                                     '</tr>'+
                                                     '<tr>'+
-                                                        '<th>1</th>'+
-                                                        '<th>2</th>'+
-                                                        '<th>3</th>'+
-                                                        '<th></th>'+
-                                                        '<th colspan="2">ACABADO</th>'+
+                                                        '<th colspan="1">ACABADO</th>'+
                                                     '</tr>'+
                                                 '</thead>'+
                                                 '<tbody id="body_'+(i+1)+'">'+
@@ -753,11 +816,11 @@ const obtener_dias = (vista, concepto, inicio, fin, semana) => {
         if (vista == 1) {
             render_semana(json,semana)
         } else if (vista == 2) {
-            render_semana_ranurado_shank(json,semana)
+            render_semana_ranurado(json,semana)
         } else if (vista == 3) {
             render_semana_rolado(json,semana)
         } else if (vista == 4) {
-            render_semana_ranurado_shank(json,semana)
+            render_semana_shank(json,semana)
         } else if (vista == 6) {
             render_semana_acabo(json,semana)
         }

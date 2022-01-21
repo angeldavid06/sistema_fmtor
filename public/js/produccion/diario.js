@@ -11,28 +11,35 @@ const limpiar_tabla = () => {
     }
 }
 
+const registrar_sin_op = () => {
+    const respuesta = fetchAPI(form_control,url+'/produccion/control/insertar_sin_op', 'POST')
+    respuesta.then(json => {
+        if (json == 1) {
+            open_alert('Registro añadido correctamente','verde')
+        } else {
+            open_alert('El registro no pudo ser realizado','rojo')
+        }
+    })
+}
+
 form_control.addEventListener('submit', (evt)=> {
     evt.preventDefault();
     let aux = true;
     const inputs = form_control.getElementsByClassName('input')
-    try {
-        for (let i = 1; i < inputs.length; i++) {
-            if (inputs[i].value == '') {
-                inputs[i].classList.add('input-error');
-                aux = false;
-            } 
-        }
-        if (aux) {
-            if (inputs[0].value == '') {
-                open_confirm('¿Desea registrar esta información sin una O.P.?',registrar_sin_op)
-            } else {
-                registrar_control()
-            }
+    for (let i = 1; i < inputs.length; i++) {
+        if (inputs[i].value == '') {
+            inputs[i].classList.add('input-error');
+            aux = false;
+        } 
+    }
+    if (aux) {
+        if (inputs[0].value == '') {
+            open_confirm('¿Desea registrar esta información sin una O.P.?',registrar_sin_op)
         } else {
-            open_alert('Debes llenar los campos correctamente','rojo')
+            registrar_control()
         }
-    } catch (error) {
-        open_alert('Debes seleccionar alguna etapa antes de enviar el formulario','rojo')
+    } else {
+        open_alert('Debes llenar los campos correctamente','rojo')
     }
 });
 

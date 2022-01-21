@@ -14,7 +14,7 @@
         require_once 'v_maquina.php';
     } else if ($_GET['estado'] == 6) {
         $cantidad_de_m = 3;
-        require_once 'v_maquina.php';
+        require_once 'v_maquinas_acabado.php';
     }
 
 ?>
