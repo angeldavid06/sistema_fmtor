@@ -30,24 +30,14 @@ const render_control = (vista,json) => {
 const btn_form_control = document.getElementById('btn-form-control');
 
 btn_form_control.addEventListener('click', () => {
+    const estado = document.getElementsByClassName('active')
     const op_control = document.getElementById('op_control')
     
-    if (op_control.value == '') {
-        open_confirm('¿Estas seguro de registrar sin introducir una Orden de Producción?', () => {})
-        abrir_modal('modal-filtrar-registro')
-    } else {
-        const estado = document.getElementsByClassName('active')
-        const op = document.getElementById('op')
-        const input = document.getElementById('estado')
-        
-        if (estado.length == 1) {
-            op.value = op_control.value
-            input.value = estado[0].dataset.id
-            abrir_modal('modal-ingresar')
-        } else {
-            open_alert('No ha seleccionado un estado de producción','naranja')
-        }
-    }
+    const op = document.getElementById('op')
+    const input = document.getElementById('estado')
+    
+    op.value = op_control.value
+    input.value = estado[0].dataset.id
 });
 
 const render_botones_estados = (json) => {

@@ -17,6 +17,10 @@
             $this->web->View('produccion/control','');
         }
         
+        public function diario () {
+            $this->web->View('produccion/diario','');
+        }
+        
         public function ordenes () {
             $this->web->View('produccion/ordenes','');
         }

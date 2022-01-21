@@ -67,7 +67,7 @@
 
         public function obtener_registro() {
             if (isset($_GET['fecha_in'])) {
-                $condicion = "fecha BETWEEN '".$_GET['fecha_in']."' AND '".$_GET['fecha_fin']."'";
+                $condicion = "id_empleados = '".$_GET['id']."' AND fecha BETWEEN '".$_GET['fecha_in']."' AND '".$_GET['fecha_fin']."'";
                 $data = $this->model->buscar_personalizado('v_horario_personal','*',$condicion);
                 echo json_encode($data);
             } else {

@@ -79,6 +79,16 @@
 
         }
         
+        for ($i=count($fechas); $i < 10; $i++) { 
+            echo '<tr>'.
+                    '<td style="height: 10px;"></td>'.
+                    '<td style="height: 10px;"></td>'.
+                    '<td style="height: 10px;"></td>'.
+                    '<td style="height: 10px;"></td>'.
+                    '<td style="height: 10px;"></td>'.
+                '<tr>';
+        }
+
         ?>
 
     </tbody>

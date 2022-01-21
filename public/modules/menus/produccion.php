@@ -46,6 +46,10 @@
             </a>
             <a href="http://localhost/sistema_fmtor/produccion/main/control">
                 <i class="material-icons-round">supervisor_account</i>
+                Control de Producción
+            </a>
+            <a href="http://localhost/sistema_fmtor/produccion/main/diario">
+                <i class="material-icons-round">today</i>
                 Registro Diario de Producción
             </a>
             <a href="http://localhost/sistema_fmtor/produccion/main/maquinas">
@@ -65,7 +69,7 @@
                 <i class="material-icons-round">help</i>
                 Ayuda
             </a>
-            <a  id="cerrar-sesion">
+            <a href="" id="cerrar-sesion">
                 <i class="material-icons-round">logout</i>
                 Cerrar Sesión
             </a>

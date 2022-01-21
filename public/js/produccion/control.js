@@ -58,10 +58,23 @@ form_actualizar.addEventListener('submit', (evt) => {
 const registrar_control = () => {
     const respuesta = fetchAPI(form_control,url+'/produccion/control/insertar','POST')
     respuesta.then(json => {
-        if (json == '1') {
+        if (json == 1) {
             open_alert('Registro añadido correctamente', 'verde')
             const estado = document.getElementsByClassName('active')
-            obtener_control(estado[0].dataset.estado)
+            if (estado.length > 0) {
+                obtener_control(estado[0].dataset.estado)
+            }
+        } else {
+            open_alert('El registro no pudo ser realizado','rojo')
+        }
+    })
+}
+
+const registrar_sin_op = () => {
+    const respuesta = fetchAPI(form_control,url+'/produccion/control/insertar_sin_op', 'POST')
+    respuesta.then(json => {
+        if (json == 1) {
+            open_alert('Registro añadido correctamente','verde')
         } else {
             open_alert('El registro no pudo ser realizado','rojo')
         }
@@ -82,11 +95,10 @@ function eliminar () {
 }
 
 const eliminar_registro = () => {
-    open_confirm('¿Estas seguro de realizar esta opción?', eliminar)
+    open_confirm('¿Estas seguro de eliminar este registro?', eliminar)
 }
 
 const cargar_registro = (json) => {
-    const estado = document.getElementById('a_estado')
     const op = document.getElementById('a_op')
     const no_maquina = document.getElementById('a_no_maquina')
     const no_botes = document.getElementById('a_no_botes')
@@ -144,6 +156,16 @@ const generar_control_produccion = (valor) => {
     }
 }
 
+const generar_control_vacio = (valor) => {
+    if (valor != '') {
+        printPage(url+'/produccion/control/pdf_control_vacio?valor='+valor);
+        op_control.classList.remove('input-error')
+    } else {
+        open_alert('No ha introducido la Orden de Producción','naranja')
+        op_control.classList.add('input-error')
+    }
+}
+
 const obtener_estados = () => {
     const respuesta = fetchAPI('',url+'/produccion/control/estados','')
     respuesta.then(json => {
@@ -166,47 +188,6 @@ const terminar_orden = (orden) => {
 const generar_reporte_diario = (fecha,turno,estado) => {
     printPage(url+'/produccion/control/pdf_reporte_diario?fecha='+fecha+'&turno='+turno+'&estado='+estado);
 }
-
-const form_reporte_sin_op = document.getElementById('form-reporte-diario-sop')
-
-const registrar_sin_op = () => {
-    const respuesta = fetchAPI(form_reporte_sin_op,url+'/produccion/control/insertar_sin_op', 'POST')
-    respuesta.then(json => {
-        if (json == 1) {
-            open_alert('Registro exitoso','verde')
-        } else {
-            open_alert('Registro no exitoso','rojo')
-        }
-    })
-}
-
-
-form_reporte_sin_op.addEventListener('submit', (evt) => {
-    evt.preventDefault()
-
-    const inputs = form_reporte_sin_op.getElementsByClassName('input')
-    let aux = true
-
-    if (inputs.length > 0) {
-        for (let i = 0; i < inputs.length; i++) {
-            if (inputs[i].value == '') {
-                inputs[i].classList.add('input-error')
-                aux = false
-            } else {
-                inputs[i].classList.remove('input-error')
-            }
-        }
-
-        if (aux) {
-            for (let i = 0; i < inputs.length; i++) {
-                if (inputs[i].value == '') {
-                    inputs[i].classList.remove('input-error')
-                }
-            }
-            registrar_sin_op()
-        }
-    }
-})
 
 const form_diario = document.getElementById('form-reporte-diario')
 
@@ -257,7 +238,9 @@ document.addEventListener('click', (evt) => {
     } else if (evt.target.dataset.impresion) {
         if (evt.target.dataset.impresion == 'control') {
             generar_control_produccion(document.getElementById('op_control').value)
-        } 
+        } else if (evt.target.dataset.impresion == 'control_vacio') {
+            generar_control_vacio(document.getElementById('op_control').value)
+        }
     } else if (evt.target.dataset.terminar) {
         const input = document.getElementById('op_control');
         if (input.value != '') {

@@ -9,11 +9,11 @@
                 <input type="text" name="tabla" id="tabla" value="v_ordenes" hidden>
                 <div class="d-grid g-2">
                     <div class="d-grid g-1 grid-gap-0">
-                        <label for="lbl_diario_fecha">Fecha:</label>
+                        <label style="margin-top: 0;" for="lbl_diario_fecha">Fecha:</label>
                         <input class="input" type="date" name="diario_fecha" id="diario_fecha" >
                     </div>
                     <div class="d-grid g-1 grid-gap-0">
-                        <label for="lbl_diario_turno">Turno:</label>
+                        <label style="margin-top: 0;" for="lbl_diario_turno">Turno:</label>
                         <input class="input" type="number" name="diario_turno" id="diario_turno" >
                     </div>
                 </div>

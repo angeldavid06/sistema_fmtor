@@ -61,6 +61,20 @@
             }
         }
 
+        public function pdf_control_vacio () {
+            if (isset($_GET['valor'])) {
+                $control = $this->model->buscar('v_control','Orden_Produccion',$_GET['valor']);
+
+                $data = [
+                    "control" => $control
+                ];
+
+                $this->web->PDF('produccion/control_vacio',$data);
+            } else {
+                echo 0;
+            }
+        }
+
         public function pdf_reporte_diario () {
             if (isset($_GET['fecha']) && isset($_GET['estado']) && isset($_GET['turno'])) {
                 $fecha = $_GET['fecha'];
@@ -109,16 +123,16 @@
         }
 
         public function insertar_sin_op () {
-            if (isset($_POST['diario_estado_sn_op']) && $_POST['diario_estado_sn_op'] != '') {
-                $this->model_control->setNoMaquina($_POST['no_maquina_sn_op']);
-                $this->model_control->setFechaEntrega($_POST['fecha_sn_op']);
-                $this->model_control->setBote($_POST['no_botes_sn_op']);
-                $this->model_control->setPzas($_POST['pzas_sn_op']);
-                $this->model_control->setKilos($_POST['kg_sn_op']);
-                $this->model_control->setTurno($_POST['turno_sn_op']);
-                $this->model_control->setObservaciones($_POST['observaciones_sn_op']);
+            if (isset($_POST['estado']) && $_POST['estado'] != '') {
+                $this->model_control->setNoMaquina($_POST['no_maquina']);
+                $this->model_control->setFechaEntrega($_POST['fecha']);
+                $this->model_control->setBote($_POST['no_botes']);
+                $this->model_control->setPzas($_POST['pzas']);
+                $this->model_control->setKilos($_POST['kg']);
+                $this->model_control->setTurno($_POST['turno']);
+                $this->model_control->setObservaciones($_POST['observaciones']);
 
-                $this->model_control->setIdEstado($_POST['diario_estado_sn_op']);
+                $this->model_control->setIdEstado($_POST['estado']);
 
                 $result = $this->model_control->insertar_registro_sin_op();
                 if ($result) {

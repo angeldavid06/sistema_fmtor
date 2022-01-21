@@ -179,13 +179,13 @@
 
 .alert .contenido {
     max-width: 100%;
-    min-height: 86px;
-    max-height: 86px;
+    min-height: 75px;
+    max-height: 75px;
     margin: 0px 0px 10px 0px;
     position: initial;
     visibility: hidden;
     opacity: 0;
-    padding: 20px 30px;
+    padding: 10px 30px;
 }
 
 .alert .contenido.show-alert {
@@ -1264,7 +1264,7 @@ embed {
 }
 
 .contenido .informacion .tarjeta-transparente {
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .contenido .informacion .tarjeta-transparente input,
@@ -1347,7 +1347,7 @@ embed {
 }
 
 .contenido .informacion .acordeon .contenido_acordeon table tbody tr:nth-child(even) {
-    background-color: var(--background-body);
+    background-color: var(--background-aux);
 }
 
 .contenido .informacion .caja_de_contenido {
@@ -1357,7 +1357,7 @@ embed {
 .contenido .informacion .acordeon {
     width: 100%;
     padding: 0px;
-    margin: 30px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
     border-radius: var(--border-radius);
     background-color: var(--background-aux);
     overflow: hidden;

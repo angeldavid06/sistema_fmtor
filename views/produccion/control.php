@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <?php require_once 'public/modules/head.php' ?>
-    <title>Registro Diario de Producción</title>
+    <title>Control de Producción</title>
 </head>
 <body>
     <div class="contenedor">
@@ -15,16 +15,16 @@
             <div class="informacion">
                 <div class="d-grid g2-5-5">
                     <div style="padding-top: 0px;" class="tarjeta-transparente">
-                        <h1>Registro Diario de Producción</h1>
+                        <h1>Control de Producción</h1>
                     </div>
                     <div style="padding-top: 0px;" class="tarjeta-transparente d-flex justify-right align-content-center flex-wrap">
                         <button title="Generar Control de Producción" class="btn btn-icon btn-transparent" data-impresion="control">
                             <i class="material-icons" data-impresion="control">calendar_view_month</i>
                             Control de Producción
                         </button>
-                        <button title="Generar Reporte Diario de Producción" class="btn btn-icon btn-transparent" data-modal="modal-filtrar-diario">
-                            <i class="material-icons-outlined" data-modal="modal-filtrar-diario">today</i>
-                            Reporte Diario
+                        <button title="Generar Control de Producción" class="btn btn-icon btn-transparent" data-impresion="control_vacio">
+                            <i class="material-icons" data-impresion="control_vacio">calendar_view_month</i>
+                            Control (Vacio)
                         </button>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                         <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
                         <button title="Buscar información" id="informacion_op" class="btn btn-icon-self material-icons">search</button>
                         <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
-                            <button title="Nuevo registro diario" class="material-icons btn btn-icon-self" id="btn-form-control">add</button>
+                            <button data-modal="modal-ingresar" title="Nuevo registro diario" class="material-icons btn btn-icon-self" id="btn-form-control">add</button>
                         <?php } ?>
                     </div>
                 </div>
@@ -101,7 +101,6 @@
                     if ($_SESSION['rol'] == 'Administrativo') {
                         require_once 'public/modules/produccion/control_modal.php';
                         require_once 'public/modules/produccion/diario_modal.php';
-                        require_once 'public/modules/produccion/registro_modal.php'; 
                     } 
                 ?>
             </div>
