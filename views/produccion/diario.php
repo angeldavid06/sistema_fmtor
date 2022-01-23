@@ -9,7 +9,7 @@
     <div class="contenedor">
         <a href="#top" class="btn btn-icon btn-flotante btn-icon-self material-icons" id="btn-subir">expand_less
         </a>
-        <?php require_once 'public/modules/menus/produccion.php'; ?>
+        <?php require_once 'public/modules/menus/menu_usuario.php'; ?>
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
@@ -49,8 +49,10 @@
                                 <th>Maquina</th>
                                 <th>Descripción</th>
                                 <th>Observaciones</th>
-                                <th></th>
-                                <th></th>
+                                <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+                                    <th></th>
+                                    <th></th>
+                                <?php } ?>
                             </tr>
                         </thead>
                         <tbody id="body">
@@ -67,12 +69,11 @@
         </div>
     </div>
     <script src="../public/js/fmtor_libreria.js"></script>
-    <script src="../public/js/produccion/diario.js"></script>
     <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
-        <!-- <script src="../../public/js/produccion/render_control_admin.js"></script> -->
+        <script src="../public/js/produccion/render_diario_admin.js"></script>
     <?php } else { ?>
-        <!-- <script src="../../public/js/produccion/render_control_usuario.js"></script> -->
+        <script src="../public/js/produccion/render_diario_usuario.js"></script>
     <?php } ?>
-    <!-- <script src="../../public/js/produccion/estados.js"></script> -->
+    <script src="../public/js/produccion/diario.js"></script>
 </body>
 </html>

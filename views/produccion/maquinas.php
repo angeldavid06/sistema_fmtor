@@ -70,7 +70,7 @@
 <body>
     <div class="contenedor">
         <a href="#top" class="btn btn-icon-self material-icons btn-flotante" id="btn-subir">expand_less</a>
-        <?php require_once 'public/modules/menus/produccion.php'; ?>
+        <?php require_once 'public/modules/menus/menu_usuario.php'; ?>
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
