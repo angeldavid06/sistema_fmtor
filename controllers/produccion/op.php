@@ -66,6 +66,18 @@
             }
         }
 
+        public function actualizar_calibre () {
+            if (isset($_POST['calibre']) && isset($_POST['calibre_op'])) {
+                $this->model_op->setOp($_POST['calibre_op']);
+                $this->model_op->setCalibre($_POST['calibre']);
+
+                $result = $this->model_op->calibre();
+                echo json_encode($result);
+            } else {
+                echo 0;
+            }
+        }
+
         public function obtener_ordenes () {
             $this->model_op->setVista('v_ordenes');
             $ops = $this->model_op->obtener_informacion();

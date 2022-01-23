@@ -53,8 +53,11 @@
                         </div>
                     </div>
                 </div>
-                <?php require_once 'public/modules/produccion/ordenes_modal.php'; ?>
-                <?php require_once 'public/modules/produccion/plano_modal.php'; ?>
+                <?php 
+                    require_once 'public/modules/produccion/ordenes_modal.php';
+                    // require_once 'public/modules/produccion/plano_modal.php'; 
+                    require_once 'public/modules/produccion/calibre_modal.php'; 
+                ?>
             </div>
         </div>
     </div>

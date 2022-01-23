@@ -16,6 +16,7 @@
     
         .Falta_de_Alambre {
             background-color: #0000FF;
+            color: white;
             text-align: center;
         }
     
