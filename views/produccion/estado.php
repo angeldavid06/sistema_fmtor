@@ -19,7 +19,7 @@
                         <h1>Estado de las Ordenes de Producción</h1>
                     </div>
                     <div style="padding-top: 0px;" class="tarjeta-transparente d-flex justify-right align-content-center flex-wrap">
-                        <button class="btn btn-icon btn-transparent" data-impresion="documento">
+                        <button class="btn-impresion btn btn-icon btn-transparent" data-impresion="documento">
                             <i class="material-icons">description</i>
                             Generar Documento 
                         </button>

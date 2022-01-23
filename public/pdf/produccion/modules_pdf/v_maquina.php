@@ -39,8 +39,12 @@
     
         $turno_anterior = '';
         $fecha_anterior = '';
-        $aux = [0,0,0,0,0,0,0,0,0];
-        $aux_observaciones = [0,0,0,0,0,0,0,0,0];
+        $aux = array();
+        $aux_observaciones = array();
+        for ($c_aux=0; $c_aux < $cantidad_de_maquinas; $c_aux++) { 
+            $aux[] = 0;
+            $aux_observaciones[] = 0;
+        }
         $turnos = array();
         
         for ($j=0; $j < count($data); $j++) { 
@@ -63,8 +67,12 @@
 
                 $turno_anterior = $data[$j]['turno'];
                 $fecha_anterior = $data[$j]['fecha'];
-                $aux = [0,0,0,0,0,0,0,0,0];
-                $aux_observaciones = [0,0,0,0,0,0,0,0,0];
+                $aux = array();
+                $aux_observaciones = array();
+                for ($c_aux=0; $c_aux < $cantidad_de_maquinas; $c_aux++) { 
+                    $aux[] = 0;
+                    $aux_observaciones[] = 0;
+                }
 
                 if (array_key_exists('kilos',$data[$j])) {
                     $aux[$data[$j]['no_maquina']-1] = $data[$j]['kilos'];
@@ -79,41 +87,11 @@
         $aux[] = $fecha_anterior;
         $aux[] = $turno_anterior;
         $turnos[] = $aux;
-        // echo '<pre>';
-        // var_dump($turnos);
-        // echo '</pre>';
-
-        // for ($j=0; $j < count($data); $j++) { 
-        //     if ($contador_maquinas < $cantidad_de_maquinas) {
-        //         if (array_key_exists('kilos', $data[$j])) {
-        //             $aux[] = $data[$j]['kilos'];
-        //         } else if (array_key_exists('pzas', $data[$j])) {
-        //             $aux[] = $data[$j]['pzas'];
-        //         }
-        //         $observaciones[] = str_replace (' ' , '_', $data[$j]['observaciones']);
-        //         $contador_maquinas++;
-        //     } else if ($contador_maquinas == $cantidad_de_maquinas) {
-        //         if (array_key_exists('kilos', $data[$j])) {
-        //             $aux[] = $data[$j]['kilos'];
-        //         } else if (array_key_exists('pzas', $data[$j])) {
-        //             $aux[] = $data[$j]['pzas'];
-        //         }
-        //         $observaciones[] = str_replace (' ' , '_', $data[$j]['observaciones']);
-        //         $aux[] = $data[$j]['fecha'];
-        //         $semanas[] = $aux;
-        //         $aux = array();
-        //         $contador_maquinas=1;
-        //     }
-        // }
         
         for ($i=0; $i < count($limite_semanas); $i++) { 
             echo '<tr><td class="txt-center" colspan="14">SEMANA '.($i+1).'</td></tr>';
             for ($k=0; $k < count($turnos); $k++) {
                 $dia_registro = explode('-',$turnos[$k][count($turnos[$k])-2]);
-                // echo $turnos[$k][count($turnos[$k])-1];
-                // echo '<pre>';
-                //     var_dump($dia_registro);
-                // echo '</pre>';
                 if ($dia_registro[2] >= $limite_semanas[$i][0] && $dia_registro[2] <= $limite_semanas[$i][1]) {
                     echo '<tr><td>'.$turnos[$k][count($turnos[$k])-2].'</td>';
                     for ($j=0; $j < (count($turnos[$k])-2); $j++) { 

@@ -143,39 +143,54 @@ const render_semana_ranurado = (json,semana) => {
     const turnos = []
 
     let totales_semanales = [0,0,0,0,0,0,0]
-    let acumulado = 0
-    let aux = []
     let observaciones = []
-    let contador = 1
+    let acumulado = 0
+    let aux = [0,0,0,0]
+    let aux_observaciones = [0,0,0,0]
     let a = ''
+
+    let turno_anterior = ''
+    let fecha_anterior = ''
 
     if (json.length > 0) {
         json.forEach(el => {
-            if (contador == 4) {
+            if ((turno_anterior == '' || turno_anterior == el.turno) && (fecha_anterior == '' || fecha_anterior == el.fecha)) {
                 if (select.value == 'kilos') {
-                    aux.push(el.kilos)
+                    aux[el.no_maquina-1] = el.kilos
                 } else if (select.value == 'pzas') {
-                    aux.push(el.pzas)
+                    aux[el.no_maquina-1] = el.pzas
                 }
-                aux.push(el.fecha)
-                aux.push(el.turno)
+                a = el.observaciones.replace(/\s+/g, '_')
+                aux_observaciones[el.no_maquina-1] = a
+                turno_anterior = el.turno
+                fecha_anterior = el.fecha
+            } else if ((turno_anterior != el.turno) || (fecha_anterior != el.fecha)) {
+                aux.push(fecha_anterior)
+                aux.push(turno_anterior)
                 turnos.push(aux)
-                a = el.observaciones.replace(/\s+/g, '_')
-                observaciones.push(a)
-                aux = []
-                contador = 1;
-            } else {
+                observaciones.push(aux_observaciones)
+
+                turno_anterior = el.turno
+                fecha_anterior = el.fecha
+                aux = [0,0,0,0]
+                aux_observaciones = [0,0,0,0]
                 if (select.value == 'kilos') {
-                    aux.push(el.kilos)
+                    aux[el.no_maquina-1] = el.kilos
                 } else if (select.value == 'pzas') {
-                    aux.push(el.pzas)
+                    aux[el.no_maquina-1] = el.pzas
                 }
                 a = el.observaciones.replace(/\s+/g, '_')
-                observaciones.push(a)
-                contador++
+                aux_observaciones[el.no_maquina-1] = a
             }
         });
-    
+
+        observaciones.push(aux_observaciones)
+
+        aux.push(fecha_anterior)
+        aux.push(turno_anterior)
+        
+        turnos.push(aux)
+
         aux = []
         contador = 0;
     
@@ -185,8 +200,8 @@ const render_semana_ranurado = (json,semana) => {
             }
             aux = []
     
-            const fecha = turnos[i][3].split(' ')
-            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][1])+parseInt(turnos[i][2])
+            const fecha = turnos[i][4].split(' ')
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][1])+parseInt(turnos[i][2])+parseInt(turnos[i][3])
     
             if (i == 0) {
                 acumulado = total_semana
@@ -196,10 +211,10 @@ const render_semana_ranurado = (json,semana) => {
 
             document.getElementById('body_'+semana).innerHTML += '<tr>'+
                                                                     '<td>'+fecha[0]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+1]+'">'+turnos[i][1]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][2]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+3]+'">'+turnos[i][3]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[i][0]+'">'+turnos[i][0]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[i][1]+'">'+turnos[i][1]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[i][2]+'">'+turnos[i][2]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[i][3]+'">'+turnos[i][3]+'</td>' +
                                                                     '<td class="txt-center"></td>' +
                                                                     '<td class="txt-center">'+total_semana+'</td>' +
                                                                     '<td class="txt-center">'+new Intl.NumberFormat('es-MX').format(acumulado)+'</td>' +
@@ -208,9 +223,9 @@ const render_semana_ranurado = (json,semana) => {
             totales_semanales[1] += parseInt(turnos[i][1],10)
             totales_semanales[2] += parseInt(turnos[i][2],10)
             totales_semanales[3] += parseInt(turnos[i][3],10)
-            totales_semanales[4] += parseInt(total_semana)
-            totales_semanales[5] += parseInt(acumulado)
-            contador+=4
+            totales_semanales[4] += parseInt(turnos[i][4],10)
+            totales_semanales[5] += parseInt(total_semana)
+            totales_semanales[6] += parseInt(acumulado)
         }
 
         const tfoot = document.createElement('tfoot')
@@ -233,41 +248,55 @@ const render_semana_ranurado = (json,semana) => {
 }
 
 const render_semana_shank = (json,semana) => {
-    const turnos = []
-
+    let turnos = []
     let totales_semanales = [0,0,0,0,0,0]
-    let acumulado = 0
-    let aux = []
     let observaciones = []
-    let contador = 1
+    let acumulado = 0
+    let aux = [0,0,0]
+    let aux_observaciones = [0,0,0]
     let a = ''
+
+    let turno_anterior = ''
+    let fecha_anterior = ''
 
     if (json.length > 0) {
         json.forEach(el => {
-            if (contador == 3) {
+            if ((turno_anterior == '' || turno_anterior == el.turno) && (fecha_anterior == '' || fecha_anterior == el.fecha)) {
                 if (select.value == 'kilos') {
-                    aux.push(el.kilos)
+                    aux[el.no_maquina-1] = el.kilos
                 } else if (select.value == 'pzas') {
-                    aux.push(el.pzas)
+                    aux[el.no_maquina-1] = el.pzas
                 }
-                aux.push(el.fecha)
-                aux.push(el.turno)
+                a = el.observaciones.replace(/\s+/g, '_')
+                aux_observaciones[el.no_maquina-1] = a
+                turno_anterior = el.turno
+                fecha_anterior = el.fecha
+            } else if ((turno_anterior != el.turno) || (fecha_anterior != el.fecha)) {
+                aux.push(fecha_anterior)
+                aux.push(turno_anterior)
                 turnos.push(aux)
-                a = el.observaciones.replace(/\s+/g, '_')
-                observaciones.push(a)
-                aux = []
-                contador = 1;
-            } else {
+                observaciones.push(aux_observaciones)
+
+                turno_anterior = el.turno
+                fecha_anterior = el.fecha
+                aux = [0,0,0]
+                aux_observaciones = [0,0,0]
                 if (select.value == 'kilos') {
-                    aux.push(el.kilos)
+                    aux[el.no_maquina-1] = el.kilos
                 } else if (select.value == 'pzas') {
-                    aux.push(el.pzas)
+                    aux[el.no_maquina-1] = el.pzas
                 }
                 a = el.observaciones.replace(/\s+/g, '_')
-                observaciones.push(a)
-                contador++
+                aux_observaciones[el.no_maquina-1] = a
             }
         });
+
+        observaciones.push(aux_observaciones)
+
+        aux.push(fecha_anterior)
+        aux.push(turno_anterior)
+        
+        turnos.push(aux)
     
         aux = []
         contador = 0;
@@ -394,39 +423,54 @@ const render_semana_rolado = (json,semana) => {
     const turnos = []
 
     let totales_semanales = [0,0,0,0,0,0,0,0,0,0]
-    let acumulado = 0
-    let aux = []
     let observaciones = []
-    let contador = 1
+    let acumulado = 0
+    let aux = [0,0,0,0,0,0,0]
+    let aux_observaciones = [0,0,0,0,0,0,0]
     let a = ''
+
+    let turno_anterior = ''
+    let fecha_anterior = ''
 
     if (json.length > 0) {
         json.forEach(el => {
-            if (contador == 7) {
+            if ((turno_anterior == '' || turno_anterior == el.turno) && (fecha_anterior == '' || fecha_anterior == el.fecha)) {
                 if (select.value == 'kilos') {
-                    aux.push(el.kilos)
+                    aux[el.no_maquina-1] = el.kilos
                 } else if (select.value == 'pzas') {
-                    aux.push(el.pzas)
+                    aux[el.no_maquina-1] = el.pzas
                 }
-                aux.push(el.fecha)
-                aux.push(el.turno)
+                a = el.observaciones.replace(/\s+/g, '_')
+                aux_observaciones[el.no_maquina-1] = a
+                turno_anterior = el.turno
+                fecha_anterior = el.fecha
+            } else if ((turno_anterior != el.turno) || (fecha_anterior != el.fecha)) {
+                aux.push(fecha_anterior)
+                aux.push(turno_anterior)
                 turnos.push(aux)
-                a = el.observaciones.replace(/\s+/g, '_')
-                observaciones.push(a)
-                aux = []
-                contador = 1;
-            } else {
+                observaciones.push(aux_observaciones)
+
+                turno_anterior = el.turno
+                fecha_anterior = el.fecha
+                aux = [0,0,0,0,0,0,0]
+                aux_observaciones = [0,0,0,0,0,0,0]
                 if (select.value == 'kilos') {
-                    aux.push(el.kilos)
+                    aux[el.no_maquina-1] = el.kilos
                 } else if (select.value == 'pzas') {
-                    aux.push(el.pzas)
+                    aux[el.no_maquina-1] = el.pzas
                 }
                 a = el.observaciones.replace(/\s+/g, '_')
-                observaciones.push(a)
-                contador++
+                aux_observaciones[el.no_maquina-1] = a
             }
         });
-    
+
+        observaciones.push(aux_observaciones)
+
+        aux.push(fecha_anterior)
+        aux.push(turno_anterior)
+        
+        turnos.push(aux)
+
         aux = []
         contador = 0;
     
@@ -437,7 +481,7 @@ const render_semana_rolado = (json,semana) => {
             aux = []
     
             const fecha = turnos[i][7].split(' ')
-            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])
+            const total_semana = parseInt(turnos[i][0])+parseInt(turnos[i][1])+parseInt(turnos[i][2])+parseInt(turnos[i][3])+parseInt(turnos[i][4])+parseInt(turnos[i][5])+parseInt(turnos[i][6])
             
             if (i == 0) {
                 acumulado = total_semana
@@ -447,13 +491,13 @@ const render_semana_rolado = (json,semana) => {
             
             document.getElementById('body_'+semana).innerHTML += '<tr>'+
                                                                     '<td>'+fecha[0]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador]+'">'+turnos[i][0]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+1]+'">'+turnos[i][1]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+2]+'">'+turnos[i][2]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+3]+'">'+turnos[i][3]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+4]+'">'+turnos[i][4]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+5]+'">'+turnos[i][5]+'</td>' +
-                                                                    '<td class="txt-center '+observaciones[contador+6]+'">'+turnos[i][6]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[i][0]+'">'+turnos[i][0]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[i][1]+'">'+turnos[i][1]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[i][2]+'">'+turnos[i][2]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[i][3]+'">'+turnos[i][3]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[i][4]+'">'+turnos[i][4]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[i][5]+'">'+turnos[i][5]+'</td>' +
+                                                                    '<td class="txt-center '+observaciones[i][6]+'">'+turnos[i][6]+'</td>' +
                                                                     '<td class="txt-center"></td>' +
                                                                     '<td class="txt-center">'+total_semana+'</td>' +
                                                                     '<td class="txt-center">'+new Intl.NumberFormat('es-MX').format(acumulado)+'</td>' +
@@ -467,7 +511,6 @@ const render_semana_rolado = (json,semana) => {
             totales_semanales[6] += parseInt(turnos[i][6],10)
             totales_semanales[8] += parseInt(total_semana)
             totales_semanales[9] += parseInt(acumulado)
-            contador+=7
         }
 
         const tfoot = document.createElement('tfoot')

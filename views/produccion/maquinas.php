@@ -79,7 +79,7 @@
                         <h1>Máquinas de Producción</h1>
                     </div>
                     <div style="padding-top: 0px;" class="tarjeta-transparente d-flex justify-right align-content-center flex-wrap">
-                        <button class="btn btn-icon btn-transparent" data-impresion="imprimir">
+                        <button class="btn-impresion btn btn-icon btn-transparent" data-impresion="imprimir">
                             <i class="material-icons" data-impresion="imprimir">description</i>
                             Generar Documento
                         </button>

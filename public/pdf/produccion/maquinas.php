@@ -81,7 +81,7 @@
                     if ($_GET['estado'] == 1) {
                         $cant_th = 9;
                     } else if ($_GET['estado'] == 2) {
-                        $cant_th = 3;
+                        $cant_th = 4;
                     } else if ($_GET['estado'] == 3) {
                         $cant_th = 7;
                     } else if ($_GET['estado'] == 4) {
@@ -113,7 +113,7 @@
                         echo '<th></th>';
                         echo '<th class="th-estado" colspan="2">FORJADO</th>';
                     } else if ($_GET['estado'] == 2) {
-                        $cantidad_de_m = 3;
+                        $cantidad_de_m = 4;
                         for ($i=1; $i <= $cant_th; $i++) { 
                             echo '<th class="th-estado">'.$i.'</th>';
                         }

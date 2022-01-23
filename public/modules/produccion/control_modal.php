@@ -10,7 +10,7 @@
         <div class="d-grid g-2">
             <div class="d-grid g-1 grid-gap-0">
                 <p>Número de máquina:</p>
-                <input class="input" type="number" name="no_maquina" id="no_maquina" placeholder="0 - 9">
+                <input class="input no_maquina" type="number" name="no_maquina" id="no_maquina">
             </div>
             <div class="d-grid g-1 grid-gap-0">
                 <p>Número de botes:</p>
@@ -72,7 +72,7 @@
         <div class="d-grid g-2">
             <div class="d-grid g-1 grid-gap-0">
                 <p>Número de máquina:</p>
-                <input class="input" type="number" name="a_no_maquina" id="a_no_maquina" placeholder="Ingresa el número de máquina">
+                <input class="input no_maquina" type="number" name="a_no_maquina" id="a_no_maquina" placeholder="Ingresa el número de máquina">
             </div>
             <div class="d-grid g-1 grid-gap-0">
                 <p>Número de botes:</p>
@@ -133,12 +133,12 @@
         <div class="d-grid g-2">
             <div class="d-grid g-1 grid-gap-0">
                 <p>Orden de Producción:</p>
-                <input class="input" type="text" name="op" id="op">
+                <input class="input" type="text" name="op" id="op" placeholder="00000">
             </div>
             <div class="d-grid g-1 grid-gap-0">
                 <p>Estados de Producción:</p>
                 <select class="input" name="estado" id="estado">
-                    <option value=""></option>
+                    <option value="">Selecciona un estado de producción:</option>
                     <option value="1">FORJADO</option>
                     <option value="2">RANURADO</option>
                     <option value="3">ROLADO</option>
@@ -151,7 +151,7 @@
         <div class="d-grid g-2">
             <div class="d-grid g-1 grid-gap-0">
                 <p>Número de máquina:</p>
-                <input class="input" type="number" name="no_maquina" id="no_maquina" placeholder="0 - 9">
+                <input class="input" type="number" name="no_maquina" id="no_maquina">
             </div>
             <div class="d-grid g-1 grid-gap-0">
                 <p>Número de botes:</p>

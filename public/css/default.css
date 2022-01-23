@@ -1666,6 +1666,11 @@ embed {
         color: var(--color-text);
         background-color: var(--background-body);
     }
+    
+    .btn-impresion {
+        display: none;
+    }
+
     .content_preloader {
         padding: 10px;
     }

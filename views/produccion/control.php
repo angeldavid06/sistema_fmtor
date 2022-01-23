@@ -18,11 +18,11 @@
                         <h1>Control de Producción</h1>
                     </div>
                     <div style="padding-top: 0px;" class="tarjeta-transparente d-flex justify-right align-content-center flex-wrap">
-                        <button title="Generar Control de Producción" class="btn btn-icon btn-transparent" data-impresion="control">
+                        <button title="Generar Control de Producción" class="btn-impresion btn btn-icon btn-transparent" data-impresion="control">
                             <i class="material-icons" data-impresion="control">calendar_view_month</i>
                             Control de Producción
                         </button>
-                        <button title="Generar Control de Producción" class="btn btn-icon btn-transparent" data-impresion="control_vacio">
+                        <button title="Generar Control de Producción" class="btn-impresion btn btn-icon btn-transparent" data-impresion="control_vacio">
                             <i class="material-icons" data-impresion="control_vacio">calendar_view_month</i>
                             Control (Vacio)
                         </button>
