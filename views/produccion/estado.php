@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/produccion/estado_op.js"></script>
+    <script src="../public/js/fmtor_libreria.js"></script>
+    <script src="../public/js/produccion/estado_op.js"></script>
 </body>
 </html>

@@ -66,8 +66,8 @@
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/produccion/diario.js"></script>
+    <script src="../public/js/fmtor_libreria.js"></script>
+    <script src="../public/js/produccion/diario.js"></script>
     <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
         <!-- <script src="../../public/js/produccion/render_control_admin.js"></script> -->
     <?php } else { ?>

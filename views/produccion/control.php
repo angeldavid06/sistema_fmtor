@@ -106,13 +106,13 @@
             </div>
         </div>
     </div>
-    <script src="../../public/js/fmtor_libreria.js"></script>
-    <script src="../../public/js/produccion/control.js"></script>
+    <script src="../public/js/fmtor_libreria.js"></script>
+    <script src="../public/js/produccion/control.js"></script>
     <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
-        <script src="../../public/js/produccion/render_control_admin.js"></script>
+        <script src="../public/js/produccion/render_control_admin.js"></script>
     <?php } else { ?>
-        <script src="../../public/js/produccion/render_control_usuario.js"></script>
+        <script src="../public/js/produccion/render_control_usuario.js"></script>
     <?php } ?>
-    <script src="../../public/js/produccion/estados.js"></script>
+    <script src="../public/js/produccion/estados.js"></script>
 </body>
 </html>
