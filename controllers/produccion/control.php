@@ -44,6 +44,9 @@
                 $cementado = $this->model->buscar('v_cementado','Id_Folio_1',$_GET['valor']);
                 $this->model= new Model();
                 $acabado = $this->model->buscar('v_acabado','Id_Folio_1',$_GET['valor']);
+                $this->model= new Model();
+                $condicion = "Id_Folio_1 = '".$_GET['valor']."'";
+                $factores = $this->model->buscar_personalizado('t_control_produccion','factor',$condicion);
 
                 $data = [
                     "control" => $control,
@@ -52,7 +55,8 @@
                     "rolado" => $rolado,
                     "shank" => $shank,
                     "cementado" => $cementado,
-                    "acabado" => $acabado
+                    "acabado" => $acabado,
+                    "factores" => $factores
                 ];
 
                 $this->web->PDF('produccion/control',$data);

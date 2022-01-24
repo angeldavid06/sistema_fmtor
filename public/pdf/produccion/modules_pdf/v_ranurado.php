@@ -1,7 +1,8 @@
 <table>
     <thead>
         <tr>
-            <th colspan="5"  class="th-estado">RANURADO</th>
+            <th colspan="3" class="th-estado">RANURADO</th>
+            <th colspan="2" class="txt-left">Factor: <?php echo $data['factores'][1]['factor'];?></th>
         </tr>
         <tr>
             <th>Botes</th>
@@ -77,7 +78,7 @@
             echo $fila;
         }
 
-        for ($i=count($fechas); $i < 10; $i++) { 
+        for ($i=count($fechas); $i < 12; $i++) { 
             echo '<tr>'.
                     '<td style="height: 10px;"></td>'.
                     '<td style="height: 10px;"></td>'.
