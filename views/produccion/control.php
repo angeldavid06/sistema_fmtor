@@ -32,7 +32,7 @@
                     <div class="d-flex align-content-center">
                         <input type="number" name="op_control" id="op_control" data-control="" placeholder="Orden de Producción">
                         <button title="Buscar información" id="informacion_op" class="btn btn-icon-self material-icons">search</button>
-                        <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+                        <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
                             <button data-modal="modal-ingresar" title="Nuevo registro diario" class="material-icons btn btn-icon-self" id="btn-form-control">add</button>
                         <?php } ?>
                     </div>
@@ -67,7 +67,7 @@
                             <div class="d-flex align-content-center justify-between">
                                 <div style="width: 200px;" class="d-flex align-content-center">
                                     <input style="width: 130px;" type="text" name="factor_control" id="factor_control" placeholder="Factor: 0.0">
-                                    <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+                                    <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
                                         <button title="Actualizar el factor" id="nuevo_factor" class="btn btn-icon-self material-icons">update</button>
                                     <?php } ?>
                                 </div>
@@ -86,7 +86,7 @@
                                         <th>Pzas. Producidas</th>
                                         <th>Kg.</th>
                                         <th width="100px">Máquina</th>
-                                        <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+                                        <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
                                             <th width="80px"></th>
                                             <th width="80px"></th>
                                         <?php } ?>
@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <?php
-                    if ($_SESSION['rol'] == 'Administrativo') {
+                    if ($_SESSION['cm9s'] == 'Administrativo') {
                         require_once 'public/modules/produccion/control_modal.php';
                         require_once 'public/modules/produccion/diario_modal.php';
                     } 
@@ -108,7 +108,7 @@
     </div>
     <script src="../public/js/fmtor_libreria.js"></script>
     <script src="../public/js/produccion/control.js"></script>
-    <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+    <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
         <script src="../public/js/produccion/render_control_admin.js"></script>
     <?php } else { ?>
         <script src="../public/js/produccion/render_control_usuario.js"></script>

@@ -89,15 +89,21 @@
         }
 
         public function sesiones ($empleado,$nombre,$rol,$depto,$foto,$puesto) {
-            $_SESSION['empleado'] = $empleado;
-            $_SESSION['nombre_usuario'] = $nombre;
-            $_SESSION['rol'] = $rol;
-            $_SESSION['depto'] = $depto;
-            $_SESSION['foto'] = $foto;
-            $_SESSION['puesto'] = $puesto;
+            // Sesión con el id del empleado
+            $_SESSION['ZW1wbGVhZG8='] = $empleado;
+            // Sesión con el nombre de usuario
+            $_SESSION['bm9tYnJlX3VzdWFyaW8='] = $nombre;
+            // Sesión con el rol del usuario
+            $_SESSION['cm9s'] = $rol;
+            // Sesión con el departamento del usuario
+            $_SESSION['ZGVwdG8='] = $depto;
+            // Sesión con la foto del usuario
+            $_SESSION['Zm90bw=='] = $foto;
+            // Sesión con el puesto del usuario
+            $_SESSION['cHVlc3Rv'] = $puesto;
 
             $departamento = [
-                "depto" => $_SESSION['depto']
+                "depto" => $_SESSION['ZGVwdG8=']
             ];
 
             return $departamento;

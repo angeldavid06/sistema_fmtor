@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <?php
-                    if ($_SESSION['depto'] == 'Produccion' || $_SESSION['depto'] == 'Producción'  || $_SESSION['rol'] == 'SuperUsuario') {
+                    if ($_SESSION['ZGVwdG8='] == 'Produccion' || $_SESSION['ZGVwdG8='] == 'Producción'  || $_SESSION['cm9s'] == 'SuperUsuario') {
                         require_once 'public/modules/menus/menu_principal_produccion.php'; 
                     } 
                 ?>

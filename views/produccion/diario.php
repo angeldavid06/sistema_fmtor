@@ -18,7 +18,7 @@
                         <h1>Registro Diario de Producción</h1>
                     </div>
                     <div style="padding-top: 0px;" class="tarjeta-transparente d-flex justify-right align-content-center flex-wrap">
-                        <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+                        <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
                             <button data-modal="modal-ingresar-diario" title="Nuevo registro diario" class="material-icons btn btn-icon-self" id="btn-form-control">add</button>
                         <?php } ?>
                     </div>
@@ -49,7 +49,7 @@
                                 <th>Maquina</th>
                                 <th>Descripción</th>
                                 <th>Observaciones</th>
-                                <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+                                <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
                                     <th></th>
                                     <th></th>
                                 <?php } ?>
@@ -60,7 +60,7 @@
                     </table>
                 </div>
                 <?php
-                    if ($_SESSION['rol'] == 'Administrativo') {
+                    if ($_SESSION['cm9s'] == 'Administrativo') {
                         require_once 'public/modules/produccion/control_modal.php';
                         require_once 'public/modules/produccion/diario_modal.php';
                     } 
@@ -69,7 +69,7 @@
         </div>
     </div>
     <script src="../public/js/fmtor_libreria.js"></script>
-    <?php if ($_SESSION['rol'] == 'Administrativo') { ?>
+    <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
         <script src="../public/js/produccion/render_diario_admin.js"></script>
     <?php } else { ?>
         <script src="../public/js/produccion/render_diario_usuario.js"></script>

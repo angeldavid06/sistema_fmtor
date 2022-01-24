@@ -1,14 +1,14 @@
 <div class="menu hidde_menu" id="menu">
     <div class="informacion">
         <div class="foto">
-            <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['foto'])?>" alt="">
+            <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['Zm90bw=='])?>" alt="">
         </div>
         <div class="nombre">
             <p>
-                <?php echo $_SESSION['nombre_usuario']; ?>
+                <?php echo $_SESSION['bm9tYnJlX3VzdWFyaW8=']; ?>
             </p>
             <p>
-                <?php echo $_SESSION['puesto']; ?>
+                <?php echo $_SESSION['cHVlc3Rv']; ?>
             </p>
         </div>
     </div>
@@ -37,7 +37,7 @@
             </a>
         </nav>
         <?php 
-            if ($_SESSION['depto'] == 'Produccion' || $_SESSION['rol'] == 'SuperUsuario') {
+            if ($_SESSION['ZGVwdG8='] == 'Produccion' || $_SESSION['ZGVwdG8='] == 'SuperUsuario') {
                 require_once 'produccion.php';
             }
         ?>
