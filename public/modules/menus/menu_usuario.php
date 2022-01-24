@@ -23,7 +23,7 @@
             <p>General</p>
         </div>
         <nav class="opciones">
-            <a href="http://localhost/sistema_fmtor/produccion/main/ordenes">
+            <a href="http://localhost/sistema_fmtor/usuario/personal">
                 <i class="material-icons-round">person</i>
                 Información Personal
             </a>
@@ -37,7 +37,7 @@
             </a>
         </nav>
         <?php 
-            if ($_SESSION['ZGVwdG8='] == 'Produccion' || $_SESSION['ZGVwdG8='] == 'SuperUsuario') {
+            if ($_SESSION['ZGVwdG8='] == 'Produccion' || $_SESSION['cm9s'] == 'SuperUsuario') {
                 require_once 'produccion.php';
             }
         ?>

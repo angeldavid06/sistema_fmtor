@@ -103,13 +103,10 @@
            echo json_encode($data);
         }
 
-        public function encontrarEmpleado()
-        {
+        public function encontrarEmpleado() {
             $data = $this->model->buscar_personalizado('datos_personales','*','nombre LIKE '."'%".$_GET['nombre']."%'");
             echo json_encode($data);
-            
         }
-
  
 
         function newUser()

@@ -23,7 +23,7 @@
                 <div class="tarjeta-transparente menu-principal">
                     <h2>General</h2>
                     <div class="d-grid g-3">
-                        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/sii/main/">
+                        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/personal">
                             <div class="d-grid g-1">
                                 <i class="material-icons-outlined icon">people</i>
                                 <span class="material-icons-outlined">people</span>

@@ -30,6 +30,12 @@
         
         public function maquinas () {
             $this->web->View('produccion/maquinas','');
+        }        
+        
+        public function personal () {
+            if (isset($_SESSION['ZW1wbGVhZG8='])) {
+                $this->web->View('sii/personal','');
+            }
         }
     }
 ?>
