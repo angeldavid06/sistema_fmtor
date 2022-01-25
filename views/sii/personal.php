@@ -13,8 +13,13 @@
         <div class="contenido hidde_menu" id="contenido">
             <?php require_once 'public/modules/header.php'; ?>
             <div class="informacion">
-                <div style="padding: 0;" class="tarjeta-transparente">
-                    <h1>Información General</h1>
+                <div style="padding: 0;" class="tarjeta-transparente d-grid g-2">
+                    <div class="d-grid g-1">
+                        <h1>Información General</h1>
+                    </div>
+                    <div class="d-flex justify-right">
+                        <button class="btn btn-print" id="generar_renuncia">Generar Renuncia</button>
+                    </div>
                 </div>
                 <div class="tarjeta">
                     <div class="d-grid g-5">
@@ -116,9 +121,15 @@
             })
         }
 
+        const btn_renuncia = document.getElementById('generar_renuncia');
+
+        btn_renuncia.addEventListener('click', () => {
+            printPage(url+'/sii/personal/generar_pdf_renuncia');
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             buscar_info();
-        })
+        });
     </script>
 </body>
 </html>

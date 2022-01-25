@@ -16,14 +16,14 @@ form_control.addEventListener('submit', (evt)=> {
     evt.preventDefault();
     let aux = true;
     const inputs = form_control.getElementsByClassName('input')
-    for (let i = 1; i < inputs.length; i++) {
-        if (inputs[i].value == '') {
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].value == '' || i != 4) {
             inputs[i].classList.add('input-error');
             aux = false;
         } 
     }
     if (aux) {
-        if (inputs[0].value == '') {
+        if (inputs[4].value == '') {
             open_confirm('¿Desea registrar esta información sin una O.P.?',registrar_sin_op)
         } else {
             registrar_control()

@@ -17,6 +17,10 @@
                 echo json_encode($result);
             }
         }
+
+        public function generar_pdf_renuncia () {
+            $this->web->PDF('sii/cartaRenunciaPDF','');
+        }
     }
     
 
