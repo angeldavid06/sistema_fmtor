@@ -28,6 +28,9 @@ form_control.addEventListener('submit', (evt)=> {
         } else {
             registrar_control()
         }
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].classList.remove('input-error');
+        }
     } else {
         open_alert('Debes llenar los campos correctamente','rojo')
     }
@@ -45,6 +48,9 @@ form_actualizar.addEventListener('submit', (evt) => {
     }
     if (aux) {
         actualizar_registro()
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].classList.remove('input-error');
+        }
     } else {
         open_alert('Debes llenar los campos correctamente','rojo')
     }

@@ -9,6 +9,16 @@
         <input type="text" name="estado" id="estado" hidden>
         <div class="d-grid g-2">
             <div class="d-grid g-1 grid-gap-0">
+                <p>Fecha:</p>
+                <input class="input" type="date" name="fecha" id="fecha" placeholder="Ingresa la fecha de entrega">
+            </div>
+            <div class="d-grid g-1 grid-gap-0">
+                <p>Turno:</p>
+                <input class="input "type="text" name="turno" id="turno" placeholder="Ingresa el turno">
+            </div>
+        </div>
+        <div class="d-grid g-2">
+            <div class="d-grid g-1 grid-gap-0">
                 <p>Número de máquina:</p>
                 <input class="input no_maquina" type="number" name="no_maquina" id="no_maquina">
             </div>
@@ -25,16 +35,6 @@
             <div class="d-grid g-1 grid-gap-0">
                 <p>Pzas. entregadas:</p>
                 <input class="input" type="number" name="pzas" id="pzas" placeholder="0">
-            </div>
-        </div>
-        <div class="d-grid g-2">
-            <div class="d-grid g-1 grid-gap-0">
-                <p>Fecha:</p>
-                <input class="input" type="date" name="fecha" id="fecha" placeholder="Ingresa la fecha de entrega">
-            </div>
-            <div class="d-grid g-1 grid-gap-0">
-                <p>Turno:</p>
-                <input class="input "type="text" name="turno" id="turno" placeholder="Ingresa el turno">
             </div>
         </div>
         <p>Observaciones:</p>
@@ -132,8 +132,8 @@
     <form id="form-control-diario">
         <div class="d-grid g-2">
             <div class="d-grid g-1 grid-gap-0">
-                <p>Orden de Producción:</p>
-                <input class="input" type="text" name="op" id="op" placeholder="00000">
+                <p>Número de máquina:</p>
+                <input class="input no_maquina_sp" type="number" name="no_maquina" id="no_maquina">
             </div>
             <div class="d-grid g-1 grid-gap-0">
                 <p>Estados de Producción:</p>
@@ -150,11 +150,21 @@
         </div>
         <div class="d-grid g-2">
             <div class="d-grid g-1 grid-gap-0">
-                <p>Número de máquina:</p>
-                <input class="input no_maquina_sp" type="number" name="no_maquina" id="no_maquina">
+                <p>Fecha:</p>
+                <input class="input" type="date" name="fecha" id="fecha" placeholder="Ingresa la fecha de entrega">
             </div>
             <div class="d-grid g-1 grid-gap-0">
-                <p>Número de botes:</p>
+                <p>Turno:</p>
+                <input class="input "type="text" name="turno" id="turno" placeholder="Ingresa el turno">
+            </div>
+        </div>
+        <div class="d-grid g-2">
+            <div class="d-grid g-1 grid-gap-0">
+                <p>Orden de Producción:</p>
+                <input class="input" type="text" name="op" id="op" placeholder="00000">
+            </div>
+            <div class="d-grid g-1 grid-gap-0">
+                <p>Número de bote:</p>
                 <input class="input" type="number" name="no_botes" id="no_botes" placeholder="0">
             </div>
         </div>
@@ -166,16 +176,6 @@
             <div class="d-grid g-1 grid-gap-0">
                 <p>Pzas. entregadas:</p>
                 <input class="input" type="number" name="pzas" id="pzas" placeholder="0">
-            </div>
-        </div>
-        <div class="d-grid g-2">
-            <div class="d-grid g-1 grid-gap-0">
-                <p>Fecha:</p>
-                <input class="input" type="date" name="fecha" id="fecha" placeholder="Ingresa la fecha de entrega">
-            </div>
-            <div class="d-grid g-1 grid-gap-0">
-                <p>Turno:</p>
-                <input class="input "type="text" name="turno" id="turno" placeholder="Ingresa el turno">
             </div>
         </div>
         <p>Observaciones:</p>
