@@ -104,7 +104,11 @@
 
         public function insertar() {
             if (isset($_POST['estado']) && isset($_POST['op'])) {
-                $this->model_control->setNoMaquina($_POST['no_maquina']);
+                if (isset($_POST['no_maquina'])) {
+                    $this->model_control->setNoMaquina($_POST['no_maquina']);
+                } else {
+                    $this->model_control->setNoMaquina(0);
+                }
                 $this->model_control->setFechaEntrega($_POST['fecha']);
                 $this->model_control->setBote($_POST['no_botes']);
                 $this->model_control->setPzas($_POST['pzas']);
@@ -128,7 +132,11 @@
 
         public function insertar_sin_op () {
             if (isset($_POST['estado']) && $_POST['estado'] != '') {
-                $this->model_control->setNoMaquina($_POST['no_maquina']);
+                if (isset($_POST['no_maquina'])) {
+                    $this->model_control->setNoMaquina($_POST['no_maquina']);
+                } else {
+                    $this->model_control->setNoMaquina(0);
+                }
                 $this->model_control->setFechaEntrega($_POST['fecha']);
                 $this->model_control->setBote($_POST['no_botes']);
                 $this->model_control->setPzas($_POST['pzas']);

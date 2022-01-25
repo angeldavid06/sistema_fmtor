@@ -137,7 +137,7 @@
             </div>
             <div class="d-grid g-1 grid-gap-0">
                 <p>Estados de Producción:</p>
-                <select class="input" name="estado" id="estado">
+                <select class="input select-estado" name="estado" id="estado">
                     <option value="">Selecciona un estado de producción:</option>
                     <option value="1">FORJADO</option>
                     <option value="2">RANURADO</option>
@@ -151,7 +151,7 @@
         <div class="d-grid g-2">
             <div class="d-grid g-1 grid-gap-0">
                 <p>Número de máquina:</p>
-                <input class="input" type="number" name="no_maquina" id="no_maquina">
+                <input class="input no_maquina_sp" type="number" name="no_maquina" id="no_maquina">
             </div>
             <div class="d-grid g-1 grid-gap-0">
                 <p>Número de botes:</p>

@@ -50,6 +50,17 @@ form_actualizar.addEventListener('submit', (evt) => {
     }
 })
 
+const select_estado = document.getElementsByClassName('select-estado')
+select_estado[0].addEventListener('change', () => {
+    const maquina = document.getElementsByClassName('no_maquina_sp')
+    if (select_estado[0].value == 6) {
+        maquina[0].setAttribute('disabled','')
+        maquina[0].value = 0
+    } else {
+        maquina[0].removeAttribute('disabled','')
+    }
+})
+
 const actualizar_registro = () => {
     const respuesta = fetchAPI(form_actualizar, url+'/produccion/control/actualizar','POST')
     respuesta.then(json => {
