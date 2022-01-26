@@ -107,20 +107,22 @@ const crear_tabla = (semanas,rango, ops) => {
         }
     }
 
-    const sem_5 = new Date(semana_5[1].split('-')[0],semana_5[1].split('-')[1]-1,semana_5[1].split('-')[2]);
-
-    if (sem_5.getTime() <= fecha_actual.getTime()) {
-        retraso = true
-        ops.forEach(op => {
-            retrasos.push(op)
-        })
-    } else {
-        if (retraso) {
-            render_retrasos(retrasos)
-            retraso = false
+    if (semana_5.length >= 1) {
+        const sem_5 = new Date(semana_5[1].split('-')[0],semana_5[1].split('-')[1],semana_5[1].split('-')[2]);
+        if (sem_5.getTime() <= fecha_actual.getTime()) {
+            retraso = true
+            ops.forEach(op => {
+                retrasos.push(op)
+            })
+        } else {
+            if (retraso) {
+                render_retrasos(retrasos)
+                retraso = false
+            }
+            render_estado(rango,semana_3,semana_5,ops)
         }
-        render_estado(rango,semana_3,semana_5,ops)
     }
+
 }
 
 const agrupar_registros = (registros,semanas) => {
@@ -233,7 +235,11 @@ const extraer_meses = (json) => {
         const fecha = el.Fecha.split(' ')
         if (contador == 0) {
             if ((fecha[0].split('-')[1]-1) >= 1) {
-                meses.push(fecha[0].split('-')[0]+'-'+(fecha[0].split('-')[1]-1))
+                if (parseInt(fecha[0].split('-')[1]) < 10) {
+                    meses.push(fecha[0].split('-')[0]+'-0'+(fecha[0].split('-')[1]-1))
+                } else {
+                    meses.push(fecha[0].split('-')[0]+'-'+(fecha[0].split('-')[1]-1))
+                }
             } else {
                 meses.push((fecha[0].split('-')[0]-1)+'-'+12)
             }
@@ -247,9 +253,22 @@ const extraer_meses = (json) => {
     });
 
     if ((meses[meses.length-1].split('-')[1]+1) > 12) {
-        meses.push((parseInt(meses[meses.length-1].split('-')[0])+1)+'-'+1);
+        meses.push(
+            (parseInt(
+                meses[meses.length-1].split('-')[0])+1)+
+                '-01');
     } else {
-        meses.push((meses[meses.length-1].split('-')[0])+'-'+(meses[meses.length-1].split('-')[1]+1));
+        if (parseInt(meses[meses.length-1].split('-')[1]) < 10) {
+            meses.push(
+                (meses[meses.length-1].split('-')[0])+
+                '-0'+
+                (parseInt(meses[meses.length-1].split('-')[1])+1));
+        } else {
+            meses.push(
+                (meses[meses.length-1].split('-')[0])+
+                '-'+
+                (parseInt(meses[meses.length-1].split('-')[1])+1));
+        }
     }
 
     dividir_registros(json,meses)
