@@ -20,8 +20,12 @@
             </tr>
             <tr>
                 <th>Fecha: <?php echo explode(' ',$data['control'][0]['Fecha'])[0]; ?></th>
-                <th>Cliente: <?php echo $data['control'][0]['Cliente']; ?></th>
+                <th style="background: yellow">Cliente: <?php echo $data['control'][0]['Cliente']; ?></th>
                 <th>Descripción: <?php echo $data['control'][0]['descripcion']; ?></th>
+            </tr>
+            <tr>
+                <th style="background: green; color: white;" colspan="2">Tratamiento: <?php echo $data['control'][0]['tratamiento']; ?></th>
+                <th>Material: <?php echo $data['control'][0]['material']; ?></th>
             </tr>
         </thead>
         <tbody>

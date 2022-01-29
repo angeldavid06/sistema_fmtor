@@ -80,7 +80,7 @@
                 echo $fila;      
             }
 
-            for ($i=count($fechas); $i < 12; $i++) { 
+            for ($i=count($fechas); $i < 11; $i++) { 
                 echo '<tr>'.
                         '<td style="height: 10px;"></td>'.
                         '<td style="height: 10px;"></td>'.

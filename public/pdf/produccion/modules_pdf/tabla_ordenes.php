@@ -25,7 +25,7 @@
             echo '<tr>'.
                     '<td class="txt-right th-estado">Kilos mensuales: </td>'.
                     '<td class="txt-right th-estado">'.number_format($total_kilos_mensual, 2, '.', '').'</td>'.
-                    '<td colspan="9" class="txt-right th-estado">Acumulado mensual:</td>'.
+                    '<td colspan="11" class="txt-right th-estado">Acumulado mensual:</td>'.
                     '<td class="txt-right th-estado">$ '.number_format($total_acumulado_mensual, 2, '.', '').'</td>'.
                     '<td colspan="2" class="th-estado"></td>'.
                 '</tr>';
@@ -39,7 +39,7 @@
         }
 
         if ($aux == 0 || $fecha_anterior != (explode('-',$fecha)[0].'-'.explode('-',$fecha)[1])  && (explode('-',$fecha)[0].'-'.explode('-',$fecha)[1]) != '0000-00') {
-            echo '<tr><td class="txt-center th-estado" colspan="14">'.$meses[explode('-',$fecha)[1]-1].' '.explode('-',$fecha)[0].'</td></tr>';
+            echo '<tr><td class="txt-center th-estado" colspan="16">'.$meses[explode('-',$fecha)[1]-1].' '.explode('-',$fecha)[0].'</td></tr>';
             $fecha_anterior = explode('-',$fecha)[0].'-'.explode('-',$fecha)[1];
             $aux++;
         }
@@ -56,6 +56,8 @@
                 '<td>'.$data[$i]['Clientes'].'</td>'.
                 '<td>'.$data[$i]['medida'].'</td>'.
                 '<td>'.$data[$i]['descripcion'].'</td>'.
+                '<td>'.$data[$i]['tratamiento'].'</td>'.
+                '<td>'.$data[$i]['material'].'</td>'.
                 '<td>'.$data[$i]['acabados'].'</td>'.
                 '<td class="txt-right">'.$data[$i]['cantidad_elaborar'].'</td>'.
                 '<td class="txt-right">'.$data[$i]['precio_millar'].'</td>'.
@@ -68,7 +70,7 @@
     echo '<tr>'.
                     '<td class="txt-right th-estado">Kilos mensuales: </td>'.
                     '<td class="txt-right th-estado">'.number_format($total_kilos_mensual, 2, '.', '').'</td>'.
-                    '<td colspan="9" class="txt-right th-estado">Acumulado mensual:</td>'.
+                    '<td colspan="11" class="txt-right th-estado">Acumulado mensual:</td>'.
                     '<td class="txt-right th-estado">$ '.number_format($total_acumulado_mensual, 2, '.', '').'</td>'.
                     '<td colspan="2" class="th-estado"></td>'.
                 '</tr>';
@@ -76,7 +78,7 @@
     echo '<tr>'.
             '<td class="txt-right th-estado">Total kilos: </td>'.
             '<td class="txt-right th-estado">'.number_format($total_kilos, 2, '.', '').'</td>'.
-            '<td colspan="10" class="txt-right th-estado">Total acumulado</td>'.
+            '<td colspan="12" class="txt-right th-estado">Total acumulado</td>'.
             '<td class="txt-right th-estado">$ '.$total_acumulado.'</td>'.
             '<td class="th-estado"></td>'.
     '</tr>';

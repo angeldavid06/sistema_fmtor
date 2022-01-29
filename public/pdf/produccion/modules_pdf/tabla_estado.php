@@ -53,7 +53,7 @@
                 $aux_semanas[] = $meses[$i][0].'-'.$meses[$i][1].'-'.$j;
             }
             
-            if ($dia == 'Sunday') {
+            if ($dia == 'Sunday' && count($aux_semanas) > 1) {
                 $rango_semanas[] = $aux_semanas;
                 $aux_semanas = array();
                 $aux_semanas[] = $meses[$i][0].'-'.$meses[$i][1].'-'.$j;

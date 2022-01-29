@@ -9,12 +9,14 @@ const render_retrasos = (ops) => {
                                 '<table>'+
                                     '<thead>'+
                                         '<tr>'+
-                                            '<th colspan="7">RETRASOS</th>'+
+                                            '<th colspan="9">RETRASOS</th>'+
                                         '</tr>'+
                                         '<tr>'+
                                             '<th>O.P.</th>'+
                                             '<th>Cliente</th>'+
                                             '<th style="min-width: 170px;">Descripción</th>'+
+                                            '<th>Tratamiento</th>'+
+                                            '<th>Material</th>'+
                                             '<th>Cantidad</th>'+
                                             '<th>Precio</th>'+
                                             '<th>Total</th>'+
@@ -31,6 +33,8 @@ const render_retrasos = (ops) => {
                                 '<td>'+el.Id_Folio+'</td>'+
                                 '<td>'+el.Clientes+'</td>'+
                                 '<td>'+el.descripcion+'</td>'+
+                                '<td>'+el.tratamiento+'</td>'+
+                                '<td>'+el.material+'</td>'+
                                 '<td>'+el.cantidad_elaborar+'</td>'+
                                 '<td>'+el.precio_millar+'</td>'+
                                 '<td>'+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar * el.precio_millar)+'</td>'+
@@ -47,20 +51,22 @@ const render_estado = (semana_1,semana_3,semana_5,ops) => {
                                     '<thead>'+
                                         '<tr>'+
                                             '<th>1 SEM.</th>'+
-                                            '<th colspan="6">DEL '+semana_1[0]+' AL ' +semana_1[1]+'</th>'+
+                                            '<th colspan="8">DEL '+semana_1[0]+' AL ' +semana_1[1]+'</th>'+
                                         '</tr>'+
                                         '<tr>'+
                                             '<th>3 SEM.</th>'+
-                                            '<th colspan="6">DEL '+semana_3[0]+' AL '+semana_3[1]+'</th>'+
+                                            '<th colspan="8">DEL '+semana_3[0]+' AL '+semana_3[1]+'</th>'+
                                         '</tr>'+
                                         '<tr>'+
                                             '<th>5 SEM.</th>'+
-                                            '<th colspan="6">DEL '+semana_5[0]+' AL '+semana_5[1]+'</th>'+
+                                            '<th colspan="8">DEL '+semana_5[0]+' AL '+semana_5[1]+'</th>'+
                                         '</tr>'+
                                         '<tr>'+
                                             '<th>O.P.</th>'+
                                             '<th>Cliente</th>'+
                                             '<th style="min-width: 170px;">Descripción</th>'+
+                                            '<th>Tratamiento</th>'+
+                                            '<th>Material</th>'+
                                             '<th>Cantidad</th>'+
                                             '<th>Precio</th>'+
                                             '<th>Total</th>'+
@@ -77,6 +83,8 @@ const render_estado = (semana_1,semana_3,semana_5,ops) => {
                                 '<td>'+el.Id_Folio+'</td>'+
                                 '<td>'+el.Clientes+'</td>'+
                                 '<td>'+el.descripcion+'</td>'+
+                                '<td>'+el.tratamiento+'</td>'+
+                                '<td>'+el.material+'</td>'+
                                 '<td>'+el.cantidad_elaborar+'</td>'+
                                 '<td>'+el.precio_millar+'</td>'+
                                 '<td>'+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar * el.precio_millar)+'</td>'+
@@ -93,6 +101,17 @@ const crear_tabla = (semanas,rango, ops) => {
     let fecha_actual = new Date()
     
     for (let i = 0; i < semanas.length; i++) {
+        let semana = ''
+        if (parseInt(semanas[i][1].split('-')[1]) < 10){ 
+            semana = semanas[i][1].split('-')[0]+'-0'+parseInt(semanas[i][1].split('-')[1])+'-'+semanas[i][1].split('-')[2];
+        } else {
+            semana = semanas[i][1].split('-')[0]+'-'+semanas[i][1].split('-')[1]+'-'+semanas[i][1].split('-')[2];
+        }
+
+        if (parseInt(semana.split('-')[2]) < 10){ 
+            semana = semana.split('-')[0]+'-'+semana.split('-')[1]+'-0'+parseInt(semana.split('-')[2]);
+        }
+
         if (semanas[i][1] == rango[1] || contador_semana > 1) {
             if (contador_semana == 3) {
                 semana_3 = [semanas[i][0],semanas[i][1]]
@@ -106,23 +125,20 @@ const crear_tabla = (semanas,rango, ops) => {
             }
         }
     }
-
-    if (semana_5.length >= 1) {
-        const sem_5 = new Date(semana_5[1].split('-')[0],semana_5[1].split('-')[1],semana_5[1].split('-')[2]);
-        if (sem_5.getTime() <= fecha_actual.getTime()) {
-            retraso = true
-            ops.forEach(op => {
-                retrasos.push(op)
-            })
-        } else {
-            if (retraso) {
-                render_retrasos(retrasos)
-                retraso = false
-            }
-            render_estado(rango,semana_3,semana_5,ops)
+    
+    const sem_5 = new Date(semana_5[1].split('-')[0],semana_5[1].split('-')[1]-1,semana_5[1].split('-')[2]);
+    if (sem_5.getTime() <= fecha_actual.getTime()) {
+        retraso = true
+        ops.forEach(op => {
+            retrasos.push(op)
+        })
+    } else {
+        if (retraso) {
+            render_retrasos(retrasos)
+            retraso = false
         }
+        render_estado(rango,semana_3,semana_5,ops)
     }
-
 }
 
 const agrupar_registros = (registros,semanas) => {
@@ -140,16 +156,47 @@ const agrupar_registros = (registros,semanas) => {
                 let rango_max = new Date(rango[1].split('-')[0],rango[1].split('-')[1]-1,rango[1].split('-')[2]);
 
                 while(rango_maximo.getTime() >= rango_minimo.getTime()){
-                    const aux = rango_minimo.getFullYear() + '-' + (rango_minimo.getMonth() +1) + '-' + rango_minimo.getDate()
                     const f_op = fecha_op.split('-')
+                    let aux = rango_minimo.getFullYear()
+                    if ((rango_minimo.getMonth()+1) < 10) {
+                        aux = aux + '-0' + (rango_minimo.getMonth()+1)
+                    } else {
+                        aux = aux + '-' + (rango_minimo.getMonth()+1)
+                    }
+
+                    if (rango_minimo.getDate() < 10) {
+                        aux = aux + '-0' + rango_minimo.getDate()
+                    } else {
+                        aux = aux + '-' + rango_minimo.getDate()
+                    }
                     
                     rango_minimo.setDate(rango_minimo.getDate() + 1);
-                    
-                    if (aux == (f_op[0] + '-' + f_op[1] + '-' + parseInt(f_op[2]))) {
+                    if (aux == (f_op[0] + '-' + f_op[1] + '-' + f_op[2])) {
                         rango_min = rango_min.toLocaleDateString()
                         rango_max = rango_max.toLocaleDateString()
-                        const rangos = [rango_min.split('/')[2]+'-'+rango_min.split('/')[1]+'-'+rango_min.split('/')[0],rango_max.split('/')[2]+'-'+rango_max.split('/')[1]+'-'+rango_max.split('/')[0]]
+                        let rango_anterior_min = ''
+                        let rango_anterior_max = ''
+                        if (parseInt(rango_min.split('/')[1]) < 10){ 
+                            rango_anterior_min = rango_min.split('/')[2]+'-0'+parseInt(rango_min.split('/')[1])+'-'+rango_min.split('/')[0];
+                        } else {
+                            rango_anterior_min = rango_min.split('/')[2]+'-'+rango_min.split('/')[1]+'-'+rango_min.split('/')[0];
+                        }
 
+                        if (parseInt(rango_anterior_min.split('-')[2]) < 10){ 
+                            rango_anterior_min = rango_anterior_min.split('-')[0]+'-'+rango_anterior_min.split('-')[1]+'-0'+parseInt(rango_anterior_min.split('-')[2]);
+                        } 
+
+                        if (rango_max.split('/')[1] < 10){ 
+                            rango_anterior_max = rango_max.split('/')[2]+'-0'+rango_max.split('/')[1]+'-'+rango_max.split('/')[0];
+                        } else {
+                            rango_anterior_max = rango_max.split('/')[2]+'-'+rango_max.split('/')[1]+'-'+rango_max.split('/')[0];
+                        }
+
+                        if (parseInt(rango_anterior_max.split('-')[2]) < 10){ 
+                            rango_anterior_max = rango_anterior_max.split('-')[0]+'-'+rango_anterior_max.split('-')[1]+'-0'+parseInt(rango_anterior_max.split('-')[2]);
+                        }
+
+                        const rangos = [rango_anterior_min,rango_anterior_max]
                         if (fecha_anterior == rangos[1] || fecha_anterior == '') {
                             fechas.push(f_op[0] + '-' + f_op[1] + '-' + parseInt(f_op[2]))
                             ops.push(op)
@@ -169,6 +216,7 @@ const agrupar_registros = (registros,semanas) => {
             })
         })
     })
+    // console.log(rango_anterior);
     crear_tabla(semanas,rango_anterior,ops)
 }
 
@@ -188,13 +236,21 @@ const obtener_semanas = (meses) => {
             const dia = dia_semana.getDay()
 
             if (dia == 6 && semana.length > 0) {
-                semana.push(meses[i]+'-'+dia_semana.getDate())
+                if (dia_semana.getDate() < 10) {
+                    semana.push(meses[i]+'-0'+dia_semana.getDate())
+                } else {
+                    semana.push(meses[i]+'-'+dia_semana.getDate())
+                }
                 semanas.push(semana)
                 semana = []
             }
-
+            
             if (dia == 0) {
-                semana.push(meses[i]+'-'+dia_semana.getDate())
+                if (dia_semana.getDate() < 10) {
+                    semana.push(meses[i]+'-0'+dia_semana.getDate())
+                } else {
+                    semana.push(meses[i]+'-'+dia_semana.getDate())
+                }
             }
         }
     }

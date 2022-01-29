@@ -74,6 +74,8 @@ const render_ordenes = (json) => {
                             '<td>'+el.Clientes+'</td>'+
                             '<td>'+el.medida+'</td>'+
                             '<td>'+el.descripcion+'</td>'+
+                            '<td>'+el.tratamiento+'</td>'+
+                            '<td>'+el.material+'</td>'+
                             '<td>'+el.acabados+'</td>'+
                             '<td class="number">'+el.cantidad_elaborar+'</td>'+
                             '<td class="txt-right" class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+

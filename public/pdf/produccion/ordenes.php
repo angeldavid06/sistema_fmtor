@@ -18,10 +18,12 @@
                 <th class="th-estado">Kg.</th>
                 <th class="th-estado">Factor</th>
                 <th class="th-estado">N° O.P.</th>
-                <th class="th-estado">Fecha de O.P.</th>
+                <th class="th-estado" style="min-width: 80px;">Fecha de O.P.</th>
                 <th class="th-estado">Cliente</th>
                 <th class="th-estado">Medida</th>
                 <th class="th-estado">Descripción</th>
+                <th class="th-estado">Tratamiento</th>
+                <th class="th-estado">Material</th>
                 <th class="th-estado">Acabado</th>
                 <th class="th-estado">Cant</th>
                 <th class="th-estado">Precio</th>
@@ -62,17 +64,12 @@
                 <p>CLAVE: PRO-F-000</p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>VERSIÓN: 1</p>
+                <p>VERSIÓN: 2</p>
             </div>
             <div class="d-flex align-content-bottom">
                 <p>FECHA DE APROBACIÓN: </p>
             </div>
         </div>
     </div>
-    <script>
-        const totalPages = document.querySelectorAll('.page').length;
-        document.documentElement.style.setProperty('--total-pages', totalPages);
-        console.log(totalPages);
-    </script>
 </body>
 </html>

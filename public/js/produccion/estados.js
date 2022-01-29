@@ -117,6 +117,8 @@ const render_info = (json) => {
                             '<label>Fecha: <br> '+el.Fecha.split(' ')[0]+'</label>'+
                             '<label>Cantidad: <br> '+el.cantidad_elaborar+'</label>'+
                             '<label>Descripción: <br> '+el.descripcion+'</label>'+
+                            '<label>Tratamiento: <br> '+el.tratamiento+'</label>'+
+                            '<label>Material: <br> '+el.material+'</label>'+
                             '<label>Factor: <br> '+el.factor+'</label>';
     })
 }

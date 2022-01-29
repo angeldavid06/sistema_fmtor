@@ -40,6 +40,8 @@
                                         <th style="min-width: 80px;">Cliente</th>
                                         <th style="min-width: 120px;">Medida</th>
                                         <th style="min-width: 190px;">Descripción</th>
+                                        <th style="min-width: 80px;">Tratamiento</th>
+                                        <th style="min-width: 80px;">Material</th>
                                         <th style="min-width: 130px;">Acabado</th>
                                         <th>Cant.</th>
                                         <th style="min-width: 80px;">Precio</th>

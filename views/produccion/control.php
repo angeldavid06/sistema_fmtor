@@ -50,6 +50,8 @@
                                     <label>Fecha:</label>
                                     <label>Cantidad:</label>
                                     <label>Descripción:</label>
+                                    <label>Tratamiento:</label>
+                                    <label>Material:</label>
                                     <label>Factor:</label>
                                 </div>
                             </div>

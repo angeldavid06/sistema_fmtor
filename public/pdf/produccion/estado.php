@@ -54,7 +54,7 @@
                 <p>CLAVE: PRO-F-000</p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>VERSIÓN: 1</p>
+                <p>VERSIÓN: 2</p>
             </div>
             <div class="d-flex align-content-bottom">
                 <p>FECHA DE APROBACIÓN: </p>

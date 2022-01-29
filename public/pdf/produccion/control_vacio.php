@@ -20,8 +20,12 @@
             </tr>
             <tr>
                 <th>Fecha: <?php echo explode(' ',$data['control'][0]['Fecha'])[0]; ?></th>
-                <th>Cliente: <?php echo $data['control'][0]['Cliente']; ?></th>
+                <th style="background: yellow">Cliente: <?php echo $data['control'][0]['Cliente']; ?></th>
                 <th>Descripción: <?php echo $data['control'][0]['descripcion']; ?></th>
+            </tr>
+            <tr>
+                <th style="background: green; color: white;" colspan="2">Tratamiento: <?php echo $data['control'][0]['tratamiento']; ?></th>
+                <th>Material: <?php echo $data['control'][0]['material']; ?></th>
             </tr>
         </thead>
         <tbody>
@@ -43,7 +47,7 @@
                         </thead>
                         <tbody id="v_forjado">
                             <?php 
-                                for ($i=0; $i < 12; $i++) { 
+                                for ($i=0; $i < 11; $i++) { 
                                     echo '<tr>'.
                                                 '<td style="height: 10px;"></td>'.
                                                 '<td style="height: 10px;"></td>'.
@@ -79,7 +83,7 @@
                         </thead>
                         <tbody id="v_forjado">
                             <?php 
-                                for ($i=0; $i < 12; $i++) { 
+                                for ($i=0; $i < 11; $i++) { 
                                     echo '<tr>'.
                                                 '<td style="height: 10px;"></td>'.
                                                 '<td style="height: 10px;"></td>'.
@@ -115,7 +119,7 @@
                         </thead>
                         <tbody id="v_forjado">
                             <?php 
-                                for ($i=0; $i < 12; $i++) { 
+                                for ($i=0; $i < 11; $i++) { 
                                     echo '<tr>'.
                                                 '<td style="height: 10px;"></td>'.
                                                 '<td style="height: 10px;"></td>'.
@@ -153,7 +157,7 @@
                         </thead>
                         <tbody id="v_forjado">
                             <?php 
-                                for ($i=0; $i < 12; $i++) { 
+                                for ($i=0; $i < 11; $i++) { 
                                     echo '<tr>'.
                                                 '<td style="height: 10px;"></td>'.
                                                 '<td style="height: 10px;"></td>'.
@@ -189,7 +193,7 @@
                         </thead>
                         <tbody id="v_forjado">
                             <?php 
-                                for ($i=0; $i < 12; $i++) { 
+                                for ($i=0; $i < 11; $i++) { 
                                     echo '<tr>'.
                                                 '<td style="height: 10px;"></td>'.
                                                 '<td style="height: 10px;"></td>'.
@@ -225,7 +229,7 @@
                         </thead>
                         <tbody id="v_forjado">
                             <?php 
-                                for ($i=0; $i < 12; $i++) { 
+                                for ($i=0; $i < 11; $i++) { 
                                     echo '<tr>'.
                                                 '<td style="height: 10px;"></td>'.
                                                 '<td style="height: 10px;"></td>'.
@@ -274,7 +278,7 @@
                 <p>CLAVE: PRO-F-000</p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>VERSIÓN: 1</p>
+                <p>VERSIÓN: 2</p>
             </div>
             <div class="d-flex align-content-bottom">
                 <p>FECHA DE APROBACIÓN: </p>
