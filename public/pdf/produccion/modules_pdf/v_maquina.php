@@ -51,7 +51,7 @@
             if (($turno_anterior == '' || $turno_anterior == $data[$j]['turno']) && ($fecha_anterior == '' || $fecha_anterior == $data[$j]['fecha'])) {
                 if (array_key_exists('kilos',$data[$j])) {
                     $aux[$data[$j]['no_maquina']-1] = $data[$j]['kilos'];
-                } else if (select.value == 'pzas') {
+                } else if (array_key_exists('pzas',$data[$j])) {
                     $aux[$data[$j]['no_maquina']-1] = $data[$j]['pzas'];
                 }
                 
@@ -76,7 +76,7 @@
 
                 if (array_key_exists('kilos',$data[$j])) {
                     $aux[$data[$j]['no_maquina']-1] = $data[$j]['kilos'];
-                } else if (select.value == 'pzas') {
+                } else if (array_key_exists('pzas',$data[$j])) {
                     $aux[$data[$j]['no_maquina']-1] = $data[$j]['pzas'];
                 }
                 $a = str_replace (' ' , '_', $data[$j]['observaciones']);

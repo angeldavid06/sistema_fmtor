@@ -14,11 +14,13 @@
     
         .Falta_de_Alambre {
             background-color: #0000FF;
+            color: white;
             text-align: center;
         }
     
         .Ajuste {
             background-color: #CC0099;
+            color: white;
             text-align: center;
         }
     
@@ -38,6 +40,7 @@
     
         .Falto_Operador {
             background-color: #666699;
+            color: white;
             text-align: center;
         }
     
@@ -48,11 +51,13 @@
     
         .No_hubo_punch {
             background-color: #6B16AA;
+            color: white;
             text-align: center;
         }
     
         .Sin_OP {
             background-color: gray;
+            color: white;
             text-align: center;
         }
     

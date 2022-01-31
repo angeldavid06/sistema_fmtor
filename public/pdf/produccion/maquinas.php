@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>.</title>
     <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css?1.3">
-        <style>
-
+    <style>
         .Mantenimiento {
             color: white;
             background-color: #FF0000;
@@ -22,6 +21,7 @@
     
         .Ajuste {
             background-color: #CC0099;
+            color: white;
             text-align: center;
         }
     
@@ -41,6 +41,7 @@
     
         .Falto_Operador {
             background-color: #666699;
+            color: white;
             text-align: center;
         }
     
@@ -51,11 +52,13 @@
     
         .No_hubo_punch {
             background-color: #6B16AA;
+            color: white;
             text-align: center;
         }
     
         .Sin_OP {
             background-color: gray;
+            color: white;
             text-align: center;
         }
     
