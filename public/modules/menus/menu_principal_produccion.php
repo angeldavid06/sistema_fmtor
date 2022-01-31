@@ -3,6 +3,20 @@
     <div class="d-grid g-3">
         <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/ordenes">
             <div class="d-grid g-1">
+                <i class="material-icons-outlined icon">format_list_bulleted</i>
+                <span class="material-icons-outlined icon">format_list_bulleted</span>
+                <p>PROGRAMA DE FORJADO</p>
+            </div>
+        </a>
+        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/ordenes">
+            <div class="d-grid g-1">
+                <i class="material-icons-outlined icon">engineering</i>
+                <span class="material-icons-outlined icon">engineering</span>
+                <p>EXPLOSIÓN DE ALAMBRE</p>
+            </div>
+        </a>
+        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/ordenes">
+            <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">engineering</i>
                 <span class="material-icons-outlined icon">engineering</span>
                 <p>ORDENES DE PRODUCCIÓN</p>

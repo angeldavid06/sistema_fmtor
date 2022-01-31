@@ -17,6 +17,8 @@
                 <th>O.P.</th>
                 <th>Cliente</th>
                 <th>Descripción</th>
+                <th>Tratamiento</th>
+                <th>Material</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Total</th>

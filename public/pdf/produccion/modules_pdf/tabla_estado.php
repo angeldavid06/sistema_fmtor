@@ -99,12 +99,14 @@
 
     $tablas[] = $aux_tablas;
 
-    echo '<tr><td class="txt-center th-estado" colspan="7">RETRASOS</td></tr>';
+    echo '<tr><td class="txt-center th-estado" colspan="9">RETRASOS</td></tr>';
     echo '<tr>';
     for ($i=0; $i < count($retrasos); $i++) {
             echo '<td>'.$retrasos[$i]['Id_Folio'].'</td>';
             echo '<td>'.$retrasos[$i]['Clientes'].'</td>';
             echo '<td>'.$retrasos[$i]['descripcion'].'</td>';
+            echo '<td>'.$retrasos[$i]['tratamiento'].'</td>';
+            echo '<td>'.$retrasos[$i]['material'].'</td>';
             echo '<td>'.$retrasos[$i]['cantidad_elaborar'].'</td>';
             echo '<td>'.$retrasos[$i]['precio_millar'].'</td>';
             echo '<td class="txt-right">'.number_format($retrasos[$i]['TOTAL'],2).'</td>';
@@ -113,16 +115,18 @@
     }
 
     for ($i=0; $i < count($tablas); $i++) {
-        echo '<tr><td class="txt-center" colspan="7"></td></tr>';
+        echo '<tr><td class="txt-center" colspan="9"></td></tr>';
         for ($l=0; $l < count($rango_tablas[$i]); $l++) {
-            echo '<tr><td class="txt-center th-estado" colspan="7">'.$rango_tablas[$i][$l][0].'  -  '.$rango_tablas[$i][$l][1].'</td></tr>';
+            echo '<tr><td class="txt-center th-estado" colspan="9">'.$rango_tablas[$i][$l][0].'  -  '.$rango_tablas[$i][$l][1].'</td></tr>';
         }
-        echo '<tr><td class="txt-center" colspan="7"></td></tr>';
+        echo '<tr><td class="txt-center" colspan="9"></td></tr>';
         for ($j=0; $j < count($tablas[$i]); $j++) { 
             echo '<tr>';
                 echo '<td>'.$tablas[$i][$j]['Id_Folio'].'</td>';
                 echo '<td>'.$tablas[$i][$j]['Clientes'].'</td>';
                 echo '<td>'.$tablas[$i][$j]['descripcion'].'</td>';
+                echo '<td>'.$retrasos[$i]['tratamiento'].'</td>';
+                echo '<td>'.$retrasos[$i]['material'].'</td>';
                 echo '<td>'.$tablas[$i][$j]['cantidad_elaborar'].'</td>';
                 echo '<td>'.$tablas[$i][$j]['precio_millar'].'</td>';
                 echo '<td class="txt-right">'.number_format($tablas[$i][$j]['TOTAL'],2).'</td>';

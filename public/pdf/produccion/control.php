@@ -14,13 +14,13 @@
                 <th class="th"></th>
             </tr>
             <tr>
-                <th>Dibujo: <?php echo $data['control'][0]['plano']; ?></th>
+                <th style="background: yellow">Dibujo: <?php echo $data['control'][0]['plano']; ?></th>
                 <th>Cantidad: <?php echo $data['control'][0]['cantidad_elaborar']; ?></th>
                 <th class="OP">Orden de Producción: OP<?php echo $data['control'][0]['Orden_Produccion']; ?></th>
             </tr>
             <tr>
                 <th>Fecha: <?php echo explode(' ',$data['control'][0]['Fecha'])[0]; ?></th>
-                <th style="background: yellow">Cliente: <?php echo $data['control'][0]['Cliente']; ?></th>
+                <th>Cliente: <?php echo $data['control'][0]['Cliente']; ?></th>
                 <th>Descripción: <?php echo $data['control'][0]['descripcion']; ?></th>
             </tr>
             <tr>
