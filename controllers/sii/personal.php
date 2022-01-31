@@ -21,7 +21,9 @@
         public function generar_pdf_renuncia () {
             $this->web->PDF('sii/cartaRenunciaPDF','');
         }
-    }
-    
 
+        public function generar_pdf_finiquito () {
+            $this->web->PDF('sii/doc_finiquito','');
+        }
+    }
 ?>
