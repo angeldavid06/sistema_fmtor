@@ -18,6 +18,15 @@
                 $error = new Errores();
             }
         }
+        
+        public function DOC_PDF ($view,$data) {
+            if (file_exists('public/pdf/'.$view.'.pdf')) {
+                require_once 'public/pdf/'.$view.'.pdf';
+            } else {    
+                require_once 'controllers/error.php';
+                $error = new Errores();
+            }
+        }
     }
 
 ?>

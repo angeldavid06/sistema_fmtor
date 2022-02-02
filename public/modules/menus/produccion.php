@@ -2,6 +2,14 @@
     <p>Producción</p>
 </div>
 <nav class="opciones">
+    <a href="http://localhost/sistema_fmtor/usuario/programa">
+        <i class="material-icons-round">format_list_bulleted</i>
+        Programa de Forjado
+    </a>
+    <a href="http://localhost/sistema_fmtor/usuario/explosion">
+        <i class="material-icons-round">engineering</i>
+        Explosión de Alambre
+    </a>
     <a href="http://localhost/sistema_fmtor/usuario/ordenes">
         <i class="material-icons-round">engineering</i>
         Ordenes de Producción

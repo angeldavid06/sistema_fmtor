@@ -32,6 +32,14 @@
             $this->web->View('produccion/maquinas','');
         }        
         
+        public function programa () {
+            $this->web->View('produccion/programa','');
+        }        
+        
+        public function explosion () {
+            $this->web->View('produccion/explosion','');
+        }        
+        
         public function personal () {
             if (isset($_SESSION['ZW1wbGVhZG8='])) {
                 $this->web->View('sii/personal','');

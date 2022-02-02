@@ -1,14 +1,14 @@
 <div class="tarjeta-transparente menu-principal">
     <h2>Producción</h2>
     <div class="d-grid g-3">
-        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/ordenes">
+        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/programa">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">format_list_bulleted</i>
                 <span class="material-icons-outlined icon">format_list_bulleted</span>
                 <p>PROGRAMA DE FORJADO</p>
             </div>
         </a>
-        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/ordenes">
+        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/explosion">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">engineering</i>
                 <span class="material-icons-outlined icon">engineering</span>
