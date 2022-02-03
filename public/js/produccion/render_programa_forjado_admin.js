@@ -84,6 +84,8 @@ form_ingresar.addEventListener('submit', (evt) => {
 const render_programa = (registros,maquina) => {
     const body = document.getElementById('body_maquina_'+maquina);
     body.innerHTML += '<tr>'+
+                            '<td style=" padding: 5px;"><button class="btn btn-icon-self btn-amarillo material-icons" data-modal="modal-programa_editar" data-editar="'+registros.Id_Programa_Forjado+'">edit</button></td>'+
+                            '<td style=" padding: 5px;"><button class="btn btn-icon-self btn-rojo material-icons" data-eliminar="'+registros.Id_Programa_Forjado+'">delete</button></td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.calibre+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">'+new Intl.NumberFormat('es-MX').format((registros.factor*registros.cantidad_elaborar))+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">'+registros.factor+'</td>'+
@@ -99,8 +101,6 @@ const render_programa = (registros,maquina) => {
                             '<td class="'+registros.producto_desc+'">'+registros.Herramental+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.tratamiento+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">$ '+new Intl.NumberFormat('es-MX').format(registros.TOTAL)+'</td>'+
-                            '<td><button class="btn btn-icon-self btn-amarillo material-icons" data-modal="modal-programa_editar" data-editar="'+registros.Id_Programa_Forjado+'">edit</button></td>'+
-                            '<td><button class="btn btn-icon-self btn-rojo material-icons" data-eliminar="'+registros.Id_Programa_Forjado+'">delete</button></td>'
                         '</tr>'
 }
 

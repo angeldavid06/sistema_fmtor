@@ -8,8 +8,6 @@ const limpiar_tablas = () => {
     }
 }
 
-
-
 const agrupar_por_maquina = (json) => {
     let kilos = 0 
     let acumulado = 0

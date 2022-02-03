@@ -30,10 +30,10 @@
         }
         .maquina {
             background: #AA9BBF; 
-            color: white;
+            color: black;
         }
         .maquina td {
-            color: white;
+            color: black;
         }
     </style>
     <div class="contenedor">
@@ -84,6 +84,8 @@
                     <table>
                         <head>
                             <tr>
+                                <th></th>
+                                <th></th>
                                 <th style="padding: 10px 0px; ">CAL.</th>
                                 <th style="padding: 10px 0px; min-width: 80px;">Kg.</th>
                                 <th style="padding: 10px 0px; ">Factor</th>
@@ -98,7 +100,7 @@
                                 <th style="padding: 10px 0px; min-width: 110px;">Fecha Entrega</th>
                                 <th style="padding: 10px 0px; ">Herramental</th>
                                 <th style="padding: 10px 0px; min-width: 120px;">Tratamiento</th>
-                                <th style="padding: 10px 0px; min-width: 150px;"></th>
+                                <th style="padding: 10px 0px; min-width: 100px;"></th>
                             </tr>
                         </head>
                         <tbody id="body_maquina_1">
@@ -111,6 +113,8 @@
                     <table>
                         <head>
                             <tr>
+                                <th></th>
+                                <th></th>
                                 <th  style="padding: 10px 0px; ">CAL.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
                                 <th  style="padding: 10px 0px; ">Factor</th>
@@ -125,7 +129,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
                                 <th  style="padding: 10px 0px; ">Herramental</th>
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                                <th  style="padding: 10px 0px;  min-width: 150px;"></th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
                         </head>
                         <tbody id="body_maquina_2">
@@ -138,6 +142,8 @@
                     <table>
                         <head>
                             <tr>
+                                <th></th>
+                                <th></th>
                                 <th  style="padding: 10px 0px; ">CAL.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
                                 <th  style="padding: 10px 0px; ">Factor</th>
@@ -152,7 +158,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
                                 <th  style="padding: 10px 0px; ">Herramental</th>
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                                <th  style="padding: 10px 0px;  min-width: 150px;"></th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
                         </head>
                         <tbody id="body_maquina_3">
@@ -165,6 +171,8 @@
                     <table>
                         <head>
                             <tr>
+                                <th></th>
+                                <th></th>
                                 <th  style="padding: 10px 0px; ">CAL.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
                                 <th  style="padding: 10px 0px; ">Factor</th>
@@ -179,7 +187,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
                                 <th  style="padding: 10px 0px; ">Herramental</th>
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                                <th  style="padding: 10px 0px;  min-width: 150px;"></th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
                         </head>
                         <tbody id="body_maquina_4">
@@ -192,6 +200,8 @@
                     <table>
                         <head>
                             <tr>
+                                <th></th>
+                                <th></th>
                                 <th  style="padding: 10px 0px; ">CAL.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
                                 <th  style="padding: 10px 0px; ">Factor</th>
@@ -206,7 +216,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
                                 <th  style="padding: 10px 0px; ">Herramental</th>
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                                <th  style="padding: 10px 0px;  min-width: 150px;"></th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
                         </head>
                         <tbody id="body_maquina_5">
@@ -219,6 +229,8 @@
                     <table>
                         <head>
                             <tr>
+                                <th></th>
+                                <th></th>
                                 <th  style="padding: 10px 0px; ">CAL.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
                                 <th  style="padding: 10px 0px; ">Factor</th>
@@ -233,7 +245,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
                                 <th  style="padding: 10px 0px; ">Herramental</th>
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                                <th  style="padding: 10px 0px;  min-width: 150px;"></th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
                         </head>
                         <tbody id="body_maquina_6">
@@ -246,6 +258,8 @@
                     <table>
                         <head>
                             <tr>
+                                <th></th>
+                                <th></th>
                                 <th  style="padding: 10px 0px; ">CAL.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
                                 <th  style="padding: 10px 0px; ">Factor</th>
@@ -261,7 +275,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
                                 <th  style="padding: 10px 0px; ">Herramental</th>
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                                <th  style="padding: 10px 0px;  min-width: 150px;"></th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
                         </head>
                         <tbody id="body_maquina_7">
@@ -274,6 +288,8 @@
                     <table>
                         <head>
                             <tr>
+                                <th></th>
+                                <th></th>
                                 <th  style="padding: 10px 0px; ">CAL.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
                                 <th  style="padding: 10px 0px; ">Factor</th>
@@ -288,7 +304,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
                                 <th  style="padding: 10px 0px; ">Herramental</th>
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                                <th  style="padding: 10px 0px;  min-width: 150px;"></th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
                         </head>
                         <tbody id="body_maquina_8">
@@ -301,6 +317,8 @@
                     <table>
                         <head>
                             <tr>
+                                <th></th>
+                                <th></th>
                                 <th  style="padding: 10px 0px; ">CAL.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
                                 <th  style="padding: 10px 0px; ">Factor</th>
@@ -315,7 +333,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
                                 <th  style="padding: 10px 0px; ">Herramental</th>
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                                <th  style="padding: 10px 0px;  min-width: 150px;"></th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
                         </head>
                         <tbody id="body_maquina_9">

@@ -34,7 +34,7 @@
         color: white;
     }
     .maquina td {
-        color: white;
+        color: black;
     }
 </style>
 <body>
@@ -43,11 +43,26 @@
             <tr>
                 <th class="th"></th>
             </tr>
+            <tr>
+                <th class="th-estado" style="padding: 10px 0px; ">CAL.</th>
+                <th class="th-estado" style="padding: 10px 0px; ">Kg.</th>
+                <th class="th-estado" style="padding: 10px 0px; ">Factor</th>
+                <th class="th-estado" style="padding: 10px 0px; ">N° O.P.</th>
+                <th class="th-estado" style="padding: 10px 0px; min-width: 80px;">Fecha de O.P.</th>
+                <th class="th-estado" style="padding: 10px 0px; min-width: 60px;">Cliente</th>
+                <th class="th-estado" style="padding: 10px 0px;  min-width: 80px;">Medida</th>
+                <th class="th-estado" style="padding: 10px 0px; min-width: 120px;">Descripción</th>
+                <th class="th-estado" style="padding: 10px 0px; min-width: 80px;">Acabado</th>
+                <th class="th-estado" style="padding: 10px 0px; ">Cant.</th>
+                <th class="th-estado" style="padding: 10px 0px; min-width: 60px;">Precio</th>
+                <th class="th-estado" style="padding: 10px 0px; min-width: 80px;">Fecha<br>Entrega</th>
+                <th class="th-estado" style="padding: 10px 0px; ">Herramental</th>
+                <th class="th-estado" style="padding: 10px 0px; min-width: 120px;">Tratamiento</th>
+                <th class="th-estado" style="padding: 10px 0px; "></th>
+            </tr>
         </thead>
         <tbody>
-            <td style="border: none;" >
-                <?php require_once 'modules_pdf/tabla_programa_forjado.php';  ?>
-            </td>
+            <?php require_once 'modules_pdf/tabla_programa_forjado.php';  ?>
         </tbody>
         <tfoot>
             <tr>
@@ -77,7 +92,7 @@
                 <p>CLAVE: PRO-F-000</p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>VERSIÓN: 1</p>
+                <p>VERSIÓN: 2</p>
             </div>
             <div class="d-flex align-content-bottom">
                 <p>FECHA DE APROBACIÓN: </p>
