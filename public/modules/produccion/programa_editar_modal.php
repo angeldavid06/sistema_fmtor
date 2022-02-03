@@ -6,14 +6,26 @@
     <div class="contenido_modal">
         <form id="op_programa">
             <div class="d-grid g-1 grid-gap-0">
-                <label style="margin-top: 0;" for="">O.P.:</label>
-                <input class="input" type="text" name="op" id="op">
-                <label style="margin-top: 0;" for="">Fecha_entrega:</label>
-                <input class="input" type="text" name="fecha_entrega" id="fecha_entrega">
-                <label style="margin-top: 0;" for="">Herramental:</label>
-                <input class="input" type="text" name="herramental" id="herramental">
-                <label style="margin-top: 0;" for="">No. Máquina:</label>
-                <input class="input" type="number" name="no_maquina" id="no_maquina">
+                <div class="d-grid g-2">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label style="margin-top: 0;" for="">O.P.:</label>
+                        <input class="input" type="text" name="op" id="op">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label style="margin-top: 0;" for="">Fecha entrega:</label>
+                        <input class="input" type="text" name="fecha_entrega" id="fecha_entrega">
+                    </div>
+                </div>
+                <div class="d-grid g-2">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label style="margin-top: 0;" for="">Herramental:</label>
+                        <input class="input" type="text" name="herramental" id="herramental">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label style="margin-top: 0;" for="">No. Máquina:</label>
+                        <input class="input" type="number" name="no_maquina" id="no_maquina">
+                    </div>
+                </div>
                 <label style="margin-top: 0;" for="">Producto:</label>
                 <select name="estado_produccion" id="estado_produccion">
                     <option value="">Selecciona el estado del producto</option>
@@ -24,6 +36,7 @@
                     <option value="maquina">MÁQUINAS</option>
                 </select>
                 <button class="btn">Continuar</button>
+                <label class="btn btn-transparent txt-center" data-modal="modal-programa_insertar" for="">Cancelar</label>
             </div>
         </form>
     </div>
@@ -37,14 +50,26 @@
         <form id="op_programa_editar">
             <div class="d-grid g-1 grid-gap-0">
                 <input type="text" name="registro" id="registro" hidden>
-                <label style="margin-top: 0;" for="">O.P.:</label>
-                <input class="input" type="text" name="op_a" id="op_a">
-                <label style="margin-top: 0;" for="">Fecha_entrega:</label>
-                <input class="input" type="text" name="fecha_entrega_a" id="fecha_entrega_a">
-                <label style="margin-top: 0;" for="">Herramental:</label>
-                <input class="input" type="text" name="herramental_a" id="herramental_a">
-                <label style="margin-top: 0;" for="">No. Máquina:</label>
-                <input class="input" type="number" name="no_maquina_a" id="no_maquina_a">
+                <div class="d-grid g-2">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label style="margin-top: 0;" for="">O.P.:</label>
+                        <input class="input" type="text" name="op_a" id="op_a">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label style="margin-top: 0;" for="">Fecha entrega:</label>
+                        <input class="input" type="text" name="fecha_entrega_a" id="fecha_entrega_a">
+                    </div>
+                </div>
+                <div class="d-grid g-2">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label style="margin-top: 0;" for="">Herramental:</label>
+                        <input class="input" type="text" name="herramental_a" id="herramental_a">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label style="margin-top: 0;" for="">No. Máquina:</label>
+                        <input class="input" type="number" name="no_maquina_a" id="no_maquina_a">
+                    </div>
+                </div>
                 <label style="margin-top: 0;" for="">Producto:</label>
                 <select name="estado_produccion_a" id="estado_produccion_a">
                     <option value="">Selecciona el estado del producto</option>
@@ -55,6 +80,7 @@
                     <option value="maquina">MÁQUINAS</option>
                 </select>
                 <button class="btn">Continuar</button>
+                <label class="btn btn-transparent txt-center" data-modal="modal-programa_editar" for="">Cancelar</label>
             </div>
         </form>
     </div>

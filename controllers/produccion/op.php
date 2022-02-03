@@ -265,13 +265,16 @@
         }
 
         public function eliminar_programa () {
-            // $tabla,$condicion) {
-            // $sql="DELETE FROM $tabla WHERE $condicion";
             if (isset($_GET['id'])) {
                 $result = $this->model->eliminar('t_programa_forjado',"Id_Programa_Forjado = '".$_GET['id']."'");
                 echo json_encode($result);
             } else {
                 echo 0;
             }
+        }
+
+        public function pdf_programa_forjado () {
+            $data = $this->model->mostrar('v_programa_forjado');
+            $this->web->PDF('produccion/programa_forjado',$data);
         }
    }

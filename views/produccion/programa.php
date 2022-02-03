@@ -47,7 +47,9 @@
                         <h1>Programa de Forjado</h1>
                     </div>
                     <div style="padding-top: 0px;" class="tarjeta-transparente d-flex justify-right align-content-center flex-wrap">
-                        <button class="btn btn-icon-self btn-transparent material-icons" data-modal="modal-programa_insertar">add</button>
+                        <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+                            <button class="btn btn-icon-self btn-transparent material-icons" data-modal="modal-programa_insertar">add</button>
+                        <?php } ?>
                         <button class="btn-impresion btn btn-icon" data-impresion="documento">
                             <i class="material-icons" data-impresion="documento">description</i>
                             Generar Documento
@@ -86,8 +88,9 @@
                                 <th style="padding: 10px 0px; min-width: 80px;">Kg.</th>
                                 <th style="padding: 10px 0px; ">Factor</th>
                                 <th style="padding: 10px 0px; min-width: 80px;">N° O.P.</th>
-                                <th style="padding: 10px 0px; min-width: 110px;">Fecha de O.P.</th>
+                                <th style="padding: 10px 0px; min-width: 130px;">Fecha de O.P.</th>
                                 <th style="padding: 10px 0px; min-width: 80px;">Cliente</th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
                                 <th style="padding: 10px 0px; min-width: 190px;">Descripción</th>
                                 <th style="padding: 10px 0px; min-width: 130px;">Acabado</th>
                                 <th style="padding: 10px 0px; ">Cant.</th>
@@ -114,6 +117,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
                                 <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
                                 <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
                                 <th  style="padding: 10px 0px; ">Cant.</th>
@@ -125,22 +129,6 @@
                             </tr>
                         </head>
                         <tbody id="body_maquina_2">
-                            <!-- <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>$ 00.00</td>
-                            </tr> -->
                         </tbody>
                         <tfoot></tfoot>
                     </table>
@@ -156,6 +144,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
                                 <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
                                 <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
                                 <th  style="padding: 10px 0px; ">Cant.</th>
@@ -167,22 +156,6 @@
                             </tr>
                         </head>
                         <tbody id="body_maquina_3">
-                            <!-- <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>$ 00.00</td>
-                            </tr> -->
                         </tbody>
                         <tfoot></tfoot>
                     </table>
@@ -198,6 +171,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
                                 <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
                                 <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
                                 <th  style="padding: 10px 0px; ">Cant.</th>
@@ -209,22 +183,6 @@
                             </tr>
                         </head>
                         <tbody id="body_maquina_4">
-                            <!-- <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>$ 00.00</td>
-                            </tr> -->
                         </tbody>
                         <tfoot></tfoot>
                     </table>
@@ -240,6 +198,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
                                 <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
                                 <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
                                 <th  style="padding: 10px 0px; ">Cant.</th>
@@ -251,22 +210,6 @@
                             </tr>
                         </head>
                         <tbody id="body_maquina_5">
-                            <!-- <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>$ 00.00</td>
-                            </tr> -->
                         </tbody>
                         <tfoot></tfoot>
                     </table>
@@ -282,6 +225,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
                                 <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
                                 <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
                                 <th  style="padding: 10px 0px; ">Cant.</th>
@@ -293,22 +237,6 @@
                             </tr>
                         </head>
                         <tbody id="body_maquina_6">
-                            <!-- <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>$ 00.00</td>
-                            </tr> -->
                         </tbody>
                         <tfoot></tfoot>
                     </table>
@@ -324,6 +252,8 @@
                                 <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
                                 <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
                                 <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
                                 <th  style="padding: 10px 0px; ">Cant.</th>
@@ -335,22 +265,6 @@
                             </tr>
                         </head>
                         <tbody id="body_maquina_7">
-                            <!-- <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>$ 00.00</td>
-                            </tr> -->
                         </tbody>
                         <tfoot></tfoot>
                     </table>
@@ -366,6 +280,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
                                 <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
                                 <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
                                 <th  style="padding: 10px 0px; ">Cant.</th>
@@ -377,22 +292,6 @@
                             </tr>
                         </head>
                         <tbody id="body_maquina_8">
-                            <!-- <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>$ 00.00</td>
-                            </tr> -->
                         </tbody>
                         <tfoot></tfoot>
                     </table>
@@ -408,6 +307,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
                                 <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
                                 <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
                                 <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
                                 <th  style="padding: 10px 0px; ">Cant.</th>
@@ -419,35 +319,22 @@
                             </tr>
                         </head>
                         <tbody id="body_maquina_9">
-                            <!-- <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>$ 00.00</td>
-                            </tr> -->
                         </tbody>
                         <tfoot></tfoot>
                     </table>
                 </div>
                 <?php 
                     require_once 'public/modules/produccion/programa_editar_modal.php';
-                    // require_once 'public/modules/produccion/plano_modal.php'; 
-                    // require_once 'public/modules/produccion/calibre_modal.php'; 
                 ?>
             </div>
         </div>
     </div>
     <script src="../public/js/fmtor_libreria.js"></script>
     <script src="../public/js/produccion/programa_forjado.js"></script>
+    <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+        <script src="../public/js/produccion/render_programa_forjado_admin.js"></script>
+    <?php } else { ?>
+            <script src="../public/js/produccion/render_programa_forjado_usuario.js"></script>
+    <?php } ?>
 </body>
 </html>
