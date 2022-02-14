@@ -15,25 +15,12 @@
         public function mostrar () {
             $this->web->View('ventas/main','');
         }
-        
-        public function controlp () {
-            $this->web->View('ventas/controlp','');
-        }
-        public function oproduccion () {
-            $this->web->View('ventas/oproduccion','');
-        }
-        public function costos () {
-            $this->web->View('ventas/costos','');
-        }
 
         public function cotizacion () {
             $this->web->View('ventas/cotizacion','');
         }
         
-        public function ordenes () {
-            $this->web->View('ventas/oproduccion','');
-        }
-        public function reportes () {
+              public function reportes () {
             $this->web->View('ventas/reportes','');
         }
         public function salidas () {
@@ -43,11 +30,15 @@
             $this->web->View('ventas/clientes','');
           
         }
-        public function registro_clientes () {
-            $this->web->View('ventas/registro_clientes','');
+         public function orden () {
+            $this->web->View('ventas/orden','');
           
         }
-       
+        
+        public function tarjeta () {
+            $this->web->View('ventas/tarjeta','');
+        }
+      
         
     }
 ?>

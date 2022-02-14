@@ -115,6 +115,10 @@
     opacity: 1;
 }
 
+.modal.modal-izquierda.abrir_modal {
+    left: 100px;
+}
+
 .modal.modal-derecha.abrir_modal {
     right: 30px;
 }

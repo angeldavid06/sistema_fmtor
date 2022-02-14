@@ -16,42 +16,44 @@
                 <h2>Ventas</h2>
                 <main>
                     <nav class="d-grid g-2">
-                        <a href="http://localhost/sistema_fmtor/ventas/main/cotizacion"
+                   <a href="https://www.fmtor.com/ventas/main/clientes"
+                        class="tarjeta d-flex align-content-center">
+                            <i class="material-icons icon">face</i>
+                            Lista Clientes 
+                        </a>
+                       <a href="https://www.fmtor.com/ventas/main/cotizacion"
                             class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">fact_check</i>
                             Cotizacion 
                         </a>
-                        <a href="http://localhost/sistema_fmtor/ventas/main/salidas"
+                       <a href="https://www.fmtor.com/ventas/main/salidas"
                         class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">open_in_browser</i>
                             Salidas de Almacen
                         </a>
-                        <a href="http://localhost/sistema_fmtor/ventas/main/controlp"
+                        
+                        <a href="https://www.fmtor.com/ventas/main/orden"
                         class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">precision_manufacturing</i>
-                            Control de Produccion 
+                            <i class="material-icons icon">border_color</span></i>
+                            Orden de Producciòn
                         </a>
-                        <a href="http://localhost/sistema_fmtor/ventas/main/oproduccion"
+                        
+                       <a href="https://www.fmtor.com/ventas/main/tarjeta"
                         class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">receipt_long</i>
-                            Orden de Produccion
+                            <i class="material-icons icon">account_tree</i>
+                            Tarjeta de Flujo
                         </a>
-                        <a href="http://localhost/sistema_fmtor/ventas/main/reportes"
+                       
+                       <a href="https://www.fmtor.com/ventas/main/reportes"
                         class="tarjeta d-flex align-content-center">
                             <i class="material-icons icon">report_problem</i>
                             Reportes
                         </a>
-                        <a href="http://localhost/sistema_fmtor/ventas/main/costos"
-                        class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">monetization_on</i>
-                            Costos
-                        </a>
-                        <a href="http://localhost/sistema_fmtor/ventas/main/clientes"
-                        class="tarjeta d-flex align-content-center">
-                            <i class="material-icons icon">face</i>
-                        Lista de Clientes
-                        </a>
+                        
                        
+                       
+                       
+                        
                     </nav>
                 </main>
             </div>

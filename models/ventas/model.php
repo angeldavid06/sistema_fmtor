@@ -11,11 +11,7 @@
          $this->db= conexion::conectar();
       }
 
-      public function mostrar ($tabla){
-         $sql="SELECT * FROM $tabla ";
-         $mostrar = $this->db->query($sql);
-         return $mostrar;
-      }
+      
 
       public function mostrar_desc ($tabla, $campo) {
          $sql="SELECT * FROM $tabla ORDER BY $campo DESC";

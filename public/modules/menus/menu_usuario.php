@@ -37,6 +37,11 @@
             </a>
         </nav>
         <?php 
+            if ($_SESSION['ZGVwdG8='] == 'Ventas' || $_SESSION['cm9s'] == 'SuperUsuario') {
+                require_once 'ventas.php';
+            }
+        ?>
+        <?php 
             if ($_SESSION['ZGVwdG8='] == 'Produccion' || $_SESSION['cm9s'] == 'SuperUsuario') {
                 require_once 'produccion.php';
             }
