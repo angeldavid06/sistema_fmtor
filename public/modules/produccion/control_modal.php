@@ -207,7 +207,7 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-editar-diario">close</button>
     </div>
     <div class="contenido_modal">
-    <form id="form-control-diario">
+    <form id="form-control-diario-editar">
         <div class="d-grid g-2">
             <div class="d-grid g-1 grid-gap-0">
                 <p>Número de máquina:</p>

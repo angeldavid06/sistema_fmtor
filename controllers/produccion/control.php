@@ -33,19 +33,19 @@
             if (isset($_GET['valor'])) {
                 $control = $this->model->buscar('v_control','Orden_Produccion',$_GET['valor']);
                 $this->model= new Model();
-                $forjado = $this->model->buscar('v_forjado','Id_Folio_1',$_GET['valor']);
+                $forjado = $this->model->buscar('v_forjado','Id_Produccion_FK_1',$_GET['valor']);
                 $this->model= new Model();
-                $ranurado = $this->model->buscar('v_ranurado','Id_Folio_1',$_GET['valor']);
+                $ranurado = $this->model->buscar('v_ranurado','Id_Produccion_FK_1',$_GET['valor']);
                 $this->model= new Model();
-                $rolado = $this->model->buscar('v_rolado','Id_Folio_1',$_GET['valor']);
+                $rolado = $this->model->buscar('v_rolado','Id_Produccion_FK_1',$_GET['valor']);
                 $this->model= new Model();
-                $shank = $this->model->buscar('v_shank','Id_Folio_1',$_GET['valor']);
+                $shank = $this->model->buscar('v_shank','Id_Produccion_FK_1',$_GET['valor']);
                 $this->model= new Model();
-                $cementado = $this->model->buscar('v_cementado','Id_Folio_1',$_GET['valor']);
+                $cementado = $this->model->buscar('v_cementado','Id_Produccion_FK_1',$_GET['valor']);
                 $this->model= new Model();
-                $acabado = $this->model->buscar('v_acabado','Id_Folio_1',$_GET['valor']);
+                $acabado = $this->model->buscar('v_acabado','Id_Produccion_FK_1',$_GET['valor']);
                 $this->model= new Model();
-                $condicion = "Id_Folio_1 = '".$_GET['valor']."'";
+                $condicion = "Id_Produccion_FK_1 = '".$_GET['valor']."'";
                 $factores = $this->model->buscar_personalizado('t_control_produccion','factor',$condicion);
 
                 $data = [

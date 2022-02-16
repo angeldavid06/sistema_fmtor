@@ -62,7 +62,6 @@
                 <?php
                     if ($_SESSION['cm9s'] == 'Administrativo') {
                         require_once 'public/modules/produccion/control_modal.php';
-                        require_once 'public/modules/produccion/diario_modal.php';
                     } 
                 ?>
             </div>

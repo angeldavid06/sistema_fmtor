@@ -59,7 +59,7 @@
         public function terminar () {
             if (isset($_GET['orden']) && $_GET['orden'] != '') {
                 $orden = $_GET['orden'];
-                $actualizar = $this->model->actualizar('t_salida_almacen',"estado_general = 'TERMINADO'", "Id_Folio = '".$orden."'");
+                $actualizar = $this->model->actualizar('t_orden_produccion',"estado_general = 'TERMINADO'", "Id_Produccion = '".$orden."'");
                 echo json_encode($actualizar);
             } else {
                 echo 0;
