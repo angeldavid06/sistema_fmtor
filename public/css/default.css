@@ -49,16 +49,17 @@
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--background-aux-05); 
+    background: rgba(0,0,0,0.1); 
 }
 
 *::-webkit-scrollbar-track:hover,
 *::-webkit-scrollbar-track:active {
-    background: var(--background-aux);
+    background: rgba(0,0,0,0.1); 
 }
 
 *::-webkit-scrollbar-thumb {
-    background: var(--background-aux);
+    background: rgba(0,0,0,0.4);
+    border-radius: 3px;
 }
 
 .error_404 {
@@ -541,6 +542,7 @@ input[type="number"],
 input[type="password"],
 input[type="search"],
 input[type="file"],
+input[type="time"],
 select,
 textarea{
     width: 100%;
@@ -562,6 +564,7 @@ input[type="number"]:focus,
 input[type="password"]:focus,
 input[type="search"]:focus,
 input[type="file"]:focus,
+input[type="time"]:focus,
 select:focus,
 textarea:focus {
     outline: none;
@@ -577,6 +580,7 @@ input[type="number"].input-error,
 input[type="password"].input-error,
 input[type="search"].input-error,
 input[type="file"].input-error,
+input[type="time"].input-error,
 select.input-error,
 textarea.input-error {
     border: 3px solid var(--color-red);

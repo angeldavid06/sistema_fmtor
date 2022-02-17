@@ -33,11 +33,7 @@
 
         public function obtener()
         {
-            $result = $this->model->buscar_personalizado(
-                't_salida_almacen, t_clientes',
-                'Salida,Razon_social,Fecha,Cantidad_millares,Codigo,Pedido_pza,Medida,Descripcion,Acabado,Precio_millar,Factura,Dibujo,Material,Id_Folio,Fecha_entrega',
-                't_salida_almacen.Id_Clientes_2 = t_clientes.Id_Clientes'
-            );
+            $result = $this->model->mostrar('v_salidas_almacen');
             echo json_encode($result);
         }
 

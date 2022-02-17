@@ -1,7 +1,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-body: #212121;
-        --background-aux: #2B2B2B;
+        --background-body: #1F1F1F;
+        --background-aux: #2E2F30;
         --background-aux-05: rgba(37, 39, 41, 0.5);
         --background-button:#5AB3F0;
 
