@@ -1086,6 +1086,9 @@ embed {
     transition: all .3s;
     border-radius: var(--border-radius);
     padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .contenedor .menu.hidde_menu a {

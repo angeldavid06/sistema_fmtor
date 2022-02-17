@@ -98,6 +98,30 @@
             return $result;
         }
 
+        public function actualizar_registro_e () {
+            $valores = "no_maquina = '$this->no_maquina', fecha = '$this->fecha_entrega', bote = '$this->bote', pzas = '$this->pzas', kilos = '$this->kilos', turno = '$this->turno', observaciones = '$this->observaciones'";
+            $condicion = "id_registro_diario = '$this->id'";
+            $result = Model::actualizar('t_registro_diario',$valores,$condicion);
+
+            if (!$result) {
+                return $result;
+            } else {
+                $obj = new Model();
+                $condicion = "Id_Produccion_FK_1 = '$this->op' AND Id_estado_1  = '$this->id_estado'";
+                $result_2 = $obj->buscar_personalizado('t_control_produccion','id_control_produccion',$condicion);
+
+                if (count($result_2) == 0) {
+                    return 3;
+                } else {
+                    $obj_2 = new Model();
+                    $valores = "Id_control_produccion_1 = '".$result_2[0]['id_control_produccion']."'";
+                    $condicion = "id_registro_diario = '$this->id'";
+                    $result_3 = $obj_2->actualizar('t_registro_diario',$valores,$condicion);
+                    return $result_3;
+                }
+            }
+        }
+
         public function eliminar_registro () {
             $result = Model::eliminar('t_registro_diario',"id_registro_diario = '$this->id'");
             return $result;
@@ -123,6 +147,11 @@
 
         public function obtener_registro_diario () {
             $result = Model::buscar('t_registro_diario','id_registro_diario',$this->id);
+            return $result;
+        }
+
+        public function obtener_registro_diario_e () {
+            $result = Model::buscar('v_info_registro_diario','id_registro_diario',$this->id);
             return $result;
         }
         

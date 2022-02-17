@@ -50,8 +50,8 @@
                                 <th>Descripción</th>
                                 <th>Observaciones</th>
                                 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                                    <th></th>
-                                    <th></th>
+                                    <th style="min-width: 80px;"></th>
+                                    <th style="min-width: 80px;"></th>
                                 <?php } ?>
                             </tr>
                         </thead>

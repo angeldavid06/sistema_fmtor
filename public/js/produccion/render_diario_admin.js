@@ -1,11 +1,12 @@
 const form_control = document.getElementById('form-control-diario');
-const form_actualizar = document.getElementById('form-control-actualizar');
+const form_actualizar = document.getElementById("form-control-diario-editar");
 
 const registrar_sin_op = () => {
     const respuesta = fetchAPI(form_control,url+'/produccion/control/insertar_sin_op', 'POST')
     respuesta.then(json => {
         if (json == 1) {
             open_alert('Registro añadido correctamente','verde')
+            obtener_registros_diarios();
         } else {
             open_alert('El registro no pudo ser realizado','rojo')
         }
@@ -17,7 +18,7 @@ form_control.addEventListener('submit', (evt)=> {
     let aux = true;
     const inputs = form_control.getElementsByClassName('input')
     for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].value == '' ) {
+        if (inputs[i].value == '' && i != 4) {
             console.log(inputs[i]);
             inputs[i].classList.add('input-error');
             aux = false;
@@ -69,7 +70,7 @@ select_estado[0].addEventListener('change', () => {
 })
 
 const actualizar_registro = () => {
-    const respuesta = fetchAPI(form_actualizar, url+'/produccion/control/actualizar','POST')
+    const respuesta = fetchAPI(form_actualizar, url+'/produccion/control/actualizar_e','POST')
     respuesta.then(json => {
         if (json == 1) {
             obtener_registros_diarios()
@@ -97,16 +98,37 @@ const render_registros_diarios = (json) => {
     json.forEach(el => {
         const tr = document.createElement('tr')
         if (el.Id_Folio != 1) {
-            tr.innerHTML = '<td>'+el.turno+'</td>'+
-                            '<td>'+el.Id_Folio+'</td>'+
-                            '<td>'+el.Clientes+'</td>'+
-                            '<td>'+el.kilos+'</td>'+
-                            '<td>'+el.pzas+'</td>'+
-                            '<td>'+el.Maquina+'</td>'+
-                            '<td>'+el.descripcion+'</td>'+
-                            '<td>'+el.observaciones+'</td>'+
-                            '<td><button  data-modal="modal-actualizar" data-editar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-naranja">edit</button></td>'+
-                            '<td><button data-eliminar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-rojo">delete</button></td>';
+            tr.innerHTML =
+              "<td>" +
+              el.turno +
+              "</td>" +
+              "<td>" +
+              el.Id_Folio +
+              "</td>" +
+              "<td>" +
+              el.Clientes +
+              "</td>" +
+              "<td>" +
+              el.kilos +
+              "</td>" +
+              "<td>" +
+              el.pzas +
+              "</td>" +
+              "<td>" +
+              el.Maquina +
+              "</td>" +
+              "<td>" +
+              el.descripcion +
+              "</td>" +
+              "<td>" +
+              el.observaciones +
+              "</td>" +
+              '<td><button  data-modal="modal-editar-diario" data-editar="' +
+              el.id_registro_diario +
+              '" class="material-icons btn btn-icon-self btn-naranja">edit</button></td>' +
+              '<td><button data-eliminar="' +
+              el.id_registro_diario +
+              '" class="material-icons btn btn-icon-self btn-rojo">delete</button></td>';
             body.appendChild(tr);
         } else {
             tr.innerHTML = '<td>'+el.turno+'</td>'+
@@ -125,20 +147,22 @@ const render_registros_diarios = (json) => {
 }
 
 const cargar_registro = (json) => {
-    const op = document.getElementById('a_op')
-    const no_maquina = document.getElementById('a_no_maquina')
-    const no_botes = document.getElementById('a_no_botes')
-    const fecha = document.getElementById('a_fecha')
-    const pzas = document.getElementById('a_pzas')
-    const kg = document.getElementById('a_kg')
-    const turno = document.getElementById('a_turno')
-    const observaciones = document.getElementById('a_observaciones')
+    const registro = document.getElementById('registro')
+    const op = document.getElementById('op_d')
+    const no_maquina = document.getElementById('no_maquina_d')
+    const no_botes = document.getElementById('no_botes_d')
+    const fecha = document.getElementById('fecha_d')
+    const pzas = document.getElementById('pzas_d')
+    const kg = document.getElementById('kg_d')
+    const turno = document.getElementById('turno_d')
+    const observaciones = document.getElementById('observaciones_d')
 
     json.forEach(el => {
-        op.value = el.id_registro_diario
+        registro.value = el.id_registro_diario
+        op.value = el.Id_Produccion_FK_1
         no_maquina.value = el.no_maquina
         fecha.value = el.fecha.split(' ')[0]
-        no_botes.value = el.botes
+        no_botes.value = el.bote
         pzas.value = el.pzas
         kg.value = el.kilos
         turno.value = el.turno
@@ -149,11 +173,19 @@ const cargar_registro = (json) => {
                 obs[i].setAttribute('selected','')
             }
         }
+        const estado = document
+          .getElementById("estado_d")
+          .getElementsByTagName("option");
+        for (let i = 0; i < estado.length; i++) {
+            if (estado[i].value == el.Id_estado_1) {
+                estado[i].setAttribute("selected", "");
+            }
+        }
     })
 }
 
 const obtener_registro = (id) => {
-    const respuesta = fetchAPI('',url+'/produccion/control/obtener_registro?registro='+id, '')
+    const respuesta = fetchAPI('',url+'/produccion/control/obtener_registro_diario?registro='+id, '')
     respuesta.then(json => {
         cargar_registro(json)
     })

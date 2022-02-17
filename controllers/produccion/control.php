@@ -165,6 +165,14 @@
             }
         }
 
+        public function obtener_registro_diario () {
+            if (isset($_GET['registro'])) {
+                $this->model_control->setId($_GET['registro']);
+                $result = $this->model_control->obtener_registro_diario_e();
+                echo json_encode($result);
+            }
+        }
+
         public function actualizar(){
             if (isset($_POST['a_op'])) {
                 $this->model_control->setNoMaquina($_POST['a_no_maquina']);
@@ -183,6 +191,32 @@
                     echo 1;
                 } else {
                     echo 2;
+                }
+            } else {
+                echo 0;
+            }
+        }
+
+        public function actualizar_e(){
+            if (isset($_POST['op_d'])) {
+                $this->model_control->setId($_POST['registro']);
+                $this->model_control->setNoMaquina($_POST['no_maquina_d']);
+                $this->model_control->setFechaEntrega($_POST['fecha_d']);
+                $this->model_control->setBote($_POST['no_botes_d']);
+                $this->model_control->setPzas($_POST['pzas_d']);
+                $this->model_control->setKilos($_POST['kg_d']);
+                $this->model_control->setTurno($_POST['turno_d']);
+                $this->model_control->setObservaciones($_POST['observaciones_d']);
+
+                $this->model_control->setOp($_POST['op_d']);
+                $this->model_control->setIdEstado($_POST['estado_d']);
+
+                $result = $this->model_control->actualizar_registro_e();
+
+                if ($result) {
+                    echo 1;
+                } else {
+                    echo $result;
                 }
             } else {
                 echo 0;

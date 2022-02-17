@@ -141,7 +141,7 @@ const cargar_registro = (json) => {
         op.value = el.id_registro_diario
         no_maquina.value = el.no_maquina
         fecha.value = el.fecha.split(' ')[0]
-        no_botes.value = el.botes
+        no_botes.value = el.bote
         pzas.value = el.pzas
         kg.value = el.kilos
         turno.value = el.turno
@@ -164,7 +164,7 @@ const render_control = (vista,json) => {
 
     json.forEach(el => {
         body[0].innerHTML += '<tr>'+
-                                '<td>'+el.botes+'</td>'+
+                                '<td>'+el.bote+'</td>'+
                                 '<td>'+el.fecha+'</td>'+
                                 '<td>'+el.observaciones+'</td>'+
                                 '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+
