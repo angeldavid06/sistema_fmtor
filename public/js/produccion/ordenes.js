@@ -40,7 +40,7 @@ const render_ordenes = (json) => {
             if (aux > 0 && mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
                 tr_totales.innerHTML = '<tr>'+
                                             '<td class="txt-right">Kilos mensuales: </td>'+
-                                            '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(total_kilos_mensual)+'</td>'+
+                                            '<td class="txt-right">'+ new Intl.NumberFormat('es-MX').format(total_kilos_mensual)+'</td>'+
                                             '<td colspan="11" class="txt-right">Acumulado mensual:</td>'+
                                             '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado_mensual) + '</td>'+
                                             '<td></td>'+
