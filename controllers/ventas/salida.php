@@ -33,8 +33,14 @@
 
         public function obtener()
         {
-            $result = $this->model->mostrar('v_salidas_almacen');
-            echo json_encode($result);
+            $salidas = $this->model->mostrar('v_salidas_almacen');
+            $this->model = new Model();
+            $ordenes = $this->model->mostrar('v_ordenes');
+            $data = [
+                'salidas' => $salidas,
+                'ordenes' => $ordenes
+            ];
+            echo json_encode($data);
         }
 
         public function obtener_per()
@@ -43,96 +49,26 @@
             echo json_encode($result);
         }
 
+        public function obtener_clientes () {
+            $result = $this->model->mostrar('v_clientes');
+            echo json_encode($result);
+        }
+
         public function NuevaSalida()
         {
-            if (isset($_POST['Salida']) && $_POST['Salida'] != '') {
-                $this->salida->setSalida($_POST['Salida']);
-
-                if (isset($_POST['Id_Clientes_2']) && $_POST['Id_Clientes_2'] != '') {
-                    $this->salida->setId_Clientes_2($_POST['Id_Clientes_2']);
-
-                    if (isset($_POST['Fecha']) && $_POST['Fecha'] != '') {
-                        $this->salida->setFecha($_POST['Fecha']);
-
-                        if (isset($_POST['Cantidad_millares']) && $_POST['Cantidad_millares'] != '') {
-                            $this->salida->setCantidad_millares($_POST['Cantidad_millares']);
-
-                            if (isset($_POST['Codigo']) && $_POST['Codigo'] != '') {
-                                $this->salida->setCodigo($_POST['Codigo']);
-
-                                if (isset($_POST['Pedido_pza']) && $_POST['Pedido_pza'] != '') {
-                                    $this->salida->setPedido_pza($_POST['Pedido_pza']);
-
-                                    if (isset($_POST['Medida']) && $_POST['Medida'] != '') {
-                                        $this->salida->setMedida($_POST['Medida']);
-
-                                        if (isset($_POST['Descripcion']) && $_POST['Descripcion'] != '') {
-                                            $this->salida->setDescripcion($_POST['Descripcion']);
-
-                                            if (isset($_POST['Acabado']) && $_POST['Acabado'] != '') {
-                                                $this->salida->setAcabado($_POST['Acabado']);
-
-                                                if (isset($_POST['Precio_millar']) && $_POST['Precio_millar'] != '') {
-                                                    $this->salida->setPrecio_millar($_POST['Precio_millar']);
-
-                                                    if (isset($_POST['Factura']) && $_POST['Factura'] != '') {
-                                                        $this->salida->setFactura($_POST['Factura']);
-
-                                                        if (isset($_POST['Dibujo']) && $_POST['Dibujo'] != '') {
-                                                            $this->salida->setDibujo($_POST['Dibujo']);
-
-                                                            if (isset($_POST['Material']) && $_POST['Material'] != '') {
-                                                                $this->salida->setMaterial($_POST['Material']);
-
-                                                                if (isset($_POST['Id_Folio']) && $_POST['Id_Folio'] != '') {
-                                                                    $this->salida->setId_Folio($_POST['Id_Folio']);
-
-                                                                    if (isset($_POST['Fecha_entrega']) && $_POST['Fecha_entrega'] != '') {
-                                                                        $this->salida->setFecha_entrega($_POST['Fecha_entrega']);
-
-                                                                        echo json_encode($this->salida->insertarSalida());
-                                                                    } else {
-                                                                        echo 14;
-                                                                    }
-                                                                } else {
-                                                                    echo 13;
-                                                                }
-                                                            } else {
-                                                                echo 12;
-                                                            }
-                                                        } else {
-                                                            echo 11;
-                                                        }
-                                                    } else {
-                                                        echo 10;
-                                                    }
-                                                } else {
-                                                    echo 9;
-                                                }
-                                            } else {
-                                                echo 8;
-                                            }
-                                        } else {
-                                            echo 7;
-                                        }
-                                    } else {
-                                        echo 6;
-                                    }
-                                } else {
-                                    echo 5;
-                                }
-                            } else {
-                                echo 4;
-                            }
-                        } else {
-                            echo 3;
-                        }
-                    } else {
-                        echo 2;
-                    }
-                } else {
-                    echo 1;
-                }
+            if (isset($_POST['Id_Clientes_2']) && $_POST['Id_Clientes_2'] != '') {
+                $this->salida->setId_Clientes_2($_POST['Id_Clientes_2']);
+                $this->salida->setFecha($_POST['Fecha']);
+                $this->salida->setFecha_entrega($_POST['Fecha_entrega']);
+                $this->salida->setCantidad_millares($_POST['Cantidad_millares']);
+                $this->salida->setPedido_pza($_POST['Pedido_pza']);
+                $this->salida->setPrecio_millar($_POST['Precio_millar']);
+                $this->salida->setCodigo($_POST['Codigo']);
+                $this->salida->setDescripcion($_POST['Descripcion']);
+                $this->salida->setMedida($_POST['Medida']);
+                $this->salida->setAcabado($_POST['Acabado']);
+                
+                echo json_encode($this->salida->insertarSalida());
             } else {
                 echo 0;
             }

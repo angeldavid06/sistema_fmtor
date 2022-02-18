@@ -102,8 +102,8 @@
         public function insertarSalida()
         {
             $tabla = 't_salida_almacen';
-            $parametros = 'Salida,Id_Clientes_2, Fecha,Cantidad_millares,Codigo,Pedido_pza, Medida,Descripcion,Acabado,Precio_millar, Factura,Dibujo,Material,Id_Folio,Fecha_entrega';
-            $values =   " '$this->Salida', '$this->Id_Clientes_2', '$this->Fecha', '$this->Cantidad_millares', '$this->Codigo', '$this->Pedido_pza','$this->Medida','$this->Descripcion', '$this->Acabado','$this->Precio_millar','$this->Factura', '$this->Dibujo', '$this->Material','$this->Id_Folio', '$this->Fecha_entrega'";
+            $parametros = 'Id_Clientes_2,Fecha,Cantidad_millares,Codigo,Pedido_pza,Medida,Descripcion,Acabado,Precio_millar,Fecha_entrega';
+            $values =   "'$this->Id_Clientes_2', '$this->Fecha', '$this->Cantidad_millares', '$this->Codigo', '$this->Pedido_pza','$this->Medida','$this->Descripcion', '$this->Acabado','$this->Precio_millar','$this->Fecha_entrega'";
             $validacion = Model::insertar($tabla, $parametros, $values);
             return $validacion;
         }

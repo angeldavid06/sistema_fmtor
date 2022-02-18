@@ -3,7 +3,7 @@
 
 <head>
     <?php require_once 'public/modules/head.php' ?>
-    <title>Página Principal</title>
+    <title>Salidas de Almacen</title>
 </head>
 
 <body>
@@ -24,20 +24,15 @@
                         <button class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-filtrar">filter_alt</button>
                     </div>
                 </div>
-                <!-- <div class="tarjeta-transparente d-flex align-content-center"> -->
-                <!-- <input type="number" name="id_folio" id="id_folio" data-control="" placeholder="Ingrese el numero de salida">
-                    <button class="btn btn-icon-self material-icons" id="clave">search</button> -->
-                <!-- boton de agregar -->
-                <!-- <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-ingresar">group_add</button> -->
-                <!-- </div> -->
-                <div class="tabla tarjeta">
+                <div class="tabla tarjeta" style="padding: 0;">
                     <table class="table table_salida lista_salida" id="listaSalida">
                         <thead>
                             <th></th>
                             <th style="min-width: 80px;"> N° de salida </th>
                             <th style="min-width: 150px;"> Cliente</th>
                             <th style="min-width: 100px;"> Fecha</th>
-                            <th> Cantidad</th>
+                            <th>Cantidad</th>
+                            <th>Cantidad a Producir</th>
                             <th style="min-width: 150px;"> N° parte de cliente </th>
                             <th style="min-width: 100px;"> Pedido Cliente</th>
                             <th> Medida</th>

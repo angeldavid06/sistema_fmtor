@@ -1,30 +1,158 @@
+const colocar_cliente = (cliente) => {
+  const select = document.getElementById("Id_Clientes_2");
+  const options = select.getElementsByTagName('option');
+  for (let i = 0; i < options.length; i++) {
+      options[i].removeAttribute('selected')
+  }
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].textContent.trim() == cliente.trim()) {
+      options[i].setAttribute('selected','')
+    }
+  }
+}
+
+const colocar_acabado = (acabado) => {
+  const select = document.getElementById("Acabado");
+  const select_2 = document.getElementById("Acabado_edit");
+  const options = select.getElementsByTagName('option');
+  const options_2 = select_2.getElementsByTagName('option');
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].value == acabado) {
+      options[i].setAttribute('selected','')
+    }
+  }
+  for (let i = 0; i < options_2.length; i++) {
+    if (options_2[i].value == acabado) {
+      options_2[i].setAttribute('selected','')
+    }
+  }
+}
+
+const portapapeles_pegar = () => {
+  navigator.clipboard.readText().then( clipText => {
+    const textos = clipText.split(';')
+
+    document.getElementById("Fecha_entrega").value = textos[13];
+    colocar_cliente(textos[1]);
+    // document.getElementById("Id_Clientes_2").value = textos[1];
+    document.getElementById("Cantidad_millares").value = textos[4];
+    document.getElementById("Codigo").value = textos[2];
+    document.getElementById("Pedido_pza").value = textos[5];
+    document.getElementById("Precio_millar").value = textos[9].split(' ')[1];
+    if (textos[14] != '-') {
+      document.getElementById("Dibujo").value = textos[11];
+      document.getElementById("Medida").value = textos[6];
+      document.getElementById("Descripcion").value = textos[7];
+      
+      colocar_acabado(textos[8]);
+
+      document.getElementById("Material").value = textos[12];
+      document.getElementById('cantidad_producir').value = textos[15];
+    } else {
+      document.getElementById("Dibujo").value = '';
+      document.getElementById("Medida").value = '';
+      document.getElementById("Descripcion").value = '';
+      
+      colocar_acabado('');
+
+      document.getElementById("Material").value = '';
+      document.getElementById('cantidad_producir').value = '';
+    }
+  });
+}
+
+const portapapeles_copiar = (el) => {
+  const txt_salida = document.getElementById("td_id_folio_"+el);
+  const txt_razon = document.getElementById("td_razon_"+el);
+  const txt_fecha = document.getElementById("td_fecha_"+el);
+  const txt_cantidad = document.getElementById("td_cantidad_"+el);
+  const txt_el = document.getElementById("td_cantidad_el_"+el);
+  const txt_parte = document.getElementById("td_no_parte_"+el);
+  const txt_pedido = document.getElementById("td_pedido_"+el);
+  const txt_medida = document.getElementById("td_medida_"+el);
+  const txt_descripcion = document.getElementById("td_descripcion_"+el);
+  const txt_acabado = document.getElementById("td_acabado_"+el);
+  const txt_costo = document.getElementById("td_costo_"+el);
+  const txt_factura = document.getElementById("td_factura_"+el);
+  const txt_dibujo = document.getElementById("td_dibujo"+el);
+  const txt_material = document.getElementById("td_material"+el);
+  const txt_entrega = document.getElementById("td_entrega_"+el);
+  const txt_op = document.getElementById("td_id_folio_"+el);
+  
+  const texto_copiado = txt_salida.textContent.trim()+';'+ 
+                        txt_razon.textContent.trim()+';'+
+                        txt_parte.textContent.trim()+';'+
+                        txt_fecha.textContent.trim()+';'+
+                        txt_cantidad.textContent.trim()+';'+
+                        txt_pedido.textContent.trim()+';'+
+                        txt_medida.textContent.trim()+';'+
+                        txt_descripcion.textContent.trim()+';'+
+                        txt_acabado.textContent.trim()+';'+
+                        txt_costo.textContent.trim()+';'+
+                        txt_factura.textContent.trim()+';'+
+                        txt_dibujo.textContent.trim()+';'+
+                        txt_material.textContent.trim()+';'+
+                        txt_entrega.textContent.trim()+';'+
+                        txt_op.textContent.trim()+';'+
+                        txt_el.textContent.trim();
+
+  navigator.clipboard.writeText(texto_copiado).then(function () {
+    open_alert("Copiado!",'');
+  }, function () {
+      open_alert("Contenido no copiado",'naranja');
+  });
+}
+
 const render_salida = (json) => {
   const body = document.getElementsByClassName("body_salida");
   body[0].innerHTML = "";
-  json.forEach((element) => {
+  json['salidas'].forEach((element) => {
+    const info = {
+      op: '-', 
+      medida: '-',
+      descripcion: '-',
+      acabado: '-',
+      plano: '-',
+      estado: '-',
+      material: '-',
+      cantidad: '0'
+    };
+    json['ordenes'].forEach((orden) => {
+      if (orden.Id_Salida_FK_1 == element.id_folio) {
+          info.op = orden.Id_Folio; 
+          info.plano = orden.Id_Catalogo;
+          info.estado = orden.estado_general;
+          info.material = orden.material;
+          info.cantidad = orden.cantidad_elaborar;
+        }
+    })
     if (element.Salida != 0) {
       body[0].innerHTML +=
         "<tr>" +
-        '<td><button class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
-        "<td>" + element.id_folio + "</td>" +
-        "<td>" + element.razon_social +"</td>" +
-        "<td>" + element.fecha + "</td>" +
-        "<td>" + element.cantidad + "</td>" +
-        "<td>" + element.no_parte + "</td>" +
-        "<td>" + element.pedido_cliente + "</td>" +
-        "<td>" + element.medida + "</td>" +
-        "<td>" + element.descripcion + "</td>" +
-        "<td>" + element.acabado + "</td>" +
-        "<td class=txt-right>$ " + element.costo + "</td>" +
-        "<td>" + element.factura + "</td>" +
-        "<td>" + element.numero_dibujo + "</td>" +
-        "<td>" + element.material + "</td>" +
-        "<td>" + /*element.Id_Folio */ "</td>" +
-        "<td>" + element.fecha_entrega + "</td>" + '<td><button class= "material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar" data-edit="'+element.Id_Folio +'"> mode_edit</button></td>' +
-        '<td><button class= "material-icons btn btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>';
+          '<td><button data-copiar="'+element.id_folio+'" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
+          "<td id='td_id_folio_"+element.id_folio+"'>"+element.id_folio + "</td>" +
+          "<td id='td_razon_"+element.id_folio+"'>"+element.razon_social +"</td>" +
+          "<td id='td_fecha_"+element.id_folio+"'>"+element.fecha + "</td>" +
+          "<td id='td_cantidad_"+element.id_folio+"'>"+element.cantidad + "</td>" +
+          "<td id='td_cantidad_el_"+element.id_folio+"'>"+info.cantidad + "</td>" +
+          "<td id='td_no_parte_"+element.id_folio+"'>"+element.no_parte + "</td>" +
+          "<td id='td_pedido_"+element.id_folio+"'>"+element.pedido_cliente + "</td>" +
+          "<td id='td_medida_"+element.id_folio+"'>"+element.medida + "</td>" +
+          "<td id='td_descripcion_"+element.id_folio+"'>" + element.descripcion + "</td>" +
+          "<td id='td_acabado_"+element.id_folio+"'>" + element.acabados + "</td>" +
+          "<td id='td_costo_"+element.id_folio+"' class=txt-right>$ " + element.costo + "</td>" +
+          "<td id='td_factura_"+element.id_folio+"'>" + element.factura + "</td>" +
+          "<td id='td_dibujo"+element.id_folio+"'>" + info.plano + "</td>" +
+          "<td id='td_material"+element.id_folio+"'>" + info.material + "</td>" +
+          "<td id='td_"+element.id_folio+"'>" + info.op + "</td>" +
+          "<td id='td_entrega_"+element.id_folio+"'>" + element.fecha_entrega + "</td>" + 
+          '<td><button class= "material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar" data-edit="'+element.id_folio +'"> mode_edit</button></td>' +
+          '<td><button class= "material-icons btn btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
+        '</tr>';
     }
   });
 };
+
 const mostrarModal = (id) => {
   const respues = fetchAPI(
     "",
@@ -54,8 +182,6 @@ const Fecha_entrega = document.getElementById("Fecha_entrega_edit");
 
 const pintarModal = (json) => {
   json.forEach((element) => {
-    //
-    Salida.value = element.Salida;
     Id_Clientes_2.value = element.Id_Clientes_2;
     Fecha.value = element.Fecha;
     Cantidad_millares.value = element.Cantidad_millares;
@@ -63,47 +189,13 @@ const pintarModal = (json) => {
     Pedido_pza.value = element.Pedido_pza;
     Medida.value = element.Medida;
     Descripcion.value = element.Descripcion;
-    Acabado.value = element.Acabado;
     Precio_millar.value = element.Precio_millar;
     Factura.value = element.Factura;
     Dibujo.value = element.Dibujo;
     Material.value = element.Material;
-    Id_Folio.value = element.Id_Folio;
     Fecha_entrega.value = element.Fecha_entrega;
+    colocar_acabado(element.Acabado);
   });
-};
-const Salida_r = document.getElementById("Salida");
-const Id_Clientes_2_r = document.getElementById("Id_Clientes_2");
-const Fecha_r = document.getElementById("Fecha");
-const Cantidad_millares_r = document.getElementById("Cantidad_millares");
-const Codigo_r = document.getElementById("Codigo");
-const Pedido_pza_r = document.getElementById("Pedido_pza");
-const Medida_r = document.getElementById("Medida");
-const Descripcion_r = document.getElementById("Descripcion");
-const Acabado_r = document.getElementById("Acabado");
-const Precio_millar_r = document.getElementById("Precio_millar");
-const Factura_r = document.getElementById("Factura");
-const Dibujo_r = document.getElementById("Dibujo");
-const Material_r = document.getElementById("Material");
-const Id_Folio_r = document.getElementById("Id_Folio");
-const Fecha_entrega_r = document.getElementById("Fecha_entrega");
-
-const nuevoRegistro = () => {
-  Salida_r.value = "";
-  Id_Clientes_2_r.value = "";
-  Fecha_r.value = "";
-  Cantidad_millares_r.value = "";
-  Codigo_r.value = "";
-  Pedido_pza_r.value = "";
-  Medida_r.value = "";
-  Descripcion_r.value = "";
-  Acabado_r.value = "";
-  Precio_millar_r.value = "";
-  Factura_r.value = "";
-  Dibujo_r.value = "";
-  Material_r.value = "";
-  Id_Folio_r.value = "";
-  Fecha_entrega_r.value = "";
 };
 
 //posible copia de busqueda
@@ -159,7 +251,6 @@ const form = document.getElementById("form_reg_salida");
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
   insertarSalida();
-  nuevoRegistro();
 });
 
 const insertarSalida = () => {
@@ -204,14 +295,20 @@ const obtener_pdf = (id) => {
 };
 
 const deshabilitar_inputs = () => {
-  const f_inputs = document.getElementsByClassName("input");
+  const f_inputs = document
+    .getElementById("form-filtros")
+    .getElementsByClassName("input");
   for (let i = 0; i < f_inputs.length; i++) {
     f_inputs[i].setAttribute("disabled", "");
   }
 };
 
 document.addEventListener("click", (evt) => {
-  if (evt.target.dataset.recarga) {
+  if (evt.target.dataset.pegar) {
+    portapapeles_pegar()
+  } else if (evt.target.dataset.copiar) {
+    portapapeles_copiar(evt.target.dataset.copiar);
+  } else if (evt.target.dataset.recarga) {
     obtener()
   } else if (evt.target.dataset.impresion) {
     obtener_pdf(evt.target.dataset.impresion);
@@ -239,6 +336,16 @@ document.addEventListener("click", (evt) => {
   }
 });
 
+const obtener_clientes = () => {
+  const respuesta = fetchAPI('',url+'/ventas/salida/obtener_clientes','')
+  respuesta.then(json => {
+    json.forEach(el => {
+      document.getElementById('Id_Clientes_2').innerHTML += '<option value="'+el.Id_Clientes+'">'+el.Razon_social+'</option>'
+      document.getElementById('Id_Clientes_2_edit').innerHTML += '<option value="'+el.Id_Clientes+'">'+el.Razon_social+'</option>'
+    })
+  })
+}
+
 const generar_fecha = () => {
   const fecha_actual = new Date().toLocaleDateString();
   const fecha = fecha_actual.split('/');
@@ -261,5 +368,6 @@ const generar_fecha = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   obtener();
+  obtener_clientes();
   generar_fecha();
 });
