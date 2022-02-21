@@ -7,6 +7,7 @@
         <form id="form-filtros">
             <div class="contenedor_filtros">
                 <h3>Filtrar Salidas de Almacen</h3>
+                <input type="text" name="tabla" id="tabla" value="v_salidas_almacen" hidden>
                 <div class="filtro fecha">
                     <input type="radio" data-radio="radio" name="buscar_por" id="salida" value="salida">
                     <label class="lbl-radio" id="lbl_radio_salida" for="salida">Buscar Salida de Almacen:</label>

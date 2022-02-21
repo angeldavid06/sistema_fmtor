@@ -48,7 +48,7 @@
             </div>
             <p style="padding: 15px 0px 30px 0px;" class="txt-right">Orden de Producción:</p>
             <div class="d-grid g-1">
-                <input type="checkbox" name="sin_op" id="sin_op" value="sin_op">
+                <input type="checkbox" name="sin_op" id="sin_op">
                 <label class="lbl-checkbox" id="lbl_checkbox_salida" for="sin_op" style="margin: 0 0 15px 0;">Sin O.P.:</label>
             </div>
             <div class="d-grid g-1 grid-gap-0">
@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="d-grid g-1">
-                <input type="checkbox" name="tratamiento" id="tratamiento" value="true">
+                <input type="checkbox" name="tratamiento" id="tratamiento">
                 <label class="lbl-checkbox" for="tratamiento" style="margin: 0px 0px 30px 0px;">Tratamiento</label>
             </div>
             <div class="opciones d-flex flex-column">
@@ -121,9 +121,9 @@
     </div>
     <div class="contenido_modal">
         <form id="form_act_salida">
-            <!-- <p>Salida De Almacen:</p>
-            <input class="input" type="text" name="Salida_edit" id="Salida_edit" placeholder="Numero de salida"> -->
-            <p style="padding: 15px 0px 30px 0px;" class="txt-right">Información general:</p>
+            <!-- <p>Salida De Almacen:</p> -->
+            <input class="input" type="text" name="Salida_edit" id="Salida_edit" hidden>
+            <p style="padding: 0px 0px 30px 0px;" class="txt-right">Información general:</p>
             <div class="d-grid g-2">
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Fecha:</p>
@@ -160,14 +160,14 @@
                 </div>
             </div>
             <p style="padding: 15px 0px 30px 0px;" class="txt-right">Orden de Producción:</p>
-            <div class="d-grid g-1">
+            <!-- <div class="d-grid g-1">
                 <input type="checkbox" name="salida_op" id="salida_op" value="sin_op">
                 <label class="lbl-checkbox" id="lbl_checkbox_salida" for="salida_op" style="margin: 0 0 15px 0;">Sin O.P.:</label>
-            </div>
+            </div> -->
             <div class="d-grid g-2">
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Cantidad a Producir (millares):</p>
-                    <input class="input" type="number" name="cantidad_producir" id="cantidad_producir">
+                    <input class="input" type="number" name="cantidad_producir_edit" id="cantidad_producir_edit">
                 </div>
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Factura:</p>

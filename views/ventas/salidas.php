@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="tabla tarjeta" style="padding: 0;">
-                    <table class="table table_salida lista_salida" id="listaSalida">
+                    <table class="table table_salida lista_salida" id="table">
                         <thead>
                             <th></th>
                             <th style="min-width: 80px;"> N° de salida </th>
@@ -46,6 +46,7 @@
                             <th style="min-width: 100px;"> Fecha de entrega</th>
                             <th style="min-width: 80px;"></th>
                             <th style="min-width: 80px;"></th>
+                            <th style="min-width: 80px;"></th>
                         </thead>
                         <tbody class="body body_salida"></tbody>
                     </table>
@@ -57,6 +58,7 @@
 </body>
 <script src="../public/js/fmtor_libreria.js?1.2"></script>
 <script src="../public/js/ventas/functions_salida.js?1.3"></script>
+<script src="../public/js/ventas/filtros.js"></script>
 </body>
 </body>
 

@@ -7,6 +7,7 @@
         public $Id_Clientes_2;
         public $Fecha;
         public $Cantidad_millares;
+        public $Cantidad_producir;
         public $Codigo;
         public $Pedido_pza;
         public $Medida;
@@ -18,6 +19,8 @@
         public $Material;
         public $Id_Folio;
         public $Fecha_entrega;
+        public $Factor;
+        public $Tratamiento;
 
         public function __construct()
         {
@@ -42,6 +45,11 @@
         public function setCantidad_millares($Cantidad_millares): void
         {
             $this->Cantidad_millares = $Cantidad_millares;
+        }
+
+        public function setCantidad_producir($Cantidad_producir): void
+        {
+            $this->Cantidad_producir = $Cantidad_producir;
         }
         
         public function setCodigo($Codigo): void
@@ -99,6 +107,16 @@
             $this->Fecha_entrega = $Fecha_entrega;
         }
 
+        public function setFactor($Factor): void
+        {
+            $this->Factor = $Factor;
+        }
+
+        public function setTratamiento($Tratamiento): void
+        {
+            $this->Tratamiento = $Tratamiento;
+        }
+
         public function insertarSalida()
         {
             $tabla = 't_salida_almacen';
@@ -108,12 +126,34 @@
             return $validacion;
         }
 
+        public function insertarOrden () {
+            $obj = new Model();
+            $id_salida = $obj->buscar_personalizado('t_salida_almacen','Id_Folio','1 ORDER BY Id_Folio DESC LIMIT 1');
+
+            $obj2 = new Model();
+            $tabla = 't_orden_produccion';
+            $parametros = 'Id_Catalogo_FK,factor,material,tratamiento,cantidad,no_Pedido,Id_Salida_FK_1';
+            $values = "'$this->Dibujo','$this->Factor','$this->Material','$this->Tratamiento','$this->Cantidad_producir','$this->Pedido_pza','".$id_salida[0]['Id_Folio']."'";
+            $result = $obj2->insertar($tabla, $parametros, $values);
+            return $result;
+        }
+
         public function actualizarSalida()
         {
             $tabla = 't_salida_almacen';
-            $parametros = 'Salida,Id_Clientes_2, Fecha,Cantidad_millares,Codigo,Pedido_pza, Medida,Descripcion,Acabado,Precio_millar, Factura,Dibujo,Material,Id_Folio,Fecha_entrega';
-            $values =   " '$this->Salida', '$this->Id_Clientes_2', '$this->Fecha', '$this->Cantidad_millares', '$this->Codigo', '$this->Pedido_pza','$this->Medida','$this->Descripcion', '$this->Acabado','$this->Precio_millar','$this->Factura', '$this->Dibujo', '$this->Material','$this->Id_Folio', '$this->Fecha_entrega'";
-            $validacion = Model::actualizar($tabla, $parametros, $values);
+            $values = "Id_Clientes_2 = '$this->Id_Clientes_2', 
+                        Fecha = '$this->Fecha',
+                        Cantidad_millares = '$this->Cantidad_millares', 
+                        Codigo= '$this->Codigo', 
+                        Pedido_pza= '$this->Pedido_pza',
+                        Medida = '$this->Medida',
+                        Descripcion = '$this->Descripcion', 
+                        Acabado = '$this->Acabado',
+                        Precio_millar = '$this->Precio_millar',
+                        Factura = '$this->Factura', 
+                        Fecha_entrega = '$this->Fecha_entrega'";
+            $condicion = "Id_Folio = '$this->Salida'";
+            $validacion = Model::actualizar($tabla, $values, $condicion);
             return $validacion;
         }
     }

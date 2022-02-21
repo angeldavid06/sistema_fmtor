@@ -20,7 +20,7 @@ $Fecha_entrega     = " ";
     for ($i=0; $i < count($data); $i++) { 
         
 
-        $Salida = $data[$i]['Salida'];
+        $Salida = $data[$i]['Id_Folio'];
         $Id_Clientes_2  = $data[$i]['Id_Clientes_2'];
        
         $Fecha    = $data[$i]['Fecha'];
@@ -32,23 +32,23 @@ $Fecha_entrega     = " ";
         $Acabado           = $data[$i]['Acabado'];
         $Precio_millar     = $data[$i]['Precio_millar'];
         $Factura           = $data[$i]['Factura'];
-        $Dibujo            = $data[$i]['Dibujo'];
-        $Material          = $data[$i]['Material'];
+        // $Dibujo            = $data[$i]['Dibujo'];
+        // $Material          = $data[$i]['Material'];
         $Id_Folio          = $data[$i]['Id_Folio'];   
         $Fecha_entrega     = $data[$i]['Fecha_entrega'];
         
-               
-
-       /*echo '<tr>'.
-        
-        '<td>'.$data[$i]['Cantidad_millares'].'</td>'.
-        '<td>'.$data[$i]['Pedido_pza'].'</td>'.
-        '<td>'.$data[$i]['Medida'].'</td>'.
-        '<td>'.$data[$i]['Descripcion'].'</td>'.
-        '<td>'.$data[$i]['Acabado'].'</td>'.
-        '<td>'.$data[$i]['Precio_millar'].'</td>'.
-        '<td>'.$data[$i]['Empaque'].'</td>'. 
-              
-            '</tr>';*/
+        echo '<tr>'.
+                '<td>'.$data[$i]['Cantidad_millares'].'</td>'.
+                '<td>'.$data[$i]['Pedido_pza'].'</td>'.
+                '<td>'.$data[$i]['Medida'].'</td>'.
+                '<td>'.$data[$i]['Descripcion'].'</td>'.
+                '<td>'.$data[$i]['Acabado'].'</td>'.
+                '<td>'.$data[$i]['Precio_millar'].'</td>'.
+                '<td>'.$data[$i]['Empaque'].'</td>'. 
+                '<td>'.$data[$i]['Factura'].'</td>'. 
+                '<td></td>'.
+                '<td></td>'.
+                '<td></td>'.
+            '</tr>';
     }
 ?>

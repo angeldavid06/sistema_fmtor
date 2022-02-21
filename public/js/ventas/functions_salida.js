@@ -1,3 +1,16 @@
+const meses = ['ENERO',
+                'FEBRERO',
+                'MARZO',
+                'ABRIL',
+                'MAYO',
+                'JUNIO',
+                'JULIO',
+                'AGOSTO',
+                'SEPTIEMBRE',
+                'OCTUBRE',
+                'NOVIEMBRE',
+                'DICIEMBRE']
+
 const colocar_cliente = (cliente) => {
   const select = document.getElementById("Id_Clientes_2");
   const options = select.getElementsByTagName('option');
@@ -104,9 +117,36 @@ const portapapeles_copiar = (el) => {
 }
 
 const render_salida = (json) => {
+  let aux = 0;
+  let total_acumulado = 0;
+  let total_acumulado_mensual = 0;
   const body = document.getElementsByClassName("body_salida");
   body[0].innerHTML = "";
   json['salidas'].forEach((element) => {
+    const tr_mes = document.createElement("tr");
+    const tr_totales = document.createElement("tr");
+    let fecha = element.fecha.split("-");
+
+    if (aux > 0 && mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
+        tr_totales.innerHTML = '<tr>'+
+                                    '<td class="txt-right" colspan="11">Total mensual: </td>'+
+                                    '<td class="txt-right">$ '+ new Intl.NumberFormat('es-MX').format(total_acumulado_mensual)+'</td>'+
+                                    '<td colspan="8"></td>'+
+                                '</tr>';
+        body[0].appendChild(tr_totales)
+        total_acumulado += parseFloat(total_acumulado_mensual)
+        total_acumulado_mensual = 0
+        total_acumulado_mensual += (parseFloat(element.costo) * parseFloat(element.cantidad))
+    } else {
+        total_acumulado_mensual += (parseFloat(element.costo) * parseFloat(element.cantidad))
+    }
+
+    if (aux == 0 || mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
+        tr_mes.innerHTML = '<tr><td class="txt-center" colspan="20">'+meses[fecha[1]-1]+' '+fecha[0]+'</td></tr>'
+        mes = (fecha[0]+'-'+fecha[1])
+        aux++;
+        body[0].appendChild(tr_mes)
+    }
     const info = {
       op: '-', 
       medida: '-',
@@ -147,20 +187,43 @@ const render_salida = (json) => {
           "<td id='td_"+element.id_folio+"'>" + info.op + "</td>" +
           "<td id='td_entrega_"+element.id_folio+"'>" + element.fecha_entrega + "</td>" + 
           '<td><button class= "material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar" data-edit="'+element.id_folio +'"> mode_edit</button></td>' +
-          '<td><button class= "material-icons btn btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
+          '<td><button class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
+          '<td><button class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">request_quote</button>'+
         '</tr>';
     }
   });
+    const tr_totales = document.createElement('tr')
+    tr_totales.innerHTML = '<tr>'+
+                                '<td class="txt-right" colspan="11">Total mensual: </td>'+
+                                '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(total_acumulado_mensual)+'</td>'+
+                                '<td colspan="8"></td>'+
+                            '</tr>';
+    body[0].appendChild(tr_totales)
+    total_acumulado += parseFloat(total_acumulado_mensual);
+    total_acumulado_mensual = 0
+    
+    const table = document.getElementById('table')
+    
+    if (document.getElementById("pie")) {
+      const pie = document.getElementById("pie");
+      table.removeChild(pie)
+    }
+
+    const tfoot = document.createElement('tfoot');
+    tfoot.setAttribute('id','pie')
+    tfoot.classList.add('tfoot')
+    tfoot.innerHTML = '<tr>'+
+                            '<td class="txt-right" colspan="11">Total: </td>'+
+                            '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado) + '</td>'+
+                            '<td colspan="8"></td>'+
+                    '</tr>';
+    table.appendChild(tfoot)
 };
 
 const mostrarModal = (id) => {
-  const respues = fetchAPI(
-    "",
-    url + "/ventas/salida/obtener_per?aux=" + id + "",
-    ""
-  );
+  const respues = fetchAPI("",url + "/ventas/salida/obtener_per?aux=" + id + "","");
   respues.then((json) => {
-    pintarModal(json);
+    pintarModal(json,id);
   });
 };
 
@@ -168,6 +231,7 @@ const Salida = document.getElementById("Salida_edit");
 const Id_Clientes_2 = document.getElementById("Id_Clientes_2_edit");
 const Fecha = document.getElementById("Fecha_edit");
 const Cantidad_millares = document.getElementById("Cantidad_millares_edit");
+const Cantidad_elaborar = document.getElementById("cantidad_producir_edit");
 const Codigo = document.getElementById("Codigo_edit");
 const Pedido_pza = document.getElementById("Pedido_pza_edit");
 const Medida = document.getElementById("Medida_edit");
@@ -180,23 +244,44 @@ const Material = document.getElementById("Material_edit");
 const Id_Folio = document.getElementById("Id_Folio_edit");
 const Fecha_entrega = document.getElementById("Fecha_entrega_edit");
 
-const pintarModal = (json) => {
-  json.forEach((element) => {
+const pintarModal = (json,id) => {
+  json['salida'].forEach((element) => {
+    Salida.value = id
     Id_Clientes_2.value = element.Id_Clientes_2;
-    Fecha.value = element.Fecha;
-    Cantidad_millares.value = element.Cantidad_millares;
-    Codigo.value = element.Codigo;
-    Pedido_pza.value = element.Pedido_pza;
-    Medida.value = element.Medida;
-    Descripcion.value = element.Descripcion;
-    Precio_millar.value = element.Precio_millar;
-    Factura.value = element.Factura;
-    Dibujo.value = element.Dibujo;
-    Material.value = element.Material;
-    Fecha_entrega.value = element.Fecha_entrega;
-    colocar_acabado(element.Acabado);
+    Fecha.value = element.fecha;
+    Cantidad_millares.value = element.cantidad;
+    Codigo.value = element.no_parte;
+    Pedido_pza.value = element.pedido_cliente;
+    Medida.value = element.medida;
+    Descripcion.value = element.descripcion;
+    Precio_millar.value = element.costo;
+    Factura.value = element.factura;
+    Fecha_entrega.value = element.fecha_entrega;
+    colocar_acabado(element.acabados);
+    colocar_cliente_2(element.razon_social)
+    json['ordenes'].forEach(orden => {
+      if (orden.Id_Salida_FK_1 == element.id_folio) {
+        Dibujo.value = orden.Id_Catalogo;
+        Material.value = orden.material;
+        Cantidad_elaborar.value = orden.cantidad_elaborar;
+      }
+    })
   });
 };
+
+const colocar_cliente_2 = (cliente) => {
+  const select = document.getElementById("Id_Clientes_2_edit");
+  const options = select.getElementsByTagName('option');
+  for (let i = 0; i < options.length; i++) {
+      options[i].removeAttribute('selected')
+  }
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].textContent.trim() == cliente.trim()) {
+      options[i].setAttribute('selected','')
+    }
+  }
+}
+
 
 //posible copia de busqueda
 document.addEventListener("click", (evt) => {
@@ -204,16 +289,6 @@ document.addEventListener("click", (evt) => {
     mostrarModal(evt.target.dataset.edit);
   }
 });
-//buscar
-// const btn_buscar = document.getElementById("clave");
-// btn_buscar.addEventListener("click", () => {
-//   const input = document.getElementById("id_folio");
-//   if (input.value == "") {
-//     obtener();
-//   } else {
-//     obtener_clave_reporte(input.value);
-//   }
-// });
 
 const obtener_clave_reporte = (clave) => {
   const respuesta = fetchAPI(
@@ -294,14 +369,14 @@ const obtener_pdf = (id) => {
   printPage(url + "/ventas/salida/generarpdf?atributo=Id_Folio&value=" + id);
 };
 
-const deshabilitar_inputs = () => {
-  const f_inputs = document
-    .getElementById("form-filtros")
-    .getElementsByClassName("input");
-  for (let i = 0; i < f_inputs.length; i++) {
-    f_inputs[i].setAttribute("disabled", "");
-  }
-};
+// const deshabilitar_inputs = () => {
+//   const f_inputs = document
+//     .getElementById("form-filtros")
+//     .getElementsByClassName("input");
+//   for (let i = 0; i < f_inputs.length; i++) {
+//     f_inputs[i].setAttribute("disabled", "");
+//   }
+// };
 
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.pegar) {
