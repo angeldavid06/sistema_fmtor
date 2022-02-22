@@ -1,4 +1,4 @@
-<div id="modal-ingresar" class="modal modal-derecha  width-08">
+<div id="modal-ingresar" class="modal modal-derecha  width-05">
     <div class="titulo_modal d-flex justify-between align-content-center">
         <h2>Nueva Salida</h2>
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
@@ -23,14 +23,15 @@
                 </div>
             </div>
             <p style="padding: 15px 0px 30px 0px;" class="txt-right">Información del cliente:</p>
-            <div class="d-grid g-3">
+            <div class="d-grid g-1">
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Cliente:</p>
-                    <!-- <input class="input" type="text" name="Id_Clientes_2" id="Id_Clientes_2"> -->
                     <select name="Id_Clientes_2" id="Id_Clientes_2">
                         <option value="">Selecciona un cliente</option>
                     </select>
                 </div>
+            </div>
+            <div class="d-grid g-3">
                 <div class="d-grid g-1 grid-gap-0">
                     <p>No. Parte cliente:</p>
                     <input class="input" type="text" name="Codigo" id="Codigo" placeholder="Ingrese el codigo">
@@ -39,16 +40,14 @@
                     <p>Pedido Cliente:</p>
                     <input class="input" type="text" name="Pedido_pza" id="Pedido_pza">
                 </div>
-            </div>
-            <div class="d-grid g-3">
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Cantidad de Tornillos:</p>
-                    <input class="input" type="number" name="Cantidad_Tornillos" id="Cantidad_Tornillos">
+                    <input class="input" type="number" name="Cantidad_Tornillos" id="Cantidad_Tornillos" value="1">
                 </div>
             </div>
             <p style="padding: 15px 0px 30px 0px;" class="txt-right">Información del tornillo:</p>
-            <p style="padding: 15px 0px 30px 0px;" class="txt-left">Tornillo 1:</p>
-            <div class="tornillos">
+            <div id="tornillos">
+                <p style="padding: 15px 0px 30px 0px;" class="txt-left">Tornillo 1:</p>
                 <div class="d-grid g-3">
                     <div class="d-grid g-1 grid-gap-0">
                         <p>Cantidad (millares):</p>

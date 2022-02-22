@@ -25,7 +25,7 @@ const colocar_cliente = (cliente) => {
 }
 
 const colocar_acabado = (acabado) => {
-  const select = document.getElementById("Acabado");
+  const select = document.getElementById("Acabado_1");
   const select_2 = document.getElementById("Acabado_edit");
   const options = select.getElementsByTagName('option');
   const options_2 = select_2.getElementsByTagName('option');
@@ -43,77 +43,52 @@ const colocar_acabado = (acabado) => {
 
 const portapapeles_pegar = () => {
   navigator.clipboard.readText().then( clipText => {
-    const textos = clipText.split(';')
+    const json = JSON.parse(clipText)
+    const salida = json['salida']
+    const ordenes = json['ordenes']
+    // console.log(JSON.parse(clipText));
 
-    document.getElementById("Fecha_entrega").value = textos[13];
-    colocar_cliente(textos[1]);
-    // document.getElementById("Id_Clientes_2").value = textos[1];
-    document.getElementById("Cantidad_millares").value = textos[4];
-    document.getElementById("Codigo").value = textos[2];
-    document.getElementById("Pedido_pza").value = textos[5];
-    document.getElementById("Precio_millar").value = textos[9].split(' ')[1];
-    if (textos[14] != '-') {
-      document.getElementById("Dibujo").value = textos[11];
-      document.getElementById("Medida").value = textos[6];
-      document.getElementById("Descripcion").value = textos[7];
+    document.getElementById("Fecha_entrega").value = salida[0].fecha_entrega;
+    colocar_cliente(salida[0].razon_social);
+    // // document.getElementById("Id_Clientes_2").value = textos[1];
+    // document.getElementById("Cantidad_millares_1").value = textos[4];
+    document.getElementById("Codigo").value = salida[0].no_parte;
+    document.getElementById("Pedido_pza").value = salida[0].pedido_cliente;
+    render_form_tornillo(salida.length)
+    // document.getElementById("Precio_millar_1").value = textos[9].split(' ')[1];
+    // if (textos[14] != '-') {
+    //   document.getElementById("Dibujo_1").value = textos[11];
+    //   document.getElementById("Medida_1").value = textos[6];
+    //   document.getElementById("Descripcion_1").value = textos[7];
       
-      colocar_acabado(textos[8]);
+    //   colocar_acabado(textos[8]);
 
-      document.getElementById("Material").value = textos[12];
-      document.getElementById('cantidad_producir').value = textos[15];
-    } else {
-      document.getElementById("Dibujo").value = '';
-      document.getElementById("Medida").value = '';
-      document.getElementById("Descripcion").value = '';
+    //   document.getElementById("Material_1").value = textos[12];
+    //   document.getElementById('cantidad_producir_1').value = textos[15];
+    // } else {
+    //   document.getElementById("Dibujo_1").value = '';
+    //   document.getElementById("Medida_1").value = '';
+    //   document.getElementById("Descripcion_1").value = '';
       
-      colocar_acabado('');
+    //   colocar_acabado('');
 
-      document.getElementById("Material").value = '';
-      document.getElementById('cantidad_producir').value = '';
-    }
+    //   document.getElementById("Material_1").value = '';
+    //   document.getElementById('cantidad_producir_1').value = '';
+    // }
   });
 }
 
 const portapapeles_copiar = (el) => {
-  const txt_salida = document.getElementById("td_id_folio_"+el);
-  const txt_razon = document.getElementById("td_razon_"+el);
-  const txt_fecha = document.getElementById("td_fecha_"+el);
-  const txt_cantidad = document.getElementById("td_cantidad_"+el);
-  const txt_el = document.getElementById("td_cantidad_el_"+el);
-  const txt_parte = document.getElementById("td_no_parte_"+el);
-  const txt_pedido = document.getElementById("td_pedido_"+el);
-  const txt_medida = document.getElementById("td_medida_"+el);
-  const txt_descripcion = document.getElementById("td_descripcion_"+el);
-  const txt_acabado = document.getElementById("td_acabado_"+el);
-  const txt_costo = document.getElementById("td_costo_"+el);
-  const txt_factura = document.getElementById("td_factura_"+el);
-  const txt_dibujo = document.getElementById("td_dibujo"+el);
-  const txt_material = document.getElementById("td_material"+el);
-  const txt_entrega = document.getElementById("td_entrega_"+el);
-  const txt_op = document.getElementById("td_id_folio_"+el);
-  
-  const texto_copiado = txt_salida.textContent.trim()+';'+ 
-                        txt_razon.textContent.trim()+';'+
-                        txt_parte.textContent.trim()+';'+
-                        txt_fecha.textContent.trim()+';'+
-                        txt_cantidad.textContent.trim()+';'+
-                        txt_pedido.textContent.trim()+';'+
-                        txt_medida.textContent.trim()+';'+
-                        txt_descripcion.textContent.trim()+';'+
-                        txt_acabado.textContent.trim()+';'+
-                        txt_costo.textContent.trim()+';'+
-                        txt_factura.textContent.trim()+';'+
-                        txt_dibujo.textContent.trim()+';'+
-                        txt_material.textContent.trim()+';'+
-                        txt_entrega.textContent.trim()+';'+
-                        txt_op.textContent.trim()+';'+
-                        txt_el.textContent.trim();
+  const respuesta = fetchAPI("", url + "/ventas/salida/obtener_per?aux="+el,'');
+  respuesta.then(json => {
+    let string = JSON.stringify(json)
+    navigator.clipboard.writeText(string).then(function () {
+      open_alert("Copiado!",'azul');
+    }, function () {
+        open_alert("Contenido no copiado",'naranja');
+    });
+  })
 
-  navigator.clipboard.writeText(texto_copiado).then(function () {
-    open_alert("Copiado!",'azul');
-  }, function () {
-      open_alert("Contenido no copiado",'naranja');
-  });
 }
 
 const render_salida = (json) => {
@@ -158,12 +133,12 @@ const render_salida = (json) => {
       cantidad: '0'
     };
     json['ordenes'].forEach((orden) => {
-      if (orden.Id_Salida_FK_1 == element.id_folio) {
-          info.op = orden.Id_Folio; 
-          info.plano = orden.Id_Catalogo;
-          info.estado = orden.estado_general;
-          info.cantidad = orden.cantidad_elaborar;
-        }
+      if (orden.Id_Pedido == element.Id_Pedido) {
+        info.op = orden.Id_Folio;
+        info.plano = orden.Id_Catalogo;
+        info.estado = orden.estado_general;
+        info.cantidad = orden.cantidad_elaborar;
+      }
     })
     if (element.Salida != 0) {
       body[0].innerHTML +=
@@ -259,7 +234,7 @@ const pintarModal = (json,id) => {
     colocar_acabado(element.acabados);
     colocar_cliente_2(element.razon_social)
     json['ordenes'].forEach(orden => {
-      if (orden.Id_Salida_FK_1 == element.id_folio) {
+      if (orden.Id_Salida_FK == element.id_folio) {
         Dibujo.value = orden.Id_Catalogo;
         Material.value = orden.material;
         Cantidad_elaborar.value = orden.cantidad_elaborar;

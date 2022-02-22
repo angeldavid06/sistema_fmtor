@@ -161,7 +161,7 @@
 
             $obj2 = new Model();
             $tabla = 't_orden_produccion';
-            $parametros = 'Id_Catalogo_FK,cantidad,Id_Pedidop_FK';
+            $parametros = 'Id_Catalogo_FK,cantidad,Id_Pedido_FK';
             $values = "'$this->Dibujo','$this->Cantidad_producir','".$id_pedido[0]['Id_Pedido']."'";
             $result = $obj2->insertar($tabla, $parametros, $values);
             return $result;

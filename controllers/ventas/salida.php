@@ -63,44 +63,41 @@
             echo json_encode($result);
         }
 
-        public function NuevaSalida()
-        {
+        public function NuevaSalida() { 
+            $aux = 1;
             if (isset($_POST['Id_Clientes_2']) && $_POST['Id_Clientes_2'] != '') {
                 $this->salida->setId_Clientes_2($_POST['Id_Clientes_2']);
                 $this->salida->setFecha($_POST['Fecha']);
 
                 $result = $this->salida->insertarSalida();
-
                 if ($result) {
-                    $this->salida->setDescripcion($_POST['Descripcion']);
-                    $this->salida->setMedida($_POST['Medida']);
-                    $this->salida->setAcabado($_POST['Acabado']);
-                    $this->salida->setFactor($_POST['factor']);
-                    $this->salida->setMaterial($_POST['Material']);
-                    $this->salida->setCantidad_millares($_POST['Cantidad_millares']);
-                    $this->salida->setPedido_pza($_POST['Pedido_pza']);
-                    $this->salida->setFecha_entrega($_POST['Fecha_entrega']);
-                    $this->salida->setPrecio_millar($_POST['Precio_millar']);
-                    $this->salida->setCodigo($_POST['Codigo']);
-                    if (isset($_POST['tratamiento']) && $_POST['tratamiento'] == 'on') {
-                        $this->salida->setTratamiento('T/TERMICO');
+                    for ($i=1; $i <= $_POST['Cantidad_Tornillos']; $i++) { 
+                        $this->salida->setDescripcion($_POST['Descripcion_'.$i]);
+                        $this->salida->setMedida($_POST['Medida_'.$i]);
+                        $this->salida->setAcabado($_POST['Acabado_'.$i]);
+                        $this->salida->setFactor($_POST['factor_'.$i]);
+                        $this->salida->setMaterial($_POST['Material_'.$i]);
+                        $this->salida->setCantidad_millares($_POST['Cantidad_millares_'.$i]);
+                        $this->salida->setPedido_pza($_POST['Pedido_pza']);
+                        $this->salida->setFecha_entrega($_POST['Fecha_entrega']);
+                        $this->salida->setPrecio_millar($_POST['Precio_millar_'.$i]);
+                        $this->salida->setCodigo($_POST['Codigo']);
+                        if (isset($_POST['tratamiento_' . $i]) && $_POST['tratamiento_'.$i] == 'on') {
+                            $this->salida->setTratamiento('T/TERMICO');
+                        }
+    
+                        $result_2 = $this->salida->insertarPedido();
+                        if ($result_2) {
+                            if (!isset($_POST['sin_op_'.$i]) && $result) {
+                                $this->salida->setDibujo($_POST['Dibujo_'.$i]);
+                                $this->salida->setCantidad_producir($_POST['cantidad_producir_'.$i]);
+                                $orden = json_encode($this->salida->insertarOrden());
+                            }
+                        } else {
+                            $aux = 3;
+                        }
                     }
-
-                    $result_2 = $this->salida->insertarPedido();
-                    
-                    if ($result_2) {
-                        echo 'Hola Mundo..';
-                        // if (!isset($_POST['sin_op']) && $result) {
-                        //     $this->salida->setDibujo($_POST['Dibujo']);
-                        //     $this->salida->setCantidad_producir($_POST['cantidad_producir']);
-                        //     $orden = json_encode($this->salida->insertarOrden());
-                        //     echo $orden;
-                        // } else {
-                        //     echo 4;
-                        // }
-                    } else {
-                        echo 3;
-                    }
+                    echo $aux;
                 } else {
                     echo 2;
                 }
