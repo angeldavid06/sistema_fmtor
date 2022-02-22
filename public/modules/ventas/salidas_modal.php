@@ -1,4 +1,4 @@
-<div id="modal-ingresar" class="modal modal-derecha">
+<div id="modal-ingresar" class="modal modal-derecha  width-08">
     <div class="titulo_modal d-flex justify-between align-content-center">
         <h2>Nueva Salida</h2>
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <p style="padding: 15px 0px 30px 0px;" class="txt-right">Información del cliente:</p>
-            <div class="d-grid g-2">
+            <div class="d-grid g-3">
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Cliente:</p>
                     <!-- <input class="input" type="text" name="Id_Clientes_2" id="Id_Clientes_2"> -->
@@ -35,76 +35,81 @@
                     <p>No. Parte cliente:</p>
                     <input class="input" type="text" name="Codigo" id="Codigo" placeholder="Ingrese el codigo">
                 </div>
-            </div>
-            <div class="d-grid g-2">
-                <div class="d-grid g-1 grid-gap-0">
-                    <p>Cantidad (millares):</p>
-                    <input class="input" type="text" name="Cantidad_millares" id="Cantidad_millares">
-                </div>
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Pedido Cliente:</p>
                     <input class="input" type="text" name="Pedido_pza" id="Pedido_pza">
                 </div>
             </div>
-            <p style="padding: 15px 0px 30px 0px;" class="txt-right">Orden de Producción:</p>
-            <div class="d-grid g-1">
-                <input type="checkbox" name="sin_op" id="sin_op">
-                <label class="lbl-checkbox" id="lbl_checkbox_salida" for="sin_op" style="margin: 0 0 15px 0;">Sin O.P.:</label>
-            </div>
-            <div class="d-grid g-1 grid-gap-0">
-                <p>Cantidad a Producir (millares):</p>
-                <input class="input" type="number" name="cantidad_producir" id="cantidad_producir">
+            <div class="d-grid g-3">
+                <div class="d-grid g-1 grid-gap-0">
+                    <p>Cantidad de Tornillos:</p>
+                    <input class="input" type="number" name="Cantidad_Tornillos" id="Cantidad_Tornillos">
+                </div>
             </div>
             <p style="padding: 15px 0px 30px 0px;" class="txt-right">Información del tornillo:</p>
-            <div class="d-grid g-2">
-                <div class="d-grid g-1 grid-gap-0">
-                    <p>No. de Dibujo:</p>
-                    <input class="input" type="text" name="Dibujo" id="Dibujo" placeholder="Ingrese el numero de plano">
+            <p style="padding: 15px 0px 30px 0px;" class="txt-left">Tornillo 1:</p>
+            <div class="tornillos">
+                <div class="d-grid g-3">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Cantidad (millares):</p>
+                        <input class="input" type="text" name="Cantidad_millares_1" id="Cantidad_millares_1">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>No. de Dibujo:</p>
+                        <input class="input" type="text" name="Dibujo_1" id="Dibujo_1" placeholder="Ingrese el numero de plano">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Descripcion:</p>
+                        <input type="text" class="input" name="Descripcion_1" id="Descripcion_1">
+                    </div>
+                </div>
+                <div class="d-grid g-3">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Medida:</p>
+                        <input class="input" type="text" name="Medida_1" id="Medida_1">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Factor:</p>
+                        <input class="input" type="text" name="factor_1" id="factor_1">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Acabado:</p>
+                        <select class="input" name="Acabado_1" id="Acabado_1">
+                            <option value="">Selecciona un acabado</option>
+                            <option value="GALVANIZADO">GALVANIZADO</option>
+                            <option value="PULIDO">PULIDO</option>
+                            <option value="ZINCADO NEGRO">ZINCADO NEGRO</option>
+                            <option value="ZINCADO ESPAÑOL">ZINCADO ESPAÑOL</option>
+                            <option value="TROPICALIZADO">TROPICALIZADO</option>
+                            <option value="PAVONADO">PAVONADO</option>
+                            <option value="INOXIDABLE">INOXIDABLE</option>
+                            <option value="NIQUELADO">NIQUELADO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-grid g-3">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Material:</p>
+                        <input class="input" type="text" name="Material_1" id="Material_1">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Costo:</p>
+                        <input class="input" type="text" name="Precio_millar_1" id="Precio_millar_1">
+                    </div>
+                    <div class="d-flex align-content-bottom justify-left">
+                        <input type="checkbox" name="tratamiento_1" id="tratamiento_1">
+                        <label class="lbl-checkbox" for="tratamiento_1" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>
+                    </div>
+                </div>
+                <p style="padding: 15px 0px 30px 0px;" class="txt-right">Orden de Producción:</p>
+                <div class="d-grid g-1">
+                    <input type="checkbox" name="sin_op_1" id="sin_op_1">
+                    <label class="lbl-checkbox" id="lbl_checkbox_salida" for="sin_op_1" style="margin: 0 0 15px 0;">Sin O.P.:</label>
                 </div>
                 <div class="d-grid g-1 grid-gap-0">
-                    <p>Descripcion:</p>
-                    <input type="text" class="input" name="Descripcion" id="Descripcion">
+                    <p>Cantidad a Producir (millares):</p>
+                    <input class="input" type="number" name="cantidad_producir_1" id="cantidad_producir_1">
                 </div>
-            </div>
-            <div class="d-grid g-2">
-                <div class="d-grid g-1 grid-gap-0">
-                    <p>Medida:</p>
-                    <input class="input" type="text" name="Medida" id="Medida">
-                </div>
-                <div class="d-grid g-1 grid-gap-0">
-                    <p>Factor:</p>
-                    <input class="input" type="text" name="factor" id="factor">
-                </div>
-            </div>
-            <div class="d-grid g-2">
-                <div class="d-grid g-1 grid-gap-0">
-                    <p>Acabado:</p>
-                    <select class="input" name="Acabado" id="Acabado">
-                        <option value="">Selecciona un acabado</option>
-                        <option value="GALVANIZADO">GALVANIZADO</option>
-                        <option value="PULIDO">PULIDO</option>
-                        <option value="ZINCADO NEGRO">ZINCADO NEGRO</option>
-                        <option value="ZINCADO ESPAÑOL">ZINCADO ESPAÑOL</option>
-                        <option value="TROPICALIZADO">TROPICALIZADO</option>
-                        <option value="PAVONADO">PAVONADO</option>
-                        <option value="INOXIDABLE">INOXIDABLE</option>
-                        <option value="NIQUELADO">NIQUELADO</option>
-                    </select>
-                </div>
-                <div class="d-grid g-1 grid-gap-0">
-                    <p>Material:</p>
-                    <input class="input" type="text" name="Material" id="Material">
-                </div>
-            </div>
-            <div class="d-grid g-2">
-                <div class="d-grid g-1 grid-gap-0">
-                    <p>Costo:</p>
-                    <input class="input" type="text" name="Precio_millar" id="Precio_millar">
-                </div>
-            </div>
-            <div class="d-grid g-1">
-                <input type="checkbox" name="tratamiento" id="tratamiento">
-                <label class="lbl-checkbox" for="tratamiento" style="margin: 0px 0px 30px 0px;">Tratamiento</label>
             </div>
             <div class="opciones d-flex flex-column">
                 <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Registrar</button>

@@ -28,6 +28,9 @@
                     <table class="table table_salida lista_salida" id="table">
                         <thead>
                             <th></th>
+                            <th style="min-width: 80px;"></th>
+                            <th style="min-width: 80px;"></th>
+                            <th style="min-width: 80px;"></th>
                             <th style="min-width: 80px;"> N° de salida </th>
                             <th style="min-width: 150px;"> Cliente</th>
                             <th style="min-width: 100px;"> Fecha</th>
@@ -44,9 +47,6 @@
                             <th> Material </th>
                             <th> O.P</th>
                             <th style="min-width: 100px;"> Fecha de entrega</th>
-                            <th style="min-width: 80px;"></th>
-                            <th style="min-width: 80px;"></th>
-                            <th style="min-width: 80px;"></th>
                         </thead>
                         <tbody class="body body_salida"></tbody>
                     </table>
@@ -59,6 +59,7 @@
 <script src="../public/js/fmtor_libreria.js?1.2"></script>
 <script src="../public/js/ventas/functions_salida.js?1.3"></script>
 <script src="../public/js/ventas/filtros.js"></script>
+<script src="../public/js/ventas/no_tornillos.js"></script>
 </body>
 </body>
 

@@ -21,6 +21,7 @@
         public $Fecha_entrega;
         public $Factor;
         public $Tratamiento;
+        public $No_Pedido;
 
         public function __construct()
         {
@@ -117,23 +118,51 @@
             $this->Tratamiento = $Tratamiento;
         }
 
+        public function setNo_Pedido ($No_Pedido) {
+            $this->No_Pedido = $No_Pedido;
+        }
+
         public function insertarSalida()
         {
             $tabla = 't_salida_almacen';
-            $parametros = 'Id_Clientes_2,Fecha,Cantidad_millares,Codigo,Pedido_pza,Medida,Descripcion,Acabado,Precio_millar,Fecha_entrega';
-            $values =   "'$this->Id_Clientes_2', '$this->Fecha', '$this->Cantidad_millares', '$this->Codigo', '$this->Pedido_pza','$this->Medida','$this->Descripcion', '$this->Acabado','$this->Precio_millar','$this->Fecha_entrega'";
+            $parametros = 'Id_Clientes_FK,Fecha';
+            $values =   "'$this->Id_Clientes_2', '$this->Fecha'";
             $validacion = Model::insertar($tabla, $parametros, $values);
             return $validacion;
+        }
+        
+        public function insertarPedido () {
+            $obj = new Model();
+            $id_pedido = $obj->buscar_personalizado('t_salida_almacen', 'Id_Folio', '1 ORDER BY Id_Folio DESC LIMIT 1');
+
+            $obj_2 = new Model();
+            $tabla = 't_pedido';
+            $parametros = 'Descripcion,Medida,Acabado,Factor,Material,Tratamiento,Cantidad_millares,Pedido_pza,Fecha_entrega,Precio_Millar,Codigo,Id_Salida_FK';
+            $values =   "
+                '$this->Descripcion',
+                '$this->Medida',
+                '$this->Acabado',
+                '$this->Factor',
+                '$this->Material',
+                '$this->Tratamiento',
+                '$this->Cantidad_millares', 
+                '$this->Pedido_pza',
+                '$this->Fecha_entrega',
+                '$this->Precio_millar',
+                '$this->Codigo','".
+                $id_pedido[0]['Id_Folio']."'";
+            $validacion = $obj_2->insertar($tabla, $parametros, $values);
+            return $validacion;    
         }
 
         public function insertarOrden () {
             $obj = new Model();
-            $id_salida = $obj->buscar_personalizado('t_salida_almacen','Id_Folio','1 ORDER BY Id_Folio DESC LIMIT 1');
+            $id_pedido = $obj->buscar_personalizado('t_pedido','Id_Pedido','1 ORDER BY Id_Pedido DESC LIMIT 1');
 
             $obj2 = new Model();
             $tabla = 't_orden_produccion';
-            $parametros = 'Id_Catalogo_FK,factor,material,tratamiento,cantidad,no_Pedido,Id_Salida_FK_1';
-            $values = "'$this->Dibujo','$this->Factor','$this->Material','$this->Tratamiento','$this->Cantidad_producir','$this->Pedido_pza','".$id_salida[0]['Id_Folio']."'";
+            $parametros = 'Id_Catalogo_FK,cantidad,Id_Pedidop_FK';
+            $values = "'$this->Dibujo','$this->Cantidad_producir','".$id_pedido[0]['Id_Pedido']."'";
             $result = $obj2->insertar($tabla, $parametros, $values);
             return $result;
         }

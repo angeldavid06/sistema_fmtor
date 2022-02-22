@@ -110,7 +110,7 @@ const portapapeles_copiar = (el) => {
                         txt_el.textContent.trim();
 
   navigator.clipboard.writeText(texto_copiado).then(function () {
-    open_alert("Copiado!",'');
+    open_alert("Copiado!",'azul');
   }, function () {
       open_alert("Contenido no copiado",'naranja');
   });
@@ -162,7 +162,6 @@ const render_salida = (json) => {
           info.op = orden.Id_Folio; 
           info.plano = orden.Id_Catalogo;
           info.estado = orden.estado_general;
-          info.material = orden.material;
           info.cantidad = orden.cantidad_elaborar;
         }
     })
@@ -170,6 +169,9 @@ const render_salida = (json) => {
       body[0].innerHTML +=
         "<tr>" +
           '<td><button data-copiar="'+element.id_folio+'" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
+          '<td><button class= "material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar" data-edit="'+element.id_folio +'"> mode_edit</button></td>' +
+          '<td><button class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
+          '<td><button class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">request_quote</button>'+
           "<td id='td_id_folio_"+element.id_folio+"'>"+element.id_folio + "</td>" +
           "<td id='td_razon_"+element.id_folio+"'>"+element.razon_social +"</td>" +
           "<td id='td_fecha_"+element.id_folio+"'>"+element.fecha + "</td>" +
@@ -183,12 +185,9 @@ const render_salida = (json) => {
           "<td id='td_costo_"+element.id_folio+"' class=txt-right>$ " + element.costo + "</td>" +
           "<td id='td_factura_"+element.id_folio+"'>" + element.factura + "</td>" +
           "<td id='td_dibujo"+element.id_folio+"'>" + info.plano + "</td>" +
-          "<td id='td_material"+element.id_folio+"'>" + info.material + "</td>" +
+          "<td id='td_material"+element.id_folio+"'>" + element.material + "</td>" +
           "<td id='td_"+element.id_folio+"'>" + info.op + "</td>" +
           "<td id='td_entrega_"+element.id_folio+"'>" + element.fecha_entrega + "</td>" + 
-          '<td><button class= "material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar" data-edit="'+element.id_folio +'"> mode_edit</button></td>' +
-          '<td><button class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
-          '<td><button class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">request_quote</button>'+
         '</tr>';
     }
   });

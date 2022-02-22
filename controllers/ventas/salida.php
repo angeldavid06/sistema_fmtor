@@ -68,30 +68,41 @@
             if (isset($_POST['Id_Clientes_2']) && $_POST['Id_Clientes_2'] != '') {
                 $this->salida->setId_Clientes_2($_POST['Id_Clientes_2']);
                 $this->salida->setFecha($_POST['Fecha']);
-                $this->salida->setFecha_entrega($_POST['Fecha_entrega']);
-                $this->salida->setCantidad_millares($_POST['Cantidad_millares']);
-                $this->salida->setPedido_pza($_POST['Pedido_pza']);
-                $this->salida->setPrecio_millar($_POST['Precio_millar']);
-                $this->salida->setCodigo($_POST['Codigo']);
-                $this->salida->setDescripcion($_POST['Descripcion']);
-                $this->salida->setMedida($_POST['Medida']);
-                $this->salida->setAcabado($_POST['Acabado']);
-                
-                $result = json_encode($this->salida->insertarSalida());
-                
-                if (!isset($_POST['sin_op']) && $result) {
-                    $this->salida->setDibujo($_POST['Dibujo']);
+
+                $result = $this->salida->insertarSalida();
+
+                if ($result) {
+                    $this->salida->setDescripcion($_POST['Descripcion']);
+                    $this->salida->setMedida($_POST['Medida']);
+                    $this->salida->setAcabado($_POST['Acabado']);
                     $this->salida->setFactor($_POST['factor']);
                     $this->salida->setMaterial($_POST['Material']);
-                    $this->salida->setCantidad_producir($_POST['cantidad_producir']);
+                    $this->salida->setCantidad_millares($_POST['Cantidad_millares']);
                     $this->salida->setPedido_pza($_POST['Pedido_pza']);
+                    $this->salida->setFecha_entrega($_POST['Fecha_entrega']);
+                    $this->salida->setPrecio_millar($_POST['Precio_millar']);
+                    $this->salida->setCodigo($_POST['Codigo']);
                     if (isset($_POST['tratamiento']) && $_POST['tratamiento'] == 'on') {
                         $this->salida->setTratamiento('T/TERMICO');
                     }
-                    $orden = json_encode($this->salida->insertarOrden());
-                    echo $orden;
+
+                    $result_2 = $this->salida->insertarPedido();
+                    
+                    if ($result_2) {
+                        echo 'Hola Mundo..';
+                        // if (!isset($_POST['sin_op']) && $result) {
+                        //     $this->salida->setDibujo($_POST['Dibujo']);
+                        //     $this->salida->setCantidad_producir($_POST['cantidad_producir']);
+                        //     $orden = json_encode($this->salida->insertarOrden());
+                        //     echo $orden;
+                        // } else {
+                        //     echo 4;
+                        // }
+                    } else {
+                        echo 3;
+                    }
                 } else {
-                    echo $result;
+                    echo 2;
                 }
             } else {
                 echo 0;
