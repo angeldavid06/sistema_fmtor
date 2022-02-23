@@ -68,7 +68,8 @@
                 <div class="filtro fecha">
                     <input type="radio" data-radio="radio" name="buscar_por" id="cliente" value="cliente">
                     <label class="lbl-radio" id="lbl_radio_cliente" for="cliente">Buscar cliente:</label>
-                    <input class="input" type="text" name="f_cliente" id="f_cliente" disabled>
+                    <select name="f_cliente" id="f_cliente" class="input" disabled></select>
+                    <!-- <input class="input" type="text" name="f_cliente" id="f_cliente" disabled> -->
                 </div>
                 <!-- <h3>Filtrar por estado:</h3>
                 <div class="filtro fecha">

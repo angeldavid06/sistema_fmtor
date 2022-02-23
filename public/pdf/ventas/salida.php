@@ -15,55 +15,47 @@
         <thead>
             <tr>
                 <th class="th"></th>
-            <tr>
-                <th><?php echo  $data[0]['Id_Folio']; ?></th>
-                <th>
-                    Fecha: <?php echo  $data[0]['Fecha']; ?>
-                </th>
-                <th>
-                    Cliente: <?php echo $data[0]['Id_Clientes_2']; ?>
-                </th>
             </tr>
             <tr>
                 <th colspan="11" style="background-color: rgb(144, 202, 249);">
                     <h2>SALIDA DE ALMACÉN DE PRODUCTO TERMINADO</h2>
                 </th>
             </tr>
+            <tr>
+                <th colspan="3" style="border: none; padding: 10px 0px;">No. Salida: <?php echo  $data['salida'][0]['id_folio']; ?></th>
+                <th colspan="4" style="border: none; padding: 10px 0px;">Fecha: <?php echo  $data['salida'][0]['fecha']; ?></th>
+                <th colspan="4" style="border: none; padding: 10px 0px;">Cliente: <?php echo $data['salida'][0]['Id_Clientes'] . ' ' . $data['salida'][0]['razon_social']; ?></th>
+            </tr>
             <tr style="background-color: rgb(144, 202, 249);">
-                <th>Cantidad</th>
-                <th>Parte</th>
-                <th>Pedido</th>
-                <th>Medida</th>
-                <th>Descripcion</th>
-                <th>Acabado</th>
-                <th>Costo</th>
-                <th>Factura</th>
-                <th>Empaque</th>
-                <th>No.Plano</th>
-                <th>Material</th>
+                <th>CANTIDAD</th>
+                <th>PARTE</th>
+                <th>PEDIDO</th>
+                <th>MEDIDA</th>
+                <th>DESCRIPCIÓN</th>
+                <th>ACABADO</th>
+                <th>COSTO</th>
+                <th>FACTURA</th>
+                <th>EMPAQUE</th>
+                <th>NO. PLANO</th>
             </tr>
         </thead>
         <tbody>
             <?php require_once 'salida/tablasalida.php' ?>
             <tr>
-                <td style="border: none;" colspan="4"></td>
-                <td style="border: none;" colspan="4"></td>
-                <td style="border: none;" colspan="3"></td>
+                <td class="txt-center" colspan="3" style="border:none"><br><br></td>
+                <td class="txt-center" colspan="4" style="border:none"><br><br></td>
+                <td class="txt-center" colspan="4" style="border:none"><br><br></td>
             </tr>
             <tr>
-                <td style="border: none;" colspan="4"></td>
-                <td style="border: none;" colspan="4"></td>
-                <td style="border: none;" colspan="3"></td>
-            </tr>
-            <tr>
-                <td style="border: none;" colspan="4"></td>
-                <td style="border: none;" colspan="4"></td>
-                <td style="border: none;" colspan="3"></td>
-            </tr>
-            <tr>
-                <td class="txt-center" colspan="4">AUTORIZADO POR </td>
-                <td class="txt-center" colspan="4">DESPACHADO POR </td>
-                <td class="txt-center" colspan="3">RECIBIDO POR </td>
+                <td class="txt-center" colspan="3" style="border:none"><br><br>
+                    <hr><br>AUTORIZADO POR
+                </td>
+                <td class="txt-center" colspan="4" style="border:none"><br><br>
+                    <hr><br>DESPACHADO POR
+                </td>
+                <td class="txt-center" colspan="4" style="border:none"><br><br>
+                    <hr><br>RECIBIDO POR
+                </td>
             </tr>
         </tbody>
         <tfoot>
@@ -72,53 +64,6 @@
             </tr>
         </tfoot>
     </table>
-    <table style="width: 100%">
-        <caption></caption>
-        <thead>
-
-        </thead>
-        <tbody style="min-height:50%;max-height:50%;">
-            <!-- <tr>
-                <th colspan="2"><b>
-                        <h3><?php echo $Cantidad_millares ?></h3>
-                    </b></th>
-                <th colspan="2"><b>
-                        <h3><?php echo $Codigo ?></h3>
-                    </b></th>
-                <th colspan="2"><b>
-                        <h3><?php echo $Pedido_pza ?></h3>
-                    </b></th>
-                <th colspan="2"><b>
-                        <h3><?php echo $Medida ?></h3>
-                    </b></th>
-                <th colspan="2"><b>
-                        <h3><?php echo $Descripcion ?></h3>
-                    </b></th>
-                <th colspan="2"><b>
-                        <h3><?php echo $Acabado ?></h3>
-                    </b></th>
-                <th colspan="2"><?php echo $Precio_millar ?></th>
-                <th colspan="2"><?php echo $Factura ?></th>
-                <th colspan="2"></th>
-                <th colspan="2"><?php echo $Dibujo ?></th>
-                <th colspan="2"><?php echo $Material ?></th>
-            </tr> -->
-
-        </tbody>
-        <tfoot>
-
-        </tfoot>
-    </table>
-    <br>
-    <br>
-    <br>
-    <!-- <div class="nombre txt-left">
-        <p>
-        <h3>Fecha Entrega: <?php echo $Fecha_entrega; ?></p>
-            <p>
-            <h3>OP: <?php echo $Id_Folio; ?></p>
-    </div>
- -->
     <div class="header">
         <div class="d-grid g-2">
             <div class="logo-formato">
@@ -136,18 +81,15 @@
         </div>
     </div>
     <div class="footer">
-        <div class="d-grid g-4">
+        <div class="d-grid g-3">
             <div class="d-flex align-content-bottom">
-                <p>Clave: </p>
+                <p>CLAVE: FOR-VEN-</p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>Versión: </p>
+                <p>VERSIÓN: 2</p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>Fecha de validación: </p>
-            </div>
-            <div class="d-flex align-content-bottom">
-                <p>Página: </p>
+                <p>FECHA DE VALIDACIÓN: </p>
             </div>
         </div>
     </div>

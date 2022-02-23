@@ -29,7 +29,14 @@
         
         public function generarpdf()
         {
-            $data = $this->model->buscar('t_salida_almacen', $_GET['atributo'], $_GET['value']);
+            $salida = $this->model->buscar('v_salidas_almacen', $_GET['atributo'], $_GET['value']);
+            $this->model = new Model();
+            $ordenes = $this->model->mostrar('v_ordenes'); 
+
+            $data = [
+                'salida' => $salida,
+                'ordenes' => $ordenes
+            ];
 
             $this->web->PDF('ventas/salida', $data);
         }
@@ -121,6 +128,7 @@
                 $this->salida->setPrecio_millar($_POST['Precio_millar_edit']);
                 $this->salida->setFactura($_POST['Factura_edit']);
                 $this->salida->setFecha_entrega($_POST['Fecha_entrega_edit']);
+                $this->salida->setMaterial($_POST['Material_edit']);
 
                 $result = $this->salida->actualizarSalida();
                 

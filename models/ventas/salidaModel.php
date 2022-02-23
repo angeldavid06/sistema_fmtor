@@ -169,20 +169,17 @@
 
         public function actualizarSalida()
         {
-            $tabla = 't_salida_almacen';
-            $values = "Id_Clientes_2 = '$this->Id_Clientes_2', 
-                        Fecha = '$this->Fecha',
-                        Cantidad_millares = '$this->Cantidad_millares', 
+            $values = "Cantidad_millares = '$this->Cantidad_millares', 
                         Codigo= '$this->Codigo', 
                         Pedido_pza= '$this->Pedido_pza',
                         Medida = '$this->Medida',
                         Descripcion = '$this->Descripcion', 
                         Acabado = '$this->Acabado',
                         Precio_millar = '$this->Precio_millar',
-                        Factura = '$this->Factura', 
-                        Fecha_entrega = '$this->Fecha_entrega'";
-            $condicion = "Id_Folio = '$this->Salida'";
-            $validacion = Model::actualizar($tabla, $values, $condicion);
+                        Fecha_entrega = '$this->Fecha_entrega',
+                        Material = '$this->Material'";
+            $condicion = "Id_Salida_FK = '$this->Salida'";
+            $validacion = Model::actualizar('t_pedido', $values, $condicion);
             return $validacion;
         }
     }

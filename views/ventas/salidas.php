@@ -19,34 +19,33 @@
                         <h1>Salida de Almacen </h1>
                     </div>
                     <div class="d-flex justify-right align-content-center">
-                        <button class="material-icons btn btn-icon-self btn-transparent" data-recarga="true">loop</button>
-                        <button class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-ingresar">add</button>
-                        <button class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-filtrar">filter_alt</button>
+                        <button title="Recargar" class="material-icons btn btn-icon-self btn-transparent" data-recarga="true">loop</button>
+                        <button title="Nueva Salida de Almacen" class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-ingresar">add</button>
+                        <button title="Filtrar Información" class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-filtrar">filter_alt</button>
+                        <button title="Generar Reporte" class="material-icons btn btn-icon-self">description</button>
                     </div>
                 </div>
                 <div class="tabla tarjeta" style="padding: 0;">
                     <table class="table table_salida lista_salida" id="table">
                         <thead>
                             <th></th>
-                            <th style="min-width: 80px;"></th>
-                            <th style="min-width: 80px;"></th>
-                            <th style="min-width: 80px;"></th>
-                            <th style="min-width: 80px;"> N° de salida </th>
-                            <th style="min-width: 150px;"> Cliente</th>
-                            <th style="min-width: 100px;"> Fecha</th>
+                            <th style="min-width: 80px;">N° de salida </th>
+                            <th style="min-width: 150px;">Cliente</th>
+                            <th style="min-width: 100px;">Fecha</th>
                             <th>Cantidad</th>
-                            <th>Cantidad a Producir</th>
-                            <th style="min-width: 150px;"> N° parte de cliente </th>
-                            <th style="min-width: 100px;"> Pedido Cliente</th>
-                            <th> Medida</th>
-                            <th style="min-width: 150px;"> Descripcion </th>
-                            <th> Acabado</th>
-                            <th style="min-width: 100px;"> Costo</th>
-                            <th> Factura </th>
-                            <th style="min-width: 120px;"> Numero de Dibujo </th>
-                            <th> Material </th>
-                            <th> O.P</th>
-                            <th style="min-width: 100px;"> Fecha de entrega</th>
+                            <th style="min-width: 150px;">N° parte de cliente </th>
+                            <th style="min-width: 100px;">Pedido Cliente</th>
+                            <th>Medida</th>
+                            <th style="min-width: 150px;">Descripcion </th>
+                            <th>Acabado</th>
+                            <th style="min-width: 100px;">Costo</th>
+                            <th style="min-width: 120px;">Numero de Dibujo </th>
+                            <th>Material </th>
+                            <th>O.P</th>
+                            <th style="min-width: 100px;">Fecha de entrega</th>
+                            <th style="min-width: 80px;"></th>
+                            <th style="min-width: 80px;"></th>
+                            <th style="min-width: 80px;"></th>
                         </thead>
                         <tbody class="body body_salida"></tbody>
                     </table>

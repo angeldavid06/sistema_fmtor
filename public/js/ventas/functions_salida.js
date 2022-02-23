@@ -24,8 +24,8 @@ const colocar_cliente = (cliente) => {
   }
 }
 
-const colocar_acabado = (acabado) => {
-  const select = document.getElementById("Acabado_1");
+const colocar_acabado = (acabado,j) => {
+  const select = document.getElementById("Acabado_"+j);
   const select_2 = document.getElementById("Acabado_edit");
   const options = select.getElementsByTagName('option');
   const options_2 = select_2.getElementsByTagName('option');
@@ -41,40 +41,66 @@ const colocar_acabado = (acabado) => {
   }
 }
 
+const colocar_informacion_op = (op,contador) => {
+  document.getElementById('cantidad_producir_' + contador).value = op[0].cantidad_elaborar;
+  document.getElementById('Dibujo_' + contador).value = op[0].Id_Catalogo;
+}
+
+const colocar_informacion_sin_op = (op,contador) => {
+  document.getElementById('sin_op_' + contador).setAttribute('checked','');
+}
+
+const colocar_informacion_tornillos = (salida) => {
+  let i = 1;
+  salida.forEach(el => {
+    document.getElementById("Cantidad_millares_" + i).value = el.cantidad;
+    document.getElementById("Precio_millar_" + i).value = el.costo;
+    document.getElementById("Medida_" + i).value = el.medida;
+    document.getElementById("Descripcion_" + i).value = el.descripcion;
+    colocar_acabado(el.acabados,i);
+    document.getElementById("Material_" + i).value = el.material;
+    i++;
+  })
+}
+
 const portapapeles_pegar = () => {
-  navigator.clipboard.readText().then( clipText => {
+  navigator.clipboard.readText().then(clipText => {
     const json = JSON.parse(clipText)
     const salida = json['salida']
     const ordenes = json['ordenes']
-    // console.log(JSON.parse(clipText));
+    let op = [];
+    let aux = false;
+    let contador = 1;
 
-    document.getElementById("Fecha_entrega").value = salida[0].fecha_entrega;
-    colocar_cliente(salida[0].razon_social);
-    // // document.getElementById("Id_Clientes_2").value = textos[1];
-    // document.getElementById("Cantidad_millares_1").value = textos[4];
-    document.getElementById("Codigo").value = salida[0].no_parte;
-    document.getElementById("Pedido_pza").value = salida[0].pedido_cliente;
-    render_form_tornillo(salida.length)
-    // document.getElementById("Precio_millar_1").value = textos[9].split(' ')[1];
-    // if (textos[14] != '-') {
-    //   document.getElementById("Dibujo_1").value = textos[11];
-    //   document.getElementById("Medida_1").value = textos[6];
-    //   document.getElementById("Descripcion_1").value = textos[7];
-      
-    //   colocar_acabado(textos[8]);
+    if (document.getElementById("Id_Clientes_2").value == '') {
+      document.getElementById("Fecha_entrega").value = salida[0].fecha_entrega;
+      colocar_cliente(salida[0].razon_social);
+      document.getElementById("Codigo").value = salida[0].no_parte;
+      document.getElementById("Pedido_pza").value = salida[0].pedido_cliente;
+      document.getElementById("Cantidad_Tornillos").value = salida.length;
+      vaciar_tornillos()
+      render_form_tornillo(salida.length)
+      colocar_informacion_tornillos(salida);
+  
+      salida.forEach(el => {
+        ordenes.forEach((orden) => {
+          if (orden.Id_Pedido == el.Id_Pedido) {
+            op.push(orden)
+            aux = true;
+          }
+        })
+        if (aux) {
+          colocar_informacion_op(op,contador);
+          contador++;
+        } else {
+          colocar_informacion_sin_op(op,contador)
+          contador++;
+        }
+        aux = false
+      });
+    }
 
-    //   document.getElementById("Material_1").value = textos[12];
-    //   document.getElementById('cantidad_producir_1').value = textos[15];
-    // } else {
-    //   document.getElementById("Dibujo_1").value = '';
-    //   document.getElementById("Medida_1").value = '';
-    //   document.getElementById("Descripcion_1").value = '';
-      
-    //   colocar_acabado('');
 
-    //   document.getElementById("Material_1").value = '';
-    //   document.getElementById('cantidad_producir_1').value = '';
-    // }
   });
 }
 
@@ -104,9 +130,9 @@ const render_salida = (json) => {
 
     if (aux > 0 && mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
         tr_totales.innerHTML = '<tr>'+
-                                    '<td class="txt-right" colspan="11">Total mensual: </td>'+
+                                    '<td class="txt-right" colspan="10">Total mensual: </td>'+
                                     '<td class="txt-right">$ '+ new Intl.NumberFormat('es-MX').format(total_acumulado_mensual)+'</td>'+
-                                    '<td colspan="8"></td>'+
+                                    '<td colspan="9"></td>'+
                                 '</tr>';
         body[0].appendChild(tr_totales)
         total_acumulado += parseFloat(total_acumulado_mensual)
@@ -144,33 +170,31 @@ const render_salida = (json) => {
       body[0].innerHTML +=
         "<tr>" +
           '<td><button data-copiar="'+element.id_folio+'" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
-          '<td><button class= "material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar" data-edit="'+element.id_folio +'"> mode_edit</button></td>' +
-          '<td><button class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
-          '<td><button class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">request_quote</button>'+
           "<td id='td_id_folio_"+element.id_folio+"'>"+element.id_folio + "</td>" +
           "<td id='td_razon_"+element.id_folio+"'>"+element.razon_social +"</td>" +
           "<td id='td_fecha_"+element.id_folio+"'>"+element.fecha + "</td>" +
-          "<td id='td_cantidad_"+element.id_folio+"'>"+element.cantidad + "</td>" +
-          "<td id='td_cantidad_el_"+element.id_folio+"'>"+info.cantidad + "</td>" +
+          "<td id='td_cantidad_"+element.id_folio+"' class='txt-right'>"+element.cantidad + "</td>" +
           "<td id='td_no_parte_"+element.id_folio+"'>"+element.no_parte + "</td>" +
           "<td id='td_pedido_"+element.id_folio+"'>"+element.pedido_cliente + "</td>" +
           "<td id='td_medida_"+element.id_folio+"'>"+element.medida + "</td>" +
           "<td id='td_descripcion_"+element.id_folio+"'>" + element.descripcion + "</td>" +
           "<td id='td_acabado_"+element.id_folio+"'>" + element.acabados + "</td>" +
-          "<td id='td_costo_"+element.id_folio+"' class=txt-right>$ " + element.costo + "</td>" +
-          "<td id='td_factura_"+element.id_folio+"'>" + element.factura + "</td>" +
+          "<td id='td_costo_"+element.id_folio+"' class=txt-right>$ " + new Intl.NumberFormat('es-MX').format(element.costo) + "</td>" +
           "<td id='td_dibujo"+element.id_folio+"'>" + info.plano + "</td>" +
           "<td id='td_material"+element.id_folio+"'>" + element.material + "</td>" +
           "<td id='td_"+element.id_folio+"'>" + info.op + "</td>" +
           "<td id='td_entrega_"+element.id_folio+"'>" + element.fecha_entrega + "</td>" + 
-        '</tr>';
+          '<td><button title="Editar Salida de Almacen" class= "material-icons btn btn-transparent btn-icon-self" data-modal="modal-actualizar" data-edit="'+element.id_folio +'"> mode_edit</button></td>' +
+          '<td><button title="Generar Salida de Almacen" class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
+          '<td><button title="Generar Cotización" class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">request_quote</button>'+
+          '</tr>';
     }
   });
     const tr_totales = document.createElement('tr')
     tr_totales.innerHTML = '<tr>'+
-                                '<td class="txt-right" colspan="11">Total mensual: </td>'+
+                                '<td class="txt-right" colspan="10">Total mensual: </td>'+
                                 '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(total_acumulado_mensual)+'</td>'+
-                                '<td colspan="8"></td>'+
+                                '<td colspan="9"></td>'+
                             '</tr>';
     body[0].appendChild(tr_totales)
     total_acumulado += parseFloat(total_acumulado_mensual);
@@ -187,9 +211,9 @@ const render_salida = (json) => {
     tfoot.setAttribute('id','pie')
     tfoot.classList.add('tfoot')
     tfoot.innerHTML = '<tr>'+
-                            '<td class="txt-right" colspan="11">Total: </td>'+
+                            '<td class="txt-right" colspan="10">Total: </td>'+
                             '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado) + '</td>'+
-                            '<td colspan="8"></td>'+
+                            '<td colspan="9"></td>'+
                     '</tr>';
     table.appendChild(tfoot)
 };
@@ -221,7 +245,7 @@ const Fecha_entrega = document.getElementById("Fecha_entrega_edit");
 const pintarModal = (json,id) => {
   json['salida'].forEach((element) => {
     Salida.value = id
-    Id_Clientes_2.value = element.Id_Clientes_2;
+    Id_Clientes_2.value = element.Id_Clientes_FK;
     Fecha.value = element.fecha;
     Cantidad_millares.value = element.cantidad;
     Codigo.value = element.no_parte;
@@ -231,7 +255,7 @@ const pintarModal = (json,id) => {
     Precio_millar.value = element.costo;
     Factura.value = element.factura;
     Fecha_entrega.value = element.fecha_entrega;
-    colocar_acabado(element.acabados);
+    colocar_acabado(element.acabados,1);
     colocar_cliente_2(element.razon_social)
     json['ordenes'].forEach(orden => {
       if (orden.Id_Salida_FK == element.id_folio) {
@@ -302,10 +326,20 @@ form.addEventListener("submit", (evt) => {
   insertarSalida();
 });
 
+const limpiar_formulario = (form) => {
+  const inputs = form.getElementsByClassName('input')
+  for (let i = 1; i < inputs.length; i++) {
+    inputs[i].value = ''
+  }
+  render_form_tornillo(1)
+  document.getElementById("Cantidad_Tornillos").value = 1;
+}
+
 const insertarSalida = () => {
   const respuesta = fetchAPI(form, url + "/ventas/salida/NuevaSalida", "POST");
   respuesta.then((json) => {
     if (json == 1) {
+      limpiar_formulario(form);
       open_alert("El registro ha sido actualizado correctamente", "verde");
       obtener();
     } else {
@@ -342,15 +376,6 @@ const actualizar_Salida = () => {
 const obtener_pdf = (id) => {
   printPage(url + "/ventas/salida/generarpdf?atributo=Id_Folio&value=" + id);
 };
-
-// const deshabilitar_inputs = () => {
-//   const f_inputs = document
-//     .getElementById("form-filtros")
-//     .getElementsByClassName("input");
-//   for (let i = 0; i < f_inputs.length; i++) {
-//     f_inputs[i].setAttribute("disabled", "");
-//   }
-// };
 
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.pegar) {
@@ -391,6 +416,7 @@ const obtener_clientes = () => {
     json.forEach(el => {
       document.getElementById('Id_Clientes_2').innerHTML += '<option value="'+el.Id_Clientes+'">'+el.Razon_social+'</option>'
       document.getElementById('Id_Clientes_2_edit').innerHTML += '<option value="'+el.Id_Clientes+'">'+el.Razon_social+'</option>'
+      document.getElementById('f_cliente').innerHTML += '<option value="'+el.Razon_social+'">'+el.Razon_social+'</option>'
     })
   })
 }

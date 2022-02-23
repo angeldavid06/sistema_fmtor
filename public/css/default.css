@@ -1297,7 +1297,8 @@ embed {
 }
 
 .contenido .informacion .tarjeta table,
-.contenido .informacion .acordeon .contenido_acordeon table {
+.contenido .informacion .acordeon .contenido_acordeon table,
+.modal .contenido_modal table {
     width: 100%;
     border-collapse: collapse;
 }
@@ -1310,7 +1311,8 @@ embed {
     overflow: hidden;
 }
 
-.contenido .informacion .tarjeta table thead tr th {
+.contenido .informacion .tarjeta table thead tr th,
+.modal .contenido_modal table thead tr th {
     background-color: var(--background-body);
 }
 
@@ -1319,7 +1321,8 @@ embed {
 }
 
 .contenido .informacion .tarjeta table thead tr:first-child th:first-child,
-.contenido .informacion .acordeon .contenido_acordeon table thead tr:first-child th:first-child {
+.contenido .informacion .acordeon .contenido_acordeon table thead tr:first-child th:first-child,
+.modal .contenido_modal table thead tr:first-child th:first-child {
     border-radius: var(--border-radius) 0px 0px 0px;
 }
 
@@ -1329,7 +1332,8 @@ embed {
 }
 
 .contenido .informacion .tarjeta table tfoot tr td,
-.contenido .informacion .acordeon .contenido_acordeon table tfoot tr td {
+.contenido .informacion .acordeon .contenido_acordeon table tfoot tr td,
+.modal .contenido_modal table tfoot tr td {
     border-top: 1px solid var(--color-text);
 }
 
@@ -1338,7 +1342,10 @@ embed {
 .contenido .informacion .tarjeta table tfoot tr td,
 .contenido .informacion .acordeon .contenido_acordeon table thead tr th,
 .contenido .informacion .acordeon .contenido_acordeon table tbody tr td,
-.contenido .informacion .acordeon .contenido_acordeon table tfoot tr td {
+.contenido .informacion .acordeon .contenido_acordeon table tfoot tr td,
+.modal .contenido_modal table thead tr th,
+.modal .contenido_modal table tbody tr td,
+.modal .contenido_modal table tfoot tr td {
     padding: 10px;
 }
 

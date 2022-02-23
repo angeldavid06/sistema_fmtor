@@ -1,54 +1,45 @@
 <?php
 
-$Salida = " ";
-$Id_Clientes_2 = " ";
-$Razon_social     = " ";
-$Fecha  = " ";
-$Cantidad_millares = " ";
-$Codigo = " "; 
-$Pedido_pza = " ";
-$Medida = " ";
-$Descripcion       = " ";
-$Acabado           = " ";
-$Precio_millar     = " ";
-$Factura           = " ";
-$Dibujo            =" ";
-$Material          = " ";
-$Id_Folio          = " ";
-$Fecha_entrega     = " ";
+    $total_pzas = 0;
+    $total_costo = 0;
+    $plano = '-';
 
-    for ($i=0; $i < count($data); $i++) { 
-        
-
-        $Salida = $data[$i]['Id_Folio'];
-        $Id_Clientes_2  = $data[$i]['Id_Clientes_2'];
-       
-        $Fecha    = $data[$i]['Fecha'];
-        $Cantidad_millares = $data[$i]['Cantidad_millares'];
-        $Codigo = $data[$i]['Codigo'];
-        $Pedido_pza        = $data[$i]['Pedido_pza'];
-        $Medida            = $data[$i]['Medida'];
-        $Descripcion       = $data[$i]['Descripcion'];
-        $Acabado           = $data[$i]['Acabado'];
-        $Precio_millar     = $data[$i]['Precio_millar'];
-        $Factura           = $data[$i]['Factura'];
-        // $Dibujo            = $data[$i]['Dibujo'];
-        // $Material          = $data[$i]['Material'];
-        $Id_Folio          = $data[$i]['Id_Folio'];   
-        $Fecha_entrega     = $data[$i]['Fecha_entrega'];
-        
+    for ($i=0; $i < count($data['salida']); $i++) { 
+        for ($j=0; $j < count($data['ordenes']); $j++) { 
+            if ($data['ordenes'][$j]['Id_Pedido'] == $data['salida'][$i]['Id_Pedido']) {
+                $plano = $data['ordenes'][$j]['Id_Catalogo'];
+            }
+        }
         echo '<tr>'.
-                '<td>'.$data[$i]['Cantidad_millares'].'</td>'.
-                '<td>'.$data[$i]['Pedido_pza'].'</td>'.
-                '<td>'.$data[$i]['Medida'].'</td>'.
-                '<td>'.$data[$i]['Descripcion'].'</td>'.
-                '<td>'.$data[$i]['Acabado'].'</td>'.
-                '<td>'.$data[$i]['Precio_millar'].'</td>'.
-                '<td>'.$data[$i]['Empaque'].'</td>'. 
-                '<td>'.$data[$i]['Factura'].'</td>'. 
-                '<td></td>'.
-                '<td></td>'.
-                '<td></td>'.
+                '<td class="txt-right">'.$data['salida'][$i]['cantidad'].'</td>'.
+                '<td>'.$data['salida'][$i]['no_parte'].'</td>'.
+                '<td>'.$data['salida'][$i]['pedido_cliente'].'</td>'.
+                '<td>'.$data['salida'][$i]['medida'].'</td>'.
+                '<td>'.$data['salida'][$i]['descripcion'].'</td>'.
+                '<td>'.$data['salida'][$i]['acabados'].'</td>'.
+                '<td class="txt-right">$ '.$data['salida'][$i]['costo'].'</td>'.
+                '<td>'.$data['salida'][$i]['factura'].'</td>'. 
+                '<td>'.$data['salida'][$i]['empaque'].'</td>'.
+                '<td>'.$plano.'</td>'.
             '</tr>';
+        $total_pzas += $data['salida'][$i]['cantidad'];
+        $total_costo += $data['salida'][$i]['costo'];
+        $plano = '-';
     }
+
+    echo '<tr>' .
+            '<td class="txt-right" style="border: none;"><br></td>'.
+        '</tr>';
+    echo '<tr>' .
+            '<td class="txt-right">TOTAL PZAS:</td>' .
+            '<td colspan="5"></td>' .
+            '<td class="txt-right">COSTO TOTAL</td>' .
+            '<td colspan="3"></td>' .
+        '</tr>';
+    echo '<tr>' .
+            '<td class="txt-right">'.$total_pzas.'</td>' .
+            '<td colspan="5"></td>' .
+            '<td class="txt-right">$ '. $total_costo.'</td>' .
+            '<td colspan="3"></td>' .
+        '</tr>';
 ?>

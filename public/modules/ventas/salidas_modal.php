@@ -7,7 +7,7 @@
         <form id="form_reg_salida">
             <div class="d-grid g-1">
                 <span data-pegar="pegar" class="btn btn-icon d-flex justify-center" title="Pegar información del portapapeles">
-                    <i class="material-icons-round">content_paste_go</i>
+                    <i data-pegar="pegar" class="material-icons-round">content_paste_go</i>
                     Pegar información
                 </span>
             </div>
@@ -26,7 +26,7 @@
             <div class="d-grid g-1">
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Cliente:</p>
-                    <select name="Id_Clientes_2" id="Id_Clientes_2">
+                    <select class="input" name="Id_Clientes_2" id="Id_Clientes_2">
                         <option value="">Selecciona un cliente</option>
                     </select>
                 </div>
@@ -47,26 +47,22 @@
             </div>
             <p style="padding: 15px 0px 30px 0px;" class="txt-right">Información del tornillo:</p>
             <div id="tornillos">
-                <p style="padding: 15px 0px 30px 0px;" class="txt-left">Tornillo 1:</p>
+                <p style="padding: 15px 0px 30px 0px;" class="txt-left">TORNILLO:</p>
                 <div class="d-grid g-3">
                     <div class="d-grid g-1 grid-gap-0">
                         <p>Cantidad (millares):</p>
                         <input class="input" type="text" name="Cantidad_millares_1" id="Cantidad_millares_1">
                     </div>
                     <div class="d-grid g-1 grid-gap-0">
-                        <p>No. de Dibujo:</p>
-                        <input class="input" type="text" name="Dibujo_1" id="Dibujo_1" placeholder="Ingrese el numero de plano">
-                    </div>
-                    <div class="d-grid g-1 grid-gap-0">
                         <p>Descripcion:</p>
                         <input type="text" class="input" name="Descripcion_1" id="Descripcion_1">
                     </div>
-                </div>
-                <div class="d-grid g-3">
                     <div class="d-grid g-1 grid-gap-0">
                         <p>Medida:</p>
                         <input class="input" type="text" name="Medida_1" id="Medida_1">
                     </div>
+                </div>
+                <div class="d-grid g-3">
                     <div class="d-grid g-1 grid-gap-0">
                         <p>Factor:</p>
                         <input class="input" type="text" name="factor_1" id="factor_1">
@@ -85,12 +81,12 @@
                             <option value="NIQUELADO">NIQUELADO</option>
                         </select>
                     </div>
-                </div>
-                <div class="d-grid g-3">
                     <div class="d-grid g-1 grid-gap-0">
                         <p>Material:</p>
                         <input class="input" type="text" name="Material_1" id="Material_1">
                     </div>
+                </div>
+                <div class="d-grid g-3">
                     <div class="d-grid g-1 grid-gap-0">
                         <p>Costo:</p>
                         <input class="input" type="text" name="Precio_millar_1" id="Precio_millar_1">
@@ -105,9 +101,15 @@
                     <input type="checkbox" name="sin_op_1" id="sin_op_1">
                     <label class="lbl-checkbox" id="lbl_checkbox_salida" for="sin_op_1" style="margin: 0 0 15px 0;">Sin O.P.:</label>
                 </div>
-                <div class="d-grid g-1 grid-gap-0">
-                    <p>Cantidad a Producir (millares):</p>
-                    <input class="input" type="number" name="cantidad_producir_1" id="cantidad_producir_1">
+                <div class="d-grid g-2">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>No. de Dibujo:</p>
+                        <input class="input" type="text" name="Dibujo_1" id="Dibujo_1" placeholder="Ingrese el numero de plano">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Cantidad a Producir (millares):</p>
+                        <input class="input" type="number" name="cantidad_producir_1" id="cantidad_producir_1">
+                    </div>
                 </div>
             </div>
             <div class="opciones d-flex flex-column">
@@ -231,5 +233,34 @@
                 <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-actualizar">Cancelar</label>
             </div>
         </form>
+    </div>
+</div>
+<div id="modal-historial" class="modal modal-izquierda">
+    <div class="titulo_modal d-flex justify-between align-content-center">
+        <h2>Historial </h2>
+        <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial">close</button>
+    </div>
+    <div class="contenido_modal">
+        <table class="table table_salida lista_salida" id="table">
+            <thead>
+                <th></th>
+                <th style="min-width: 80px;">N° de salida </th>
+                <th style="min-width: 150px;">Cliente</th>
+                <th style="min-width: 100px;">Fecha</th>
+                <th>Cantidad</th>
+                <th style="min-width: 150px;">N° parte de cliente </th>
+                <th style="min-width: 100px;">Pedido Cliente</th>
+                <th>Medida</th>
+                <th style="min-width: 150px;">Descripcion </th>
+                <th>Acabado</th>
+                <th style="min-width: 100px;">Costo</th>
+                <th style="min-width: 120px;">Numero de Dibujo </th>
+                <th>Material </th>
+                <th>O.P</th>
+                <th style="min-width: 100px;">Fecha de entrega</th>
+                <th style="min-width: 80px;"></th>
+            </thead>
+            <tbody class="body body_salida"></tbody>
+        </table>
     </div>
 </div>
