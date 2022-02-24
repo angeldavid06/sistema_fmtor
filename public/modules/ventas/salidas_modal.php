@@ -1,4 +1,4 @@
-    <div id="modal-ingresar" class="modal modal-derecha abrir_modal width-05">
+    <div id="modal-ingresar" class="modal modal-derecha width-05">
         <div class="titulo_modal d-flex justify-between align-content-center">
             <h2>Nueva Salida</h2>
             <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
