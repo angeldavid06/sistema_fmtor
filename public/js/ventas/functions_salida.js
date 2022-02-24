@@ -63,6 +63,18 @@ const colocar_informacion_tornillos = (salida) => {
   })
 }
 
+const portapapeles_pegar_cliente = () => {
+  navigator.clipboard.readText().then((clipText) => {
+    const json = JSON.parse(clipText);
+    const salida = json["salida"];
+
+    document.getElementById("Fecha_entrega").value = salida[0].fecha_entrega;
+    colocar_cliente(salida[0].razon_social);
+    document.getElementById("Codigo").value = salida[0].no_parte;
+    document.getElementById("Pedido_pza").value = salida[0].pedido_cliente;
+  });
+}
+
 const portapapeles_pegar = () => {
   navigator.clipboard.readText().then(clipText => {
     const json = JSON.parse(clipText)
@@ -71,36 +83,32 @@ const portapapeles_pegar = () => {
     let op = [];
     let aux = false;
     let contador = 1;
+    
+    document.getElementById("Fecha_entrega").value = salida[0].fecha_entrega;
+    colocar_cliente(salida[0].razon_social);
+    document.getElementById("Codigo").value = salida[0].no_parte;
+    document.getElementById("Pedido_pza").value = salida[0].pedido_cliente;
+    document.getElementById("Cantidad_Tornillos").value = salida.length;
+    vaciar_tornillos()
+    render_form_tornillo(salida.length)
+    colocar_informacion_tornillos(salida);
 
-    if (document.getElementById("Id_Clientes_2").value == '') {
-      document.getElementById("Fecha_entrega").value = salida[0].fecha_entrega;
-      colocar_cliente(salida[0].razon_social);
-      document.getElementById("Codigo").value = salida[0].no_parte;
-      document.getElementById("Pedido_pza").value = salida[0].pedido_cliente;
-      document.getElementById("Cantidad_Tornillos").value = salida.length;
-      vaciar_tornillos()
-      render_form_tornillo(salida.length)
-      colocar_informacion_tornillos(salida);
-  
-      salida.forEach(el => {
-        ordenes.forEach((orden) => {
-          if (orden.Id_Pedido == el.Id_Pedido) {
-            op.push(orden)
-            aux = true;
-          }
-        })
-        if (aux) {
-          colocar_informacion_op(op,contador);
-          contador++;
-        } else {
-          colocar_informacion_sin_op(op,contador)
-          contador++;
+    salida.forEach(el => {
+      ordenes.forEach((orden) => {
+        if (orden.Id_Pedido == el.Id_Pedido) {
+          op.push(orden)
+          aux = true;
         }
-        aux = false
-      });
-    }
-
-
+      })
+      if (aux) {
+        colocar_informacion_op(op,contador);
+        contador++;
+      } else {
+        colocar_informacion_sin_op(op,contador)
+        contador++;
+      }
+      aux = false
+    });
   });
 }
 
@@ -379,14 +387,24 @@ const obtener_pdf = (id) => {
 
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.pegar) {
-    portapapeles_pegar()
+    if (evt.target.dataset.pegar == 'pegar-todo') {
+      portapapeles_pegar()
+    } else if (evt.target.dataset.pegar == 'pegar-cliente') {
+      portapapeles_pegar_cliente();
+    }
+  } else if (evt.target.dataset.tornillo) {
+    if (evt.target.dataset.tornillo == "mas") {
+      tornillo_mas();
+    } else if (evt.target.dataset.tornillo == "menos") {
+      tornillo_menos();
+    }
   } else if (evt.target.dataset.copiar) {
     portapapeles_copiar(evt.target.dataset.copiar);
   } else if (evt.target.dataset.recarga) {
-    obtener()
+    obtener();
   } else if (evt.target.dataset.impresion) {
     obtener_pdf(evt.target.dataset.impresion);
-  } else  if (evt.target.dataset.radio) {
+  } else if (evt.target.dataset.radio) {
     deshabilitar_inputs();
 
     if (document.getElementById("f_" + evt.target.value)) {

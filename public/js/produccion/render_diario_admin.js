@@ -19,7 +19,6 @@ form_control.addEventListener('submit', (evt)=> {
     const inputs = form_control.getElementsByClassName('input')
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].value == '' && i != 4) {
-            console.log(inputs[i]);
             inputs[i].classList.add('input-error');
             aux = false;
         } 
