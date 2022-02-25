@@ -26,10 +26,14 @@
             $result = $this->model->buscar('v_busqueda_salida', 'Salida', $id_folio);
             echo json_encode($result);
         }
+        public function historial () {
+             $salida = $this->model->buscar('v_historial_salidas_almacen', 'Id_Folio', $_GET['salida']);
+             echo json_encode($salida);
+        }
         
         public function generarpdf()
         {
-            $salida = $this->model->buscar('v_salidas_almacen', $_GET['atributo'], $_GET['value']);
+            $salida = $this->model->buscar('v_historial_salidas_almacen', $_GET['atributo'], $_GET['value']);
             $this->model = new Model();
             $ordenes = $this->model->mostrar('v_ordenes'); 
 
@@ -55,13 +59,23 @@
 
         public function obtener_per()
         {
-            $salidas = $this->model->buscar_personalizado('v_salidas_almacen', '*', 'Id_Folio =' . $_GET['aux'] . '');
+            $salidas = $this->model->buscar_personalizado('v_historial_salidas_almacen', '*', 'Id_Folio =' . $_GET['aux'] . '');
             $this->model = new Model();
             $ordenes = $this->model->mostrar('v_ordenes');
-            $data = [
-                'salida' => $salidas,
-                'ordenes' => $ordenes
-            ];
+            if ($_GET['pedido'] != 'undefined') {
+                $this->model = new Model();
+                $pedido = $this->model->buscar_personalizado('v_historial_salidas_almacen', '*', 'Id_Pedido =' . $_GET['pedido'] . '');
+                $data = [
+                    'salida' => $salidas,
+                    'ordenes' => $ordenes,
+                    'pedido' => $pedido
+                ];
+            } else{ 
+                $data = [
+                    'salida' => $salidas,
+                    'ordenes' => $ordenes
+                ];
+            }
             echo json_encode($data);
         }
 

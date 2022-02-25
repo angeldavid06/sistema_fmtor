@@ -1,4 +1,4 @@
-    <div id="modal-ingresar" class="modal modal-derecha width-05">
+    <div id="modal-ingresar" class="modal modal-derecha width-04">
         <div class="titulo_modal d-flex justify-between align-content-center">
             <h2>Nueva Salida</h2>
             <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
@@ -6,11 +6,11 @@
         <div class="contenido_modal">
             <form id="form_reg_salida">
                 <div class="d-grid g-2">
-                    <span data-pegar="pegar-cliente" class="btn btn-icon d-flex justify-center" title="Pegar información del portapapeles">
+                    <span style="margin: 0;" data-pegar="pegar-cliente" class="btn btn-icon d-flex justify-center" title="Pegar información del portapapeles">
                         <i data-pegar="pegar-cliente" class="material-icons-round">content_paste_go</i>
-                        Pegar información del cliente
+                        Pegar inf. cliente
                     </span>
-                    <span data-pegar="pegar-todo" class="btn btn-transparent btn-icon d-flex justify-center" title="Pegar información del portapapeles">
+                    <span style="margin: 0;" data-pegar="pegar-todo" class="btn btn-transparent btn-icon d-flex justify-center" title="Pegar información del portapapeles">
                         <i data-pegar="pegar-todo" class="material-icons-round">content_paste_go</i>
                         Pegar todo el pedido
                     </span>
@@ -65,7 +65,7 @@
                                 <p style="padding: 15px 0px 30px 0px;" class="txt-left">TORNILLO 1:</p>
                             </div>
                             <div class="d-flex justify-right align-content-center">
-                                <label data-pedido="1" class="btn btn-icon-self material-icons">content_paste_go</label>
+                                <label  title="Pegar información del tornillo 1" data-p="1" class="btn btn-icon-self material-icons">content_paste_go</label>
                             </div>
                         </div>
                         <div class="d-grid g-3">
@@ -257,7 +257,7 @@
             </form>
         </div>
     </div>
-    <div id="modal-historial" class="modal modal-izquierda">
+    <div id="modal-historial" class="modal modal-izquierda width-05">
         <div class="titulo_modal d-flex justify-between align-content-center">
             <h2>Historial </h2>
             <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial">close</button>
@@ -266,8 +266,9 @@
             <table class="table table_salida lista_salida" id="table">
                 <thead>
                     <th></th>
-                    <th style="min-width: 80px;">N° de salida </th>
-                    <th style="min-width: 150px;">Cliente</th>
+                    <th style="min-width: 80px;"></th>
+                    <!-- <th style="min-width: 80px;">N° de salida </th>
+                    <th style="min-width: 150px;">Cliente</th> -->
                     <th style="min-width: 100px;">Fecha</th>
                     <th>Cantidad</th>
                     <th style="min-width: 150px;">N° parte de cliente </th>
@@ -280,9 +281,8 @@
                     <th>Material </th>
                     <th>O.P</th>
                     <th style="min-width: 100px;">Fecha de entrega</th>
-                    <th style="min-width: 80px;"></th>
                 </thead>
-                <tbody class="body body_salida"></tbody>
+                <tbody id="body_historial"></tbody>
             </table>
         </div>
     </div>

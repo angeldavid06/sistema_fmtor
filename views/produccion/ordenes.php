@@ -26,7 +26,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="tarjeta">
+                <div class="tarjeta" style="padding: 0;">
                     <div class="main">
                         <div class="row-con">
                             <div class="tabla">

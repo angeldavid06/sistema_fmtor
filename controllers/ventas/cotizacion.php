@@ -18,7 +18,7 @@
 
         public function generarpdf()
         {
-            $data = $this->model->buscar('t_cotizacion', $_GET['atributo'], $_GET['value']);
+            $data = $this->model->buscar('v_cotizacion', 'id_folio', $_GET['id']);
 
             $this->web->PDF('ventas/cotizacion', $data);
         }

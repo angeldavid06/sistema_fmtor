@@ -28,11 +28,10 @@
                 <div class="tabla tarjeta" style="padding: 0;">
                     <table class="table table_salida lista_salida" id="table">
                         <thead>
-                            <th></th>
                             <th style="min-width: 80px;">N° de salida </th>
                             <th style="min-width: 150px;">Cliente</th>
                             <th style="min-width: 100px;">Fecha</th>
-                            <th>Cantidad</th>
+                            <!-- <th>Cantidad</th>
                             <th style="min-width: 150px;">N° parte de cliente </th>
                             <th style="min-width: 100px;">Pedido Cliente</th>
                             <th>Medida</th>
@@ -42,7 +41,9 @@
                             <th style="min-width: 120px;">Numero de Dibujo </th>
                             <th>Material </th>
                             <th>O.P</th>
-                            <th style="min-width: 100px;">Fecha de entrega</th>
+                            <th style="min-width: 100px;">Fecha de entrega</th> -->
+                            <th></th>
+                            <th></th>
                             <th style="min-width: 80px;"></th>
                             <th style="min-width: 80px;"></th>
                             <th style="min-width: 80px;"></th>

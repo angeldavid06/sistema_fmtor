@@ -77,7 +77,7 @@
                                 <p style="padding: 0px;" class="total_kg">Total Kg: <br> 000.00</p>
                             </div>
                         </div>
-                        <div class="tarjeta ov_hidden">
+                        <div class="tarjeta ov_hidden" style="padding: 0;">
                             <div class="tabla d-flex nowrap">
                                 <!-- Cambiar todo a una sola tabla -->
                                 <table class="table table-control">

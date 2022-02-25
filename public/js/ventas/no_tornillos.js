@@ -3,7 +3,7 @@ const contenedor_tornillos = document.getElementById('tornillos');
 
 const render_nuevo_tornillo = (cantidad) => {
     let t = cantidad + 1;
-    console.log(cantidad,t);
+    cantidad.value = cantidad
     const tornillo = document.createElement('div');
     tornillo.classList.add('tornillo');
     tornillo.setAttribute('id','tornillo-'+t);
@@ -13,7 +13,7 @@ const render_nuevo_tornillo = (cantidad) => {
                                                     '<p style="padding: 15px 0px 30px 0px;" class="txt-left">TORNILLO '+t+':</p>'+
                                                 '</div>'+
                                                 '<div class="d-flex justify-right align-content-center">'+
-                                                    '<label data-pedido="'+t+'" class="btn btn-icon-self material-icons">content_paste_go</label>'+
+                                                    '<label title="Pegar información del tornillo '+t+'" data-p="'+t+'" class="btn btn-icon-self material-icons">content_paste_go</label>'+
                                                 '</div>'+
                                             '</div>'+
                                             '<div class="d-grid g-3">'+
@@ -84,8 +84,8 @@ const render_nuevo_tornillo = (cantidad) => {
 
 const tornillo_mas = () => {
     const cantidad_tornillos = document.getElementsByClassName('tornillo')
-    console.log(cantidad_tornillos);
     render_nuevo_tornillo(cantidad_tornillos.length)
+    cantidad.value = cantidad_tornillos.length
 } 
 
 const tornillo_menos = () => {
@@ -93,8 +93,10 @@ const tornillo_menos = () => {
     if (cantidad_tornillos.length <= 1) {
         open_alert('Una salida de almacen requiere por lo menos de un tornillo','naranja')
         console.log('no se puede borrar');
+        cantidad.value = cantidad_tornillos.length
     } else {
         contenedor_tornillos.removeChild(contenedor_tornillos.lastChild)
+        cantidad.value = cantidad_tornillos.length
         document.getElementById("cantidad_tornillos_pedidos").innerText = 'Información del tornillo ('+cantidad_tornillos.length+'):';
     }
 }
@@ -105,6 +107,7 @@ const vaciar_tornillos = () => {
 
 const render_form_tornillo = (c) => {
    vaciar_tornillos()
+    cantidad.value = c
     document.getElementById("cantidad_tornillos_pedidos").innerText = 'Información del tornillo ('+c+'):';
     for (let t = 1; t <= c; t++) {
         contenedor_tornillos.innerHTML += '<div class="tornillo" id="tornillo-'+t+'">'+
@@ -113,7 +116,7 @@ const render_form_tornillo = (c) => {
                                                     '<p style="padding: 15px 0px 30px 0px;" class="txt-left">TORNILLO '+t+':</p>'+
                                                 '</div>'+
                                                 '<div class="d-flex justify-right align-content-center">'+
-                                                    '<label data-pedido="'+t+'" class="btn btn-icon-self material-icons">content_paste_go</label>'+
+                                                    '<label title="Pegar información del tornillo '+t+'" data-p="'+t+'" class="btn btn-icon-self material-icons">content_paste_go</label>'+
                                                 '</div>'+
                                             '</div>'+
                                             '<div class="d-grid g-3">'+

@@ -63,6 +63,22 @@ const colocar_informacion_tornillos = (salida) => {
   })
 }
 
+const portapapeles_pegar_tornillo = (form) => {
+ navigator.clipboard.readText().then((clipText) => {
+    const json = JSON.parse(clipText);
+    const pedido = json["pedido"];
+
+    pedido.forEach(el => {
+      document.getElementById("Cantidad_millares_" + form).value = el.cantidad;
+      document.getElementById("Precio_millar_" + form).value = el.costo;
+      document.getElementById("Medida_" + form).value = el.medida;
+      document.getElementById("Descripcion_" + form).value = el.descripcion;
+      colocar_acabado(el.acabados,form);
+      document.getElementById("Material_" + form).value = el.material;
+    })
+  });
+}
+
 const portapapeles_pegar_cliente = () => {
   navigator.clipboard.readText().then((clipText) => {
     const json = JSON.parse(clipText);
@@ -112,8 +128,8 @@ const portapapeles_pegar = () => {
   });
 }
 
-const portapapeles_copiar = (el) => {
-  const respuesta = fetchAPI("", url + "/ventas/salida/obtener_per?aux="+el,'');
+const portapapeles_copiar = (el,pedido) => {
+  const respuesta = fetchAPI("", url + "/ventas/salida/obtener_per?aux="+el+"&pedido="+pedido,'');
   respuesta.then(json => {
     let string = JSON.stringify(json)
     navigator.clipboard.writeText(string).then(function () {
@@ -122,7 +138,36 @@ const portapapeles_copiar = (el) => {
         open_alert("Contenido no copiado",'naranja');
     });
   })
+}
 
+const render_historial = (json) => {
+  const body = document.getElementById('body_historial')
+  body.innerHTML = ''
+  json.forEach(el => {
+    body.innerHTML += '<tr>'+
+                        '<td><button data-copiar="'+el.id_folio+'" data-pedido="'+el.Id_Pedido+'" id="'+el.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>'+
+                        '<td><button data-copiar="'+el.id_folio+'" id="'+el.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">edit</button></td>'+
+                        '<td>'+el.fecha+'</td>'+
+                        '<td>'+el.cantidad+'</td>'+
+                        '<td>'+el.no_parte+'</td>'+
+                        '<td>'+el.pedido_cliente+'</td>'+
+                        '<td>'+el.medida+'</td>'+
+                        '<td>'+el.descripcion+'</td>'+
+                        '<td>'+el.acabados+'</td>'+
+                        '<td>'+el.costo+'</td>'+
+                        '<td></td>'+
+                        '<td>'+el.material+'</td>'+
+                        '<td>OP</td>'+
+                        '<td>'+el.fecha_entrega+'</td>'+
+                      '</tr>'
+  })
+}
+
+const buscar_historial = (salida) => {
+  const respuesta = fetchAPI('',url+'/ventas/salida/historial?salida='+salida,'')
+  respuesta.then(json => {
+    render_historial(json)
+  })
 }
 
 const render_salida = (json) => {
@@ -137,11 +182,11 @@ const render_salida = (json) => {
     let fecha = element.fecha.split("-");
 
     if (aux > 0 && mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
-        tr_totales.innerHTML = '<tr>'+
-                                    '<td class="txt-right" colspan="10">Total mensual: </td>'+
-                                    '<td class="txt-right">$ '+ new Intl.NumberFormat('es-MX').format(total_acumulado_mensual)+'</td>'+
-                                    '<td colspan="9"></td>'+
-                                '</tr>';
+        // tr_totales.innerHTML = '<tr>'+
+        //                             '<td class="txt-right" colspan="10">Total mensual: </td>'+
+        //                             '<td class="txt-right">$ '+ new Intl.NumberFormat('es-MX').format(total_acumulado_mensual)+'</td>'+
+        //                             '<td colspan="9"></td>'+
+        //                         '</tr>';
         body[0].appendChild(tr_totales)
         total_acumulado += parseFloat(total_acumulado_mensual)
         total_acumulado_mensual = 0
@@ -151,7 +196,7 @@ const render_salida = (json) => {
     }
 
     if (aux == 0 || mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
-        tr_mes.innerHTML = '<tr><td class="txt-center" colspan="20">'+meses[fecha[1]-1]+' '+fecha[0]+'</td></tr>'
+        tr_mes.innerHTML = '<tr><td class="txt-center" colspan="8">'+meses[fecha[1]-1]+' '+fecha[0]+'</td></tr>'
         mes = (fecha[0]+'-'+fecha[1])
         aux++;
         body[0].appendChild(tr_mes)
@@ -177,53 +222,54 @@ const render_salida = (json) => {
     if (element.Salida != 0) {
       body[0].innerHTML +=
         "<tr>" +
-          '<td><button data-copiar="'+element.id_folio+'" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
           "<td id='td_id_folio_"+element.id_folio+"'>"+element.id_folio + "</td>" +
           "<td id='td_razon_"+element.id_folio+"'>"+element.razon_social +"</td>" +
           "<td id='td_fecha_"+element.id_folio+"'>"+element.fecha + "</td>" +
-          "<td id='td_cantidad_"+element.id_folio+"' class='txt-right'>"+element.cantidad + "</td>" +
-          "<td id='td_no_parte_"+element.id_folio+"'>"+element.no_parte + "</td>" +
-          "<td id='td_pedido_"+element.id_folio+"'>"+element.pedido_cliente + "</td>" +
-          "<td id='td_medida_"+element.id_folio+"'>"+element.medida + "</td>" +
-          "<td id='td_descripcion_"+element.id_folio+"'>" + element.descripcion + "</td>" +
-          "<td id='td_acabado_"+element.id_folio+"'>" + element.acabados + "</td>" +
-          "<td id='td_costo_"+element.id_folio+"' class=txt-right>$ " + new Intl.NumberFormat('es-MX').format(element.costo) + "</td>" +
-          "<td id='td_dibujo"+element.id_folio+"'>" + info.plano + "</td>" +
-          "<td id='td_material"+element.id_folio+"'>" + element.material + "</td>" +
-          "<td id='td_"+element.id_folio+"'>" + info.op + "</td>" +
-          "<td id='td_entrega_"+element.id_folio+"'>" + element.fecha_entrega + "</td>" + 
-          '<td><button title="Editar Salida de Almacen" class= "material-icons btn btn-transparent btn-icon-self" data-modal="modal-actualizar" data-edit="'+element.id_folio +'"> mode_edit</button></td>' +
-          '<td><button title="Generar Salida de Almacen" class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
-          '<td><button title="Generar Cotización" class= "material-icons btn btn-transparent btn-icon-self" data-impresion="' +element.id_folio +'">request_quote</button>'+
+          // "<td id='td_cantidad_"+element.id_folio+"' class='txt-right'>"+element.cantidad + "</td>" +
+          // "<td id='td_no_parte_"+element.id_folio+"'>"+element.no_parte + "</td>" +
+          // "<td id='td_pedido_"+element.id_folio+"'>"+element.pedido_cliente + "</td>" +
+          // "<td id='td_medida_"+element.id_folio+"'>"+element.medida + "</td>" +
+          // "<td id='td_descripcion_"+element.id_folio+"'>" + element.descripcion + "</td>" +
+          // "<td id='td_acabado_"+element.id_folio+"'>" + element.acabados + "</td>" +
+          // "<td id='td_costo_"+element.id_folio+"' class=txt-right>$ " + new Intl.NumberFormat('es-MX').format(element.costo) + "</td>" +
+          // "<td id='td_dibujo"+element.id_folio+"'>" + info.plano + "</td>" +
+          // "<td id='td_material"+element.id_folio+"'>" + element.material + "</td>" +
+          // "<td id='td_"+element.id_folio+"'>" + info.op + "</td>" +
+          // "<td id='td_entrega_"+element.id_folio+"'>" + element.fecha_entrega + "</td>" + 
+          '<td><button data-copiar="'+element.id_folio+'" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
+          '<td><button data-historial="'+element.id_folio+'" data-modal="modal-historial" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">history</button></td>' +
+          '<td><button title="Editar Salida de Almacen" class="material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar" data-edit="'+element.id_folio +'"> mode_edit</button></td>' +
+          '<td><button title="Generar Salida de Almacen" class= "material-icons btn btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
+          '<td><button title="Generar Cotización" class= "material-icons btn btn-icon-self" data-cotizacion="' +element.id_folio +'">request_quote</button>'+
           '</tr>';
     }
   });
-    const tr_totales = document.createElement('tr')
-    tr_totales.innerHTML = '<tr>'+
-                                '<td class="txt-right" colspan="10">Total mensual: </td>'+
-                                '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(total_acumulado_mensual)+'</td>'+
-                                '<td colspan="9"></td>'+
-                            '</tr>';
-    body[0].appendChild(tr_totales)
-    total_acumulado += parseFloat(total_acumulado_mensual);
-    total_acumulado_mensual = 0
+    // const tr_totales = document.createElement('tr')
+    // tr_totales.innerHTML = '<tr>'+
+    //                             '<td class="txt-right" colspan="10">Total mensual: </td>'+
+    //                             '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(total_acumulado_mensual)+'</td>'+
+    //                             '<td colspan="9"></td>'+
+    //                         '</tr>';
+    // body[0].appendChild(tr_totales)
+    // total_acumulado += parseFloat(total_acumulado_mensual);
+    // total_acumulado_mensual = 0
     
-    const table = document.getElementById('table')
+    // const table = document.getElementById('table')
     
-    if (document.getElementById("pie")) {
-      const pie = document.getElementById("pie");
-      table.removeChild(pie)
-    }
+    // if (document.getElementById("pie")) {
+    //   const pie = document.getElementById("pie");
+    //   table.removeChild(pie)
+    // }
 
-    const tfoot = document.createElement('tfoot');
-    tfoot.setAttribute('id','pie')
-    tfoot.classList.add('tfoot')
-    tfoot.innerHTML = '<tr>'+
-                            '<td class="txt-right" colspan="10">Total: </td>'+
-                            '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado) + '</td>'+
-                            '<td colspan="9"></td>'+
-                    '</tr>';
-    table.appendChild(tfoot)
+    // const tfoot = document.createElement('tfoot');
+    // tfoot.setAttribute('id','pie')
+    // tfoot.classList.add('tfoot')
+    // tfoot.innerHTML = '<tr>'+
+    //                         '<td class="txt-right" colspan="10">Total: </td>'+
+    //                         '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado) + '</td>'+
+    //                         '<td colspan="9"></td>'+
+    //                 '</tr>';
+    // table.appendChild(tfoot)
 };
 
 const mostrarModal = (id) => {
@@ -385,8 +431,16 @@ const obtener_pdf = (id) => {
   printPage(url + "/ventas/salida/generarpdf?atributo=Id_Folio&value=" + id);
 };
 
+const obtener_cotizacion_pdf = (id) => {
+  printPage(url + "/ventas/cotizacion/generarpdf?id=" + id);
+};
+
 document.addEventListener("click", (evt) => {
-  if (evt.target.dataset.pegar) {
+  if (evt.target.dataset.historial) {
+    buscar_historial(evt.target.dataset.historial);
+  } else if (evt.target.dataset.p) {
+    portapapeles_pegar_tornillo(evt.target.dataset.p)
+  } else if (evt.target.dataset.pegar) {
     if (evt.target.dataset.pegar == 'pegar-todo') {
       portapapeles_pegar()
     } else if (evt.target.dataset.pegar == 'pegar-cliente') {
@@ -399,11 +453,13 @@ document.addEventListener("click", (evt) => {
       tornillo_menos();
     }
   } else if (evt.target.dataset.copiar) {
-    portapapeles_copiar(evt.target.dataset.copiar);
+    portapapeles_copiar(evt.target.dataset.copiar, evt.target.dataset.pedido);
   } else if (evt.target.dataset.recarga) {
     obtener();
   } else if (evt.target.dataset.impresion) {
     obtener_pdf(evt.target.dataset.impresion);
+  } else if (evt.target.dataset.cotizacion) {
+    obtener_cotizacion_pdf(evt.target.dataset.cotizacion);
   } else if (evt.target.dataset.radio) {
     deshabilitar_inputs();
 

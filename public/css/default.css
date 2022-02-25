@@ -85,13 +85,18 @@
     padding: 30px;
     width: 500px;
     max-height: calc(100vh - 60px);
-    overflow-y: auto;
+    overflow: auto;
     background-color: var(--background-aux);
     border-radius: var(--border-radius);
     border: 2px solid transparent;
     visibility: hidden;
     opacity: 0;
     transition: all .4s ease-in-out;
+}
+
+.modal .contenido_modal {
+     max-width:100%;
+     overflow-x: auto;
 }
 
 .modal:hover {
@@ -1345,7 +1350,7 @@ embed {
 .contenido .informacion .acordeon .contenido_acordeon table tfoot tr td,
 .modal .contenido_modal table thead tr th,
 .modal .contenido_modal table tbody tr td,
-.modal .contenido_modal table tfoot tr td {
+.modal .contenido_modal table tfoot tr td{
     padding: 10px;
 }
 
@@ -1360,7 +1365,8 @@ embed {
 }
 
 .contenido .informacion .tarjeta table tfoot tr:nth-child(even),
-.contenido .informacion .tarjeta table tbody tr:nth-child(even) {
+.contenido .informacion .tarjeta table tbody tr:nth-child(even),
+.modal .contenido_modal table tbody tr:nth-child(even) {
     background-color: var(--background-body);
 }
 
@@ -1730,6 +1736,10 @@ embed {
     .modal.abrir_modal {
         visibility: visible;
         opacity: 1;
+    }
+
+    .modal.modal-izquierda.abrir_modal {
+        left: 10px;
     }
 
     .modal.modal-derecha.abrir_modal {

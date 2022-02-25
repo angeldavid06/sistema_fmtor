@@ -25,18 +25,14 @@
 
         public function pdforden()
         {
-            $data = $this->model->buscar('t_salida_almacen', $_GET['atributo'], $_GET['value']);
+            $data = $this->model->buscar('v_ordenes', $_GET['atributo'], $_GET['value']);
 
             $this->web->PDF('ventas/orden', $data);
         }
 
         public function obtener()
         {
-            $result = $this->model->buscar_personalizado(
-                't_salida_almacen, t_clientes',
-                'Id_Folio,Razon_social,Precio_millar,Fecha,Descripcion,Medida,Cantidad_millares,Acabado,Codigo,Tratamiento,Dibujo,Material,Fecha_entrega,Salida',
-                't_salida_almacen.Id_Clientes_2 = t_clientes.Id_Clientes'
-            );
+            $result = $this->model->mostrar('v_ordenes');
             echo json_encode($result);
         }
 

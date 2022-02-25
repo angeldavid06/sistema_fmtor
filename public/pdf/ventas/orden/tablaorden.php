@@ -18,18 +18,18 @@ $Salida=" ";
     for ($i=0; $i < count($data); $i++) { 
 
         $Id_Folio = $data[$i]['Id_Folio'];
-        $Id_Clientes_2  = $data[$i]['Id_Clientes_2'];
-        $Precio_millar     = $data[$i]['Precio_millar'];
+        $Id_Clientes_2  = $data[$i]['Clientes'];
+        $Precio_millar     = $data[$i]['precio_millar'];
         $Fecha             = $data[$i]['Fecha'];
-        $Descripcion       = $data[$i]['Descripcion'];
-        $Medida            = $data[$i]['Medida'];
-        $Cantidad_millares = $data[$i]['Cantidad_millares'];
-        $Acabado           = $data[$i]['Acabado'];
-        $Codigo            = $data[$i]['Codigo'];
-        $Tratamiento       = $data[$i]['Tratamiento'];
-        $Fecha_entrega     = $data[$i]['Fecha_entrega'];
-        $Dibujo = $data[$i]['Dibujo'];
-        $Salida           = $data[$i]['Salida'];
+        $Descripcion       = $data[$i]['descripcion'];
+        $Medida            = $data[$i]['medida'];
+        $Cantidad_millares = $data[$i]['cantidad_elaborar'];
+        $Acabado           = $data[$i]['acabados'];
+        // $Codigo            = $data[$i]['Codigo'];
+        $Tratamiento       = $data[$i]['tratamiento'];
+        // $Fecha_entrega     = $data[$i]['Fecha_entrega'];
+        $Dibujo = $data[$i]['Id_Catalogo'];
+        // $Salida           = $data[$i]['Salida'];
        /*echo '<tr>'.
         
         '<td>'.$data[$i]['Cantidad_millares'].'</td>'.

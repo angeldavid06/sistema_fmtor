@@ -10,37 +10,37 @@ const render_orden = (json) => {
           element.Id_Folio +
           "</td>" +
           "<td>" +
-          element.Razon_social +
+          element.Clientes +
           "</td>" +
           "<td>" +
-          element.Precio_millar +
+          element.precio_millar +
           "</td>" +
           "<td>" +
           element.Fecha +
           "</td>" +
           "<td>" +
-          element.Descripcion +
+          element.descripcion +
           "</td>" +
           "<td>" +
-          element.Medida +
+          element.medida +
           "</td>" +
           "<td>" +
-          element.Cantidad_millares +
+          element.cantidad_elaborar +
           "</td>" +
           "<td>" +
-          element.Acabado +
+          element.acabados +
           "</td>" +
           "<td>" +
           element.Codigo +
           "</td>" +
           "<td>" +
-          element.Tratamiento +
+          element.tratamiento +
           "</td>" +
           "<td>" +
-          element.Dibujo +
+          element.Id_Catalogo +
           "</td>" +
           "<td>" +
-          element.Material +
+          element.material +
           "</td>" +
           "<td>" +
           element.Fecha_entrega +
@@ -48,9 +48,9 @@ const render_orden = (json) => {
           "<td>" +
           element.Salida +
           "</td>" +
-          '<td><button class= "material-icons btn btn-icon-self" data-modal="modal-actualizar" data-edit="' +element.Id_Folio +'"> app_registration</button></td>' +
+          '<td><button class= "material-icons btn btn-icon-self"></button></td>' +
           '<td><button class= "material-icons btn btn-icon-self btn-verde" data-imprimir="' + element.Id_Folio +'">print</button>' +
-          '<td><button class= "material-icons btn btn-icon-self btn-amarillo" data-imprimir="' + element.Id_Folio +'">calendar_view_month</button>' +
+          '<td><button class= "material-icons btn btn-icon-self btn-amarillo" data-control="' + element.Id_Folio +'">calendar_view_month</button>' +
           "</tr>";
     }
   });
@@ -69,14 +69,9 @@ const mostrarModal = (id) => {
 const Tratamiento = document.getElementById("Tratamiento_edit");
 const Id_Folio = document.getElementById("id_folio_edit");
 
-console.log(Tratamiento);
-
 const pintarModal = (json) => {
   json.forEach((element) => {
     console.log(element);
-
-    //
-
     Tratamiento.value = element.Tratamiento;
     Id_Folio.value = element.Id_Folio;
   });
@@ -113,9 +108,13 @@ const obtener = () => {
   });
 };
 
-//pdf
+//pdfb
 const pdf = (id) => {
   printPage(url + "/ventas/orden/pdforden?atributo=Id_Folio&value=" + id);
+};
+
+const generar_control_vacio = (valor) => {
+  printPage(url + "/produccion/control/pdf_control_vacio?valor=" + valor);
 };
 
 document.addEventListener("click", (evt) => {
@@ -128,9 +127,8 @@ document.addEventListener("click", (evt) => {
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.edit) {
     mostrarModal(evt.target.dataset.edit);
-  } else {
-    if (evt.target.dataset.delete) {
-    }
+  } else if (evt.target.dataset.control) {
+    generar_control_vacio(evt.target.dataset.control);
   }
 });
 const formactualizar = document.getElementById("form_act_orden");
