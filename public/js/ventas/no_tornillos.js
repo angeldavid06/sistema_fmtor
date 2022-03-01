@@ -16,6 +16,22 @@ const render_nuevo_tornillo = (cantidad) => {
                                                     '<label title="Pegar información del tornillo '+t+'" data-p="'+t+'" class="btn btn-icon-self material-icons">content_paste_go</label>'+
                                                 '</div>'+
                                             '</div>'+
+                                            '<div class="d-grid g-1">'+
+                                                '<div class="d-grid g-1 grid-gap-0">'+
+                                                    '<p>Fecha de entrega :</p>'+
+                                                    '<input class="input" type="date" name="Fecha_entrega_'+t+'" id="Fecha_entrega_'+t+'">'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div class="d-grid g-2">'+
+                                                '<div class="d-grid g-1 grid-gap-0">'+
+                                                    '<p>No. Parte cliente:</p>'+
+                                                    '<input class="input" type="text" name="Codigo_'+t+'" id="Codigo_'+t+'" placeholder="Ingrese el codigo">'+
+                                                '</div>'+
+                                                '<div class="d-grid g-1 grid-gap-0">'+
+                                                    '<p>Pedido Cliente:</p>'+
+                                                    '<input class="input" type="text" name="Pedido_pza_'+t+'" id="Pedido_pza_'+t+'">'+
+                                                '</div>'+
+                                            '</div>'+
                                             '<div class="d-grid g-3">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>Cantidad (millares):</p>'+
@@ -82,22 +98,21 @@ const render_nuevo_tornillo = (cantidad) => {
     contenedor_tornillos.appendChild(tornillo)
 }
 
+const cantidad_tornillos = document.getElementsByClassName('tornillo')
 const tornillo_mas = () => {
-    const cantidad_tornillos = document.getElementsByClassName('tornillo')
-    render_nuevo_tornillo(cantidad_tornillos.length)
-    cantidad.value = cantidad_tornillos.length
+    render_nuevo_tornillo(cantidad_tornillos.length-1)
+    cantidad.value = cantidad_tornillos.length-1
 } 
 
 const tornillo_menos = () => {
-    const cantidad_tornillos = document.getElementsByClassName('tornillo')
-    if (cantidad_tornillos.length <= 1) {
-        open_alert('Una salida de almacen requiere por lo menos de un tornillo','naranja')
-        console.log('no se puede borrar');
-        cantidad.value = cantidad_tornillos.length
-    } else {
+    let tornillos = cantidad_tornillos.length
+    if ((tornillos - 1) >= 2) {
         contenedor_tornillos.removeChild(contenedor_tornillos.lastChild)
-        cantidad.value = cantidad_tornillos.length
-        document.getElementById("cantidad_tornillos_pedidos").innerText = 'Información del tornillo ('+cantidad_tornillos.length+'):';
+        tornillos = cantidad_tornillos.length;
+        document.getElementById("cantidad_tornillos_pedidos").innerHTML = 'Información del tornillo ('+(tornillos-1)+'):';
+        cantidad.value = (tornillos-1)
+    } else {
+        open_alert('Una salida de almacen requiere por lo menos de un tornillo','naranja')
     }
 }
 
@@ -117,6 +132,22 @@ const render_form_tornillo = (c) => {
                                                 '</div>'+
                                                 '<div class="d-flex justify-right align-content-center">'+
                                                     '<label title="Pegar información del tornillo '+t+'" data-p="'+t+'" class="btn btn-icon-self material-icons">content_paste_go</label>'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div class="d-grid g-1">'+
+                                                '<div class="d-grid g-1 grid-gap-0">'+
+                                                    '<p>Fecha de entrega :</p>'+
+                                                    '<input class="input" type="date" name="Fecha_entrega_'+t+'" id="Fecha_entrega_'+t+'">'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div class="d-grid g-2">'+
+                                                '<div class="d-grid g-1 grid-gap-0">'+
+                                                    '<p>No. Parte cliente:</p>'+
+                                                    '<input class="input" type="text" name="Codigo_'+t+'" id="Codigo_'+t+'" placeholder="Ingrese el codigo">'+
+                                                '</div>'+
+                                                '<div class="d-grid g-1 grid-gap-0">'+
+                                                    '<p>Pedido Cliente:</p>'+
+                                                    '<input class="input" type="text" name="Pedido_pza_'+t+'" id="Pedido_pza_'+t+'">'+
                                                 '</div>'+
                                             '</div>'+
                                             '<div class="d-grid g-3">'+

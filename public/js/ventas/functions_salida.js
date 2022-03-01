@@ -10,6 +10,7 @@ const meses = ['ENERO',
                 'OCTUBRE',
                 'NOVIEMBRE',
                 'DICIEMBRE']
+let auxiliar = 0;
 
 const colocar_cliente = (cliente) => {
   const select = document.getElementById("Id_Clientes_2");
@@ -26,7 +27,7 @@ const colocar_cliente = (cliente) => {
 
 const colocar_acabado = (acabado,j) => {
   const select = document.getElementById("Acabado_"+j);
-  const select_2 = document.getElementById("Acabado_edit");
+  const select_2 = document.getElementById("Acabado_p");
   const options = select.getElementsByTagName('option');
   const options_2 = select_2.getElementsByTagName('option');
   for (let i = 0; i < options.length; i++) {
@@ -53,6 +54,9 @@ const colocar_informacion_sin_op = (op,contador) => {
 const colocar_informacion_tornillos = (salida) => {
   let i = 1;
   salida.forEach(el => {
+    document.getElementById("Fecha_entrega_" + i).value = el.fecha_entrega;
+    document.getElementById("Codigo_" + i).value = el.no_parte;
+    document.getElementById("Pedido_pza_" + i).value = el.pedido_cliente;
     document.getElementById("Cantidad_millares_" + i).value = el.cantidad;
     document.getElementById("Precio_millar_" + i).value = el.costo;
     document.getElementById("Medida_" + i).value = el.medida;
@@ -69,6 +73,9 @@ const portapapeles_pegar_tornillo = (form) => {
     const pedido = json["pedido"];
 
     pedido.forEach(el => {
+      document.getElementById("Fecha_entrega_" +form).value = el.fecha_entrega;
+      document.getElementById("Codigo_" + form).value = el.no_parte;
+      document.getElementById("Pedido_pza_" + form).value = el.pedido_cliente;
       document.getElementById("Cantidad_millares_" + form).value = el.cantidad;
       document.getElementById("Precio_millar_" + form).value = el.costo;
       document.getElementById("Medida_" + form).value = el.medida;
@@ -100,10 +107,7 @@ const portapapeles_pegar = () => {
     let aux = false;
     let contador = 1;
     
-    document.getElementById("Fecha_entrega").value = salida[0].fecha_entrega;
     colocar_cliente(salida[0].razon_social);
-    document.getElementById("Codigo").value = salida[0].no_parte;
-    document.getElementById("Pedido_pza").value = salida[0].pedido_cliente;
     document.getElementById("Cantidad_Tornillos").value = salida.length;
     vaciar_tornillos()
     render_form_tornillo(salida.length)
@@ -143,21 +147,36 @@ const portapapeles_copiar = (el,pedido) => {
 const render_historial = (json) => {
   const body = document.getElementById('body_historial')
   body.innerHTML = ''
-  json.forEach(el => {
+  json['salida'].forEach(el => {
+    const info = {
+      op: '-', 
+      plano: '-',
+      estado: '-',
+      material: '-',
+      factor: '0'
+    };
+    json['ordenes'].forEach((orden) => {
+      if (orden.Id_Pedido == el.Id_Pedido) {
+        info.op = orden.Id_Folio;
+        info.plano = orden.Id_Catalogo;
+        info.estado = orden.estado_general;
+        info.factor = orden.factor;
+      }
+    })
     body.innerHTML += '<tr>'+
                         '<td><button data-copiar="'+el.id_folio+'" data-pedido="'+el.Id_Pedido+'" id="'+el.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>'+
-                        '<td><button data-copiar="'+el.id_folio+'" id="'+el.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">edit</button></td>'+
-                        '<td>'+el.fecha+'</td>'+
+                        '<td><button data-pedidoact="'+el.Id_Pedido+'" id="'+el.id_folio+'" data-modal="modal-actualizar" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">edit</button></td>'+
+                        '<td>'+info.op+'</td>'+
+                        '<td>'+info.factor+'</td>'+
+                        '<td>'+el.descripcion+'</td>'+
+                        '<td>'+el.medida+'</td>'+
+                        '<td>'+el.acabados+'</td>'+
+                        '<td>'+el.material+'</td>'+
                         '<td>'+el.cantidad+'</td>'+
                         '<td>'+el.no_parte+'</td>'+
                         '<td>'+el.pedido_cliente+'</td>'+
-                        '<td>'+el.medida+'</td>'+
-                        '<td>'+el.descripcion+'</td>'+
-                        '<td>'+el.acabados+'</td>'+
                         '<td>'+el.costo+'</td>'+
-                        '<td></td>'+
-                        '<td>'+el.material+'</td>'+
-                        '<td>OP</td>'+
+                        '<td>'+info.plano+'</td>'+
                         '<td>'+el.fecha_entrega+'</td>'+
                       '</tr>'
   })
@@ -172,29 +191,11 @@ const buscar_historial = (salida) => {
 
 const render_salida = (json) => {
   let aux = 0;
-  let total_acumulado = 0;
-  let total_acumulado_mensual = 0;
   const body = document.getElementsByClassName("body_salida");
   body[0].innerHTML = "";
   json['salidas'].forEach((element) => {
     const tr_mes = document.createElement("tr");
-    const tr_totales = document.createElement("tr");
     let fecha = element.fecha.split("-");
-
-    if (aux > 0 && mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
-        // tr_totales.innerHTML = '<tr>'+
-        //                             '<td class="txt-right" colspan="10">Total mensual: </td>'+
-        //                             '<td class="txt-right">$ '+ new Intl.NumberFormat('es-MX').format(total_acumulado_mensual)+'</td>'+
-        //                             '<td colspan="9"></td>'+
-        //                         '</tr>';
-        body[0].appendChild(tr_totales)
-        total_acumulado += parseFloat(total_acumulado_mensual)
-        total_acumulado_mensual = 0
-        total_acumulado_mensual += (parseFloat(element.costo) * parseFloat(element.cantidad))
-    } else {
-        total_acumulado_mensual += (parseFloat(element.costo) * parseFloat(element.cantidad))
-    }
-
     if (aux == 0 || mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
         tr_mes.innerHTML = '<tr><td class="txt-center" colspan="8">'+meses[fecha[1]-1]+' '+fecha[0]+'</td></tr>'
         mes = (fecha[0]+'-'+fecha[1])
@@ -224,52 +225,15 @@ const render_salida = (json) => {
         "<tr>" +
           "<td id='td_id_folio_"+element.id_folio+"'>"+element.id_folio + "</td>" +
           "<td id='td_razon_"+element.id_folio+"'>"+element.razon_social +"</td>" +
-          "<td id='td_fecha_"+element.id_folio+"'>"+element.fecha + "</td>" +
-          // "<td id='td_cantidad_"+element.id_folio+"' class='txt-right'>"+element.cantidad + "</td>" +
-          // "<td id='td_no_parte_"+element.id_folio+"'>"+element.no_parte + "</td>" +
-          // "<td id='td_pedido_"+element.id_folio+"'>"+element.pedido_cliente + "</td>" +
-          // "<td id='td_medida_"+element.id_folio+"'>"+element.medida + "</td>" +
-          // "<td id='td_descripcion_"+element.id_folio+"'>" + element.descripcion + "</td>" +
-          // "<td id='td_acabado_"+element.id_folio+"'>" + element.acabados + "</td>" +
-          // "<td id='td_costo_"+element.id_folio+"' class=txt-right>$ " + new Intl.NumberFormat('es-MX').format(element.costo) + "</td>" +
-          // "<td id='td_dibujo"+element.id_folio+"'>" + info.plano + "</td>" +
-          // "<td id='td_material"+element.id_folio+"'>" + element.material + "</td>" +
-          // "<td id='td_"+element.id_folio+"'>" + info.op + "</td>" +
-          // "<td id='td_entrega_"+element.id_folio+"'>" + element.fecha_entrega + "</td>" + 
+          "<td id='td_fecha_"+element.id_folio+"'>"+element.fecha + "</td>" + 
           '<td><button data-copiar="'+element.id_folio+'" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
-          '<td><button data-historial="'+element.id_folio+'" data-modal="modal-historial" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">history</button></td>' +
-          '<td><button title="Editar Salida de Almacen" class="material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar" data-edit="'+element.id_folio +'"> mode_edit</button></td>' +
+          '<td><button data-historial="'+element.id_folio+'" data-modal="modal-historial" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">format_list_bulleted</button></td>' +
+          '<td><button title="Editar Salida de Almacen" class="material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar-salida" data-salida="'+element.id_folio +'"> mode_edit</button></td>' +
           '<td><button title="Generar Salida de Almacen" class= "material-icons btn btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
           '<td><button title="Generar Cotización" class= "material-icons btn btn-icon-self" data-cotizacion="' +element.id_folio +'">request_quote</button>'+
           '</tr>';
     }
   });
-    // const tr_totales = document.createElement('tr')
-    // tr_totales.innerHTML = '<tr>'+
-    //                             '<td class="txt-right" colspan="10">Total mensual: </td>'+
-    //                             '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(total_acumulado_mensual)+'</td>'+
-    //                             '<td colspan="9"></td>'+
-    //                         '</tr>';
-    // body[0].appendChild(tr_totales)
-    // total_acumulado += parseFloat(total_acumulado_mensual);
-    // total_acumulado_mensual = 0
-    
-    // const table = document.getElementById('table')
-    
-    // if (document.getElementById("pie")) {
-    //   const pie = document.getElementById("pie");
-    //   table.removeChild(pie)
-    // }
-
-    // const tfoot = document.createElement('tfoot');
-    // tfoot.setAttribute('id','pie')
-    // tfoot.classList.add('tfoot')
-    // tfoot.innerHTML = '<tr>'+
-    //                         '<td class="txt-right" colspan="10">Total: </td>'+
-    //                         '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado) + '</td>'+
-    //                         '<td colspan="9"></td>'+
-    //                 '</tr>';
-    // table.appendChild(tfoot)
 };
 
 const mostrarModal = (id) => {
@@ -279,45 +243,21 @@ const mostrarModal = (id) => {
   });
 };
 
-const Salida = document.getElementById("Salida_edit");
-const Id_Clientes_2 = document.getElementById("Id_Clientes_2_edit");
-const Fecha = document.getElementById("Fecha_edit");
-const Cantidad_millares = document.getElementById("Cantidad_millares_edit");
-const Cantidad_elaborar = document.getElementById("cantidad_producir_edit");
-const Codigo = document.getElementById("Codigo_edit");
-const Pedido_pza = document.getElementById("Pedido_pza_edit");
-const Medida = document.getElementById("Medida_edit");
-const Descripcion = document.getElementById("Descripcion_edit");
-const Acabado = document.getElementById("Acabado_edit");
-const Precio_millar = document.getElementById("Precio_millar_edit");
-const Factura = document.getElementById("Factura_edit");
-const Dibujo = document.getElementById("Dibujo_edit");
-const Material = document.getElementById("Material_edit");
-const Id_Folio = document.getElementById("Id_Folio_edit");
-const Fecha_entrega = document.getElementById("Fecha_entrega_edit");
-
-const pintarModal = (json,id) => {
-  json['salida'].forEach((element) => {
-    Salida.value = id
-    Id_Clientes_2.value = element.Id_Clientes_FK;
-    Fecha.value = element.fecha;
-    Cantidad_millares.value = element.cantidad;
-    Codigo.value = element.no_parte;
-    Pedido_pza.value = element.pedido_cliente;
-    Medida.value = element.medida;
-    Descripcion.value = element.descripcion;
-    Precio_millar.value = element.costo;
-    Factura.value = element.factura;
-    Fecha_entrega.value = element.fecha_entrega;
-    colocar_acabado(element.acabados,1);
-    colocar_cliente_2(element.razon_social)
-    json['ordenes'].forEach(orden => {
-      if (orden.Id_Salida_FK == element.id_folio) {
-        Dibujo.value = orden.Id_Catalogo;
-        Material.value = orden.material;
-        Cantidad_elaborar.value = orden.cantidad_elaborar;
-      }
-    })
+const render_pedido = (json) => {
+  json.forEach((el) => {
+    document.getElementById("Pedido_p").value = el.Id_Pedido;
+    document.getElementById("Cantidad_millares_p").value = el.cantidad;
+    document.getElementById("Codigo_p").value = el.no_parte;
+    document.getElementById("Pedido_pza_p").value = el.pedido_cliente;
+    document.getElementById("Medida_p").value = el.medida;
+    document.getElementById("Descripcion_p").value = el.descripcion;
+    document.getElementById("Acabado_p").value = el.acabados;
+    document.getElementById("Precio_millar_p").value = el.costo;
+    document.getElementById("Material_p").value = el.material;
+    document.getElementById("Fecha_entrega_p").value = el.fecha_entrega;
+    document.getElementById("factor_p").value = el.Factor;
+    // document.getElementById("cantidad_producir_p").value = el.;
+    // document.getElementById("Dibujo_p").value = el.;
   });
 };
 
@@ -334,11 +274,47 @@ const colocar_cliente_2 = (cliente) => {
   }
 }
 
+const colocar_cliente_3 = (cliente) => {
+  const select = document.getElementById("Id_Clientes_2_e");
+  const options = select.getElementsByTagName('option');
+  for (let i = 0; i < options.length; i++) {
+      options[i].removeAttribute('selected')
+  }
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].value == cliente) {
+      options[i].setAttribute('selected','')
+    }
+  }
+}
+
+const obtener_salida = (id_folio) => {
+  const respuesta = fetchAPI('',url+'/ventas/salida/obtener_salida?aux='+id_folio,'')
+  respuesta.then(json => {
+    if (json.length > 0) {
+      json.forEach(el => {
+        document.getElementById('Fecha_e').value = el.Fecha
+        document.getElementById('Salida_e').value = el.Id_Folio
+        colocar_cliente_3(el.Id_Clientes_FK)
+      })
+    }
+  })
+}
+
+const obtener_pedido = (id_pedido) => {
+  const respuesta = fetchAPI('',url+'/ventas/salida/obtener_pedido?pedido='+id_pedido,'')
+  respuesta.then(json => {
+    render_pedido(json);
+  })
+}
 
 //posible copia de busqueda
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.edit) {
     mostrarModal(evt.target.dataset.edit);
+  } else if (evt.target.dataset.salida) {
+    obtener_salida(evt.target.dataset.salida);
+  } else if (evt.target.dataset.pedidoact) {
+    obtener_pedido(evt.target.dataset.pedidoact)
   }
 });
 
@@ -403,6 +379,7 @@ const insertarSalida = () => {
 };
 
 const formactualizar = document.getElementById("form_act_salida");
+const formactualizarsolo = document.getElementById("form_act_solo_salida");
 //actualiza
 
 formactualizar.addEventListener("submit", (evt) => {
@@ -410,15 +387,31 @@ formactualizar.addEventListener("submit", (evt) => {
   actualizar_Salida();
 });
 
+formactualizarsolo.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  actualizar_solo_salida();
+});
+
+const actualizar_solo_salida = () => {
+  const respuesta = fetchAPI(formactualizarsolo,url+'/ventas/salida/actualizar_solo_salida','POST')
+  respuesta.then(json =>{ 
+    if (json == 1) {
+      open_alert('Actualización correcta','verde')
+      document.getElementById("modal-actualizar-salida").classList.remove('abrir_modal');
+      obtener();
+    } else {
+      open_alert('No se pudo actualizar','rojo')
+    }
+  })
+}
+
 const actualizar_Salida = () => {
-  const respuesta = fetchAPI(
-    formactualizar,
-    url + "/ventas/salida/actualizarSalida",
-    "POST"
-  );
+  const respuesta = fetchAPI(formactualizar,url + "/ventas/salida/actualizarSalida","POST");
   respuesta.then((json) => {
     if (json == 1) {
       open_alert("El registro ha sido actualizado correctamente", "verde");
+      buscar_historial(auxiliar);
+      abrir_modal("modal-actualizar");
       obtener();
     } else {
       open_alert("Error al actualizar el registro", "rojo");
@@ -437,6 +430,7 @@ const obtener_cotizacion_pdf = (id) => {
 
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.historial) {
+    auxiliar = evt.target.dataset.historial;
     buscar_historial(evt.target.dataset.historial);
   } else if (evt.target.dataset.p) {
     portapapeles_pegar_tornillo(evt.target.dataset.p)
@@ -489,7 +483,8 @@ const obtener_clientes = () => {
   respuesta.then(json => {
     json.forEach(el => {
       document.getElementById('Id_Clientes_2').innerHTML += '<option value="'+el.Id_Clientes+'">'+el.Razon_social+'</option>'
-      document.getElementById('Id_Clientes_2_edit').innerHTML += '<option value="'+el.Id_Clientes+'">'+el.Razon_social+'</option>'
+      // document.getElementById('Id_Clientes_2_edit').innerHTML += '<option value="'+el.Id_Clientes+'">'+el.Razon_social+'</option>'
+      document.getElementById('Id_Clientes_2_e').innerHTML += '<option value="'+el.Id_Clientes+'">'+el.Razon_social+'</option>'
       document.getElementById('f_cliente').innerHTML += '<option value="'+el.Razon_social+'">'+el.Razon_social+'</option>'
     })
   })

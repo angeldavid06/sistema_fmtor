@@ -18,7 +18,7 @@
 
         public function pdftarjeta()
         {
-            $data = $this->model->buscar('t_salida_almacen', $_GET['atributo'], $_GET['value']);
+            $data = $this->model->buscar('v_ordenes', 'Id_Folio', $_GET['value']);
 
             $this->web->PDF('ventas/tarjeta', $data);
         }

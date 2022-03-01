@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <!-- Tabla -->
-                <div class="tabla tarjeta">
+                <div class="tabla tarjeta" style="padding: 0;">
                     <table class="table table_clientes lista_clientes" id="listaClientes">
                         <thead>
                             <th> Numero de identificacion</th>

@@ -6,7 +6,7 @@ const limpiar_tabla = () => {
     tbody[0].removeChild(tbody[0].firstChild);
   }
 
-  table.removeChild(tfoot[0]);
+  // table.removeChild(tfoot[0]);
   // console.log(tfoot);
 };
 

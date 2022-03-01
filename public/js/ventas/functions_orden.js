@@ -46,9 +46,9 @@ const render_orden = (json) => {
           element.Fecha_entrega +
           "</td>" +
           "<td>" +
-          element.Salida +
+          element.Id_Salida_FK +
           "</td>" +
-          '<td><button class= "material-icons btn btn-icon-self"></button></td>' +
+          '<td><button class= "material-icons btn btn-icon-self" data-tarjeta="'+element.Id_Folio+'">account_tree</button></td>' +
           '<td><button class= "material-icons btn btn-icon-self btn-verde" data-imprimir="' + element.Id_Folio +'">print</button>' +
           '<td><button class= "material-icons btn btn-icon-self btn-amarillo" data-control="' + element.Id_Folio +'">calendar_view_month</button>' +
           "</tr>";
@@ -77,17 +77,17 @@ const pintarModal = (json) => {
   });
 };
 
-const btn_buscar = document.getElementById("clave");
-btn_buscar.addEventListener("click", () => {
-  const input = document.getElementById("id_folio");
-  console.log(input.value);
-  console.log(input.id);
-  if (input.value == "") {
-    obtener();
-  } else {
-    obtener_clave_orden(input.value);
-  }
-});
+// const btn_buscar = document.getElementById("clave");
+// btn_buscar.addEventListener("click", () => {
+//   const input = document.getElementById("id_folio");
+//   console.log(input.value);
+//   console.log(input.id);
+//   if (input.value == "") {
+//     obtener();
+//   } else {
+//     obtener_clave_orden(input.value);
+//   }
+// });
 
 const obtener_clave_orden = (clave) => {
   const respuesta = fetchAPI(
@@ -117,6 +117,10 @@ const generar_control_vacio = (valor) => {
   printPage(url + "/produccion/control/pdf_control_vacio?valor=" + valor);
 };
 
+const generar_tarjeta = (valor) => {
+  printPage(url+'/ventas/tarjeta/pdftarjeta?value='+valor)
+}
+
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.imprimir) {
     console.log(evt.target.dataset.imprimir);
@@ -129,6 +133,8 @@ document.addEventListener("click", (evt) => {
     mostrarModal(evt.target.dataset.edit);
   } else if (evt.target.dataset.control) {
     generar_control_vacio(evt.target.dataset.control);
+  } else if (evt.target.dataset.tarjeta) {
+    generar_tarjeta(evt.target.dataset.tarjeta);
   }
 });
 const formactualizar = document.getElementById("form_act_orden");

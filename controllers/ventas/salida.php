@@ -26,9 +26,18 @@
             $result = $this->model->buscar('v_busqueda_salida', 'Salida', $id_folio);
             echo json_encode($result);
         }
+
         public function historial () {
-             $salida = $this->model->buscar('v_historial_salidas_almacen', 'Id_Folio', $_GET['salida']);
-             echo json_encode($salida);
+            $salida = $this->model->buscar('v_historial_salidas_almacen', 'Id_Folio', $_GET['salida']);
+            $this->model = new Model();
+            $ordenes = $this->model->mostrar('v_ordenes');
+
+            $data = [
+                'salida' => $salida,
+                'ordenes' => $ordenes
+            ];
+
+             echo json_encode($data);
         }
         
         public function generarpdf()
@@ -57,12 +66,17 @@
             echo json_encode($data);
         }
 
+        public function obtener_pedido () {
+            $pedido = $this->model->buscar_personalizado('v_historial_salidas_almacen', '*', 'Id_Pedido =' . $_GET['pedido'] . '');
+            echo json_encode($pedido);
+        }
+
         public function obtener_per()
         {
             $salidas = $this->model->buscar_personalizado('v_historial_salidas_almacen', '*', 'Id_Folio =' . $_GET['aux'] . '');
             $this->model = new Model();
             $ordenes = $this->model->mostrar('v_ordenes');
-            if ($_GET['pedido'] != 'undefined') {
+            if (isset($_GET['pedido']) && $_GET['pedido'] != 'undefined') {
                 $this->model = new Model();
                 $pedido = $this->model->buscar_personalizado('v_historial_salidas_almacen', '*', 'Id_Pedido =' . $_GET['pedido'] . '');
                 $data = [
@@ -77,6 +91,11 @@
                 ];
             }
             echo json_encode($data);
+        }
+
+        public function obtener_salida () {
+            $salida = $this->model->buscar_personalizado('t_salida_almacen', '*', 'Id_Folio =' . $_GET['aux'] . '');
+            echo json_encode($salida);
         }
 
         public function obtener_clientes () {
@@ -99,10 +118,10 @@
                         $this->salida->setFactor($_POST['factor_'.$i]);
                         $this->salida->setMaterial($_POST['Material_'.$i]);
                         $this->salida->setCantidad_millares($_POST['Cantidad_millares_'.$i]);
-                        $this->salida->setPedido_pza($_POST['Pedido_pza']);
-                        $this->salida->setFecha_entrega($_POST['Fecha_entrega']);
+                        $this->salida->setPedido_pza($_POST['Pedido_pza_'.$i]);
+                        $this->salida->setFecha_entrega($_POST['Fecha_entrega_'.$i]);
                         $this->salida->setPrecio_millar($_POST['Precio_millar_'.$i]);
-                        $this->salida->setCodigo($_POST['Codigo']);
+                        $this->salida->setCodigo($_POST['Codigo_'.$i]);
                         if (isset($_POST['tratamiento_' . $i]) && $_POST['tratamiento_'.$i] == 'on') {
                             $this->salida->setTratamiento('T/TERMICO');
                         }
@@ -127,27 +146,45 @@
             }
         }
 
+        public function actualizar_solo_salida () {
+            if (isset($_POST['Salida_e']) && $_POST['Salida_e'] != '') {
+                $this->salida->setSalida($_POST['Salida_e']);
+                $this->salida->setId_Clientes_2($_POST['Id_Clientes_2_e']);
+                $this->salida->setFecha($_POST['Fecha_e']);
+
+                $result = $this->salida->actualizarSoloSalida();
+
+                if ($result) {
+                    echo $result;
+                } else {
+                    echo 2;
+                }
+            }
+        }
+
         public function actualizarSalida()
         {
-            if (isset($_POST['Salida_edit']) && $_POST['Salida_edit'] != '') {
-                $this->salida->setSalida($_POST['Salida_edit']);
-                $this->salida->setId_Clientes_2($_POST['Id_Clientes_2_edit']);
-                $this->salida->setFecha($_POST['Fecha_edit']);
-                $this->salida->setCantidad_millares($_POST['Cantidad_millares_edit']);
-                $this->salida->setCodigo($_POST['Codigo_edit']);
-                $this->salida->setPedido_pza($_POST['Pedido_pza_edit']);
-                $this->salida->setMedida($_POST['Medida_edit']);
-                $this->salida->setDescripcion($_POST['Descripcion_edit']);
-                $this->salida->setAcabado($_POST['Acabado_edit']);
-                $this->salida->setPrecio_millar($_POST['Precio_millar_edit']);
-                $this->salida->setFactura($_POST['Factura_edit']);
-                $this->salida->setFecha_entrega($_POST['Fecha_entrega_edit']);
-                $this->salida->setMaterial($_POST['Material_edit']);
+            if (isset($_POST['Pedido_p']) && $_POST['Pedido_p'] != '') {
+                $this->salida->setSalida(($_POST['Pedido_p']));
+                $this->salida->setCantidad_millares($_POST['Cantidad_millares_p']);
+                $this->salida->setCodigo($_POST['Codigo_p']);
+                $this->salida->setPedido_pza($_POST['Pedido_pza_p']);
+                $this->salida->setMedida($_POST['Medida_p']);
+                $this->salida->setDescripcion($_POST['Descripcion_p']);
+                $this->salida->setAcabado($_POST['Acabado_p']);
+                $this->salida->setPrecio_millar($_POST['Precio_millar_p']);
+                $this->salida->setFactor($_POST['factor_p']);
+                $this->salida->setFecha_entrega($_POST['Fecha_entrega_p']);
+                $this->salida->setMaterial($_POST['Material_p']);
+
+                if (isset($_POST['op_cancelar']) && $_POST['op_cancelar'] == 'on') {
+                    $this->salida->cancelarOrden();
+                }
 
                 $result = $this->salida->actualizarSalida();
                 
                 if ($result) {
-                    echo $result;
+                    echo 1;
                 } else {
                     echo 2;
                 }

@@ -22,11 +22,11 @@
                         <button title="Recargar" class="material-icons btn btn-icon-self btn-transparent" data-recarga="true">loop</button>
                         <button title="Nueva Salida de Almacen" class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-ingresar">add</button>
                         <button title="Filtrar Información" class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-filtrar">filter_alt</button>
-                        <button title="Generar Reporte" class="material-icons btn btn-icon-self">description</button>
+                        <!-- <button title="Generar Reporte" class="material-icons btn btn-icon-self">description</button> -->
                     </div>
                 </div>
                 <div class="tabla tarjeta" style="padding: 0;">
-                    <table class="table table_salida lista_salida" id="table">
+                    <table class="table table_salida lista_salida">
                         <thead>
                             <th style="min-width: 80px;">N° de salida </th>
                             <th style="min-width: 150px;">Cliente</th>
@@ -48,7 +48,8 @@
                             <th style="min-width: 80px;"></th>
                             <th style="min-width: 80px;"></th>
                         </thead>
-                        <tbody class="body body_salida"></tbody>
+                        <tbody id="table" class="body body_salida"></tbody>
+                        <tfoot class="tfoot"></tfoot>
                     </table>
                 </div>
             </div>

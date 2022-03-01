@@ -8,9 +8,7 @@
     <title>.</title>
     <link rel="stylesheet" href="https://www.fmtor.com/public/css/formato.css?1.3">
 </head>
-
 <body>
-
     <table class="formato">
         <?php require_once 'tarjeta/tablatarjeta.php' ?>
         <thead>
@@ -43,17 +41,17 @@
                             <tr>
                                 <td class="txt-center" rowspan="2" style="font-size: 6pt;">KG<br><br></td>
                                 <td class="txt-right" style=" font-size: 7pt;">DESCRIPCION</td>
-                                <td style="font-size: 7pt;"></td>
-                                <td class="txt-center" style="font-size: 7pt;">$ -</td>
+                                <td style="font-size: 7pt;"><?php echo $Descripcion; ?></td>
+                                <td class="txt-center" style="font-size: 7pt;"><?php echo $Medida ?></td>
                                 <td class="txt-center" style="font-size: 7pt;">$ -</td>
                                 <td colspan="2" class="txt-center" style="font-size: 7pt;">DIBUJO</td>
-                                <td class="txt-center" style="font-size: 7pt; background: yellow;"> 0 </td>
+                                <td class="txt-center" style="font-size: 7pt; background: yellow;"><?php echo $Dibujo; ?></td>
                             </tr>
                             <tr>
                                 <td class="txt-right" style="font-size: 7pt;">CLIENTE</td>
-                                <td style="font-size: 7pt;"></td>
+                                <td style="font-size: 7pt;"><?php echo $Id_Clientes_2; ?></td>
                                 <td class="txt-right" style="font-size: 7pt;">SALIDA</td>
-                                <td class="txt-center" style="font-size: 7pt;"></td>
+                                <td class="txt-center" style="font-size: 7pt;"><?php echo $Salida; ?></td>
                                 <td colspan="2" class="txt-right" style="font-size: 7pt;">FECHA</td>
                                 <td class="txt-center" style="font-size: 7pt;"></td>
                             </tr>
@@ -413,7 +411,7 @@
     </table>
 
     <script>
-        window.print();
+        // window.print();
     </script>
     <div class="header">
         <div class="d-grid g-2">

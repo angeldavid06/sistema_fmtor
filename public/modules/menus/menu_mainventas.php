@@ -5,45 +5,50 @@
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">face</i>
                 <span class="material-icons-outlined icon">face</span>
-                <p>Lista de clientes</p>
+                <p>LISTA DE CLIENTES</p>
             </div>
         </a>
-        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/cotizacion">
+        <!-- <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/cotizacion">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">fact_check</i>
                 <span class="material-icons-outlined icon">fact_check</span>
                 <p>Cotizacion</p>
             </div>
-        </a>
+        </a> -->
         <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/salidas">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">open_in_browser</i>
                 <span class="material-icons-outlined icon">open_in_browser</span>
-                <p>Salidas de Almacen</p>
+                <p>SALIDAS DE ALMACEN</p>
             </div>
         </a>
         <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/orden">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">border_color</i>
                 <span class="material-icons-outlined icon">border_color</span>
-                <p>Ordenes de Producción</p>
+                <p>ORDENES DE PRODUCCIÓN</p>
             </div>
         </a>
         
-         <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/tarjeta">
+         <!-- <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/tarjeta">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">account_tree</i>
                 <span class="material-icons-outlined icon">account_tree</span>
                 <p> Tarjeta de Flujo</p>
             </div>
-        </a>
-        
-        
+        </a> -->
         <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/reportes">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">report_problem</i>
                 <span class="material-icons-outlined icon">report_problem</span>
-                <p>Reportes</p>
+                <p>REPORTES</p>
+            </div>
+        </a>
+        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/reportes">
+            <div class="d-grid g-1">
+                <i class="material-icons-outlined icon">local_mall</i>
+                <span class="material-icons-outlined icon">local_mall</span>
+                <p>ORDENES DE COMPRA</p>
             </div>
         </a>
     </div>

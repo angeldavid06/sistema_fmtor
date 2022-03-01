@@ -22,6 +22,7 @@
         public $Factor;
         public $Tratamiento;
         public $No_Pedido;
+        public $estado;
 
         public function __construct()
         {
@@ -122,6 +123,10 @@
             $this->No_Pedido = $No_Pedido;
         }
 
+        public function setEstado ($estado) {
+            $this->estado = $estado;
+        }
+
         public function insertarSalida()
         {
             $tabla = 't_salida_almacen';
@@ -167,6 +172,14 @@
             return $result;
         }
 
+        public function cancelarOrden () {
+            $obj = new Model();
+            $result = $obj->buscar('t_orden_produccion', 'Id_Pedido_FK', $this->Salida);
+            $obj_2 = new Model();
+            $orden = $obj_2->actualizar('t_orden_produccion',"estado_general = 'CANCELADA'","Id_Produccion = '".$result[0]['Id_Produccion']."'");
+            return $orden;
+        }
+
         public function actualizarSalida()
         {
             $values = "Cantidad_millares = '$this->Cantidad_millares', 
@@ -177,9 +190,18 @@
                         Acabado = '$this->Acabado',
                         Precio_millar = '$this->Precio_millar',
                         Fecha_entrega = '$this->Fecha_entrega',
-                        Material = '$this->Material'";
-            $condicion = "Id_Salida_FK = '$this->Salida'";
+                        Material = '$this->Material',
+                        Factor = '$this->Factor'";
+            $condicion = "Id_Pedido = '$this->Salida'";
             $validacion = Model::actualizar('t_pedido', $values, $condicion);
+            return $validacion;
+        }
+
+        public function actualizarSoloSalida () {
+            $values = "Fecha = '$this->Fecha', 
+                        Id_Clientes_FK = '$this->Id_Clientes_2'";
+            $condicion = "Id_Folio = '$this->Salida'";
+            $validacion = Model::actualizar('t_salida_almacen', $values, $condicion);
             return $validacion;
         }
     }
