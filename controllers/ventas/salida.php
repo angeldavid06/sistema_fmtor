@@ -68,7 +68,13 @@
 
         public function obtener_pedido () {
             $pedido = $this->model->buscar_personalizado('v_historial_salidas_almacen', '*', 'Id_Pedido =' . $_GET['pedido'] . '');
-            echo json_encode($pedido);
+            $obj = new Model();
+            $orden = $obj->buscar('v_ordenes','Id_Pedido', $_GET['pedido']);
+            $data = [
+                'pedido' => $pedido,
+                'orden' => $orden
+            ];
+            echo json_encode($data);
         }
 
         public function obtener_per()
@@ -176,6 +182,13 @@
                 $this->salida->setFactor($_POST['factor_p']);
                 $this->salida->setFecha_entrega($_POST['Fecha_entrega_p']);
                 $this->salida->setMaterial($_POST['Material_p']);
+
+                if (!isset($_POST['sin_op_p'])) {
+                    $this->salida->setDibujo($_POST['Dibujo_p']);
+                    $this->salida->setCantidad_producir($_POST['cantidad_producir_p']);
+
+                   $this->salida->actualizarOrden();
+                }
 
                 if (isset($_POST['op_cancelar']) && $_POST['op_cancelar'] == 'on') {
                     $this->salida->cancelarOrden();

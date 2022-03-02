@@ -26,7 +26,7 @@
         <i class="material-icons icon">report_problem</i>
         Reportes
     </a>
-    <a title="Ordenes de Compra" href="http://localhost/sistema_fmtor/usuario/reportes">
+    <a title="Ordenes de Compra" href="http://localhost/sistema_fmtor/usuario/compra">
         <i class="material-icons icon">local_mall</i>
         Ordenes de Compra
     </a>

@@ -130,8 +130,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="opciones d-flex flex-column">
+                <div class="d-grid g-1">
                     <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Registrar</button>
+                </div>
+                <div class="d-grid g-2">
+                    <!-- <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Registrar</button> -->
+                    <label class="btn btn-transparent txt-center" id="btn-limpiar">Limpiar</label>
                     <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-ingresar">Cancelar</label>
                 </div>
             </form>

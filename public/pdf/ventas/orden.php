@@ -15,8 +15,26 @@
             <tr>
                 <th class="th"></th>
             </tr>
+            <tr>
+                <th style="border: none;" class="txt-left" colspan="3">Cliente: <?php echo $data[0]['Clientes'] . ' ' . explode(' ', $data[0]['razon_social'])[0]; ?></th>
+                <th style="border: none; color:#A93D38; font-size: 1.3em;" class="txt-right" colspan="2">N° <?php echo $data[0]['Id_Folio']; ?></th>
+            </tr>
+            <tr>
+                <th style="border: none;" class="txt-left" colspan="2">Pedido no.: <?php echo $data[0]['codigo']; ?></th>
+                <th style="border: none;" class="txt-left">Precio: <?php echo number_format($data[0]['precio_millar'],2); ?></th>
+                <th style="border: none;" class="txt-left" colspan="2">Fecha: <?php echo $data[0]['Fecha']; ?></th>
+            </tr>
+            <tr>
+                <th>DESCRIPCIÓN</th>
+                <th>MEDIDA</th>
+                <th>CANTIDAD</th>
+                <th>ACABADO</th>
+                <th>CODIGO</th>
+            </tr>
         </thead>
+
         <body>
+            <?php require_once 'orden/tablaorden.php' ?>
         </body>
         <tfoot>
             <tr>

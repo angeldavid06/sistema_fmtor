@@ -194,7 +194,16 @@
                         Factor = '$this->Factor'";
             $condicion = "Id_Pedido = '$this->Salida'";
             $validacion = Model::actualizar('t_pedido', $values, $condicion);
+        
             return $validacion;
+        }
+
+        public function actualizarOrden () {
+            $obj = new Model();
+            $valores = "cantidad = '$this->Cantidad_producir', Id_Catalogo_FK = '$this->Dibujo'";
+            $condicion_2 = "Id_Pedido_FK = '$this->Salida'";
+            $orden = $obj->actualizar('t_orden_produccion',$valores,$condicion_2);
+            return $orden;
         }
 
         public function actualizarSoloSalida () {

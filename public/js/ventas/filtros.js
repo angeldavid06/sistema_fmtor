@@ -30,10 +30,10 @@ const enviar_datos = () => {
 
   if (salida.checked) {
       buscar_dato('buscar_salida')
-  } else if (op.checked) {
-    buscar_dato("buscar_op");
-  } else if (r_op.checked) {
-    buscar_dato("buscar_rango_op");
+  // } else if (op.checked) {
+  //   buscar_dato("buscar_op");
+  // } else if (r_op.checked) {
+  //   buscar_dato("buscar_rango_op");
   } else if (r_fecha.checked) {
     buscar_dato("buscar_rango_fecha");
   } else if (r_salida.checked) {

@@ -69,5 +69,9 @@
         public function reportes () {
             $this->web->View('ventas/reportes','');
         }
+
+        public function compra () {
+            $this->web->View('ventas/compra','');
+        }
     }
 ?>

@@ -10,7 +10,7 @@ const render_orden = (json) => {
           element.Id_Folio +
           "</td>" +
           "<td>" +
-          element.Clientes +
+          (element.Clientes + ' ' + element.razon_social.split(' ')[0].trim()) +
           "</td>" +
           "<td>" +
           element.precio_millar +
@@ -31,7 +31,7 @@ const render_orden = (json) => {
           element.acabados +
           "</td>" +
           "<td>" +
-          element.Codigo +
+          element.codigo +
           "</td>" +
           "<td>" +
           element.tratamiento +
@@ -43,7 +43,7 @@ const render_orden = (json) => {
           element.material +
           "</td>" +
           "<td>" +
-          element.Fecha_entrega +
+          element.fecha_entrega +
           "</td>" +
           "<td>" +
           element.Id_Salida_FK +

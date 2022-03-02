@@ -22,7 +22,6 @@ $Cantidad_millares= " ";
         $Medida         = $data[$i]['medida'];
         $Acabado = $data[$i]['acabados'];
         $Dibujo         = $data[$i]['Id_Catalogo'];
-        // $Bote         = $data[$i]['Bote'];
         $Id_Clientes_2  = $data[$i]['Clientes'].' '.explode(' ', $data[$i]['razon_social'])[0];
         $Salida         = $data[$i]['Id_Salida_FK'];  
         $Fecha          = $data[$i]['Fecha'];

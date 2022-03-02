@@ -25,7 +25,7 @@
 
         public function pdforden()
         {
-            $data = $this->model->buscar('v_ordenes', $_GET['atributo'], $_GET['value']);
+            $data = $this->model->buscar('v_ordenes', 'Id_Folio', $_GET['value']);
 
             $this->web->PDF('ventas/orden', $data);
         }

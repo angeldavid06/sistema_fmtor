@@ -26,8 +26,16 @@
 
         public function obtener()
         {
-            $result = $this->model->mostrar('v_mensual_reporte');
-            echo json_encode($result);
+            $result = $this->model->mostrar('v_historial_salidas_almacen');
+            $obj = new Model();
+            $ordenes = $obj->mostrar('v_ordenes');
+            
+            $data = [
+                'salidas' => $result,
+                'ordenes' => $ordenes
+            ];
+            
+            echo json_encode($data);
         }
 
         public function obtener_per()

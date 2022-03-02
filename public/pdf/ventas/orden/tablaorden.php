@@ -1,45 +1,53 @@
 <?php
+    $Id_Folio = ""; 
+    $Id_Clientes_2 = " ";
+    $Precio_millar     = " ";
+    $Fecha  = " ";
+    $Descripcion       = " ";
+    $Medida = " ";
+    $Cantidad_millares = " ";
+    $Acabado           = " ";
+    $Codigo = " ";
+    $Tratamiento= " ";
+    $Fecha_entrega     = " ";
+    $Dibujo = " ";
+    $Salida=" ";
 
-$Id_Folio = ""; 
-$Id_Clientes_2 = " ";
-$Precio_millar     = " ";
-$Fecha  = " ";
-$Descripcion       = " ";
-$Medida = " ";
-$Cantidad_millares = " ";
-$Acabado           = " ";
-$Codigo = " ";
-$Tratamiento= " ";
-$Fecha_entrega     = " ";
-$Dibujo = " ";
-$Salida=" ";
+        $Id_Folio = $data[0]['Id_Folio'];
+        $Id_Clientes_2  = $data[0]['Clientes'];
+        $Precio_millar     = $data[0]['precio_millar'];
+        $Fecha             = $data[0]['Fecha'];
+        $Descripcion       = $data[0]['descripcion'];
+        $Medida            = $data[0]['medida'];
+        $Cantidad_millares = $data[0]['cantidad_elaborar'];
+        $Acabado           = $data[0]['acabados'];
+        $Codigo            = $data[0]['codigo'];
+        $Tratamiento       = $data[0]['tratamiento'];
+        $Fecha_entrega     = $data[0]['fecha_entrega'];
+        $Dibujo = $data[0]['Id_Catalogo'];
+        $Salida           = $data[0]['Id_Salida_FK'];
 
-
-    for ($i=0; $i < count($data); $i++) { 
-
-        $Id_Folio = $data[$i]['Id_Folio'];
-        $Id_Clientes_2  = $data[$i]['Clientes'];
-        $Precio_millar     = $data[$i]['precio_millar'];
-        $Fecha             = $data[$i]['Fecha'];
-        $Descripcion       = $data[$i]['descripcion'];
-        $Medida            = $data[$i]['medida'];
-        $Cantidad_millares = $data[$i]['cantidad_elaborar'];
-        $Acabado           = $data[$i]['acabados'];
-        // $Codigo            = $data[$i]['Codigo'];
-        $Tratamiento       = $data[$i]['tratamiento'];
-        // $Fecha_entrega     = $data[$i]['Fecha_entrega'];
-        $Dibujo = $data[$i]['Id_Catalogo'];
-        // $Salida           = $data[$i]['Salida'];
-       /*echo '<tr>'.
-        
-        '<td>'.$data[$i]['Cantidad_millares'].'</td>'.
-        '<td>'.$data[$i]['Pedido_pza'].'</td>'.
-        '<td>'.$data[$i]['Medida'].'</td>'.
-        '<td>'.$data[$i]['Descripcion'].'</td>'.
-        '<td>'.$data[$i]['Acabado'].'</td>'.
-        '<td>'.$data[$i]['Precio_millar'].'</td>'.
-        '<td>'.$data[$i]['Salida'].'</td>'. 
-              
-            '</tr>';*/
-    }
-?>
+        echo '<tr>';
+            echo '<td style="border: none;">'.$Descripcion.'</td>';
+            echo '<td style="border: none;">'.$Medida.'</td>';
+            echo '<td style="border: none;">'.$Cantidad_millares.'</td>';
+            echo '<td style="border: none;">'.$Acabado.'</td>';
+            echo '<td class="txt-right" style="border: none;">'.$Codigo.'</td>';
+        echo '</tr>';
+        echo '<tr>';
+            echo '<td style="border: none;" colspan="2"></td>';
+            echo '<td style="background: #C4D79B; font-weight: bold; border: none;" class="txt-center">'.$Tratamiento.'</td>';
+            echo '<td style="border: none;"></td>';
+            echo '<td class="txt-right" style="background: #FFFF00; font-weight: bold; border: none;">'.$Dibujo.'</td>';
+        echo '</tr>';
+        echo '<tr>';
+            echo '<td style="border: none;" colspan="2" class="txt-right">FECHA DE ENTREGA</td>';
+            echo '<td style="background: #87DEE8; font-weight: bold; border: none;">'. $Fecha_entrega.'</td>';
+            echo '<td style="border: none;"></td>';
+            echo '<td style="border: none;"></td>';
+        echo '</tr>';
+        echo '<tr></tr>';
+        echo '<tr>';
+            echo '<td  style="border: none;" colspan="4" class="txt-right">SALIDA</td>';
+            echo '<td class="txt-center" style="background: #F2F2F2; font-weight: bold; border: none;">'. $Salida.'</td>';
+        echo '</tr>';

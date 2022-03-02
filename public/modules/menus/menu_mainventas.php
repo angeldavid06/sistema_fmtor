@@ -44,7 +44,7 @@
                 <p>REPORTES</p>
             </div>
         </a>
-        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/reportes">
+        <a class="btn btn-transparent" href="http://localhost/sistema_fmtor/usuario/compra">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">local_mall</i>
                 <span class="material-icons-outlined icon">local_mall</span>

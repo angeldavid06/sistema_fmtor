@@ -73,6 +73,16 @@ const portapapeles_pegar_tornillo = (form) => {
     const pedido = json["pedido"];
 
     pedido.forEach(el => {
+      const info = {
+        cantidad: '0',
+        dibujo: '' 
+      };
+      json['ordenes'].forEach((orden) => {
+        if (orden.Id_Pedido == el.Id_Pedido) {
+          info.dibujo = orden.Id_Catalogo;
+          info.cantidad = orden.cantidad_elaborar;
+        }
+      })
       document.getElementById("Fecha_entrega_" +form).value = el.fecha_entrega;
       document.getElementById("Codigo_" + form).value = el.no_parte;
       document.getElementById("Pedido_pza_" + form).value = el.pedido_cliente;
@@ -80,8 +90,11 @@ const portapapeles_pegar_tornillo = (form) => {
       document.getElementById("Precio_millar_" + form).value = el.costo;
       document.getElementById("Medida_" + form).value = el.medida;
       document.getElementById("Descripcion_" + form).value = el.descripcion;
+      document.getElementById("factor_" + form).value = el.Factor;
       colocar_acabado(el.acabados,form);
       document.getElementById("Material_" + form).value = el.material;
+      document.getElementById('Dibujo_' + form).value = info.dibujo;
+      document.getElementById('cantidad_producir_' + form).value = info.cantidad;
     })
   });
 }
@@ -91,10 +104,10 @@ const portapapeles_pegar_cliente = () => {
     const json = JSON.parse(clipText);
     const salida = json["salida"];
 
-    document.getElementById("Fecha_entrega").value = salida[0].fecha_entrega;
+    // document.getElementById("Fecha_entrega").value = salida[0].fecha_entrega;
     colocar_cliente(salida[0].razon_social);
-    document.getElementById("Codigo").value = salida[0].no_parte;
-    document.getElementById("Pedido_pza").value = salida[0].pedido_cliente;
+    // document.getElementById("Codigo").value = salida[0].no_parte;
+    // document.getElementById("Pedido_pza").value = salida[0].pedido_cliente;
   });
 }
 
@@ -226,9 +239,9 @@ const render_salida = (json) => {
           "<td id='td_id_folio_"+element.id_folio+"'>"+element.id_folio + "</td>" +
           "<td id='td_razon_"+element.id_folio+"'>"+element.razon_social +"</td>" +
           "<td id='td_fecha_"+element.id_folio+"'>"+element.fecha + "</td>" + 
+          '<td><button title="Editar Salida de Almacen" class="material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar-salida" data-salida="'+element.id_folio +'"> mode_edit</button></td>' +
           '<td><button data-copiar="'+element.id_folio+'" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
           '<td><button data-historial="'+element.id_folio+'" data-modal="modal-historial" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">format_list_bulleted</button></td>' +
-          '<td><button title="Editar Salida de Almacen" class="material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar-salida" data-salida="'+element.id_folio +'"> mode_edit</button></td>' +
           '<td><button title="Generar Salida de Almacen" class= "material-icons btn btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
           '<td><button title="Generar Cotización" class= "material-icons btn btn-icon-self" data-cotizacion="' +element.id_folio +'">request_quote</button>'+
           '</tr>';
@@ -244,7 +257,7 @@ const mostrarModal = (id) => {
 };
 
 const render_pedido = (json) => {
-  json.forEach((el) => {
+  json['pedido'].forEach((el) => {
     document.getElementById("Pedido_p").value = el.Id_Pedido;
     document.getElementById("Cantidad_millares_p").value = el.cantidad;
     document.getElementById("Codigo_p").value = el.no_parte;
@@ -256,9 +269,30 @@ const render_pedido = (json) => {
     document.getElementById("Material_p").value = el.material;
     document.getElementById("Fecha_entrega_p").value = el.fecha_entrega;
     document.getElementById("factor_p").value = el.Factor;
-    // document.getElementById("cantidad_producir_p").value = el.;
-    // document.getElementById("Dibujo_p").value = el.;
   });
+
+  if (json["orden"].length > 0) {
+    json["orden"].forEach((el) => {
+      document.getElementById("op_cancelar").removeAttribute("disabled", "");
+      document.getElementById("tratamiento_p").removeAttribute("disabled", "");
+      document.getElementById("cantidad_producir_p").removeAttribute("disabled", "");
+      document.getElementById("Dibujo_p").removeAttribute("disabled", "");
+      document.getElementById("cantidad_producir_p").value = el.cantidad_elaborar;
+      document.getElementById("Dibujo_p").value = el.Id_Catalogo;
+      if (el.tratamiento == "T/TERMICO") {
+        document.getElementById("tratamiento_p").setAttribute("checked", "");
+      }
+    });
+  } else {
+    document.getElementById("sin_op_p").setAttribute("checked", "");
+    document.getElementById("tratamiento_p").removeAttribute("checked", "");
+    document.getElementById("op_cancelar").setAttribute("disabled", "");
+    document.getElementById("tratamiento_p").setAttribute("disabled", "");
+    document.getElementById("cantidad_producir_p").value = 0;
+    document.getElementById("cantidad_producir_p").setAttribute('disabled','');
+    document.getElementById("Dibujo_p").value = '';
+    document.getElementById("Dibujo_p").setAttribute("disabled", "");
+  }
 };
 
 const colocar_cliente_2 = (cliente) => {
@@ -353,7 +387,7 @@ const form = document.getElementById("form_reg_salida");
 
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  insertarSalida();
+  open_confirm("¿Esta seguro de guardar la Salida de Almacen?", insertarSalida);
 });
 
 const limpiar_formulario = (form) => {
@@ -364,6 +398,10 @@ const limpiar_formulario = (form) => {
   render_form_tornillo(1)
   document.getElementById("Cantidad_Tornillos").value = 1;
 }
+
+document.getElementById('btn-limpiar').addEventListener('click', () => {
+  limpiar_formulario(form);
+})
 
 const insertarSalida = () => {
   const respuesta = fetchAPI(form, url + "/ventas/salida/NuevaSalida", "POST");
@@ -384,7 +422,7 @@ const formactualizarsolo = document.getElementById("form_act_solo_salida");
 
 formactualizar.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  actualizar_Salida();
+  open_confirm('¿Esta seguro de guardar los cambios?',actualizar_Salida)
 });
 
 formactualizarsolo.addEventListener("submit", (evt) => {
@@ -428,6 +466,19 @@ const obtener_cotizacion_pdf = (id) => {
   printPage(url + "/ventas/cotizacion/generarpdf?id=" + id);
 };
 
+const restaurar_formulario = () => {
+  const inputs_radio = document.getElementsByName("buscar_por");
+  for (let i = 0; i < inputs_radio.length; i++) {
+    inputs_radio[i].checked = false;
+  }
+
+  const inputs = document.getElementsByClassName("input");
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].value = "";
+    inputs[i].setAttribute('disabled','')
+  }
+};
+
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.historial) {
     auxiliar = evt.target.dataset.historial;
@@ -450,6 +501,7 @@ document.addEventListener("click", (evt) => {
     portapapeles_copiar(evt.target.dataset.copiar, evt.target.dataset.pedido);
   } else if (evt.target.dataset.recarga) {
     obtener();
+    restaurar_formulario()
   } else if (evt.target.dataset.impresion) {
     obtener_pdf(evt.target.dataset.impresion);
   } else if (evt.target.dataset.cotizacion) {
