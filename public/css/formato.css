@@ -207,7 +207,10 @@
 
     .formato thead th,
     .formato tbody td,
-    .formato tfoot td {
+    .formato tfoot td,
+    .header thead th,
+    .header tbody td,
+    .header tfoot td {
         border: 1px solid black;
         padding: 3px 3px;
         font-size: 0.7em;
@@ -221,7 +224,10 @@
 
     .formato tbody td table th,
     .formato tbody td table td 
-    .formato tfoot td table td {
+    .formato tfoot td table td,
+    .header tbody th table th,
+    .header tbody td table td,
+    .header tfoot td table td {
         border: 1px solid black;
         font-size: 1em;
     }

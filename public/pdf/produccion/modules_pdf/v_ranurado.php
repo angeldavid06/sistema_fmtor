@@ -5,7 +5,7 @@
             <th colspan="2" class="txt-left">Factor: <?php echo $data['factores'][1]['factor'];?></th>
         </tr>
         <tr>
-            <th>Botes</th>
+            <th>Bote</th>
             <th>Fecha</th>
             <th>Pzas.</th>
             <th>Pzas. Acumuladas</th>
@@ -43,7 +43,7 @@
 
                 $kilo += $data['ranurado'][$i]['kilos'];
                 $pza += $data['ranurado'][$i]['pzas'];
-                $bote += $data['ranurado'][$i]['botes'];
+                $bote += $data['ranurado'][$i]['bote'];
 
 
                 $fecha = $data['ranurado'][$i]['fecha'];
@@ -52,7 +52,7 @@
                 $fecha = $data['ranurado'][$i]['fecha'];
                 $kilo += $data['ranurado'][$i]['kilos'];
                 $pza += $data['ranurado'][$i]['pzas'];
-                $bote += $data['ranurado'][$i]['botes'];
+                $bote += $data['ranurado'][$i]['bote'];
 
                   if (($i + 1) == count($data['ranurado'])) {
                         $kilos[] = $kilo;

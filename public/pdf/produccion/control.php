@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>.</title>
     <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css?1.3">
 </head>
+
 <body>
     <table class="formato">
         <thead>
@@ -14,17 +16,17 @@
                 <th class="th"></th>
             </tr>
             <tr>
-                <th style="background: yellow">Dibujo: <?php echo $data['control'][0]['plano']; ?></th>
+                <th style="background: #FFFF00;">Dibujo: <?php echo $data['control'][0]['plano']; ?></th>
                 <th>Cantidad: <?php echo $data['control'][0]['cantidad_elaborar']; ?></th>
-                <th class="OP">Orden de Producción: OP<?php echo $data['control'][0]['Orden_Produccion']; ?></th>
+                <th class="OP" style="background: #D9D9D9;">Orden de Producción: <?php echo $data['control'][0]['Orden_Produccion']; ?></th>
             </tr>
             <tr>
-                <th>Fecha: <?php echo explode(' ',$data['control'][0]['Fecha'])[0]; ?></th>
-                <th>Cliente: <?php echo $data['control'][0]['Cliente']; ?></th>
+                <th>Fecha: <?php echo explode(' ', $data['control'][0]['Fecha'])[0]; ?></th>
+                <th>Cliente: <?php echo $data['control'][0]['Cliente'] . ' ' . $data['control'][0]['razon_social']; ?></th>
                 <th>Descripción: <?php echo $data['control'][0]['descripcion']; ?></th>
             </tr>
             <tr>
-                <th style="background: green; color: white;" colspan="2">Tratamiento: <?php echo $data['control'][0]['tratamiento']; ?></th>
+                <th style="background: #C4D79B;" colspan="2">Tratamiento: <?php echo $data['control'][0]['tratamiento']; ?></th>
                 <th>Material: <?php echo $data['control'][0]['material']; ?></th>
             </tr>
         </thead>
@@ -35,7 +37,7 @@
                 <td class="td-sn-pd"><?php require_once 'modules_pdf/v_rolado.php';  ?></td>
             </tr>
             <tr>
-                <td class="td-sn-pd"><?php require_once 'modules_pdf/v_shank.php' ; ?></td>
+                <td class="td-sn-pd"><?php require_once 'modules_pdf/v_shank.php'; ?></td>
                 <td class="td-sn-pd"><?php require_once 'modules_pdf/v_cementado.php'; ?></td>
                 <td class="td-sn-pd"><?php require_once 'modules_pdf/v_acabado.php';  ?></td>
             </tr>
@@ -76,4 +78,5 @@
         </div>
     </div>
 </body>
+
 </html>

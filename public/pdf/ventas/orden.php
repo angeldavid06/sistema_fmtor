@@ -15,26 +15,9 @@
             <tr>
                 <th class="th"></th>
             </tr>
-            <tr>
-                <th style="border: none;" class="txt-left" colspan="3">Cliente: <?php echo $data[0]['Clientes'] . ' ' . explode(' ', $data[0]['razon_social'])[0]; ?></th>
-                <th style="border: none; color:#A93D38; font-size: 1.3em;" class="txt-right" colspan="2">N° <?php echo $data[0]['Id_Folio']; ?></th>
-            </tr>
-            <tr>
-                <th style="border: none;" class="txt-left" colspan="2">Pedido no.: <?php echo $data[0]['codigo']; ?></th>
-                <th style="border: none;" class="txt-left">Precio: <?php echo number_format($data[0]['precio_millar'],2); ?></th>
-                <th style="border: none;" class="txt-left" colspan="2">Fecha: <?php echo $data[0]['Fecha']; ?></th>
-            </tr>
-            <tr>
-                <th>DESCRIPCIÓN</th>
-                <th>MEDIDA</th>
-                <th>CANTIDAD</th>
-                <th>ACABADO</th>
-                <th>CODIGO</th>
-            </tr>
         </thead>
 
         <body>
-            <?php require_once 'orden/tablaorden.php' ?>
         </body>
         <tfoot>
             <tr>
@@ -57,9 +40,45 @@
                 </div>
             </div>
         </div>
+        <div class="d-grid g-1">
+            <table style="font-size: 0.7em; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="padding: 5px;border: none;" class="txt-left" colspan="3">Cliente: <?php echo $data[0]['Clientes'] . ' ' . explode(' ', $data[0]['razon_social'])[0]; ?></th>
+                        <th style="padding: 5px;border: none; color:#A93D38; font-size: 1.3em;" class="txt-right" colspan="2">N° <?php echo $data[0]['Id_Folio']; ?></th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 5px;border: none;" class="txt-left" colspan="2">Pedido no.: <?php echo $data[0]['codigo']; ?></th>
+                        <th style="padding: 5px;border: none;" class="txt-left">Precio: <?php echo number_format($data[0]['precio_millar'], 2); ?></th>
+                        <th style="padding: 5px;border: none;" class="txt-left" colspan="2">Fecha: <?php echo $data[0]['Fecha']; ?></th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 5px;border: none;"></th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 5px;border: none;"></th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 5px;border: none;"></th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 5px;">DESCRIPCIÓN</th>
+                        <th style="padding: 5px;">MEDIDA</th>
+                        <th style="padding: 5px;">CANTIDAD</th>
+                        <th style="padding: 5px;">ACABADO</th>
+                        <th style="padding: 5px;">CODIGO</th>
+                    </tr>
+                </thead>
+
+                <body>
+                    <?php require_once 'orden/tablaorden.php'; ?>
+                </body>
+            </table>
+        </div>
     </div>
-    <div class="header" style="top: 50%">
-        <div class="d-grid g-2">
+    <div class="header" style="top: 50%; ">
+        <hr style="border-top: 2px dotted black;">
+        <div class="d-grid g-2" style="padding-top: 5%; ">
             <div class="logo-formato">
                 <img src="https://www.fmtor.com/public/img/logo_formato.png" alt="">
             </div>
@@ -72,6 +91,41 @@
                     <p>ORDEN DE PRODUCCION</p>
                 </div>
             </div>
+        </div>
+        <div class="d-grid g-1">
+            <table style="font-size: 0.7em; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="padding: 5px;border: none;" class="txt-left" colspan="3">Cliente: <?php echo $data[0]['Clientes'] . ' ' . explode(' ', $data[0]['razon_social'])[0]; ?></th>
+                        <th style="padding: 5px;border: none; color:#A93D38; font-size: 1.3em;" class="txt-right" colspan="2">N° <?php echo $data[0]['Id_Folio']; ?></th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 5px;border: none;" class="txt-left" colspan="2">Pedido no.: <?php echo $data[0]['codigo']; ?></th>
+                        <th style="padding: 5px;border: none;" class="txt-left">Precio: <?php echo number_format($data[0]['precio_millar'], 2); ?></th>
+                        <th style="padding: 5px;border: none;" class="txt-left" colspan="2">Fecha: <?php echo $data[0]['Fecha']; ?></th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 5px;border: none;"></th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 5px;border: none;"></th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 5px;border: none;"></th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 5px;">DESCRIPCIÓN</th>
+                        <th style="padding: 5px;">MEDIDA</th>
+                        <th style="padding: 5px;">CANTIDAD</th>
+                        <th style="padding: 5px;">ACABADO</th>
+                        <th style="padding: 5px;">CODIGO</th>
+                    </tr>
+                </thead>
+
+                <body>
+                    <?php require_once 'orden/tablaOrden_2.php'; ?>
+                </body>
+            </table>
         </div>
     </div>
     <div class="footer">

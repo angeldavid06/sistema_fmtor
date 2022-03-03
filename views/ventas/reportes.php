@@ -24,6 +24,7 @@
                             <i class="material-icons">print</i>
                             Generar Reporte
                         </button>
+                        <button title="Recargar" class="material-icons btn btn-icon-self btn-transparent" data-recarga="true">loop</button>
                         <button data-modal="modal-filtrar" class="btn btn-icon-self btn-transparent material-icons">filter_alt</button>
                     </div>
                 </div>
@@ -52,10 +53,8 @@
             </div>
         </div>
     </div>
-    <?php require_once 'public/modules/ventas/reportes_modal.php'; ?>
     <?php require_once 'public/modules/ventas/reporte_modal.php'; ?>
-    <?php require_once 'public/modules/ventas/filtros_reportes.php'; ?>
     <script src="../public/js/fmtor_libreria.js?1.2"></script>
     <script src="../public/js/ventas/functions_reportes.js?1.3"></script>
-    <script src="../public/js/ventas/filtros.js"></script>
+    <script src="../public/js/ventas/filtro_reporte.js"></script>
 </body>

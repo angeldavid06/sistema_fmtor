@@ -12,6 +12,7 @@ const meses = ['ENERO',
                 'DICIEMBRE']
 
 const render_reporte = (json) => {
+    limpiar_tabla();
     let aux = 0;
     let total_acumulado = 0;
     let total_acumulado_mensual = 0;
@@ -19,6 +20,7 @@ const render_reporte = (json) => {
     let total_kilos_mensual = 0;
     const body = document.getElementsByClassName("body_reporte");
     body[0].innerHTML = "";
+    
     json['salidas'].forEach((element) => {
         const tr_mes = document.createElement("tr");
         const tr_totales = document.createElement("tr");
@@ -82,9 +84,9 @@ const render_reporte = (json) => {
                 "<td>"+element.descripcion + "</td>" + 
                 "<td>"+element.acabados + "</td>" + 
                 "<td class='txt-right'>$ "+new Intl.NumberFormat('es-MX').format(element.costo) + "</td>" + 
-                "<td></td>" + 
+                "<td>"+info.plano+"</td>" + 
                 "<td>"+element.material + "</td>" + 
-                "<td></td>" + 
+                "<td>"+info.op+"</td>" + 
                 "<td class='txt-right'>"+element.fecha_entrega + "</td>" + 
             '</tr>';
         }
@@ -119,11 +121,10 @@ const mostrarModal = (id) => {
         pintarModal(json);
     });
 }
+
 const Id_reporte = document.getElementById('Id_reporte_edit');
 const Mes_de_creacion = document.getElementById('Mes_de_creacion_edit');
 const ReportePDF = document.getElementById('ReportePDF_edit');
-
-
 
 const pintarModal = (json) => {
     console.log(json);
@@ -140,13 +141,33 @@ const nuevoreporte = () => {
     Id_reporte_r.value = '';
     Mes_de_creacion_r.value = '';
 }
+
+const restaurar_formulario = () => {
+  const inputs_radio = document.getElementsByName("buscar_por");
+  const inputs_radio_fecha = document.getElementsByName("buscar_por_fecha");
+  for (let i = 0; i < inputs_radio.length; i++) {
+    inputs_radio[i].checked = false;
+  }
+
+  for (let i = 0; i < inputs_radio_fecha.length; i++) {
+    inputs_radio_fecha[i].checked = false;
+  }
+
+  const inputs = document.getElementsByClassName("input");
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].value = "";
+    inputs[i].setAttribute('disabled','')
+  }
+};
+
 //posible copia de busqueda 
 document.addEventListener('click', evt => {
-    if (evt.target.dataset.edit) {
-        console.log(evt.target.dataset.edit);
-        mostrarModal(evt.target.dataset.edit);
-    } else if (evt.target.dataset.plano){
-        obtener_plano(evt.target.dataset.plano);
+    if (evt.target.dataset.recarga) {
+        obtener();
+        restaurar_formulario();
+    } else if (evt.target.dataset.limpiar) {
+        obtener();
+        restaurar_formulario();
     }
 
 })
@@ -165,72 +186,16 @@ const obtener = () => {
     })
 };
 
-const obtener_plano = (Id_reporte) => {
-    const plano = fetchBlob(url + '/ventas/reportes/obtener_plano?id_plano=' + Id_reporte)
-    plano.then(blob => {
-        const div_plano = document.getElementById('plano')
-        const embed = document.createElement('embed')
-
-        div_plano.innerHTML = '';
-
-        embed.classList.add('height-100');
-        embed.setAttribute('type', 'application/pdf')
-        embed.setAttribute('src', 'data:application/pdf;base64,' + encodeURI(blob))
-
-        div_plano.appendChild(embed)
+const obtener_clientes = () => {
+  const respuesta = fetchAPI('',url+'/ventas/salida/obtener_clientes','')
+  respuesta.then(json => {
+    json.forEach(el => {
+      document.getElementById('f_cliente').innerHTML += '<option value="'+el.Razon_social+'">'+el.Razon_social+'</option>'
     })
+  })
 }
 
-const eliminarRegistro = (id) => {
-    const respuesta = fetchAPI('', url+'/ventas/reportes/eliminarreporte?dato=' + id, '')
-    respuesta.then(json => {
-        obtener();
-    })
-};
-
-const form = document.getElementById('form_reg_reporte');
-
-form.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    insertarreporte();
-    nuevoRegistro();
-})
-
-const insertarreporte = () => {
-    const respuesta = fetchAPI(form, url+'/ventas/reportes/Nuevoreporte', 'POST')
-    respuesta.then(json => {
-        if (json == 1) {
-            open_alert('El registro ha sido agregado correctamente', 'verde')
-            obtener();
-        } else {
-            open_alert('Error al agregar el registro', 'rojo')
-        }
-        obtener()
-        console.log(json);
-    })
-}
-
-//actualizar 
-
-const formactualizar = document.getElementById('form_act_reporte');
-
-formactualizar.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    actualizar_reporte();
-})
-
-const actualizar_reporte = () => {
-    const respuesta = fetchAPI(formactualizar,url+'/ventas/reportes/actualizarreporte', 'POST')
-    respuesta.then(json => {
-        if (json == 1) {
-            open_alert('El registro ha sido actualizado correctamente', 'verde')
-            obtener();
-        } else {
-            open_alert('Error al actualizar el registro', 'rojo')
-        }
-    })
-}
-
-(function () {
+document.addEventListener('DOMContentLoaded', () => {
     obtener();
-})()
+    obtener_clientes()
+})

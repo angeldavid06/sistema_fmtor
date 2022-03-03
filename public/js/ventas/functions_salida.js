@@ -233,6 +233,7 @@ const render_salida = (json) => {
         info.cantidad = orden.cantidad_elaborar;
       }
     })
+
     if (element.Salida != 0) {
       body[0].innerHTML +=
         "<tr>" +

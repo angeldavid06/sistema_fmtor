@@ -79,8 +79,10 @@
                         <tfoot></tfoot>
                     </table>
                 </div>
-                <div class="tarjeta">
-                    <h2 class="txt-center" style="padding-bottom: 20px;">Máquina 1</h2>
+                <div class="tarjeta-transparente">
+                    <h2 class="txt-center" style="padding-bottom:0px;">Máquina 1</h2>
+                </div>
+                <div class="tarjeta" style="padding: 0;">
                     <table>
                         <head>
                             <tr>
@@ -108,8 +110,10 @@
                         <tfoot></tfoot>
                     </table>
                 </div>
-                <div class="tarjeta">
-                    <h2 class="txt-center" style="padding-bottom: 20px;">Máquina 2</h2>
+                <div class="tarjeta-transparente">
+                    <h2 class="txt-center" style="padding-bottom:0px;">Máquina 2</h2>
+                </div>
+                <div class="tarjeta" style="padding: 0;">
                     <table>
                         <head>
                             <tr>
@@ -137,8 +141,10 @@
                         <tfoot></tfoot>
                     </table>
                 </div>
-                <div class="tarjeta">
-                    <h2 class="txt-center" style="padding-bottom: 20px;">Máquina 3</h2>
+                <div class="tarjeta-transparente">
+                    <h2 class="txt-center" style="padding-bottom:0px;">Máquina 3</h2>
+                </div>
+                <div class="tarjeta" style="padding: 0;">
                     <table>
                         <head>
                             <tr>
@@ -166,8 +172,10 @@
                         <tfoot></tfoot>
                     </table>
                 </div>
-                <div class="tarjeta">
-                    <h2 class="txt-center" style="padding-bottom: 20px;">Máquina 4</h2>
+                <div class="tarjeta-transparente">
+                    <h2 class="txt-center" style="padding-bottom:0px;">Máquina 4</h2>
+                </div>
+                <div class="tarjeta" style="padding: 0;">
                     <table>
                         <head>
                             <tr>
@@ -195,8 +203,10 @@
                         <tfoot></tfoot>
                     </table>
                 </div>
-                <div class="tarjeta">
-                    <h2 class="txt-center" style="padding-bottom: 20px;">Máquina 5</h2>
+                <div class="tarjeta-transparente">
+                    <h2 class="txt-center" style="padding-bottom:0px;">Máquina 5</h2>
+                </div>
+                <div class="tarjeta" style="padding: 0;">
                     <table>
                         <head>
                             <tr>
@@ -224,8 +234,10 @@
                         <tfoot></tfoot>
                     </table>
                 </div>
-                <div class="tarjeta">
-                    <h2 class="txt-center" style="padding-bottom: 20px;">Máquina 6</h2>
+                <div class="tarjeta-transparente">
+                    <h2 class="txt-center" style="padding-bottom:0px;">Máquina 6</h2>
+                </div>
+                <div class="tarjeta" style="padding: 0;">
                     <table>
                         <head>
                             <tr>
@@ -253,8 +265,10 @@
                         <tfoot></tfoot>
                     </table>
                 </div>
-                <div class="tarjeta">
-                    <h2 class="txt-center" style="padding-bottom: 20px;">Máquina 7</h2>
+                <div class="tarjeta-transparente">
+                    <h2 class="txt-center" style="padding-bottom:0px;">Máquina 7</h2>
+                </div>
+                <div class="tarjeta" style="padding: 0;">
                     <table>
                         <head>
                             <tr>
@@ -283,8 +297,10 @@
                         <tfoot></tfoot>
                     </table>
                 </div>
-                <div class="tarjeta">
-                    <h2 class="txt-center" style="padding-bottom: 20px;">Máquina 8</h2>
+                <div class="tarjeta-transparente">
+                    <h2 class="txt-center" style="padding-bottom:0px;">Máquina 8</h2>
+                </div>
+                <div class="tarjeta" style="padding: 0;">
                     <table>
                         <head>
                             <tr>
@@ -312,8 +328,10 @@
                         <tfoot></tfoot>
                     </table>
                 </div>
-                <div class="tarjeta">
-                    <h2 class="txt-center" style="padding-bottom: 20px;">Máquina 9</h2>
+                <div class="tarjeta-transparente">
+                    <h2 class="txt-center" style="padding-bottom:0px;">Máquina 9</h2>
+                </div>
+                <div class="tarjeta" style="padding: 0;">
                     <table>
                         <head>
                             <tr>

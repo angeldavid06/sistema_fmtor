@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tarjeta">
+                <div class="tarjeta" style="padding: 0px;">
                     <table>
                         <thead>
                             <tr>

@@ -194,6 +194,10 @@
                     $this->salida->cancelarOrden();
                 }
 
+                // if (isset($_POST['tratamiento_p']) && $_POST['tratamiento_p'] == 'on') {
+                //     $this->salida->cancelarOrden();
+                // }
+
                 $result = $this->salida->actualizarSalida();
                 
                 if ($result) {
