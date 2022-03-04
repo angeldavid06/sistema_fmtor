@@ -11,8 +11,8 @@ const render_clientes = (json) => {
                                     '<td>'+element.Telefono+'</td>'+
                                     '<td>'+element.Correo+'</td>'+
                                     '<td>'+element.Direccion+'</td>'+
-                                    '<td><button class= "material-icons btn btn-icon-self btn-amarillo"  data-modal="modal-actualizar" data-edit="'+element.Id_Clientes+'"> mode_edit</button>'+
-                                    '<td><button class= "material-icons btn btn-icon-self btn-rojo" data-eliminar="'+element.Id_Clientes+'">delete</button>'
+                                    '<td><button class= "material-icons-outlined btn btn-icon-self btn-amarillo"  data-modal="modal-actualizar" data-edit="'+element.Id_Clientes+'"> mode_edit</button>'+
+                                    '<td><button class= "material-icons-outlined btn btn-icon-self btn-rojo" data-eliminar="'+element.Id_Clientes+'">delete</button>'
                                   +'</tr>';
         }
     });

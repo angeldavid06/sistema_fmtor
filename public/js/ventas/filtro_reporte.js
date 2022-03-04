@@ -28,22 +28,12 @@ const enviar_datos = () => {
     const r_salida = document.getElementById("rango_salidas");
     const r_fecha = document.getElementById("rango_fecha");
 
-    if (salida.checked) {
-        buscar_dato("buscar_salida");
-        // } else if (op.checked) {
-        //   buscar_dato("buscar_op");
-        // } else if (r_op.checked) {
-        //   buscar_dato("buscar_rango_op");
-    } else if (r_fecha.checked && !cliente.checked) {
+    if (r_fecha.checked && !cliente.checked) {
         buscar_dato("buscar_rango_fecha");
-    } else if (r_salida.checked) {
-        buscar_dato("buscar_rango_salidas");
     } else if (fecha.checked && !cliente.checked) {
         buscar_dato("buscar_fecha");
     } else if (cliente.checked) {
-        // if (!fecha.checked) {
         buscar_dato("buscar_cliente");
-        // }
     } else if (mes.checked) {
         buscar_dato("buscar_mes");
     } else if (anio.checked) {

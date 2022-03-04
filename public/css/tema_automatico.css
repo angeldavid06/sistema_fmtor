@@ -1,7 +1,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-body: #1F1F1F;
-        --background-aux: #2E2F30;
+        --background-body: #15141A;
+        --background-aux: #23222A;
         --background-aux-05: rgba(37, 39, 41, 0.5);
         --background-button:#5AB3F0;
 
@@ -26,9 +26,9 @@
         --color-green-hover: #212325;
 
         --color-button: #02203A;
-        --color-text: #FFFFFF;
+        --color-text: #e8eaed;
         
-        --color-logo: #FFFFFF;
+        --color-logo: #e8eaed;
 
         --border-color: #36393f;
 

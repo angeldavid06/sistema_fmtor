@@ -1039,7 +1039,7 @@ embed {
 
 .menu .titulo_categoria_menu {
     width: 100%;
-    padding: 20px;
+    padding: 10px 20px;
     /* border-top: 2px solid var(--border-color);
     border-bottom: 2px solid var(--border-color); */
 }
