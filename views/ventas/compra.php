@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <?php require_once 'public/modules/head.php' ?>
     <title>Ordenes de Compra</title>
 </head>
-
 <body>
     <div class="contenedor">
         <a href="#top" class="btn btn-icon btn-flotante btn-icon-self material-icons" id="btn-subir">expand_less
@@ -28,39 +26,25 @@
                 <div class="tabla tarjeta" style="padding: 0;">
                     <table class="table table_salida lista_salida">
                         <thead>
-                            <th style="min-width: 80px;">N° de salida </th>
-                            <th style="min-width: 150px;">Cliente</th>
+                            <th style="min-width: 80px;"># O.C. </th>
                             <th style="min-width: 100px;">Fecha</th>
-                            <!-- <th>Cantidad</th>
-                            <th style="min-width: 150px;">N° parte de cliente </th>
-                            <th style="min-width: 100px;">Pedido Cliente</th>
-                            <th>Medida</th>
-                            <th style="min-width: 150px;">Descripcion </th>
-                            <th>Acabado</th>
-                            <th style="min-width: 100px;">Costo</th>
-                            <th style="min-width: 120px;">Numero de Dibujo </th>
-                            <th>Material </th>
-                            <th>O.P</th>
-                            <th style="min-width: 100px;">Fecha de entrega</th> -->
-                            <th></th>
-                            <th></th>
-                            <th style="min-width: 80px;"></th>
-                            <th style="min-width: 80px;"></th>
-                            <th style="min-width: 80px;"></th>
+                            <th>Empresa</th>
+                            <th>Solicitado por:</th>
+                            <th>Proveedor:</th>
+                            <th style="max-width: 80px;"></th>
+                            <th style="max-width: 80px;"></th>
+                            <th style="max-width: 80px;"></th>
                         </thead>
-                        <tbody id="table" class="body body_salida"></tbody>
+                        <tbody id="body" class="body body_salida"></tbody>
                         <tfoot class="tfoot"></tfoot>
                     </table>
                 </div>
             </div>
         </div>
-        <?php require_once 'public/modules/ventas/salidas_almacen_modal.php'; ?>
-        <?php require_once 'public/modules/ventas/salidas_modal.php'; ?>
+        <?php require_once 'public/modules/ventas/compras_modal.php'; ?>
+        <script src="../public/js/fmtor_libreria.js"></script>
+        <script src="../public/js/ventas/functions_compra.js"></script>
 </body>
-<script src="../public/js/fmtor_libreria.js?1.2"></script>
-<script src="../public/js/ventas/functions_salida.js?1.3"></script>
-<script src="../public/js/ventas/filtros.js"></script>
-<script src="../public/js/ventas/no_tornillos.js"></script>
 </body>
 </body>
 
