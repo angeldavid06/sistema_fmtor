@@ -8,7 +8,7 @@
                 <div class="d-grid g-2">
                     <span style="margin: 0;" data-pegar="pegar-cliente" class="btn btn-icon d-flex justify-center" title="Pegar información del portapapeles">
                         <i data-pegar="pegar-cliente" class="material-icons-round">content_paste_go</i>
-                        Pegar inf. cliente
+                        Pegar inf. proveedor
                     </span>
                     <span style="margin: 0;" data-pegar="pegar-todo" class="btn btn-transparent btn-icon d-flex justify-center" title="Pegar información del portapapeles">
                         <i data-pegar="pegar-todo" class="material-icons-round">content_paste_go</i>
@@ -49,27 +49,46 @@
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Contacto:</p>
                     <input type="text" name="contacto" id="contacto">
+                    <input class="input" type="number" name="Cantidad_Tornillos" id="Cantidad_Tornillos" value="1" hidden>
+                </div>
+                <div class="d-grid g-2">
+                    <div class="d-grid g-1">
+                        <p style="padding: 15px 0px 30px 0px;" class="txt-left" id="cantidad_tornillos_pedidos">Información del producto (1):</p>
+                    </div>
+                    <div class="d-flex justify-right align-content-center">
+                        <span data-tornillo="mas" class="btn btn-transparent btn-icon-self material-icons">add</span>
+                        <span data-tornillo="menos" class="btn btn-transparent btn-icon-self material-icons">remove</span>
+                    </div>
                 </div>
                 <div id="pedido_compra">
-                    <p class="txt-right" style="padding: 20px 0px 20px 0px;">Producto</p>
-                    <div class="d-grid g-2">
-                        <div id="pedido_1" class="d-grid g-1 grid-gap-0">
-                            <p>Código:</p>
-                            <input type="number" name="" id="">
+                    <div id="pedido_1" class="pedido">
+                        <div class="d-grid g-2">
+                            <div class="d-grid g-1">
+                                <p style="padding: 15px 0px 30px 0px;" class="txt-left">TORNILLO 1:</p>
+                            </div>
+                            <div class="d-flex justify-right align-content-center">
+                                <label title="Pegar información del tornillo 1" data-p="1" class="btn btn-icon-self material-icons">content_paste_go</label>
+                            </div>
                         </div>
-                        <div id="pedido_1" class="d-grid g-1 grid-gap-0">
-                            <p>Producto:</p>
-                            <input type="text" name="" id="">
+                        <div class="d-grid g-2">
+                            <div class="d-grid g-1 grid-gap-0">
+                                <p>Código:</p>
+                                <input type="number" name="codigo_1" id="codigo_1">
+                            </div>
+                            <div class="d-grid g-1 grid-gap-0">
+                                <p>Producto:</p>
+                                <input type="text" name="producto_1" id="producto_1">
+                            </div>
                         </div>
-                    </div>
-                    <div class="d-grid g-2">
-                        <div id="pedido_1" class="d-grid g-1 grid-gap-0">
-                            <p>Cantidad:</p>
-                            <input type="text" name="" id="">
-                        </div>
-                        <div id="pedido_1" class="d-grid g-1 grid-gap-0">
-                            <p>Precio Unitario:</p>
-                            <input type="text" name="" id="">
+                        <div class="d-grid g-2">
+                            <div class="d-grid g-1 grid-gap-0">
+                                <p>Cantidad:</p>
+                                <input type="text" name="cantidad_1" id="cantidad_1">
+                            </div>
+                            <div class="d-grid g-1 grid-gap-0">
+                                <p>Precio Unitario:</p>
+                                <input type="text" name="precio_1" id="precio_1">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -81,5 +100,24 @@
                     <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-ingresar">Cancelar</label>
                 </div>
             </form>
+        </div>
+    </div>
+    <div id="modal-historial" class="modal modal-izquierda width-05">
+        <div class="titulo_modal d-flex justify-between align-content-center">
+            <h2 id="orden_de_compra">Orden de Compra: </h2>
+            <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial">close</button>
+        </div>
+        <div class="contenido_modal">
+            <table class="table table_salida lista_salida" id="table">
+                <thead>
+                    <th style="min-width: 60px;"></th>
+                    <th style="min-width: 60px;"></th>
+                    <th style="min-width: 100px;">Codigo</th>
+                    <th style="min-width: 150px;">Producto</th>
+                    <th style="min-width: 100px;">Cantidad</th>
+                    <th style="min-width: 100px;">Precio</th>
+                </thead>
+                <tbody id="body_historial"></tbody>
+            </table>
         </div>
     </div>

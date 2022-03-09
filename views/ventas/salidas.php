@@ -40,10 +40,10 @@
                         <tfoot class="tfoot"></tfoot>
                     </table>
                 </div>
+                <?php require_once 'public/modules/ventas/salidas_almacen_modal.php'; ?>
+                <?php require_once 'public/modules/ventas/salidas_modal.php'; ?>
             </div>
         </div>
-        <?php require_once 'public/modules/ventas/salidas_almacen_modal.php'; ?>
-        <?php require_once 'public/modules/ventas/salidas_modal.php'; ?>
 </body>
 <script src="../public/js/fmtor_libreria.js?1.2"></script>
 <script src="../public/js/ventas/functions_salida.js?1.3"></script>

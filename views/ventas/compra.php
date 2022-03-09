@@ -44,6 +44,7 @@
         <?php require_once 'public/modules/ventas/compras_modal.php'; ?>
         <script src="../public/js/fmtor_libreria.js"></script>
         <script src="../public/js/ventas/functions_compra.js"></script>
+        <script src="../public/js/ventas/compra_pedidos.js"></script>
 </body>
 </body>
 </body>

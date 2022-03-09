@@ -42,10 +42,29 @@ const render_ordenes = (json) => {
                             "<td>"+el.Solicitado+"</td>"+
                             "<td>"+el.Proveedor+"</td>"+
                             "<td style='padding: 5px;'><button style='margin: 0px;' class='btn btn-icon-self btn-amarillo material-icons-outlined'>edit</button></td>"+
-                            "<td style='padding: 5px;'><button style='margin: 0px;' class='btn btn-icon-self btn-transparent material-icons-outlined'>more_vert</button></td>"+
+                            "<td style='padding: 5px;'><button data-modal='modal-historial' data-compra='"+el.Id_Compra+"' style='margin: 0px;' class='btn btn-icon-self btn-transparent material-icons-outlined'>more_vert</button></td>"+
                             "<td style='padding: 5px;'><button style='margin: 0px;' class='btn btn-icon-self btn- material-icons-outlined' data-imprimir='"+el.Id_Compra+"' data-empresa='"+el.FK_Empresa+"'>print</button></td>"+
                         "</tr>";
     })
+}
+
+const render_pedidos = (json) => {
+    const body = document.getElementById("body_historial");
+    body.innerHTML = ''
+    json.forEach(el => {
+        body.innerHTML += "<tr>" + 
+                            "<td style='padding: 5px;'><button style='margin: 0px;' class='btn btn-icon-self btn-transparent material-icons'>edit</button></td>"+
+                            "<td style='padding: 5px;'><button style='margin: 0px;' class='btn btn-icon-self btn-transparent material-icons'>copy_all</button></td>"+
+                            "<td>"+el.Codigo+"</td>"+
+                            "<td>"+el.Producto+"</td>"+
+                            "<td class='txt-right'>"+new Intl.NumberFormat('es-MX').format(el.Cantidad)+"</td>"+
+                            "<td class='txt-right'>$ "+new Intl.NumberFormat('es-MX').format(el.Precio)+"</td>"+
+                            // "<td style='padding: 5px;'><button style='margin: 0px;' class='btn btn-icon-self btn-amarillo material-icons-outlined'>edit</button></td>"+
+                            // "<td style='padding: 5px;'><button data-modal='modal-historial' data-compra='"+el.Id_Compra+"' style='margin: 0px;' class='btn btn-icon-self btn-transparent material-icons-outlined'>more_vert</button></td>"+
+                            // "<td style='padding: 5px;'><button style='margin: 0px;' class='btn btn-icon-self btn- material-icons-outlined' data-imprimir='"+el.Id_Compra+"' data-empresa='"+el.FK_Empresa+"'>print</button></td>"+
+                        "</tr>";
+    })
+
 }
 
 const obtener_ordenes = () => {
@@ -67,6 +86,14 @@ const obtener_proveedores = () => {
     respuesta.then((json) => {
         colocar_proveedores(json)
     });
+}
+
+const obtener_pedidos = (id) => {
+    const respuesta = fetchAPI('', url+'/ventas/compras/obtener_informacion_pedidos?id='+id,'')
+    respuesta.then(json => {
+        // console.log(json);
+        render_pedidos(json)
+    })
 }
 
 const colocar_fecha = () => {
@@ -96,6 +123,15 @@ const generar_documento = (id,empresa) => {
 document.addEventListener('click',  (evt) => {
     if (evt.target.dataset.imprimir) {
         generar_documento(evt.target.dataset.imprimir,evt.target.dataset.empresa);
+    } else if (evt.target.dataset.tornillo) {
+        if (evt.target.dataset.tornillo == "mas") {
+            tornillo_mas();
+        } else if (evt.target.dataset.tornillo == "menos") {
+            tornillo_menos();
+        }
+    } else if (evt.target.dataset.compra) {
+        document.getElementById("orden_de_compra").innerHTML = 'Orden de Compra: '+evt.target.dataset.compra;
+        obtener_pedidos(evt.target.dataset.compra);
     }
 })
 

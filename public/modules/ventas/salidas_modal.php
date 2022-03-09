@@ -257,7 +257,7 @@
     </div>
     <div id="modal-historial" class="modal modal-izquierda width-05">
         <div class="titulo_modal d-flex justify-between align-content-center">
-            <h2>Información del Pedido</h2>
+            <h2 id="numero_salida_almacen">Salida de Almacen: </h2>
             <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial">close</button>
         </div>
         <div class="contenido_modal">

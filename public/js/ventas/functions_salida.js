@@ -177,8 +177,8 @@ const render_historial = (json) => {
       }
     })
     body.innerHTML += '<tr>'+
-                        '<td><button data-copiar="'+el.id_folio+'" data-pedido="'+el.Id_Pedido+'" id="'+el.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>'+
-                        '<td><button data-pedidoact="'+el.Id_Pedido+'" id="'+el.id_folio+'" data-modal="modal-actualizar" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">edit</button></td>'+
+                        '<td style="padding: 5px;" ><button data-copiar="'+el.id_folio+'" data-pedido="'+el.Id_Pedido+'" id="'+el.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>'+
+                        '<td style="padding: 5px;" ><button data-pedidoact="'+el.Id_Pedido+'" id="'+el.id_folio+'" data-modal="modal-actualizar" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">edit</button></td>'+
                         '<td>'+info.op+'</td>'+
                         '<td>'+info.factor+'</td>'+
                         '<td>'+el.descripcion+'</td>'+
@@ -240,11 +240,11 @@ const render_salida = (json) => {
           "<td id='td_id_folio_"+element.id_folio+"'>"+element.id_folio + "</td>" +
           "<td id='td_razon_"+element.id_folio+"'>"+element.razon_social +"</td>" +
           "<td id='td_fecha_"+element.id_folio+"'>"+element.fecha + "</td>" + 
-          '<td><button title="Editar Salida de Almacen" class="material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar-salida" data-salida="'+element.id_folio +'"> mode_edit</button></td>' +
-          '<td><button data-copiar="'+element.id_folio+'" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
-          '<td><button data-historial="'+element.id_folio+'" data-modal="modal-historial" id="'+element.id_folio+'" class="material-icons-outlined btn btn-icon-self btn-transparent" title="Copiar información">format_list_bulleted</button></td>' +
-          '<td><button title="Generar Salida de Almacen" class= "material-icons-outlined btn btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
-          '<td><button title="Generar Cotización" class= "material-icons-outlined btn btn-icon-self" data-cotizacion="' +element.id_folio +'">request_quote</button>'+
+          '<td style="padding: 5px;" ><button title="Editar Salida de Almacen" class="material-icons btn btn-amarillo btn-icon-self" data-modal="modal-actualizar-salida" data-salida="'+element.id_folio +'"> mode_edit</button></td>' +
+          '<td style="padding: 5px;" ><button data-copiar="'+element.id_folio+'" id="'+element.id_folio+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
+          '<td style="padding: 5px;" ><button data-historial="'+element.id_folio+'" data-modal="modal-historial" id="'+element.id_folio+'" class="material-icons-outlined btn btn-icon-self btn-transparent" title="Copiar información">format_list_bulleted</button></td>' +
+          '<td style="padding: 5px;" ><button title="Generar Salida de Almacen" class= "material-icons-outlined btn btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>'+
+          '<td style="padding: 5px;" ><button title="Generar Cotización" class= "material-icons-outlined btn btn-icon-self" data-cotizacion="' +element.id_folio +'">request_quote</button>'+
           '</tr>';
     }
   });
@@ -483,6 +483,7 @@ const restaurar_formulario = () => {
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.historial) {
     auxiliar = evt.target.dataset.historial;
+    document.getElementById("numero_salida_almacen").innerHTML = 'Salida de Almacen: '+evt.target.dataset.historial;
     buscar_historial(evt.target.dataset.historial);
   } else if (evt.target.dataset.p) {
     portapapeles_pegar_tornillo(evt.target.dataset.p)

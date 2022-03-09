@@ -62,12 +62,10 @@
     top: 0px;
     padding: 30px;
     width: 500px;
-    /* max-height: calc(100vh - 40px); */
     min-height: 100%;
     max-height: 100vh;
     overflow: auto;
     background-color: var(--background-aux);
-    /* border-radius: var(--border-radius); */
     border: 2px solid transparent;
     visibility: hidden;
     opacity: 0;
@@ -118,7 +116,7 @@
 }
 
 .contenido .modal.modal-izquierda.abrir_modal {
-    left: calc(20% + 30px);
+    left: calc(20% + 50px);
 }
 
 .modal .titulo_modal {
@@ -170,7 +168,7 @@
 .alert .contenido {
     max-width: 100%;
     min-height: 75px;
-    max-height: 75px;
+    max-height: 85px;
     margin: 0px 0px 10px 0px;
     position: initial;
     visibility: hidden;

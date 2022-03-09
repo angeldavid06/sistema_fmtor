@@ -17,27 +17,27 @@
             </tr>
             <tr>
                 <th style="width: 100px; border:none; color: #042348;" class="txt-left">Dirección: </th>
-                <th style="border:none; color: #042348;" class="txt-left">SAN LUIS N° 20 COL. LOMAS ESTRELLA ALCALDÍA IZTAPALAPA</th>
+                <th style="border:none; color: #042348;" class="txt-left"><?php echo $data['empresa'][0]['Direccion'] ?></th>
                 <th style="border:none; color: #042348;" class="txt-right">FECHA:</th>
-                <th style="color: #042348;">00/00/0000</th>
+                <th style="color: #042348;"><?php echo $data['orden'][0]['Fecha'] ?></th>
             </tr>
             <tr>
                 <th style="width: 100px; border:none; color: #042348;" class="txt-left">Ciudad:</th>
-                <th style="border:none; color: #042348;" class="txt-left">CDMX</th>
+                <th style="border:none; color: #042348;" class="txt-left"><?php echo $data['empresa'][0]['Ciudad'] ?></th>
                 <th style="border:none; color: #042348;" class="txt-right">#O.C.:</th>
-                <th style="color: #042348;">000</th>
+                <th style="color: #042348;"><?php echo $data['orden'][0]['Id_Compra']; ?></th>
             </tr>
             <tr>
                 <th style="width: 100px; border:none; color: #042348;" class="txt-left">E-mail:</th>
-                <th style="border:none; color: #042348;" colspan="3" class="txt-left">ventas1@fmtor.mx</th>
+                <th style="border:none; color: #042348;" colspan="3" class="txt-left"><?php echo $data['empresa'][0]['Correo'] ?></th>
             </tr>
             <tr>
                 <th style="width: 100px; border:none; color: #042348;" class="txt-left">Código Postal:</th>
-                <th style="border:none; color: #042348;" colspan="3" class="txt-left">09890</th>
+                <th style="border:none; color: #042348;" colspan="3" class="txt-left"><?php echo $data['empresa'][0]['Codigo_Postal'] ?></th>
             </tr>
             <tr>
                 <th style="width: 100px; border:none; color: #042348;" class="txt-left">Teléfono:</th>
-                <th style="border:none; color: #042348;" colspan="3" class="txt-left">55-89-54-05-76</th>
+                <th style="border:none; color: #042348;" colspan="3" class="txt-left"><?php echo $data['empresa'][0]['Telefono'] ?></th>
             </tr>
         </thead>
         <tbody>
@@ -51,24 +51,24 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="color: #042348;">Empresa:</td>
-                                <td style="color: #042348;">FABRICA DE TREFILADOS</td>
+                                <td style="color: #042348; font-size: 0.9em;">Empresa:</td>
+                                <td style="color: #042348; font-size: 0.9em;"><?php echo $data['proveedor'][0]['Proveedor'] ?></td>
                             </tr>
                             <tr>
-                                <td style="color: #042348;">Dirección:</td>
-                                <td style="color: #042348;"></td>
+                                <td style="color: #042348; font-size: 0.9em;">Dirección:</td>
+                                <td style="color: #042348; font-size: 0.9em;"><?php echo $data['proveedor'][0]['Direccion'] ?></td>
                             </tr>
                             <tr>
-                                <td style="color: #042348;">Ciudad:</td>
-                                <td style="color: #042348;"></td>
+                                <td style="color: #042348; font-size: 0.9em;">Ciudad:</td>
+                                <td style="color: #042348; font-size: 0.9em;"><?php echo $data['proveedor'][0]['Ciudad'] ?></td>
                             </tr>
                             <tr>
-                                <td style="color: #042348;">Teléfono:</td>
-                                <td style="color: #042348;"></td>
+                                <td style="color: #042348; font-size: 0.9em;">Teléfono:</td>
+                                <td style="color: #042348; font-size: 0.9em;"><?php echo $data['proveedor'][0]['Telefono'] ?></td>
                             </tr>
                             <tr>
-                                <td style="color: #042348;">Email:</td>
-                                <td style="color: #042348;"></td>
+                                <td style="color: #042348; font-size: 0.9em;">Email:</td>
+                                <td style="color: #042348; font-size: 0.9em;"><?php echo $data['proveedor'][0]['Correo'] ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -82,24 +82,24 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="color: #042348;">Empresa:</td>
-                                <td style="color: #042348;">FABRICA DE TREFILADOS</td>
+                                <td style="color: #042348; font-size: 0.9em;">Empresa:</td>
+                                <td style="color: #042348; font-size: 0.9em;"><?php echo $data['empresa'][0]['Empresa'] ?></td>
                             </tr>
                             <tr>
-                                <td style="color: #042348;">Dirección:</td>
-                                <td style="color: #042348;"></td>
+                                <td style="color: #042348; font-size: 0.9em;">Dirección:</td>
+                                <td style="color: #042348; font-size: 0.9em;"><?php echo $data['empresa'][0]['Direccion'] ?></td>
                             </tr>
                             <tr>
-                                <td style="color: #042348;">Ciudad:</td>
-                                <td style="color: #042348;"></td>
+                                <td style="color: #042348; font-size: 0.9em;">Ciudad:</td>
+                                <td style="color: #042348; font-size: 0.9em;"><?php echo $data['empresa'][0]['Ciudad'] ?></td>
                             </tr>
                             <tr>
-                                <td style="color: #042348;">Teléfono:</td>
-                                <td style="color: #042348;"></td>
+                                <td style="color: #042348; font-size: 0.9em;">Teléfono:</td>
+                                <td style="color: #042348; font-size: 0.9em;"><?php echo $data['empresa'][0]['Telefono'] ?></td>
                             </tr>
                             <tr>
-                                <td style="color: #042348;">Email:</td>
-                                <td style="color: #042348;"></td>
+                                <td style="color: #042348; font-size: 0.9em;">Email:</td>
+                                <td style="color: #042348; font-size: 0.9em;"><?php echo $data['empresa'][0]['Correo'] ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -139,25 +139,45 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <?php
+
+                            $subtotal = 0;
+                            $total = 0;
+
+                            for ($i = 0; $i < count($data['pedidos']); $i++) {
+                                echo '<tr>';
+                                echo '<td>' . $data['pedidos'][$i]['Codigo'] . '</td>';
+                                echo '<td>' . $data['pedidos'][$i]['Producto'] . '</td>';
+                                echo '<td>' . $data['pedidos'][$i]['Cantidad'] . '</td>';
+                                echo '<td class="txt-right">$ ' . number_format($data['pedidos'][$i]['Precio'], 2) . '</td>';
+                                echo '<td>' . '</td>';
+                                echo '<td class="txt-right">$ ' . number_format($data['pedidos'][$i]['Cantidad'] * $data['pedidos'][$i]['Precio'], 2) . '</td>';
+                                echo '</tr>';
+                                $subtotal += $data['pedidos'][$i]['Cantidad'] * $data['pedidos'][$i]['Precio'];
+                            }
+
+                            $iva = ($subtotal * 0.16);
+                            $total = $subtotal + $iva;
+                            ?>
+                            <!-- <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>$</td>
                                 <td></td>
                                 <td></td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <td style="border:none;" colspan="5" class="txt-right">SUBTOTAL</td>
-                                <td></td>
+                                <td class="txt-right">$ <?php echo number_format($subtotal, 2); ?></td>
                             </tr>
                             <tr>
                                 <td style="border:none;" colspan="5" class="txt-right">IVA</td>
-                                <td></td>
+                                <td class="txt-right">$ <?php echo number_format($iva, 2); ?></td>
                             </tr>
                             <tr>
                                 <td style="border:none;" colspan="5" class="txt-right">TOTAL USD</td>
-                                <td></td>
+                                <td class="txt-right">$ <?php echo number_format($total, 2); ?></td>
                             </tr>
                             <tr>
                                 <td style="background: #042348; color: white; font-weight: bold;" class="txt-center" colspan="6">COMENTARIOS E INTRUCCIONES DE ENVIO</td>
