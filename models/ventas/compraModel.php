@@ -87,6 +87,22 @@
             $result = $obj->insertar($tabla,$columnas,$valores);
             return $result;
         }
+
+        public function actualizar_compra () {
+            $tabla = 't_orden_compra';
+            $columnas = "Fecha = '$this->fecha',Contacto = '$this->contacto',Solicitado = '$this->solicitado',Terminos = '$this->terminos',FK_Empresa = '$this->id_empresa',FK_Proveedor = '$this->id_proveedor'";
+            $valores = "Id_Compra = '$this->id_orden_compra'";
+            $result = Model::actualizar($tabla,$columnas,$valores);
+            return $result;
+        }
+
+        public function actualizar_pedido () {
+            $tabla = 't_pedido_compra';
+            $columnas = "Codigo = '$this->codigo',Producto = '$this->producto',Cantidad = '$this->cantidad',Precio = '$this->precio'";
+            $valores = "Id_Pedido_Compra = '$this->id_pedido_compra'";
+            $result = Model::actualizar($tabla,$columnas,$valores);
+            return $result;
+        }
     }
 
 ?>

@@ -3,6 +3,10 @@
 </div>
 <nav class="opciones">
     <a title="Lista de Clientes" href="http://localhost/sistema_fmtor/usuario/clientes">
+        <i class="material-icons icon">local_shipping</i>
+        Lista de Proveedores
+    </a>
+    <a title="Lista de Clientes" href="http://localhost/sistema_fmtor/usuario/clientes">
         <i class="material-icons icon">face</i>
         Lista de clientes
     </a>
@@ -15,7 +19,7 @@
         Salidas de Almacen
     </a>
     <a title="Ordenes de Producción" href="http://localhost/sistema_fmtor/usuario/orden">
-        <i class="material-icons icon">border_color</i>
+        <i class="material-icons icon">engineering</i>
         Ordenes de Producciòn
     </a>
     <!-- <a href="http://localhost/sistema_fmtor/usuario/tarjeta">

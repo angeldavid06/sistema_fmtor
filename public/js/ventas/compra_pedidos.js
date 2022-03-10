@@ -3,11 +3,10 @@ const contenedor_tornillos = document.getElementById("pedido_compra");
 
 const render_nuevo_tornillo = (cantidad) => {
     let t = cantidad + 1;
-    cantidad.value = cantidad
     const tornillo = document.createElement('div');
-    tornillo.classList.add('pedido');
     tornillo.setAttribute("id", "pedido_" + t);
-    document.getElementById("cantidad_tornillos_pedidos").innerText = 'Información del tornillo ('+t+'):';
+    tornillo.classList.add('pedido');
+    document.getElementById("cantidad_tornillos_pedidos").innerText = 'Información del producto ('+t+'):';
     tornillo.innerHTML +=   '<div class="d-grid g-2">'+
                                 '<div class="d-grid g-1">'+
                                     '<p style="padding: 15px 0px 30px 0px;" class="txt-left">TORNILLO '+t+':</p>'+
@@ -42,14 +41,14 @@ const render_nuevo_tornillo = (cantidad) => {
 const cantidad_tornillos = document.getElementsByClassName("pedido");
 const tornillo_mas = () => {
     render_nuevo_tornillo(cantidad_tornillos.length)
-    cantidad.value = cantidad_tornillos.length
+    cantidad.value = cantidad_tornillos.length;
 } 
 
 const tornillo_menos = () => {
     let tornillos = cantidad_tornillos.length
     if ((tornillos - 1) >= 1) {
         contenedor_tornillos.removeChild(contenedor_tornillos.lastChild)
-        document.getElementById("cantidad_tornillos_pedidos").innerHTML = 'Información del tornillo ('+(tornillos-1)+'):';
+        document.getElementById("cantidad_tornillos_pedidos").innerHTML = 'Información del producto ('+(tornillos-1)+'):';
         cantidad.value = (tornillos-1)
     } else {
         open_alert('Una orden de compra requiere por lo menos de un tornillo','naranja')
@@ -61,9 +60,9 @@ const vaciar_tornillos = () => {
 }
 
 const render_form_tornillo = (c) => {
-   vaciar_tornillos()
+    vaciar_tornillos()
     cantidad.value = c
-    document.getElementById("cantidad_tornillos_pedidos").innerText = 'Información del tornillo ('+c+'):';
+    document.getElementById("cantidad_tornillos_pedidos").innerText = 'Información del producto ('+c+'):';
     for (let t = 1; t <= c; t++) {
         contenedor_tornillos.innerHTML += '<div id="pedido_'+t+'"  class="pedido">'+
                                             '<div class="d-grid g-2">'+

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <?php require_once 'public/modules/head.php' ?>
     <title>Ordenes de Compra</title>
 </head>
+
 <body>
     <div class="contenedor">
         <a href="#top" class="btn btn-icon btn-flotante btn-icon-self material-icons" id="btn-subir">expand_less
@@ -28,25 +30,28 @@
                         <thead>
                             <th style="min-width: 80px;"># O.C. </th>
                             <th style="min-width: 100px;">Fecha</th>
-                            <th>Empresa</th>
-                            <th>Solicitado por:</th>
-                            <th>Proveedor:</th>
-                            <th style="max-width: 80px;"></th>
-                            <th style="max-width: 80px;"></th>
-                            <th style="max-width: 80px;"></th>
+                            <th style="min-width: 350px;">Empresa</th>
+                            <th style="min-width: 200px;">Solicitado por:</th>
+                            <th style="min-width: 200px;">Proveedor:</th>
+                            <th style="max-width: 60px;"></th>
+                            <th style="max-width: 60px;"></th>
+                            <th style="max-width: 60px;"></th>
+                            <th style="max-width: 60px;"></th>
                         </thead>
                         <tbody id="body" class="body body_salida"></tbody>
                         <tfoot class="tfoot"></tfoot>
                     </table>
                 </div>
+                <?php
+                require_once 'public/modules/ventas/compras_modal.php';
+                require_once 'public/modules/ventas/filtros_compras.php';
+                ?>
             </div>
         </div>
-        <?php require_once 'public/modules/ventas/compras_modal.php'; ?>
         <script src="../public/js/fmtor_libreria.js"></script>
         <script src="../public/js/ventas/functions_compra.js"></script>
         <script src="../public/js/ventas/compra_pedidos.js"></script>
-</body>
-</body>
+        <script src="../public/js/ventas/filtro_compra.js"></script>
 </body>
 
 </html>

@@ -56,6 +56,14 @@
             echo json_encode($this->model->mostrar('v_orden_compra'));
         }
 
+        public function obtener_orden () {
+            if (isset($_GET['id'])) {
+                echo json_encode($this->model->buscar_personalizado('t_orden_compra','*',"Id_Compra = '".$_GET['id']."'"));
+            } else {
+                echo 0;
+            }
+        }
+
         public function obtener_empresas() {
             echo json_encode($this->model->mostrar('v_empresa'));
         }
@@ -67,6 +75,15 @@
         public function obtener_informacion_pedidos () {
             if (isset($_GET['id'])) {
                 $pedidos = $this->model->buscar_personalizado('t_pedido_compra', '*', "FK_Orden_Compra  = '" . $_GET['id'] . "'");
+                echo json_encode($pedidos);
+            } else {
+                echo 0;
+            }
+        }
+
+        public function obtener_informacion_pedido () {
+            if (isset($_GET['id'])) {
+                $pedidos = $this->model->buscar_personalizado('t_pedido_compra', '*', "Id_Pedido_Compra  = '" . $_GET['id'] . "'");
                 echo json_encode($pedidos);
             } else {
                 echo 0;
@@ -97,6 +114,152 @@
                 } else {
                     echo 0;
                 }
+            } else {
+                echo 0;
+            }
+        }
+
+        public function actualizar () {
+            if (isset($_POST['Id_Compra_p']) && $_POST['Id_Compra_p'] != '') {
+                $this->model_compra->setId_Compra($_POST['Id_Compra_p']);
+                $this->model_compra->setFecha($_POST['Fecha_p']);
+                $this->model_compra->setId_Empresa($_POST['empresas_p']);
+                $this->model_compra->setId_Proveedor($_POST['proveedores_p']);
+                $this->model_compra->setSolicitado($_POST['solicitado_p']);
+                $this->model_compra->setTerminos($_POST['terminos_p']);
+                $this->model_compra->setContacto($_POST['contacto_p']);
+
+                $result = $this->model_compra->actualizar_compra();
+                
+                if ($result) {
+                    echo 1;
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 0;
+            }
+        }
+
+        public function actualizar_pedido () {
+            if (isset($_POST['id_pedido']) && $_POST['id_pedido'] != '') {
+                $this->model_compra->setId_Pedido_Compra($_POST['id_pedido']);
+                $this->model_compra->setCodigo($_POST['codigo_p']);
+                $this->model_compra->setProducto($_POST['producto_p']);
+                $this->model_compra->setCantidad($_POST['cantidad_p']);
+                $this->model_compra->setPrecio($_POST['precio_p']);
+
+                $result = $this->model_compra->actualizar_pedido();
+                
+                if ($result) {
+                    echo 1;
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 0;
+            }
+        }
+
+        public function buscar_salida() {
+            if (isset($_POST['buscar_por'])) {
+                if (isset($_POST['f_salida'])) {
+                    $data = $this->model->buscar_personalizado('v_orden_compra','*', "Id_Compra = '".$_POST['f_salida']."'");
+                    echo json_encode($data);
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 1;
+            }
+        }
+
+        public function buscar_rango_salidas() {
+            if (isset($_POST['buscar_por'])) {
+                if (isset($_POST['f_r_salida_m']) && isset($_POST['f_r_salida_M'])) {
+                    $data = $this->model->buscar_personalizado('v_orden_compra', '*', "Id_Compra BETWEEN '" . $_POST['f_r_salida_m'] . "' AND '" . $_POST['f_r_salida_M'] . "'");
+                    echo json_encode($data);
+                }
+            }
+        }
+
+        public function buscar_rango_fecha() {
+            if (isset($_POST['buscar_por'])) {
+                if (isset($_POST['f_r_fecha_m']) && isset($_POST['f_r_fecha_M'])) {
+                    $data = $this->model->buscar_personalizado('v_orden_compra', '*', "Fecha BETWEEN '" . $_POST['f_r_fecha_m'] . "' AND '" . $_POST['f_r_fecha_M'] . "'");
+                    echo json_encode($data);
+                }
+            }
+        }
+
+        public function buscar_fecha() {
+            if (isset($_POST['buscar_por'])) {
+                if (isset($_POST['f_fecha'])) {
+                    $data = $this->model->buscar_personalizado('v_orden_compra', '*', "Fecha = '" . $_POST['f_fecha'] . "'");
+                    echo json_encode($data);
+                }
+            }
+        }
+
+        public function buscar_mes() {
+            if (isset($_POST['buscar_por'])) {
+                if (isset($_POST['f_fecha_mes'])) {
+                    $value = $_POST['f_fecha_mes'] . '-';
+                    $data = $this->model->buscar_personalizado('v_orden_compra', '*', "Fecha LIKE '%" . $value . "%'");
+                    echo json_encode($data);
+                }
+            }
+        }
+
+        public function buscar_anio() {
+            if (isset($_POST['buscar_por'])) {
+                if (isset($_POST['f_fecha_anio'])) {
+                    $value = $_POST['f_fecha_anio'] . '-';
+                    $data = $this->model->buscar_personalizado('v_orden_compra', '*', "Fecha LIKE '" . $value . "%'");
+                    echo json_encode($data);
+                }
+            }
+        }
+
+        public function buscar_cliente() {
+            if (isset($_POST['buscar_por'])) {
+                if (isset($_POST['f_proveedor_b'])) {
+                    $data = $this->model->buscar_personalizado('v_orden_compra', '*', "FK_Proveedor = '" . $_POST['f_proveedor_b'] . "'");
+                    echo json_encode($data);
+                }
+            }
+        }
+
+        public function buscar_empresa() {
+            if (isset($_POST['buscar_por'])) {
+                if (isset($_POST['f_empresa_b'])) {
+                    $data = $this->model->buscar_personalizado('v_orden_compra', '*', "FK_Empresa = '" . $_POST['f_empresa_b'] . "'");
+                    echo json_encode($data);
+                }
+            }
+        }
+
+        public function buscar_informacion () {
+            if (isset($_GET['id']) && $_GET['id'] != '') {
+                $orden = $this->model->buscar_personalizado('v_orden_compra', '*', "Id_Compra = '" . $_GET['id'] . "'");
+                $this->model = new Model();
+                $pedidos = $this->model->buscar_personalizado('t_pedido_compra', '*', "FK_Orden_Compra = '" . $_GET['id'] . "'");
+                $data = [
+                    'orden' => $orden,
+                    'pedidos' => $pedidos
+                ];
+
+                echo json_encode($data);
+            } else {
+                echo 0;
+            }
+        }
+
+        public function buscar_pedido () {
+            if (isset($_GET['id']) && $_GET['id'] != '') {
+                $pedidos = $this->model->buscar_personalizado('t_pedido_compra', '*', "Id_Pedido_Compra = '" . $_GET['id'] . "'");
+
+                echo json_encode($pedidos);
             } else {
                 echo 0;
             }
