@@ -468,16 +468,17 @@ const obtener_cotizacion_pdf = (id) => {
 };
 
 const restaurar_formulario = () => {
-  const inputs_radio = document.getElementsByName("buscar_por");
-  for (let i = 0; i < inputs_radio.length; i++) {
-    inputs_radio[i].checked = false;
-  }
+    const form_filtros = document.getElementById("form-filtros");
+    const inputs_radio = document.getElementsByName("buscar_por");
+    for (let i = 0; i < inputs_radio.length; i++) {
+        inputs_radio[i].checked = false;
+    }
 
-  const inputs = document.getElementsByClassName("input");
-  for (let i = 0; i < inputs.length; i++) {
-    inputs[i].value = "";
-    inputs[i].setAttribute('disabled','')
-  }
+    const inputs = form_filtros.getElementsByClassName("input");
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = "";
+        inputs[i].setAttribute('disabled','')
+    }
 };
 
 document.addEventListener("click", (evt) => {

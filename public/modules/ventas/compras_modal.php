@@ -39,16 +39,16 @@
             <div class="d-grid g-2">
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Solicitado por:</p>
-                    <input type="text" name="solicitado" id="solicitado">
+                    <input class="input" type="text" name="solicitado" id="solicitado">
                 </div>
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Terminos de pago:</p>
-                    <input type="text" name="terminos" id="terminos">
+                    <input class="input" type="text" name="terminos" id="terminos">
                 </div>
             </div>
             <div class="d-grid g-1 grid-gap-0">
                 <p>Contacto:</p>
-                <input type="text" name="contacto" id="contacto">
+                <input class="input" type="text" name="contacto" id="contacto">
                 <input class="input" type="number" name="Cantidad_Tornillos" id="Cantidad_Tornillos" value="1" hidden>
             </div>
             <div class="d-grid g-2">
@@ -73,21 +73,21 @@
                     <div class="d-grid g-2">
                         <div class="d-grid g-1 grid-gap-0">
                             <p>Código:</p>
-                            <input type="number" name="codigo_1" id="codigo_1">
+                            <input class="input" type="number" name="codigo_1" id="codigo_1">
                         </div>
                         <div class="d-grid g-1 grid-gap-0">
                             <p>Producto:</p>
-                            <input type="text" name="producto_1" id="producto_1">
+                            <input class="input" type="text" name="producto_1" id="producto_1">
                         </div>
                     </div>
                     <div class="d-grid g-2">
                         <div class="d-grid g-1 grid-gap-0">
                             <p>Cantidad:</p>
-                            <input type="text" name="cantidad_1" id="cantidad_1">
+                            <input class="input" type="text" name="cantidad_1" id="cantidad_1">
                         </div>
                         <div class="d-grid g-1 grid-gap-0">
                             <p>Precio Unitario:</p>
-                            <input type="text" name="precio_1" id="precio_1">
+                            <input class="input" type="text" name="precio_1" id="precio_1">
                         </div>
                     </div>
                 </div>
@@ -133,11 +133,11 @@
             <div class="d-grid g-2">
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Fecha:</p>
-                    <input class="input" type="date" name="Fecha_p" id="Fecha_p">
+                    <input type="date" name="Fecha_p" id="Fecha_p">
                 </div>
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Empresa:</p>
-                    <select class="input" name="empresas_p" id="empresas_p">
+                    <select name="empresas_p" id="empresas_p">
                         <option value="">Selecciona la empresa</option>
                     </select>
                 </div>
@@ -145,7 +145,7 @@
             <div class="d-grid g-1">
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Proveedor:</p>
-                    <select class="input" name="proveedores_p" id="proveedores_p">
+                    <select name="proveedores_p" id="proveedores_p">
                         <option value="">Selecciona un proveedor</option>
                     </select>
                 </div>

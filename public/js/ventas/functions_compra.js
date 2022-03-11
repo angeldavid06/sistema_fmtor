@@ -24,6 +24,7 @@ const ingresar_orden = () => {
     respuesta.then(json => {
         if (json == 1) {
             obtener_ordenes()
+            limpiar_formulario(form_orden_ingresar)
             open_alert('Orden de compra fue registrada correctamente','verde')
         } else {
             open_alert('El registro no pudo ser realizado','rojo')
@@ -281,13 +282,41 @@ const generar_documento = (id,empresa) => {
     printPage(url+'/ventas/compras/generar_pdf?id='+id+'&empresa='+empresa);
 }
 
+const btn_limpiar_ingresar = document.getElementById('btn-limpiar')
+
+btn_limpiar_ingresar.addEventListener('click',() => {
+    limpiar_formulario(form_orden_ingresar);
+})
+
+const btn_limpiar_filtros = document.getElementById('limpiar-filtros')
+
+btn_limpiar_filtros.addEventListener('click',() => {
+    restaurar_formulario();
+    obtener_ordenes();
+})
+
 const limpiar_formulario = (form) => {
-  const inputs = form.getElementsByClassName("input");
-  for (let i = 1; i < inputs.length; i++) {
-    inputs[i].value = "";
-  }
-  render_form_tornillo(1);
-  document.getElementById("Cantidad_Tornillos").value = 1;
+    const inputs = form.getElementsByClassName("input");
+    for (let i = 1; i < inputs.length; i++) {
+        inputs[i].value = "";
+    }
+    render_form_tornillo(1);
+    document.getElementById("Cantidad_Tornillos").value = 1;
+};
+
+
+const restaurar_formulario = () => {
+    const form_filtros = document.getElementById("form-filtros");
+    const inputs_radio = document.getElementsByName("buscar_por");
+    for (let i = 0; i < inputs_radio.length; i++) {
+        inputs_radio[i].checked = false;
+    }
+
+    const inputs = form_filtros.getElementsByClassName("input");
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = "";
+        inputs[i].setAttribute("disabled", "");
+    }
 };
 
 document.addEventListener('click',  (evt) => {
@@ -309,6 +338,7 @@ document.addEventListener('click',  (evt) => {
         obtener_orden(evt.target.dataset.act);
     } else if (evt.target.dataset.recarga) {
         obtener_ordenes()
+        restaurar_formulario();
     } else if (evt.target.dataset.copiar) {
         buscar_informacion(evt.target.dataset.copiar);
     } else if (evt.target.dataset.cp) {

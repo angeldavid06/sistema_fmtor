@@ -1052,6 +1052,7 @@ embed {
 .contenedor .menu.hidde_menu .titulo_categoria_menu {
     height: 0;
     padding: 0px 20px;
+    border-radius: 0px;
 }
 
 .menu .titulo_categoria_menu p {

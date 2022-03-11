@@ -71,7 +71,7 @@
                     <button class="btn">Buscar</button>
                 </div>
                 <div class="d-grid g-2">
-                    <label class="btn btn-transparent txt-center" >Limpiar filtros</label>
+                    <label class="btn btn-transparent txt-center" id="limpiar-filtros">Limpiar filtros</label>
                     <label class="btn btn-transparent txt-center" data-modal="modal-filtrar">Cancelar</label>
                 </div>
             </div>
