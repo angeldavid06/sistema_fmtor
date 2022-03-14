@@ -191,7 +191,8 @@
                         Precio_millar = '$this->Precio_millar',
                         Fecha_entrega = '$this->Fecha_entrega',
                         Material = '$this->Material',
-                        Factor = '$this->Factor'";
+                        Factor = '$this->Factor',
+                        Tratamiento = '$this->Tratamiento'";
             $condicion = "Id_Pedido = '$this->Salida'";
             $validacion = Model::actualizar('t_pedido', $values, $condicion);
         

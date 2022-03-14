@@ -1,3 +1,9 @@
+<?php 
+    require_once 'public/modules/sesion_depto.php';
+    if ($_SESSION['ZGVwdG8='] != 'Ventas') {
+        header('Location: ' . $this->url_server . '/usuario/principal');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +26,9 @@
                     </div>
                     <!-- boton de buscar e imprimir -->
                     <div class="d-flex justify-right align-content-center">
-                        <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-ingresar">local_shipping</button>
+                        <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+                            <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-ingresar">local_shipping</button>
+                        <?php } ?>
                     </div>
                 </div>
                 <!-- Tabla -->
@@ -33,24 +41,29 @@
                             <th>Ciudad</th>
                             <th style="min-width: 150px;">Telefono</th>
                             <th>Correo</th>
-                            <th></th>
-                            <th></th>
-
+                            <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+                                <th></th>
+                                <th></th>
+                            <?php } ?>
                         </thead>
                         <tbody id="body_proveedores" class="body body_clientes"></tbody>
                     </table>
                 </div>
-
+                <?php
+                    if ($_SESSION['cm9s'] == 'Administrativo') {
+                        require_once 'public/modules/ventas/proveedores_modal.php';
+                    }
+                ?>
             </div>
         </div>
     </div>
-
-    <?php
-    require_once 'public/modules/ventas/proveedores_modal.php';
-    ?>
-
     <script src="../public/js/fmtor_libreria.js"></script>
     <script src="../public/js/ventas/functions_proveedor.js"></script>
+    <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+        <script src="../public/js/ventas/render/render_proveedores_admin.js"></script>   
+    <?php } else { ?>
+        <script src="../public/js/ventas/render/render_proveedores_usuario.js"></script>
+    <?php } ?>
 </body>
 
 </html>

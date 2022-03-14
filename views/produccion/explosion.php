@@ -1,4 +1,9 @@
-<?php require_once 'public/modules/sesion_depto.php'; ?>
+<?php 
+    require_once 'public/modules/sesion_depto.php';
+    if ($_SESSION['ZGVwdG8='] != 'Produccion') {
+        header('Location: ' . $this->url_server . '/usuario/principal');
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head> 

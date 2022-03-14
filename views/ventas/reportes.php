@@ -1,3 +1,9 @@
+<?php 
+    require_once 'public/modules/sesion_depto.php';
+    if ($_SESSION['ZGVwdG8='] != 'Ventas') {
+        header('Location: ' . $this->url_server . '/usuario/principal');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 

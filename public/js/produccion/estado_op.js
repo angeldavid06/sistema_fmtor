@@ -5,7 +5,7 @@ let retrasos = []
 const render_retrasos = (ops) => {
     const contenedor = document.getElementById('estados')
 
-    contenedor.innerHTML += '<div class="tarjeta">'+
+    contenedor.innerHTML += '<div class="tarjeta" style="padding: 0px;">'+
                                 '<table>'+
                                     '<thead>'+
                                         '<tr>'+
@@ -35,9 +35,9 @@ const render_retrasos = (ops) => {
                                 '<td>'+el.descripcion+'</td>'+
                                 '<td>'+el.tratamiento+'</td>'+
                                 '<td>'+el.material+'</td>'+
-                                '<td>'+el.cantidad_elaborar+'</td>'+
-                                '<td>'+el.precio_millar+'</td>'+
-                                '<td>'+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar * el.precio_millar)+'</td>'+
+                                '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar)+'</td>'+
+                                '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
+                                '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar * el.precio_millar)+'</td>'+
                                 '<td>'+el.estado_general+'</td>'+
                             '</tr>'
     })
@@ -46,7 +46,7 @@ const render_retrasos = (ops) => {
 const render_estado = (semana_1,semana_3,semana_5,ops) => {
     const contenedor = document.getElementById('estados')
 
-    contenedor.innerHTML += '<div class="tarjeta">'+
+    contenedor.innerHTML += '<div class="tarjeta" style="padding: 0px;">'+
                                 '<table>'+
                                     '<thead>'+
                                         '<tr>'+
@@ -85,9 +85,9 @@ const render_estado = (semana_1,semana_3,semana_5,ops) => {
                                 '<td>'+el.descripcion+'</td>'+
                                 '<td>'+el.tratamiento+'</td>'+
                                 '<td>'+el.material+'</td>'+
-                                '<td>'+el.cantidad_elaborar+'</td>'+
-                                '<td>'+el.precio_millar+'</td>'+
-                                '<td>'+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar * el.precio_millar)+'</td>'+
+                                '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar)+'</td>'+
+                                '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
+                                '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar * el.precio_millar)+'</td>'+
                                 '<td>'+el.estado_general+'</td>'+
                             '</tr>'
     })
@@ -110,6 +110,8 @@ const crear_tabla = (semanas,rango, ops) => {
 
         if (parseInt(semana.split('-')[2]) < 10){ 
             semana = semana.split('-')[0]+'-'+semana.split('-')[1]+'-0'+parseInt(semana.split('-')[2]);
+        } else {
+            semana = semana.split('-')[0]+'-'+semana.split('-')[1]+'-'+parseInt(semana.split('-')[2]);
         }
 
         if (semanas[i][1] == rango[1] || contador_semana > 1) {
@@ -305,25 +307,17 @@ const extraer_meses = (json) => {
             meses.push(fecha[0].split('-')[0]+'-'+fecha[0].split('-')[1]);
             aux = fecha[0].split('-')[1];
         }
+
         contador++;
     });
-
-    if ((meses[meses.length-1].split('-')[1]+1) > 12) {
-        meses.push(
-            (parseInt(
-                meses[meses.length-1].split('-')[0])+1)+
-                '-01');
+    
+    if ((parseInt(meses[meses.length-1].split('-')[1])+1) > 12) {
+        meses.push((parseInt(meses[meses.length-1].split('-')[0])+1)+'-01');
     } else {
         if (parseInt(meses[meses.length-1].split('-')[1]) < 10) {
-            meses.push(
-                (meses[meses.length-1].split('-')[0])+
-                '-0'+
-                (parseInt(meses[meses.length-1].split('-')[1])+1));
+            meses.push((meses[meses.length-1].split('-')[0])+'-0'+(parseInt(meses[meses.length-1].split('-')[1])+1));
         } else {
-            meses.push(
-                (meses[meses.length-1].split('-')[0])+
-                '-'+
-                (parseInt(meses[meses.length-1].split('-')[1])+1));
+            meses.push((meses[meses.length-1].split('-')[0])+'-'+(parseInt(meses[meses.length-1].split('-')[1])+1));
         }
     }
 
@@ -333,7 +327,9 @@ const extraer_meses = (json) => {
 const obtener_ordenes = () => {
     const respuesta = fetchAPI('',url+'/produccion/estado/obtener','')
     respuesta.then(json => {
-        extraer_meses(json);
+        if (json.length > 0) {
+            extraer_meses(json);
+        }
     })
 };
 

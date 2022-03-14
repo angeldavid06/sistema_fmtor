@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>.</title>
-    <link rel="stylesheet" href="http://localhost/sistema_fmtor/public/css/formato.css?1.4">
+    <link rel="stylesheet" href="<?php echo $this->url_server; ?>/public/css/formato.css?1.4">
 </head>
 <style>
     .herramental {
         background: #F20505;
         color: white;
     }
+
     .herramental td {
         color: white;
     }
+
     .mantenimiento {
         background: #F20505;
         color: white;
     }
+
     .mantenimiento td {
         color: white;
     }
+
     .linea {
         background: #FFFF00;
         color: black;
     }
+
     .linea td {
         color: black;
     }
+
     .maquina {
-        background: #AA9BBF; 
+        background: #AA9BBF;
         color: white;
     }
+
     .maquina td {
         color: black;
     }
 </style>
+
 <body>
     <table class="formato">
         <thead>
@@ -73,7 +82,7 @@
     <div class="header">
         <div class="d-grid g-2">
             <div class="logo-formato">
-                <img src="http://localhost/sistema_fmtor/public/img/logo_formato.png" alt="">
+                <img src="<?php echo $this->url_server; ?>/public/img/logo_formato.png" alt="">
             </div>
             <div class="d-flex flex-wrap justify-right">
                 <div class="titulo txt-right">
@@ -100,4 +109,5 @@
         </div>
     </div>
 </body>
+
 </html>

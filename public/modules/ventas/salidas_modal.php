@@ -107,10 +107,6 @@
                                 <p>Costo:</p>
                                 <input class="input" type="text" name="Precio_millar_1" id="Precio_millar_1">
                             </div>
-                            <div class="d-flex align-content-bottom justify-left">
-                                <input type="checkbox" name="tratamiento_1" id="tratamiento_1">
-                                <label class="lbl-checkbox" for="tratamiento_1" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>
-                            </div>
                         </div>
                         <p style="padding: 15px 0px 30px 0px;" class="txt-right">Orden de Producción:</p>
                         <div class="d-grid g-1">
@@ -126,6 +122,12 @@
                             <div class="d-grid g-1 grid-gap-0">
                                 <p>Cantidad a Producir (millares):</p>
                                 <input class="input" type="number" name="cantidad_producir_1" id="cantidad_producir_1">
+                            </div>
+                        </div>
+                        <div class="d-grid g-2">
+                            <div class="d-flex align-content-bottom justify-left">
+                                <input type="checkbox" name="tratamiento_1" id="tratamiento_1">
+                                <label class="lbl-checkbox" for="tratamiento_1" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>
                             </div>
                         </div>
                     </div>
@@ -216,12 +218,6 @@
                                 <p>Costo:</p>
                                 <input class="input" type="text" name="Precio_millar_p" id="Precio_millar_p">
                             </div>
-                            <div class="d-grid g-1 grid-gap-0">
-                                <div class="d-flex align-content-bottom justify-left">
-                                    <input type="checkbox" name="tratamiento_p" id="tratamiento_p">
-                                    <label class="lbl-checkbox" for="tratamiento_p" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>
-                                </div>
-                            </div>
                         </div>
                         <p style="padding: 15px 0px 30px 0px;" class="txt-right">Orden de Producción:</p>
                         <div class="d-grid g-1">
@@ -240,6 +236,12 @@
                             </div>
                         </div>
                         <div class="d-grid g-2">
+                            <div class="d-flex align-content-bottom justify-left">
+                                <input type="checkbox" name="tratamiento_p" id="tratamiento_p">
+                                <label class="lbl-checkbox" for="tratamiento_p" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>
+                            </div>
+                        </div>
+                        <div class="d-grid g-2">
                             <div class="d-grid g-1 grid-gap-0">
                                 <input type="checkbox" name="op_cancelar" id="op_cancelar">
                                 <label class="lbl-checkbox" id="lbl_checkbox_salida" for="op_cancelar" style="margin: 0 0 15px 0;">Cancelar
@@ -255,35 +257,7 @@
             </form>
         </div>
     </div>
-    <div id="modal-historial" class="modal modal-izquierda width-05">
-        <div class="titulo_modal d-flex justify-between align-content-center">
-            <h2 id="numero_salida_almacen">Salida de Almacen: </h2>
-            <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial">close</button>
-        </div>
-        <div class="contenido_modal">
-            <table class="table table_salida lista_salida" id="table">
-                <thead>
-                    <th></th>
-                    <th style="min-width: 80px;"></th>
-                    <th>O.P</th>
-                    <!-- <th style="min-width: 80px;">N° de salida </th>
-                    <th style="min-width: 150px;">Cliente</th> -->
-                    <th style="min-width: 100px;">Factor</th>
-                    <th style="min-width: 150px;">Descripcion </th>
-                    <th>Medida</th>
-                    <th>Acabado</th>
-                    <th>Material </th>
-                    <th>Cantidad</th>
-                    <th style="min-width: 150px;">N° parte de cliente </th>
-                    <th style="min-width: 100px;">Pedido Cliente</th>
-                    <th style="min-width: 100px;">Costo</th>
-                    <th style="min-width: 120px;">Numero de Dibujo </th>
-                    <th style="min-width: 100px;">Fecha de entrega</th>
-                </thead>
-                <tbody id="body_historial"></tbody>
-            </table>
-        </div>
-    </div>
+
 
     <div id="modal-actualizar-salida" class="modal modal-derecha">
         <div class="titulo_modal d-flex justify-between align-content-center">

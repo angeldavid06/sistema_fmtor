@@ -68,7 +68,7 @@
         }
 
         public function calibre () {
-            $result = Model::actualizar('t_salida_almacen',"calibre = '$this->calibre'","Id_Folio = '$this->op'");
+            $result = Model::actualizar('t_orden_produccion',"calibre = '$this->calibre'","Id_Produccion = '$this->op'");
             return $result;
         }
 

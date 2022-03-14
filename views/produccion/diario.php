@@ -1,4 +1,9 @@
-<?php require_once 'public/modules/sesion_depto.php'; ?>
+<?php 
+    require_once 'public/modules/sesion_depto.php';
+    if ($_SESSION['ZGVwdG8='] != 'Produccion') {
+        header('Location: ' . $this->url_server . '/usuario/principal');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +61,9 @@
                             </tr>
                         </thead>
                         <tbody id="body">
+                            <tr>
+                                <td colspan="10" class="txt-center">Seleccione la fecha y un estado de producción</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

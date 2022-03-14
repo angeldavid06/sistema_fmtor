@@ -94,55 +94,42 @@ const registrar_control = () => {
 
 const render_registros_diarios = (json) => {
     const body = document.getElementById('body')
-    json.forEach(el => {
-        const tr = document.createElement('tr')
-        if (el.Id_Folio != 1) {
-            tr.innerHTML =
-              "<td>" +
-              el.turno +
-              "</td>" +
-              "<td>" +
-              el.Id_Folio +
-              "</td>" +
-              "<td>" +
-              el.Clientes +
-              "</td>" +
-              "<td>" +
-              el.kilos +
-              "</td>" +
-              "<td>" +
-              el.pzas +
-              "</td>" +
-              "<td>" +
-              el.Maquina +
-              "</td>" +
-              "<td>" +
-              el.descripcion +
-              "</td>" +
-              "<td>" +
-              el.observaciones +
-              "</td>" +
-              '<td><button  data-modal="modal-editar-diario" data-editar="' +
-              el.id_registro_diario +
-              '" class="material-icons btn btn-icon-self btn-naranja">edit</button></td>' +
-              '<td><button data-eliminar="' +
-              el.id_registro_diario +
-              '" class="material-icons btn btn-icon-self btn-rojo">delete</button></td>';
+    if (json.length == 0) {
+        const tr = document.createElement("tr");
+        tr.innerHTML =
+              "<td colspan='10' class='txt-center'>No hay ningún registro</td>";
             body.appendChild(tr);
-        } else {
-            tr.innerHTML = '<td>'+el.turno+'</td>'+
-                            '<td>SIN O.P.</td>'+
-                            '<td></td>'+
-                            '<td>'+el.kilos+'</td>'+
-                            '<td>'+el.pzas+'</td>'+
-                            '<td>'+el.Maquina+'</td>'+
-                            '<td></td>'+
-                            '<td>'+el.observaciones+'</td>'+
-                            '<td><button  data-modal="modal-actualizar" data-editar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-naranja">edit</button></td>'+
-                            '<td><button data-eliminar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-rojo">delete</button></td>';
-            body.appendChild(tr);
-        }
-    });
+    } else {
+        json.forEach(el => {
+            const tr = document.createElement('tr')
+            if (el.Id_Folio != 1) {
+                tr.innerHTML =
+                  "<td>" +el.turno +"</td>" +
+                  "<td>" +el.Id_Folio +"</td>" +
+                  "<td>" +el.Clientes +"</td>" +
+                  "<td>" +el.kilos +"</td>" +
+                  "<td>" +el.pzas +"</td>" +
+                  "<td>" +el.Maquina +"</td>" +
+                  "<td>" +el.descripcion +"</td>" +
+                  "<td>" +el.observaciones +"</td>" +
+                  '<td><button  data-modal="modal-editar-diario" data-editar="' +el.id_registro_diario +'" class="material-icons btn btn-icon-self btn-naranja">edit</button></td>' +
+                  '<td><button data-eliminar="' +el.id_registro_diario +'" class="material-icons btn btn-icon-self btn-rojo">delete</button></td>';
+                body.appendChild(tr);
+            } else {
+                tr.innerHTML = '<td>'+el.turno+'</td>'+
+                                '<td>SIN O.P.</td>'+
+                                '<td></td>'+
+                                '<td>'+el.kilos+'</td>'+
+                                '<td>'+el.pzas+'</td>'+
+                                '<td>'+el.Maquina+'</td>'+
+                                '<td></td>'+
+                                '<td>'+el.observaciones+'</td>'+
+                                '<td><button  data-modal="modal-actualizar" data-editar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-naranja">edit</button></td>'+
+                                '<td><button data-eliminar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-rojo">delete</button></td>';
+                body.appendChild(tr);
+            }
+        });
+    }
 }
 
 const cargar_registro = (json) => {

@@ -1,4 +1,9 @@
-<?php require_once 'public/modules/sesion_depto.php'; ?>
+<?php 
+    require_once 'public/modules/sesion_depto.php';
+    if ($_SESSION['ZGVwdG8='] != 'Produccion') {
+        header('Location: ' . $this->url_server . '/usuario/principal');
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head> 
@@ -32,12 +37,15 @@
                             <div class="tabla">
                                 <table id="table">
                                     <thead class="cabecera">
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                         <th>CAL.</th>
                                         <th style="min-width: 80px;">Kg.</th>
                                         <th>Factor</th>
                                         <th style="min-width: 80px;">N° O.P.</th>
                                         <th style="min-width: 110px;">Fecha de O.P.</th>
-                                        <th style="min-width: 80px;">Cliente</th>
+                                        <th style="min-width: 150px;">Cliente</th>
                                         <th style="min-width: 120px;">Medida</th>
                                         <th style="min-width: 190px;">Descripción</th>
                                         <th style="min-width: 80px;">Tratamiento</th>
@@ -65,6 +73,6 @@
     </div>
     <script src="../public/js/fmtor_libreria.js"></script>
     <script src="../public/js/produccion/filtros.js"></script>
-    <script src="../public/js/produccion/ordenes.js"></script>
+    <script src="../public/js/produccion/ordenes.js?1.1"></script>
 </body>
 </html>

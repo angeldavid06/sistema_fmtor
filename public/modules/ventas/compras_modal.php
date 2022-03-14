@@ -102,25 +102,6 @@
         </form>
     </div>
 </div>
-<div id="modal-historial" class="modal modal-izquierda width-05">
-    <div class="titulo_modal d-flex justify-between align-content-center">
-        <h2 id="orden_de_compra">Orden de Compra: </h2>
-        <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial">close</button>
-    </div>
-    <div class="contenido_modal">
-        <table class="table table_salida lista_salida" id="table">
-            <thead>
-                <th style="min-width: 60px;"></th>
-                <th style="min-width: 60px;"></th>
-                <th style="min-width: 100px;">Codigo</th>
-                <th style="min-width: 150px;">Producto</th>
-                <th style="min-width: 100px;">Cantidad</th>
-                <th style="min-width: 100px;">Precio</th>
-            </thead>
-            <tbody id="body_historial"></tbody>
-        </table>
-    </div>
-</div>
 <div id="modal-actualizar" class="modal modal-derecha">
     <div class="titulo_modal d-flex justify-between align-content-center">
         <h2>Actualizar Orden de Compra</h2>

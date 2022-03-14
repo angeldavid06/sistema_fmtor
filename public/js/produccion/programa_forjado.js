@@ -13,20 +13,25 @@ const agrupar_por_maquina = (json) => {
     let acumulado = 0
     const maquinas = [1,2,3,4,5,6,7,8,9]
     for (let i = 0; i < maquinas.length; i++) {
-        json.forEach(el => {
-            if (maquinas[i] == el.no_maquina) {
-                render_programa(el,maquinas[i]);
-                kilos += (el.factor*el.cantidad_elaborar);
-                acumulado += parseFloat(el.TOTAL);
-            }
-
-            if ((i+1) == maquinas.length) {
-                const total_kilos = document.getElementById('total_kilos')
-                const total_acumulado = document.getElementById('total_semana')
-                total_kilos.innerHTML = new Intl.NumberFormat('es-MX').format(kilos)
-                total_acumulado.innerHTML = '$ '+new Intl.NumberFormat('es-MX').format(acumulado)
-            }
-        });
+        if (json.length == 0) {
+             const body = document.getElementById("body_maquina_" + maquinas[i]);
+             body.innerHTML = '<tr><td class="txt-center" colspan="17">No hay ningún registro</td></tr>';
+        } else {
+            json.forEach(el => {
+                if (maquinas[i] == el.no_maquina) {
+                    render_programa(el,maquinas[i]);
+                    kilos += (el.factor*el.cantidad_elaborar);
+                    acumulado += parseFloat(el.TOTAL);
+                }
+    
+                if ((i+1) == maquinas.length) {
+                    const total_kilos = document.getElementById('total_kilos')
+                    const total_acumulado = document.getElementById('total_semana')
+                    total_kilos.innerHTML = new Intl.NumberFormat('es-MX').format(kilos)
+                    total_acumulado.innerHTML = '$ '+new Intl.NumberFormat('es-MX').format(acumulado)
+                }
+            });
+        }
     }
 }
 

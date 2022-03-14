@@ -5,17 +5,17 @@ const render_orden = (json) => {
     if (element.Id_Folio != 1) {
         body[0].innerHTML +=
           "<tr>" +
-          '<td style="padding: 5px;"><button style="margin:0px;" title="Tarjeta de Flujo ('+element.Id_Folio+')" class= "material-icons-outlined btn btn-icon-self" data-tarjeta="'+element.Id_Folio+'">note_alt</button></td>' +
-          '<td style="padding: 5px;"><button style="margin:0px;" title="Orden de Producción ('+element.Id_Folio+')" class= "material-icons btn btn-icon-self btn-verde" data-imprimir="' + element.Id_Folio +'">splitscreen</button>' +
-          '<td style="padding: 5px;"><button style="margin:0px;" title="Control de Producción('+element.Id_Folio+')" class= "material-icons btn btn-icon-self btn-amarillo" data-control="' + element.Id_Folio +'">calendar_view_month</button>' +
+            '<td style="padding: 5px;"><button style="margin:0px;" title="Tarjeta de Flujo ('+element.Id_Folio+')" class= "material-icons-outlined btn btn-icon-self" data-tarjeta="'+element.Id_Folio+'">note_alt</button></td>' +
+            '<td style="padding: 5px 0px;"><button style="margin:0px;" title="Orden de Producción ('+element.Id_Folio+')" class= "material-icons btn btn-icon-self btn-verde" data-imprimir="' + element.Id_Folio +'">splitscreen</button>' +
+            '<td style="padding: 5px;"><button style="margin:0px;" title="Control de Producción('+element.Id_Folio+')" class= "material-icons btn btn-icon-self btn-amarillo" data-control="' + element.Id_Folio +'">calendar_view_month</button>' +
             "<td>" + element.estado_general + "</td>" +
             "<td>" + element.Id_Folio + "</td>" +
             "<td>" + (element.Clientes + ' ' + element.razon_social.split(' ')[0].trim()) + "</td>" +
-            "<td>" + element.precio_millar + "</td>" +
+            "<td class='txt-right'>$ " +new Intl.NumberFormat('es-MX').format(element.precio_millar) + "</td>" +
             "<td>" + element.Fecha + "</td>" +
             "<td>" + element.descripcion + "</td>" +
             "<td>" + element.medida + "</td>" +
-            "<td>" + element.cantidad_elaborar + "</td>" +
+            "<td class='txt-right'>" + new Intl.NumberFormat('es-MX').format(element.cantidad_elaborar) + "</td>" +
             "<td>" + element.acabados + "</td>" +
             // "<td>" + element.codigo + "</td>" +
             "<td>" + element.tratamiento + "</td>" +
@@ -70,7 +70,9 @@ const generar_control_vacio = (valor) => {
 };
 
 const generar_tarjeta = (valor) => {
-  printPage(url+'/ventas/tarjeta/pdftarjeta?value='+valor)
+  for (let bote = 1; bote <= 5; bote++) {
+    printPage(url+'/ventas/tarjeta/pdftarjeta?value='+valor+"&bote="+bote)
+  }
 }
 
 document.addEventListener("click", (evt) => {

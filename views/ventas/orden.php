@@ -1,3 +1,9 @@
+<?php 
+    require_once 'public/modules/sesion_depto.php';
+    if ($_SESSION['ZGVwdG8='] != 'Ventas') {
+        header('Location: ' . $this->url_server . '/usuario/principal');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,11 +39,11 @@
                             <th>Estado</th>
                             <th>O.P</th>
                             <th style="min-width: 180px;">Cliente</th>
-                            <th>Costo</th>
+                            <th style="min-width: 150px;">Costo</th>
                             <th style="min-width: 100px;">Fecha </th>
                             <th style="min-width: 150px;">Descripcion</th>
                             <th>Medida</th>
-                            <th>Cantidad</th>
+                            <th style="min-width: 100px;">Cantidad</th>
                             <th>Acabado</th>
                             <!-- <th>Codigo o Parte Cliente</th> -->
                             <th>T/Termico</th>

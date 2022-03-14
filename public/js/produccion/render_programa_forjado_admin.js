@@ -5,11 +5,10 @@ const opciones = {dato: ''}
 const obtener_registro = (id) => {
     const respuesta = fetchAPI('',url+'/produccion/op/obtener_registro?id='+id,'')
     respuesta.then(json => {
-        document.getElementById('op_a').value = json[0].Id_Folio
+        document.getElementById('op_a').value = json[0].Id_Produccion
         document.getElementById('fecha_entrega_a').value = json[0].Fecha_entrega
         document.getElementById('herramental_a').value = json[0].Herramental
         document.getElementById('no_maquina_a').value = json[0].no_maquina
-
     })
 }
 
@@ -86,17 +85,17 @@ const render_programa = (registros,maquina) => {
     body.innerHTML += '<tr>'+
                             '<td style=" padding: 5px;"><button class="btn btn-icon-self btn-amarillo material-icons" data-modal="modal-programa_editar" data-editar="'+registros.Id_Programa_Forjado+'">edit</button></td>'+
                             '<td style=" padding: 5px;"><button class="btn btn-icon-self btn-rojo material-icons" data-eliminar="'+registros.Id_Programa_Forjado+'">delete</button></td>'+
-                            '<td class="'+registros.producto_desc+'">'+registros.calibre+'</td>'+
+                            '<td class="'+registros.producto_desc+'">'+registros.Calibre+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">'+new Intl.NumberFormat('es-MX').format((registros.factor*registros.cantidad_elaborar))+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">'+registros.factor+'</td>'+
-                            '<td class="'+registros.producto_desc+'">'+registros.Id_Folio+'</td>'+
+                            '<td class="'+registros.producto_desc+'">'+registros.Id_Produccion+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Fecha+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Clientes+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.medida+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.descripcion+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.acabados+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">'+registros.cantidad_elaborar+'</td>'+
-                            '<td class="txt-right '+registros.producto_desc+'">$ '+registros.precio_millar+'</td>'+
+                            '<td class="txt-right '+registros.producto_desc+'">$ '+new Intl.NumberFormat('es-MX').format(registros.precio_millar)+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Fecha_entrega+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Herramental+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.tratamiento+'</td>'+

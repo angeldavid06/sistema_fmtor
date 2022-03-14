@@ -168,7 +168,7 @@
 .alert .contenido {
     max-width: 100%;
     min-height: 75px;
-    max-height: 85px;
+    max-height: 90px;
     margin: 0px 0px 10px 0px;
     position: initial;
     visibility: hidden;
@@ -1045,8 +1045,6 @@ embed {
     margin: auto;
     transition: all .3s;
     overflow: hidden;
-    /* border-top: 2px solid var(--border-color);
-    border-bottom: 2px solid var(--border-color); */
 }
 
 .contenedor .menu.hidde_menu .titulo_categoria_menu {
@@ -1740,7 +1738,7 @@ embed {
     }
 
     .contenido.hidde_menu .modal.modal-izquierda.abrir_modal {
-        left: 10px;
+        left: 0px;
     }
 
     .contenido .modal.modal-izquierda.abrir_modal {
@@ -1837,7 +1835,7 @@ embed {
         max-width: calc(100% - 20px);
         min-width: calc(100% - 20px);
         min-height: 70px;
-        max-height: 70px;
+        max-height: 90px;
         margin: 0px 0px 10px 10px;
     }
 

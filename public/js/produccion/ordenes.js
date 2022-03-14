@@ -39,6 +39,7 @@ const render_ordenes = (json) => {
     
             if (aux > 0 && mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
                 tr_totales.innerHTML = '<tr>'+
+                                            '<td colspan="3"></td>' +
                                             '<td class="txt-right">Kilos mensuales: </td>'+
                                             '<td class="txt-right">'+ new Intl.NumberFormat('es-MX').format(total_kilos_mensual)+'</td>'+
                                             '<td colspan="11" class="txt-right">Acumulado mensual:</td>'+
@@ -66,12 +67,15 @@ const render_ordenes = (json) => {
             total_acumulado += parseFloat(el.TOTAL)
             total_kilos += (el.factor*el.cantidad_elaborar)
     
-            tr.innerHTML += '<td data-op="'+el.Id_Folio+'" data-calibre="'+el.calibre+'" data-modal="modal-calibre">'+el.calibre+'</td>'+
+            tr.innerHTML += '<td style="padding: 5px;"><button title="Tarjeta de Flujo ('+el.Id_Folio+')" data-impresion="tarjeta_flujo" data-tarjeta="'+el.Id_Folio+'" class="material-icons-outlined btn btn-icon-self">note_alt</button></td>'+
+                            '<td style="padding: 5px 0px;"><button style="margin: 0;" title="Orden de Producción ('+el.Id_Folio+')" data-impresion="orden_produccion" data-orden="'+el.Id_Folio+'" class="material-icons btn btn-icon-self btn-verde">splitscreen</button></td>'+
+                            '<td style="padding: 5px;"><button title="Control de Producción('+el.Id_Folio+')" data-impresion="control_vacio" data-control="'+el.Id_Folio+'" class="material-icons btn btn-icon-self btn-amarillo">calendar_view_month</button></td>'+
+                            '<td data-op="'+el.Id_Folio+'" data-calibre="'+el.calibre+'" data-modal="modal-calibre">'+el.calibre+'</td>'+
                             '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.factor*el.cantidad_elaborar)+'</td>'+
                             '<td>'+el.factor+'</td>'+
                             '<td>'+el.Id_Folio+'</td>'+
                             '<td>'+el.Fecha.split(' ')[0]+'</td>'+
-                            '<td>'+el.Clientes+'</td>'+
+                            '<td>'+(el.Clientes + ' ' + el.razon_social.split(' ')[0].trim())+'</td>'+
                             '<td>'+el.medida+'</td>'+
                             '<td>'+el.descripcion+'</td>'+
                             '<td>'+el.tratamiento+'</td>'+
@@ -83,12 +87,11 @@ const render_ordenes = (json) => {
                             '<td data-plano="'+el.Id_Catalogo+'" class="number txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado) + '</td>'+
                             '<td>' + el.estado_general+'</td>'
             t_body[0].appendChild(tr)
-            // data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano" 
-            // data-plano="'+el.Id_Catalogo+'" data-modal="modal-plano"
         }
     })
     const tr_totales = document.createElement('tr')
     tr_totales.innerHTML = '<tr>'+
+                                '<td colspan="3"></td>' +
                                 '<td class="txt-right">Kilos mensuales: </td>'+
                                 '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(total_kilos_mensual)+'</td>'+
                                 '<td colspan="11" class="txt-right">Acumulado mensual:</td>'+
@@ -103,6 +106,7 @@ const render_ordenes = (json) => {
     const tfoot = document.createElement('tfoot');
     tfoot.classList.add('tfoot')
     tfoot.innerHTML = '<tr>'+
+                            '<td colspan="3"></td>' +
                             '<td class="txt-right">Total kilos: </td>'+
                             '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(total_kilos)+'</td>'+
                             '<td colspan="12" class="txt-right">Total acumulado</td>'+
@@ -224,16 +228,34 @@ const obtener_calibre = (click_op,click_calibre) => {
     calibre.value = click_calibre
 }
 
+const generar_control_vacio = (valor) => {
+    printPage(url + "/produccion/control/pdf_control_vacio?valor=" + valor);
+};
+
+const generar_orden_produccion = (id) => {
+    printPage(url + "/ventas/orden/pdforden?atributo=Id_Folio&value=" + id);
+};
+
+const generar_tarjeta = (valor) => {
+    printPage(url+'/ventas/tarjeta/pdftarjeta?value='+valor+"&bote="+1)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     obtener_ordenes()
 });
 
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.plano) {
-        obtener_plano(evt.target.dataset.plano)
-    } else if (evt.target.dataset.impresion) {
-        generar_PDF()
+        obtener_plano(evt.target.dataset.plano);
+    } else if (evt.target.dataset.impresion == "documento") {
+        generar_PDF();
     } else if (evt.target.dataset.calibre) {
-        obtener_calibre(evt.target.dataset.op,evt.target.dataset.calibre)
+        obtener_calibre(evt.target.dataset.op, evt.target.dataset.calibre);
+    } else if (evt.target.dataset.impresion == "control_vacio") {
+        generar_control_vacio(evt.target.dataset.control);
+    } else if (evt.target.dataset.impresion == "orden_produccion") {
+        generar_orden_produccion(evt.target.dataset.orden);
+    } else if (evt.target.dataset.impresion == "tarjeta_flujo") {
+        generar_tarjeta(evt.target.dataset.tarjeta);
     }
 })

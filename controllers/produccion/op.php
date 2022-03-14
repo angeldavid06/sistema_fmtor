@@ -234,7 +234,7 @@
         public function insertar_programa () {
             if (isset($_POST['op']) && isset($_POST['fecha_entrega']) && isset($_POST['herramental']) && isset($_POST['no_maquina'])) {
                 $tabla = 't_programa_forjado';
-                $campos = 'Id_Folio_3,Fecha_entrega,herramental,no_maquina,producto_desc';
+                $campos = 'Id_Produccion_FK,Fecha_entrega,herramental,no_maquina,producto_desc';
                 $valores = "'".$_POST['op']."','".$_POST['fecha_entrega']."','".$_POST['herramental']."','".$_POST['no_maquina']."','".$_POST['estado_produccion']."'";
                 $result = $this->model->insertar($tabla,$campos,$valores);
                 echo json_encode($result);
@@ -246,7 +246,7 @@
         public function editar_programa () {
             if (isset($_POST['op_a']) && isset($_POST['fecha_entrega_a']) && isset($_POST['herramental_a']) && isset($_POST['no_maquina_a'])) {
                 $tabla = 't_programa_forjado';
-                $valores = "Id_Folio_3='".$_POST['op_a']."',Fecha_entrega='".$_POST['fecha_entrega_a']."',herramental='".$_POST['herramental_a']."', no_maquina='".$_POST['no_maquina_a']."',producto_desc='".$_POST['estado_produccion_a']."'";
+                $valores = "Id_Produccion_FK='".$_POST['op_a']."',Fecha_entrega='".$_POST['fecha_entrega_a']."',herramental='".$_POST['herramental_a']."', no_maquina='".$_POST['no_maquina_a']."',producto_desc='".$_POST['estado_produccion_a']."'";
                 $condicion = "Id_Programa_Forjado = '".$_POST['registro']."'";
                 $result = $this->model->actualizar($tabla,$valores,$condicion);
                 echo json_encode($result);

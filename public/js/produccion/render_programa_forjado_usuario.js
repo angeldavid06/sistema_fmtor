@@ -11,7 +11,7 @@ const render_programa = (registros,maquina) => {
                             '<td class="'+registros.producto_desc+'">'+registros.descripcion+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.acabados+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">'+registros.cantidad_elaborar+'</td>'+
-                            '<td class="txt-right '+registros.producto_desc+'">$ '+registros.precio_millar+'</td>'+
+                            '<td class="txt-right '+registros.producto_desc+'">$ '+new Intl.NumberFormat('es-MX').format(registros.precio_millar)+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Fecha_entrega+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Herramental+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.tratamiento+'</td>'+
