@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="../public/css/default.css">
+    <link rel="stylesheet" href="../public/css/default.css?1.2">
     <link rel="stylesheet" href="../public/css/tema_automatico.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="../fmtor_64.png">
@@ -17,13 +17,13 @@
 </head>
 <body>
     <div class="d-grid g2-6-4 grid-gap-0 height-100 login">
-        <div class="tarjeta-transparente d-flex align-content-center width-100 empresa ">
-            <div class="width-100 d-flex align-content-center flex-wrap">
+        <div class="tarjeta-transparente d-flex flex-column align-content-center width-100">
+            <div class="empresa width-100 d-flex align-content-center flex-wrap">
                 <video src="../public/img/planta4.mp4" autoplay muted loop></video>
                 <h1>Forjadora Mexicana de Tornillos</h1>
                 <h2>S.A. de C.V.</h2>
-                <button id="iniciar" class="btn width-100">Iniciar</button>
             </div>
+            <button id="iniciar" class="btn btn-transparent width-100">Iniciar Sesión</button>
         </div>
         <div class="tarjeta-transparente d-flex form-login">
                 <h1>Iniciar Sesión</h1>
