@@ -378,3 +378,6 @@ if (document.getElementById('btn-toggle-iniciar')) {
         form_login[0].classList.add('aparecer')
     });
 }
+
+console.log('%c¡ADVENTENCIA!','color:red;font-size: 4em;')
+console.log('%cEste sitio se encuentra protegido y cualquier intento de acceso indebido, será registrado y reportado a las autoridades','color:white;font-size: 2em;')
