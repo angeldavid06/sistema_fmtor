@@ -3,6 +3,7 @@
 
 :root {
     --border-radius: 20px;
+    --border-btn: 40px;
 
     --background-tornillo-1: #65ABAF;
     --background-tornillo-2: #D9D0BE;
@@ -73,8 +74,8 @@
 }
 
 .modal .contenido_modal {
-     max-width:100%;
-     overflow-x: auto;
+    max-width:100%;
+    overflow-x: auto;
 }
 
 .modal:hover {
@@ -319,7 +320,7 @@ button {
     padding: 15px 20px;
     margin: 0px 5px;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-btn);
     background-color: var(--background-button);
     color: var(--color-button);
     cursor: pointer;
@@ -1310,7 +1311,7 @@ embed {
     background-color: var(--background-aux);
 }
 
-.contenido .informacion .tarjeta table thead tr:first-child th:first-child,
+/* .contenido .informacion .tarjeta table thead tr:first-child th:first-child,
 .contenido .informacion .acordeon .contenido_acordeon table thead tr:first-child th:first-child,
 .modal .contenido_modal table thead tr:first-child th:first-child {
     border-radius: var(--border-radius) 0px 0px 0px;
@@ -1319,7 +1320,7 @@ embed {
 .contenido .informacion .tarjeta table thead tr:first-child th:last-child,
 .contenido .informacion .acordeon .contenido_acordeon table thead tr:first-child th:last-child {
     border-radius: 0px var(--border-radius) 0px 0px;
-}
+} */
 
 .contenido .informacion .tarjeta table tfoot tr td,
 .contenido .informacion .acordeon .contenido_acordeon table tfoot tr td,
@@ -1349,11 +1350,20 @@ embed {
     cursor: pointer;
 }
 
-.contenido .informacion .tarjeta table tfoot tr:nth-child(even),
+.contenido .informacion .tarjeta table tbody tr {
+    background-color: var(--background-body);
+    border-top: 2px solid var(--background-aux);
+}
+
+.contenido .informacion .tarjeta table tbody tr:hover {
+    background-color: var(--background-aux);
+}
+
+/* .contenido .informacion .tarjeta table tfoot tr:nth-child(even),
 .contenido .informacion .tarjeta table tbody tr:nth-child(even),
 .modal .contenido_modal table tbody tr:nth-child(even) {
     background-color: var(--background-body);
-}
+} */
 
 .contenido .informacion .acordeon .contenido_acordeon table tbody tr:nth-child(even) {
     background-color: var(--background-aux);
