@@ -58,7 +58,7 @@ const render_ordenes = (json) => {
             }
     
             if (aux == 0 || mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
-                tr_mes.innerHTML = '<tr><td class="txt-center" colspan="16">'+meses[fecha[1]-1]+' '+fecha[0]+'</td></tr>'
+                tr_mes.innerHTML = '<tr><td class="txt-center" colspan="19">'+meses[fecha[1]-1]+' '+fecha[0]+'</td></tr>'
                 mes = (fecha[0]+'-'+fecha[1])
                 aux++;
                 t_body[0].appendChild(tr_mes)

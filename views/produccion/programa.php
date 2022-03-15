@@ -61,10 +61,10 @@
                         </button>
                     </div>
                 </div>
-                <div class="tarjeta">
+                <div class="tarjeta" style="padding: 0;">
                     <table>
                         <tbody id="body_maquina">
-                            <tr>
+                            <tr style="background: var(--background-aux); padding: 5px; border: none;">
                                 <td>Kilos:</td>
                                 <td id="total_kilos"></td>
                                 <td></td>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="tarjeta" style="padding: 0;">
                     <table>
-                        <head>
+                        <thead>
                             <tr>
                                 <th></th>
                                 <th></th>
@@ -109,7 +109,7 @@
                                 <th style="padding: 10px 0px; min-width: 120px;">Tratamiento</th>
                                 <th style="padding: 10px 0px; min-width: 100px;"></th>
                             </tr>
-                        </head>
+                        </thead>
                         <tbody id="body_maquina_1">
                         </tbody>
                         <tfoot></tfoot>
@@ -120,7 +120,7 @@
                 </div>
                 <div class="tarjeta" style="padding: 0;">
                     <table>
-                        <head>
+                        <thead>
                             <tr>
                                 <th></th>
                                 <th></th>
@@ -140,7 +140,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
                                 <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
-                        </head>
+                        </thead>
                         <tbody id="body_maquina_2">
                         </tbody>
                         <tfoot></tfoot>
@@ -151,7 +151,7 @@
                 </div>
                 <div class="tarjeta" style="padding: 0;">
                     <table>
-                        <head>
+                        <thead>
                             <tr>
                                 <th></th>
                                 <th></th>
@@ -171,7 +171,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
                                 <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
-                        </head>
+                        </thead>
                         <tbody id="body_maquina_3">
                         </tbody>
                         <tfoot></tfoot>
@@ -182,7 +182,7 @@
                 </div>
                 <div class="tarjeta" style="padding: 0;">
                     <table>
-                        <head>
+                        <thead>
                             <tr>
                                 <th></th>
                                 <th></th>
@@ -202,7 +202,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
                                 <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
-                        </head>
+                        </thead>
                         <tbody id="body_maquina_4">
                         </tbody>
                         <tfoot></tfoot>
@@ -213,7 +213,7 @@
                 </div>
                 <div class="tarjeta" style="padding: 0;">
                     <table>
-                        <head>
+                        <thead>
                             <tr>
                                 <th></th>
                                 <th></th>
@@ -233,7 +233,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
                                 <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
-                        </head>
+                        </thead>
                         <tbody id="body_maquina_5">
                         </tbody>
                         <tfoot></tfoot>
@@ -244,7 +244,7 @@
                 </div>
                 <div class="tarjeta" style="padding: 0;">
                     <table>
-                        <head>
+                        <thead>
                             <tr>
                                 <th></th>
                                 <th></th>
@@ -264,7 +264,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
                                 <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
-                        </head>
+                        </thead>
                         <tbody id="body_maquina_6">
                         </tbody>
                         <tfoot></tfoot>
@@ -275,7 +275,7 @@
                 </div>
                 <div class="tarjeta" style="padding: 0;">
                     <table>
-                        <head>
+                        <thead>
                             <tr>
                                 <th></th>
                                 <th></th>
@@ -296,7 +296,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
                                 <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
-                        </head>
+                        </thead>
                         <tbody id="body_maquina_7">
                         </tbody>
                         <tfoot></tfoot>
@@ -307,7 +307,7 @@
                 </div>
                 <div class="tarjeta" style="padding: 0;">
                     <table>
-                        <head>
+                        <thead>
                             <tr>
                                 <th></th>
                                 <th></th>
@@ -327,7 +327,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
                                 <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
-                        </head>
+                        </thead>
                         <tbody id="body_maquina_8">
                         </tbody>
                         <tfoot></tfoot>
@@ -338,7 +338,7 @@
                 </div>
                 <div class="tarjeta" style="padding: 0;">
                     <table>
-                        <head>
+                        <thead>
                             <tr>
                                 <th></th>
                                 <th></th>
@@ -358,7 +358,7 @@
                                 <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
                                 <th  style="padding: 10px 0px;  min-width: 100px;"></th>
                             </tr>
-                        </head>
+                        </thead>
                         <tbody id="body_maquina_9">
                         </tbody>
                         <tfoot></tfoot>

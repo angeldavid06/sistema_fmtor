@@ -168,7 +168,7 @@ const render_historial = (json) => {
         body.innerHTML +=
         "<tr>" +
             '<td style="padding: 5px;" ><button data-copiar="' +el.id_folio +'" data-pedido="' +el.Id_Pedido +'" id="' +el.id_folio +'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
-            '<td style="padding: 5px;" ><button data-pedidoact="' +el.Id_Pedido +'" id="' +el.id_folio +'" data-modal="modal-actualizar" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">edit</button></td>' +
+            '<td style="padding: 5px;" ><button data-pedidoact="' +el.Id_Pedido +'" id="' +el.id_folio +'" data-modal="modal-actualizar" class="material-icons btn-amarillo btn btn-icon-self btn-transparent" title="Copiar información">edit</button></td>' +
             "<td>" +info.op +"</td>" +
             "<td>" +info.factor +"</td>" +
             "<td>" +el.descripcion +"</td>" +

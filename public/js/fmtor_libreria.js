@@ -197,6 +197,8 @@ const open_alert = (titulo,color) => {
             icono = 'info';
         } else if (color == 'naranja') {
             icono = 'feedback';
+        } else if (color == 'linea') {
+            icono = "wifi";
         } else {
             icono = 'info';
         }
