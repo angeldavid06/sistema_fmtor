@@ -1,7 +1,9 @@
 <?php require_once 'public/modules/sesion_depto.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta name="theme-color" content="#FFFFFF">
     <?php require_once 'public/modules/head.php' ?>
     <title>Menú Principal</title>
     <link rel="stylesheet" href="../public/css/default.css?1.3">
@@ -11,10 +13,11 @@
     <link rel="apple-touch-startup-image" href="../fmtor_64.png">
     <link rel="apple-touch-icon" href="../fmtor_64.png">
 </head>
+
 <body>
     <div class="contenedor principal">
         <a href="#top" class="btn btn-icon btn-flotante" id="btn-subir">
-            <i class="material-icons">expand_less</i> 
+            <i class="material-icons">expand_less</i>
             Subir
         </a>
         <div class="contenido hidde_menu" id="contenido">
@@ -47,18 +50,19 @@
                     </div>
                 </div>
                 <?php
-                    if ($_SESSION['ZGVwdG8='] == 'Ventas' || $_SESSION['ZGVwdG8='] == 'ventas'  || $_SESSION['cm9s'] == 'SuperUsuario') {
-                        require_once 'public/modules/menus/menu_mainventas.php'; 
-                    } 
+                if ($_SESSION['ZGVwdG8='] == 'Ventas' || $_SESSION['ZGVwdG8='] == 'ventas'  || $_SESSION['cm9s'] == 'SuperUsuario') {
+                    require_once 'public/modules/menus/menu_mainventas.php';
+                }
                 ?>
                 <?php
-                    if ($_SESSION['ZGVwdG8='] == 'Produccion' || $_SESSION['ZGVwdG8='] == 'Producción'  || $_SESSION['cm9s'] == 'SuperUsuario') {
-                        require_once 'public/modules/menus/menu_principal_produccion.php'; 
-                    } 
+                if ($_SESSION['ZGVwdG8='] == 'Produccion' || $_SESSION['ZGVwdG8='] == 'Producción'  || $_SESSION['cm9s'] == 'SuperUsuario') {
+                    require_once 'public/modules/menus/menu_principal_produccion.php';
+                }
                 ?>
             </div>
         </div>
     </div>
     <script src="../public/js/fmtor_libreria.js"></script>
 </body>
+
 </html>

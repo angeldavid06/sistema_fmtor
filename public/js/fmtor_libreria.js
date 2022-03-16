@@ -383,3 +383,9 @@ if (document.getElementById('btn-toggle-iniciar')) {
 
 console.log('%c¡ADVENTENCIA!','color:red;font-size: 4em;')
 console.log('%cEste sitio se encuentra protegido y cualquier intento de acceso indebido, será registrado y reportado a las autoridades','color:white;font-size: 2em;')
+
+const darky = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const ligth = window.matchMedia('(prefers-color-scheme: ligth)').matches;
+const themeColor = document.querySelector('meta[name=theme-color]');
+if (darky) { themeColor.setAttribute('content','#15141A') };
+if (ligth) { themeColor.setAttribute('content','#FFFFFF') };

@@ -3,7 +3,6 @@
     "short_name":"FMTOR",
     "description":"Forjadora Mexicana de Tornillos S.A. de C.V.",
     "background_color":"#FFFFFF",
-    "theme_color":"#FFFFFF",
     "orientation":"portrait",
     "display":"standalone",
     "start_url":"./?utm_source=web_app_manifest",
