@@ -75,10 +75,6 @@ const render_nuevo_tornillo = (cantidad) => {
                                                     '<p>Costo:</p>'+
                                                     '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'">'+
                                                 '</div>'+
-                                                '<div class="d-flex align-content-bottom justify-left">'+
-                                                    '<input type="checkbox" name="tratamiento_'+t+'" id="tratamiento_'+t+'">'+
-                                                    '<label class="lbl-checkbox" for="tratamiento_'+t+'" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>'+
-                                                '</div>'+
                                             '</div>'+
                                             '<p style="padding: 15px 0px 30px 0px;" class="txt-right">Orden de Producción:</p>'+
                                             '<div class="d-grid g-1">'+
@@ -93,6 +89,12 @@ const render_nuevo_tornillo = (cantidad) => {
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>Cantidad a Producir (millares):</p>'+
                                                     '<input class="input" type="number" name="cantidad_producir_'+t+'" id="cantidad_producir_'+t+'">'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div class="d-grid g-2">'+
+                                                '<div class="d-flex align-content-bottom justify-left">'+
+                                                    '<input type="checkbox" name="tratamiento_'+t+'" id="tratamiento_'+t+'">'+
+                                                    '<label class="lbl-checkbox" for="tratamiento_'+t+'" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>'+
                                                 '</div>'+
                                             '</div>';
     contenedor_tornillos.appendChild(tornillo)
@@ -193,10 +195,6 @@ const render_form_tornillo = (c) => {
                                                     '<p>Costo:</p>'+
                                                     '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'">'+
                                                 '</div>'+
-                                                '<div class="d-flex align-content-bottom justify-left">'+
-                                                    '<input type="checkbox" name="tratamiento_'+t+'" id="tratamiento_'+t+'">'+
-                                                    '<label class="lbl-checkbox" for="tratamiento_'+t+'" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>'+
-                                                '</div>'+
                                             '</div>'+
                                             '<p style="padding: 15px 0px 30px 0px;" class="txt-right">Orden de Producción:</p>'+
                                             '<div class="d-grid g-1">'+
@@ -213,6 +211,12 @@ const render_form_tornillo = (c) => {
                                                     '<input class="input" type="number" name="cantidad_producir_'+t+'" id="cantidad_producir_'+t+'">'+
                                                 '</div>'+
                                             '</div>'+
+                                            '<div class="d-grid g-2">'+
+                                                '<div class="d-flex align-content-bottom justify-left">'+
+                                                    '<input type="checkbox" name="tratamiento_'+t+'" id="tratamiento_'+t+'">'+
+                                                    '<label class="lbl-checkbox" for="tratamiento_'+t+'" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>'+
+                                                '</div>'+
+                                            '</div>'
                                         '</div>';
     }
 }

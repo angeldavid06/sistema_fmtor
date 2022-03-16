@@ -123,11 +123,7 @@ formactualizar.addEventListener("submit", (evt) => {
 });
 
 const actualizar_orden = () => {
-  const respuesta = fetchAPI(
-    formactualizar,
-    url + "/ventas/orden/actualizarorden",
-    "POST"
-  );
+  const respuesta = fetchAPI(formactualizar,url + "/ventas/orden/actualizarorden","POST");
   respuesta.then((json) => {
     console.log(json);
     if (json == 1) {

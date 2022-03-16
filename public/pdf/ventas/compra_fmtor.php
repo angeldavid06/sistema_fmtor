@@ -196,6 +196,41 @@
             <tr>
                 <td class="td"></td>
             </tr>
+            <tr>
+                <td colspan="2" style="border: none;">
+                    <hr>
+                </td>
+                <td colspan="2" style="border: none;">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="txt-center" style="border: none; font-weight: bold;">Hecho por: PATSY TORRES</td>
+                <td colspan="2" class="txt-center" style="border: none; font-weight: bold;">Autorizado por: ING. GERARDO FLORES</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="border: none;"></td>
+            </tr>
+            <tr>
+                <td colspan="4" style="border: none; font-weight: bold;">Búsquenos en:</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="border: none; font-weight: bold;">Facebook: FORJADORA MEX TORNILLOS</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="border: none; font-weight: bold;">WhatsApp: 729-556-4009</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="border: none; font-weight: bold;">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="txt-center" style="border: none; font-weight: bold;">Cualquier consulta sobre este pedido puede comunicarse con nosotros.</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="txt-center" style="border: none; font-weight: bold;">TEL. 55-56-07-37-09 VENTAS1@FMTOR.MX</td>
+            </tr>
         </tfoot>
     </table>
     <div class="header">

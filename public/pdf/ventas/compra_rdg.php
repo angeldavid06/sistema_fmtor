@@ -47,7 +47,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="background: #042348; color: white;" colspan="2">PROVEEDOR</th>
+                                <th style="background: #0F705D; color: white;" colspan="2">PROVEEDOR</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,7 +78,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="background: #042348; color: white;" colspan="2">ENVIAR A</th>
+                                <th style="background: #0F705D; color: white;" colspan="2">ENVIAR A</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,9 +111,9 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="width: 30%; border:none; background: #042348; color: white;">SOLICITADO POR</th>
-                                <th style="width: 30%; border:none; background: #042348; color: white;">TERMINOS DE PAGO</th>
-                                <th style="width: 30%; border:none; background: #042348; color: white;">CONTACTO</th>
+                                <th style="width: 30%; border:none; background: #0F705D; color: white;">SOLICITADO POR</th>
+                                <th style="width: 30%; border:none; background: #0F705D; color: white;">TERMINOS DE PAGO</th>
+                                <th style="width: 30%; border:none; background: #0F705D; color: white;">CONTACTO</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -131,12 +131,12 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="background: #042348; color: white;">CODIGO</th>
-                                <th style="background: #042348; color: white;">PRODUCTO</th>
-                                <th style="background: #042348; color: white;">CANTIDAD</th>
-                                <th style="background: #042348; color: white;">PRECIO UNIT</th>
-                                <th style="background: #042348; color: white;">%</th>
-                                <th style="background: #042348; color: white;">TOTAL</th>
+                                <th style="background: #0F705D; color: white;">CODIGO</th>
+                                <th style="background: #0F705D; color: white;">PRODUCTO</th>
+                                <th style="background: #0F705D; color: white;">CANTIDAD</th>
+                                <th style="background: #0F705D; color: white;">PRECIO UNIT</th>
+                                <th style="background: #0F705D; color: white;">%</th>
+                                <th style="background: #0F705D; color: white;">TOTAL</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -174,7 +174,7 @@
                                 <td class="txt-right">$ <?php echo number_format($total, 2); ?></td>
                             </tr>
                             <tr>
-                                <td style="background: #042348; color: white; font-weight: bold;" class="txt-center" colspan="6">COMENTARIOS E INTRUCCIONES DE ENVIO</td>
+                                <td style="background: #0F705D; color: white; font-weight: bold;" class="txt-center" colspan="6">COMENTARIOS E INTRUCCIONES DE ENVIO</td>
                             </tr>
                             <tr>
                                 <td style="background: #F2F205;" class="txt-justify" colspan=" 6">
@@ -189,6 +189,38 @@
         <tfoot>
             <tr>
                 <td class="td"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: none;">
+                    <hr>
+                </td>
+                <td colspan="2" style="border: none;">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="txt-center" style="border: none; font-weight: bold;">Hecho por: PATSY TORRES</td>
+                <td colspan="2" class="txt-center" style="border: none; font-weight: bold;">Autorizado por: ING. RICARDO FLORES</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="border: none;"></td>
+            </tr>
+            <tr>
+                <td colspan="4" style="border: none; font-weight: bold;">Búsquenos en:</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="border: none; font-weight: bold;">WhatsApp: 729-556-4009</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="border: none; font-weight: bold;">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="txt-center" style="border: none; font-weight: bold;">Cualquier consulta sobre este pedido puede comunicarse con nosotros.</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="txt-center" style="border: none; font-weight: bold;">TEL. 55-56-07-37-09 VENTAS1@FMTOR.MX</td>
             </tr>
         </tfoot>
     </table>
