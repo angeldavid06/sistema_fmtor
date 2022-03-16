@@ -1,11 +1,14 @@
 <?php 
     require_once "routes/web.php";
+    require_once "routes/web_layout.php";
 
     class usuario {
         public $web;
+        public $web_layout;
 
         public function __construct(){
             $this->web = new Web();
+            $this->web_layout = new Web_Layout();
         }
 
         public function principal () {
@@ -13,32 +16,32 @@
         }
         
         public function control () {
-            $this->web->View('produccion/control','');
+            $this->web_layout->View('produccion/control','');
         }
         
         public function diario () {
-            $this->web->View('produccion/diario','');
+            $this->web_layout->View('produccion/diario','');
         }
         
         public function ordenes () {
-            $this->web->View('produccion/ordenes','');
+            $this->web_layout->View('produccion/ordenes','');
         }
 
         public function estados () {
-            $this->web->View('produccion/estado','');
+            $this->web_layout->View('produccion/estado','');
         }
         
         public function maquinas () {
-            $this->web->View('produccion/maquinas','');
+            $this->web_layout->View('produccion/maquinas','');
         }        
         
         public function programa () {
-            $this->web->View('produccion/programa','');
+            $this->web_layout->View('produccion/programa','');
         }        
         
-        // public function explosion () {
-        //     $this->web->View('produccion/explosion','');
-        // }        
+        public function explosion () {
+            $this->web_layout->View('produccion/explosion','');
+        }        
         
         public function personal () {
             if (isset($_SESSION['ZW1wbGVhZG8='])) {
@@ -47,27 +50,27 @@
         }
 
         public function clientes () {
-            $this->web->View('ventas/clientes','');
+            $this->web_layout->View('ventas/clientes','');
         }
 
         public function salidas () {
-            $this->web->View('ventas/salidas','');
+            $this->web_layout->View('ventas/salidas','');
         }
         
         public function orden () {
-            $this->web->View('ventas/orden','');
+            $this->web_layout->View('ventas/orden','');
         }
         
         public function reportes () {
-            $this->web->View('ventas/reportes','');
+            $this->web_layout->View('ventas/reportes','');
         }
 
         public function compra () {
-            $this->web->View('ventas/compra','');
+            $this->web_layout->View('ventas/compra','');
         }
 
         public function proveedores () {
-            $this->web->View('ventas/proveedores','');
+            $this->web_layout->View('ventas/proveedores','');
         }
     }
 ?>
