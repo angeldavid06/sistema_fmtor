@@ -32,7 +32,7 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
     color: var(--color-text);
-    font-size: 0.9rem;
+    font-size: 1rem;
     scroll-behavior: smooth;
 }
 
@@ -343,13 +343,13 @@ button {
 }
 
 .btn-icon i {
-    font-size: 20px;
+    font-size: 20px !important;
     padding: 0px 15px 0px 0px;
     color: var(--color-button);
 }
 
 .btn-icon-self {
-    font-size: 20px;
+    font-size: 20px !important;
     padding: 15px;
 }
 
@@ -904,7 +904,7 @@ embed {
 }
 
 .menu-principal h2 {
-    padding: 0px 0px 30px 0px;
+    padding: 0px 0px 20px 0px;
 }
 
 .menu-principal .btn {
@@ -1038,10 +1038,10 @@ embed {
 }
 
 .menu .titulo_categoria_menu {
-    width: 95%;
+    width: 100%;
     height: 57px;
     padding: 20px 20px;
-    border-radius: var(--border-radius);
+    /* border-radius: var(--border-radius); */
     background-color: var(--background-body);
     margin: auto;
     transition: all .3s;
@@ -1067,6 +1067,7 @@ embed {
     min-width: 300px;
     width: 100%;
     max-width: 100%;
+    padding: 10px 0px;
 }
 
 .contenedor .menu.hidde_menu nav {
@@ -1095,6 +1096,7 @@ embed {
     transition: all .3s;
     padding: 15px;
     margin: 0px 0px 0px 0px;
+    font-size: 20px;
     border-radius: var(--border-radius);
 }
 
@@ -1238,7 +1240,7 @@ embed {
 }
 
 .contenido header .logos .logo {
-    width: 260px;
+    width: 220px;
     height: 50px;
 }
 
@@ -1584,6 +1586,10 @@ embed {
 }
 
 @media screen and (max-width: 1366px) {
+    * {
+        font-size: 0.9rem;
+    }
+
     .login {
         background-size: cover;
         width: 100%;
@@ -1671,13 +1677,17 @@ embed {
 }
 
 @media screen and (max-width: 768px) {
+    * {
+        font-size: 0.85rem;
+    }
+
     .btn-transparent-0 {
         color: var(--color-text);
         background-color: var(--background-body);
     }
     
     .btn-impresion {
-        display: none;
+        display: none !important;
     }
 
     .content_preloader {
@@ -1753,8 +1763,13 @@ embed {
         padding: 0px 20px 80px 20px;
     }
 
+    .menu-principal h2 {
+        padding: 10px 0px 20px 0px;
+    }
+
     .menu-principal .btn {
         padding: 20px;
+        border-radius: 30px;
     }
 
     .menu-principal .btn span {
@@ -1780,11 +1795,11 @@ embed {
     }
 
     a, p, label, input, textarea, select, button {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     a, p, label, input, textarea, select, button {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     h1 {

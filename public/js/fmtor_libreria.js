@@ -278,7 +278,6 @@ document.addEventListener('click', (evt) => {
         abrir_cerrar_menu()
     } else if (evt.target.matches('.btn-confirm-sm-accept')) {
         const not = document.getElementsByClassName('confirm')
-        console.log('l');
         sharedFunction();
         window.setTimeout(() => {
             not[0].classList.remove('show-alert')

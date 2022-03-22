@@ -71,10 +71,9 @@ const actualizar_registro = () => {
     })
 }
 
-const terminar_orden = (orden) => {
-    const respuesta = fetchAPI('',url+'/produccion/op/terminar?orden='+orden,'')
+const terminar_orden = () => {
+    const respuesta = fetchAPI('',url+'/produccion/op/terminar?orden='+data_aux.dato,'')
     respuesta.then(json => {
-        console.log(json);
         if (json) {
             open_alert('Orden de Producción terminada','verde');
         } else {

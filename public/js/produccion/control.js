@@ -40,8 +40,30 @@ const generar_reporte_diario = (fecha,turno,estado) => {
     printPage(url+'/produccion/control/pdf_reporte_diario?fecha='+fecha+'&turno='+turno+'&estado='+estado);
 }
 
+const fecha_insert = document.getElementById('fecha')
+
+const colocar_fecha = () => {
+    const fecha_actual = new Date();
+    const local = fecha_actual.toLocaleDateString();
+    let aux = local.split("/")[2]
+
+    if (parseInt(local.split("/")[1]) < 10){
+        aux += "-0" + parseInt(local.split("/")[1]) + '-';
+    } else{
+        aux += parseInt(local.split("/")[1]) + '-';
+    }
+
+    if (parseInt(local.split("/")[0]) < 10) {
+        aux += "0" + parseInt(local.split("/")[0]);
+    } else {
+        aux += parseInt(local.split("/")[0]);
+    }
+    fecha_insert.value = aux;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     obtener_estados()
+    colocar_fecha()
 })
 
 document.addEventListener('click', (evt) => {
@@ -61,7 +83,9 @@ document.addEventListener('click', (evt) => {
     } else if (evt.target.dataset.terminar) {
         const input = document.getElementById('op_control');
         if (input.value != '') {
-            terminar_orden(input.value);
+            data_aux.dato = input.value
+            open_confirm('¿Esta seguro de cambiar el estado de la Orden de Producción ' + input.value + ' a terminado?',terminar_orden)
+            // terminar_orden();
             op_control.classList.remove('input-error')
         } else {
             open_alert('No ha introducido la Orden de Producción','rojo')

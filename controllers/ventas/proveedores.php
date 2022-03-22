@@ -16,7 +16,7 @@
         }
 
         public function obtener_proveedores () {
-            $result = $this->model->mostrar('t_proveedores');
+            $result = $this->model->buscar_personalizado('t_proveedores', '*', '1 ORDER BY Id_Proveedor ASC');
             echo json_encode($result);
         }
 

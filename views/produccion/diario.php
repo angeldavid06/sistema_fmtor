@@ -55,7 +55,7 @@
 </div>
 <?php
     if ($_SESSION['cm9s'] == 'Administrativo') {
-        require_once 'public/modules/produccion/control_modal.php';
+        require_once 'public/modules/produccion/diario_modal.php';
     } 
 ?>
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
@@ -63,4 +63,4 @@
 <?php } else { ?>
     <script src="../public/js/produccion/render_diario_usuario.js"></script>
 <?php } ?>
-<script src="../public/js/produccion/diario.js"></script>
+<script src="../public/js/produccion/diario.js?1.1"></script>

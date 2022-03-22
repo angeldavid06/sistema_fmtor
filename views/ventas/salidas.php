@@ -9,10 +9,10 @@
         <h1>Salida de Almacen </h1>
     </div>
     <div class="d-flex justify-right align-content-center">
-        <button title="Recargar" class="material-icons btn btn-icon-self btn-transparent" data-recarga="true">loop</button>
         <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-            <button title="Nueva Salida de Almacen" class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-ingresar">add</button>
+            <button title="Nueva Salida de Almacen" class="material-icons btn btn-icon-self" data-modal="modal-ingresar">add</button>
         <?php } ?>
+        <button title="Recargar" class="material-icons btn btn-icon-self btn-transparent" data-recarga="true">loop</button>
         <button title="Filtrar Información" class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-filtrar">filter_alt</button>
     </div>
 </div>

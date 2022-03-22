@@ -19,6 +19,27 @@ const obtener_registros_diarios = () => {
 
 const select = document.getElementById('select_estado')
 const fecha = document.getElementById('fecha_reporte')
+const fecha_insert = document.getElementById('fecha')
+
+const colocar_fecha = () => {
+    const fecha_actual = new Date();
+    const local = fecha_actual.toLocaleDateString();
+    let aux = local.split("/")[2]
+
+    if (parseInt(local.split("/")[1]) < 10){
+        aux += "-0" + parseInt(local.split("/")[1]) + '-';
+    } else{
+        aux += parseInt(local.split("/")[1]) + '-';
+    }
+
+    if (parseInt(local.split("/")[0]) < 10) {
+        aux += "0" + parseInt(local.split("/")[0]);
+    } else {
+        aux += parseInt(local.split("/")[0]);
+    }
+    fecha_insert.value = aux;
+    fecha.value = aux;
+}
 
 select.addEventListener('change', () => {
     if (select.value != '' && fecha.value != '') {
@@ -53,5 +74,5 @@ const eliminar_registro = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     obtener_estados()
+    colocar_fecha()
 })
-

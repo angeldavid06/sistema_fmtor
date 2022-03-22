@@ -19,7 +19,7 @@ const render_retrasos = (ops) => {
                                             '<th>Material</th>'+
                                             '<th>Cantidad</th>'+
                                             '<th>Precio</th>'+
-                                            '<th>Total</th>'+
+                                            '<th style="min-width: 120px;">Total</th>'+
                                             '<th>Estado</th>'+
                                         '</tr>'+
                                     '</thead>'+
@@ -69,7 +69,7 @@ const render_estado = (semana_1,semana_3,semana_5,ops) => {
                                             '<th>Material</th>'+
                                             '<th>Cantidad</th>'+
                                             '<th>Precio</th>'+
-                                            '<th>Total</th>'+
+                                            '<th style="min-width: 120px;">Total</th>'+
                                             '<th>Estado</th>'+
                                         '</tr>'+
                                     '</thead>'+
@@ -103,18 +103,21 @@ const crear_tabla = (semanas,rango, ops) => {
     for (let i = 0; i < semanas.length; i++) {
         let semana = ''
         if (parseInt(semanas[i][1].split('-')[1]) < 10){ 
-            semana = semanas[i][1].split('-')[0]+'-0'+parseInt(semanas[i][1].split('-')[1])+'-'+semanas[i][1].split('-')[2];
+            semana = semanas[i][1].split('-')[0]+'-0'+parseInt(semanas[i][1].split('-')[1]);
         } else {
-            semana = semanas[i][1].split('-')[0]+'-'+semanas[i][1].split('-')[1]+'-'+semanas[i][1].split('-')[2];
+            semana = semanas[i][1].split('-')[0]+'-'+semanas[i][1].split('-')[1];
         }
 
-        if (parseInt(semana.split('-')[2]) < 10){ 
-            semana = semana.split('-')[0]+'-'+semana.split('-')[1]+'-0'+parseInt(semana.split('-')[2]);
+        if (parseInt(semanas[i][1].split('-')[2]) < 10){ 
+            semana += '-0'+parseInt(semanas[i][1].split('-')[2]);
         } else {
-            semana = semana.split('-')[0]+'-'+semana.split('-')[1]+'-'+parseInt(semana.split('-')[2]);
+            semana += '-'+semanas[i][1].split('-')[2];
         }
+
+        // console.log(semana == rango[1], rango);
 
         if (semanas[i][1] == rango[1] || contador_semana > 1) {
+            // console.log(contador_semana);
             if (contador_semana == 3) {
                 semana_3 = [semanas[i][0],semanas[i][1]]
             }
@@ -156,23 +159,23 @@ const agrupar_registros = (registros,semanas) => {
                 let rango_maximo = new Date(rango[1].split('-')[0],rango[1].split('-')[1]-1,rango[1].split('-')[2]);
                 let rango_min = new Date(rango[0].split('-')[0],rango[0].split('-')[1]-1,rango[0].split('-')[2]);
                 let rango_max = new Date(rango[1].split('-')[0],rango[1].split('-')[1]-1,rango[1].split('-')[2]);
-
                 while(rango_maximo.getTime() >= rango_minimo.getTime()){
                     const f_op = fecha_op.split('-')
                     let aux = rango_minimo.getFullYear()
-                    if ((rango_minimo.getMonth()+1) < 10) {
-                        aux = aux + '-0' + (rango_minimo.getMonth()+1)
+                    if ((parseInt(rango_minimo.getMonth())+1) < 10) {
+                        aux = aux + '-0' + parseInt(rango_minimo.getMonth()+1)
                     } else {
-                        aux = aux + '-' + (rango_minimo.getMonth()+1)
+                        aux = aux + '-' + rango_minimo.getMonth()+1;
                     }
 
-                    if (rango_minimo.getDate() < 10) {
-                        aux = aux + '-0' + rango_minimo.getDate()
+                    if (parseInt(rango_minimo.getDate()) < 10) {
+                        aux = aux + '-0' + parseInt(rango_minimo.getDate())
                     } else {
                         aux = aux + '-' + rango_minimo.getDate()
                     }
                     
-                    rango_minimo.setDate(rango_minimo.getDate() + 1);
+                    rango_minimo.setDate(parseInt(rango_minimo.getDate()) + 1);
+                    // console.log(semanas, aux, f_op[0] + '-' + f_op[1] + '-' + f_op[2], aux == (f_op[0] + '-' + f_op[1] + '-' + f_op[2]));
                     if (aux == (f_op[0] + '-' + f_op[1] + '-' + f_op[2])) {
                         rango_min = rango_min.toLocaleDateString()
                         rango_max = rango_max.toLocaleDateString()
@@ -188,8 +191,8 @@ const agrupar_registros = (registros,semanas) => {
                             rango_anterior_min = rango_anterior_min.split('-')[0]+'-'+rango_anterior_min.split('-')[1]+'-0'+parseInt(rango_anterior_min.split('-')[2]);
                         } 
 
-                        if (rango_max.split('/')[1] < 10){ 
-                            rango_anterior_max = rango_max.split('/')[2]+'-0'+rango_max.split('/')[1]+'-'+rango_max.split('/')[0];
+                        if (parseInt(rango_max.split('/')[1]) < 10){ 
+                            rango_anterior_max = rango_max.split('/')[2]+'-0'+parseInt(rango_max.split('/')[1])+'-'+rango_max.split('/')[0];
                         } else {
                             rango_anterior_max = rango_max.split('/')[2]+'-'+rango_max.split('/')[1]+'-'+rango_max.split('/')[0];
                         }
@@ -210,6 +213,8 @@ const agrupar_registros = (registros,semanas) => {
                             fechas.push(f_op[0] + '-' + f_op[1] + '-' + parseInt(f_op[2]))
                             ops.push(op)
                         }
+
+                        // console.log(rango_anterior);
                         
                         rango_anterior = rangos
                         fecha_anterior = rangos[1]
@@ -218,6 +223,7 @@ const agrupar_registros = (registros,semanas) => {
             })
         })
     })
+    // console.log(rango_anterior);
     // console.log(rango_anterior);
     crear_tabla(semanas,rango_anterior,ops)
 }
@@ -234,7 +240,7 @@ const obtener_semanas = (meses) => {
 
     for (let i = 0; i < meses.length; i++) {
         for (let j = 1; j <= dias[i]; j++) {
-            const dia_semana = new Date(meses[i].split('-')[0],(meses[i].split('-')[1]-1),j)
+            const dia_semana = new Date(meses[i].split('-')[0],(parseInt(meses[i].split('-')[1])-1),j)
             const dia = dia_semana.getDay()
 
             if (dia == 6 && semana.length > 0) {
@@ -268,14 +274,15 @@ const dividir_registros = (json,meses) => {
 
     json.forEach(el => {
         const fecha = el.Fecha.split(' ')
+        
         if (fecha[0].split('-')[0]+'-'+fecha[0].split('-')[1] == meses[contador]) {
             aux.push(el)
         } else {
             registros.push(aux)
             aux = []
             aux.push(el)
-            contador++;
         }
+        contador++;
     });
 
     registros.push(aux)
@@ -292,11 +299,11 @@ const extraer_meses = (json) => {
     json.forEach(el => {
         const fecha = el.Fecha.split(' ')
         if (contador == 0) {
-            if ((fecha[0].split('-')[1]-1) >= 1) {
+            if ((parseInt(fecha[0].split('-')[1])-1) >= 1) {
                 if (parseInt(fecha[0].split('-')[1]) < 10) {
-                    meses.push(fecha[0].split('-')[0]+'-0'+(fecha[0].split('-')[1]-1))
+                    meses.push(fecha[0].split('-')[0]+'-0'+(parseInt(fecha[0].split('-')[1])-1))
                 } else {
-                    meses.push(fecha[0].split('-')[0]+'-'+(fecha[0].split('-')[1]-1))
+                    meses.push(fecha[0].split('-')[0]+'-'+(parseInt(fecha[0].split('-')[1])-1))
                 }
             } else {
                 meses.push((fecha[0].split('-')[0]-1)+'-'+12)

@@ -78,7 +78,7 @@
                                 <input class="input" type="text" name="Medida_1" id="Medida_1">
                             </div>
                         </div>
-                        <div class="d-grid g-3">
+                        <div class="d-grid g-2">
                             <div class="d-grid g-1 grid-gap-0">
                                 <p>Factor:</p>
                                 <input class="input" type="text" name="factor_1" id="factor_1">
@@ -87,25 +87,31 @@
                                 <p>Acabado:</p>
                                 <select class="input" name="Acabado_1" id="Acabado_1">
                                     <option value="">Selecciona un acabado</option>
-                                    <option value="GALVANIZADO">GALVANIZADO</option>
-                                    <option value="PULIDO">PULIDO</option>
-                                    <option value="ZINCADO NEGRO">ZINCADO NEGRO</option>
-                                    <option value="ZINCADO ESPAÑOL">ZINCADO ESPAÑOL</option>
                                     <option value="TROPICALIZADO">TROPICALIZADO</option>
+                                    <option value="GALVANIZADO">GALVANIZADO Blanco</option>
+                                    <option value="GALVANIZADO">GALVANIZADO Azul/GALVANIZADO Electrolitico Azul</option>
+                                    <option value="ZINCADO NEGRO">ZINCADO NEGRO</option>
+                                    <option value="NÍQUEL">NÍQUEL</option>
+                                    <option value="PULIDO">PULIDO</option>
                                     <option value="PAVONADO">PAVONADO</option>
-                                    <option value="INOXIDABLE">INOXIDABLE</option>
-                                    <option value="NIQUELADO">NIQUELADO</option>
+                                    <option value="LATÓNADO">LATÓNADO</option>
+                                    <option value="COBRE">COBRE</option>
+                                    <option value="VERDE VIEJO">VERDE VIEJO</option>
+                                    <option value="VERDE OLIVO">VERDE OLIVO</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="d-grid g-2">
                             <div class="d-grid g-1 grid-gap-0">
                                 <p>Material:</p>
                                 <input class="input" type="text" name="Material_1" id="Material_1">
                             </div>
-                        </div>
-                        <div class="d-grid g-3">
-                            <div class="d-grid g-1 grid-gap-0">
-                                <p>Costo:</p>
-                                <input class="input" type="text" name="Precio_millar_1" id="Precio_millar_1">
+                            <div class="d-flex justify-center align-content-center">
+                                <div class="d-grid g-1 grid-gap-0">
+                                    <p>Costo:</p>
+                                    <input class="input" type="text" name="Precio_millar_1" id="Precio_millar_1">
+                                </div>
+                                <label class="btn btn-icon-self material-icons" title="Obtener Costo" style="margin: 0px 0px 0px 5px;">attach_money</label>
                             </div>
                         </div>
                         <p style="padding: 15px 0px 30px 0px;" class="txt-right">Orden de Producción:</p>
@@ -198,14 +204,17 @@
                                 <p>Acabado:</p>
                                 <select class="input" name="Acabado_p" id="Acabado_p">
                                     <option value="">Selecciona un acabado</option>
-                                    <option value="GALVANIZADO">GALVANIZADO</option>
-                                    <option value="PULIDO">PULIDO</option>
-                                    <option value="ZINCADO NEGRO">ZINCADO NEGRO</option>
-                                    <option value="ZINCADO ESPAÑOL">ZINCADO ESPAÑOL</option>
                                     <option value="TROPICALIZADO">TROPICALIZADO</option>
+                                    <option value="GALVANIZADO">GALVANIZADO Blanco</option>
+                                    <option value="GALVANIZADO">GALVANIZADO Azul/GALVANIZADO Electrolitico Azul</option>
+                                    <option value="ZINCADO NEGRO">ZINCADO NEGRO</option>
+                                    <option value="NÍQUEL">NÍQUEL</option>
+                                    <option value="PULIDO">PULIDO</option>
                                     <option value="PAVONADO">PAVONADO</option>
-                                    <option value="INOXIDABLE">INOXIDABLE</option>
-                                    <option value="NIQUELADO">NIQUELADO</option>
+                                    <option value="LATÓNADO">LATÓNADO</option>
+                                    <option value="COBRE">COBRE</option>
+                                    <option value="VERDE VIEJO">VERDE VIEJO</option>
+                                    <option value="VERDE OLIVO">VERDE OLIVO</option>
                                 </select>
                             </div>
                             <div class="d-grid g-1 grid-gap-0">

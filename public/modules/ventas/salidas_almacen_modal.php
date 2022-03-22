@@ -112,7 +112,7 @@
                     <th style="min-width: 150px;">Cliente</th> -->
                 <th style="min-width: 100px;">Factor</th>
                 <th style="min-width: 150px;">Descripcion </th>
-                <th>Medida</th>
+                <th style="min-width: 100px;">Medida</th>
                 <th>Acabado</th>
                 <th>Material </th>
                 <th>Cantidad</th>

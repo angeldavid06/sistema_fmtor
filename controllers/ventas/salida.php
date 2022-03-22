@@ -128,17 +128,17 @@
                         $this->salida->setFecha_entrega($_POST['Fecha_entrega_'.$i]);
                         $this->salida->setPrecio_millar($_POST['Precio_millar_'.$i]);
                         $this->salida->setCodigo($_POST['Codigo_'.$i]);
+                        if (isset($_POST['tratamiento_' . $i]) && $_POST['tratamiento_'.$i] == 'on') {
+                            $this->salida->setTratamiento('T/TERMICO');
+                        } else {
+                            $this->salida->setTratamiento('0');
+                        }
                         
                         $result_2 = $this->salida->insertarPedido();
                         if ($result_2) {
                             if (!isset($_POST['sin_op_'.$i]) && $result) {
                                 $this->salida->setDibujo($_POST['Dibujo_'.$i]);
                                 $this->salida->setCantidad_producir($_POST['cantidad_producir_'.$i]);
-                                if (isset($_POST['tratamiento_' . $i]) && $_POST['tratamiento_'.$i] == 'on') {
-                                    $this->salida->setTratamiento('T/TERMICO');
-                                } else {
-                                    $this->salida->setTratamiento('0');
-                                }
                                 $orden = json_encode($this->salida->insertarOrden());
                             }
                         } else {

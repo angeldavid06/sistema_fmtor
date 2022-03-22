@@ -26,20 +26,6 @@
     <div class="contenido_modal">
         <form id="form-filtros">
             <div class="contenedor_filtros">
-                <!-- <h3>Filtrar Salidas de Almacen</h3>
-                <input type="text" name="tabla" id="tabla" value="v_salidas_almacen" hidden>
-                <div class="filtro fecha">
-                    <input type="radio" data-radio="radio" name="buscar_por_fecha" id="salida" value="salida">
-                    <label class="lbl-radio" id="lbl_radio_salida" for="salida">Buscar Salida de Almacen:</label>
-                    <input class="input" type="number" name="f_salida" id="f_salida" disabled>
-                    <input type="radio" data-radio="radio" name="buscar_por_fecha" id="rango_salidas" value="rango_salida">
-                    <label class="lbl-radio" id="lbl_radio_rango_salida" for="rango_salidas">Filtrar por rango de Salidas de Almacen: </label>
-                    <div class="d-grid g-2">
-                        <input class="input" type="number" name="f_r_salida_m" id="f_r_salida_m" disabled>
-
-                        <input class="input" type="number" name="f_r_salida_M" id="f_r_salida_M" disabled>
-                    </div>
-                </div> -->
                 <h3>Filtrar Ordenes de Producción</h3>
                 <div class="filtro fecha">
                     <input type="radio" data-radio="radio" name="buscar_por_fecha" id="op" value="op">
@@ -103,6 +89,28 @@
                         <label class="btn btn-transparent txt-center" data-modal="modal-filtrar">Cancelar</label>
                     </div>
                 </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="modal-ingresar" class="modal modal-izquierda">
+    <div class="titulo_modal d-flex justify-between align-content-center">
+        <h2>Nueva Orden de Producción</h2>
+        <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
+    </div>
+    <div class="contenido_modal">
+        <form id="form_reg_proveedor">
+            <p>Salida:</p>
+            <input class="input " type="text" name="Proveedor" id="Proveedor" placeholder="Ingresar nombre del Proveedor">
+            <p>Plano:</p>
+            <input class="input " type="text" name="Direccion" id="Direccion" placeholder="Ingresar la Direccion">
+            <p>Cantidad a producir:</p>
+            <input class="input " type="text" name="Ciudad" id="Ciudad" placeholder="Ingresar la Ciudad">
+            <p>Tratamiento :</p>
+            <input class="input" type="text" name="Telefono" id="Telefono" placeholder="Ingrese numero de contacto">
+            <div class="opciones d-flex flex-column">
+                <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Registrar</button>
+                <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-ingresar">Cancelar</label>
             </div>
         </form>
     </div>

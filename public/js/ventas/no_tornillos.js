@@ -55,14 +55,17 @@ const render_nuevo_tornillo = (cantidad) => {
                                                     '<p>Acabado:</p>'+
                                                     '<select class="input" name="Acabado_'+t+'" id="Acabado_'+t+'">'+
                                                         '<option value="">Selecciona un acabado</option>'+
-                                                        '<option value="GALVANIZADO">GALVANIZADO</option>'+
-                                                        '<option value="PULIDO">PULIDO</option>'+
-                                                        '<option value="ZINCADO NEGRO">ZINCADO NEGRO</option>'+
-                                                        '<option value="ZINCADO ESPAÑOL">ZINCADO ESPAÑOL</option>'+
                                                         '<option value="TROPICALIZADO">TROPICALIZADO</option>'+
+                                                        '<option value="GALVANIZADO">GALVANIZADO Blanco</option>'+
+                                                        '<option value="GALVANIZADO">GALVANIZADO Azul/GALVANIZADO Electrolitico Azul</option>'+
+                                                        '<option value="ZINCADO NEGRO">ZINCADO NEGRO</option>'+
+                                                        '<option value="NÍQUEL">NÍQUEL</option>'+
+                                                        '<option value="PULIDO">PULIDO</option>'+
                                                         '<option value="PAVONADO">PAVONADO</option>'+
-                                                        '<option value="INOXIDABLE">INOXIDABLE</option>'+
-                                                        '<option value="NIQUELADO">NIQUELADO</option>'+
+                                                        '<option value="LATÓNADO">LATÓNADO</option>'+
+                                                        '<option value="COBRE">COBRE</option>'+
+                                                        '<option value="VERDE VIEJO">VERDE VIEJO</option>'+
+                                                        '<option value="VERDE OLIVO">VERDE OLIVO</option>'+
                                                     '</select>'+
                                                 '</div>'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
@@ -175,14 +178,17 @@ const render_form_tornillo = (c) => {
                                                     '<p>Acabado:</p>'+
                                                     '<select class="input" name="Acabado_'+t+'" id="Acabado_'+t+'">'+
                                                         '<option value="">Selecciona un acabado</option>'+
-                                                        '<option value="GALVANIZADO">GALVANIZADO</option>'+
-                                                        '<option value="PULIDO">PULIDO</option>'+
-                                                        '<option value="ZINCADO NEGRO">ZINCADO NEGRO</option>'+
-                                                        '<option value="ZINCADO ESPAÑOL">ZINCADO ESPAÑOL</option>'+
                                                         '<option value="TROPICALIZADO">TROPICALIZADO</option>'+
+                                                        '<option value="GALVANIZADO">GALVANIZADO Blanco</option>'+
+                                                        '<option value="GALVANIZADO">GALVANIZADO Azul/GALVANIZADO Electrolitico Azul</option>'+
+                                                        '<option value="ZINCADO NEGRO">ZINCADO NEGRO</option>'+
+                                                        '<option value="NÍQUEL">NÍQUEL</option>'+
+                                                        '<option value="PULIDO">PULIDO</option>'+
                                                         '<option value="PAVONADO">PAVONADO</option>'+
-                                                        '<option value="INOXIDABLE">INOXIDABLE</option>'+
-                                                        '<option value="NIQUELADO">NIQUELADO</option>'+
+                                                        '<option value="LATÓNADO">LATÓNADO</option>'+
+                                                        '<option value="COBRE">COBRE</option>'+
+                                                        '<option value="VERDE VIEJO">VERDE VIEJO</option>'+
+                                                        '<option value="VERDE OLIVO">VERDE OLIVO</option>'+
                                                     '</select>'+
                                                 '</div>'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+

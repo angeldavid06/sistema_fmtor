@@ -6,12 +6,6 @@
     <meta name="theme-color" content="#FFFFFF">
     <?php require_once 'public/modules/head.php' ?>
     <title>Menú Principal</title>
-    <link rel="stylesheet" href="../public/css/default.css?1.3">
-    <link rel="stylesheet" href="../public/css/tema_automatico.css?1.2">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="../fmtor_64.png">
-    <link rel="apple-touch-startup-image" href="../fmtor_64.png">
-    <link rel="apple-touch-icon" href="../fmtor_64.png">
 </head>
 
 <body>

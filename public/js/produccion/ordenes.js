@@ -67,9 +67,9 @@ const render_ordenes = (json) => {
             total_acumulado += parseFloat(el.TOTAL)
             total_kilos += (el.factor*el.cantidad_elaborar)
     
-            tr.innerHTML += '<td style="padding: 5px;"><button title="Tarjeta de Flujo ('+el.Id_Folio+')" data-impresion="tarjeta_flujo" data-tarjeta="'+el.Id_Folio+'" class="material-icons-outlined btn btn-icon-self">note_alt</button></td>'+
-                            '<td style="padding: 5px 0px;"><button style="margin: 0;" title="Orden de Producción ('+el.Id_Folio+')" data-impresion="orden_produccion" data-orden="'+el.Id_Folio+'" class="material-icons btn btn-icon-self btn-verde">splitscreen</button></td>'+
-                            '<td style="padding: 5px;"><button title="Control de Producción('+el.Id_Folio+')" data-impresion="control_vacio" data-control="'+el.Id_Folio+'" class="material-icons btn btn-icon-self btn-amarillo">calendar_view_month</button></td>'+
+            tr.innerHTML += '<td style="padding: 5px;"><button title="Tarjeta de Flujo ('+el.Id_Folio+')" data-impresion="tarjeta_flujo" data-tarjeta="'+el.Id_Folio+'" class="material-icons-outlined btn btn-icon-self btn-impresion">note_alt</button></td>'+
+                            '<td style="padding: 5px 0px;"><button style="margin: 0;" title="Orden de Producción ('+el.Id_Folio+')" data-impresion="orden_produccion" data-orden="'+el.Id_Folio+'" class="material-icons btn btn-icon-self btn-verde btn-impresion">splitscreen</button></td>'+
+                            '<td style="padding: 5px;"><button title="Control de Producción('+el.Id_Folio+')" data-impresion="control_vacio" data-control="'+el.Id_Folio+'" class="material-icons btn btn-icon-self btn-amarillo btn-impresion">calendar_view_month</button></td>'+
                             '<td data-op="'+el.Id_Folio+'" data-calibre="'+el.calibre+'" data-modal="modal-calibre">'+el.calibre+'</td>'+
                             '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.factor*el.cantidad_elaborar)+'</td>'+
                             '<td>'+el.factor+'</td>'+

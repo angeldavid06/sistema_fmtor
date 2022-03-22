@@ -15,7 +15,7 @@
         }
 
         public function obtener() {
-            $result = $this->model->mostrar('t_clientes');
+            $result = $this->model->buscar_personalizado('t_clientes', '*', '1 ORDER BY Id_Clientes ASC');
             echo json_encode($result);
         }
 

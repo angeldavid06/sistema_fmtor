@@ -27,7 +27,7 @@
             <th>Cantidad</th>
             <th style="min-width: 150px;">N° parte de cliente </th>
             <th style="min-width: 100px;">Pedido Cliente</th>
-            <th>Medida</th>
+            <th style="min-width: 100px;">Medida</th>
             <th style="min-width: 150px;">Descripcion </th>
             <th style="min-width: 130px;">Acabado</th>
             <th style="min-width: 150px;">Costo</th>
