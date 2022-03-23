@@ -14,7 +14,7 @@
     <link rel="apple-touch-startup-image" href="../fmtor_64.png">
     <link rel="apple-touch-icon" href="../fmtor_64.png">
 
-    <link rel="manifest" href="http://localhost/sistema_fmtor/manifest.json">
+    <link rel="manifest" href="http://localhost/sistema_fmtor/manifest.json?1.1">
 </head>
 <body>
     <div class="d-grid g2-6-4 grid-gap-0 height-100 login">

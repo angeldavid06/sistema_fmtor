@@ -1067,7 +1067,8 @@ embed {
     min-width: 300px;
     width: 100%;
     max-width: 100%;
-    padding: 10px 0px;
+    padding: 0px 0px;
+    background-color: var(--background-body);
 }
 
 .contenedor .menu.hidde_menu nav {
@@ -1107,10 +1108,18 @@ embed {
 
 .menu nav a.active {
     background-color: var(--background-button);
-    color: var(--color-button);
+    color: var(--background-body);
+    font-weight: 500;
 }
 
 .menu nav a.active i {
+    margin: 0px 10px 0px 0px;
+    background-color: var(--background-body);
+    color: var(--color-text);
+}
+
+.contenedor .menu.hidde_menu a.active i {
+    background-color: var(--background-button);
     color: var(--color-button);
 }
 
@@ -1121,7 +1130,7 @@ embed {
 }
 
 .menu nav a:hover {
-    background-color: var(--background-body);
+    background-color: var(--background-aux);
     color: var(--color-text);
 }
 

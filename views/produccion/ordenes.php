@@ -1,6 +1,5 @@
 <?php 
-    require_once 'public/modules/sesion_depto.php';
-    if ($_SESSION['ZGVwdG8='] != 'Produccion') {
+    if ($_SESSION['ZGVwdG8='] != 'Produccion' && $_SESSION['cm9s'] != 'SuperUsuario') {
         header('Location: ' . $this->url_server . '/usuario/principal');
     }
 ?>

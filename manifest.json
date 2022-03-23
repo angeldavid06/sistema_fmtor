@@ -4,7 +4,7 @@
     "description":"Forjadora Mexicana de Tornillos S.A. de C.V.",
     "background_color":"#FFFFFF",
     "orientation":"portrait",
-    "display":"standalone",
+    "display":"minimal-ui",
     "start_url":"./?utm_source=web_app_manifest",
     "scope":"./",
     "lang":"es-MX",

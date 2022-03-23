@@ -2,6 +2,7 @@
 
     class Layout {
         public function StartLayout () {
+            require_once 'public/modules/sesion_depto.php';
             echo '<!DOCTYPE html>';
             echo '<html lang="en">';
             echo '<head>';

@@ -24,6 +24,7 @@ const mostrarModal = (id) =>{
         pintarModal(json);
     });
 }
+
 const Id_Clientes = document.getElementById('Id_Clientes_edit');
 const Razon_social = document.getElementById('Razon_social_edit');
 const Nombre = document.getElementById('Nombre_edit');

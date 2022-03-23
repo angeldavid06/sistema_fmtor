@@ -1,6 +1,5 @@
 <?php 
-    require_once 'public/modules/sesion_depto.php';
-    if ($_SESSION['ZGVwdG8='] != 'Ventas') {
+    if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
         header('Location: ' . $this->url_server . '/usuario/principal');
     }
 ?>

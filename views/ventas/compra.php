@@ -1,7 +1,6 @@
 <?php 
-    require_once 'public/modules/sesion_depto.php'; 
-    if ($_SESSION['ZGVwdG8='] != 'Ventas') {
-        header('Location: '. $this->url_server.'/usuario/principal');
+    if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
+        header('Location: ' . $this->url_server . '/usuario/principal');
     }
 ?>
 <div class="tarjeta-transparente d-grid g-2" style="padding: 0;">
