@@ -53,6 +53,10 @@
             $this->web_layout->View('ventas/clientes','');
         }
 
+        public function cotizacion () {
+            $this->web_layout->View('ventas/cotizacion','');
+        }
+
         public function salidas () {
             $this->web_layout->View('ventas/salidas','');
         }

@@ -15,6 +15,13 @@
                 <p>LISTA DE CLIENTES</p>
             </div>
         </a>
+        <a class="btn btn-transparent" href="<?php echo $this->url_server; ?>/usuario/cotizacion">
+            <div class="d-grid g-1">
+                <i class="material-icons-outlined icon">request_quote</i>
+                <span class="material-icons-outlined icon">request_quote</span>
+                <p>COTIZACIONES</p>
+            </div>
+        </a>
         <a class="btn btn-transparent" href="<?php echo $this->url_server; ?>/usuario/salidas">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">open_in_browser</i>
