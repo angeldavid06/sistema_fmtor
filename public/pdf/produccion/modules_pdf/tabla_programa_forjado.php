@@ -93,6 +93,9 @@
     }
 ?>
 <tr>
+    <td colspan="15"></td>
+</tr>
+<tr>
     <td colspan="15" class="txt-center" style="background: #DEA166;">
         Máquina 3
     </td>
@@ -123,9 +126,6 @@
         echo '</tr>';
     }
 ?>
-<tr>
-    <td colspan="15"></td>
-</tr>
 <tr>
     <td colspan="15" class="txt-center" style="background: #DEA166;">
         Máquina 4

@@ -7,8 +7,7 @@ document.addEventListener('click', (evt) => {
     if (evt.target.dataset.estado) {
         if (document.getElementById('op_control').value != '') {
             quit_class()
-            evt.target.classList.add('active')
-            
+            evt.target.classList.add('active_estado')
             const titulo_estado = document.getElementsByClassName('titulo_estado');
         
             titulo_estado[0].innerHTML = evt.target.dataset.titulo;
@@ -119,7 +118,7 @@ const render_info = (json) => {
                             '<label>Descripción: <br> '+el.descripcion+'</label>'+
                             '<label>Tratamiento: <br> '+el.tratamiento+'</label>'+
                             '<label>Material: <br> '+el.material+'</label>'+
-                            '<label>Factor: <br> '+el.factor+'</label>';
+                            '<label>Factor: <br> '+el.Factor+'</label>';
     })
 }
 

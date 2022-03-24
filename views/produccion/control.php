@@ -1,7 +1,7 @@
-<?php 
-    if ($_SESSION['ZGVwdG8='] != 'Produccion' && $_SESSION['cm9s'] != 'SuperUsuario') {
-        header('Location: ' . $this->url_server . '/usuario/principal');
-    }
+<?php
+if ($_SESSION['ZGVwdG8='] != 'Produccion' && $_SESSION['cm9s'] != 'SuperUsuario') {
+    header('Location: ' . $this->url_server . '/usuario/principal');
+}
 ?>
 <div class="d-grid g2-5-5">
     <div style="padding-top: 0px;" class="tarjeta-transparente">
@@ -29,7 +29,7 @@
 </div>
 <div class="d-grid g2-2-8">
     <div class="position-relative">
-        <div class="acordeon tarjeta-transparente position-sticky">
+        <div class="acordeon tarjeta-transparente position-sticky" style="padding: 0;">
             <div class="acordeon_opcion">
                 <div class="titulo_acordeon">
                     <h3 data-acordeon="informacion">Información de la O.P.</h3>
@@ -56,7 +56,7 @@
             <div class="titulo d-flex align-content-center">
                 <h2 class="titulo_estado">No seleccionado</h2>
             </div>
-            <div class="d-flex align-content-center justify-between">
+            <div class="d-flex align-content-center justify-between flex-wrap">
                 <div style="width: 200px;" class="d-flex align-content-center">
                     <input style="width: 130px;" type="text" name="factor_control" id="factor_control" placeholder="Factor: 0.0">
                     <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
@@ -73,8 +73,8 @@
                 <table class="table table-control">
                     <thead>
                         <th width="100px">Botes</th>
-                        <th>Fecha</th>
-                        <th>Observaciones</th>
+                        <th width="100px">Fecha</th>
+                        <th width="150px">Observaciones</th>
                         <th>Pzas. Producidas</th>
                         <th>Kg.</th>
                         <th width="100px">Máquina</th>
@@ -90,10 +90,10 @@
     </div>
 </div>
 <?php
-    if ($_SESSION['cm9s'] == 'Administrativo') {
-        require_once 'public/modules/produccion/control_modal.php';
-        require_once 'public/modules/produccion/diario_modal.php';
-    } 
+if ($_SESSION['cm9s'] == 'Administrativo') {
+    require_once 'public/modules/produccion/control_modal.php';
+    require_once 'public/modules/produccion/diario_modal.php';
+}
 ?>
 <script src="../public/js/produccion/control.js"></script>
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>

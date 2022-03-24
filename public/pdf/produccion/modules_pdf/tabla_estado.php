@@ -12,6 +12,20 @@
     $aux_contador = 0;
     $mes = '';
     $fecha = '';
+    $meses_texto = [
+        'ENE',
+        'FEB',
+        'MAR',
+        'ABR',
+        'MAY',
+        'JUN',
+        'JUL',
+        'AGO',
+        'SEP',
+        'OCT',
+        'NOV',
+        'DIC'
+    ];
 
     if (count($data) > 0) {
         $fecha_hora = explode(' ',$data[0]['Fecha']);
@@ -118,9 +132,14 @@
 
     if (count($tablas) > 0) {
         for ($i=0; $i < count($tablas); $i++) {
+            $numero_semana = 1;
             echo '<tr><td class="txt-center" colspan="9"></td></tr>';
             for ($l=0; $l < count($rango_tablas[$i]); $l++) {
-                echo '<tr><td class="txt-center th-estado" colspan="9">'.$rango_tablas[$i][$l][0].'  -  '.$rango_tablas[$i][$l][1].'</td></tr>';
+                $semana_a = explode('-', $rango_tablas[$i][$l][0])[0].' / '.$meses_texto[Intval(explode('-',$rango_tablas[$i][$l][0])[1])].' / '. explode('-', $rango_tablas[$i][$l][0])[2];
+                $semana_b = explode('-', $rango_tablas[$i][$l][1])[0].' / '.$meses_texto[Intval(explode('-',$rango_tablas[$i][$l][1])[1])].' / '. explode('-', $rango_tablas[$i][$l][1])[2];
+                echo '<tr><td class="txt-center th-estado" colspan="2">SEM. '.$numero_semana.'</td>';
+                echo '<td class="txt-center th-estado" colspan="7">'.$semana_a.'  -  '.$semana_b.'</td></tr>';
+                $numero_semana += 2;
             }
             echo '<tr><td class="txt-center" colspan="9"></td></tr>';
             for ($j=0; $j < count($tablas[$i]); $j++) { 

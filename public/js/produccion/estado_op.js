@@ -1,6 +1,20 @@
 let contador_aux = 0
 let retraso = false
 let retrasos = []
+const meses = [
+    'ENE',
+    'FEB',
+    'MAR',
+    'ABR',
+    'MAY',
+    'JUN',
+    'JUL',
+    'AGO',
+    'SEP',
+    'OCT',
+    'NOV',
+    'DIC'
+]
 
 const render_retrasos = (ops) => {
     const contenedor = document.getElementById('estados')
@@ -45,21 +59,28 @@ const render_retrasos = (ops) => {
 
 const render_estado = (semana_1,semana_3,semana_5,ops) => {
     const contenedor = document.getElementById('estados')
+    let mes_sem1_a = semana_1[0].split('-')[0]+' / '+meses[parseInt(semana_1[0].split('-')[1])-1]+' / '+semana_1[0].split('-')[2]
+    let mes_sem1_b = semana_1[1].split('-')[0]+' / '+meses[parseInt(semana_1[1].split('-')[1])-1]+' / '+semana_1[1].split('-')[2]
+    let mes_sem3_a = semana_3[0].split('-')[0]+' / '+meses[parseInt(semana_3[0].split('-')[1])-1]+' / '+semana_3[0].split('-')[2]
+    let mes_sem3_b = semana_3[1].split('-')[0]+' / '+meses[parseInt(semana_3[1].split('-')[1])-1]+' / '+semana_3[1].split('-')[2]
+    let mes_sem5_a = semana_5[0].split('-')[0]+' / '+meses[parseInt(semana_5[0].split('-')[1])-1]+' / '+semana_5[0].split('-')[2]
+    let mes_sem5_b = semana_5[1].split('-')[0]+' / '+meses[parseInt(semana_5[1].split('-')[1])-1]+' / '+semana_5[1].split('-')[2]
+    // let mes_sem1_b = meses[parseInt(semana_1[1].split("-")) - 1];
 
     contenedor.innerHTML += '<div class="tarjeta" style="padding: 0px;">'+
                                 '<table>'+
                                     '<thead>'+
                                         '<tr>'+
                                             '<th>1 SEM.</th>'+
-                                            '<th colspan="8">DEL '+semana_1[0]+' AL ' +semana_1[1]+'</th>'+
+                                            '<th colspan="8"> '+mes_sem1_a+'  -  ' +mes_sem1_b+'</th>'+
                                         '</tr>'+
                                         '<tr>'+
                                             '<th>3 SEM.</th>'+
-                                            '<th colspan="8">DEL '+semana_3[0]+' AL '+semana_3[1]+'</th>'+
+                                            '<th colspan="8"> '+mes_sem3_a+'  -  '+mes_sem3_b+'</th>'+
                                         '</tr>'+
                                         '<tr>'+
                                             '<th>5 SEM.</th>'+
-                                            '<th colspan="8">DEL '+semana_5[0]+' AL '+semana_5[1]+'</th>'+
+                                            '<th colspan="8"> '+mes_sem5_a+'  -  '+mes_sem5_b+'</th>'+
                                         '</tr>'+
                                         '<tr>'+
                                             '<th>O.P.</th>'+

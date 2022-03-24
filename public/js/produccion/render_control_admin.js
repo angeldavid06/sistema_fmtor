@@ -62,7 +62,7 @@ const actualizar_registro = () => {
     const respuesta = fetchAPI(form_actualizar, url+'/produccion/control/actualizar','POST')
     respuesta.then(json => {
         if (json == 1) {
-            const estado = document.getElementsByClassName('active')
+            const estado = document.getElementsByClassName('active_estado')
             open_alert('El registro ha sido actualizado correctamente', 'verde')
             obtener_control(estado[0].dataset.estado)
         } else {
@@ -88,7 +88,7 @@ const registrar_control = () => {
     respuesta.then(json => {
         if (json == 1) {
             open_alert('Registro añadido correctamente', 'verde')
-            const estado = document.getElementsByClassName('active')
+            const estado = document.getElementsByClassName('active_estado')
             if (estado.length > 0) {
                 obtener_control(estado[0].dataset.estado)
             }
@@ -113,7 +113,7 @@ function eliminar () {
     const respuesta = fetchAPI('',url+'/produccion/control/eliminar?dato='+data_aux.dato,'')
     respuesta.then(json => {
         if (json == 1) {
-            const estado = document.getElementsByClassName('active')
+            const estado = document.getElementsByClassName('active_estado')
             obtener_control(estado[0].dataset.estado)
             open_alert('Registro eliminado correctamente','verde')
         } else {
@@ -186,7 +186,7 @@ const render_control = (vista,json) => {
 const btn_form_control = document.getElementById('btn-form-control');
 
 btn_form_control.addEventListener('click', () => {
-    const estado = document.getElementsByClassName('active')
+    const estado = document.getElementsByClassName('active_estado')
     const op_control = document.getElementById('op_control')
     
     const op = document.getElementById('op')

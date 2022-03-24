@@ -533,6 +533,8 @@ const render_semana_rolado = (json,semana) => {
 }
 
 const render_encabezado_forjado = (limite_semana,anio, mes) => {
+    console.log(limite_semana);
+
     let inicio = 1
     let fin = 0
 
@@ -547,10 +549,25 @@ const render_encabezado_forjado = (limite_semana,anio, mes) => {
     const acordeon = document.getElementsByClassName('acordeon')
 
     for (let i = 0; i < limite_semana.length; i++) {
+        if (i == 0) {
+            inicio = '01'
+        } else {
+            if (limite_semana[i-1] < 10) {
+                inicio = '0'+(limite_semana[i-1]+1)
+            } else {
+                inicio = limite_semana[i-1]+1
+            }
+        }
+
+        if (limite_semana[i] < 10) {
+            fin = '0'+(limite_semana[i])
+        } else {
+            fin = (limite_semana[i])
+        }
         const div = document.createElement('div')
         div.innerHTML += '<div class="acordeon_opcion">'+
                                         '<div class="titulo_acordeon">'+
-                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+'</h3>'+
+                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+' ('+inicio + ' - ' + fin +')</h3>'+
                                         '</div>'+
                                         '<div id="semana_'+i+'" class="contenido_acordeon mostrar_contenido">'+
                                             '<table id="tabla_'+(i+1)+'">'+
@@ -581,21 +598,6 @@ const render_encabezado_forjado = (limite_semana,anio, mes) => {
                                         '</div>'+
                                     '</div>'
         acordeon[0].appendChild(div)
-        if (i == 0) {
-            inicio = '01'
-        } else {
-            if (limite_semana[i-1] < 10) {
-                inicio = '0'+(limite_semana[i-1]+1)
-            } else {
-                inicio = limite_semana[i-1]+1
-            }
-        }
-
-        if (limite_semana[i] < 10) {
-            fin = '0'+(limite_semana[i])
-        } else {
-            fin = (limite_semana[i])
-        }
 
         obtener_dias(estado.value, select.value,anio+'-'+mes+'-'+inicio,anio+'-'+mes+'-'+fin, (i+1))
     }
@@ -616,10 +618,25 @@ const render_encabezado_ranurado = (limite_semana,anio, mes) => {
     const acordeon = document.getElementsByClassName('acordeon')
 
     for (let i = 0; i < limite_semana.length; i++) {
+        if (i == 0) {
+            inicio = '01'
+        } else {
+            if (limite_semana[i-1] < 10) {
+                inicio = '0'+(limite_semana[i-1]+1)
+            } else {
+                inicio = limite_semana[i-1]+1
+            }
+        }
+
+        if (limite_semana[i] < 10) {
+            fin = '0'+(limite_semana[i])
+        } else {
+            fin = (limite_semana[i])
+        }
         const div = document.createElement('div')
         div.innerHTML += '<div class="acordeon_opcion">'+
                                         '<div class="titulo_acordeon">'+
-                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+'</h3>'+
+                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+' ('+inicio + ' - ' + fin +')</h3>'+
                                         '</div>'+
                                         '<div id="semana_'+i+'" class="contenido_acordeon mostrar_contenido">'+
                                             '<table id="tabla_'+(i+1)+'">'+
@@ -645,21 +662,6 @@ const render_encabezado_ranurado = (limite_semana,anio, mes) => {
                                         '</div>'+
                                     '</div>'
         acordeon[0].appendChild(div)
-        if (i == 0) {
-            inicio = '01'
-        } else {
-            if (limite_semana[i-1] < 10) {
-                inicio = '0'+(limite_semana[i-1]+1)
-            } else {
-                inicio = limite_semana[i-1]+1
-            }
-        }
-
-        if (limite_semana[i] < 10) {
-            fin = '0'+(limite_semana[i])
-        } else {
-            fin = (limite_semana[i])
-        }
         obtener_dias(estado.value, select.value,anio+'-'+mes+'-'+inicio,anio+'-'+mes+'-'+fin, (i+1))
     }
 }
@@ -679,10 +681,25 @@ const render_encabezado_shank = (limite_semana,anio, mes) => {
     const acordeon = document.getElementsByClassName('acordeon')
 
     for (let i = 0; i < limite_semana.length; i++) {
+        if (i == 0) {
+            inicio = '01'
+        } else {
+            if (limite_semana[i-1] < 10) {
+                inicio = '0'+(limite_semana[i-1]+1)
+            } else {
+                inicio = limite_semana[i-1]+1
+            }
+        }
+
+        if (limite_semana[i] < 10) {
+            fin = '0'+(limite_semana[i])
+        } else {
+            fin = (limite_semana[i])
+        }
         const div = document.createElement('div')
         div.innerHTML += '<div class="acordeon_opcion">'+
                                         '<div class="titulo_acordeon">'+
-                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+'</h3>'+
+                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+' ('+inicio + ' - ' + fin +')</h3>'+
                                         '</div>'+
                                         '<div id="semana_'+i+'" class="contenido_acordeon mostrar_contenido">'+
                                             '<table id="tabla_'+(i+1)+'">'+
@@ -707,21 +724,6 @@ const render_encabezado_shank = (limite_semana,anio, mes) => {
                                         '</div>'+
                                     '</div>'
         acordeon[0].appendChild(div)
-        if (i == 0) {
-            inicio = '01'
-        } else {
-            if (limite_semana[i-1] < 10) {
-                inicio = '0'+(limite_semana[i-1]+1)
-            } else {
-                inicio = limite_semana[i-1]+1
-            }
-        }
-
-        if (limite_semana[i] < 10) {
-            fin = '0'+(limite_semana[i])
-        } else {
-            fin = (limite_semana[i])
-        }
         obtener_dias(estado.value, select.value,anio+'-'+mes+'-'+inicio,anio+'-'+mes+'-'+fin, (i+1))
     }
 }
@@ -741,10 +743,26 @@ const render_encabezado_rolado = (limite_semana,anio,mes) => {
     const acordeon = document.getElementsByClassName('acordeon')
 
     for (let i = 0; i < limite_semana.length; i++) {
+        if (i == 0) {
+            inicio = '01'
+        } else {
+            if (limite_semana[i-1] < 10) {
+                inicio = '0'+(limite_semana[i-1]+1)
+            } else {
+                inicio = limite_semana[i-1]+1
+            }
+        }
+
+        if (limite_semana[i] < 10) {
+            fin = '0'+(limite_semana[i])
+        } else {
+            fin = (limite_semana[i])
+        }
+
         const div = document.createElement('div')
         div.innerHTML += '<div class="acordeon_opcion">'+
                                         '<div class="titulo_acordeon">'+
-                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+'</h3>'+
+                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+' ('+inicio + ' - ' + fin +')</h3>'+
                                         '</div>'+
                                         '<div id="semana_'+i+'" class="contenido_acordeon mostrar_contenido">'+
                                             '<table id="tabla_'+(i+1)+'">'+
@@ -773,22 +791,6 @@ const render_encabezado_rolado = (limite_semana,anio,mes) => {
                                         '</div>'+
                                     '</div>'
         acordeon[0].appendChild(div)
-        if (i == 0) {
-            inicio = '01'
-        } else {
-            if (limite_semana[i-1] < 10) {
-                inicio = '0'+(limite_semana[i-1]+1)
-            } else {
-                inicio = limite_semana[i-1]+1
-            }
-        }
-
-        if (limite_semana[i] < 10) {
-            fin = '0'+(limite_semana[i])
-        } else {
-            fin = (limite_semana[i])
-        }
-
         obtener_dias(estado.value, select.value,anio+'-'+mes+'-'+inicio,anio+'-'+mes+'-'+fin, (i+1))
     }
 }
@@ -808,10 +810,25 @@ const render_encabezado_acabado = (limite_semana,anio,mes) => {
     const acordeon = document.getElementsByClassName('acordeon')
 
     for (let i = 0; i < limite_semana.length; i++) {
+        if (i == 0) {
+            inicio = '01'
+        } else {
+            if (limite_semana[i-1] < 10) {
+                inicio = '0'+(limite_semana[i-1]+1)
+            } else {
+                inicio = limite_semana[i-1]+1
+            }
+        }
+
+        if (limite_semana[i] < 10) {
+            fin = '0'+(limite_semana[i])
+        } else {
+            fin = (limite_semana[i])
+        }
         const div = document.createElement('div')
         div.innerHTML += '<div class="acordeon_opcion">'+
                                         '<div class="titulo_acordeon">'+
-                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+'</h3>'+
+                                            '<h3 data-acordeon="semana_'+i+'">Semana '+(i+1)+' ('+inicio + ' - ' + fin +')</h3>'+
                                         '</div>'+
                                         '<div id="semana_'+i+'" class="contenido_acordeon mostrar_contenido">'+
                                             '<table id="tabla_'+(i+1)+'">'+
@@ -830,21 +847,6 @@ const render_encabezado_acabado = (limite_semana,anio,mes) => {
                                         '</div>'+
                                     '</div>'
         acordeon[0].appendChild(div)
-        if (i == 0) {
-            inicio = '01'
-        } else {
-            if (limite_semana[i-1] < 10) {
-                inicio = '0'+(limite_semana[i-1]+1)
-            } else {
-                inicio = limite_semana[i-1]+1
-            }
-        }
-
-        if (limite_semana[i] < 10) {
-            fin = '0'+(limite_semana[i])
-        } else {
-            fin = (limite_semana[i])
-        }
 
         obtener_dias(estado.value, select.value,anio+'-'+mes+'-'+inicio,anio+'-'+mes+'-'+fin, (i+1))
     }
