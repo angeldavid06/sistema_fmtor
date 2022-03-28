@@ -6,14 +6,14 @@
         public $Salida;
         public $Id_Clientes_2;
         public $Fecha;
+        public $Descripcion;
+        public $Medida;
+        public $Acabado;
         public $Cantidad_millares;
+        public $Precio_millar;
         public $Cantidad_producir;
         public $Codigo;
         public $Pedido_pza;
-        public $Medida;
-        public $Descripcion;
-        public $Acabado;
-        public $Precio_millar;
         public $Factura;
         public $Dibujo;
         public $Material;

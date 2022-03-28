@@ -78,15 +78,15 @@ ORDER BY
 /*        COTIZACIONES       */
 
 CREATE 
-OR REPLACE VIEW v_cotizacion AS
+OR REPLACE VIEW v_cotizaciones AS
 SELECT 
-    t_salida_almacen.Id_Folio AS id_folio,
+    t_cotizacion.Id_Cotizacion AS id_cotizacion,
     t_clientes.Id_Clientes AS Id_Clientes,
     t_clientes.Razon_social AS razon_social,
     t_clientes.Nombre AS nombre,
     t_clientes.Telefono AS telefono,
     t_clientes.Correo AS correo,
-    t_salida_almacen.Fecha AS fecha,
+    t_cotizacion.Fecha AS fecha,
     t_pedido.Cantidad_millares AS cantidad,
     t_pedido.Codigo AS no_parte,
     t_pedido.Pedido_pza AS pedido_cliente,
@@ -94,32 +94,34 @@ SELECT
     t_pedido.Fecha_entrega AS fecha_entrega,
     t_pedido.Medida AS medida,
     t_pedido.Descripcion AS descripcion,
+    t_pedido.Acabado AS acabado,
+    t_pedido.Material AS material,
+    t_pedido.Factor AS factor,
     t_pedido.Id_Pedido
 FROM
-    t_salida_almacen,
     t_clientes,
     t_pedido,
     t_cotizacion
 WHERE
-    t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
-    AND t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
+    t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
     AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
 ORDER BY
-    t_salida_almacen.Id_Folio DESC;
+    t_cotizacion.Id_Cotizacion DESC;
 
 CREATE
-OR REPLACE VIEW v_cotizaciones AS
+OR REPLACE VIEW v_cotizacion AS
 SELECT
     t_cotizacion.Id_Cotizacion AS id_cotizacion,
     t_clientes.Id_Clientes AS id_clientes,
-    t_clientes.Razon_social AS razon_social t_cotizacion.Fecha AS fecha
+    t_clientes.Razon_social AS razon_social,
+    t_cotizacion.Fecha AS fecha
 FROM
     t_clientes,
     t_cotizacion
 WHERE
     t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
 ORDER BY
-    t_salida_almacen.Id_Folio DESC;
+    t_cotizacion.Id_Cotizacion DESC;
 
 /*------------------------------------------ Vista Orden de Compra ---------------------------------------------------*/
 

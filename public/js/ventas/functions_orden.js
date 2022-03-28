@@ -1,31 +1,38 @@
 const render_orden = (json) => {
   const body = document.getElementsByClassName("body_orden");
   body[0].innerHTML = "";
-  json.forEach((element) => {
-    if (element.Id_Folio != 1) {
+  if (json.length > 0) {
+    json.forEach((element) => {
+      if (element.Id_Folio != 1) {
+          body[0].innerHTML +=
+            "<tr>" +
+              '<td style="padding: 5px;"><button style="margin:0px;" title="Tarjeta de Flujo ('+element.Id_Folio+')" class= "btn-impresion material-icons-outlined btn btn-icon-self" data-tarjeta="'+element.Id_Folio+'">note_alt</button></td>' +
+              '<td style="padding: 5px 0px;"><button style="margin:0px;" title="Orden de Producción ('+element.Id_Folio+')" class= "btn-impresion material-icons btn btn-icon-self btn-verde" data-imprimir="' + element.Id_Folio +'">splitscreen</button>' +
+              '<td style="padding: 5px;"><button style="margin:0px;" title="Control de Producción('+element.Id_Folio+')" class= "btn-impresion material-icons btn btn-icon-self btn-amarillo" data-control="' + element.Id_Folio +'">calendar_view_month</button>' +
+              "<td>" + element.estado_general + "</td>" +
+              "<td>" + element.Id_Folio + "</td>" +
+              "<td>" + (element.Clientes + ' ' + element.razon_social.split(' ')[0].trim()) + "</td>" +
+              "<td class='txt-right'>$ " +new Intl.NumberFormat('es-MX').format(element.precio_millar) + "</td>" +
+              "<td>" + element.Fecha + "</td>" +
+              "<td>" + element.descripcion + "</td>" +
+              "<td>" + element.medida + "</td>" +
+              "<td class='txt-right'>" + new Intl.NumberFormat('es-MX').format(element.cantidad_elaborar) + "</td>" +
+              "<td>" + element.acabados + "</td>" +
+              // "<td>" + element.codigo + "</td>" +
+              "<td>" + element.tratamiento + "</td>" +
+              "<td>" + element.Id_Catalogo + "</td>" +
+              "<td>" + element.material + "</td>" +
+              "<td>" + element.fecha_entrega + "</td>" +
+              "<td>" + element.Id_Salida_FK + "</td>" +
+            "</tr>";
+      }
+    });
+  } else {
         body[0].innerHTML +=
-          "<tr>" +
-            '<td style="padding: 5px;"><button style="margin:0px;" title="Tarjeta de Flujo ('+element.Id_Folio+')" class= "btn-impresion material-icons-outlined btn btn-icon-self" data-tarjeta="'+element.Id_Folio+'">note_alt</button></td>' +
-            '<td style="padding: 5px 0px;"><button style="margin:0px;" title="Orden de Producción ('+element.Id_Folio+')" class= "btn-impresion material-icons btn btn-icon-self btn-verde" data-imprimir="' + element.Id_Folio +'">splitscreen</button>' +
-            '<td style="padding: 5px;"><button style="margin:0px;" title="Control de Producción('+element.Id_Folio+')" class= "btn-impresion material-icons btn btn-icon-self btn-amarillo" data-control="' + element.Id_Folio +'">calendar_view_month</button>' +
-            "<td>" + element.estado_general + "</td>" +
-            "<td>" + element.Id_Folio + "</td>" +
-            "<td>" + (element.Clientes + ' ' + element.razon_social.split(' ')[0].trim()) + "</td>" +
-            "<td class='txt-right'>$ " +new Intl.NumberFormat('es-MX').format(element.precio_millar) + "</td>" +
-            "<td>" + element.Fecha + "</td>" +
-            "<td>" + element.descripcion + "</td>" +
-            "<td>" + element.medida + "</td>" +
-            "<td class='txt-right'>" + new Intl.NumberFormat('es-MX').format(element.cantidad_elaborar) + "</td>" +
-            "<td>" + element.acabados + "</td>" +
-            // "<td>" + element.codigo + "</td>" +
-            "<td>" + element.tratamiento + "</td>" +
-            "<td>" + element.Id_Catalogo + "</td>" +
-            "<td>" + element.material + "</td>" +
-            "<td>" + element.fecha_entrega + "</td>" +
-            "<td>" + element.Id_Salida_FK + "</td>" +
-          "</tr>";
-    }
-  });
+                    "<tr>" +
+                        "<td colspan='17'>No hay ninguna orden de producción.</td>" +
+                    "</tr>";
+  }
 };
 const mostrarModal = (id) => {
   const respues = fetchAPI("",url + "/ventas/orden/obtener_per?aux=" + id + "","");

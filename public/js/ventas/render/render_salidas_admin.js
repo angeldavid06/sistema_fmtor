@@ -189,47 +189,55 @@ const render_salida = (json) => {
     let aux = 0;
     const body = document.getElementsByClassName("body_salida");
     body[0].innerHTML = "";
-    json["salidas"].forEach((element) => {
-        const tr_mes = document.createElement("tr");
-        let fecha = element.fecha.split("-");
-        if (aux == 0 ||(mes != fecha[0] + "-" + fecha[1] &&fecha[0] + "-" + fecha[1] != "0000-00")) {
-            tr_mes.innerHTML = '<tr><td class="txt-center" colspan="8">' +meses[fecha[1] - 1] +" " +fecha[0] +"</td></tr>";
-            mes = fecha[0] + "-" + fecha[1];
-            aux++;
-            body[0].appendChild(tr_mes);
-        }
-        const info = {
-            op: "-",
-            medida: "-",
-            descripcion: "-",
-            acabado: "-",
-            plano: "-",
-            estado: "-",
-            material: "-",
-            cantidad: "0",
-        };
-        json["ordenes"].forEach((orden) => {
-        if (orden.Id_Pedido == element.Id_Pedido) {
-            info.op = orden.Id_Folio;
-            info.plano = orden.Id_Catalogo;
-            info.estado = orden.estado_general;
-            info.cantidad = orden.cantidad_elaborar;
-        }
-        });
+    if (json['salidas'].length > 0) {
 
-        if (element.Salida != 0) {
+        json["salidas"].forEach((element) => {
+            const tr_mes = document.createElement("tr");
+            let fecha = element.fecha.split("-");
+            if (aux == 0 ||(mes != fecha[0] + "-" + fecha[1] &&fecha[0] + "-" + fecha[1] != "0000-00")) {
+                tr_mes.innerHTML = '<tr><td class="txt-center" colspan="8">' +meses[fecha[1] - 1] +" " +fecha[0] +"</td></tr>";
+                mes = fecha[0] + "-" + fecha[1];
+                aux++;
+                body[0].appendChild(tr_mes);
+            }
+            const info = {
+                op: "-",
+                medida: "-",
+                descripcion: "-",
+                acabado: "-",
+                plano: "-",
+                estado: "-",
+                material: "-",
+                cantidad: "0",
+            };
+            json["ordenes"].forEach((orden) => {
+            if (orden.Id_Pedido == element.Id_Pedido) {
+                info.op = orden.Id_Folio;
+                info.plano = orden.Id_Catalogo;
+                info.estado = orden.estado_general;
+                info.cantidad = orden.cantidad_elaborar;
+            }
+            });
+    
+            if (element.Salida != 0) {
+                body[0].innerHTML +=
+                    "<tr>" +
+                        "<td id='td_id_folio_" +element.id_folio +"'>" +element.id_folio +"</td>" +
+                        "<td id='td_razon_" +element.id_folio +"'>" +element.razon_social +"</td>" +
+                        "<td id='td_fecha_" +element.id_folio +"'>" +element.fecha +"</td>" +
+                        '<td style="padding: 5px;" ><button title="Editar Salida de Almacen" class="material-icons-outlined btn btn-amarillo btn-icon-self" data-modal="modal-actualizar-salida" data-salida="' +element.id_folio +'"> mode_edit</button></td>' +'<td style="padding: 5px;" ><button data-copiar="' +element.id_folio +'" id="' +element.id_folio +'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
+                        '<td style="padding: 5px;" ><button data-historial="' +element.id_folio +'" data-modal="modal-historial" id="' +element.id_folio +'" class="material-icons-outlined btn btn-icon-self btn-transparent" title="Copiar información">more_vert</button></td>' +
+                        '<td style="padding: 5px;" ><button title="Generar Salida de Almacen" class= "material-icons-outlined btn btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>' +
+                        '<td style="padding: 5px;" ><button title="Generar Cotización" class= "material-icons-outlined btn btn-icon-self" data-cotizacion="' +element.id_folio +'">request_quote</button>' +
+                    "</tr>";
+            }
+        });
+    } else {
         body[0].innerHTML +=
-            "<tr>" +
-                "<td id='td_id_folio_" +element.id_folio +"'>" +element.id_folio +"</td>" +
-                "<td id='td_razon_" +element.id_folio +"'>" +element.razon_social +"</td>" +
-                "<td id='td_fecha_" +element.id_folio +"'>" +element.fecha +"</td>" +
-                '<td style="padding: 5px;" ><button title="Editar Salida de Almacen" class="material-icons-outlined btn btn-amarillo btn-icon-self" data-modal="modal-actualizar-salida" data-salida="' +element.id_folio +'"> mode_edit</button></td>' +'<td style="padding: 5px;" ><button data-copiar="' +element.id_folio +'" id="' +element.id_folio +'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
-                '<td style="padding: 5px;" ><button data-historial="' +element.id_folio +'" data-modal="modal-historial" id="' +element.id_folio +'" class="material-icons-outlined btn btn-icon-self btn-transparent" title="Copiar información">more_vert</button></td>' +
-                '<td style="padding: 5px;" ><button title="Generar Salida de Almacen" class= "material-icons-outlined btn btn-icon-self" data-impresion="' +element.id_folio +'">warehouse</button>' +
-                '<td style="padding: 5px;" ><button title="Generar Cotización" class= "material-icons-outlined btn btn-icon-self" data-cotizacion="' +element.id_folio +'">request_quote</button>' +
-            "</tr>";
-        }
-    });
+                    "<tr>" +
+                        "<td  colspan='8'>No hay ninguna salida de almacen.</td>" +
+                    "</tr>";
+    }
 };
 
 const mostrarModal = (id) => {

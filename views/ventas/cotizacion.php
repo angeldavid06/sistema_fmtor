@@ -34,10 +34,8 @@
     </table>
 </div>
 <?php
-    require_once 'public/modules/ventas/salidas_almacen_modal.php';
-    if ($_SESSION['cm9s'] == 'Administrativo') {
-        require_once 'public/modules/ventas/cotizacion_modal.php';
-    }
+    // require_once 'public/modules/ventas/salidas_almacen_modal.php';
+    require_once 'public/modules/ventas/cotizacion_modal.php';
 ?>
 <script src="../public/js/ventas/functions_cotizacion.js"></script>
 <script src="../public/js/ventas/filtros.js"></script>
