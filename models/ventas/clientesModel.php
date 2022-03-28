@@ -1,8 +1,7 @@
 <?php
     require_once "models/Model.php";
 
-    class clientesModel extends Model
-    {
+    class clientesModel extends Model {
         public $Id_Clientes;
         public $Razon_social;
         public $Nombre;
@@ -10,52 +9,19 @@
         public $Correo;
         public $Direccion;
 
-        public function __construct()
-        {
+        public function __construct() {
             parent::__construct();
         }
 
-        public function getIdClientes()
-        {
-            return $this->Id_Clientes;
-        }
-
-        public function getRazon_social()
-        {
-            return $this->Razon_social;
-        }
-
-        public function getNombre()
-        {
-            return $this->Nombre;
-        }
-
-        public function getTelefono()
-        {
-            return $this->Telefono;
-        }
-
-        public function getCorreo()
-        {
-            return $this->Correo;
-        }
-
-        public function getDireccion()
-        {
-            return $this->Direccion;
-        }
-
-        public function setId_Clientes($Id_Clientes): void
-        {
+        public function setId_Clientes($Id_Clientes): void {
             $this->Id_Clientes = $Id_Clientes;
         }
-        public function setRazon_social($Razon_social): void
-        {
+
+        public function setRazon_social($Razon_social): void {
             $this->Razon_social = $Razon_social;
         }
 
-        public function setNombre($Nombre): void
-        {
+        public function setNombre($Nombre): void {
             $this->Nombre = $Nombre;
         }
 
