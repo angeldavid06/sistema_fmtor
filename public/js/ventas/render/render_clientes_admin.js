@@ -34,12 +34,12 @@ const Direccion  = document.getElementById('Direccion_edit');
 
 const pintarModal = (json) => {
     json.forEach(element =>{
-        Id_Clientes.value = element.Id_Clientes;
-        Razon_social.value = element.Razon_social;
-        Nombre.value = element.Nombre;
-        Telefono.value = element.Telefono;
-        Correo.value = element.Correo;
-        Direccion.value=element.Direccion;
+        Id_Clientes.value = element.Id_Clientes.trim();
+        Razon_social.value = element.Razon_social.trim();
+        Nombre.value = element.Nombre.trim();
+        Telefono.value = element.Telefono.trim();
+        Correo.value = element.Correo.trim();
+        Direccion.value = element.Direccion.trim();
     })
 }
 

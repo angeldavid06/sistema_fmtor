@@ -18,12 +18,12 @@ const colocar_acabado = (acabado, j) => {
     const options_2 = select_2.getElementsByTagName("option");
     for (let i = 0; i < options.length; i++) {
         if (options[i].value == acabado) {
-        options[i].setAttribute("selected", "");
+            options[i].setAttribute("selected", "");
         }
     }
     for (let i = 0; i < options_2.length; i++) {
         if (options_2[i].value == acabado) {
-        options_2[i].setAttribute("selected", "");
+            options_2[i].setAttribute("selected", "");
         }
     }
 };
@@ -114,8 +114,8 @@ const portapapeles_pegar = () => {
         salida.forEach((el) => {
         ordenes.forEach((orden) => {
             if (orden.Id_Pedido == el.Id_Pedido) {
-            op.push(orden);
-            aux = true;
+                op.push(orden);
+                aux = true;
             }
         });
         if (aux) {
@@ -135,16 +135,15 @@ const portapapeles_copiar = (el, pedido) => {
     respuesta.then((json) => {
         let string = JSON.stringify(json);
         navigator.clipboard.writeText(string).then(
-        function () {
-            open_alert("Copiado!", "azul");
-        },
-        function () {
-            open_alert("Contenido no copiado", "naranja");
-        }
+            function () {
+                open_alert("Copiado!", "azul");
+            },
+            function () {
+                open_alert("Contenido no copiado", "naranja");
+            }
         );
     });
 };
-
 
 const render_historial = (json) => {
     const body = document.getElementById("body_historial");
@@ -264,20 +263,20 @@ const render_pedido = (json) => {
 
     if (json["orden"].length > 0) {
         json["orden"].forEach((el) => {
-        document.getElementById("op_cancelar").removeAttribute("disabled", "");
-        document.getElementById("tratamiento_p").removeAttribute("disabled", "");
-        document
-            .getElementById("cantidad_producir_p")
-            .removeAttribute("disabled", "");
-        document.getElementById("Dibujo_p").removeAttribute("disabled", "");
-        document.getElementById("cantidad_producir_p").value =
-            el.cantidad_elaborar;
-        document.getElementById("Dibujo_p").value = el.Id_Catalogo;
-        if (el.tratamiento == "T/TERMICO") {
-            document.getElementById("tratamiento_p").checked = true;
-        } else if (el.tratamiento == "0") {
-            document.getElementById("tratamiento_p").checked = false;
-        }
+            document.getElementById("op_cancelar").removeAttribute("disabled", "");
+            document.getElementById("tratamiento_p").removeAttribute("disabled", "");
+            document
+                .getElementById("cantidad_producir_p")
+                .removeAttribute("disabled", "");
+            document.getElementById("Dibujo_p").removeAttribute("disabled", "");
+            document.getElementById("cantidad_producir_p").value =
+                el.cantidad_elaborar;
+            document.getElementById("Dibujo_p").value = el.Id_Catalogo;
+            if (el.tratamiento == "T/TERMICO") {
+                document.getElementById("tratamiento_p").checked = true;
+            } else if (el.tratamiento == "0") {
+                document.getElementById("tratamiento_p").checked = false;
+            }
         });
     } else {
         document.getElementById("sin_op_p").setAttribute("checked", "");
@@ -321,11 +320,11 @@ const obtener_salida = (id_folio) => {
     const respuesta = fetchAPI("",url + "/ventas/salida/obtener_salida?aux=" + id_folio,"");
     respuesta.then((json) => {
         if (json.length > 0) {
-        json.forEach((el) => {
-            document.getElementById("Fecha_e").value = el.Fecha;
-            document.getElementById("Salida_e").value = el.Id_Folio;
-            colocar_cliente_3(el.Id_Clientes_FK);
-        });
+            json.forEach((el) => {
+                document.getElementById("Fecha_e").value = el.Fecha;
+                document.getElementById("Salida_e").value = el.Id_Folio;
+                colocar_cliente_3(el.Id_Clientes_FK);
+            });
         }
     });
 };
@@ -437,9 +436,9 @@ const obtener_clientes = () => {
     const respuesta = fetchAPI("", url + "/ventas/salida/obtener_clientes", "");
     respuesta.then((json) => {
         json.forEach((el) => {
-        document.getElementById("Id_Clientes_2").innerHTML +='<option value="' +el.Id_Clientes +'">' +el.Razon_social +"</option>";
-        document.getElementById("Id_Clientes_2_e").innerHTML +='<option value="' +el.Id_Clientes +'">' +el.Razon_social +"</option>";
-        document.getElementById("f_cliente").innerHTML +='<option value="' +el.Razon_social +'">' +el.Razon_social +"</option>";
+            document.getElementById("Id_Clientes_2").innerHTML +='<option value="' +el.Id_Clientes +'">' +el.Razon_social +"</option>";
+            document.getElementById("Id_Clientes_2_e").innerHTML +='<option value="' +el.Id_Clientes +'">' +el.Razon_social +"</option>";
+            document.getElementById("f_cliente").innerHTML +='<option value="' +el.Razon_social +'">' +el.Razon_social +"</option>";
         });
     });
 };
@@ -471,7 +470,7 @@ document.addEventListener("click", (evt) => {
         deshabilitar_inputs();
 
         if (document.getElementById("f_" + evt.target.value)) {
-        const $f_input = document.getElementById("f_" + evt.target.value);
+            const $f_input = document.getElementById("f_" + evt.target.value);
             $f_input.removeAttribute("disabled", "");
         }
 

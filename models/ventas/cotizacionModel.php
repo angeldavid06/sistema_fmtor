@@ -14,15 +14,15 @@
             parent::__construct();
         }
 
-        public function setId_Cotizacion($Id_Cotizacion): void {
+        public function setId_Cotizacion($Id_Cotizacion) : void {
             $this->Id_Cotizacion = $Id_Cotizacion;
         }
 
-        public function setFecha($Fecha): void {
+        public function setFecha($Fecha) : void {
             $this->Fecha = $Fecha;
         }
 
-        public function setId_Clientes_1($Id_Clientes_1): void {
+        public function setId_Clientes_1($Id_Clientes_1) : void {
             $this->Id_Clientes_1 = $Id_Clientes_1;
         }
 
@@ -46,11 +46,11 @@
             return $validacion;
         }
 
-        public function actualizarCotizacion() {
+        public function solo_cotizacion() {
             $tabla = 't_cotizacion';
-            $parametros = 'Fecha,Id_Clientes_1';
-            $values = "'$this->Fecha','$this->Id_Clientes_1'";
-            $validacion = Model::actualizar($tabla, $parametros, $values);
+            $valores = "Fecha = '$this->Fecha',Id_Clientes_FK = '$this->Id_Clientes_1'";
+            $condicion = "Id_Cotizacion = '$this->Id_Cotizacion'";
+            $validacion = Model::actualizar($tabla, $valores, $condicion);
             return $validacion;
         }
     }

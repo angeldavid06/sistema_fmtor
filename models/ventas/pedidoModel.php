@@ -21,6 +21,10 @@
             parent::__construct();
         }
         
+        public function setId_Pedido ($id_pedido) : void {
+            $this->id_pedido = $id_pedido;
+        }
+
         public function setCantidad_millares($Cantidad_millares): void
         {
             $this->Cantidad_millares = $Cantidad_millares;
@@ -103,6 +107,24 @@
                 $id_pedido[0]['id_cotizacion']."'";
             $validacion = $obj_2->insertar($tabla, $parametros, $values);
             return $validacion;    
+        }
+
+        public function actualizarPedido () {
+            $tabla = 't_pedido';
+            $valores = "
+                Descripcion = '$this->Descripcion',
+                Medida = '$this->Medida',
+                Acabado = '$this->Acabado',
+                Factor = '$this->Factor',
+                Material = '$this->Material',
+                Cantidad_millares = '$this->Cantidad_millares',
+                Pedido_pza = '$this->Pedido_pza',
+                Fecha_entrega = '$this->Fecha_entrega',
+                Precio_Millar = '$this->Precio_millar',
+                Codigo = '$this->Codigo'";
+            $condicion = "Id_Pedido = '$this->id_pedido'";
+            $result = Model::actualizar($tabla,$valores,$condicion);
+            return $result;
         }
 
         public function insertarOrden () {

@@ -18,7 +18,7 @@
 <div class="tabla tarjeta" style="padding: 0;">
     <table class="table table_salida lista_salida">
         <thead>
-            <th style="min-width: 80px;">N° de cotización </th>
+            <th style="max-width: 80px;">N° de cotización </th>
             <th style="min-width: 150px;">Cliente</th>
             <th style="min-width: 100px;">Fecha</th>
             <th style="max-width: 80px;"></th>
@@ -26,17 +26,13 @@
             <th style="max-width: 80px;"></th>
             <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
                 <th style="max-width: 80px;"></th>
-                <th style="max-width: 80px;"></th>
             <?php } ?>
         </thead>
         <tbody id="table" class="body body_salida"></tbody>
         <tfoot class="tfoot"></tfoot>
     </table>
 </div>
-<?php
-    // require_once 'public/modules/ventas/salidas_almacen_modal.php';
-    require_once 'public/modules/ventas/cotizacion_modal.php';
-?>
+<?php require_once 'public/modules/ventas/cotizacion_modal.php'; ?>
 <script src="../public/js/ventas/functions_cotizacion.js"></script>
 <script src="../public/js/ventas/filtros.js"></script>
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>

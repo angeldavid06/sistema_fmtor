@@ -22,6 +22,24 @@
             echo json_encode($result);
         }
 
+        public function obtener_cotizacion () {
+            if (isset($_GET['id'])) {
+                $result = $this->model->buscar_personalizado('t_cotizacion','*',"id_cotizacion = '".$_GET['id']."'");
+                echo json_encode($result);
+            } else {
+                echo 0;
+            }
+        }
+        
+        public function obtener_pedido () {
+            if (isset($_GET['id'])) {
+                $result = $this->model->buscar_personalizado('t_pedido','*',"Id_Pedido = '".$_GET['id']."'");
+                echo json_encode($result);
+            } else {
+                echo 0;
+            }
+        }
+
         public function historial () {
             $cotizacion = $this->model->buscar('v_cotizaciones', 'id_cotizacion', $_GET['id']);
 
@@ -55,6 +73,63 @@
                         }
                     }
                     echo $aux;
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 0;
+            }
+        }
+
+        public function actualizar_solo_cotizacion () {
+            if (isset($_POST['Cotizacion_e']) && $_POST['Cotizacion_e'] != '') {
+                $this->cotizacion->setId_Cotizacion($_POST['Cotizacion_e']);
+                $this->cotizacion->setFecha($_POST['Fecha_e']);
+                $this->cotizacion->setId_Clientes_1($_POST['Id_Clientes_2_e']);
+
+                $result = $this->cotizacion->solo_cotizacion();
+
+                if ($result) {
+                    echo 1;
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 0;
+            }
+        }
+
+        public function actualizar_pedido () {
+            if (isset($_POST['Pedido_p'])) {
+                $this->pedido->setId_Pedido($_POST['Pedido_p']);
+                $this->pedido->setDescripcion($_POST['Descripcion_p']);
+                $this->pedido->setMedida($_POST['Medida_p']);
+                $this->pedido->setAcabado($_POST['Acabado_p']);
+                $this->pedido->setFactor($_POST['factor_p']);
+                $this->pedido->setMaterial($_POST['Material_p']);
+                $this->pedido->setCantidad_millares($_POST['Cantidad_millares_p']);
+                $this->pedido->setPedido_pza($_POST['Pedido_pza_p']);
+                $this->pedido->setFecha_entrega($_POST['Fecha_entrega_p']);
+                $this->pedido->setPrecio_millar($_POST['Precio_millar_p']);
+                $this->pedido->setCodigo($_POST['Codigo_p']);
+
+                $result = $this->pedido->actualizarPedido();
+
+                if ($result) {
+                    echo 1;
+                } else {
+                    echo 0;
+                }
+            } else {
+                echo 0;
+            }
+        }
+
+        public function eliminar_pedido () {
+            if (isset($_GET['id']) && $_GET['id'] != '') {
+                $result = $this->model->eliminar('t_pedido',"Id_Pedido = '". $_GET['id']."'");
+                if ($result)  {
+                    echo 1;
                 } else {
                     echo 2;
                 }

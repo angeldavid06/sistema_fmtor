@@ -10,7 +10,7 @@
         <i class="material-icons icon">face</i>
         Lista de clientes
     </a>
-    <a class="<?php if ($this->item_menu[1] == 'cotizacion') { echo 'active'; } else { echo ''; }; ?>" title="Salidas de Almacen" href="<?php echo $this->url_server; ?>/usuario/cotizacion">
+    <a class="<?php if ($this->item_menu[1] == 'cotizacion') { echo 'active'; } else { echo ''; }; ?>" title="Cotizaciones" href="<?php echo $this->url_server; ?>/usuario/cotizacion">
         <i class="material-icons icon">request_quote</i>
         Cotizaciones
     </a>

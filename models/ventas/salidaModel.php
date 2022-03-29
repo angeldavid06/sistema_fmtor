@@ -154,8 +154,8 @@
                 '$this->Pedido_pza',
                 '$this->Fecha_entrega',
                 '$this->Precio_millar',
-                '$this->Codigo','".
-                $id_pedido[0]['Id_Folio']."'";
+                '$this->Codigo',
+                '".$id_pedido[0]['Id_Folio']."'";
             $validacion = $obj_2->insertar($tabla, $parametros, $values);
             return $validacion;    
         }
