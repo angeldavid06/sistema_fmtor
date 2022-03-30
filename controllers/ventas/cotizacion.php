@@ -138,6 +138,26 @@
             }
         }
 
+        public function copiar_informacion() {
+            $cotizacion = $this->model->buscar_personalizado('v_cotizacion', '*', "id_cotizacion ='" . $_GET['aux'] . "'");
+            if (isset($_GET['pedido']) && $_GET['pedido'] != 'undefined') {
+                $this->model = new Model();
+                $pedido = $this->model->buscar_personalizado('v_cotizaciones', '*', "Id_Pedido ='" . $_GET['pedido'] . "'");
+                $data = [
+                    'salida' => $cotizacion,
+                    'pedido' => $pedido
+                ];
+            } else{ 
+                $this->model = new Model();
+                $pedido = $this->model->buscar_personalizado('v_cotizaciones', '*', "id_cotizacion = '" . $_GET['aux'] . "'");
+                $data = [
+                    'salida' => $cotizacion,
+                    'pedido' => $pedido
+                ];
+            }
+            echo json_encode($data);
+        }
+
         public function generarpdf () {
             $data = $this->model->buscar('v_cotizacion', 'id_folio', $_GET['id']);
             $this->web->PDF('ventas/cotizacion', $data);

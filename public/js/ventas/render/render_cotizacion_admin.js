@@ -91,6 +91,21 @@ const eliminarPedido = () => {
     })    
 }
 
+const portapapeles_copiar = (el, pedido) => {
+    const respuesta = fetchAPI("",url + "/ventas/cotizacion/copiar_informacion?aux=" + el + "&pedido=" + pedido,"");
+    respuesta.then((json) => {
+        let string = JSON.stringify(json);
+        navigator.clipboard.writeText(string).then(
+            function () {
+                open_alert("Información copiada", "azul");
+            },
+            function () {
+                open_alert("Contenido no copiado", "naranja");
+            }
+        );
+    });
+};
+
 const render_cotizaciones = (json) => {
     const body = document.getElementsByClassName('body')[0]
     body.innerHTML = ''
@@ -149,6 +164,8 @@ document.addEventListener('click', (evt) => {
     } else if (evt.target.dataset.eliminar) {
         dato.aux = evt.target.dataset.eliminar;
         open_confirm('¿Esta seguro de querer eliminar este registro?', eliminarPedido)
+    } else if (evt.target.dataset.copiar) {
+        portapapeles_copiar(evt.target.dataset.copiar, evt.target.dataset.pedido);
     }
 })
 

@@ -30,7 +30,7 @@
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';
-                echo '<script src="../public/js/fmtor_libreria.js"></script>';
+                echo '<script src="../public/js/fmtor_libreria.js?1.1"></script>';
             echo '</body>';
             echo '</html>';
         }

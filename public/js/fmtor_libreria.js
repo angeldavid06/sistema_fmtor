@@ -1,5 +1,6 @@
 let resJSON = ''
 let resBLOB 
+let alerts = 1
 const url = 'http://localhost/sistema_fmtor'
 const btn_menu_toggle = document.getElementById('btn-menu-toggle')
 const menu = document.getElementById('menu')
@@ -129,7 +130,7 @@ const fetchAPI = async (form,ruta,metodo) => {
 
 // Alertas
 
-const time_notification = (div,not) => {
+const time_notification = (div,not,alert) => {
     window.setTimeout(() => {
         not.classList.add('show-alert');
     },300);
@@ -137,18 +138,30 @@ const time_notification = (div,not) => {
         not.classList.remove('show-alert');
     },5000);
     window.setTimeout(() => {
-        div.removeChild(not);
+        if (document.getElementById('alert-'+alert)) {
+            div.removeChild(not);
+        }
         const cantidad = div.getElementsByClassName('contenido')
-        if (cantidad.length == 0) {
-            div.classList.remove('show-alert')
+        if (cantidad.length == 0 && document.getElementById('contenedor_alert')) {
             document.body.removeChild(div)
         }
     },5800);
 }
 
+const remove_alert = (id_alert) => {
+    const contenedor = document.getElementById("contenedor_alert");
+    const alert = document.getElementById('alert-'+(id_alert))
+    contenedor.removeChild(alert)
+    const cantidad = contenedor.getElementsByClassName("contenido");
+    if (cantidad.length == 0) {
+        document.body.removeChild(contenedor)
+    }
+}
+
 const open_alert = (titulo,color) => {  
     if (document.getElementById('contenedor_alert')) {
         const contenedor = document.getElementById('contenedor_alert')
+        const cantidad = contenedor.getElementsByClassName('contenido')
         const contenido = document.createElement('div')
         let icono = 'info'
     
@@ -166,14 +179,18 @@ const open_alert = (titulo,color) => {
     
         contenido.classList.add('contenido')
         contenido.classList.add('d-flex')
+        contenido.classList.add("alert-" + color);
         contenido.classList.add('align-content-center')
+        contenido.setAttribute("id", "alert-"+(alerts));
         contenido.innerHTML += '<i class="material-icons">'+icono+'</i>'+
-                                '<p class="txt-left">'+titulo+'</p>'
+                                '<p class="txt-left">'+titulo+'</p>'+
+                            '<label class="material-icons" data-alert="'+(alerts)+'">close</label>';
     
         contenedor.appendChild(contenido)
         document.body.appendChild(contenedor);
 
-        time_notification(contenedor,contenido)
+        time_notification(contenedor,contenido,alerts)
+        alerts++
     } else {
         const div = document.createElement('div')
         const contenido = document.createElement('div')
@@ -187,7 +204,6 @@ const open_alert = (titulo,color) => {
         div.classList.add('flex-column')
         div.classList.add('align-content-top')
         div.classList.add('flex-nowrap')
-        div.classList.add('alert-'+color)
 
         if (color == 'rojo') {
             icono = 'warning';
@@ -204,15 +220,19 @@ const open_alert = (titulo,color) => {
         }
     
         contenido.classList.add('contenido');
+        contenido.classList.add("alert-" + color);
         contenido.classList.add('d-flex');
         contenido.classList.add('align-content-center');
+        contenido.setAttribute("id", "alert-1");
         contenido.innerHTML = '<i class="material-icons">'+icono+'</i>'+
-                                '<p class="txt-left">'+titulo+'</p>';
+                                '<p class="txt-left">'+titulo+'</p>'+
+                            '<label class="material-icons" data-alert="1">close</label>';
                                 
         div.appendChild(contenido)
         document.body.appendChild(div);
 
         time_notification(div,contenido)
+        alerts++
     }
 
 }
@@ -298,6 +318,8 @@ document.addEventListener('click', (evt) => {
         abrir_modal(evt.target.dataset.modal)
     } else if (evt.target.dataset.acordeon) {
         acordeon(evt.target.dataset.acordeon)
+    } else if (evt.target.dataset.alert) {
+        remove_alert(evt.target.dataset.alert);
     }
 });
 

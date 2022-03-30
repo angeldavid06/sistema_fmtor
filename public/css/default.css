@@ -183,6 +183,7 @@
 
 .alert .contenido.show-alert {
     visibility: visible;
+    position: relative;
     opacity: 1;
 }
 
@@ -196,48 +197,61 @@
     padding: 0px 15px 0px 0px;
 }
 
-.alert-rojo .contenido {
+.alert .contenido label {
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.alert .contenido.alert-rojo {
     background-color: var(--background-red-main);
 }
 
-.alert-rojo .contenido p,
-.alert-rojo .contenido i {
+.alert .contenido.alert-rojo p,
+.alert .contenido.alert-rojo i,
+.alert .contenido.alert-rojo label {
     color: var(--color-red-main);
 }
 
-.alert-naranja .contenido {
+.alert .contenido.alert-naranja {
     background-color: var(--background-orange-main);
 }
 
-.alert-naranja .contenido p,
-.alert-naranja .contenido i{
+.alert .contenido.alert-naranja p,
+.alert .contenido.alert-naranja i,
+.alert .contenido.alert-naranja label {
     color: var(--color-orange-main);
 }
 
-.alert-amarillo .contenido {
+.alert .contenido.alert-amarillo {
     background-color: var(--background-yellow-main);
 }
 
-.alert-amarillo .contenido p,
-.alert-amarillo .contenido i {
+.alert .contenido.alert-amarillo p,
+.alert .contenido.alert-amarillo i,
+.alert .contenido.alert-amarillo label {
     color: var(--color-yellow-main);
 }
 
-.alert-azul .contenido {
+.alert .contenido.alert-azul {
     background-color: var(--background-blue-main);
 }
 
-.alert-azul .contenido p,
-.alert-azul .contenido i {
-    color: var(--color-blue-main);
+.alert .contenido.alert-azul p,
+.alert .contenido.alert-azul i,
+.alert .contenido.alert-azul label {
+    color: var(--color-button);
 }
 
-.alert-verde .contenido {
+.alert .contenido.alert-verde {
     background-color: var(--background-green-main);
 }
 
-.alert-verde .contenido p,
-.alert-verde .contenido i {
+.alert .contenido.alert-verde p,
+.alert .contenido.alert-verde i,
+.alert .contenido.alert-verde label {
     color: var(--color-green-main);
 }
 
@@ -475,14 +489,17 @@ button {
 }
 
 #btn-subir {
+    visibility: hidden;
     right: -60px;
     bottom: 20px;
     z-index: 9999999;
-    transition: all .2s;
+    transition: opacity .2s,
+                right .2s;
     opacity: 0;
 }
 
 #btn-subir.mostrar {
+    visibility: visible;
     right: 30px;
     opacity: 1;
 }
