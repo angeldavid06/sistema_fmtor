@@ -56,7 +56,6 @@ const obtener_cotizacion_pdf = (id) => {
     printPage(url + "/ventas/cotizacion/generarpdf?id=" + id);
 };
 
-
 document.addEventListener("click", (evt) => {
     if (evt.target.dataset.historial) {
         auxiliar = evt.target.dataset.historial;
