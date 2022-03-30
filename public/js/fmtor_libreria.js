@@ -139,11 +139,11 @@ const time_notification = (div,not,alert) => {
     },5000);
     window.setTimeout(() => {
         if (document.getElementById('alert-'+alert)) {
-            div.removeChild(not);
+            div.removeChild(document.getElementById("alert-" + alert));
         }
         const cantidad = div.getElementsByClassName('contenido')
         if (cantidad.length == 0 && document.getElementById('contenedor_alert')) {
-            document.body.removeChild(div)
+            document.body.removeChild(document.getElementById('contenedor_alert'))
         }
     },5800);
 }
@@ -192,6 +192,7 @@ const open_alert = (titulo,color) => {
         time_notification(contenedor,contenido,alerts)
         alerts++
     } else {
+        alerts = 1
         const div = document.createElement('div')
         const contenido = document.createElement('div')
         let icono = 'info'
@@ -231,7 +232,7 @@ const open_alert = (titulo,color) => {
         div.appendChild(contenido)
         document.body.appendChild(div);
 
-        time_notification(div,contenido)
+        time_notification(div,contenido,alerts)
         alerts++
     }
 

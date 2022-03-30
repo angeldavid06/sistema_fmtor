@@ -178,7 +178,7 @@
     position: initial;
     visibility: hidden;
     opacity: 0;
-    padding: 10px 15px;
+    padding: 10px 30px 10px 15px;
 }
 
 .alert .contenido.show-alert {
@@ -189,6 +189,7 @@
 
 .alert .contenido p {
     font-weight: 500;
+    padding: 0px 25px 0px 0px;
     font-size: 1.1em;
 }
 

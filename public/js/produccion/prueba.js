@@ -4,7 +4,7 @@ const btn_confirm = document.getElementById('btn-confirm')
 // Ejemplo de alertas
 
 btn_alert.addEventListener('click', () => {
-    open_alert('Título de prueba','rojo')
+    open_alert('Título de prueba demasiado largo para un dispositivo movil','rojo')
 })
 
 // Ejemplo de confirmaciones
