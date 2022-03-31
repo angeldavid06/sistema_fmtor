@@ -34,7 +34,7 @@
 </div>
 <?php require_once 'public/modules/ventas/cotizacion_modal.php'; ?>
 <script src="../public/js/ventas/functions_cotizacion.js"></script>
-<script src="../public/js/ventas/filtros.js"></script>
+<script src="../public/js/ventas/filtros_cotizacion.js"></script>
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
     <script src="../public/js/ventas/no_tornillos.js"></script>
     <script src="../public/js/ventas/render/render_cotizacion_admin.js"></script>

@@ -1,5 +1,5 @@
 <?php
-    if ($_SESSION['cm9s'] == 'Administrativo') {
+if ($_SESSION['cm9s'] == 'Administrativo') {
 ?>
     <div id="modal-ingresar" class="modal modal-derecha width-04">
         <div class="titulo_modal d-flex justify-between align-content-center" style="padding: 0px 0px 15px 0px;">
@@ -9,10 +9,6 @@
         <div class="contenido_modal">
             <form id="form_reg_cotizacion" style="padding: 0px 5px;">
                 <div class="d-grid g-1">
-                    <!-- <span style="margin: 0;" data-pegar="pegar-cliente" class="btn btn-icon d-flex justify-center" title="Pegar información del portapapeles">
-                        <i data-pegar="pegar-cliente" class="material-icons-round">content_paste_go</i>
-                        Pegar inf. cliente
-                    </span> -->
                     <span style="margin: 0;" data-pegar="pegar-todo" class="btn btn-transparent btn-icon d-flex justify-center" title="Pegar información del portapapeles">
                         <i data-pegar="pegar-todo" class="material-icons-round">content_paste_go</i>
                         Pegar Pedido
@@ -123,7 +119,6 @@
                     <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Registrar</button>
                 </div>
                 <div class="d-grid g-2">
-                    <!-- <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Registrar</button> -->
                     <label class="btn btn-transparent txt-center" id="btn-limpiar">Limpiar</label>
                     <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-ingresar">Cancelar</label>
                 </div>
@@ -138,7 +133,6 @@
         </div>
         <div class="contenido_modal">
             <form id="form_act_cotizacion" style="padding: 0px 5px;">
-                <!-- <p>Salida De Almacen:</p> -->
                 <input class="input" type="text" name="Pedido_p" id="Pedido_p" hidden>
                 <p style="padding: 0px 0px 10px 0px;" class="txt-right">Información general:</p>
                 <div class="d-grid g-1">
@@ -397,14 +391,14 @@
         <h2>Filtros</h2>
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-filtrar">close</button>
     </div>
-    <div class="contenido_modal">
+    <div class="contenido_modal" style="padding: 0px 5px;">
         <form id="form-filtros">
             <div class="contenedor_filtros">
                 <h3>Filtrar Cotizaciones</h3>
                 <input type="text" name="tabla" id="tabla" value="v_salidas_almacen" hidden>
                 <div class="filtro fecha">
                     <input type="radio" data-radio="radio" name="buscar_por" id="salida" value="salida">
-                    <label class="lbl-radio" id="lbl_radio_salida" for="salida">Buscar Salida de Almacen:</label>
+                    <label class="lbl-radio" id="lbl_radio_salida" for="salida">Buscar Cotización:</label>
                     <input class="input" type="number" name="f_salida" id="f_salida" disabled>
                     <input type="radio" data-radio="radio" name="buscar_por" id="rango_salidas" value="rango_salida">
                     <label class="lbl-radio" id="lbl_radio_rango_salida" for="rango_salidas">Filtrar por rango de Salidas de Almacen: </label>
@@ -414,27 +408,14 @@
                         <input class="input" type="number" name="f_r_salida_M" id="f_r_salida_M" disabled>
                     </div>
                 </div>
-                <!-- <h3>Filtrar Ordenes de Producción</h3>
-            <div class="filtro fecha">
-                <input type="radio" data-radio="radio" name="buscar_por" id="op" value="op">
-                <label class="lbl-radio" id="lbl_radio_op" for="op">Buscar O.P.:</label>
-                <input class="input" type="number" name="f_op" id="f_op" disabled>
-                <input type="radio" data-radio="radio" name="buscar_por" id="rango_op" value="rango_op">
-                <label class="lbl-radio" id="lbl_radio_rango_op" for="rango_op">Filtrar por rango de O.P.: </label>
-                <div class="d-grid g-2">
-                    <input class="input" type="number" name="f_r_op_m" id="f_r_op_m" disabled>
-
-                    <input class="input" type="number" name="f_r_op_M" id="f_r_op_M" disabled>
-                </div>
-            </div> -->
                 <h3>Filtrar por fecha:</h3>
                 <div class="filtro fecha">
                     <input type="radio" data-radio="radio" name="buscar_por" id="fecha" value="fecha">
                     <label class="lbl-radio" id="lbl_radio_fecha" for="fecha" value="fecha">Filtrar por fecha especifica:</label>
                     <input class="input" type="date" name="f_fecha" id="f_fecha" disabled>
-                    <input type="radio" data-radio="radio" name="buscar_por" id="fecha_mes" value="fecha_mes">
+                    <input type="radio" data-radio="radio" name="buscar_por" id="fecha_mes" value="fecha_mes" checked>
                     <label class="lbl-radio" id="lbl_radio_fecha_mes" for="fecha_mes">Filtrar por mes: </label>
-                    <select class="input" name="f_fecha_mes" id="f_fecha_mes" disabled>
+                    <select class="input" name="f_fecha_mes" id="f_fecha_mes">
                         <option value="01">Enero</option>
                         <option value="02">Febrero</option>
                         <option value="03">Marzo</option>
@@ -463,26 +444,12 @@
                     <input type="radio" data-radio="radio" name="buscar_por" id="cliente" value="cliente">
                     <label class="lbl-radio" id="lbl_radio_cliente" for="cliente">Buscar cliente:</label>
                     <select name="f_cliente" id="f_cliente" class="input" disabled></select>
-                    <!-- <input class="input" type="text" name="f_cliente" id="f_cliente" disabled> -->
                 </div>
-                <!-- <h3>Filtrar por estado:</h3>
-            <div class="filtro fecha">
-                <input type="radio" data-radio="radio" name="buscar_por" id="estado" value="estado">
-                <label class="lbl-radio" id="lbl_radio_estado" for="estado">Selecciona el estado de las O.P.:</label>
-                <select class="input" name="f_estado" id="f_estado" disabled>
-                    <option value="FORJADO">FORJADO</option>
-                    <option value="RANURADO">RANURADO</option>
-                    <option value="ROLADO">ROLADO</option>
-                    <option value="SHANK">SHANK</option>
-                    <option value="CEMENTADO">CEMENTADO</option>
-                    <option value="ACABADO">ACABADO</option>
-                    <option value="PENDIENTE">PENDIENTE</option>
-                    <option value="TERMINADO">TERMINADO</option>
-                    <option value="CANCELADO">CANCELADO</option>
-                </select>
-            </div> -->
-                <div class="d-flex flex-column">
+                <div class="d-grid g-1">
                     <button class="btn">Buscar</button>
+                </div>
+                <div class="d-grid g-2">
+                    <label class="btn btn-transparent txt-center" data-limpiar="limpiar">Limpiar Filtros</label>
                     <label class="btn btn-transparent txt-center" data-modal="modal-filtrar">Cancelar</label>
                 </div>
             </div>
@@ -501,8 +468,6 @@
         <div class="d-grid g-1">
             <table class="table table_salida lista_salida" id="table">
                 <thead>
-                    <!-- <th style="min-width: 80px;">N° de salida </th>
-                    <th style="min-width: 150px;">Cliente</th> -->
                     <th style="min-width: 150px;">N° parte de cliente </th>
                     <th style="min-width: 100px;">Pedido Cliente</th>
                     <th style="min-width: 150px;">Descripcion </th>

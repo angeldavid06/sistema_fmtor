@@ -23,7 +23,7 @@
                     <hr>
                 </th>
                 <th style="border: none;" class="txt-left">N° DE COTIZACIÓN:</th>
-                <th>5</th>
+                <th><?php echo $data[0]['id_cotizacion'] ?></th>
             </tr>
             <tr>
                 <th style="border: none;" class="txt-left">TELÉFONOS:</th>

@@ -79,12 +79,13 @@ const render_pedidos = (json) => {
     body.innerHTML = ''
     json.forEach(el => {
         body.innerHTML += "<tr>" + 
-                            "<td style='padding: 5px;'><button data-pedido='"+el.Id_Pedido_Compra+"&"+el.FK_Orden_Compra+"' data-modal='modal-actualizar-tornillo' style='margin: 0px;' class='btn btn-icon-self btn-transparent material-icons'>edit</button></td>"+
-                            "<td style='padding: 5px;'><button data-cp='"+el.Id_Pedido_Compra+"' style='margin: 0px;' class='btn btn-icon-self btn-transparent material-icons'>copy_all</button></td>"+
                             "<td>"+el.Codigo+"</td>"+
                             "<td>"+el.Producto+"</td>"+
                             "<td class='txt-right'>"+new Intl.NumberFormat('es-MX').format(el.Cantidad)+"</td>"+
                             "<td class='txt-right'>$ "+new Intl.NumberFormat('es-MX').format(el.Precio)+"</td>"+
+                            "<td style='padding: 5px;'><button data-cp='"+el.Id_Pedido_Compra+"' style='margin: 0px;' class='btn btn-icon-self btn-transparent material-icons'>copy_all</button></td>"+
+                            "<td style='padding: 5px 0px 5px 0px;'><button data-pedido='"+el.Id_Pedido_Compra+"&"+el.FK_Orden_Compra+"' data-modal='modal-actualizar-tornillo' style='margin: 0px;' class='btn btn-icon-self btn-amarillo material-icons'>edit</button></td>"+
+                            "<td style='padding: 5px; 0px 5px 5px'><button class='btn btn-icon-self btn-rojo material-icons'>delete</button></td>"+
                         "</tr>";
     })
 }

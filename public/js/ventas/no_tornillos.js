@@ -1,9 +1,9 @@
 const cantidad = document.getElementById('Cantidad_Tornillos');
 const contenedor_tornillos = document.getElementById('tornillos');
 
-const render_nuevo_tornillo = (cantidad) => {
-    let t = cantidad + 1;
-    cantidad.value = cantidad
+const render_nuevo_tornillo = (cantidad_t) => {
+    let t = cantidad_t + 1;
+    cantidad.value = cantidad_t
     const tornillo = document.createElement('div');
     tornillo.classList.add('tornillo');
     tornillo.setAttribute('id','tornillo-'+t);
@@ -22,7 +22,7 @@ const render_nuevo_tornillo = (cantidad) => {
                                                     '<input class="input" type="date" name="Fecha_entrega_'+t+'" id="Fecha_entrega_'+t+'">'+
                                                 '</div>'+
                                             '</div>'+
-                                            '<div class="d-grid g-2">'+
+                                            '<div class="d-grid g-3">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>No. Parte cliente:</p>'+
                                                     '<input class="input" type="text" name="Codigo_'+t+'" id="Codigo_'+t+'" placeholder="Ingrese el codigo">'+
@@ -31,12 +31,12 @@ const render_nuevo_tornillo = (cantidad) => {
                                                     '<p>Pedido Cliente:</p>'+
                                                     '<input class="input" type="text" name="Pedido_pza_'+t+'" id="Pedido_pza_'+t+'">'+
                                                 '</div>'+
-                                            '</div>'+
-                                            '<div class="d-grid g-3">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>Cantidad (millares):</p>'+
                                                     '<input class="input" type="text" name="Cantidad_millares_'+t+'" id="Cantidad_millares_'+t+'">'+
                                                 '</div>'+
+                                            '</div>'+
+                                            '<div class="d-grid g-3">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>Descripcion:</p>'+
                                                     '<input type="text" class="input" name="Descripcion_'+t+'" id="Descripcion_'+t+'">'+
@@ -45,12 +45,12 @@ const render_nuevo_tornillo = (cantidad) => {
                                                     '<p>Medida:</p>'+
                                                     '<input class="input" type="text" name="Medida_'+t+'" id="Medida_'+t+'">'+
                                                 '</div>'+
-                                            '</div>'+
-                                            '<div class="d-grid g-3">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>Factor:</p>'+
                                                     '<input class="input" type="text" name="factor_'+t+'" id="factor_'+t+'">'+
                                                 '</div>'+
+                                            '</div>'+
+                                            '<div class="d-grid g-2">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>Acabado:</p>'+
                                                     '<select class="input" name="Acabado_'+t+'" id="Acabado_'+t+'">'+
@@ -73,10 +73,13 @@ const render_nuevo_tornillo = (cantidad) => {
                                                     '<input class="input" type="text" name="Material_'+t+'" id="Material_'+t+'">'+
                                                 '</div>'+
                                             '</div>'+
-                                            '<div class="d-grid g-3">'+
-                                                '<div class="d-grid g-1 grid-gap-0">'+
-                                                    '<p>Costo:</p>'+
-                                                    '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'">'+
+                                            '<div class="d-grid g-2">'+
+                                                '<div class="d-flex justify-center align-content-center">'+
+                                                    '<div class="d-grid g-1 grid-gap-0">'+
+                                                        '<p>Costo:</p>'+
+                                                        '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'">'+
+                                                    '</div>'+
+                                                    '<label class="btn btn-icon-self material-icons" title="Obtener Costo" style="margin: 0px 0px 0px 5px;">attach_money</label>'+
                                                 '</div>'+
                                             '</div>';
     contenedor_tornillos.appendChild(tornillo)
@@ -84,8 +87,8 @@ const render_nuevo_tornillo = (cantidad) => {
 
 const cantidad_tornillos = document.getElementsByClassName('tornillo')
 const tornillo_mas = () => {
-    render_nuevo_tornillo(cantidad_tornillos.length-1)
-    cantidad.value = cantidad_tornillos.length-1
+    render_nuevo_tornillo(cantidad_tornillos.length)
+    cantidad.value = cantidad_tornillos.length
 } 
 
 const tornillo_menos = () => {
@@ -124,7 +127,7 @@ const render_form_tornillo = (c) => {
                                                     '<input class="input" type="date" name="Fecha_entrega_'+t+'" id="Fecha_entrega_'+t+'">'+
                                                 '</div>'+
                                             '</div>'+
-                                            '<div class="d-grid g-2">'+
+                                            '<div class="d-grid g-3">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>No. Parte cliente:</p>'+
                                                     '<input class="input" type="text" name="Codigo_'+t+'" id="Codigo_'+t+'" placeholder="Ingrese el codigo">'+
@@ -133,12 +136,12 @@ const render_form_tornillo = (c) => {
                                                     '<p>Pedido Cliente:</p>'+
                                                     '<input class="input" type="text" name="Pedido_pza_'+t+'" id="Pedido_pza_'+t+'">'+
                                                 '</div>'+
-                                            '</div>'+
-                                            '<div class="d-grid g-3">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>Cantidad (millares):</p>'+
                                                     '<input class="input" type="text" name="Cantidad_millares_'+t+'" id="Cantidad_millares_'+t+'">'+
                                                 '</div>'+
+                                            '</div>'+
+                                            '<div class="d-grid g-3">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>Descripcion:</p>'+
                                                     '<input type="text" class="input" name="Descripcion_'+t+'" id="Descripcion_'+t+'">'+
@@ -147,12 +150,12 @@ const render_form_tornillo = (c) => {
                                                     '<p>Medida:</p>'+
                                                     '<input class="input" type="text" name="Medida_'+t+'" id="Medida_'+t+'">'+
                                                 '</div>'+
-                                            '</div>'+
-                                            '<div class="d-grid g-3">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>Factor:</p>'+
                                                     '<input class="input" type="text" name="factor_'+t+'" id="factor_'+t+'">'+
                                                 '</div>'+
+                                            '</div>'+
+                                            '<div class="d-grid g-2">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>Acabado:</p>'+
                                                     '<select class="input" name="Acabado_'+t+'" id="Acabado_'+t+'">'+
@@ -175,10 +178,13 @@ const render_form_tornillo = (c) => {
                                                     '<input class="input" type="text" name="Material_'+t+'" id="Material_'+t+'">'+
                                                 '</div>'+
                                             '</div>'+
-                                            '<div class="d-grid g-3">'+
-                                                '<div class="d-grid g-1 grid-gap-0">'+
-                                                    '<p>Costo:</p>'+
-                                                    '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'">'+
+                                            '<div class="d-grid g-2">'+
+                                                '<div class="d-flex justify-center align-content-center">'+
+                                                    '<div class="d-grid g-1 grid-gap-0">'+
+                                                        '<p>Costo:</p>'+
+                                                        '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'">'+
+                                                    '</div>'+
+                                                    '<label class="btn btn-icon-self material-icons" title="Obtener Costo" style="margin: 0px 0px 0px 5px;">attach_money</label>'+
                                                 '</div>'+
                                             '</div>'+
                                         '</div>';

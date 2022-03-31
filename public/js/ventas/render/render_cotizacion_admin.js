@@ -33,7 +33,7 @@ const insertar_cotizacion = () => {
         if (json) {
             limpiar_formulario(form);
             open_alert('El registro fue realizado exitosamente', 'verde')
-            obtener()
+            buscar_mes_actual();
         } else {
             open_alert('Ocurrio un error al realizar el registro', 'rojo')
         }
@@ -45,7 +45,7 @@ const actualizar_solo_salida = () => {
     respuesta.then(json => {
         if (json == 1) {
             open_alert('El registro ha sido actualizado correctamente','verde')
-            obtener()
+            buscar_mes_actual();
         } else {
             open_alert('El registro no ha sido actualizado','rojo')
         }
@@ -84,7 +84,7 @@ const obtener_clientes = () => {
         json.forEach((el) => {
             document.getElementById("Id_Clientes_2").innerHTML +='<option value="' +el.Id_Clientes +'">' +el.Razon_social.trim() +"</option>";
             document.getElementById("Id_Clientes_2_e").innerHTML +='<option value="' +el.Id_Clientes +'">' +el.Razon_social.trim() +"</option>";
-            // document.getElementById("f_cliente").innerHTML +='<option value="' +el.Razon_social +'">' +el.Razon_social +"</option>";
+            document.getElementById("f_cliente").innerHTML +='<option value="' +el.Id_Clientes+'">' +el.Razon_social +"</option>";
         });
     });
 };
@@ -141,21 +141,42 @@ const colocar_informacion_op = (op, contador) => {
 };
 
 const colocar_informacion_tornillos = (pedidos) => {
-  let i = 1;
-  pedidos.forEach((el) => {
-    document.getElementById("Fecha_entrega_" + i).value = el.fecha_entrega;
-    document.getElementById("Codigo_" + i).value = el.no_parte;
-    document.getElementById("Pedido_pza_" + i).value = el.pedido_cliente;
-    document.getElementById("Cantidad_millares_" + i).value = el.cantidad;
-    document.getElementById("Precio_millar_" + i).value = el.costo;
-    document.getElementById("Medida_" + i).value = el.medida;
-    document.getElementById("Descripcion_" + i).value = el.descripcion;
-    document.getElementById("factor_" + i).value = el.factor;
-    colocar_acabado(el.acabado, i);
-    document.getElementById("Material_" + i).value = el.material;
-    i++;
-  });
+    let i = 1;
+    pedidos.forEach((el) => {
+        document.getElementById("Fecha_entrega_" + i).value = el.fecha_entrega;
+        document.getElementById("Codigo_" + i).value = el.no_parte;
+        document.getElementById("Pedido_pza_" + i).value = el.pedido_cliente;
+        document.getElementById("Cantidad_millares_" + i).value = el.cantidad;
+        document.getElementById("Precio_millar_" + i).value = el.costo;
+        document.getElementById("Medida_" + i).value = el.medida;
+        document.getElementById("Descripcion_" + i).value = el.descripcion;
+        document.getElementById("factor_" + i).value = el.factor;
+        colocar_acabado(el.acabado, i);
+        document.getElementById("Material_" + i).value = el.material;
+        i++;
+    });
 };
+
+const portapapeles_pegar_tornillo = (form) => {
+    navigator.clipboard.readText().then((clipText) => {
+        const json = JSON.parse(clipText);
+        console.log(json);
+        const pedido = json["pedido"];
+
+        pedido.forEach((el) => {
+            document.getElementById("Fecha_entrega_" + form).value = el.fecha_entrega;
+            document.getElementById("Codigo_" + form).value = el.no_parte;
+            document.getElementById("Pedido_pza_" + form).value = el.pedido_cliente;
+            document.getElementById("Cantidad_millares_" + form).value = el.cantidad;
+            document.getElementById("Precio_millar_" + form).value = el.costo;
+            document.getElementById("Medida_" + form).value = el.medida;
+            document.getElementById("Descripcion_" + form).value = el.descripcion;
+            document.getElementById("factor_" + form).value = el.factor;
+            colocar_acabado(el.acabado, form);
+            document.getElementById("Material_" + form).value = el.material;
+        });
+    });
+}
 
 const portapapeles_pegar = () => {
     navigator.clipboard.readText().then((clipText) => {
@@ -206,7 +227,7 @@ const render_cotizaciones = (json) => {
                                 '<td class="txt-right" style="padding: 5px 0px 5px 0px;" ><button title="Editar Salida de Almacen" class="material-icons-outlined btn btn-amarillo btn-icon-self" data-modal="modal-actualizar-cotizacion" data-cotizacion="' +el.id_cotizacion +'"> mode_edit</button></td>' +
                                 '<td class="txt-right" style="padding: 5px 0px 5px 0px;" ><button data-copiar="'+el.id_cotizacion+'" id="'+el.id_cotizacion+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
                                 '<td class="txt-right" style="padding: 5px 0px 5px 0px;" ><button data-historial="' +el.id_cotizacion +'" data-modal="modal-historial" id="' +el.id_cotizacion +'" class="material-icons-outlined btn btn-icon-self btn-transparent" title="Copiar información">more_vert</button></td>' +
-                                '<td class="txt-right" style="padding: 5px 0px 5px 0px;" ><button title="Generar Cotización" class= "material-icons-outlined btn btn-icon-self" data-cotizacion="' +el.id_cotizacion +'">request_quote</button>' +
+                                '<td class="txt-right" style="padding: 5px 0px 5px 0px;" ><button title="Generar Cotización" class= "material-icons-outlined btn btn-icon-self" data-documento="' +el.id_cotizacion +'">request_quote</button>' +
                             '</tr>'
         })
     }
@@ -258,6 +279,8 @@ document.addEventListener('click', (evt) => {
         } else if (evt.target.dataset.pegar == "pegar-cliente") {
             portapapeles_pegar_cliente();
         }
+    } else if (evt.target.dataset.p) {
+        portapapeles_pegar_tornillo(evt.target.dataset.p);
     }
 })
 
