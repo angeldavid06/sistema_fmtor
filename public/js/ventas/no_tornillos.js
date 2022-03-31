@@ -78,27 +78,6 @@ const render_nuevo_tornillo = (cantidad) => {
                                                     '<p>Costo:</p>'+
                                                     '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'">'+
                                                 '</div>'+
-                                            '</div>'+
-                                            '<p style="padding: 15px 0px 30px 0px;" class="txt-right">Orden de Producción:</p>'+
-                                            '<div class="d-grid g-1">'+
-                                                '<input type="checkbox" name="sin_op_'+t+'" id="sin_op_'+t+'">'+
-                                                '<label class="lbl-checkbox" id="lbl_checkbox_salida" for="sin_op_'+t+'" style="margin: 0 0 15px 0;">Sin O.P.:</label>'+
-                                            '</div>'+
-                                            '<div class="d-grid g-2">'+
-                                                '<div class="d-grid g-1 grid-gap-0">'+
-                                                    '<p>No. de Dibujo:</p>'+
-                                                    '<input class="input" type="text" name="Dibujo_'+t+'" id="Dibujo_'+t+'" placeholder="Ingrese el numero de plano">'+
-                                                '</div>'+
-                                                '<div class="d-grid g-1 grid-gap-0">'+
-                                                    '<p>Cantidad a Producir (millares):</p>'+
-                                                    '<input class="input" type="number" name="cantidad_producir_'+t+'" id="cantidad_producir_'+t+'">'+
-                                                '</div>'+
-                                            '</div>'+
-                                            '<div class="d-grid g-2">'+
-                                                '<div class="d-flex align-content-bottom justify-left">'+
-                                                    '<input type="checkbox" name="tratamiento_'+t+'" id="tratamiento_'+t+'">'+
-                                                    '<label class="lbl-checkbox" for="tratamiento_'+t+'" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>'+
-                                                '</div>'+
                                             '</div>';
     contenedor_tornillos.appendChild(tornillo)
 }
@@ -111,11 +90,11 @@ const tornillo_mas = () => {
 
 const tornillo_menos = () => {
     let tornillos = cantidad_tornillos.length
-    if ((tornillos - 1) >= 2) {
+    if ((tornillos - 1) >= 1) {
         contenedor_tornillos.removeChild(contenedor_tornillos.lastChild)
         tornillos = cantidad_tornillos.length;
-        document.getElementById("cantidad_tornillos_pedidos").innerHTML = 'Información del tornillo ('+(tornillos-1)+'):';
-        cantidad.value = (tornillos-1)
+        document.getElementById("cantidad_tornillos_pedidos").innerHTML = 'Información del tornillo ('+(tornillos)+'):';
+        cantidad.value = (tornillos)
     } else {
         open_alert('Una salida de almacen requiere por lo menos de un tornillo','naranja')
     }
@@ -202,30 +181,29 @@ const render_form_tornillo = (c) => {
                                                     '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'">'+
                                                 '</div>'+
                                             '</div>'+
-                                            '<p style="padding: 15px 0px 30px 0px;" class="txt-right">Orden de Producción:</p>'+
-                                            '<div class="d-grid g-1">'+
-                                                '<input type="checkbox" name="sin_op_'+t+'" id="sin_op_'+t+'">'+
-                                                '<label class="lbl-checkbox" id="lbl_checkbox_salida" for="sin_op_'+t+'" style="margin: 0 0 15px 0;">Sin O.P.:</label>'+
-                                            '</div>'+
-                                            '<div class="d-grid g-2">'+
-                                                '<div class="d-grid g-1 grid-gap-0">'+
-                                                    '<p>No. de Dibujo:</p>'+
-                                                    '<input class="input" type="text" name="Dibujo_'+t+'" id="Dibujo_'+t+'" placeholder="Ingrese el numero de plano">'+
-                                                '</div>'+
-                                                '<div class="d-grid g-1 grid-gap-0">'+
-                                                    '<p>Cantidad a Producir (millares):</p>'+
-                                                    '<input class="input" type="number" name="cantidad_producir_'+t+'" id="cantidad_producir_'+t+'">'+
-                                                '</div>'+
-                                            '</div>'+
-                                            '<div class="d-grid g-2">'+
-                                                '<div class="d-flex align-content-bottom justify-left">'+
-                                                    '<input type="checkbox" name="tratamiento_'+t+'" id="tratamiento_'+t+'">'+
-                                                    '<label class="lbl-checkbox" for="tratamiento_'+t+'" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>'+
-                                                '</div>'+
-                                            '</div>'
                                         '</div>';
     }
 }
+
+const generar_fecha = () => {
+    const fecha_actual = new Date().toLocaleDateString();
+    const fecha = fecha_actual.split("/");
+    let aux = fecha[2] + "-";
+
+    if (parseInt(fecha[1]) < 10) {
+        aux += "0" + fecha[1] + "-";
+    } else {
+        aux += fecha[1] + "-";
+    }
+
+    if (parseInt(fecha[0]) < 10) {
+        aux += "0" + fecha[0];
+    } else {
+        aux += fecha[0];
+    }
+
+    document.getElementById("Fecha").value = aux;
+};
 
 cantidad.addEventListener('keyup', () => {
     if (cantidad.value <= 0) {
@@ -235,4 +213,8 @@ cantidad.addEventListener('keyup', () => {
     } else {
         render_form_tornillo(cantidad.value)
     }
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    generar_fecha();
 })

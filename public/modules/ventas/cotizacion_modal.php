@@ -1,21 +1,21 @@
 <?php
-if ($_SESSION['cm9s'] == 'Administrativo') {
+    if ($_SESSION['cm9s'] == 'Administrativo') {
 ?>
     <div id="modal-ingresar" class="modal modal-derecha width-04">
-        <div class="titulo_modal d-flex justify-between align-content-center">
+        <div class="titulo_modal d-flex justify-between align-content-center" style="padding: 0px 0px 15px 0px;">
             <h2>Nueva Cotización</h2>
             <button style="margin: 0px;" class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
         </div>
         <div class="contenido_modal">
             <form id="form_reg_cotizacion" style="padding: 0px 5px;">
-                <div class="d-grid g-2">
-                    <span style="margin: 0;" data-pegar="pegar-cliente" class="btn btn-icon d-flex justify-center" title="Pegar información del portapapeles">
+                <div class="d-grid g-1">
+                    <!-- <span style="margin: 0;" data-pegar="pegar-cliente" class="btn btn-icon d-flex justify-center" title="Pegar información del portapapeles">
                         <i data-pegar="pegar-cliente" class="material-icons-round">content_paste_go</i>
                         Pegar inf. cliente
-                    </span>
+                    </span> -->
                     <span style="margin: 0;" data-pegar="pegar-todo" class="btn btn-transparent btn-icon d-flex justify-center" title="Pegar información del portapapeles">
                         <i data-pegar="pegar-todo" class="material-icons-round">content_paste_go</i>
-                        Pegar todo el pedido
+                        Pegar Pedido
                     </span>
                 </div>
                 <p style="padding: 15px 0px 30px 0px;" class="txt-right">Información general:</p>
@@ -159,7 +159,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                 </div>
                 <p style="padding: 15px 0px 30px 0px;" class="txt-right" id="cantidad_tornillos_pedidos">Información del tornillo:</p>
                 <div id="tornillos">
-                    <div class="tornillo" id="tornillo-1">
+                    <div id="tornillo-1">
                         <div class="d-grid g-2">
                             <div class="d-grid g-1 grid-gap-0">
                                 <p>Cantidad (millares):</p>
@@ -273,7 +273,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                 </div>
                 <p style="padding: 15px 0px 30px 0px;" class="txt-right" id="cantidad_tornillos_pedidos">Información del tornillo:</p>
                 <div id="tornillos">
-                    <div class="tornillo" id="tornillo-1">
+                    <div id="tornillo-1">
                         <div class="d-grid g-2">
                             <div class="d-grid g-1 grid-gap-0">
                                 <p>Cantidad (millares):</p>

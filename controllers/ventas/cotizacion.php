@@ -144,14 +144,14 @@
                 $this->model = new Model();
                 $pedido = $this->model->buscar_personalizado('v_cotizaciones', '*', "Id_Pedido ='" . $_GET['pedido'] . "'");
                 $data = [
-                    'salida' => $cotizacion,
+                    'cotizacion' => $cotizacion,
                     'pedido' => $pedido
                 ];
             } else{ 
                 $this->model = new Model();
                 $pedido = $this->model->buscar_personalizado('v_cotizaciones', '*', "id_cotizacion = '" . $_GET['aux'] . "'");
                 $data = [
-                    'salida' => $cotizacion,
+                    'cotizacion' => $cotizacion,
                     'pedido' => $pedido
                 ];
             }

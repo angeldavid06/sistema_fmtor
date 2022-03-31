@@ -175,4 +175,4 @@ SELECT
 FROM
     t_clientes
 ORDER BY
-    Id_Clientes ASC;
+    Razon_social ASC;
