@@ -25,9 +25,9 @@
             <th>Correo</th>
             <th>Direccion</th>
             <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                <th style="max-width: 60px;"></th>
-                <th style="max-width: 60px;"></th>
-                <th style="max-width: 60px;"></th>
+                <th style="max-width: 50px;"></th>
+                <th style="max-width: 50px;"></th>
+                <th style="max-width: 50px;"></th>
             <?php } ?>
         </thead>
         <tbody class="body body_clientes"></tbody>

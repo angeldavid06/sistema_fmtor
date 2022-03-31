@@ -5,9 +5,6 @@ const limpiar_tabla = () => {
     while (tbody[0].firstChild) {
         tbody[0].removeChild(tbody[0].firstChild);
     }
-
-    // table.removeChild(tfoot[0]);
-    // console.log(tfoot);
 };
 
 const form_filtros = document.getElementById("form-filtros");
@@ -43,11 +40,7 @@ const enviar_datos = () => {
 };
 
 const buscar_dato = (metodo) => {
-  const respuesta = fetchAPI(
-    form_filtros,
-    url + "/ventas/cotizacion/" + metodo,
-    "POST"
-  );
+  const respuesta = fetchAPI(form_filtros,url + "/ventas/cotizacion/" + metodo,"POST");
   respuesta.then((json) => {
     limpiar_tabla();
     render_cotizaciones(json);
@@ -70,17 +63,10 @@ document.addEventListener("click", (evt) => {
         $f_input.removeAttribute("disabled", "");
     }
 
-    if (
-        evt.target.value.split("_").length > 1 &&
-        evt.target.value.split("_")[0] == "rango"
-    ) {
-      const $f_input_m = document.getElementById(
-            "f_r_" + evt.target.value.split("_")[1] + "_m"
-      );
+    if (evt.target.value.split("_").length > 1 &&evt.target.value.split("_")[0] == "rango") {
+      const $f_input_m = document.getElementById("f_r_" + evt.target.value.split("_")[1] + "_m");
       $f_input_m.removeAttribute("disabled", "");
-      const $f_input_M = document.getElementById(
-            "f_r_" + evt.target.value.split("_")[1] + "_M"
-      );
+      const $f_input_M = document.getElementById("f_r_" + evt.target.value.split("_")[1] + "_M");
       $f_input_M.removeAttribute("disabled", "");
     }
   }
