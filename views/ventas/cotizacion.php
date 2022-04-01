@@ -1,7 +1,7 @@
-<?php 
-    if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
-        header('Location: ' . $this->url_server . '/usuario/principal');
-    }
+<?php
+if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
+    header('Location: ' . $this->url_server . '/usuario/principal');
+}
 ?>
 <div class="tarjeta-transparente d-grid g-2" style="padding: 0;">
     <div class="d-grid g-1">
@@ -38,6 +38,6 @@
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
     <script src="../public/js/ventas/no_tornillos.js"></script>
     <script src="../public/js/ventas/render/render_cotizacion_admin.js"></script>
-<?php } else {?>
-        <script src="../public/js/ventas/render/render_cotizacion_usuario.js"></script>
-<?php }?>
+<?php } else { ?>
+    <script src="../public/js/ventas/render/render_cotizacion_usuario.js"></script>
+<?php } ?>

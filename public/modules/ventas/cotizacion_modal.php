@@ -8,10 +8,14 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
         </div>
         <div class="contenido_modal">
             <form id="form_reg_cotizacion" style="padding: 0px 5px;">
-                <div class="d-grid g-1">
+                <div class="d-grid g-2">
                     <span style="margin: 0;" data-pegar="pegar-todo" class="btn btn-transparent btn-icon d-flex justify-center" title="Pegar información del portapapeles">
                         <i data-pegar="pegar-todo" class="material-icons-round">content_paste_go</i>
                         Pegar Pedido
+                    </span>
+                    <span title="Selecciona el Factor" class="btn btn-icon d-flex justify-center" data-modal="modal-factor">
+                        <i data-modal="modal-factor" class="material-icons">grid_on</i>
+                        Factor
                     </span>
                 </div>
                 <p style="padding: 15px 0px 30px 0px;" class="txt-right">Información general:</p>
@@ -485,6 +489,107 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                     <?php } ?>
                 </thead>
                 <tbody id="body_historial"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="modal-factor" class="modal modal-izquierda width-05">
+    <div class="titulo_modal d-flex justify-between align-content-center" style="padding: 0;">
+        <h2 id="numero_salida_almacen">Factor </h2>
+        <button style="margin: 0px;" class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-factor">close</button>
+    </div>
+    <div class="contenido_modal">
+        <div class="d-grid g-1">
+            <table class="table table_salida lista_salida" id="table">
+                <thead>
+                    <tr>
+                        <th>DIAMETRO</th>
+                        <th>AMERICANO</th>
+                        <th>2.32</th>
+                        <th>3-48</th>
+                        <th>4-40</th>
+                        <th>5-40</th>
+                        <th>6-32</th>
+                        <th>8-18</th>
+                        <th>10-32</th>
+                        <th>12-28</th>
+                        <th>1/4-28</th>
+                        <th>5/16</th>
+                        <th>´3/8-16</th>
+                        <th>´7/16</th>
+                        <th>´1/2</th>
+                    </tr>
+                    <tr>
+                        <th>DIAMETRO</th>
+                        <th>MILIMETRICO</th>
+                        <th></th>
+                        <th>M2.5</th>
+                        <th></th>
+                        <th>M3</th>
+                        <th>M3.5</th>
+                        <th>M4</th>
+                        <th>´3/16</th>
+                        <th>M5</th>
+                        <th>M6</th>
+                        <th>M8</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>LONGITUD</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>´1/8</th>
+                        <th></th>
+                        <th>5-32</th>
+                        <th></th>
+                        <th>´7/32</th>
+                        <th>14</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>PULGADA</th>
+                        <th>M.M.</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>´5-20</th>
+                        <th></th>
+                        <th>´7-20</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>3/16<br>(0.188)</th>
+                        <th>4.76</th>
+                        <th></th>
+                        <th></th>
+                        <th>0.30</th>
+                        <th>0.40</th>
+                        <th>0.53</th>
+                        <th>0.81</th>
+                        <th></th>
+                        <th></th>
+                        <th>2.44</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>5.25</th>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>

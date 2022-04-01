@@ -20,7 +20,7 @@
     </a>
     <a class="<?php if ($this->item_menu[1] == 'orden') { echo 'active'; } else { echo ''; }; ?>" title="Ordenes de Producción" href="<?php echo $this->url_server; ?>/usuario/orden">
         <i class="material-icons icon">engineering</i>
-        Ordenes de Producciòn
+        Ordenes de Producción
     </a>
     <a class="<?php if ($this->item_menu[1] == 'compra') { echo 'active'; } else { echo ''; }; ?>" title="Ordenes de Compra" href="<?php echo $this->url_server; ?>/usuario/compra">
         <i class="material-icons icon">local_mall</i>
