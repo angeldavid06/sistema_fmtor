@@ -2,6 +2,7 @@ const dato = {aux: 0}
 const form = document.getElementById("form_reg_cotizacion");
 const form_act_cot = document.getElementById("form_act_solo_cotizacion");
 const form_act_pedido = document.getElementById("form_act_cotizacion");
+let costos_obtenidos = null;
 
 form.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -89,6 +90,11 @@ const obtener_clientes = () => {
     });
 };
 
+const obtener_valores_cotizacion = () => {
+    const respuesta = fetchAPI('', url + "/config/auxiliar_doc_ventas.json","")
+    costos_obtenidos=respuesta
+}
+
 const eliminarPedido = () => {
     const respuesta = fetchAPI('',url+'/ventas/cotizacion/eliminar_pedido?id='+dato.aux,'')
     respuesta.then(json => {
@@ -100,16 +106,6 @@ const eliminarPedido = () => {
         }
     })    
 }
-
-const portapapeles_pegar_cliente = () => {
-    navigator.clipboard.readText().then((clipText) => {
-        const json = JSON.parse(clipText);
-        console.log(json);
-        // const salida = json["salida"];
-
-        // colocar_cliente(salida[0].razon_social);
-    });
-};
 
 const colocar_cliente = (cliente) => {
     const select = document.getElementById("Id_Clientes_2");
@@ -281,9 +277,16 @@ document.addEventListener('click', (evt) => {
         }
     } else if (evt.target.dataset.p) {
         portapapeles_pegar_tornillo(evt.target.dataset.p);
+    } else if (evt.target.dataset.factor) {
+        if (!evt.target.dataset.factor.includes('/')) {
+            document.getElementById("factor_1").value = evt.target.dataset.factor;
+        }
+    } else if (evt.target.dataset.calcular) {
+        calcular();
     }
 })
 
 document.addEventListener('DOMContentLoaded', () => {
     obtener_clientes();
+    obtener_valores_cotizacion();
 })

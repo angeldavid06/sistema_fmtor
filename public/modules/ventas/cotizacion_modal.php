@@ -91,8 +91,8 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                                 <select class="input" name="Acabado_1" id="Acabado_1">
                                     <option value="">Selecciona un acabado</option>
                                     <option value="TROPICALIZADO">TROPICALIZADO</option>
-                                    <option value="GALVANIZADO">GALVANIZADO Blanco</option>
-                                    <option value="GALVANIZADO">GALVANIZADO Azul/GALVANIZADO Electrolitico Azul</option>
+                                    <option value="GALVANIZADO BLANCO">GALVANIZADO Blanco</option>
+                                    <option value="GALVANIZADO AZUL">GALVANIZADO Azul/GALVANIZADO Electrolitico Azul</option>
                                     <option value="ZINCADO NEGRO">ZINCADO NEGRO</option>
                                     <option value="NÍQUEL">NÍQUEL</option>
                                     <option value="PULIDO">PULIDO</option>
@@ -114,7 +114,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                                     <p>Costo:</p>
                                     <input class="input" type="text" name="Precio_millar_1" id="Precio_millar_1">
                                 </div>
-                                <label class="btn btn-icon-self material-icons" title="Obtener Costo" style="margin: 0px 0px 0px 5px;">attach_money</label>
+                                <label data-calcular="true" class="btn btn-icon-self material-icons" title="Obtener Costo" style="margin: 0px 0px 0px 5px;">attach_money</label>
                             </div>
                         </div>
                     </div>
@@ -494,102 +494,14 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
     </div>
 </div>
 <div id="modal-factor" class="modal modal-izquierda width-05">
-    <div class="titulo_modal d-flex justify-between align-content-center" style="padding: 0;">
+    <div class="titulo_modal d-flex justify-between align-content-center">
         <h2 id="numero_salida_almacen">Factor </h2>
-        <button style="margin: 0px;" class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-factor">close</button>
+        <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-factor">close</button>
     </div>
     <div class="contenido_modal">
         <div class="d-grid g-1">
-            <table class="table table_salida lista_salida" id="table">
-                <thead>
-                    <tr>
-                        <th>DIAMETRO</th>
-                        <th>AMERICANO</th>
-                        <th>2.32</th>
-                        <th>3-48</th>
-                        <th>4-40</th>
-                        <th>5-40</th>
-                        <th>6-32</th>
-                        <th>8-18</th>
-                        <th>10-32</th>
-                        <th>12-28</th>
-                        <th>1/4-28</th>
-                        <th>5/16</th>
-                        <th>´3/8-16</th>
-                        <th>´7/16</th>
-                        <th>´1/2</th>
-                    </tr>
-                    <tr>
-                        <th>DIAMETRO</th>
-                        <th>MILIMETRICO</th>
-                        <th></th>
-                        <th>M2.5</th>
-                        <th></th>
-                        <th>M3</th>
-                        <th>M3.5</th>
-                        <th>M4</th>
-                        <th>´3/16</th>
-                        <th>M5</th>
-                        <th>M6</th>
-                        <th>M8</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th>LONGITUD</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th>´1/8</th>
-                        <th></th>
-                        <th>5-32</th>
-                        <th></th>
-                        <th>´7/32</th>
-                        <th>14</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th>PULGADA</th>
-                        <th>M.M.</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th>´5-20</th>
-                        <th></th>
-                        <th>´7-20</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>3/16<br>(0.188)</th>
-                        <th>4.76</th>
-                        <th></th>
-                        <th></th>
-                        <th>0.30</th>
-                        <th>0.40</th>
-                        <th>0.53</th>
-                        <th>0.81</th>
-                        <th></th>
-                        <th></th>
-                        <th>2.44</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th>5.25</th>
-                    </tr>
-                </tbody>
+            <table class="table table_salida lista_salida" >
+                <tbody id="factores"></tbody>
             </table>
         </div>
     </div>

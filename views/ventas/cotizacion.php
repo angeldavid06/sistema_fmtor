@@ -3,6 +3,24 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
     header('Location: ' . $this->url_server . '/usuario/principal');
 }
 ?>
+<style>
+    .th {
+        cursor: pointer;
+        background-color: transparent;
+    }
+
+    .th:hover {
+        background-color: var(--background-button);
+    }
+
+    .contenido_modal table tbody .tr {
+        background-color: var(--background-body);
+    }
+
+    .contenido_modal table tbody .tr:hover {
+        background-color: rgba(100, 100, 100, 0.02) !important;
+    }
+</style>
 <div class="tarjeta-transparente d-grid g-2" style="padding: 0;">
     <div class="d-grid g-1">
         <h1>Cotizaciones</h1>
@@ -33,8 +51,10 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
     </table>
 </div>
 <?php require_once 'public/modules/ventas/cotizacion_modal.php'; ?>
-<script src="../public/js/ventas/functions_cotizacion.js"></script>
 <script src="../public/js/ventas/filtros_cotizacion.js"></script>
+<script src="../public/js/ventas/functions_cotizacion.js"></script>
+<script src="../public/js/ventas/costos.js"></script>
+<script src="../public/js/ventas/render/render_factor.js"></script>
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
     <script src="../public/js/ventas/no_tornillos.js"></script>
     <script src="../public/js/ventas/render/render_cotizacion_admin.js"></script>

@@ -107,4 +107,5 @@ document.addEventListener("click", (evt) => {
 
 document.addEventListener("DOMContentLoaded", () => {
     buscar_mes_actual()
+    render_factor();
 });

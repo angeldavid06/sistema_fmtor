@@ -7,19 +7,23 @@
     <title>Document</title>
 </head>
 <style>
-    td {
+    .th {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        padding: 5px;
+        /* padding: 5px; */
         font-weight: 600;
         font-size: 0.7em;
-        cursor: copy;
+        cursor: pointer;
     }
 
-    td:nth-child(even) {
+    .th:hover { 
+        background-color: red;
+    }
+
+    /* th:nth-child(even) {
         background-color: rgba(0, 0, 0, 0.2);
-    }
+    } */
 
-    table tr:hover {
+    table .tr:hover {
         background-color: rgba(0, 0, 0, 0.2);
     }
 </style>
