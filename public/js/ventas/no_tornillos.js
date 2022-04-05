@@ -56,8 +56,8 @@ const render_nuevo_tornillo = (cantidad_t) => {
                                                     '<select class="input" name="Acabado_'+t+'" id="Acabado_'+t+'">'+
                                                         '<option value="">Selecciona un acabado</option>'+
                                                         '<option value="TROPICALIZADO">TROPICALIZADO</option>'+
-                                                        '<option value="GALVANIZADO">GALVANIZADO Blanco</option>'+
-                                                        '<option value="GALVANIZADO">GALVANIZADO Azul/GALVANIZADO Electrolitico Azul</option>'+
+                                                        '<option value="GALVANIZADO BLANCO">GALVANIZADO Blanco</option>'+
+                                                        '<option value="GALVANIZADO AZUL">GALVANIZADO Azul/GALVANIZADO Electrolitico Azul</option>'+
                                                         '<option value="ZINCADO NEGRO">ZINCADO NEGRO</option>'+
                                                         '<option value="NÍQUEL">NÍQUEL</option>'+
                                                         '<option value="PULIDO">PULIDO</option>'+
@@ -77,9 +77,9 @@ const render_nuevo_tornillo = (cantidad_t) => {
                                                 '<div class="d-flex justify-center align-content-center">'+
                                                     '<div class="d-grid g-1 grid-gap-0">'+
                                                         '<p>Costo:</p>'+
-                                                        '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'">'+
+                                                        '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'" value="0.0">'+
                                                     '</div>'+
-                                                    '<label class="btn btn-icon-self material-icons" title="Obtener Costo" style="margin: 0px 0px 0px 5px;">attach_money</label>'+
+                                                    '<label data-calcular="'+t+'" class="btn btn-icon-self material-icons" title="Obtener Costo" style="margin: 0px 0px 0px 5px;">attach_money</label>'+
                                                 '</div>'+
                                             '</div>';
     contenedor_tornillos.appendChild(tornillo)
@@ -161,8 +161,8 @@ const render_form_tornillo = (c) => {
                                                     '<select class="input" name="Acabado_'+t+'" id="Acabado_'+t+'">'+
                                                         '<option value="">Selecciona un acabado</option>'+
                                                         '<option value="TROPICALIZADO">TROPICALIZADO</option>'+
-                                                        '<option value="GALVANIZADO">GALVANIZADO Blanco</option>'+
-                                                        '<option value="GALVANIZADO">GALVANIZADO Azul/GALVANIZADO Electrolitico Azul</option>'+
+                                                        '<option value="GALVANIZADO BLANCO">GALVANIZADO Blanco</option>'+
+                                                        '<option value="GALVANIZADO AZUL">GALVANIZADO Azul/GALVANIZADO Electrolitico Azul</option>'+
                                                         '<option value="ZINCADO NEGRO">ZINCADO NEGRO</option>'+
                                                         '<option value="NÍQUEL">NÍQUEL</option>'+
                                                         '<option value="PULIDO">PULIDO</option>'+
@@ -182,9 +182,9 @@ const render_form_tornillo = (c) => {
                                                 '<div class="d-flex justify-center align-content-center">'+
                                                     '<div class="d-grid g-1 grid-gap-0">'+
                                                         '<p>Costo:</p>'+
-                                                        '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'">'+
+                                                        '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'" value="0.0">'+
                                                     '</div>'+
-                                                    '<label class="btn btn-icon-self material-icons" title="Obtener Costo" style="margin: 0px 0px 0px 5px;">attach_money</label>'+
+                                                    '<label data-calcular="'+t+'" class="btn btn-icon-self material-icons" title="Obtener Costo" style="margin: 0px 0px 0px 5px;">attach_money</label>'+
                                                 '</div>'+
                                             '</div>'+
                                         '</div>';

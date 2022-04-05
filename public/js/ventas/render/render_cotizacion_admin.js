@@ -156,7 +156,6 @@ const colocar_informacion_tornillos = (pedidos) => {
 const portapapeles_pegar_tornillo = (form) => {
     navigator.clipboard.readText().then((clipText) => {
         const json = JSON.parse(clipText);
-        console.log(json);
         const pedido = json["pedido"];
 
         pedido.forEach((el) => {
@@ -186,6 +185,17 @@ const portapapeles_pegar = () => {
         colocar_informacion_tornillos(pedidos);
     });
 };
+
+const portapapeles_copiar_factor = (factor) => {
+    navigator.clipboard.writeText(factor).then(
+        function () {
+            open_alert("Factor copiado: "+factor, "azul");
+        },
+        function () {
+            open_alert("Contenido no copiado", "naranja");
+        }
+    );
+}
 
 const portapapeles_copiar = (el, pedido) => {
     const respuesta = fetchAPI("",url + "/ventas/cotizacion/copiar_informacion?aux=" + el + "&pedido=" + pedido,"");
@@ -279,10 +289,10 @@ document.addEventListener('click', (evt) => {
         portapapeles_pegar_tornillo(evt.target.dataset.p);
     } else if (evt.target.dataset.factor) {
         if (!evt.target.dataset.factor.includes('/')) {
-            document.getElementById("factor_1").value = evt.target.dataset.factor;
+            portapapeles_copiar_factor(evt.target.dataset.factor);
         }
     } else if (evt.target.dataset.calcular) {
-        calcular();
+        calcular(evt.target.dataset.calcular);
     }
 })
 

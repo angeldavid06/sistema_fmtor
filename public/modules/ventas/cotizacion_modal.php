@@ -9,11 +9,11 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
         <div class="contenido_modal">
             <form id="form_reg_cotizacion" style="padding: 0px 5px;">
                 <div class="d-grid g-2">
-                    <span style="margin: 0;" data-pegar="pegar-todo" class="btn btn-transparent btn-icon d-flex justify-center" title="Pegar información del portapapeles">
+                    <span style="margin: 0;" data-pegar="pegar-todo" class="btn btn-icon d-flex justify-center" title="Pegar información del portapapeles">
                         <i data-pegar="pegar-todo" class="material-icons-round">content_paste_go</i>
                         Pegar Pedido
                     </span>
-                    <span title="Selecciona el Factor" class="btn btn-icon d-flex justify-center" data-modal="modal-factor">
+                    <span title="Selecciona el Factor" class="btn btn-transparent btn-icon d-flex justify-center" data-modal="modal-factor">
                         <i data-modal="modal-factor" class="material-icons">grid_on</i>
                         Factor
                     </span>
@@ -37,8 +37,8 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                         <p style="padding: 15px 0px 30px 0px;" class="txt-left" id="cantidad_tornillos_pedidos">Información del tornillo (1):</p>
                     </div>
                     <div class="d-flex justify-right align-content-center">
-                        <span data-tornillo="mas" class="btn btn-transparent btn-icon-self material-icons">add</span>
-                        <span data-tornillo="menos" class="btn btn-transparent btn-icon-self material-icons">remove</span>
+                        <span data-tornillo="mas" class="btn btn-transparent btn-icon-self material-icons" title="Un tornillo más">add</span>
+                        <span data-tornillo="menos" class="btn btn-transparent btn-icon-self material-icons" title="Un tornillo menos">remove</span>
                     </div>
                 </div>
                 <div id="tornillos">
@@ -112,9 +112,9 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                             <div class="d-flex justify-center align-content-center">
                                 <div class="d-grid g-1 grid-gap-0">
                                     <p>Costo:</p>
-                                    <input class="input" type="text" name="Precio_millar_1" id="Precio_millar_1">
+                                    <input class="input" type="text" name="Precio_millar_1" id="Precio_millar_1" value="0.0">
                                 </div>
-                                <label data-calcular="true" class="btn btn-icon-self material-icons" title="Obtener Costo" style="margin: 0px 0px 0px 5px;">attach_money</label>
+                                <label data-calcular="1" class="btn btn-icon-self material-icons" title="Obtener Costo" style="margin: 0px 0px 0px 5px;">attach_money</label>
                             </div>
                         </div>
                     </div>
@@ -500,7 +500,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
     </div>
     <div class="contenido_modal">
         <div class="d-grid g-1">
-            <table class="table table_salida lista_salida" >
+            <table class="table table_salida lista_salida">
                 <tbody id="factores"></tbody>
             </table>
         </div>
