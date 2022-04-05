@@ -42,7 +42,7 @@
 <script src="../public/js/ventas/functions_salida.js?1.3"></script>
 <script src="../public/js/ventas/filtros.js"></script>
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-    <script src="../public/js/ventas/no_tornillos.js"></script>
+    <!-- <script src="../public/js/ventas/no_tornillos.js"></script> -->
     <script src="../public/js/ventas/render/render_salidas_admin.js"></script>
 <?php } else {?>
         <script src="../public/js/ventas/render/render_salidas_usuario.js"></script>
