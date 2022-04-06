@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="pos_1" id="pos_1">
+    <input type="text" name="pos_2" id="pos_2">
+    
+<script>
+    function mousemove(event){
+        // console.log("pageX: ",event.pageX, 
+        // "pageY: ", event.pageY, 
+        // "clientX: ", event.clientX, 
+        // "clientY:", event.clientY)
+        document.getElementById('pos_1').value = event.pageX
+        document.getElementById('pos_2').value = event.pageY
+    }
+
+window.addEventListener('mousemove', mousemove);
+</script>
+</body>
+</html>
