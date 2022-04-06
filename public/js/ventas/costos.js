@@ -4,6 +4,7 @@ const calcular = (costo) => {
     const input_cantidad = document.getElementById("Cantidad_millares_"+costo)
     const input_factor = document.getElementById("factor_"+costo)
     const acabado = document.getElementById("Acabado_"+costo);
+    const tratamiento = document.getElementById("tratamiento_"+costo);
 
     if (input_cantidad.value == "") {
         open_alert("No ha introducido la cantidad", "naranja");
@@ -18,15 +19,19 @@ const calcular = (costo) => {
         acabado.focus()
     } else {
         if (input_cantidad.value < 100) {
-            menos_100k(input_factor,acabado,costo)
+            menos_100k(input_factor,acabado,costo,tratamiento)
         } else {
-            mas_100k(input_factor, acabado, costo);
+            mas_100k(input_factor, acabado, costo,tratamiento);
         }
     }
 }
 
-const menos_100k = (input_factor,acabado,costo) => {
+const menos_100k = (input_factor,acabado,costo,tratamiento) => {
     let costo_final = 0;
+    let tratamiento_mas = 0;
+    if (tratamiento.checked != false) {
+      tratamiento_mas = 12;
+    }
     if (parseFloat(input_factor.value) < 4) {
         costos_obtenidos.then(costos => {
             if (acabado.value == 'GALVANIZADO BLANCO' || acabado.value == 'GALVANIZADO AZUL') {
@@ -63,7 +68,7 @@ const menos_100k = (input_factor,acabado,costo) => {
                   input_factor.value * 33) *
                 1.3;
             }
-            document.getElementById("Precio_millar_"+costo).value = new Intl.NumberFormat('es-MX').format(costo_final);
+            document.getElementById("Precio_millar_"+costo).value = new Intl.NumberFormat('es-MX').format(costo_final+tratamiento_mas);
         })
     } else {
         costos_obtenidos.then(costos => {
@@ -112,14 +117,18 @@ const menos_100k = (input_factor,acabado,costo) => {
                   143) *
                 1.4;
             }
-            document.getElementById("Precio_millar_"+costo).value = new Intl.NumberFormat('es-MX').format(costo_final);
+            document.getElementById("Precio_millar_"+costo).value = new Intl.NumberFormat('es-MX').format((costo_final+tratamiento_mas));
         })
     }
 }
 
-const mas_100k = (input_factor,acabado,costo) => {
+const mas_100k = (input_factor,acabado,costo,tratamiento) => {
     let costo_final = 0;
-        if (parseFloat(input_factor.value) < 4) {
+    let tratamiento_mas = 0; 
+    if (tratamiento.checked != false) {
+      tratamiento_mas = 12;
+    }
+    if (parseFloat(input_factor.value) < 4) {
         costos_obtenidos.then(costos => {
             if (acabado.value == 'GALVANIZADO BLANCO' || acabado.value == 'GALVANIZADO AZUL') {
                 costo_final = 3.25 * input_factor.value * costos.cotizacion.costo.acero * 1.3
@@ -163,7 +172,7 @@ const mas_100k = (input_factor,acabado,costo) => {
                   10 * input_factor.value) *
                 1.3;
             }
-            document.getElementById("Precio_millar_"+costo).value = new Intl.NumberFormat('es-MX').format(costo_final);
+            document.getElementById("Precio_millar_"+costo).value = new Intl.NumberFormat('es-MX').format((costo_final + tratamiento_mas));
         })
     } else {
         costos_obtenidos.then(costos => {
@@ -215,7 +224,7 @@ const mas_100k = (input_factor,acabado,costo) => {
                   130) *
                 1.4;
             }
-            document.getElementById("Precio_millar_"+costo).value = new Intl.NumberFormat('es-MX').format(costo_final);
+            document.getElementById("Precio_millar_"+costo).value = new Intl.NumberFormat('es-MX').format(costo_final+tratamiento_mas);
         })
     }
 }

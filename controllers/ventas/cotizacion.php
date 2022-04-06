@@ -69,7 +69,11 @@
                         $this->pedido->setFecha_entrega($_POST['Fecha_entrega_'.$i]);
                         $this->pedido->setPrecio_millar($_POST['Precio_millar_'.$i]);
                         $this->pedido->setCodigo($_POST['Codigo_'.$i]);
-                        
+                        if (isset($_POST['tratamiento_' . $i]) && $_POST['tratamiento_' . $i] == 'on') {
+                            $this->pedido->setTratamiento('T/TERMICO');
+                        } else {
+                            $this->pedido->setTratamiento('0');
+                        }
                         $result_2 = $this->pedido->insertarPedido();
                         if (!$result_2) {
                             $aux = 2;

@@ -7,7 +7,6 @@ const limpiar_tabla = () => {
     }
 
     table.removeChild(tfoot[0])
-    // console.log(tfoot);
 }
 
 const form_filtros = document.getElementById('form-filtros');

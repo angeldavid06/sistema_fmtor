@@ -76,6 +76,12 @@ const render_nuevo_tornillo = (cantidad_t) => {
                                             '<div class="d-grid g-2">'+
                                                 '<div class="d-flex justify-center align-content-center">'+
                                                     '<div class="d-grid g-1 grid-gap-0">'+
+                                                        '<input type="checkbox" name="tratamiento_'+t+'" id="tratamiento_'+t+'" >'+
+                                                        '<label class="lbl-checkbox"  for="tratamiento_'+t+'">T / Termico</label>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="d-flex justify-center align-content-center">'+
+                                                    '<div class="d-grid g-1 grid-gap-0">'+
                                                         '<p>Costo:</p>'+
                                                         '<input class="input" type="text" name="Precio_millar_'+t+'" id="Precio_millar_'+t+'" value="0.0">'+
                                                     '</div>'+
@@ -179,6 +185,12 @@ const render_form_tornillo = (c) => {
                                                 '</div>'+
                                             '</div>'+
                                             '<div class="d-grid g-2">'+
+                                                '<div class="d-flex justify-center align-content-center">'+
+                                                    '<div class="d-grid g-1 grid-gap-0">'+
+                                                        '<input type="checkbox" name="tratamiento_'+t+'" id="tratamiento_'+t+'" >'+
+                                                        '<label class="lbl-checkbox" for="tratamiento_'+t+'">T / Termico</label>'+
+                                                    '</div>'+
+                                                '</div>'+
                                                 '<div class="d-flex justify-center align-content-center">'+
                                                     '<div class="d-grid g-1 grid-gap-0">'+
                                                         '<p>Costo:</p>'+

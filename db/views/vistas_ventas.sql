@@ -97,6 +97,7 @@ SELECT
     t_pedido.Acabado AS acabado,
     t_pedido.Material AS material,
     t_pedido.Factor AS factor,
+    t_pedido.Tratamiento AS tratamiento,
     t_pedido.Id_Pedido
 FROM
     t_clientes,

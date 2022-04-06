@@ -111,6 +111,12 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                         <div class="d-grid g-2">
                             <div class="d-flex justify-center align-content-center">
                                 <div class="d-grid g-1 grid-gap-0">
+                                    <input type="checkbox" data-radio="checkbox" name="tratamiento_1" id="tratamiento_1" >
+                                    <label class="lbl-checkbox" id="lbl_checkbox_salida" for="tratamiento_1">T / Termico</label>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-center align-content-center">
+                                <div class="d-grid g-1 grid-gap-0">
                                     <p>Costo:</p>
                                     <input class="input" type="text" name="Precio_millar_1" id="Precio_millar_1" value="0.0">
                                 </div>

@@ -13,6 +13,7 @@
         public $Pedido_pza;
         public $Fecha_entrega;
         public $Precio_millar;
+        public $Tratamiento;
         public $Codigo;
         public $No_Pedido;
 
@@ -83,6 +84,10 @@
             $this->No_Pedido = $No_Pedido;
         }
 
+        public function setTratamiento($Tratamiento): void{
+            $this->Tratamiento = $Tratamiento;
+        }
+
         public function insertarSalida() {
         }
         
@@ -92,7 +97,7 @@
 
             $obj_2 = new Model();
             $tabla = 't_pedido';
-            $parametros = 'Descripcion,Medida,Acabado,Factor,Material,Cantidad_millares,Pedido_pza,Fecha_entrega,Precio_Millar,Codigo,Id_Cotizacion_FK';
+            $parametros = 'Descripcion,Medida,Acabado,Factor,Material,Cantidad_millares,Pedido_pza,Fecha_entrega,Precio_Millar,Tratamiento,Codigo,Id_Cotizacion_FK';
             $values =   "
                 '$this->Descripcion',
                 '$this->Medida',
@@ -103,6 +108,7 @@
                 '$this->Pedido_pza',
                 '$this->Fecha_entrega',
                 '$this->Precio_millar',
+                '$this->Tratamiento',
                 '$this->Codigo','".
                 $id_pedido[0]['id_cotizacion']."'";
             $validacion = $obj_2->insertar($tabla, $parametros, $values);

@@ -149,6 +149,9 @@ const colocar_informacion_tornillos = (pedidos) => {
         document.getElementById("factor_" + i).value = el.factor;
         colocar_acabado(el.acabado, i);
         document.getElementById("Material_" + i).value = el.material;
+        if (el.tratamiento == 'T/TERMICO') {
+            document.getElementById("tratamiento_" + i).checked = true;
+        }
         i++;
     });
 };
