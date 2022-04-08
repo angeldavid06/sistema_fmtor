@@ -4,7 +4,7 @@
             <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
         </div>
         <div class="contenido_modal">
-            <form id="form_reg_salida">
+            <form id="form_reg_salida" style="padding: 0px 5px;">
                 <p style="padding: 0px 0px 30px 0px;" class="txt-right">Información general:</p>
                 <div class="d-grid g-2">
                     <div class="d-grid g-1 grid-gap-0">
@@ -12,11 +12,12 @@
                         <input class="input" type="date" name="Fecha" id="Fecha">
                     </div>
                     <div class="d-grid g-1 grid-gap-0">
-                        <p>Cliente:</p>
-                        <select class="input" name="Id_Clientes_2" id="Id_Clientes_2">
-                            <option value="">Selecciona un cliente</option>
+                        <p>Cotización:</p>
+                        <select class="input" name="cotizacion" id="cotizacion">
+                            <option value="">Selecciona una cotización</option>
                         </select>
                     </div>
+                    <input type="text" name="cantidad_tornillos" id="cantidad_tornillos" hidden>
                 </div>
                 <!-- <div class="d-grid g-2">
                     <div class="d-grid g-1">
@@ -28,7 +29,7 @@
                     </div>
                 </div> -->
                 <div id="tornillos">
-                    <div class="tornillo" id="tornillo-1">
+                    <!-- <div class="tornillo" id="tornillo-1">
                         <div class="d-grid g-2">
                             <div class="d-grid g-1">
                                 <input type="checkbox" name="sin_op_1" id="sin_op_1">
@@ -49,19 +50,12 @@
                                 <input class="input" type="number" name="cantidad_producir_1" id="cantidad_producir_1">
                             </div>
                         </div>
-                        <!-- <div class="d-grid g-2">
-                            <div class="d-flex align-content-bottom justify-left">
-                                <input type="checkbox" name="tratamiento_1" id="tratamiento_1">
-                                <label class="lbl-checkbox" for="tratamiento_1" style="margin: 0px 0px 30px 0px;">T/TERMICO</label>
-                            </div>
-                        </div> -->
-                    </div>
+                    </div> -->
                 </div>
                 <div class="d-grid g-1">
                     <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Registrar</button>
                 </div>
                 <div class="d-grid g-2">
-                    <!-- <button data-btn="insertar" class="btn" id="btn-form-control-registrar">Registrar</button> -->
                     <label class="btn btn-transparent txt-center" id="btn-limpiar">Limpiar</label>
                     <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-ingresar">Cancelar</label>
                 </div>
@@ -186,7 +180,6 @@
         </div>
     </div>
 
-
     <div id="modal-actualizar-salida" class="modal modal-derecha">
         <div class="titulo_modal d-flex justify-between align-content-center">
             <h2>Actualizar Salida</h2>
@@ -214,5 +207,39 @@
                     <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-actualizar-salida">Cancelar</label>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div id="modal-historial" class="modal modal-izquierda width-05">
+        <div class="titulo_modal d-flex justify-between align-content-center" style="padding: 0;">
+            <h2 id="numero_salida_almacen">Salida de Almacen: </h2>
+            <button style="margin: 0px;" class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial">close</button>
+        </div>
+        <div class="d-flex justify-right align-content-center">
+            <button style="margin: 0px;" class="btn btn-icon-self material-icons" data-modal="modal-pedido">add</button>
+        </div>
+        <div class="contenido_modal">
+            <div class="d-grid g-1">
+                <table class="table table_salida lista_salida" id="table">
+                    <thead>
+                        <th style="min-width: 150px;">N° parte de cliente </th>
+                        <th style="min-width: 100px;">Pedido Cliente</th>
+                        <th style="min-width: 150px;">Descripcion </th>
+                        <th style="min-width: 100px;">Medida</th>
+                        <th style="min-width: 100px;">Factor</th>
+                        <th>Acabado</th>
+                        <th>Material </th>
+                        <th>Cantidad</th>
+                        <th style="min-width: 100px;">Costo</th>
+                        <th style="min-width: 100px;">Fecha de entrega</th>
+                        <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+                            <th style="min-width: 60px;"></th>
+                            <th style="min-width: 60px;"></th>
+                            <th style="min-width: 60px;"></th>
+                        <?php } ?>
+                    </thead>
+                    <tbody id="body_historial"></tbody>
+                </table>
+            </div>
         </div>
     </div>

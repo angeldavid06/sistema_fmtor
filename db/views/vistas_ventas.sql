@@ -5,7 +5,8 @@ SELECT
     t_salida_almacen.Id_Folio AS id_folio,
     t_clientes.Id_Clientes AS Id_Clientes,
     t_clientes.Razon_social AS razon_social,
-    t_salida_almacen.Fecha AS fecha
+    t_salida_almacen.Fecha AS fecha,
+    t_cotizacion.Id_Cotizacion AS id_cotizacion
 FROM
     t_cotizacion,
     t_salida_almacen,

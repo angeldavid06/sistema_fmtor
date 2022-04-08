@@ -22,8 +22,6 @@
             <th style="min-width: 150px;">Cliente</th>
             <th style="min-width: 100px;">Fecha</th>
             <th style="max-width: 80px;"></th>
-            <th style="max-width: 80px;"></th>
-            <th style="max-width: 80px;"></th>
             <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
                 <th style="max-width: 80px;"></th>
                 <th style="max-width: 80px;"></th>

@@ -36,7 +36,7 @@
             <th style="min-width: 100px;">Fecha de entrega</th>
             <th>Salida</th>
         </thead>
-        <tbody class="body body_orden"></tbody>
+        <tbody id="body_orden" class="body body_orden"></tbody>
     </table>
 </div>
 <?php require_once 'public/modules/ventas/orden_modal.php'; ?>

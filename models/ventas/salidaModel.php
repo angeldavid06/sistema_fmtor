@@ -130,45 +130,18 @@
         public function insertarSalida()
         {
             $tabla = 't_salida_almacen';
-            $parametros = 'Id_Clientes_FK,Fecha';
+            $parametros = 'Id_Cotizacion_FK,Fecha';
             $values =   "'$this->Id_Clientes_2', '$this->Fecha'";
             $validacion = Model::insertar($tabla, $parametros, $values);
             return $validacion;
         }
-        
-        public function insertarPedido () {
-            $obj = new Model();
-            $id_pedido = $obj->buscar_personalizado('t_salida_almacen', 'Id_Folio', '1 ORDER BY Id_Folio DESC LIMIT 1');
-
-            $obj_2 = new Model();
-            $tabla = 't_pedido';
-            $parametros = 'Descripcion,Medida,Acabado,Factor,Material,Tratamiento,Cantidad_millares,Pedido_pza,Fecha_entrega,Precio_Millar,Codigo,Id_Salida_FK';
-            $values =   "
-                '$this->Descripcion',
-                '$this->Medida',
-                '$this->Acabado',
-                '$this->Factor',
-                '$this->Material',
-                '$this->Tratamiento',
-                '$this->Cantidad_millares', 
-                '$this->Pedido_pza',
-                '$this->Fecha_entrega',
-                '$this->Precio_millar',
-                '$this->Codigo',
-                '".$id_pedido[0]['Id_Folio']."'";
-            $validacion = $obj_2->insertar($tabla, $parametros, $values);
-            return $validacion;    
-        }
 
         public function insertarOrden () {
             $obj = new Model();
-            $id_pedido = $obj->buscar_personalizado('t_pedido','Id_Pedido','1 ORDER BY Id_Pedido DESC LIMIT 1');
-
-            $obj2 = new Model();
             $tabla = 't_orden_produccion';
             $parametros = 'Id_Catalogo_FK,cantidad,Id_Pedido_FK';
-            $values = "'$this->Dibujo','$this->Cantidad_producir','".$id_pedido[0]['Id_Pedido']."'";
-            $result = $obj2->insertar($tabla, $parametros, $values);
+            $values = "'$this->Dibujo','$this->Cantidad_producir','$this->No_Pedido'";
+            $result = $obj->insertar($tabla, $parametros, $values);
             return $result;
         }
 

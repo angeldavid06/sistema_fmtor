@@ -1,10 +1,9 @@
 const render_orden = (json) => {
-  const body = document.getElementsByClassName("body_orden");
-  body[0].innerHTML = "";
+  const body = document.getElementById("body_orden");
+  body.innerHTML = "";
   if (json.length > 0) {
     json.forEach((element) => {
-      if (element.Id_Folio != 1) {
-          body[0].innerHTML +=
+          body.innerHTML +=
             "<tr>" +
               '<td style="padding: 5px;"><button style="margin:0px;" title="Tarjeta de Flujo ('+element.Id_Folio+')" class= "btn-impresion material-icons-outlined btn btn-icon-self" data-tarjeta="'+element.Id_Folio+'">note_alt</button></td>' +
               '<td style="padding: 5px 0px;"><button style="margin:0px;" title="Orden de Producción ('+element.Id_Folio+')" class= "btn-impresion material-icons btn btn-icon-self btn-verde" data-imprimir="' + element.Id_Folio +'">splitscreen</button>' +
@@ -25,10 +24,9 @@ const render_orden = (json) => {
               "<td>" + element.fecha_entrega + "</td>" +
               "<td>" + element.Id_Salida_FK + "</td>" +
             "</tr>";
-      }
     });
   } else {
-        body[0].innerHTML +=
+        body.innerHTML +=
                     "<tr>" +
                         "<td colspan='17'>No hay ninguna orden de producción.</td>" +
                     "</tr>";

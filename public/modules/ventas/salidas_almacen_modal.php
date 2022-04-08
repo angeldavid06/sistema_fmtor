@@ -95,34 +95,3 @@
         </form>
     </div>
 </div>
-<div id="modal-historial" class="modal modal-izquierda width-05">
-    <div class="titulo_modal d-flex justify-between align-content-center">
-        <h2 id="numero_salida_almacen">Salida de Almacen: </h2>
-        <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial">close</button>
-    </div>
-    <div class="contenido_modal">
-        <table class="table table_salida lista_salida" id="table">
-            <thead>
-                <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                    <th></th>
-                    <th style="min-width: 80px;"></th>
-                <?php } ?>
-                <th>O.P</th>
-                <!-- <th style="min-width: 80px;">N° de salida </th>
-                    <th style="min-width: 150px;">Cliente</th> -->
-                <th style="min-width: 100px;">Factor</th>
-                <th style="min-width: 150px;">Descripcion </th>
-                <th style="min-width: 100px;">Medida</th>
-                <th>Acabado</th>
-                <th>Material </th>
-                <th>Cantidad</th>
-                <th style="min-width: 150px;">N° parte de cliente </th>
-                <th style="min-width: 100px;">Pedido Cliente</th>
-                <th style="min-width: 100px;">Costo</th>
-                <th style="min-width: 120px;">Numero de Dibujo </th>
-                <th style="min-width: 100px;">Fecha de entrega</th>
-            </thead>
-            <tbody id="body_historial"></tbody>
-        </table>
-    </div>
-</div>

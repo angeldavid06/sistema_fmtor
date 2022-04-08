@@ -15,7 +15,7 @@ SELECT
     t_pedido.Id_Pedido,
     t_pedido.Medida AS medida,
     t_pedido.Descripcion AS descripcion,
-    t_orden_produccion.Tratamiento AS tratamiento,
+    t_pedido.Tratamiento AS tratamiento,
     t_pedido.Material AS material,
     t_pedido.Acabado AS acabados,
     t_pedido.Precio_millar AS precio_millar,
@@ -48,7 +48,7 @@ SELECT
     t_salida_almacen.Fecha,
     t_orden_produccion.cantidad AS cantidad_elaborar,
     CONCAT(t_pedido.Descripcion, " ", t_pedido.Medida) AS descripcion,
-    t_orden_produccion.Tratamiento AS tratamiento,
+    t_pedido.Tratamiento AS tratamiento,
     t_pedido.Material AS material,
     t_pedido.Acabado AS acabados,
     t_orden_produccion.Id_Catalogo_FK AS plano
@@ -431,7 +431,7 @@ SELECT
     t_salida_almacen.Fecha,
     t_cotizacion.Id_Clientes_FK AS Clientes,
     CONCAT(t_pedido.Descripcion, " ", t_pedido.Medida) AS descripcion,
-    t_orden_produccion.Tratamiento AS tratamiento,
+    t_pedido.Tratamiento AS tratamiento,
     t_pedido.Material AS material,
     t_orden_produccion.Cantidad AS cantidad_elaborar,
     t_pedido.Precio_millar AS precio_millar,
@@ -472,7 +472,7 @@ SELECT
     t_programa_forjado.Fecha_entrega,
     t_programa_forjado.Herramental,
     t_programa_forjado.producto_desc,
-    t_orden_produccion.Tratamiento AS tratamiento,
+    t_pedido.Tratamiento AS tratamiento,
     t_pedido.Precio_millar * t_pedido.Cantidad_millares AS TOTAL,
     t_programa_forjado.no_maquina
 FROM 
