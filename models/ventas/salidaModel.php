@@ -182,7 +182,7 @@
 
         public function actualizarSoloSalida () {
             $values = "Fecha = '$this->Fecha', 
-                        Id_Clientes_FK = '$this->Id_Clientes_2'";
+                        Id_Cotizacion_FK = '$this->Id_Clientes_2'";
             $condicion = "Id_Folio = '$this->Salida'";
             $validacion = Model::actualizar('t_salida_almacen', $values, $condicion);
             return $validacion;

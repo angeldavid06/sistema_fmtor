@@ -234,7 +234,7 @@
                         <th style="min-width: 100px;">Fecha de entrega</th>
                         <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
                             <th style="min-width: 60px;"></th>
-                            <th style="min-width: 60px;"></th>
+                            <!-- <th style="min-width: 60px;"></th> -->
                             <th style="min-width: 60px;"></th>
                         <?php } ?>
                     </thead>

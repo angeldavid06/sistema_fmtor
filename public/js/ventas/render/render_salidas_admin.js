@@ -6,18 +6,24 @@ const render_salida = (json) => {
                                 '<td>'+el.id_folio+'</td>'+
                                 '<td>'+el.razon_social+'</td>'+
                                 '<td>'+el.fecha+'</td>'+
-                                '<td class=" txt-right"><button class="btn btn-amarillo btn-icon-self material-icons" data-modal="modal-actualizar-salida">edit</button></td>'+
+                                '<td class=" txt-right"><button class="btn btn-amarillo btn-icon-self material-icons" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button></td>'+
                                 '<td class=" txt-right"><button data-salida="'+el.id_folio+'" data-historial="' +el.id_cotizacion +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial">more_vert</button></td>'+
-                                '<td class=" txt-right"><button class="btn btn-transparent btn-icon-self material-icons">warehouse</button></td>'+
+                                '<td class=" txt-right"><button class="btn btn-transparent btn-icon-self material-icons" data-impresion="'+el.id_folio+'">warehouse</button></td>'+
                         '</tr>'
     })
 }
 
 const form = document.getElementById('form_reg_salida')
+const form_act = document.getElementById("form_act_solo_salida");
 
 form.addEventListener('submit', (evt) => {
     evt.preventDefault()
-    registrar_salida()
+    open_confirm('¿Estas seguro de registrar la salida de almacen?',registrar_salida)
+})
+
+form_act.addEventListener('submit', (evt) => {
+    evt.preventDefault()
+    open_confirm('¿Esta seguro de registrar los cambios?',actualizar_salida)
 })
 
 const registrar_salida = () => {
@@ -32,7 +38,21 @@ const registrar_salida = () => {
     })
 }
 
+const actualizar_salida = () => {
+    const respuesta = fetchAPI(form_act,url+'/ventas/salida/actualizar_solo_salida','POST')
+    respuesta.then(json => {
+        if (json == 1) {
+            open_alert('La información fue modificada correctamente','verde')
+            obtener()
+        } else {
+            open_alert('No se pudo modificar la información','rojo')
+        }
+    })
+}
+
+const select_filtros = document.getElementById("f_cliente");
 const select_cotizaciones = document.getElementById("cotizacion");
+const select_cotizaciones_2 = document.getElementById("Id_Clientes_2_e");
 
 select_cotizaciones.addEventListener('change', () => {
     obtener_pedidos(select_cotizaciones.value);
@@ -107,7 +127,9 @@ const render_pedidos = (json) => {
 
 const render_cotizaciones = (json) => {
     json.forEach(el => {
+        select_filtros.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
         select_cotizaciones.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
+        select_cotizaciones_2.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
     });
 }
 
@@ -115,6 +137,17 @@ const obtener_pedidos = (id) => {
     const respuesta = fetchAPI('',url+'/ventas/cotizacion/historial?id='+id,'')
     respuesta.then(json => {
         render_pedidos(json)
+    })
+}
+
+const obtener_salida = (id) => {
+    const respuesta = fetchAPI('',url+'/ventas/salida/obtener_salida?aux='+id,'')
+    respuesta.then(json => {
+        json.forEach(el => {
+            document.getElementById("Salida_e").value = el.Id_Folio;
+            document.getElementById('Fecha_e').value = el.Fecha
+            document.getElementById('Id_Clientes_2_e').value = el.Id_Cotizacion_FK
+        })
     })
 }
 
@@ -128,6 +161,8 @@ const obtener_cotizaciones = () => {
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.pedido) {
         ocultar_input(evt.target.dataset.pedido);
+    } else if (evt.target.dataset.editar) {
+        obtener_salida(evt.target.dataset.editar);
     }
 })
 
