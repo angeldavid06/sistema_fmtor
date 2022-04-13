@@ -1,16 +1,50 @@
+<div id="modal-tarjetas" class="modal modal-derecha">
+    <div class="titulo_modal d-flex justify-between align-content-center">
+        <h2>Tarjeta de Flujo</h2>
+        <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-tarjetas">close</button>
+    </div>
+    <div class="contenido_modal">
+        <form id="form_act_orden" style="padding: 0px 5px;">
+            <div class="d-grid g-1 grid-gap-0">
+                <div class="d-flex justify-between align-content-center" style="margin: 0px 0px 15px 0px;">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Primeras 5 tarjetas de flujo</p>
+                    </div>
+                    <label data-t5="true" class="btn btn-icon-self material-icons">description</label>
+                </div>
+                <div class="d-flex justify-between align-content-center">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>No. de Bote:</p>
+                        <input class="input" type="text" name="bote" id="bote" placeholder="Ingrese el numero de bote">
+                    </div>
+                    <label data-t1="true" class="btn btn-icon-self material-icons">description</label>
+                </div>
+            </div>
+            <div class="opciones d-flex flex-column">
+                <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-tarjetas">Cancelar</label>
+            </div>
+        </form>
+    </div>
+</div>
 <div id="modal-actualizar" class="modal modal-derecha">
     <div class="titulo_modal d-flex justify-between align-content-center">
-        <h2>Agrega Tratamiento de Orden </h2>
+        <h2>Modificar la Orden de Producción</h2>
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-actualizar">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form_act_orden">
-
+        <form id="form_act_orden" style="padding: 0px 5px;">
             <input type="number" name="id_folio_edit" id="id_folio_edit" hidden>
-            <p>T/Termico:</p>
-            <input class="input" type="text" name="Tratamiento_edit" id="Tratamiento_edit" placeholder="Ingrese el tratamiento">
-
-
+            <div class="d-grid g-2">
+                <input class="input" type="text" name="pedido_'+i+'" id="pedido_'+i+'" hidden>
+                <div class="d-grid g-1 grid-gap-0">
+                    <p id="t_plano_'+i+'">No. de Dibujo:</p>
+                    <input class="input" type="text" name="Dibujo_'+i+'" id="Dibujo_'+i+'" placeholder="Ingrese el numero de plano">
+                </div>
+                <div class="d-grid g-1 grid-gap-0">
+                    <p id="t_cantidad_'+i+'">Cantidad a Producir (millares):</p>
+                    <input class="input" type="number" name="cantidad_producir_'+i+'" id="cantidad_producir_'+i+'">
+                </div>
+            </div>
             <div class="opciones d-flex flex-column">
                 <button data-btn="actualizar" class="btn" id="btn-form-control-actualizar">Actualizar</button>
                 <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-actualizar">Cancelar</label>

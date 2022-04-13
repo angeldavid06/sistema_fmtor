@@ -50,12 +50,30 @@ const actualizar_salida = () => {
     })
 }
 
+
+const concepto = document.getElementById('concepto')
+
+concepto.addEventListener('change', (evt) => {
+    console.log(evt.target.checked);
+    if (evt.target.checked) { 
+        document.getElementById("lbl-concepto").innerText = 'Orden de Compra';
+        obtener_ordenes_compra()
+    } else {
+        document.getElementById("lbl-concepto").innerText = 'Cotización';
+        obtener_cotizaciones()
+    }
+})
+
 const select_filtros = document.getElementById("f_cliente");
 const select_cotizaciones = document.getElementById("cotizacion");
 const select_cotizaciones_2 = document.getElementById("Id_Clientes_2_e");
 
 select_cotizaciones.addEventListener('change', () => {
-    obtener_pedidos(select_cotizaciones.value);
+    if (!concepto.checked) {
+        obtener_pedidos(select_cotizaciones.value);
+    } else {
+        document.getElementById("tornillos").innerHTML = "";
+    }
 })
 
 const generar_form = (cantidad) => {
@@ -73,7 +91,7 @@ const generar_form = (cantidad) => {
                                         '</div>'+
                                     '</div>'+
                                     '<div class="d-grid g-2">'+
-                                    '<input class="input" type="text" name="pedido_'+i+'" id="pedido_'+i+'"  hidden>'+
+                                        '<input class="input" type="text" name="pedido_'+i+'" id="pedido_'+i+'"  hidden>'+
                                         '<div class="d-grid g-1 grid-gap-0">'+
                                             '<p id="t_plano_'+i+'">No. de Dibujo:</p>'+
                                             '<input class="input" type="text" name="Dibujo_'+i+'" id="Dibujo_'+i+'" placeholder="Ingrese el numero de plano">'+
@@ -126,10 +144,19 @@ const render_pedidos = (json) => {
 }
 
 const render_cotizaciones = (json) => {
+    select_cotizaciones.innerHTML = '<option id="concepto-opcion" value="">Selecciona una cotización</option>';
     json.forEach(el => {
         select_filtros.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
         select_cotizaciones.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
-        select_cotizaciones_2.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
+        // select_cotizaciones_2.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
+    });
+}
+
+const render_ordenes_compra = (json) => {
+    select_cotizaciones.innerHTML = '<option id="concepto-opcion" value="">Selecciona una orden de compra</option>';
+    json.forEach(el => {
+        select_cotizaciones.innerHTML += '<option value="'+el.Id_Compra+'">'+ el.Id_Compra + ' - '+el.Empresa+'</option>'
+        // select_cotizaciones_2.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
     });
 }
 
@@ -146,7 +173,9 @@ const obtener_salida = (id) => {
         json.forEach(el => {
             document.getElementById("Salida_e").value = el.Id_Folio;
             document.getElementById('Fecha_e').value = el.Fecha
-            document.getElementById('Id_Clientes_2_e').value = el.Id_Cotizacion_FK
+            document.getElementById('Factura').value = el.Factura
+            document.getElementById('Empaque').value = el.Empaque
+            // document.getElementById('Id_Clientes_2_e').value = el.Id_Cotizacion_FK
         })
     })
 }
@@ -156,6 +185,34 @@ const obtener_cotizaciones = () => {
     respuesta.then(json => {
         render_cotizaciones(json)
     })
+}
+
+const obtener_ordenes_compra = () => {
+    const respuesta = fetchAPI('',url+'/ventas/compras/obtener','')
+    respuesta.then(json => {
+        render_ordenes_compra(json)
+    })
+}
+
+const colocar_fecha = () => {
+    const fecha = new Date();
+    const local = fecha.toLocaleDateString();
+    const arr = local.split('/')
+    let aux = arr[2]
+
+    if (parseInt(arr[1]) >= 10) {
+        aux += '-' + arr[1];
+    } else {
+        aux += '-0' + arr[1];
+    }
+
+    if (parseInt(arr[0]) >= 10) {
+        aux += '-' + arr[0];
+    } else {
+        aux += '-0' + arr[0];
+    }
+    
+    document.getElementById('Fecha').value = aux
 }
 
 document.addEventListener('click', (evt) => {
@@ -168,4 +225,5 @@ document.addEventListener('click', (evt) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     obtener_cotizaciones()
+    colocar_fecha()
 })

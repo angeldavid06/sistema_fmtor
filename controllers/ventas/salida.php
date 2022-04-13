@@ -111,27 +111,43 @@
 
         public function NuevaSalida() { 
             $aux = 1;
-            if (isset($_POST['cotizacion']) && $_POST['cotizacion'] != '') {
-                $this->salida->setId_Clientes_2($_POST['cotizacion']);
-                $this->salida->setFecha($_POST['Fecha']);
-
-                $result = $this->salida->insertarSalida();
-                if ($result) {
-                    for ($i = 1; $i <= $_POST['cantidad_tornillos']; $i++) {
-                        if (!isset($_POST['sin_op_'.$i])) {
-                            $this->salida->setDibujo($_POST['Dibujo_'.$i]);
-                            $this->salida->setCantidad_producir($_POST['cantidad_producir_'.$i]);
-                            $this->salida->setNo_Pedido($_POST['pedido_'.$i]);
-                            $orden = json_encode($this->salida->insertarOrden());
-                        }
+            if (isset($_POST['concepto'])) {
+                if (isset($_POST['cotizacion']) && $_POST['cotizacion'] != '') {
+                    $this->salida->setId_Compra($_POST['cotizacion']);
+                    $this->salida->setFecha($_POST['Fecha']);
+    
+                    $result = $this->salida->insertarSalidaCompra();
+                    if ($result) {
+                        echo 1;
+                    } else {
+                        echo 2;
                     }
-
-                    echo $aux;
                 } else {
-                    echo 2;
+                    echo 0;
                 }
             } else {
-                echo 0;
+                if (isset($_POST['cotizacion']) && $_POST['cotizacion'] != '') {
+                    $this->salida->setId_Clientes_2($_POST['cotizacion']);
+                    $this->salida->setFecha($_POST['Fecha']);
+    
+                    $result = $this->salida->insertarSalida();
+                    if ($result) {
+                        for ($i = 1; $i <= $_POST['cantidad_tornillos']; $i++) {
+                            if (!isset($_POST['sin_op_'.$i])) {
+                                $this->salida->setDibujo($_POST['Dibujo_'.$i]);
+                                $this->salida->setCantidad_producir($_POST['cantidad_producir_'.$i]);
+                                $this->salida->setNo_Pedido($_POST['pedido_'.$i]);
+                                $orden = json_encode($this->salida->insertarOrden());
+                            }
+                        }
+    
+                        echo $aux;
+                    } else {
+                        echo 2;
+                    }
+                } else {
+                    echo 0;
+                }
             }
         }
 
@@ -140,7 +156,8 @@
                 $this->salida->setSalida($_POST['Salida_e']);
                 $this->salida->setId_Clientes_2($_POST['Id_Clientes_2_e']);
                 $this->salida->setFecha($_POST['Fecha_e']);
-
+                $this->salida->setEmpaque($_POST['Empaque']);
+                $this->salida->setFactura($_POST['Factura']);
                 $result = $this->salida->actualizarSoloSalida();
 
                 if ($result) {

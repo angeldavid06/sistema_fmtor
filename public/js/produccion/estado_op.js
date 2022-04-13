@@ -49,7 +49,7 @@ const render_retrasos = (ops) => {
                                 '<td>'+el.descripcion+'</td>'+
                                 '<td>'+el.tratamiento+'</td>'+
                                 '<td>'+el.material+'</td>'+
-                                '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar)+'</td>'+
+                                '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar)+'</td>'+
                                 '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
                                 '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar * el.precio_millar)+'</td>'+
                                 '<td>'+el.estado_general+'</td>'+
@@ -106,7 +106,7 @@ const render_estado = (semana_1,semana_3,semana_5,ops) => {
                                 '<td>'+el.descripcion+'</td>'+
                                 '<td>'+el.tratamiento+'</td>'+
                                 '<td>'+el.material+'</td>'+
-                                '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar)+'</td>'+
+                                '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar)+'</td>'+
                                 '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
                                 '<td class="txt-right">$ '+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar * el.precio_millar)+'</td>'+
                                 '<td>'+el.estado_general+'</td>'+

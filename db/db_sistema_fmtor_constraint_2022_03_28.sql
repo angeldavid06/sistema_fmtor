@@ -124,16 +124,18 @@ OR REPLACE TABLE t_cotizacion (
   CONSTRAINT FK_Id_Clientes_1 FOREIGN KEY (Id_Clientes_FK) REFERENCES t_clientes(Id_Clientes) ON DELETE CASCADE
 );
 
-create
+CREATE
 OR REPLACE table t_salida_almacen (
   Id_Folio int auto_increment,
   Fecha date,
-  Factura int(25),
-  Empaque double,
+  Factura VARCHAR(30) DEFAULT '-',
+  Empaque VARCHAR(30) DEFAULT '-',
   -- Id_Clientes_FK int(11),
   Id_Cotizacion_FK int(11),
+  Id_Orden_Compra_FK int(11),
   CONSTRAINT Pk_salida_almacen PRIMARY KEY (Id_Folio),
-  CONSTRAINT FK_Id_Cotizacion_3 FOREIGN KEY (Id_Cotizacion_FK) REFERENCES t_cotizacion(Id_Cotizacion) ON DELETE CASCADE -- CONSTRAINT FK_Id_Clientes_3 FOREIGN KEY (Id_Clientes_FK) REFERENCES t_clientes(Id_Clientes) ON DELETE CASCADE
+  CONSTRAINT FK_Id_Cotizacion_3 FOREIGN KEY (Id_Cotizacion_FK) REFERENCES t_cotizacion(Id_Cotizacion) ON DELETE CASCADE,
+  CONSTRAINT FK_Id_Compra_2 FOREIGN KEY (Id_Orden_Compra_FK) REFERENCES t_orden_compra(Id_Compra) ON DELETE CASCADE
 );
 
 CREATE

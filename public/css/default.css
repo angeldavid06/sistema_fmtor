@@ -645,7 +645,7 @@ input[type="radio"] {
     position: absolute;
     content: '';
     background-color: var(--background-body);
-    border: 1px solid var(--color-text);
+    border: 1px solid rgba(255,255,255,0.25);
     height: 15px;
     width: 35px;
     left: 0;
@@ -658,7 +658,7 @@ input[type="radio"] {
     position: absolute;
     content: '';
     background-color: var(--background-aux);
-    border: 1px solid var(--color-text);
+    border: 1px solid rgba(255,255,255,0.25);
     height: 21px;
     width: 21px;
     left: 0;

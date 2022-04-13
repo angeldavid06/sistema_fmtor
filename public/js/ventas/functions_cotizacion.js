@@ -24,6 +24,7 @@ const render_historial = (json) => {
             "<td>" +el.pedido_cliente +"</td>" +
             "<td>" +el.descripcion +"</td>" +
             "<td>" +el.medida +"</td>" +
+            "<td>" +el.tratamiento +"</td>" +
             "<td class='txt-right'>" +el.factor +"</td>" +
             "<td>" +el.acabado +"</td>" +
             "<td>" +el.material +"</td>" +

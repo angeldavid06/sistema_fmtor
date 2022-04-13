@@ -27,11 +27,11 @@
                 <i class="material-icons-round">person</i>
                 Información Personal
             </a>
-            <a href="http://localhost/sistema_fmtor/produccion/main/ordenes">
+            <a href="<?php echo  $this->url_server; ?>/produccion/main/ordenes">
                 <i class="material-icons-round">person</i>
                 Caja de Ahorro
             </a>
-            <a href="http://localhost/sistema_fmtor/produccion/main/ordenes">
+            <a href="<?php echo  $this->url_server; ?>/produccion/main/ordenes">
                 <i class="material-icons-round">person</i>
                 Prestamos
             </a>

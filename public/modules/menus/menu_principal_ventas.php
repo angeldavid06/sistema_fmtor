@@ -22,6 +22,13 @@
                 <p>COTIZACIONES</p>
             </div>
         </a>
+        <a class="btn btn-transparent" href="<?php echo $this->url_server; ?>/usuario/compra">
+            <div class="d-grid g-1">
+                <i class="material-icons-outlined icon">local_mall</i>
+                <span class="material-icons-outlined icon">local_mall</span>
+                <p>ORDENES DE COMPRA</p>
+            </div>
+        </a>
         <a class="btn btn-transparent" href="<?php echo $this->url_server; ?>/usuario/salidas">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">open_in_browser</i>
@@ -36,17 +43,10 @@
                 <p>ORDENES DE PRODUCCIÓN</p>
             </div>
         </a>
-        <a class="btn btn-transparent" href="<?php echo $this->url_server; ?>/usuario/compra">
-            <div class="d-grid g-1">
-                <i class="material-icons-outlined icon">local_mall</i>
-                <span class="material-icons-outlined icon">local_mall</span>
-                <p>ORDENES DE COMPRA</p>
-            </div>
-        </a>
         <a class="btn btn-transparent" href="<?php echo $this->url_server; ?>/usuario/reportes">
             <div class="d-grid g-1">
-                <i class="material-icons-outlined icon">report_problem</i>
-                <span class="material-icons-outlined icon">report_problem</span>
+                <i class="material-icons-outlined icon">summarize</i>
+                <span class="material-icons-outlined icon">summarize</span>
                 <p>REPORTES</p>
             </div>
         </a>

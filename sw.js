@@ -14,6 +14,7 @@ const CACHE_NAME = "cache_fmtor_v3",
     "http://localhost/sistema_fmtor/public/css/default.css",
     "http://localhost/sistema_fmtor/public/css/formato.css",
     "http://localhost/sistema_fmtor/public/js/libreria_fmtor.js",
+    "http://localhost/sistema_fmtor/main/login",
   ];
 
 self.addEventListener('install', e => {

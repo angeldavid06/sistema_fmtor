@@ -1,3 +1,25 @@
+<div id="modal-tarjetas" class="modal modal-derecha">
+    <div class="titulo_modal d-flex justify-between align-content-center">
+        <h2>Tarjeta de Flujo</h2>
+        <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-tarjetas">close</button>
+    </div>
+    <div class="contenido_modal">
+        <form id="form_act_orden" style="padding: 0px 5px;">
+            <div class="d-grid g-1 grid-gap-0">
+                <div class="d-flex justify-between align-content-center">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>No. de Bote:</p>
+                        <input class="input" type="text" name="bote" id="bote" placeholder="Ingrese el numero de bote">
+                    </div>
+                    <label data-t1="true" class="btn btn-icon-self material-icons">description</label>
+                </div>
+            </div>
+            <div class="opciones d-flex flex-column">
+                <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-tarjetas">Cancelar</label>
+            </div>
+        </form>
+    </div>
+</div>
 <div id="modal-filtrar" class="modal modal-derecha">
     <div class="titulo_modal d-flex justify-between align-content-center">
         <h2>Filtros</h2>
@@ -10,7 +32,7 @@
                 <h3>Filtrar Ordenes de Producción</h3>
                 <div class="filtro fecha">
                     <input type="radio" data-radio="radio" name="buscar_por" id="op" value="op">
-                    <label class="lbl-radio" id="lbl_radio_op"  for="op">Buscar O.P.:</label>
+                    <label class="lbl-radio" id="lbl_radio_op" for="op">Buscar O.P.:</label>
                     <input class="input" type="number" name="f_op" id="f_op" disabled>
                     <input type="radio" data-radio="radio" name="buscar_por" id="rango_op" value="rango_op">
                     <label class="lbl-radio" id="lbl_radio_rango_op" for="rango_op">Filtrar por rango de O.P.: </label>

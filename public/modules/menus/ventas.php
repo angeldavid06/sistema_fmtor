@@ -14,6 +14,10 @@
         <i class="material-icons icon">request_quote</i>
         Cotizaciones
     </a>
+    <a class="<?php if ($this->item_menu[1] == 'compra') { echo 'active'; } else { echo ''; }; ?>" title="Ordenes de Compra" href="<?php echo $this->url_server; ?>/usuario/compra">
+        <i class="material-icons icon">local_mall</i>
+        Ordenes de Compra
+    </a>
     <a class="<?php if ($this->item_menu[1] == 'salidas') { echo 'active'; } else { echo ''; }; ?>" title="Salidas de Almacen" href="<?php echo $this->url_server; ?>/usuario/salidas">
         <i class="material-icons icon">open_in_browser</i>
         Salidas de Almacen
@@ -22,12 +26,8 @@
         <i class="material-icons icon">engineering</i>
         Ordenes de Producción
     </a>
-    <a class="<?php if ($this->item_menu[1] == 'compra') { echo 'active'; } else { echo ''; }; ?>" title="Ordenes de Compra" href="<?php echo $this->url_server; ?>/usuario/compra">
-        <i class="material-icons icon">local_mall</i>
-        Ordenes de Compra
-    </a>
     <a class="<?php if ($this->item_menu[1] == 'reportes') { echo 'active'; } else { echo ''; }; ?>" title="Reportes" href="<?php echo $this->url_server; ?>/usuario/reportes">
-        <i class="material-icons icon">report_problem</i>
+        <i class="material-icons icon">summarize</i>
         Reportes
     </a>
 </nav>

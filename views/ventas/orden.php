@@ -8,7 +8,7 @@
         <h1>Ordenes de Produccion </h1>
     </div>
     <div class="d-flex justify-right align-content-center">
-        <button class="btn btn-icon-self material-icons" data-modal="modal-ingresar">add</button>
+        <!-- <button class="btn btn-icon-self material-icons" data-modal="modal-ingresar">add</button> -->
         <button class="btn btn-icon-self btn-transparent material-icons" data-recarga="true">loop</button>
         <button class="btn btn-icon-self btn-transparent material-icons" data-modal="modal-filtrar">filter_alt</button>
     </div>
@@ -20,21 +20,22 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
             <th>Estado</th>
             <th>O.P</th>
+            <th>Salida</th>
             <th style="min-width: 180px;">Cliente</th>
-            <th style="min-width: 150px;">Costo</th>
-            <th style="min-width: 100px;">Fecha </th>
+            <th style="min-width: 110px;">Costo</th>
+            <th style="min-width: 100px;">Plano</th>
             <th style="min-width: 150px;">Descripcion</th>
             <th style="min-width: 100px;">Medida</th>
             <th style="min-width: 100px;">Cantidad</th>
             <th>Acabado</th>
             <!-- <th>Codigo o Parte Cliente</th> -->
             <th>T/Termico</th>
-            <th style="min-width: 100px;">Plano</th>
             <th>Material</th>
+            <th style="min-width: 100px;">Fecha </th>
             <th style="min-width: 100px;">Fecha de entrega</th>
-            <th>Salida</th>
         </thead>
         <tbody id="body_orden" class="body body_orden"></tbody>
     </table>

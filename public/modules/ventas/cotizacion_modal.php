@@ -482,6 +482,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                     <th style="min-width: 100px;">Pedido Cliente</th>
                     <th style="min-width: 150px;">Descripcion </th>
                     <th style="min-width: 100px;">Medida</th>
+                    <th style="min-width: 100px;">Tratamiento</th>
                     <th style="min-width: 100px;">Factor</th>
                     <th>Acabado</th>
                     <th>Material </th>
