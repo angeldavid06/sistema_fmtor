@@ -39,6 +39,38 @@
             echo json_encode($result);
         }
 
+        public function obtener_per()
+        {
+            $data = $this->model->buscar_personalizado('v_ordenes', '*', 'Id_Folio =' . $_GET['aux'] . '');
+            echo json_encode($data);
+        }
+
+        public function actualizarorden () {
+            $this->orden->setId_Folio($_POST['op_e']);
+            $this->orden->setCantidad_millares($_POST['cantidad_producir_e']);
+            $this->orden->setDibujo($_POST['Dibujo_e']);
+            $result = $this->orden->actualizarorden();
+            if ($result) {
+                echo 1;
+            } else {
+                echo 2;
+            }
+        }
+
+        public function cancelar () {
+            if (isset($_GET['op'])) {
+                $this->orden->setId_Folio($_GET['op']);
+                $result = $this->orden->cancelarorden();
+                if ($result) {
+                    echo 1;
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 0;
+            }
+        }
+
         public function buscar_op () { 
             if (isset($_POST['buscar_por_fecha'])) {
                 if (isset($_POST['f_op'])) {

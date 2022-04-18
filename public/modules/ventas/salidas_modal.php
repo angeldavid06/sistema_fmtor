@@ -162,7 +162,7 @@
                     </div> -->
                     <!-- <div class="d-grid g-1 grid-gap-0">
                         <p>Cliente:</p>
-                        <select name="Id_Clientes_2_e" id="Id_Clientes_2_e">
+                        <select name="Id_Clientes_2_e" id="Id_Clientes_2_e" hidden>
                             <option value="">Selecciona un cliente</option>
                         </select>
                     </div> -->
@@ -215,6 +215,35 @@
                         <?php } ?>
                     </thead>
                     <tbody id="body_historial"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-historial-compra" class="modal modal-izquierda width-05">
+        <div class="titulo_modal d-flex justify-between align-content-center">
+            <h2 id="numero_salida_almacen_compra">Salida de Almacen: </h2>
+            <button style="margin: 0px;" class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial-compra">close</button>
+        </div>
+        <!-- <div class="d-flex justify-right align-content-center">
+            <button style="margin: 0px;" class="btn btn-icon-self material-icons" data-modal="modal-pedido">add</button>
+        </div> -->
+        <div class="contenido_modal">
+            <div class="d-grid g-1">
+                <table class="table table_salida lista_salida" id="table_compra">
+                    <thead>
+                        <th style="min-width: 80px;">Codigo</th>
+                        <th style="min-width: 120px;">Producto</th>
+                        <th style="min-width: 150px;">Cantidad</th>
+                        <th style="min-width: 100px;">Precio</th>
+                        <th style="min-width: 120px;">Total</th>
+                        <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+                            <!-- <th style="min-width: 60px;"></th> -->
+                            <!-- <th style="min-width: 60px;"></th> -->
+                            <!-- <th style="min-width: 60px;"></th> -->
+                        <?php } ?>
+                    </thead>
+                    <tbody id="body_historial_compra"></tbody>
                 </table>
             </div>
         </div>

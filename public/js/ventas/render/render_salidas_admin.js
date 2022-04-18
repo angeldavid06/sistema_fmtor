@@ -11,6 +11,22 @@ const render_salida = (json) => {
                                 '<td class=" txt-right"><button class="btn btn-transparent btn-icon-self material-icons" data-impresion="'+el.id_folio+'">warehouse</button></td>'+
                         '</tr>'
     })
+    render_externo(json.externo)
+}
+
+const render_externo = (json) => {
+    const body = document.getElementById('body_externo')
+    body.innerHTML = ''
+    json.forEach(el => {
+        body.innerHTML += '<tr>'+
+                                '<td>'+el.id_folio+'</td>'+
+                                '<td>'+el.empresa+'</td>'+
+                                '<td>'+el.fecha+'</td>'+
+                                '<td class=" txt-right"><button class="btn btn-amarillo btn-icon-self material-icons" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button></td>'+
+                                '<td class=" txt-right"><button data-salida="'+el.id_folio+'" data-historial_compra="' +el.id_compra +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial-compra">more_vert</button></td>'+
+                                '<td class=" txt-right"><button class="btn btn-transparent btn-icon-self material-icons" data-impresion="'+el.id_folio+'">warehouse</button></td>'+
+                        '</tr>'
+    })
 }
 
 const form = document.getElementById('form_reg_salida')
@@ -31,7 +47,7 @@ const registrar_salida = () => {
     respuesta.then(json => {
         if (json == 1) {
             open_alert('Registro exitoso','verde')
-            obtener()
+            buscar_mes_actual();
         } else {
             open_alert('La salida de almacen no pudo ser registrada','rojo')
         }
@@ -43,7 +59,7 @@ const actualizar_salida = () => {
     respuesta.then(json => {
         if (json == 1) {
             open_alert('La información fue modificada correctamente','verde')
-            obtener()
+            buscar_mes_actual();
         } else {
             open_alert('No se pudo modificar la información','rojo')
         }
@@ -146,11 +162,20 @@ const render_pedidos = (json) => {
 const render_cotizaciones = (json) => {
     select_cotizaciones.innerHTML = '<option id="concepto-opcion" value="">Selecciona una cotización</option>';
     json.forEach(el => {
-        select_filtros.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
+        // select_filtros.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
         select_cotizaciones.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
         // select_cotizaciones_2.innerHTML += '<option value="'+el.id_cotizacion+'">'+ el.id_cotizacion + ' - '+el.razon_social+'</option>'
     });
 }
+
+const obtener_clientes = () => {
+    const respuesta = fetchAPI("", url + "/ventas/salida/obtener_clientes", "");
+    respuesta.then((json) => {
+        json.forEach((el) => {
+            select_filtros.innerHTML +='<option value="' +el.Razon_social+'">' +el.Razon_social +"</option>";
+        });
+    });
+};
 
 const render_ordenes_compra = (json) => {
     select_cotizaciones.innerHTML = '<option id="concepto-opcion" value="">Selecciona una orden de compra</option>';
@@ -225,5 +250,6 @@ document.addEventListener('click', (evt) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     obtener_cotizaciones()
+    obtener_clientes();
     colocar_fecha()
 })

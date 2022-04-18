@@ -39,6 +39,11 @@
 
              echo json_encode($data);
         }
+
+        public function historial_compra () {
+            $data = $this->model->buscar('v_historial_compra', 'id_compra', $_GET['id']);
+            echo json_encode($data);
+        }
         
         public function generarpdf()
         {
@@ -56,11 +61,14 @@
 
         public function obtener()
         {
-            $salidas = $this->model->mostrar('v_salidas_almacen');
+            $interno = $this->model->mostrar('v_salidas_almacen');
+            $this->model = new Model();
+            $externo = $this->model->mostrar('v_salidas_almacen_externo');
             $this->model = new Model();
             $ordenes = $this->model->mostrar('v_ordenes');
             $data = [
-                'salidas' => $salidas,
+                'salidas' => $interno,
+                'externo' => $externo,
                 'ordenes' => $ordenes
             ];
             echo json_encode($data);
@@ -154,7 +162,6 @@
         public function actualizar_solo_salida () {
             if (isset($_POST['Salida_e']) && $_POST['Salida_e'] != '') {
                 $this->salida->setSalida($_POST['Salida_e']);
-                $this->salida->setId_Clientes_2($_POST['Id_Clientes_2_e']);
                 $this->salida->setFecha($_POST['Fecha_e']);
                 $this->salida->setEmpaque($_POST['Empaque']);
                 $this->salida->setFactura($_POST['Factura']);
@@ -229,9 +236,15 @@
                     $this->model_op->setCampo('Id_Folio');
                     $this->model_op->setValorBuscar($_POST['f_salida']);
                     $op = $this->model_op->buscar_informacion();
+                    $this->model_op = new t_op();
+                    $this->model_op->setVista('v_salidas_almacen_externo');
+                    $this->model_op->setCampo('id_folio');
+                    $this->model_op->setValorBuscar($_POST['f_salida']);
+                    $externo = $this->model_op->buscar_informacion();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $op,
+                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -252,9 +265,16 @@
                     $this->model_op->setOp($_POST['f_r_salida_m']);
                     $this->model_op->setOpFin($_POST['f_r_salida_M']);
                     $result = $this->model_op->rango_op();
+                    $this->model_op = new t_op();
+                    $this->model_op->setVista('v_salidas_almacen_externo');
+                    $this->model_op->setCampo('id_folio');
+                    $this->model_op->setOp($_POST['f_r_salida_m']);
+                    $this->model_op->setOpFin($_POST['f_r_salida_M']);
+                    $externo = $this->model_op->rango_op();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
+                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -266,13 +286,19 @@
         {
             if (isset($_POST['buscar_por'])) {
                 if (isset($_POST['f_op'])) {
-                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setVista('v_salidas_almacen');
                     $this->model_op->setCampo('Id_Folio');
                     $this->model_op->setValorBuscar($_POST['f_op']);
                     $op = $this->model_op->buscar_informacion();
+                    $this->model_op = new t_op();
+                    $this->model_op->setVista('v_salidas_almacen_externo');
+                    $this->model_op->setCampo('id_folio');
+                    $this->model_op->setValorBuscar($_POST['f_op']);
+                    $externo = $this->model_op->buscar_informacion();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $op,
+                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -288,7 +314,7 @@
         {
             if (isset($_POST['buscar_por'])) {
                 if (isset($_POST['f_r_op_m']) && isset($_POST['f_r_op_M'])) {
-                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setVista('v_salidas_almacen');
                     $this->model_op->setCampo('Id_Folio');
                     $this->model_op->setOp($_POST['f_r_op_m']);
                     $this->model_op->setOpFin($_POST['f_r_op_M']);
@@ -304,14 +330,21 @@
         {
             if (isset($_POST['buscar_por'])) {
                 if (isset($_POST['f_r_fecha_m']) && isset($_POST['f_r_fecha_M'])) {
-                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setVista('v_salidas_almacen');
                     $this->model_op->setCampo('fecha');
                     $this->model_op->setFecha($_POST['f_r_fecha_m']);
                     $this->model_op->setFechaFin($_POST['f_r_fecha_M']);
                     $result = $this->model_op->rango_fecha();
+                    $this->model_op = new t_op();
+                    $this->model_op->setVista('v_salidas_almacen_externo');
+                    $this->model_op->setCampo('fecha');
+                    $this->model_op->setFecha($_POST['f_r_fecha_m']);
+                    $this->model_op->setFechaFin($_POST['f_r_fecha_M']);
+                    $externo = $this->model_op->rango_fecha();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
+                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -323,13 +356,19 @@
         {
             if (isset($_POST['buscar_por'])) {
                 if (isset($_POST['f_fecha'])) {
-                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setVista('v_salidas_almacen');
                     $this->model_op->setCampo('fecha');
                     $this->model_op->setValorBuscar($_POST['f_fecha']);
                     $result = $this->model_op->buscar_informacion();
+                    $this->model_op = new t_op();
+                    $this->model_op->setVista('v_salidas_almacen_externo');
+                    $this->model_op->setCampo('fecha');
+                    $this->model_op->setValorBuscar($_POST['f_fecha']);
+                    $externo = $this->model_op->buscar_informacion();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
+                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -341,15 +380,21 @@
         {
             if (isset($_POST['buscar_por'])) {
                 if (isset($_POST['f_fecha_mes'])) {
-                    $value = '-' . $_POST['f_fecha_mes'] . '-';
+                    $value = $_POST['f_fecha_mes'] . '-';
 
-                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setVista('v_salidas_almacen');
                     $this->model_op->setCampo('fecha');
                     $this->model_op->setValorBuscar($value);
                     $result = $this->model_op->filtrar_informacion();
+                    $this->model_op = new t_op();
+                    $this->model_op->setVista('v_salidas_almacen_externo');
+                    $this->model_op->setCampo('fecha');
+                    $this->model_op->setValorBuscar($value);
+                    $externo = $this->model_op->filtrar_informacion();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
+                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -363,13 +408,19 @@
                 if (isset($_POST['f_fecha_anio'])) {
                     $value = $_POST['f_fecha_anio'] . '-';
 
-                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setVista('v_salidas_almacen');
                     $this->model_op->setCampo('fecha');
                     $this->model_op->setValorBuscar($value);
                     $result = $this->model_op->filtrar_informacion();
+                    $this->model_op = new t_op();
+                    $this->model_op->setVista('v_salidas_almacen_externo');
+                    $this->model_op->setCampo('fecha');
+                    $this->model_op->setValorBuscar($value);
+                    $externo = $this->model_op->filtrar_informacion();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
+                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -381,13 +432,14 @@
         {
             if (isset($_POST['buscar_por'])) {
                 if (isset($_POST['f_cliente'])) {
-                    $this->model_op->setVista($_POST['tabla']);
+                    $this->model_op->setVista('v_salidas_almacen');
                     $this->model_op->setCampo('razon_social');
                     $this->model_op->setValorBuscar($_POST['f_cliente']);
                     $result = $this->model_op->buscar_informacion();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
+                        'externo' => [],
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);

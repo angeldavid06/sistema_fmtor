@@ -4,7 +4,7 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-tarjetas">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form_act_orden" style="padding: 0px 5px;">
+        <form id="form_tarjetas_orden" style="padding: 0px 5px;">
             <div class="d-grid g-1 grid-gap-0">
                 <div class="d-flex justify-between align-content-center" style="margin: 0px 0px 15px 0px;">
                     <div class="d-grid g-1 grid-gap-0">
@@ -33,16 +33,15 @@
     </div>
     <div class="contenido_modal">
         <form id="form_act_orden" style="padding: 0px 5px;">
-            <input type="number" name="id_folio_edit" id="id_folio_edit" hidden>
             <div class="d-grid g-2">
-                <input class="input" type="text" name="pedido_'+i+'" id="pedido_'+i+'" hidden>
+                <input class="input" type="text" name="op_e" id="op_e" hidden>
                 <div class="d-grid g-1 grid-gap-0">
-                    <p id="t_plano_'+i+'">No. de Dibujo:</p>
-                    <input class="input" type="text" name="Dibujo_'+i+'" id="Dibujo_'+i+'" placeholder="Ingrese el numero de plano">
+                    <p id="t_plano_">No. de Dibujo:</p>
+                    <input class="input" type="text" name="Dibujo_e" id="Dibujo_e" placeholder="Ingrese el numero de plano">
                 </div>
                 <div class="d-grid g-1 grid-gap-0">
-                    <p id="t_cantidad_'+i+'">Cantidad a Producir (millares):</p>
-                    <input class="input" type="number" name="cantidad_producir_'+i+'" id="cantidad_producir_'+i+'">
+                    <p id="t_cantidad_">Cantidad a Producir (millares):</p>
+                    <input class="input" type="number" name="cantidad_producir_e" id="cantidad_producir_e">
                 </div>
             </div>
             <div class="opciones d-flex flex-column">
@@ -78,9 +77,9 @@
                     <input type="radio" data-radio="radio" name="buscar_por_fecha" id="fecha" value="fecha">
                     <label class="lbl-radio" id="lbl_radio_fecha" for="fecha" value="fecha">Filtrar por fecha especifica:</label>
                     <input class="input" type="date" name="f_fecha" id="f_fecha" disabled>
-                    <input type="radio" data-radio="radio" name="buscar_por_fecha" id="fecha_mes" value="fecha_mes">
+                    <input type="radio" data-radio="radio" name="buscar_por_fecha" id="fecha_mes" value="fecha_mes" checked>
                     <label class="lbl-radio" id="lbl_radio_fecha_mes" for="fecha_mes">Filtrar por mes: </label>
-                    <input type="month" class="input" name="f_fecha_mes" id="f_fecha_mes" disabled>
+                    <input type="month" class="input" name="f_fecha_mes" id="f_fecha_mes">
                     <input type="radio" data-radio="radio" name="buscar_por_fecha" id="fecha_anio" value="fecha_anio">
                     <label class="lbl-radio" id="lbl_radio_fecha_anio" for="fecha_anio">Filtrar por año: </label>
                     <input class="input" type="number" name="f_fecha_anio" id="f_fecha_anio" disabled>

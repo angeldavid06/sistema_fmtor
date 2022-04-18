@@ -26,27 +26,7 @@ const render_reporte = (json) => {
         const tr_totales = document.createElement("tr");
         const tr = document.createElement("tr");
         let fecha = element.fecha.split("-");
-    
-        if (aux > 0 && mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
-            tr_totales.innerHTML = '<tr>'+
-                                        '<td colspan="3" class="txt-right">Cantidad mensual: </td>'+
-                                        '<td class="txt-right">'+ new Intl.NumberFormat('es-MX').format(total_kilos_mensual)+'</td>'+
-                                        '<td colspan="5" class="txt-right">Acumulado mensual:</td>'+
-                                        '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado_mensual) + '</td>'+
-                                        '<td colspan="4"></td>'+
-                                    '</tr>';
-            body[0].appendChild(tr_totales)
-            total_acumulado_mensual = 0
-            total_kilos_mensual = 0
-            total_kilos_mensual += parseFloat(element.cantidad)
-            total_acumulado_mensual += (parseFloat(element.cantidad) * parseFloat(element.costo))
-        } else {
-            total_kilos_mensual += parseFloat(element.cantidad)
-            total_acumulado_mensual += (parseFloat(element.cantidad) * parseFloat(element.costo))
-        }
-        total_kilos += parseFloat(element.cantidad);
-        total_acumulado += (parseFloat(element.cantidad) * parseFloat(element.costo))
-
+        
         if (aux == 0 || mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
             tr_mes.innerHTML = '<tr><td class="txt-center" colspan="14">'+meses[fecha[1]-1]+' '+fecha[0]+'</td></tr>'
             mes = (fecha[0]+'-'+fecha[1])
@@ -72,47 +52,18 @@ const render_reporte = (json) => {
             }
         })
         if (element.Salida != 0) {
-        body[0].innerHTML +=
+            body[0].innerHTML +=
             "<tr>" +
-                "<td>"+element.id_folio + "</td>" +
-                "<td>"+element.razon_social +"</td>" +
                 "<td class='txt-right'>"+element.fecha + "</td>" + 
-                "<td class='txt-right'>"+new Intl.NumberFormat('es-MX').format(element.cantidad) + "</td>" + 
-                "<td>"+element.no_parte + "</td>" + 
-                "<td>"+element.pedido_cliente + "</td>" + 
-                "<td>"+element.medida + "</td>" + 
-                "<td>"+element.descripcion + "</td>" + 
-                "<td>"+element.acabados + "</td>" + 
-                "<td class='txt-right'>$ "+new Intl.NumberFormat('es-MX').format(element.costo) + "</td>" + 
-                "<td>"+info.plano+"</td>" + 
-                "<td>"+element.material + "</td>" + 
-                "<td>"+info.op+"</td>" + 
                 "<td class='txt-right'>"+element.fecha_entrega + "</td>" + 
+                "<td>"+element.razon_social +"</td>" +
+                "<td>"+element.id_folio + "</td>" +
+                "<td class='txt-right'>kilos</td>" + 
+                "<td class='txt-right'>"+new Intl.NumberFormat('es-MX').format(element.cantidad) + "</td>" + 
+                "<td class='txt-right'>$ "+new Intl.NumberFormat('es-MX').format(element.costo) + "</td>" + 
             '</tr>';
         }
     });
-    const tr_totales = document.createElement('tr')
-    tr_totales.innerHTML = '<tr>'+
-                                '<td colspan="3" class="txt-right">Cantidad mensual: </td>'+
-                                '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(total_kilos_mensual)+'</td>'+
-                                '<td colspan="5" class="txt-right">Acumulado mensual:</td>'+
-                                '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado_mensual) + '</td>'+
-                                '<td colspan="4"></td>'+
-                            '</tr>';
-    body[0].appendChild(tr_totales)
-    total_acumulado_mensual = 0
-    
-    const table = document.getElementById('table')
-    const tfoot = document.createElement('tfoot');
-    tfoot.classList.add('tfoot')
-    tfoot.innerHTML = '<tr>'+
-                            '<td colspan="3" class="txt-right">Cantidad total: </td>'+
-                            '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(total_kilos)+'</td>'+
-                            '<td colspan="5" class="txt-right">Total acumulado</td>'+
-                            '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado) + '</td>'+
-                            '<td colspan="4"></td>'+
-                    '</tr>';
-    table.appendChild(tfoot)
 };
 
 const mostrarModal = (id) => {

@@ -95,10 +95,19 @@
 
         public function actualizarorden()
         {
-            $tabla = 't_salida_almacen';
-            $parametros = 'Tratamiento';
-            $values =   "'$this->Tratamiento'";
-            $validacion = Model::actualizar($tabla, $parametros, $values);
+            $tabla = 't_orden_produccion';
+            $valores = "Cantidad = '$this->Cantidad_millares',Id_Catalogo_FK = '$this->Dibujo'";
+            $condicion =  "Id_Produccion = '$this->Id_Folio'";
+            $validacion = Model::actualizar($tabla, $valores, $condicion);
+            return $validacion;
+        }
+
+        public function cancelarorden()
+        {
+            $tabla = 't_orden_produccion';
+            $valores = "Estado_general = 'CANCELADO'";
+            $condicion =  "Id_Produccion = '$this->Id_Folio'";
+            $validacion = Model::actualizar($tabla, $valores, $condicion);
             return $validacion;
         }
     }

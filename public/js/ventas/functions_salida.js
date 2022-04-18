@@ -38,6 +38,13 @@ const buscar_historial = (salida) => {
     });
 };
 
+const buscar_historial_compra = (salida) => {
+    const respuesta = fetchAPI("",url + "/ventas/salida/historial_compra?id=" + salida,"");
+    respuesta.then((json) => {
+        render_historial_compra(json);
+    });
+};
+
 //pdf
 const obtener_pdf = (id) => {
     printPage(url + "/ventas/salida/generarpdf?atributo=Id_Folio&value=" + id);
@@ -71,22 +78,40 @@ const render_historial = (json) => {
     });
 };
 
+const render_historial_compra = (json) => {
+    const body = document.getElementById("body_historial_compra");
+    body.innerHTML = "";
+    json.forEach((el) => {
+        body.innerHTML +=
+        "<tr>" +
+            "<td>" +el.codigo +"</td>" +
+            "<td>" +el.producto +"</td>" +
+            "<td class='txt-right'>" + new Intl.NumberFormat("es-MX").format(el.cantidad) +"</td>" +
+            "<td class='txt-right'>$ " +new Intl.NumberFormat("es-MX").format(el.precio) +"</td>" +
+            '<td class="txt-right">$ '+ new Intl.NumberFormat("es-MX").format(el.cantidad * el.precio) +'</td>'
+            // '<td style="padding: 5px 0px 5px 5px;" ><button data-copiar="' +el.id_cotizacion +'" data-pedido="' +el.Id_Pedido +'" id="' +el.id_cotizacion +'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
+            // '<td style="padding: 5px 0px 5px 0px;" ><button data-pedidoact="' +el.Id_Pedido +'" id="' +el.Id_Pedido +'" data-modal="modal-actualizar" class="material-icons-outlined btn-amarillo btn btn-icon-self btn-transparent" title="Copiar información">edit</button></td>' +
+            // '<td style="padding: 5px 0px;" ><button data-eliminar="'+el.Id_Pedido+'" class="material-icons-outlined btn btn-icon-self btn-rojo">delete</button></td>' +
+        "</tr>";
+    });
+};
+
 const restaurar_formulario = () => {
-  const inputs_radio = document.getElementsByName("buscar_por");
-  const inputs_radio_fecha = document.getElementsByName("buscar_por_fecha");
-  for (let i = 0; i < inputs_radio.length; i++) {
-    inputs_radio[i].checked = false;
-  }
+    const inputs_radio = document.getElementsByName("buscar_por");
+    const inputs_radio_fecha = document.getElementsByName("buscar_por_fecha");
+    for (let i = 0; i < inputs_radio.length; i++) {
+        inputs_radio[i].checked = false;
+    }
 
-  for (let i = 0; i < inputs_radio_fecha.length; i++) {
-    inputs_radio_fecha[i].checked = false;
-  }
+    for (let i = 0; i < inputs_radio_fecha.length; i++) {
+        inputs_radio_fecha[i].checked = false;
+    }
 
-  const inputs = form_filtros.getElementsByClassName("input");
-  for (let i = 0; i < inputs.length; i++) {
-    inputs[i].value = "";
-    inputs[i].setAttribute("disabled", "");
-  }
+    const inputs = form_filtros.getElementsByClassName("input");
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = "";
+        inputs[i].setAttribute("disabled", "");
+    }
 };
 
 document.addEventListener("click", (evt) => {
@@ -94,9 +119,13 @@ document.addEventListener("click", (evt) => {
         auxiliar = evt.target.dataset.historial;
         document.getElementById("numero_salida_almacen").innerHTML = "Salida de Almacen: " + evt.target.dataset.salida;
         buscar_historial(evt.target.dataset.historial);
+    } else if (evt.target.dataset.historial_compra) {
+        auxiliar = evt.target.dataset.historial_compra;
+        document.getElementById("numero_salida_almacen_compra").innerHTML = "Salida de Almacen: " + evt.target.dataset.salida;
+        buscar_historial_compra(evt.target.dataset.historial_compra);
     } else if (evt.target.dataset.recarga) {
-        obtener();
         restaurar_formulario();
+        buscar_mes_actual();
     } else if (evt.target.dataset.impresion) {
         obtener_pdf(evt.target.dataset.impresion);
     } else if (evt.target.dataset.cotizacion) {
@@ -104,6 +133,20 @@ document.addEventListener("click", (evt) => {
     } 
 });
 
+const buscar_mes_actual = () => {
+    const fecha_actual = new Date().toLocaleDateString();
+    const fecha = fecha_actual.split("/");
+
+    if (parseInt(fecha[1]) < 10) {
+        aux = fecha[2] + "-0" + fecha[1];
+    } else {
+        aux = fecha[2] + '-' +fecha[1];
+    }
+    document.getElementById("f_fecha_mes").value = aux;
+    document.getElementById("fecha_mes").checked = true;
+    buscar_dato("buscar_mes");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    obtener();
+    buscar_mes_actual()
 });

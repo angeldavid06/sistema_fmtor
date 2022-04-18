@@ -7,11 +7,12 @@ const render_orden = (json) => {
         json.forEach((element) => {
             body.innerHTML +=
                 "<tr>" +
-                '<td style="padding: 5px;"><button style="margin:0px;" class="btn-impresion material-icons-outlined btn btn-amarillo btn-icon-self" data-modal="modal-actualizar">edit</button></td>' +
+                '<td style="padding: 5px;"><button data-editar="'+element.Id_Folio+'" style="margin:0px;" class="btn-impresion material-icons-outlined btn btn-amarillo btn-icon-self" data-modal="modal-actualizar">edit</button></td>' +
                 // '<td style="padding: 5px;"><button style="margin:0px;" title="Tarjeta de Flujo ('+element.Id_Folio+')" class= "btn-impresion material-icons-outlined btn btn-icon-self btn-transparent" data-tarjeta="'+element.Id_Folio+'"*/ data-modal="modal-tarjetas">note_alt</button></td>' +
                 '<td style="padding: 5px;"><button style="margin:0px;" title="Tarjeta de Flujo ('+element.Id_Folio+')" class= "btn-impresion material-icons-outlined btn btn-icon-self btn-transparent" data-tarjeta="' + element.Id_Folio +'" data-modal="modal-tarjetas">note_alt</button></td>' +
                 '<td style="padding: 5px 0px;"><button style="margin:0px;" title="Orden de Producción ('+element.Id_Folio+')" class= "btn-impresion material-icons btn btn-icon-self btn-transparent" data-imprimir="' + element.Id_Folio +'">splitscreen</button>' +
                 '<td style="padding: 5px;"><button style="margin:0px;" title="Control de Producción('+element.Id_Folio+')" class= "btn-impresion material-icons btn btn-icon-self btn-transparent" data-control="' + element.Id_Folio +'">calendar_view_month</button>' +
+                '<td style="padding: 5px;"><button style="margin:0px;" title="Cancelar la O.P.: '+element.Id_Folio+'" class= "btn-impresion material-icons-outlined btn btn-icon-self btn-rojo" data-cancelar="'+element.Id_Folio+'">do_not_disturb_on</button>' +
                 "<td>" + element.estado_general + "</td>" +
                 "<td>" + element.Id_Folio + "</td>" +
                 "<td>" + element.Id_Salida_FK + "</td>" +
@@ -43,13 +44,15 @@ const mostrarModal = (id) => {
     });
 };
 
-const Tratamiento = document.getElementById("Tratamiento_edit");
-const Id_Folio = document.getElementById("id_folio_edit");
+const Id_Folio = document.getElementById("op_e");
+const dibujo = document.getElementById("Dibujo_e");
+const cantidad_elaborar = document.getElementById("cantidad_producir_e");
 
 const pintarModal = (json) => {
     json.forEach((element) => {
-        Tratamiento.value = element.Tratamiento;
         Id_Folio.value = element.Id_Folio;
+        dibujo.value = element.Id_Catalogo;
+        cantidad_elaborar.value = element.cantidad_elaborar;
     });
 };
 
@@ -111,32 +114,65 @@ const restaurar_formulario = () => {
     }
 };
 
+const cancelar = () => {
+    const respuesta = fetchAPI('',url+'/ventas/orden/cancelar?op='+auxiliar.dato,'')
+    respuesta.then(json => {
+        if (json == 1) {
+            open_alert('Orden de Producción No. '+auxiliar.dato+' cancelada','naranja')
+            // obtener()
+            buscar_mes_actual()
+        } else {
+            open_alert('Ocurrio un error al cancelar la O.P.','rojo')
+        }
+    })
+}
+
+const buscar_mes_actual = () => {
+    const fecha_actual = new Date().toLocaleDateString();
+    const fecha = fecha_actual.split("/");
+
+    if (parseInt(fecha[1]) < 10) {
+        aux = fecha[2] + "-0" + fecha[1];
+    } else {
+        aux = fecha[2] + '-' +fecha[1];
+    }
+    document.getElementById("f_fecha_mes").value = aux;
+    buscar_dato("buscar_mes");
+}
+
+
 document.addEventListener("click", (evt) => {
-    if (evt.target.dataset.edit) {
-        mostrarModal(evt.target.dataset.edit);
+    if (evt.target.dataset.editar) {
+        mostrarModal(evt.target.dataset.editar);
+    } else if (evt.target.dataset.cancelar) {
+        auxiliar.dato = evt.target.dataset.cancelar;
+        open_confirm('¿Desea cancelar la Orden de Producción '+evt.target.dataset.cancelar+'?',cancelar)
     } else if (evt.target.dataset.control) {
         generar_control_vacio(evt.target.dataset.control);
     } else if (evt.target.dataset.tarjeta) {
         auxiliar.dato = evt.target.dataset.tarjeta;
     } else if (evt.target.dataset.t5) {
-        generar_tarjetas()
+        generar_tarjetas();
     } else if (evt.target.dataset.t1) {
-        if (document.getElementById("bote").value != '') {
+        if (document.getElementById("bote").value != "") {
             generar_tarjeta(document.getElementById("bote").value);
         }
     } else if (evt.target.dataset.recarga) {
-        obtener();
+        // obtener();
+        buscar_mes_actual()
         restaurar_formulario();
     } else if (evt.target.dataset.limpiar) {
-        obtener();
+        // obtener();
+        buscar_mes_actual()
         restaurar_formulario();
     }
 });
+
 const formactualizar = document.getElementById("form_act_orden");
 
 formactualizar.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  actualizar_orden();
+    evt.preventDefault();
+    open_confirm('¿Desea guardar los cambios realizados?', actualizar_orden)
 });
 
 const actualizar_orden = () => {
@@ -152,5 +188,5 @@ const actualizar_orden = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  obtener();
+    buscar_mes_actual();
 })

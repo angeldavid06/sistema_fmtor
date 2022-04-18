@@ -21,6 +21,7 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
             <th>Estado</th>
             <th>O.P</th>
             <th>Salida</th>
@@ -41,5 +42,5 @@
     </table>
 </div>
 <?php require_once 'public/modules/ventas/orden_modal.php'; ?>
-<script src="../public/js/ventas/functions_orden.js?1.3"></script>
+<script src="../public/js/ventas/functions_orden.js?1.4"></script>
 <script src="../public/js/ventas/filtro_orden.js"></script>

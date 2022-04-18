@@ -20,20 +20,16 @@
 <div class="tabla tarjeta" style="padding: 0;">
     <table id="table" class="table table_salida lista_salida">
         <thead>
-            <th style="min-width: 80px;">N° de salida </th>
-            <th style="min-width: 220px;">Cliente</th>
-            <th style="min-width: 100px;">Fecha</th>
-            <th>Cantidad</th>
-            <th style="min-width: 150px;">N° parte de cliente </th>
-            <th style="min-width: 100px;">Pedido Cliente</th>
-            <th style="min-width: 100px;">Medida</th>
-            <th style="min-width: 150px;">Descripcion </th>
-            <th style="min-width: 130px;">Acabado</th>
-            <th style="min-width: 150px;">Costo</th>
-            <th style="min-width: 120px;">Numero de Dibujo </th>
-            <th>Material </th>
-            <th>O.P</th>
+            <th style="min-width: 100px;">Fecha Emisión</th>
             <th style="min-width: 100px;">Fecha de entrega</th>
+            <th style="min-width: 220px;">Razón Social Receptor</th>
+            <th style="min-width: 80px;">Folio</th>
+            <th>Kilos</th>
+            <th>Piezas</th>
+            <th style="min-width: 150px;">Costo</th>
+            <th style="min-width: 150px;">Subtotal</th>
+            <th style="min-width: 150px;">Total Impuestos Trasladado</th>
+            <th style="min-width: 150px;">Total Pesos</th>
         </thead>
         <tbody class="body body_reporte"></tbody>
         <tfoot class="tfoot"></tfoot>

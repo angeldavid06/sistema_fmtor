@@ -1,4 +1,5 @@
 /*------------------------------------------ Vista Salida de Almacen ---------------------------------------------------*/
+-- PRODUCTO INTERNO
 CREATE
 OR REPLACE VIEW v_salidas_almacen AS
 SELECT
@@ -14,6 +15,26 @@ FROM
 WHERE
     t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
     AND t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
+ORDER BY
+    t_salida_almacen.Id_Folio DESC;
+
+-- PRODUCTO EXTERNO
+
+CREATE
+OR REPLACE VIEW v_salidas_almacen_externo AS
+SELECT
+    t_salida_almacen.Id_Folio AS id_folio,
+    t_informacion_empresa.Id_Empresa AS id_empresa,
+    t_informacion_empresa.Empresa AS empresa,
+    t_salida_almacen.Fecha AS fecha,
+    t_orden_compra.Id_Compra AS id_compra
+FROM
+    t_orden_compra,
+    t_informacion_empresa,
+    t_salida_almacen
+WHERE
+    t_salida_almacen.Id_Orden_Compra_FK = t_orden_compra.Id_Compra
+    AND t_informacion_empresa.Id_Empresa = t_orden_compra.FK_Empresa
 ORDER BY
     t_salida_almacen.Id_Folio DESC;
 
@@ -147,6 +168,30 @@ WHERE
     t_orden_compra.FK_Proveedor = t_proveedores.Id_Proveedor 
     AND t_orden_compra.FK_Empresa = t_informacion_empresa.Id_Empresa
 ORDER BY Id_Compra DESC;
+
+CREATE 
+OR REPLACE VIEW v_historial_compra AS 
+SELECT
+    t_salida_almacen.Id_Folio AS id_folio,
+    t_orden_compra.Id_Compra AS id_compra,
+    t_informacion_empresa.Empresa AS empresa,
+    t_orden_compra.FK_Empresa AS fk_empresa,
+    t_pedido_compra.Codigo AS codigo,
+    t_pedido_compra.Producto AS producto,
+    t_pedido_compra.Factor AS factor,
+    t_pedido_compra.Medida AS medida,
+    t_pedido_compra.Cantidad AS cantidad,
+    t_pedido_compra.Precio AS precio
+FROM
+    t_salida_almacen,
+    t_orden_compra,
+    t_informacion_empresa,
+    t_pedido_compra
+WHERE
+    t_salida_almacen.Id_Orden_Compra_FK = t_orden_compra.Id_Compra
+    AND t_informacion_empresa.Id_Empresa = t_orden_compra.FK_Empresa
+    AND t_orden_compra.Id_Compra = t_pedido_compra.FK_Orden_Compra
+ORDER BY t_orden_compra.Id_Compra;
 
 /*------------------------------------------ Vista Empresas ---------------------------------------------------*/
 

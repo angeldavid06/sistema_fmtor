@@ -55,7 +55,8 @@
             </div>
         </div>
     </div>
-    <script src="../public/js/fmtor_libreria.js"></script>
+    <script src="<?php echo $this->url_server;?>/public/js/fmtor_libreria.js"></script>
+    <!-- <script src="<?php echo $this->url_server;?>/sw.js"></script> -->
 </body>
 
 </html>

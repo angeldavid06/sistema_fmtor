@@ -203,7 +203,6 @@
 
         public function actualizarSoloSalida () {
             $values = "Fecha = '$this->Fecha', 
-                        Id_Cotizacion_FK = '$this->Id_Clientes_2',
                         Factura = '$this->Factura',
                         Empaque = '$this->Empaque'";
             $condicion = "Id_Folio = '$this->Salida'";
