@@ -53,14 +53,23 @@ const render_proveedores = (json) => {
     body.innerHTML = ''
     json.forEach(el => {
         body.innerHTML += '<tr>'+
+                            '<td>'+
+                                '<div id="'+el.Proveedor+'" class="mas_opciones_tablas">'+
+                                    '<div class="opcion">'+
+                                        '<button data-opciones="'+el.Proveedor+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                    '</div>'+
+                                    '<div class="opciones" id="opciones-'+el.Proveedor+'">'+
+                                        '<button style="margin: 0px 5px 0px 0px;" data-modal="modal-actualizar" data-editar="'+el.Id_Proveedor+'" class="btn btn-icon-self btn-amarillo material-icons-outlined">edit</button>'+    
+                                        '<button style="margin: 0px 0px 0px 5px;" data-eliminar="'+el.Id_Proveedor+'" class="btn btn-icon-self btn-rojo material-icons-outlined">delete</button>'+    
+                                    '</div>'+
+                                '</div>'+
+                            '</td>'+
                             // '<td>'+el.Id_Proveedor +'</td>'+    
                             '<td>'+el.Proveedor +'</td>'+    
                             '<td>'+el.Direccion +'</td>'+    
                             '<td>'+el.Ciudad +'</td>'+    
                             '<td>'+el.Telefono +'</td>'+    
                             '<td>'+el.Correo +'</td>'+    
-                            '<td style="padding: 5px;"><button data-modal="modal-actualizar" data-editar="'+el.Id_Proveedor+'" class="btn btn-icon-self btn-amarillo material-icons-outlined">edit</button></td>'+    
-                            '<td style="padding: 5px;"><button data-eliminar="'+el.Id_Proveedor+'" class="btn btn-icon-self btn-rojo material-icons-outlined">delete</button></td>'+    
                         '</tr>';
     });
 }

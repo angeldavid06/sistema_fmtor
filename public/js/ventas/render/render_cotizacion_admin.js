@@ -230,13 +230,22 @@ const render_cotizaciones = (json) => {
                 aux++;
             }
             body.innerHTML += '<tr>'+
+                                '<td>'+
+                                    '<div id="'+el.id_cotizacion+'" class="mas_opciones_tablas">'+
+                                        '<div class="opcion">'+
+                                            '<button data-opciones="'+el.id_cotizacion+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                        '</div>'+
+                                        '<div class="opciones" id="opciones-'+el.id_cotizacion+'">'+
+                                            '<button style="margin: 0px 5px 0px 0px;" title="Editar Salida de Almacen" class="material-icons-outlined btn btn-amarillo btn-icon-self" data-modal="modal-actualizar-cotizacion" data-cotizacion="' +el.id_cotizacion +'">mode_edit</button>'+
+                                            '<button data-copiar="'+el.id_cotizacion+'" id="'+el.id_cotizacion+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button>' +
+                                            '<button data-historial="' +el.id_cotizacion +'" data-modal="modal-historial" id="' +el.id_cotizacion +'" class="material-icons-outlined btn btn-icon-self btn-transparent" title="Copiar información">toc</button>' +
+                                            '<button title="Generar Cotización" class= "material-icons-outlined btn btn-icon-self" data-documento="' +el.id_cotizacion +'">request_quote</button>' +
+                                        '</div>'+
+                                    '</div>'+
+                                '</td>'+
                                 '<td>'+el.id_cotizacion+'</td>'+
                                 '<td>'+el.razon_social+'</td>'+
                                 '<td>'+el.fecha+'</td>'+
-                                '<td class="txt-right" style="padding: 5px 0px 5px 0px;" ><button title="Editar Salida de Almacen" class="material-icons-outlined btn btn-amarillo btn-icon-self" data-modal="modal-actualizar-cotizacion" data-cotizacion="' +el.id_cotizacion +'"> mode_edit</button></td>' +
-                                '<td class="txt-right" style="padding: 5px 0px 5px 0px;" ><button data-copiar="'+el.id_cotizacion+'" id="'+el.id_cotizacion+'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button></td>' +
-                                '<td class="txt-right" style="padding: 5px 0px 5px 0px;" ><button data-historial="' +el.id_cotizacion +'" data-modal="modal-historial" id="' +el.id_cotizacion +'" class="material-icons-outlined btn btn-icon-self btn-transparent" title="Copiar información">more_vert</button></td>' +
-                                '<td class="txt-right" style="padding: 5px 0px 5px 0px;" ><button title="Generar Cotización" class= "material-icons-outlined btn btn-icon-self" data-documento="' +el.id_cotizacion +'">request_quote</button>' +
                             '</tr>'
         })
     }

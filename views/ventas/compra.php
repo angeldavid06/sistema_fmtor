@@ -18,17 +18,12 @@
 <div class="tabla tarjeta" style="padding: 0;">
     <table class="table table_salida lista_salida">
         <thead>
+            <th style="max-width: 60px;"></th>
             <th style="min-width: 80px;"># O.C. </th>
             <th style="min-width: 100px;">Fecha</th>
             <th style="min-width: 350px;">Empresa</th>
             <th style="min-width: 200px;">Solicitado por:</th>
             <th style="min-width: 200px;">Proveedor:</th>
-            <th style="max-width: 60px;"></th>
-            <th style="max-width: 60px;"></th>
-            <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                <th style="max-width: 60px;"></th>
-                <th style="max-width: 60px;"></th>
-            <?php } ?>
         </thead>
         <tbody id="body" class="body body_salida"></tbody>
         <tfoot class="tfoot"></tfoot>

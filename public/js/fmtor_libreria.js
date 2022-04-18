@@ -321,6 +321,16 @@ document.addEventListener('click', (evt) => {
         acordeon(evt.target.dataset.acordeon)
     } else if (evt.target.dataset.alert) {
         remove_alert(evt.target.dataset.alert);
+    } else if (evt.target.dataset.opciones) {
+        const contenedor = document.getElementById(evt.target.dataset.opciones) 
+        const contenedor_opciones = document.getElementById('opciones-'+evt.target.dataset.opciones) 
+        contenedor.classList.toggle('mostrar-opciones')
+        if (contenedor.classList.contains('mostrar-opciones')) {
+            const cantidad = contenedor_opciones.getElementsByTagName('button')
+            contenedor_opciones.style.width = (60 * cantidad.length) + 'px';
+        } else { 
+            contenedor_opciones.style.width = '0px';
+        }
     }
 });
 

@@ -18,17 +18,13 @@
 <div class="tabla tarjeta" style="padding: 0;">
     <table class="table table_clientes lista_clientes" id="listaClientes">
         <thead>
+            <th style="max-width: 60px;"></th>
             <th>Numero de identificacion</th>
             <th>Razon Social</th>
             <th>Nombre del Cliente</th>
             <th>Telefono</th>
             <th>Correo</th>
             <th>Direccion</th>
-            <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                <th style="max-width: 50px;"></th>
-                <th style="max-width: 50px;"></th>
-                <th style="max-width: 50px;"></th>
-            <?php } ?>
         </thead>
         <tbody class="body body_clientes"></tbody>
     </table>

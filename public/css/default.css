@@ -489,6 +489,34 @@ button {
     color: var(--color-yellow-hover);
 }
 
+.mas_opciones_tablas {
+    width: 60px;
+    height: 50px;
+    /* background-color: #2D9FFC; */
+    border-radius: var(--border-radius);
+    display: flex;
+    position: relative;
+}
+
+.mas_opciones_tablas .opciones {
+    position: absolute;
+    left: 100%;
+    top: -5px;
+    width: 0px;
+    padding: 5px 0px;
+    margin: 0px;
+    overflow: hidden;
+    display: flex;
+    transition: all .2s;
+    background-color: var(--background-aux);
+    border-radius: 100px;
+}
+
+.mas_opciones_tablas.mostrar-opciones .opciones {
+    padding: 5px;
+    left: calc(100% + 10px);
+}
+
 #btn-subir {
     visibility: hidden;
     right: -60px;
@@ -1738,6 +1766,7 @@ embed {
     
     .btn-impresion {
         display: none !important;
+        visibility: hidden;
     }
 
     .content_preloader {

@@ -18,10 +18,6 @@
     <table class="table table_orden lista_orden" id="listaOrden">
         <thead>
             <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
             <th>Estado</th>
             <th>O.P</th>
             <th>Salida</th>

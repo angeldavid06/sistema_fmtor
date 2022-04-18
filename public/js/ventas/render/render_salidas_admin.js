@@ -3,12 +3,21 @@ const render_salida = (json) => {
     body.innerHTML = ''
     json.salidas.forEach((el) => {
         body.innerHTML += '<tr>'+
+                                '<td>'+
+                                    '<div id="'+el.id_folio+'" class="mas_opciones_tablas">'+
+                                        '<div class="opcion">'+
+                                            '<button data-opciones="'+el.id_folio+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                        '</div>'+
+                                        '<div class="opciones" id="opciones-'+el.id_folio+'">'+
+                                            '<button style="margin: 0px 5px 0px 0px;" class="btn btn-amarillo btn-icon-self material-icons" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button>'+
+                                            '<button style="margin: 0px 5px;" data-salida="'+el.id_folio+'" data-historial="' +el.id_cotizacion +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial">toc</button>'+
+                                            '<button style="margin: 0px 0px 0px 5px;" class="btn btn-icon-self material-icons" data-impresion="'+el.id_folio+'">warehouse</button>'+  
+                                        '</div>'+
+                                    '</div>'+
+                                '</td>'+
                                 '<td>'+el.id_folio+'</td>'+
                                 '<td>'+el.razon_social+'</td>'+
                                 '<td>'+el.fecha+'</td>'+
-                                '<td class=" txt-right"><button class="btn btn-amarillo btn-icon-self material-icons" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button></td>'+
-                                '<td class=" txt-right"><button data-salida="'+el.id_folio+'" data-historial="' +el.id_cotizacion +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial">more_vert</button></td>'+
-                                '<td class=" txt-right"><button class="btn btn-transparent btn-icon-self material-icons" data-impresion="'+el.id_folio+'">warehouse</button></td>'+
                         '</tr>'
     })
     render_externo(json.externo)
@@ -19,12 +28,21 @@ const render_externo = (json) => {
     body.innerHTML = ''
     json.forEach(el => {
         body.innerHTML += '<tr>'+
+                                '<td>'+
+                                    '<div id="'+el.id_folio+'" class="mas_opciones_tablas">'+
+                                        '<div class="opcion">'+
+                                            '<button data-opciones="'+el.id_folio+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                        '</div>'+
+                                        '<div class="opciones" id="opciones-'+el.id_folio+'">'+
+                                            '<button style="margin: 0px 5px 0px 0px;" class="btn btn-amarillo btn-icon-self material-icons" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button>'+
+                                            '<button style="margin: 0px 5px;" data-salida="'+el.id_folio+'" data-historial_compra="' +el.id_compra +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial-compra">toc</button>'+
+                                            '<button style="margin: 0px 0px 0px 5px;" class="btn btn-icon-self material-icons" data-impresion="'+el.id_folio+'">warehouse</button>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</td>'+
                                 '<td>'+el.id_folio+'</td>'+
                                 '<td>'+el.empresa+'</td>'+
                                 '<td>'+el.fecha+'</td>'+
-                                '<td class=" txt-right"><button class="btn btn-amarillo btn-icon-self material-icons" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button></td>'+
-                                '<td class=" txt-right"><button data-salida="'+el.id_folio+'" data-historial_compra="' +el.id_compra +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial-compra">more_vert</button></td>'+
-                                '<td class=" txt-right"><button class="btn btn-transparent btn-icon-self material-icons" data-impresion="'+el.id_folio+'">warehouse</button></td>'+
                         '</tr>'
     })
 }

@@ -19,15 +19,12 @@
     <table class="table table_clientes lista_clientes" id="listaClientes">
         <thead>
             <!-- <th> Numero de identificacion</th> -->
+            <th></th>
             <th style="min-width: 200px;">Proveedor</th>
             <th style="min-width: 400px;">Direccion</th>
             <th>Ciudad</th>
             <th style="min-width: 150px;">Telefono</th>
             <th>Correo</th>
-            <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                <th></th>
-                <th></th>
-            <?php } ?>
         </thead>
         <tbody id="body_proveedores" class="body body_clientes"></tbody>
     </table>

@@ -31,9 +31,9 @@ from
     t_cotizacion
 WHERE
     t_pedido.Id_Pedido = t_orden_produccion.Id_Pedido_FK
-AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
-AND t_clientes.Id_Clientes = t_cotizacion.Id_Clientes_FK
-AND t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
+    AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
+    AND t_clientes.Id_Clientes = t_cotizacion.Id_Clientes_FK
+    AND t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
 ORDER BY
     t_salida_almacen.Id_Folio DESC;
 

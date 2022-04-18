@@ -24,14 +24,10 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
             <div class="tabla tarjeta" style="padding: 0;">
                 <table class="table table_salida lista_salida">
                     <thead>
+                        <th style="max-width: 80px;"></th>
                         <th style="min-width: 80px;">N° de salida </th>
                         <th style="min-width: 150px;">Cliente</th>
                         <th style="min-width: 100px;">Fecha</th>
-                        <th style="max-width: 80px;"></th>
-                        <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                            <th style="max-width: 80px;"></th>
-                            <th style="max-width: 80px;"></th>
-                        <?php } ?>
                     </thead>
                     <tbody id="table" class="body body_salida"></tbody>
                     <tfoot class="tfoot"></tfoot>
@@ -47,14 +43,10 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
             <div class="tabla tarjeta" style="padding: 0;">
                 <table class="table table_externo lista_externo">
                     <thead>
+                        <th style="max-width: 80px;"></th>
                         <th style="min-width: 80px;">N° de salida </th>
                         <th style="min-width: 150px;">Empresa</th>
                         <th style="min-width: 100px;">Fecha</th>
-                        <th style="max-width: 80px;"></th>
-                        <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                            <th style="max-width: 80px;"></th>
-                            <th style="max-width: 80px;"></th>
-                        <?php } ?>
                     </thead>
                     <tbody id="body_externo" class="body body_salida"></tbody>
                     <tfoot class="tfoot"></tfoot>

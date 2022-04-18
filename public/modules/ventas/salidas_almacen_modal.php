@@ -56,24 +56,7 @@
                     <input type="radio" data-radio="radio" name="buscar_por" id="cliente" value="cliente">
                     <label class="lbl-radio" id="lbl_radio_cliente" for="cliente">Buscar cliente:</label>
                     <select name="f_cliente" id="f_cliente" class="input" disabled></select>
-                    <!-- <input class="input" type="text" name="f_cliente" id="f_cliente" disabled> -->
                 </div>
-                <!-- <h3>Filtrar por estado:</h3>
-                <div class="filtro fecha">
-                    <input type="radio" data-radio="radio" name="buscar_por" id="estado" value="estado">
-                    <label class="lbl-radio" id="lbl_radio_estado" for="estado">Selecciona el estado de las O.P.:</label>
-                    <select class="input" name="f_estado" id="f_estado" disabled>
-                        <option value="FORJADO">FORJADO</option>
-                        <option value="RANURADO">RANURADO</option>
-                        <option value="ROLADO">ROLADO</option>
-                        <option value="SHANK">SHANK</option>
-                        <option value="CEMENTADO">CEMENTADO</option>
-                        <option value="ACABADO">ACABADO</option>
-                        <option value="PENDIENTE">PENDIENTE</option>
-                        <option value="TERMINADO">TERMINADO</option>
-                        <option value="CANCELADO">CANCELADO</option>
-                    </select>
-                </div> -->
                 <div class="d-flex flex-column">
                     <button class="btn">Buscar</button>
                     <label class="btn btn-transparent txt-center" data-modal="modal-filtrar">Cancelar</label>
