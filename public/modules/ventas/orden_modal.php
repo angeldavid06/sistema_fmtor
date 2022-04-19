@@ -57,7 +57,7 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-filtrar">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form-filtros">
+        <form id="form-filtros" style="padding: 0px 5px;">
             <div class="contenedor_filtros">
                 <h3>Filtrar Ordenes de Producción</h3>
                 <div class="filtro fecha">

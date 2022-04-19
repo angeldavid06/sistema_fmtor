@@ -91,6 +91,8 @@ const cancelar = () => {
 }
 
 const buscar_mes_actual = () => {
+    document.getElementById('fecha_mes').checked = true
+    document.getElementById("f_fecha_mes").removeAttribute('disabled')
     const fecha_actual = new Date().toLocaleDateString();
     const fecha = fecha_actual.split("/");
 
@@ -122,12 +124,12 @@ document.addEventListener("click", (evt) => {
         }
     } else if (evt.target.dataset.recarga) {
         // obtener();
-        buscar_mes_actual()
         restaurar_formulario();
+        buscar_mes_actual()
     } else if (evt.target.dataset.limpiar) {
         // obtener();
-        buscar_mes_actual()
         restaurar_formulario();
+        buscar_mes_actual()
     }
 });
 

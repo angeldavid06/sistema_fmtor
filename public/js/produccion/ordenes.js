@@ -72,7 +72,7 @@ const render_ordenes = (json) => {
             tr.innerHTML += '<td>'+
                                 '<div id="'+el.Id_Folio+'" class="mas_opciones_tablas">'+
                                     '<div class="opcion">'+
-                                        '<button data-opciones="'+el.Id_Folio+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                        '<button data-opciones="'+el.Id_Folio+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
                                     '</div>'+
                                     '<div class="opciones" id="opciones-'+el.Id_Folio+'">'+
                                         '<button style="margin: 0px 5px 0px 0px;" data-modal="modal-tarjetas" title="Tarjeta de Flujo ('+el.Id_Folio+')" data-tarjeta="'+el.Id_Folio+'" data-t1="'+el.Id_Folio+'" class="material-icons-outlined btn btn-icon-self btn-impresion">note_alt</button>'+

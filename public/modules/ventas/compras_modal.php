@@ -8,7 +8,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
             <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
         </div>
         <div class="contenido_modal">
-            <form id="form_reg_orden">
+            <form id="form_reg_orden" style="padding: 0px 5px;">
                 <div class="d-grid g-2">
                     <span style="margin: 0;" data-pegar="pegar-cliente" class="btn btn-icon d-flex justify-center" title="Pegar información del portapapeles">
                         <i data-pegar="pegar-cliente" class="material-icons-round">content_paste_go</i>
@@ -112,7 +112,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
             <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-actualizar">close</button>
         </div>
         <div class="contenido_modal">
-            <form id="form_act_orden">
+            <form id="form_act_orden" style="padding: 0px 5px;">
                 <!-- <p style="padding: 15px 0px 30px 0px;" class="txt-right">Información general:</p> -->
                 <input class="input" type="number" name="Id_Compra_p" id="Id_Compra_p" hidden>
                 <div class="d-grid g-2">
@@ -162,7 +162,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
             <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-actualizar-tornillo">close</button>
         </div>
         <div class="contenido_modal">
-            <form id="form_act_orden_pedido">
+            <form id="form_act_orden_pedido" style="padding: 0px 5px;">
                 <div id="pedido_compra">
                     <div id="pedido_E">
                         <input type="number" name="id_pedido" id="id_pedido" hidden>
@@ -205,7 +205,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-filtrar">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form-filtros">
+        <form id="form-filtros" style="padding: 0px 5px;">
             <div class="contenedor_filtros">
                 <h3>Filtrar Orden de Compra</h3>
                 <input type="text" name="tabla" id="tabla" value="v_salidas_almacen" hidden>
@@ -284,7 +284,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
         <h2 id="orden_de_compra">Orden de Compra: </h2>
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial">close</button>
     </div>
-    <div class="contenido_modal">
+    <div class="contenido_modal" style="padding: 0px 5px;">
         <table class="table table_salida lista_salida" id="table">
             <thead>
                 <th style="min-width: 100px;">Codigo</th>

@@ -3,10 +3,10 @@ const render_salida = (json) => {
     body.innerHTML = ''
     json.salidas.forEach((el) => {
         body.innerHTML += '<tr>'+
-                                '<td>'+
+                                '<td style="padding: 5px;">'+
                                     '<div id="'+el.id_folio+'" class="mas_opciones_tablas">'+
                                         '<div class="opcion">'+
-                                            '<button data-opciones="'+el.id_folio+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                            '<button data-opciones="'+el.id_folio+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
                                         '</div>'+
                                         '<div class="opciones" id="opciones-'+el.id_folio+'">'+
                                             '<button style="margin: 0px 5px 0px 0px;" class="btn btn-amarillo btn-icon-self material-icons" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button>'+
@@ -31,7 +31,7 @@ const render_externo = (json) => {
                                 '<td>'+
                                     '<div id="'+el.id_folio+'" class="mas_opciones_tablas">'+
                                         '<div class="opcion">'+
-                                            '<button data-opciones="'+el.id_folio+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                            '<button data-opciones="'+el.id_folio+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
                                         '</div>'+
                                         '<div class="opciones" id="opciones-'+el.id_folio+'">'+
                                             '<button style="margin: 0px 5px 0px 0px;" class="btn btn-amarillo btn-icon-self material-icons" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button>'+

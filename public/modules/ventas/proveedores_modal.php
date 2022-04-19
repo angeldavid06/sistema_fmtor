@@ -4,7 +4,7 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form_reg_proveedor">
+        <form id="form_reg_proveedor" style="padding: 0px 5px;">
             <p>Proveedor :</p>
             <input class="input " type="text" name="Proveedor" id="Proveedor" placeholder="Ingresar nombre del Proveedor">
             <p>Direccion:</p>
@@ -28,7 +28,7 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-actualizar">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form_act_proveedor">
+        <form id="form_act_proveedor" style="padding: 0px 5px;">
             <input class="input " type="text" name="Id_Proveedor" id="Id_Proveedor" hidden>
             <p>Proveedor :</p>
             <input class="input " type="text" name="Proveedor_m" id="Proveedor_m" placeholder="Ingresar nombre del Proveedor">

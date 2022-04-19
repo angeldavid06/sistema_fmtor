@@ -53,10 +53,10 @@ const render_proveedores = (json) => {
     body.innerHTML = ''
     json.forEach(el => {
         body.innerHTML += '<tr>'+
-                            '<td>'+
+                            '<td style="padding: 5px;">'+
                                 '<div id="'+el.Proveedor+'" class="mas_opciones_tablas">'+
                                     '<div class="opcion">'+
-                                        '<button data-opciones="'+el.Proveedor+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                        '<button data-opciones="'+el.Proveedor+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
                                     '</div>'+
                                     '<div class="opciones" id="opciones-'+el.Proveedor+'">'+
                                         '<button style="margin: 0px 5px 0px 0px;" data-modal="modal-actualizar" data-editar="'+el.Id_Proveedor+'" class="btn btn-icon-self btn-amarillo material-icons-outlined">edit</button>'+    

@@ -4,7 +4,7 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-filtrar-diario">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form-reporte-diario">
+        <form id="form-reporte-diario" style="padding: 0px 5px;">
             <div class="contenedor_filtros">
                 <input type="text" name="tabla" id="tabla" value="v_ordenes" hidden>
                 <div class="d-grid g-2">
@@ -43,7 +43,7 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar-diario">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form-control-diario">
+        <form id="form-control-diario" style="padding: 0px 5px;">
             <div class="d-grid g-2">
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Fecha:</p>
@@ -121,7 +121,7 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-editar-diario">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form-control-diario-editar">
+        <form id="form-control-diario-editar" style="padding: 0px 5px;">
             <input type="number" name="registro" id="registro" hidden>
             <div class="d-grid g-2">
                 <div class="d-grid g-1 grid-gap-0">

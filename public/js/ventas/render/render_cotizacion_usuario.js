@@ -33,10 +33,10 @@ const render_cotizaciones = (json) => {
                 aux++;
             }
             body.innerHTML += '<tr>'+
-                                '<td>'+
+                                '<td style="padding: 5px;">'+
                                     '<div id="'+el.id_cotizacion+'" class="mas_opciones_tablas">'+
                                         '<div class="opcion">'+
-                                            '<button data-opciones="'+el.id_cotizacion+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                            '<button data-opciones="'+el.id_cotizacion+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
                                         '</div>'+
                                         '<div class="opciones" id="opciones-'+el.id_cotizacion+'">'+
                                             '<button style="margin: 0px;" data-historial="' +el.id_cotizacion +'" data-modal="modal-historial" id="' +el.id_cotizacion +'" class="material-icons-outlined btn btn-icon-self btn-transparent" title="Copiar información">toc</button>' +

@@ -1420,6 +1420,11 @@ embed {
     background-color: var(--background-aux);
 }
 
+.contenido .informacion .tarjeta table tbody tr:hover .mas_opciones_tablas.mostrar-opciones .opciones,
+.contenido .informacion .acordeon .contenido_acordeon table tbody tr:hover .mas_opciones_tablas.mostrar-opciones .opciones {
+    background-color: var(--background-body);
+}
+
 .modal .contenido_modal table tbody tr:hover {
     background-color: var(--background-body);
 }

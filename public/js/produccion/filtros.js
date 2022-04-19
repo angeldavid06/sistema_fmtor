@@ -53,7 +53,7 @@ const buscar_dato = (metodo) => {
 }
 
 const deshabilitar_inputs = () => {
-    const f_inputs = document.getElementsByClassName('input');
+    const f_inputs = form_filtros.getElementsByClassName("input");
     for (let i = 0; i < f_inputs.length; i++) {
         f_inputs[i].setAttribute('disabled','')
     }

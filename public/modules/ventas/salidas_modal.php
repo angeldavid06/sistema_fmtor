@@ -37,7 +37,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
             <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-actualizar">close</button>
         </div>
         <div class="contenido_modal">
-            <form id="form_act_salida">
+            <form id="form_act_salida" style="padding: 0px 5px;">
                 <!-- <p>Salida De Almacen:</p> -->
                 <input class="input" type="text" name="Pedido_p" id="Pedido_p" hidden>
                 <p style="padding: 0px 0px 10px 0px;" class="txt-right">Información general:</p>
@@ -154,7 +154,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
             <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-actualizar-salida">close</button>
         </div>
         <div class="contenido_modal">
-            <form id="form_act_solo_salida">
+            <form id="form_act_solo_salida" style="padding: 0px 5px;">
                 <!-- <p>Salida De Almacen:</p> -->
                 <input class="input" type="text" name="Salida_e" id="Salida_e" hidden>
                 <p style="padding: 0px 0px 30px 0px;" class="txt-right">Información general:</p>
@@ -189,7 +189,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
         <button style="margin: 0px;" class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial">close</button>
     </div>
     <div class="contenido_modal">
-        <div class="d-grid g-1">
+        <div class="d-grid g-1" style="padding: 0px 5px;">
             <table class="table table_salida lista_salida" id="table">
                 <thead>
                     <th style="min-width: 150px;">N° parte de cliente </th>
@@ -219,7 +219,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
             <button style="margin: 0px;" class="btn btn-icon-self material-icons" data-modal="modal-pedido">add</button>
         </div> -->
     <div class="contenido_modal">
-        <div class="d-grid g-1">
+        <div class="d-grid g-1" style="padding: 0px 5px;">
             <table class="table table_salida lista_salida" id="table_compra">
                 <thead>
                     <th style="min-width: 80px;">Codigo</th>

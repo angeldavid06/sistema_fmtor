@@ -66,7 +66,6 @@ const limpiar_formulario = (form) => {
     document.getElementById("Cantidad_Tornillos").value = 1;
 };
 
-
 const restaurar_formulario = () => {
     const form_filtros = document.getElementById("form-filtros");
     const inputs_radio = document.getElementsByName("buscar_por");

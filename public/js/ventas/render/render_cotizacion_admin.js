@@ -254,10 +254,10 @@ const render_cotizaciones = (json) => {
                 aux++;
             }
             body.innerHTML += '<tr>'+
-                                '<td>'+
+                                '<td style="padding: 5px;">'+
                                     '<div id="'+el.id_cotizacion+'" class="mas_opciones_tablas">'+
                                         '<div class="opcion">'+
-                                            '<button data-opciones="'+el.id_cotizacion+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                            '<button data-opciones="'+el.id_cotizacion+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
                                         '</div>'+
                                         '<div class="opciones" id="opciones-'+el.id_cotizacion+'">'+
                                             '<button style="margin: 0px 5px 0px 0px;" title="Editar Salida de Almacen" class="material-icons-outlined btn btn-amarillo btn-icon-self" data-modal="modal-actualizar-cotizacion" data-cotizacion="' +el.id_cotizacion +'">mode_edit</button>'+

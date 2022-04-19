@@ -6,10 +6,10 @@ const render_orden = (json) => {
         json.forEach((element) => {
             body.innerHTML +=
                 "<tr>" +
-                    '<td>'+
+                    '<td style="padding: 5px;">'+
                         '<div id="'+element.Id_Folio+'" class="mas_opciones_tablas">'+
                             '<div class="opcion">'+
-                                '<button data-opciones="'+element.Id_Folio+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                '<button data-opciones="'+element.Id_Folio+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
                             '</div>'+
                             '<div class="opciones" id="opciones-'+element.Id_Folio+'">'+
                                 '<button data-editar="'+element.Id_Folio+'" style="margin: 0px 5px 0px 0px;" class="material-icons-outlined btn btn-amarillo btn-icon-self" data-modal="modal-actualizar">edit</button>'+

@@ -5,10 +5,10 @@ const render_clientes = (json) => {
     json.forEach(element => {
         if (element.Id_Clientes != 1) {
             body[0].innerHTML += '<tr>'+
-                                    '<td>'+
+                                    '<td style="padding: 5px;">'+
                                         '<div id="'+element.Id_Clientes+'" class="mas_opciones_tablas">'+
                                             '<div class="opcion">'+
-                                                '<button data-opciones="'+element.Id_Clientes+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                                '<button data-opciones="'+element.Id_Clientes+'" class="mas btn btn-icon-self material-icons">more_vert</button>'+
                                             '</div>'+
                                             '<div class="opciones" id="opciones-'+element.Id_Clientes+'">'+
                                                 '<button style="margin: 0px 5px 0px 0px;" class= "material-icons-outlined btn btn-icon-self btn-amarillo"  data-modal="modal-actualizar" data-edit="'+element.Id_Clientes+'"> mode_edit</button>'+

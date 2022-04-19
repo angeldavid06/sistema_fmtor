@@ -4,7 +4,7 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form_reg_cliente">
+        <form id="form_reg_cliente" style="padding: 0px 5px;">
 
             <p>Numero de identificacion :</p>
             <input class="input " type="number" name="Id_Clientes" id="Id_Clientes" placeholder="Ingresa el numero de identificacion">
@@ -33,9 +33,9 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-actualizar">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form_act_cliente">
+        <form id="form_act_cliente" style="padding: 0px 5px;">
 
-        
+
             <p>Numero de identificacion :</p>
             <input class="input " type="number" name="Id_Clientes_edit" id="Id_Clientes_edit" placeholder="Ingresa el numero de identificacion">
             <p>Razon Social :</p>

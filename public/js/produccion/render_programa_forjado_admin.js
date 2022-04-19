@@ -86,7 +86,7 @@ const render_programa = (registros,maquina) => {
                             '<td>'+
                                 '<div id="'+registros.Id_Programa_Forjado+'" class="mas_opciones_tablas">'+
                                     '<div class="opcion">'+
-                                        '<button data-opciones="'+registros.Id_Programa_Forjado+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                        '<button data-opciones="'+registros.Id_Programa_Forjado+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
                                     '</div>'+
                                     '<div class="opciones" id="opciones-'+registros.Id_Programa_Forjado+'">'+
                                         '<button style="margin: 0px 5px 0px 0px;" class="btn btn-icon-self btn-amarillo material-icons" data-modal="modal-programa_editar" data-editar="'+registros.Id_Programa_Forjado+'">edit</button>'+

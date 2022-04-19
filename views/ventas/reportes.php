@@ -13,8 +13,8 @@
             <i class="material-icons">print</i>
             Generar Reporte
         </button>
-        <button title="Recargar" class="material-icons btn btn-icon-self btn-transparent" data-recarga="true">loop</button>
-        <button data-modal="modal-filtrar" class="btn btn-icon-self btn-transparent material-icons">filter_alt</button>
+        <!-- <button title="Recargar" class="material-icons btn btn-icon-self btn-transparent" data-recarga="true">loop</button> -->
+        <!-- <button data-modal="modal-filtrar" class="btn btn-icon-self btn-transparent material-icons">filter_alt</button> -->
     </div>
 </div>
 <div class="tabla tarjeta" style="padding: 0;">

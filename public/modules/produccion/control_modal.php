@@ -4,7 +4,7 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form-control">
+        <form id="form-control" style="padding: 0px 5px;">
             <input type="text" name="op" id="op" hidden>
             <input type="text" name="estado" id="estado" hidden>
             <div class="d-grid g-2">
@@ -66,7 +66,7 @@
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-actualizar">close</button>
     </div>
     <div class="contenido_modal">
-        <form id="form-control-actualizar">
+        <form id="form-control-actualizar" style="padding: 0px 5px;">
             <input type="text" name="a_estado" id="a_estado" hidden>
             <input type="text" name="a_op" id="a_op" hidden>
             <div class="d-grid g-2">
@@ -122,4 +122,3 @@
         </form>
     </div>
 </div>
-
