@@ -111,7 +111,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                         <div class="d-grid g-2">
                             <div class="d-flex justify-center align-content-center">
                                 <div class="d-grid g-1 grid-gap-0">
-                                    <input type="checkbox" data-radio="checkbox" name="tratamiento_1" id="tratamiento_1" >
+                                    <input type="checkbox" data-radio="checkbox" name="tratamiento_1" id="tratamiento_1">
                                     <label class="lbl-checkbox" id="lbl_checkbox_salida" for="tratamiento_1">T / Termico</label>
                                 </div>
                             </div>
@@ -472,7 +472,9 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
         <button style="margin: 0px;" class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial">close</button>
     </div>
     <div class="d-flex justify-right align-content-center">
-        <button style="margin: 0px;" class="btn btn-icon-self material-icons" data-modal="modal-pedido">add</button>
+        <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+            <!-- <button style="margin: 0px;" class="btn btn-icon-self material-icons" data-modal="modal-pedido">add</button> -->
+        <?php } ?>
     </div>
     <div class="contenido_modal">
         <div class="d-grid g-1">

@@ -83,8 +83,17 @@ form_ingresar.addEventListener('submit', (evt) => {
 const render_programa = (registros,maquina) => {
     const body = document.getElementById('body_maquina_'+maquina);
     body.innerHTML += '<tr>'+
-                            '<td style=" padding: 5px;"><button class="btn btn-icon-self btn-amarillo material-icons" data-modal="modal-programa_editar" data-editar="'+registros.Id_Programa_Forjado+'">edit</button></td>'+
-                            '<td style=" padding: 5px;"><button class="btn btn-icon-self btn-rojo material-icons" data-eliminar="'+registros.Id_Programa_Forjado+'">delete</button></td>'+
+                            '<td>'+
+                                '<div id="'+registros.Id_Programa_Forjado+'" class="mas_opciones_tablas">'+
+                                    '<div class="opcion">'+
+                                        '<button data-opciones="'+registros.Id_Programa_Forjado+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                    '</div>'+
+                                    '<div class="opciones" id="opciones-'+registros.Id_Programa_Forjado+'">'+
+                                        '<button style="margin: 0px 5px 0px 0px;" class="btn btn-icon-self btn-amarillo material-icons" data-modal="modal-programa_editar" data-editar="'+registros.Id_Programa_Forjado+'">edit</button>'+
+                                        '<button style="margin: 0px 0px 0px 5px;" class="btn btn-icon-self btn-rojo material-icons" data-eliminar="'+registros.Id_Programa_Forjado+'">delete</button>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Calibre+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">'+new Intl.NumberFormat('es-MX').format((registros.factor*registros.cantidad_elaborar))+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">'+registros.factor+'</td>'+

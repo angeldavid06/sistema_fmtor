@@ -104,28 +104,46 @@ const render_registros_diarios = (json) => {
             const tr = document.createElement('tr')
             if (el.Id_Folio != 1) {
                 tr.innerHTML =
-                  "<td>" +el.turno +"</td>" +
-                  "<td>" +el.Id_Folio +"</td>" +
-                  "<td>" +el.Clientes +"</td>" +
-                  "<td>" +el.kilos +"</td>" +
-                  "<td>" +el.pzas +"</td>" +
-                  "<td>" +el.Maquina +"</td>" +
-                  "<td>" +el.descripcion +"</td>" +
-                  "<td>" +el.observaciones +"</td>" +
-                  '<td><button  data-modal="modal-editar-diario" data-editar="' +el.id_registro_diario +'" class="material-icons btn btn-icon-self btn-naranja">edit</button></td>' +
-                  '<td><button data-eliminar="' +el.id_registro_diario +'" class="material-icons btn btn-icon-self btn-rojo">delete</button></td>';
+                    '<td>'+
+                        '<div id="'+el.id_registro_diario+'" class="mas_opciones_tablas">'+
+                            '<div class="opcion">'+
+                                '<button data-opciones="'+el.id_registro_diario+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                            '</div>'+
+                            '<div class="opciones" id="opciones-'+el.id_registro_diario+'">'+
+                                '<button style="margin: 0px 5px 0px 0px;" data-modal="modal-editar-diario" data-editar="' +el.id_registro_diario +'" class="material-icons btn btn-icon-self btn-amarillo">edit</button>' +
+                                '<button style="margin: 0px 0px 0px 5px;" data-eliminar="' +el.id_registro_diario +'" class="material-icons btn btn-icon-self btn-rojo">delete</button>'+
+                            '</div>'+
+                        '</div>'+
+                    '</td>'+
+                    "<td>" +el.turno +"</td>" +
+                    "<td>" +el.Id_Folio +"</td>" +
+                    "<td>" +el.Clientes +"</td>" +
+                    "<td>" +el.kilos +"</td>" +
+                    "<td>" +el.pzas +"</td>" +
+                    "<td>" +el.Maquina +"</td>" +
+                    "<td>" +el.descripcion +"</td>" +
+                    "<td>" +el.observaciones +"</td>";
                 body.appendChild(tr);
             } else {
-                tr.innerHTML = '<td>'+el.turno+'</td>'+
+                tr.innerHTML = '<td>'+
+                                    '<div id="'+el.id_registro_diario+'" class="mas_opciones_tablas">'+
+                                        '<div class="opcion">'+
+                                            '<button data-opciones="'+el.id_registro_diario+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                        '</div>'+
+                                        '<div class="opciones" id="opciones-'+el.id_registro_diario+'">'+
+                                            '<button style="margin: 0px 5px 0px 0px;" data-modal="modal-actualizar" data-editar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-amarillo">edit</button>'+
+                                            '<button style="margin: 0px 0px 0px 5px;" data-eliminar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-rojo">delete</button>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</td>'+
+                                '<td>'+el.turno+'</td>'+
                                 '<td>SIN O.P.</td>'+
                                 '<td></td>'+
                                 '<td>'+el.kilos+'</td>'+
                                 '<td>'+el.pzas+'</td>'+
                                 '<td>'+el.Maquina+'</td>'+
                                 '<td></td>'+
-                                '<td>'+el.observaciones+'</td>'+
-                                '<td><button  data-modal="modal-actualizar" data-editar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-naranja">edit</button></td>'+
-                                '<td><button data-eliminar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-rojo">delete</button></td>';
+                                '<td>'+el.observaciones+'</td>'
                 body.appendChild(tr);
             }
         });

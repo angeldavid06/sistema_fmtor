@@ -1,7 +1,7 @@
-<?php 
-    if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
-        header('Location: ' . $this->url_server . '/usuario/principal');
-    }
+<?php
+if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
+    header('Location: ' . $this->url_server . '/usuario/principal');
+}
 ?>
 <div class="tarjeta-transparente d-grid g-2" style="padding: 0;">
     <div class="d-grid g-1">
@@ -18,7 +18,9 @@
 <div class="tabla tarjeta" style="padding: 0;">
     <table class="table table_clientes lista_clientes" id="listaClientes">
         <thead>
-            <th style="max-width: 60px;"></th>
+            <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+                <th style="max-width: 60px;"></th>
+            <?php } ?>
             <th>Numero de identificacion</th>
             <th>Razon Social</th>
             <th>Nombre del Cliente</th>

@@ -1,10 +1,10 @@
 const render_programa = (registros,maquina) => {
     const body = document.getElementById('body_maquina_'+maquina);
     body.innerHTML += '<tr>'+
-                            '<td class="'+registros.producto_desc+'">'+registros.calibre+'</td>'+
+                            '<td class="'+registros.producto_desc+'">'+registros.Calibre+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">'+new Intl.NumberFormat('es-MX').format((registros.factor*registros.cantidad_elaborar))+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">'+registros.factor+'</td>'+
-                            '<td class="'+registros.producto_desc+'">'+registros.Id_Folio+'</td>'+
+                            '<td class="'+registros.producto_desc+'">'+registros.Id_Produccion+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Fecha+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Clientes+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.medida+'</td>'+

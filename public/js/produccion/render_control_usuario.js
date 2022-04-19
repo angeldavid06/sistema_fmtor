@@ -7,7 +7,7 @@ const render_control = (vista,json) => {
 
     json.forEach(el => {
         body[0].innerHTML += '<tr>'+
-                                '<td>'+el.botes+'</td>'+
+                                '<td>'+el.bote+'</td>'+
                                 '<td>'+el.fecha+'</td>'+
                                 '<td>'+el.observaciones+'</td>'+
                                 '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+

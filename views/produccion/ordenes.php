@@ -23,8 +23,6 @@
                 <table id="table">
                     <thead class="cabecera">
                         <th></th>
-                        <th></th>
-                        <th></th>
                         <th>CAL.</th>
                         <th style="min-width: 80px;">Kg.</th>
                         <th>Factor</th>

@@ -552,7 +552,7 @@ const render_encabezado_forjado = (limite_semana,anio, mes) => {
         if (i == 0) {
             inicio = '01'
         } else {
-            if (limite_semana[i-1] < 10) {
+            if ((limite_semana[i-1]+1) < 10) {
                 inicio = '0'+(limite_semana[i-1]+1)
             } else {
                 inicio = limite_semana[i-1]+1

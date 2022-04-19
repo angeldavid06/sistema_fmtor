@@ -1,7 +1,7 @@
 <?php
-    if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
-        header('Location: ' . $this->url_server . '/usuario/principal');
-    }
+if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
+    header('Location: ' . $this->url_server . '/usuario/principal');
+}
 ?>
 <div class="tarjeta-transparente d-grid g-2" style="padding: 0;">
     <div class="d-grid">
@@ -38,5 +38,10 @@
     </table>
 </div>
 <?php require_once 'public/modules/ventas/orden_modal.php'; ?>
+<?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+    <script src="../public/js/ventas/render/render_orden_admin.js"></script>
+<?php } else { ?>
+    <script src="../public/js/ventas/render/render_orden_usuario.js"></script>
+<?php } ?>
 <script src="../public/js/ventas/functions_orden.js?1.4"></script>
 <script src="../public/js/ventas/filtro_orden.js"></script>

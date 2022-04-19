@@ -1,7 +1,7 @@
-<?php 
-    if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
-        header('Location: ' . $this->url_server . '/usuario/principal');
-    }
+<?php
+if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
+    header('Location: ' . $this->url_server . '/usuario/principal');
+}
 ?>
 <div class="tarjeta-transparente d-grid g-2" style="padding: 0;">
     <div class="d-grid g-1">
@@ -18,8 +18,9 @@
 <div class="tabla tarjeta" style="padding: 0;">
     <table class="table table_clientes lista_clientes" id="listaClientes">
         <thead>
-            <!-- <th> Numero de identificacion</th> -->
-            <th></th>
+            <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+                <th style="max-width: 60px;"></th>
+            <?php } ?>
             <th style="min-width: 200px;">Proveedor</th>
             <th style="min-width: 400px;">Direccion</th>
             <th>Ciudad</th>
@@ -30,13 +31,13 @@
     </table>
 </div>
 <?php
-    if ($_SESSION['cm9s'] == 'Administrativo') {
-        require_once 'public/modules/ventas/proveedores_modal.php';
-    }
+if ($_SESSION['cm9s'] == 'Administrativo') {
+    require_once 'public/modules/ventas/proveedores_modal.php';
+}
 ?>
 <script src="../public/js/ventas/functions_proveedor.js"></script>
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-    <script src="../public/js/ventas/render/render_proveedores_admin.js"></script>   
+    <script src="../public/js/ventas/render/render_proveedores_admin.js"></script>
 <?php } else { ?>
     <script src="../public/js/ventas/render/render_proveedores_usuario.js"></script>
 <?php } ?>

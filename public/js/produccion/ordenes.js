@@ -69,9 +69,18 @@ const render_ordenes = (json) => {
             total_acumulado += parseFloat(el.TOTAL)
             total_kilos += (el.factor*el.cantidad_elaborar)
     
-            tr.innerHTML += '<td style="padding: 5px;"><button data-modal="modal-tarjetas" title="Tarjeta de Flujo ('+el.Id_Folio+')" data-tarjeta="'+el.Id_Folio+'" data-t1="'+el.Id_Folio+'" class="material-icons-outlined btn btn-icon-self btn-impresion">note_alt</button></td>'+
-                            '<td style="padding: 5px 0px;"><button style="margin: 0;" title="Orden de Producción ('+el.Id_Folio+')" data-impresion="orden_produccion" data-orden="'+el.Id_Folio+'" class="material-icons btn btn-icon-self btn-verde btn-impresion">splitscreen</button></td>'+
-                            '<td style="padding: 5px;"><button title="Control de Producción('+el.Id_Folio+')" data-impresion="control_vacio" data-control="'+el.Id_Folio+'" class="material-icons btn btn-icon-self btn-amarillo btn-impresion">calendar_view_month</button></td>'+
+            tr.innerHTML += '<td>'+
+                                '<div id="'+el.Id_Folio+'" class="mas_opciones_tablas">'+
+                                    '<div class="opcion">'+
+                                        '<button data-opciones="'+el.Id_Folio+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
+                                    '</div>'+
+                                    '<div class="opciones" id="opciones-'+el.Id_Folio+'">'+
+                                        '<button style="margin: 0px 5px 0px 0px;" data-modal="modal-tarjetas" title="Tarjeta de Flujo ('+el.Id_Folio+')" data-tarjeta="'+el.Id_Folio+'" data-t1="'+el.Id_Folio+'" class="material-icons-outlined btn btn-icon-self btn-impresion">note_alt</button>'+
+                                        '<button style="margin: 0px 5px;" title="Orden de Producción ('+el.Id_Folio+')" data-impresion="orden_produccion" data-orden="'+el.Id_Folio+'" class="material-icons btn btn-icon-self btn-verde btn-impresion">splitscreen</button>'+
+                                        '<button style="margin: 0px 0px 0px 5px;" title="Control de Producción('+el.Id_Folio+')" data-impresion="control_vacio" data-control="'+el.Id_Folio+'" class="material-icons btn btn-icon-self btn-amarillo btn-impresion">calendar_view_month</button>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</td>'+
                             '<td data-op="'+el.Id_Folio+'" data-calibre="'+el.calibre+'" data-modal="modal-calibre">'+el.calibre+'</td>'+
                             '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.factor*el.cantidad_elaborar)+'</td>'+
                             '<td>'+el.factor+'</td>'+

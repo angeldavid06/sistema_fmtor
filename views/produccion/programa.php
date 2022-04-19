@@ -1,34 +1,41 @@
-<?php 
-    if ($_SESSION['ZGVwdG8='] != 'Produccion' && $_SESSION['cm9s'] != 'SuperUsuario') {
-        header('Location: ' . $this->url_server . '/usuario/principal');
-    }
+<?php
+if ($_SESSION['ZGVwdG8='] != 'Produccion' && $_SESSION['cm9s'] != 'SuperUsuario') {
+    header('Location: ' . $this->url_server . '/usuario/principal');
+}
 ?>
 <style>
     .herramental {
         background: #F20505;
         color: white;
     }
+
     .herramental td {
         color: white;
     }
+
     .mantenimiento {
         background: #F20505;
         color: white;
     }
+
     .mantenimiento td {
         color: white;
     }
+
     .linea {
         background: #FFFF00;
         color: black;
     }
+
     .linea td {
         color: black;
     }
+
     .maquina {
-        background: #AA9BBF; 
+        background: #AA9BBF;
         color: black;
     }
+
     .maquina td {
         color: black;
     }
@@ -77,15 +84,20 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
+                <?php
+                if ($_SESSION['cm9s'] == 'Administrativo') {
+                ?>
+                    <th width="80px"></th>
+                <?php
+                }
+                ?>
                 <th style="padding: 10px 0px; ">CAL.</th>
                 <th style="padding: 10px 0px; min-width: 80px;">Kg.</th>
                 <th style="padding: 10px 0px; ">Factor</th>
                 <th style="padding: 10px 0px; min-width: 80px;">N° O.P.</th>
                 <th style="padding: 10px 0px; min-width: 130px;">Fecha de O.P.</th>
                 <th style="padding: 10px 0px; min-width: 80px;">Cliente</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
+                <th style="padding: 10px 0px;  min-width: 100px;">Medida</th>
                 <th style="padding: 10px 0px; min-width: 190px;">Descripción</th>
                 <th style="padding: 10px 0px; min-width: 130px;">Acabado</th>
                 <th style="padding: 10px 0px; ">Cant.</th>
@@ -108,23 +120,28 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th  style="padding: 10px 0px; ">CAL.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
-                <th  style="padding: 10px 0px; ">Factor</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
-                <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
-                <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
-                <th  style="padding: 10px 0px; ">Cant.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Precio</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
-                <th  style="padding: 10px 0px; ">Herramental</th>
-                <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
+                <?php
+                if ($_SESSION['cm9s'] == 'Administrativo') {
+                ?>
+                    <th width="80px"></th>
+                <?php
+                }
+                ?>
+                <th style="padding: 10px 0px; ">CAL.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
+                <th style="padding: 10px 0px; ">Factor</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                <th style="padding: 10px 0px;  min-width: 100px;">Medida</th>
+                <th style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
+                <th style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
+                <th style="padding: 10px 0px; ">Cant.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Precio</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
+                <th style="padding: 10px 0px; ">Herramental</th>
+                <th style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
+                <th style="padding: 10px 0px;  min-width: 100px;"></th>
             </tr>
         </thead>
         <tbody id="body_maquina_2">
@@ -139,23 +156,28 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th  style="padding: 10px 0px; ">CAL.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
-                <th  style="padding: 10px 0px; ">Factor</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
-                <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
-                <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
-                <th  style="padding: 10px 0px; ">Cant.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Precio</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
-                <th  style="padding: 10px 0px; ">Herramental</th>
-                <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
+                <?php
+                if ($_SESSION['cm9s'] == 'Administrativo') {
+                ?>
+                    <th width="80px"></th>
+                <?php
+                }
+                ?>
+                <th style="padding: 10px 0px; ">CAL.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
+                <th style="padding: 10px 0px; ">Factor</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                <th style="padding: 10px 0px;  min-width: 100px;">Medida</th>
+                <th style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
+                <th style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
+                <th style="padding: 10px 0px; ">Cant.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Precio</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
+                <th style="padding: 10px 0px; ">Herramental</th>
+                <th style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
+                <th style="padding: 10px 0px;  min-width: 100px;"></th>
             </tr>
         </thead>
         <tbody id="body_maquina_3">
@@ -170,23 +192,28 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th  style="padding: 10px 0px; ">CAL.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
-                <th  style="padding: 10px 0px; ">Factor</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
-                <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
-                <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
-                <th  style="padding: 10px 0px; ">Cant.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Precio</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
-                <th  style="padding: 10px 0px; ">Herramental</th>
-                <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
+                <?php
+                if ($_SESSION['cm9s'] == 'Administrativo') {
+                ?>
+                    <th width="80px"></th>
+                <?php
+                }
+                ?>
+                <th style="padding: 10px 0px; ">CAL.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
+                <th style="padding: 10px 0px; ">Factor</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                <th style="padding: 10px 0px;  min-width: 100px;">Medida</th>
+                <th style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
+                <th style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
+                <th style="padding: 10px 0px; ">Cant.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Precio</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
+                <th style="padding: 10px 0px; ">Herramental</th>
+                <th style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
+                <th style="padding: 10px 0px;  min-width: 100px;"></th>
             </tr>
         </thead>
         <tbody id="body_maquina_4">
@@ -201,23 +228,28 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th  style="padding: 10px 0px; ">CAL.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
-                <th  style="padding: 10px 0px; ">Factor</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
-                <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
-                <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
-                <th  style="padding: 10px 0px; ">Cant.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Precio</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
-                <th  style="padding: 10px 0px; ">Herramental</th>
-                <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
+                <?php
+                if ($_SESSION['cm9s'] == 'Administrativo') {
+                ?>
+                    <th width="80px"></th>
+                <?php
+                }
+                ?>
+                <th style="padding: 10px 0px; ">CAL.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
+                <th style="padding: 10px 0px; ">Factor</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                <th style="padding: 10px 0px;  min-width: 100px;">Medida</th>
+                <th style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
+                <th style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
+                <th style="padding: 10px 0px; ">Cant.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Precio</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
+                <th style="padding: 10px 0px; ">Herramental</th>
+                <th style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
+                <th style="padding: 10px 0px;  min-width: 100px;"></th>
             </tr>
         </thead>
         <tbody id="body_maquina_5">
@@ -232,23 +264,28 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th  style="padding: 10px 0px; ">CAL.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
-                <th  style="padding: 10px 0px; ">Factor</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
-                <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
-                <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
-                <th  style="padding: 10px 0px; ">Cant.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Precio</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
-                <th  style="padding: 10px 0px; ">Herramental</th>
-                <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
+                <?php
+                if ($_SESSION['cm9s'] == 'Administrativo') {
+                ?>
+                    <th width="80px"></th>
+                <?php
+                }
+                ?>
+                <th style="padding: 10px 0px; ">CAL.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
+                <th style="padding: 10px 0px; ">Factor</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                <th style="padding: 10px 0px;  min-width: 100px;">Medida</th>
+                <th style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
+                <th style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
+                <th style="padding: 10px 0px; ">Cant.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Precio</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
+                <th style="padding: 10px 0px; ">Herramental</th>
+                <th style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
+                <th style="padding: 10px 0px;  min-width: 100px;"></th>
             </tr>
         </thead>
         <tbody id="body_maquina_6">
@@ -263,24 +300,29 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th  style="padding: 10px 0px; ">CAL.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
-                <th  style="padding: 10px 0px; ">Factor</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
-                <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
-                <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
-                <th  style="padding: 10px 0px; ">Cant.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Precio</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
-                <th  style="padding: 10px 0px; ">Herramental</th>
-                <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
+                <?php
+                if ($_SESSION['cm9s'] == 'Administrativo') {
+                ?>
+                    <th width="80px"></th>
+                <?php
+                }
+                ?>
+                <th style="padding: 10px 0px; ">CAL.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
+                <th style="padding: 10px 0px; ">Factor</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                <th style="padding: 10px 0px;  min-width: 100px;">Medida</th>
+                <th style="padding: 10px 0px;  min-width: 100px;">Medida</th>
+                <th style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
+                <th style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
+                <th style="padding: 10px 0px; ">Cant.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Precio</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
+                <th style="padding: 10px 0px; ">Herramental</th>
+                <th style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
+                <th style="padding: 10px 0px;  min-width: 100px;"></th>
             </tr>
         </thead>
         <tbody id="body_maquina_7">
@@ -295,23 +337,28 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th  style="padding: 10px 0px; ">CAL.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
-                <th  style="padding: 10px 0px; ">Factor</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
-                <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
-                <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
-                <th  style="padding: 10px 0px; ">Cant.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Precio</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
-                <th  style="padding: 10px 0px; ">Herramental</th>
-                <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
+                <?php
+                if ($_SESSION['cm9s'] == 'Administrativo') {
+                ?>
+                    <th width="80px"></th>
+                <?php
+                }
+                ?>
+                <th style="padding: 10px 0px; ">CAL.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
+                <th style="padding: 10px 0px; ">Factor</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                <th style="padding: 10px 0px;  min-width: 100px;">Medida</th>
+                <th style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
+                <th style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
+                <th style="padding: 10px 0px; ">Cant.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Precio</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
+                <th style="padding: 10px 0px; ">Herramental</th>
+                <th style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
+                <th style="padding: 10px 0px;  min-width: 100px;"></th>
             </tr>
         </thead>
         <tbody id="body_maquina_8">
@@ -326,23 +373,28 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th  style="padding: 10px 0px; ">CAL.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
-                <th  style="padding: 10px 0px; ">Factor</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;">Medida</th>
-                <th  style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
-                <th  style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
-                <th  style="padding: 10px 0px; ">Cant.</th>
-                <th  style="padding: 10px 0px;  min-width: 80px;">Precio</th>
-                <th  style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
-                <th  style="padding: 10px 0px; ">Herramental</th>
-                <th  style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
-                <th  style="padding: 10px 0px;  min-width: 100px;"></th>
+                <?php
+                if ($_SESSION['cm9s'] == 'Administrativo') {
+                ?>
+                    <th width="80px"></th>
+                <?php
+                }
+                ?>
+                <th style="padding: 10px 0px; ">CAL.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Kg.</th>
+                <th style="padding: 10px 0px; ">Factor</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">N° O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha de O.P.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Cliente</th>
+                <th style="padding: 10px 0px;  min-width: 100px;">Medida</th>
+                <th style="padding: 10px 0px;  min-width: 190px;">Descripción</th>
+                <th style="padding: 10px 0px;  min-width: 130px;">Acabado</th>
+                <th style="padding: 10px 0px; ">Cant.</th>
+                <th style="padding: 10px 0px;  min-width: 80px;">Precio</th>
+                <th style="padding: 10px 0px;  min-width: 110px;">Fecha Entrega</th>
+                <th style="padding: 10px 0px; ">Herramental</th>
+                <th style="padding: 10px 0px;  min-width: 120px;">Tratamiento</th>
+                <th style="padding: 10px 0px;  min-width: 100px;"></th>
             </tr>
         </thead>
         <tbody id="body_maquina_9">
@@ -350,12 +402,12 @@
         <tfoot></tfoot>
     </table>
 </div>
-<?php 
-    require_once 'public/modules/produccion/programa_editar_modal.php';
+<?php
+require_once 'public/modules/produccion/programa_editar_modal.php';
 ?>
 <script src="../public/js/produccion/programa_forjado.js"></script>
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
     <script src="../public/js/produccion/render_programa_forjado_admin.js"></script>
 <?php } else { ?>
-        <script src="../public/js/produccion/render_programa_forjado_usuario.js"></script>
+    <script src="../public/js/produccion/render_programa_forjado_usuario.js"></script>
 <?php } ?>

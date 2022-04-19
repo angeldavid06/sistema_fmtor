@@ -1,7 +1,7 @@
-<?php 
-    if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
-        header('Location: ' . $this->url_server . '/usuario/principal');
-    }
+<?php
+if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
+    header('Location: ' . $this->url_server . '/usuario/principal');
+}
 ?>
 <div class="tarjeta-transparente d-grid g-2" style="padding: 0;">
     <div class="d-grid g-1">
@@ -30,16 +30,13 @@
     </table>
 </div>
 <?php
-    if ($_SESSION['cm9s'] == 'Administrativo') {
-        require_once 'public/modules/ventas/compras_modal.php';
-    }
-    require_once 'public/modules/ventas/filtros_compras.php';
+    require_once 'public/modules/ventas/compras_modal.php';
 ?>
 <script src="../public/js/ventas/functions_compra.js"></script>
 <script src="../public/js/ventas/filtro_compra.js"></script>
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
     <script src="../public/js/ventas/compra_pedidos.js"></script>
     <script src="../public/js/ventas/render/render_compra_admin.js"></script>
-<?php }  else { ?>
+<?php } else { ?>
     <script src="../public/js/ventas/render/render_compra_usuario.js"></script>
-<?php }?>
+<?php } ?>

@@ -72,16 +72,19 @@ if ($_SESSION['ZGVwdG8='] != 'Produccion' && $_SESSION['cm9s'] != 'SuperUsuario'
                 <!-- Cambiar todo a una sola tabla -->
                 <table class="table table-control">
                     <thead>
+                        <?php
+                        if ($_SESSION['cm9s'] == 'Administrativo') {
+                        ?>
+                            <th width="80px"></th>
+                        <?php
+                        }
+                        ?>
                         <th width="100px">Botes</th>
-                        <th width="100px">Fecha</th>
-                        <th width="150px">Observaciones</th>
+                        <th width="100px" style="min-width: 100px;">Fecha</th>
+                        <th width="150px" style="min-width: 150px;">Observaciones</th>
                         <th>Pzas. Producidas</th>
                         <th>Kg.</th>
                         <th width="100px">Máquina</th>
-                        <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                            <th width="80px"></th>
-                            <th width="80px"></th>
-                        <?php } ?>
                     </thead>
                     <tbody class="body"></tbody>
                 </table>

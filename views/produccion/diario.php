@@ -1,7 +1,7 @@
-<?php 
-    if ($_SESSION['ZGVwdG8='] != 'Produccion' && $_SESSION['cm9s'] != 'SuperUsuario') {
-        header('Location: ' . $this->url_server . '/usuario/principal');
-    }
+<?php
+if ($_SESSION['ZGVwdG8='] != 'Produccion' && $_SESSION['cm9s'] != 'SuperUsuario') {
+    header('Location: ' . $this->url_server . '/usuario/principal');
+}
 ?>
 <div class="d-grid g2-5-5">
     <div style="padding-top: 0px;" class="tarjeta-transparente">
@@ -31,18 +31,21 @@
     <table>
         <thead>
             <tr>
+                <?php
+                if ($_SESSION['cm9s'] == 'Administrativo') {
+                ?>
+                    <th width="60px"></th>
+                <?php
+                }
+                ?>
                 <th>Turno</th>
                 <th>Id_Folio</th>
                 <th>Cliente</th>
                 <th>Kilos</th>
                 <th>Pzas</th>
                 <th>Maquina</th>
-                <th>Descripción</th>
-                <th>Observaciones</th>
-                <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                    <th style="min-width: 80px;"></th>
-                    <th style="min-width: 80px;"></th>
-                <?php } ?>
+                <th style="min-width: 120px;">Descripción</th>
+                <th style="min-width: 120px;">Observaciones</th>
             </tr>
         </thead>
         <tbody id="body">
@@ -53,9 +56,9 @@
     </table>
 </div>
 <?php
-    if ($_SESSION['cm9s'] == 'Administrativo') {
-        require_once 'public/modules/produccion/diario_modal.php';
-    } 
+if ($_SESSION['cm9s'] == 'Administrativo') {
+    require_once 'public/modules/produccion/diario_modal.php';
+}
 ?>
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
     <script src="../public/js/produccion/render_diario_admin.js"></script>

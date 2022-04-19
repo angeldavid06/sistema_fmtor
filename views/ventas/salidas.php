@@ -57,9 +57,8 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
 </div>
 <?php
 require_once 'public/modules/ventas/salidas_almacen_modal.php';
-if ($_SESSION['cm9s'] == 'Administrativo') {
-    require_once 'public/modules/ventas/salidas_modal.php';
-}
+require_once 'public/modules/ventas/salidas_modal.php';
+
 ?>
 <script src="../public/js/ventas/functions_salida.js?1.3"></script>
 <script src="../public/js/ventas/filtros.js"></script>
