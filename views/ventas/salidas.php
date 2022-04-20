@@ -28,6 +28,7 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
                         <th style="min-width: 80px;">N° de salida </th>
                         <th style="min-width: 150px;">Cliente</th>
                         <th style="min-width: 100px;">Fecha</th>
+                        <th style="min-width: 50px;"></th>
                     </thead>
                     <tbody id="table" class="body body_salida"></tbody>
                     <tfoot class="tfoot"></tfoot>

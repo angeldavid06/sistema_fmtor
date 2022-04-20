@@ -68,15 +68,22 @@
             mysqli_close($this->db);
             $assoc = self::getAssoc($filtrar);
             return $assoc;
-         }
-         
-         public function filtrar ($tabla,$campo,$valor) { 
+        }
+        
+        public function filtrar ($tabla,$campo,$valor) { 
             $sql = "SELECT * FROM $tabla WHERE $campo LIKE '%$valor%'";
             $filtrar = $this->db->query($sql);
             mysqli_close($this->db);
             $assoc = self::getAssoc($filtrar);
             return $assoc;
-         }
+        }
+
+        public function procedimiento ($procedimiento,$campos) {
+            $sql="CALL $procedimiento($campos)";
+            $result = $this->db->query($sql);
+            mysqli_close($this->db);
+            return $result;
+        }
 
         public function getAssoc ($query) {
             $assoc = array();

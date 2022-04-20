@@ -64,3 +64,25 @@ BEGIN
 	END IF;
 END |
 DELIMITER ;
+
+
+-- Ventas
+
+DELIMITER |
+CREATE OR REPLACE TRIGGER cancelar_ordenes AFTER UPDATE ON t_salida_almacen
+FOR EACH ROW
+BEGIN
+	IF (NEW.Estado = 1) THEN
+		UPDATE t_salida_almacen,
+		t_pedido,
+		t_orden_produccion,
+		t_clientes,
+		t_cotizacion SET Estado_general = 'CANCELADA' 
+		WHERE t_pedido.Id_Pedido = t_orden_produccion.Id_Pedido_FK
+		AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
+		AND t_clientes.Id_Clientes = t_cotizacion.Id_Clientes_FK
+		AND t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
+		AND t_salida_almacen.Id_Folio = NEW.Id_Folio;
+	END IF;
+END |
+DELIMITER ;

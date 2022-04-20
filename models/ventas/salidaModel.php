@@ -209,5 +209,12 @@
             $validacion = Model::actualizar('t_salida_almacen', $values, $condicion);
             return $validacion;
         }
+
+        public function cancelar () {
+            $values = "Estado = '1'";
+            $condicion = "Id_Folio = '$this->Salida'";
+            $validacion = Model::actualizar('t_salida_almacen', $values, $condicion);
+            return $validacion;
+        }
     }
 ?>

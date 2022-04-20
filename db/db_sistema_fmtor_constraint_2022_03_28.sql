@@ -130,6 +130,7 @@ OR REPLACE table t_salida_almacen (
   Fecha date,
   Factura VARCHAR(30) DEFAULT '-',
   Empaque VARCHAR(30) DEFAULT '-',
+  Estado BOOLEAN DEFAULT 0,
   -- Id_Clientes_FK int(11),
   Id_Cotizacion_FK int(11),
   Id_Orden_Compra_FK int(11),

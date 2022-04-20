@@ -11,59 +11,59 @@ const meses = ['ENERO',
                 'NOVIEMBRE',
                 'DICIEMBRE']
 
-const render_reporte = (json) => {
-    limpiar_tabla();
+const render_salidas = (json,body) => {
     let aux = 0;
-    let total_acumulado = 0;
-    let total_acumulado_mensual = 0;
-    let total_kilos = 0;
-    let total_kilos_mensual = 0;
-    const body = document.getElementsByClassName("body_reporte");
-    body[0].innerHTML = "";
-    
-    json['salidas'].forEach((element) => {
-        const tr_mes = document.createElement("tr");
-        const tr_totales = document.createElement("tr");
-        const tr = document.createElement("tr");
-        let fecha = element.fecha.split("-");
-        
-        if (aux == 0 || mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
-            tr_mes.innerHTML = '<tr><td class="txt-center" colspan="14">'+meses[fecha[1]-1]+' '+fecha[0]+'</td></tr>'
-            mes = (fecha[0]+'-'+fecha[1])
-            aux++;
-            body[0].appendChild(tr_mes)
+    let anterior = 0;
+    let total_salida_costo = 0;
+    let total_salida_cantidad = 0;
+    let total_salida_kilos = 0;
+
+    json.forEach((element) => {
+        if (aux == 0) {
+            anterior = element.Id_Folio
         }
-        const info = {
-            op: '-', 
-            medida: '-',
-            descripcion: '-',
-            acabado: '-',
-            plano: '-',
-            estado: '-',
-            material: '-',
-            cantidad: '0'
-        };
-        json['ordenes'].forEach((orden) => {
-            if (orden.Id_Pedido == element.Id_Pedido) {
-                info.op = orden.Id_Folio;
-                info.plano = orden.Id_Catalogo;
-                info.estado = orden.estado_general;
-                info.cantidad = orden.cantidad_elaborar;
-            }
-        })
-        if (element.Salida != 0) {
+
+        if (total_salida_costo == 0 && anterior == element.Id_Folio) {
+            total_salida_costo += parseFloat(element.costo);
+            total_salida_cantidad += parseFloat(element.cantidad);
+            total_salida_kilos += (parseFloat(element.Factor) * parseFloat(element.cantidad))
+        } else {
+            console.log(element.id_folio);
             body[0].innerHTML +=
             "<tr>" +
                 "<td class='txt-right'>"+element.fecha + "</td>" + 
-                "<td class='txt-right'>"+element.fecha_entrega + "</td>" + 
+                // "<td class='txt-right'>"+element.fecha_entrega + "</td>" + 
                 "<td>"+element.razon_social +"</td>" +
                 "<td>"+element.id_folio + "</td>" +
-                "<td class='txt-right'>kilos</td>" + 
-                "<td class='txt-right'>"+new Intl.NumberFormat('es-MX').format(element.cantidad) + "</td>" + 
-                "<td class='txt-right'>$ "+new Intl.NumberFormat('es-MX').format(element.costo) + "</td>" + 
+                "<td class='txt-right'>"+total_salida_kilos+"</td>" + 
+                "<td class='txt-right'>"+new Intl.NumberFormat('es-MX').format(total_salida_cantidad) + "</td>" + 
+                "<td class='txt-right'>$ "+new Intl.NumberFormat('es-MX').format(total_salida_costo) + "</td>" + 
             '</tr>';
+            anterior = element.Id_Folio;
+            total_salida_costo = 0;
+            total_salida_cantidad = 0;
+            total_salida_kilos = 0;
+            total_salida_costo += parseFloat(element.costo);
+            total_salida_cantidad += parseFloat(element.cantidad);
+            total_salida_kilos += (parseFloat(element.Factor) * parseFloat(element.cantidad))
         }
+        aux++;
     });
+}
+
+const render_reporte = (json) => {
+    let aux = 0;
+    const body = document.getElementsByClassName("body_reporte");
+    
+    body[0].innerHTML = "";
+    body[0].innerHTML = '<tr><td class="txt-center" colspan="9">FACTURACIÓN</td></tr>'
+
+    render_salidas(json.terminadas,body)
+    
+    body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
+                            '<tr><td class="txt-center" colspan="9">CANCELADAS</td></tr>';
+    
+    render_salidas(json.canceladas,body)
 };
 
 const mostrarModal = (id) => {

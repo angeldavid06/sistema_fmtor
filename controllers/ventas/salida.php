@@ -111,6 +111,16 @@
             $salida = $this->model->buscar_personalizado('t_salida_almacen', '*', 'Id_Folio =' . $_GET['aux'] . '');
             echo json_encode($salida);
         }
+        
+        public function cancelar_salida () {
+            $this->salida->setSalida($_GET['id']);
+            $result = $this->salida->cancelar();
+            if ($result) {
+                echo 1;
+            } else {
+                echo 0;
+            }
+        }
 
         public function obtener_clientes () {
             $result = $this->model->mostrar('v_clientes');

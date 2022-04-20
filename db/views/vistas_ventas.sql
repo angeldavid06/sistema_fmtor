@@ -7,6 +7,7 @@ SELECT
     t_clientes.Id_Clientes AS Id_Clientes,
     t_clientes.Razon_social AS razon_social,
     t_salida_almacen.Fecha AS fecha,
+    t_salida_almacen.Estado AS estado,
     t_cotizacion.Id_Cotizacion AS id_cotizacion
 FROM
     t_cotizacion,
@@ -69,6 +70,72 @@ WHERE
     t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
     AND t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
     AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
+ORDER BY
+    t_salida_almacen.Id_Folio DESC;
+
+CREATE
+OR REPLACE VIEW v_salidas_almacen_terminadas AS
+SELECT
+    t_salida_almacen.Id_Folio AS id_folio,
+    t_clientes.Id_Clientes AS Id_Clientes,
+    t_clientes.Razon_social AS razon_social,
+    t_salida_almacen.Fecha AS fecha,
+    t_pedido.Cantidad_millares AS cantidad,
+    t_pedido.Codigo AS no_parte,
+    t_pedido.Pedido_pza AS pedido_cliente,
+    t_pedido.Precio_millar AS costo,
+    t_salida_almacen.Factura AS factura,
+    t_salida_almacen.Empaque AS empaque,
+    t_pedido.Fecha_entrega AS fecha_entrega,
+    t_pedido.Medida AS medida,
+    t_pedido.Descripcion AS descripcion,
+    t_pedido.Acabado AS acabados,
+    t_pedido.Material AS material,
+    t_pedido.Id_Pedido,
+    t_pedido.Factor
+FROM
+    t_salida_almacen,
+    t_clientes,
+    t_pedido,
+    t_cotizacion
+WHERE
+    t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
+    AND t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
+    AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
+    AND t_salida_almacen.Estado = 0
+ORDER BY
+    t_salida_almacen.Id_Folio DESC;
+
+CREATE
+OR REPLACE VIEW v_salidas_almacen_canceladas AS
+SELECT
+    t_salida_almacen.Id_Folio AS id_folio,
+    t_clientes.Id_Clientes AS Id_Clientes,
+    t_clientes.Razon_social AS razon_social,
+    t_salida_almacen.Fecha AS fecha,
+    t_pedido.Cantidad_millares AS cantidad,
+    t_pedido.Codigo AS no_parte,
+    t_pedido.Pedido_pza AS pedido_cliente,
+    t_pedido.Precio_millar AS costo,
+    t_salida_almacen.Factura AS factura,
+    t_salida_almacen.Empaque AS empaque,
+    t_pedido.Fecha_entrega AS fecha_entrega,
+    t_pedido.Medida AS medida,
+    t_pedido.Descripcion AS descripcion,
+    t_pedido.Acabado AS acabados,
+    t_pedido.Material AS material,
+    t_pedido.Id_Pedido,
+    t_pedido.Factor
+FROM
+    t_salida_almacen,
+    t_clientes,
+    t_pedido,
+    t_cotizacion
+WHERE
+    t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
+    AND t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
+    AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
+    AND t_salida_almacen.Estado = 1
 ORDER BY
     t_salida_almacen.Id_Folio DESC;
 

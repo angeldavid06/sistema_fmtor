@@ -21,7 +21,7 @@
     <table id="table" class="table table_salida lista_salida">
         <thead>
             <th style="min-width: 100px;">Fecha Emisión</th>
-            <th style="min-width: 100px;">Fecha de entrega</th>
+            <!-- <th style="min-width: 100px;">Fecha de entrega</th> -->
             <th style="min-width: 220px;">Razón Social Receptor</th>
             <th style="min-width: 80px;">Folio</th>
             <th>Kilos</th>

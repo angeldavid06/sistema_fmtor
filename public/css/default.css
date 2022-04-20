@@ -1017,7 +1017,7 @@ embed {
     max-height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: var(--background-aux);
+    background-color: var(--background-body);
     border-right: 2px solid var(--border-color);
     transition: all .3s;
 }
@@ -1396,6 +1396,10 @@ embed {
 .modal .contenido_modal table tfoot tr td {
     background-color: var(--background-aux);
     cursor: pointer;
+}
+
+.modal .contenido_modal table tbody tr td .mas_opciones_tablas .opciones {
+    background-color: var(--background-body);
 }
 
 .contenido .informacion .tarjeta table thead tr th,

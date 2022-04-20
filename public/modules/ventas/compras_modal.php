@@ -287,15 +287,13 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
     <div class="contenido_modal" style="padding: 0px 5px;">
         <table class="table table_salida lista_salida" id="table">
             <thead>
+                <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+                    <th style="min-width: 60px;"></th>
+                <?php } ?>
                 <th style="min-width: 100px;">Codigo</th>
                 <th style="min-width: 160px;">Producto</th>
                 <th style="min-width: 100px;">Cantidad</th>
                 <th style="min-width: 100px;">Precio</th>
-                <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                    <th style="min-width: 60px;"></th>
-                    <th style="min-width: 60px;"></th>
-                    <th style="min-width: 60px;"></th>
-                <?php } ?>
             </thead>
             <tbody id="body_historial"></tbody>
         </table>

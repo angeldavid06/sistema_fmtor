@@ -480,6 +480,9 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
         <div class="d-grid g-1">
             <table class="table table_salida lista_salida" id="table">
                 <thead>
+                    <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
+                        <th style="min-width: 60px;"></th>
+                    <?php } ?>
                     <th style="min-width: 150px;">N° parte de cliente </th>
                     <th style="min-width: 100px;">Pedido Cliente</th>
                     <th style="min-width: 150px;">Descripcion </th>
@@ -491,11 +494,6 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                     <th>Cantidad</th>
                     <th style="min-width: 100px;">Costo</th>
                     <th style="min-width: 100px;">Fecha de entrega</th>
-                    <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
-                        <th style="min-width: 60px;"></th>
-                        <th style="min-width: 60px;"></th>
-                        <th style="min-width: 60px;"></th>
-                    <?php } ?>
                 </thead>
                 <tbody id="body_historial"></tbody>
             </table>

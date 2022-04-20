@@ -2,6 +2,12 @@ const render_salida = (json) => {
     const body = document.getElementById('table')
     body.innerHTML = ''
     json.salidas.forEach((el) => {
+        let estado = ''
+        if (el.estado == 1) {
+            estado = 'CANCELADO'
+        } else {
+            estado = ''
+        }
         body.innerHTML += '<tr>'+
                                 '<td style="padding: 5px;">'+
                                     '<div id="'+el.id_folio+'" class="mas_opciones_tablas">'+
@@ -9,15 +15,17 @@ const render_salida = (json) => {
                                             '<button data-opciones="'+el.id_folio+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
                                         '</div>'+
                                         '<div class="opciones" id="opciones-'+el.id_folio+'">'+
-                                            '<button style="margin: 0px 5px 0px 0px;" class="btn btn-amarillo btn-icon-self material-icons" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button>'+
+                                            '<button style="margin: 0px 5px 0px 0px;" class="btn btn-amarillo btn-icon-self material-icons-outlined" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button>'+
                                             '<button style="margin: 0px 5px;" data-salida="'+el.id_folio+'" data-historial="' +el.id_cotizacion +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial">toc</button>'+
-                                            '<button style="margin: 0px 0px 0px 5px;" class="btn btn-icon-self material-icons" data-impresion="'+el.id_folio+'">warehouse</button>'+  
+                                            '<button style="margin: 0px 5px;" class="btn btn-icon-self material-icons-outlined" data-impresion="'+el.id_folio+'">warehouse</button>'+  
+                                            '<button style="margin: 0px 0px 0px 5px;" title="Cancelar Salida de Almacen: '+el.id_folio+'" data-cancelar="'+el.id_folio+'" class="btn btn-icon-self material-icons-outlined btn-rojo">do_not_disturb_on</button>'+  
                                         '</div>'+
                                     '</div>'+
                                 '</td>'+
                                 '<td>'+el.id_folio+'</td>'+
                                 '<td>'+el.razon_social+'</td>'+
                                 '<td>'+el.fecha+'</td>'+
+                                '<td>'+estado+'</td>'+
                         '</tr>'
     })
     render_externo(json.externo)
@@ -171,6 +179,23 @@ const ocultar_input = (id) => {
     }
 }
 
+const cancelar_salida = (id) => {
+    auxiliar = id
+    open_confirm('¿Desea cancelar esta salida de almacen?',cancelar)
+}
+
+const cancelar = () => {
+    const respuesta = fetchAPI('', url+'/ventas/salida/cancelar_salida?id='+auxiliar, '')
+    respuesta.then(json =>{ 
+        if (json == 1) {
+            open_alert('Salida de almacen '+auxiliar+' ha sido cancelada correctamente','naranja')
+            buscar_mes_actual();
+        } else{
+            open_alert('No se pudo cancelar esta salida de almacen','rojo')
+        }
+    })
+}
+
 const render_pedidos = (json) => {
     document.getElementById('cantidad_tornillos').value = json.length
     generar_form(json.length)
@@ -263,6 +288,8 @@ document.addEventListener('click', (evt) => {
         ocultar_input(evt.target.dataset.pedido);
     } else if (evt.target.dataset.editar) {
         obtener_salida(evt.target.dataset.editar);
+    } else if (evt.target.dataset.cancelar) {
+        cancelar_salida(evt.target.dataset.cancelar)
     }
 })
 

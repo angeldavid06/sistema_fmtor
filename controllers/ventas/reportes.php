@@ -29,13 +29,13 @@
 
         public function obtener()
         {
-            $result = $this->model->mostrar('v_historial_salidas_almacen');
+            $terminadas = $this->model->mostrar('v_salidas_almacen_terminadas');
             $obj = new Model();
-            $ordenes = $obj->mostrar('v_ordenes');
+            $canceladas = $obj->mostrar('v_salidas_almacen_canceladas');
             
             $data = [
-                'salidas' => $result,
-                'ordenes' => $ordenes
+                'terminadas' => $terminadas,
+                'canceladas' => $canceladas
             ];
             
             echo json_encode($data);
