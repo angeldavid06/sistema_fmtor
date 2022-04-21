@@ -1,7 +1,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --background-body: #15141A;
-        --background-aux: #23222A;
+        --background-aux: rgb(35, 34, 42);
         --background-aux-05: rgba(37, 39, 41, 0.5);
         --background-button:#5AB3F0;
 
@@ -61,7 +61,7 @@
 @media (prefers-color-scheme: light) {
     :root {
         --background-body: #FFFFFF;
-        --background-aux: #F1F5FB;
+        --background-aux: rgb(248, 249, 250);
         --background-aux-05: rgba(34, 34, 34, 0.5);
         --background-button:#C2E7FF;
 
@@ -113,7 +113,7 @@
     }
 
     *::-webkit-scrollbar-thumb {
-        background: #A6A6A6; 
+        background: #bebebe; 
         border-radius: 3px;
     }
 }

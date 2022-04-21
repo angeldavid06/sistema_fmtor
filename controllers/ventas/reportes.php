@@ -29,9 +29,9 @@
 
         public function obtener()
         {
-            $terminadas = $this->model->mostrar('v_salidas_almacen_terminadas');
+            $terminadas = $this->model->buscar_personalizado('v_salidas_almacen_terminadas','*',"fecha LIKE '%".$_GET['mes']."%'");
             $obj = new Model();
-            $canceladas = $obj->mostrar('v_salidas_almacen_canceladas');
+            $canceladas = $obj->buscar_personalizado('v_salidas_almacen_canceladas','*',"fecha LIKE '%".$_GET['mes']."%'");
             
             $data = [
                 'terminadas' => $terminadas,

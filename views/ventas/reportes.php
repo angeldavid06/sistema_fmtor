@@ -5,10 +5,10 @@
 ?>
 <div class="d-grid g-2">
     <div class="d-grid d-1">
-        <h1>Reportes</h1>
+        <h1>Reporte Mensual</h1>
     </div>
     <div class="d-flex justify-right align-content-center">
-        <!-- <button class="material-icons btn btn-icon-self" id="btn-form-control" data-modal="modal-registrar">app_registration</button> -->
+        <input type="month" style="max-width: 200px; background: var(--background-aux);" name="mes" id="mes">
         <button class="btn btn-icon btn-transparent">
             <i class="material-icons">print</i>
             Generar Reporte
@@ -20,13 +20,14 @@
 <div class="tabla tarjeta" style="padding: 0;">
     <table id="table" class="table table_salida lista_salida">
         <thead>
+            <!-- <th></th> -->
             <th style="min-width: 100px;">Fecha Emisión</th>
             <!-- <th style="min-width: 100px;">Fecha de entrega</th> -->
             <th style="min-width: 220px;">Razón Social Receptor</th>
             <th style="min-width: 80px;">Folio</th>
             <th>Kilos</th>
             <th>Piezas</th>
-            <th style="min-width: 150px;">Costo</th>
+            <!-- <th style="min-width: 150px;">Costo</th> -->
             <th style="min-width: 150px;">Subtotal</th>
             <th style="min-width: 150px;">Total Impuestos Trasladado</th>
             <th style="min-width: 150px;">Total Pesos</th>

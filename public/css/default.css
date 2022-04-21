@@ -984,7 +984,7 @@ embed {
 
 .menu-principal .btn i {
     font-size: 2.7em;
-    color: var(--color-text);
+    color: var(--color-logo);
     z-index: 2;
 }
 
@@ -1149,6 +1149,7 @@ embed {
     margin: 0px 0px 0px 0px;
     font-size: 20px;
     border-radius: var(--border-radius);
+    color: var(--color-logo);
 }
 
 .contenedor .menu.hidde_menu a i {

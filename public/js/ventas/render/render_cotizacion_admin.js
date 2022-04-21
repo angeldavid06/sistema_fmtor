@@ -222,12 +222,12 @@ const render_historial = (json) => {
         body.innerHTML +=
         "<tr>" +
             '<td style="padding: 5px;">'+
-                '<div id="0'+el.id_cotizacion+'" class="mas_opciones_tablas">'+
+                '<div id="0'+el.Id_Pedido+'" class="mas_opciones_tablas">'+
                     '<div class="opcion">'+
-                        '<button data-opciones="0'+el.id_cotizacion+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
+                        '<button data-opciones="0'+el.Id_Pedido+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
                     '</div>'+
-                    '<div class="opciones" id="opciones-0'+el.id_cotizacion+'">'+
-                        '<button style="margin: 0px 5px 0px 0px;" data-copiar="' +el.id_cotizacion +'" data-pedido="' +el.Id_Pedido +'" id="' +el.id_cotizacion +'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button>' +
+                    '<div class="opciones" id="opciones-0'+el.Id_Pedido+'">'+
+                        '<button style="margin: 0px 5px 0px 0px;" data-copiar="' +el.Id_Pedido +'" data-pedido="' +el.Id_Pedido +'" id="' +el.id_cotizacion +'" class="material-icons btn btn-icon-self btn-transparent" title="Copiar información">copy_all</button>' +
                         '<button style="margin: 0px 5px" data-pedidoact="' +el.Id_Pedido +'" id="' +el.Id_Pedido +'" data-modal="modal-actualizar" class="material-icons-outlined btn-amarillo btn btn-icon-self btn-transparent" title="Copiar información">edit</button>' +
                         '<button style="margin: 0px 0px 0px 5px;" data-eliminar="'+el.Id_Pedido+'" class="material-icons-outlined btn btn-icon-self btn-rojo">delete</button>' +
                     '</div>'+
