@@ -79,36 +79,6 @@ OR REPLACE TABLE t_informacion_empresa (
 );
 
 CREATE
-OR REPLACE TABLE t_orden_compra (
-  Id_Compra INT AUTO_INCREMENT,
-  Fecha DATE,
-  Solicitado VARCHAR(50),
-  Terminos VARCHAR(350),
-  Contacto VARCHAR(350),
-  FK_Proveedor INT,
-  FK_Empresa INT,
-  CONSTRAINT PK_Compra PRIMARY KEY (Id_Compra),
-  CONSTRAINT FK_Proveedor FOREIGN KEY (FK_Proveedor) REFERENCES t_proveedores(Id_Proveedor),
-  CONSTRAINT FK_Empresa FOREIGN KEY (FK_Empresa) REFERENCES t_informacion_empresa(Id_Empresa)
-);
-
-CREATE
-OR REPLACE TABLE t_pedido_compra (
-  Id_Pedido_Compra INT AUTO_INCREMENT,
-  Codigo VARCHAR(50),
-  Producto VARCHAR(350),
-  /*----------------agregados----------------*/
-  Factor FLOAT,
-  Medida VARCHAR(50),
-  /*--------------------------------*/
-  Cantidad BIGINT,
-  Precio FLOAT,
-  FK_Orden_Compra INT,
-  CONSTRAINT PK_Compra PRIMARY KEY (Id_Pedido_Compra),
-  CONSTRAINT FK_Orden_Compra FOREIGN KEY (FK_Orden_Compra) REFERENCES t_orden_compra(Id_Compra)
-);
-
-CREATE
 OR REPLACE TABLE t_estados (
   id_estados INT AUTO_INCREMENT,
   estados VARCHAR (25),
@@ -125,18 +95,43 @@ OR REPLACE TABLE t_cotizacion (
 );
 
 CREATE
-OR REPLACE table t_salida_almacen (
-  Id_Folio int auto_increment,
-  Fecha date,
-  Factura VARCHAR(30) DEFAULT '-',
-  Empaque VARCHAR(30) DEFAULT '-',
+OR REPLACE TABLE t_salida_almacen (
+  Id_Folio INT AUTO_INCREMENT,
+  Fecha DATE,
   Estado BOOLEAN DEFAULT 0,
-  -- Id_Clientes_FK int(11),
-  Id_Cotizacion_FK int(11),
-  Id_Orden_Compra_FK int(11),
+  Id_Cotizacion_FK INT,
   CONSTRAINT Pk_salida_almacen PRIMARY KEY (Id_Folio),
-  CONSTRAINT FK_Id_Cotizacion_3 FOREIGN KEY (Id_Cotizacion_FK) REFERENCES t_cotizacion(Id_Cotizacion) ON DELETE CASCADE,
-  CONSTRAINT FK_Id_Compra_2 FOREIGN KEY (Id_Orden_Compra_FK) REFERENCES t_orden_compra(Id_Compra) ON DELETE CASCADE
+  CONSTRAINT FK_Id_Cotizacion_3 FOREIGN KEY (Id_Cotizacion_FK) REFERENCES t_cotizacion(Id_Cotizacion) ON DELETE CASCADE
+);
+
+CREATE
+OR REPLACE TABLE t_orden_compra (
+  Id_Compra INT AUTO_INCREMENT,
+  Fecha DATE,
+  Solicitado VARCHAR(50),
+  Terminos VARCHAR(350),
+  Contacto VARCHAR(350),
+  Id_Folio_FK INT,
+  FK_Proveedor INT,
+  FK_Empresa INT,
+  CONSTRAINT PK_Compra PRIMARY KEY (Id_Compra),
+  CONSTRAINT FK_Proveedor FOREIGN KEY (FK_Proveedor) REFERENCES t_proveedores(Id_Proveedor),
+  CONSTRAINT FK_Empresa FOREIGN KEY (FK_Empresa) REFERENCES t_informacion_empresa(Id_Empresa),
+  CONSTRAINT FK_Id_Folio_FK_2 FOREIGN KEY (Id_Folio_FK) REFERENCES t_salida_almacen(Id_Folio)
+);
+
+CREATE
+OR REPLACE TABLE t_pedido_compra (
+  Id_Pedido_Compra INT AUTO_INCREMENT,
+  Codigo VARCHAR(50),
+  Producto VARCHAR(350),
+  Factor FLOAT,
+  Medida VARCHAR(50),
+  Cantidad BIGINT,
+  Precio FLOAT,
+  FK_Orden_Compra INT,
+  CONSTRAINT PK_Compra PRIMARY KEY (Id_Pedido_Compra),
+  CONSTRAINT FK_Orden_Compra FOREIGN KEY (FK_Orden_Compra) REFERENCES t_orden_compra(Id_Compra) ON DELETE CASCADE
 );
 
 CREATE
@@ -153,11 +148,24 @@ OR REPLACE TABLE t_pedido (
   Precio_millar double,
   Codigo varchar(50),
   Tratamiento VARCHAR(100) DEFAULT '0',
-  -- Id_Salida_FK INT,
   Id_Cotizacion_FK INT,
   CONSTRAINT PK_Pedido PRIMARY KEY (Id_Pedido),
-  -- CONSTRAINT FK_Id_Salida_FK_2 FOREIGN KEY (Id_Salida_FK) REFERENCES t_salida_almacen(Id_Folio) ON DELETE CASCADE
   CONSTRAINT FK_Id_Cotizacion_1 FOREIGN KEY (Id_Cotizacion_FK) REFERENCES t_cotizacion(Id_Cotizacion) ON DELETE CASCADE
+);
+
+CREATE
+OR REPLACE TABLE t_facturacion (
+  Id_Facutracion BIGINT AUTO_INCREMENT,
+  Factura VARCHAR(30) DEFAULT '-',
+  Empaque VARCHAR(30) DEFAULT '-',
+  Cantidad_Entregada BIGINT,
+  Kilos_Entregados FLOAT,
+  Concepto BOOLEAN DEFAULT 0,
+  Id_Pedido_FK BIGINT,
+  Id_Empresa_FK INT,
+  CONSTRAINT PK_Id_Facturacion PRIMARY KEY (Id_Facutracion),
+  CONSTRAINT FK_Id_Pedido_FK FOREIGN KEY (Id_Pedido_FK) REFERENCES t_pedido(Id_Pedido) ON DELETE CASCADE,
+  CONSTRAINT FK_Id_Empresa_2 FOREIGN KEY (Id_Empresa_FK) REFERENCES t_informacion_empresa(Id_Empresa) ON DELETE CASCADE
 );
 
 CREATE

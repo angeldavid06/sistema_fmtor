@@ -159,7 +159,7 @@ const colocar_informacion_tornillos = (pedidos) => {
 const portapapeles_pegar_tornillo = (form) => {
     navigator.clipboard.readText().then((clipText) => {
         const json = JSON.parse(clipText);
-        const pedido = json["pedido"];
+        const pedido = json.pedido;
 
         pedido.forEach((el) => {
             document.getElementById("Fecha_entrega_" + form).value = el.fecha_entrega;
@@ -179,8 +179,8 @@ const portapapeles_pegar_tornillo = (form) => {
 const portapapeles_pegar = () => {
     navigator.clipboard.readText().then((clipText) => {
         const json = JSON.parse(clipText);
-        const cotizacion = json["cotizacion"];
-        const pedidos = json["pedido"];
+        const cotizacion = json.cotizacion;
+        const pedidos = json.pedido;
 
         colocar_cliente(cotizacion[0].razon_social.trim());
         vaciar_tornillos();

@@ -251,6 +251,15 @@ const obtener_pedido = (id) => {
     })
 }
 
+const obtener_salidas = () => {
+    const respuesta = fetchAPI('',url+'/ventas/salida/obtener_salidas_disponibles', '')
+    respuesta.then(json => {
+        json.forEach(el => {
+            document.getElementById('salida_compra').innerHTML += '<option value="'+el.id_folio+'">'+ el.id_folio + ' | ' + el.razon_social+'</option>';
+        })
+    })
+}
+
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.tornillo) {
         if (evt.target.dataset.tornillo == "mas") {
@@ -276,4 +285,8 @@ document.addEventListener('click', (evt) => {
             pegar_todo()
         }
     }
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    obtener_salidas()
 })

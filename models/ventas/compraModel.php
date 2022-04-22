@@ -15,9 +15,14 @@
         public $precio;
         public $id_empresa;
         public $id_proveedor;
+        public $id_salida;
 
         public function __construct(){
             parent::__construct();
+        }
+
+        public function setSalida ($id_salida) : void {
+            $this->id_salida = $id_salida;
         }
         
         public function setId_Compra ($id_orden_compra) : void {
@@ -70,8 +75,8 @@
 
         public function ingresar_orden () {
             $tabla = 't_orden_compra';
-            $columnas = 'Fecha,Solicitado,Terminos,Contacto,FK_Proveedor,FK_Empresa';
-            $valores = "'$this->fecha','$this->solicitado','$this->terminos','$this->contacto','$this->id_proveedor','$this->id_empresa'";
+            $columnas = 'Fecha,Solicitado,Terminos,Contacto,FK_Proveedor,FK_Empresa,Id_Folio_FK';
+            $valores = "'$this->fecha','$this->solicitado','$this->terminos','$this->contacto','$this->id_proveedor','$this->id_empresa','$this->id_salida'";
             $result = Model::insertar($tabla,$columnas,$valores);
             return $result;
         }

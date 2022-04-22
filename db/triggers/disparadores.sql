@@ -86,3 +86,9 @@ BEGIN
 	END IF;
 END |
 DELIMITER ;
+
+
+
+
+{ "orden" :[{"Id_Compra":"29","Fecha":"2022-03-09","Solicitado":"ING. GERARDO FLORES","Terminos":"-","Contacto":"-","Proveedor":"OMAR CALZADA ","Empresa":"RDG TORNILLOS","FK_Empresa":"2","FK_Proveedor":"8"}],
+"pedidos" :[{"Id_Pedido_Compra":"29","Codigo":"13400","Producto":"TORNILLO DE PRUEBA 07","Factor":"0","Medida":"","Cantidad":"20000","Precio":"10.5","FK_Orden_Compra":"29"},{"Id_Pedido_Compra":"30","Codigo":"13400","Producto":"TORNILLO 1","Factor":"0","Medida":"","Cantidad":"20000","Precio":"10.5","FK_Orden_Compra":"29"}] }

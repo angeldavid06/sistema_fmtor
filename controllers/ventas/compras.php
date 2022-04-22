@@ -92,6 +92,7 @@
 
         public function insertar () {
             if (isset($_POST['solicitado']) && $_POST['solicitado'] != '') {
+                $this->model_compra->setSalida($_POST['salida_compra']);
                 $this->model_compra->setFecha($_POST['Fecha']);
                 $this->model_compra->setSolicitado($_POST['solicitado']);
                 $this->model_compra->setTerminos($_POST['terminos']);

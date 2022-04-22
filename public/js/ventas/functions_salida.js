@@ -60,6 +60,7 @@ const render_historial = (json) => {
     json.forEach((el) => {
         body.innerHTML +=
         "<tr>" +
+            '<td><button style="margin: 0px 5px;" data-cantidad="'+el.cantidad+'" data-factor="'+el.factor+'" data-factura="' +el.Id_Pedido +'" class="btn btn-transparent btn-icon-self material-icons-outlined" data-modal="modal-actualizar-factura">receipt</button></td>'+
             "<td>" +el.no_parte +"</td>" +
             "<td>" +el.pedido_cliente +"</td>" +
             "<td>" +el.descripcion +"</td>" +

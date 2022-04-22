@@ -35,6 +35,12 @@ const render_externo = (json) => {
     const body = document.getElementById('body_externo')
     body.innerHTML = ''
     json.forEach(el => {
+        let estado = ''
+        if (el.estado == 1) {
+            estado = 'CANCELADO'
+        } else {
+            estado = ''
+        }
         body.innerHTML += '<tr>'+
                                 '<td>'+
                                     '<div id="'+el.id_folio+'" class="mas_opciones_tablas">'+
@@ -42,21 +48,25 @@ const render_externo = (json) => {
                                             '<button data-opciones="'+el.id_folio+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
                                         '</div>'+
                                         '<div class="opciones" id="opciones-'+el.id_folio+'">'+
-                                            '<button style="margin: 0px 5px 0px 0px;" class="btn btn-amarillo btn-icon-self material-icons" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button>'+
-                                            '<button style="margin: 0px 5px;" data-salida="'+el.id_folio+'" data-historial_compra="' +el.id_compra +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial-compra">toc</button>'+
-                                            '<button style="margin: 0px 0px 0px 5px;" class="btn btn-icon-self material-icons" data-impresion="'+el.id_folio+'">warehouse</button>'+
+                                            '<button style="margin: 0px 5px 0px 0px;" class="btn btn-amarillo btn-icon-self material-icons-outlined" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button>'+
+                                            '<button style="margin: 0px 5px;" data-salida="'+el.id_folio+'" data-historial="' +el.id_cotizacion +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial">toc</button>'+
+                                            '<button style="margin: 0px 5px;" class="btn btn-icon-self material-icons-outlined" data-impresion="'+el.id_folio+'">warehouse</button>'+  
+                                            '<button style="margin: 0px 0px 0px 5px;" title="Cancelar Salida de Almacen: '+el.id_folio+'" data-cancelar="'+el.id_folio+'" class="btn btn-icon-self material-icons-outlined btn-rojo">do_not_disturb_on</button>'+  
                                         '</div>'+
                                     '</div>'+
                                 '</td>'+
                                 '<td>'+el.id_folio+'</td>'+
+                                '<td>'+el.razon_social+'</td>'+
                                 '<td>'+el.empresa+'</td>'+
                                 '<td>'+el.fecha+'</td>'+
+                                '<td>'+estado+'</td>'+
                         '</tr>'
     })
 }
 
 const form = document.getElementById('form_reg_salida')
 const form_act = document.getElementById("form_act_solo_salida");
+const form_facura = document.getElementById("form_act_factura");
 
 form.addEventListener('submit', (evt) => {
     evt.preventDefault()
@@ -66,6 +76,11 @@ form.addEventListener('submit', (evt) => {
 form_act.addEventListener('submit', (evt) => {
     evt.preventDefault()
     open_confirm('¿Esta seguro de registrar los cambios?',actualizar_salida)
+})
+
+form_facura.addEventListener('submit', (evt) => {
+    evt.preventDefault()
+    open_confirm('¿Estas seguro de registrar esta factura?',registrar_factura)
 })
 
 const registrar_salida = () => {
@@ -92,30 +107,24 @@ const actualizar_salida = () => {
     })
 }
 
-
-const concepto = document.getElementById('concepto')
-
-concepto.addEventListener('change', (evt) => {
-    console.log(evt.target.checked);
-    if (evt.target.checked) { 
-        document.getElementById("lbl-concepto").innerText = 'Orden de Compra';
-        obtener_ordenes_compra()
-    } else {
-        document.getElementById("lbl-concepto").innerText = 'Cotización';
-        obtener_cotizaciones()
-    }
-})
+const registrar_factura = () => {
+    const respuesta = fetchAPI(form_facura,url+'/ventas/salida/registrar_factura','POST')
+    respuesta.then(json => {
+        if (json == 1) {
+            open_alert('La factura fue registrada correctamente','verde')
+            buscar_mes_actual();
+        } else {
+            open_alert('La factura no pudo ser registrada','rojo')
+        }
+    })
+}
 
 const select_filtros = document.getElementById("f_cliente");
 const select_cotizaciones = document.getElementById("cotizacion");
 const select_cotizaciones_2 = document.getElementById("Id_Clientes_2_e");
 
 select_cotizaciones.addEventListener('change', () => {
-    if (!concepto.checked) {
-        obtener_pedidos(select_cotizaciones.value);
-    } else {
-        document.getElementById("tornillos").innerHTML = "";
-    }
+    obtener_pedidos(select_cotizaciones.value);
 })
 
 const generar_form = (cantidad) => {
@@ -262,6 +271,15 @@ const obtener_ordenes_compra = () => {
     })
 }
 
+const obtener_empresas = () => {
+    const respuesta = fetchAPI('',url+'/ventas/compras/obtener_empresas','')
+    respuesta.then(json => {
+        json.forEach(el => {
+            document.getElementById('empresa_factura').innerHTML += '<option value="'+el.Id_Empresa+'">'+el.Empresa+'</option>';
+        })
+    })
+}
+
 const colocar_fecha = () => {
     const fecha = new Date();
     const local = fecha.toLocaleDateString();
@@ -290,11 +308,16 @@ document.addEventListener('click', (evt) => {
         obtener_salida(evt.target.dataset.editar);
     } else if (evt.target.dataset.cancelar) {
         cancelar_salida(evt.target.dataset.cancelar)
+    } else if (evt.target.dataset.factura) {
+        document.getElementById('pedido_factura').value = evt.target.dataset.factura;
+        document.getElementById('cantidad_factura').value = new Intl.NumberFormat("es-MX").format(evt.target.dataset.cantidad);
+        document.getElementById('kilos_factura').value = parseFloat(evt.target.dataset.cantidad * evt.target.dataset.factor);
     }
 })
 
 document.addEventListener('DOMContentLoaded', () => {
     obtener_cotizaciones()
     obtener_clientes();
-    colocar_fecha()
+    colocar_fecha();
+    obtener_empresas();
 })

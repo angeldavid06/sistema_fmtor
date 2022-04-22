@@ -32,10 +32,15 @@
             $terminadas = $this->model->buscar_personalizado('v_salidas_almacen_terminadas','*',"fecha LIKE '%".$_GET['mes']."%'");
             $obj = new Model();
             $canceladas = $obj->buscar_personalizado('v_salidas_almacen_canceladas','*',"fecha LIKE '%".$_GET['mes']."%'");
-            
+            $obj1 = new Model();
+            $notas = $obj1->buscar_personalizado('v_salidas_almacen_notas','*',"fecha LIKE '%".$_GET['mes']."%'");
+            $obj2 = new Model();
+            $comision = $obj2->buscar_personalizado('v_salidas_almacen_comision','*',"fecha LIKE '%".$_GET['mes']."%'");
             $data = [
                 'terminadas' => $terminadas,
-                'canceladas' => $canceladas
+                'canceladas' => $canceladas,
+                'notas' => $notas,
+                'comision' => $comision
             ];
             
             echo json_encode($data);

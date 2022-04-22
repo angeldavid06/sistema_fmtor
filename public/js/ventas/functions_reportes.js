@@ -114,6 +114,13 @@ const render_reporte = (json) => {
     } else {
         render_salidas(json.terminadas,body)
     }
+
+    body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
+                            '<tr><td class="txt-center" colspan="9">COMPRA</td></tr>';
+
+    body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
+                        '<tr><td class="txt-center" colspan="9">RDG</td></tr>';
+
     body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
                             '<tr><td class="txt-center" colspan="9">CANCELADAS</td></tr>';
                             
@@ -125,10 +132,18 @@ const render_reporte = (json) => {
     
     body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
                             '<tr><td class="txt-center" colspan="9">NOTAS DE CREDITO</td></tr>';
-    body[0].innerHTML += '<tr style="background: var(--background-aux);"><td class="txt-center" colspan="9">No existe ningún registro</td></tr>';
+    if (json.canceladas.length == 0) {
+        body[0].innerHTML += '<tr style="background: var(--background-aux);"><td class="txt-center" colspan="9">No existe ningún registro</td></tr>';
+    } else {
+        render_salidas(json.notas,body)
+    }
     body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
                             '<tr><td class="txt-center" colspan="9">FACTURAS SIN COMISIÓN</td></tr>';
-    body[0].innerHTML +='<tr style="background: var(--background-aux);"><td class="txt-center" colspan="9">No existe ningún registro</td></tr>';
+    if (json.canceladas.length == 0) {
+        body[0].innerHTML += '<tr style="background: var(--background-aux);"><td class="txt-center" colspan="9">No existe ningún registro</td></tr>';
+    } else {
+        render_salidas(json.comision,body)
+    }
 };
 
 const mostrarModal = (id) => {

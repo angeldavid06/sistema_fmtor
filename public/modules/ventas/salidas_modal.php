@@ -15,8 +15,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                     <input type="text" name="cantidad_tornillos" id="cantidad_tornillos" hidden>
                 </div>
                 <div class="d-grid g-1 grid-gap-0">
-                    <input type="checkbox" name="concepto" id="concepto">
-                    <label id="lbl-concepto" class="lbl-toggle" for="concepto" style="margin: 0px;">Cotización</label>
+                    <label for="concepto" style="margin: 0px;">Cotización</label>
                     <select class="input" name="cotizacion" id="cotizacion">
                         <option id="concepto-opcion" value="">Selecciona una cotización</option>
                     </select>
@@ -155,12 +154,64 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
         </div>
         <div class="contenido_modal">
             <form id="form_act_solo_salida" style="padding: 0px 5px;">
-                <!-- <p>Salida De Almacen:</p> -->
                 <input class="input" type="text" name="Salida_e" id="Salida_e" hidden>
                 <p style="padding: 0px 0px 30px 0px;" class="txt-right">Información general:</p>
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Fecha:</p>
                     <input class="input" type="date" name="Fecha_e" id="Fecha_e">
+                </div>
+                <p style="padding: 10px 0px 30px 0px;" class="txt-right">Facturación:</p>
+                <div class="d-grid g-2">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Factura:</p>
+                        <input class="input" type="text" name="Factura" id="Factura">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Empaque:</p>
+                        <input class="input" type="text" name="Empaque" id="Empaque">
+                    </div>
+                </div>
+                <div class="d-grid g-2">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Cantidad:</p>
+                        <input class="input" type="text" name="cantidad" id="cantidad">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Kilos:</p>
+                        <input class="input" type="text" name="kilos" id="kilos">
+                    </div>
+                </div>
+                <div class="d-grid g-1 grid-gap-0">
+                    <p>Empresa:</p>
+                    <select type="text" name="empresa" id="empresa">
+                        <option value="">Selecciona la empresa</option>
+                        <select>
+                </div>
+                <div class="opciones d-flex flex-column">
+                    <button data-btn="actualizar" class="btn" id="btn-form-control-actualizar">Actualizar</button>
+                    <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-actualizar-salida">Cancelar</label>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="modal-actualizar-factura" class="modal modal-derecha">
+        <div class="titulo_modal d-flex justify-between align-content-center">
+            <h2>Registrar Factura</h2>
+            <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-actualizar-factura">close</button>
+        </div>
+        <div class="contenido_modal">
+            <form id="form_act_factura" style="padding: 0px 5px;">
+                <input class="input" type="text" name="pedido_factura" id="pedido_factura" hidden>
+                <p style="padding: 0px 0px 15px 0px;" class="txt-right">Facturación:</p>
+                <div class="d-grid g-2">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Cantidad:</p>
+                        <input class="input" type="text" name="cantidad_factura" id="cantidad_factura">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Kilos:</p>
+                        <input class="input" type="text" name="kilos_factura" id="kilos_factura">
+                    </div>
                 </div>
                 <div class="d-grid g-2">
                     <div class="d-grid g-1 grid-gap-0">
@@ -172,9 +223,24 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                         <input class="input" type="text" name="Empaque" id="Empaque">
                     </div>
                 </div>
+                <div class="d-grid g-1 grid-gap-0">
+                    <p>Empresa:</p>
+                    <select type="text" name="empresa_factura" id="empresa_factura">
+                        <option value="">Selecciona la empresa</option>
+                        <select>
+                </div>
+                <div class="d-grid g-1 grid-gap-0">
+                    <p>Concepto:</p>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <input type="radio" name="concepto_factura" id="concepto_nota" value="1">
+                        <label for="concepto_nota" class="lbl-radio">Nota de crédito</label>
+                        <input type="radio" name="concepto_factura" id="concepto_sin_comision" value="2">
+                        <label style="margin: 5px 0px 5px 0px;" for="concepto_sin_comision" class="lbl-radio">Sin comisión</label>
+                    </div>
+                </div>
                 <div class="opciones d-flex flex-column">
-                    <button data-btn="actualizar" class="btn" id="btn-form-control-actualizar">Actualizar</button>
-                    <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-actualizar-salida">Cancelar</label>
+                    <button data-btn="actualizar" class="btn" id="btn-form-control-actualizar">Registrar</button>
+                    <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-actualizar-factura">Cancelar</label>
                 </div>
             </form>
         </div>
@@ -192,6 +258,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
         <div class="d-grid g-1" style="padding: 0px 5px;">
             <table class="table table_salida lista_salida" id="table">
                 <thead>
+                    <th></th>
                     <th style="min-width: 150px;">N° parte de cliente </th>
                     <th style="min-width: 100px;">Pedido Cliente</th>
                     <th style="min-width: 150px;">Descripcion </th>
@@ -261,19 +328,6 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                         <input class="input" type="number" name="f_r_salida_M" id="f_r_salida_M" disabled>
                     </div>
                 </div>
-                <!-- <h3>Filtrar Ordenes de Producción</h3>
-                <div class="filtro fecha">
-                    <input type="radio" data-radio="radio" name="buscar_por" id="op" value="op">
-                    <label class="lbl-radio" id="lbl_radio_op" for="op">Buscar O.P.:</label>
-                    <input class="input" type="number" name="f_op" id="f_op" disabled>
-                    <input type="radio" data-radio="radio" name="buscar_por" id="rango_op" value="rango_op">
-                    <label class="lbl-radio" id="lbl_radio_rango_op" for="rango_op">Filtrar por rango de O.P.: </label>
-                    <div class="d-grid g-2">
-                        <input class="input" type="number" name="f_r_op_m" id="f_r_op_m" disabled>
-
-                        <input class="input" type="number" name="f_r_op_M" id="f_r_op_M" disabled>
-                    </div>
-                </div> -->
                 <h3>Filtrar por fecha:</h3>
                 <div class="filtro fecha">
                     <input type="radio" data-radio="radio" name="buscar_por" id="fecha" value="fecha">

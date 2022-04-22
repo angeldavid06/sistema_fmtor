@@ -1,6 +1,7 @@
 <?php
     require_once "models/Model.php";
     require_once "models/ventas/salidaModel.php";
+    require_once "models/ventas/facturaModel.php";
     require_once "models/produccion/t_op.php";
     require_once "routes/web.php";
 
@@ -10,6 +11,7 @@
         public $model_op;
         public $web;
         public $salida;
+        public $factura;
 
         public function __construct()
         {
@@ -17,6 +19,7 @@
             $this->web = new Web();
             $this->model = new Model();
             $this->model_op = new t_op();
+            $this->factura = new facturaModel();
         }
 
         public function buscar()
@@ -127,45 +130,60 @@
             echo json_encode($result);
         }
 
+        public function obtener_salidas_disponibles () {
+            $result = $this->model->mostrar('v_salidas_disponibles');
+            echo json_encode($result);
+        }
+
         public function NuevaSalida() { 
             $aux = 1;
-            if (isset($_POST['concepto'])) {
-                if (isset($_POST['cotizacion']) && $_POST['cotizacion'] != '') {
-                    $this->salida->setId_Compra($_POST['cotizacion']);
-                    $this->salida->setFecha($_POST['Fecha']);
-    
-                    $result = $this->salida->insertarSalidaCompra();
-                    if ($result) {
-                        echo 1;
-                    } else {
-                        echo 2;
+            if (isset($_POST['cotizacion']) && $_POST['cotizacion'] != '') {
+                $this->salida->setId_Clientes_2($_POST['cotizacion']);
+                $this->salida->setFecha($_POST['Fecha']);
+
+                $result = $this->salida->insertarSalida();
+                if ($result) {
+                    for ($i = 1; $i <= $_POST['cantidad_tornillos']; $i++) {
+                        if (!isset($_POST['sin_op_'.$i])) {
+                            $this->salida->setDibujo($_POST['Dibujo_'.$i]);
+                            $this->salida->setCantidad_producir($_POST['cantidad_producir_'.$i]);
+                            $this->salida->setNo_Pedido($_POST['pedido_'.$i]);
+                            $orden = json_encode($this->salida->insertarOrden());
+                        }
                     }
+
+                    echo $aux;
                 } else {
-                    echo 0;
+                    echo 2;
                 }
             } else {
-                if (isset($_POST['cotizacion']) && $_POST['cotizacion'] != '') {
-                    $this->salida->setId_Clientes_2($_POST['cotizacion']);
-                    $this->salida->setFecha($_POST['Fecha']);
-    
-                    $result = $this->salida->insertarSalida();
-                    if ($result) {
-                        for ($i = 1; $i <= $_POST['cantidad_tornillos']; $i++) {
-                            if (!isset($_POST['sin_op_'.$i])) {
-                                $this->salida->setDibujo($_POST['Dibujo_'.$i]);
-                                $this->salida->setCantidad_producir($_POST['cantidad_producir_'.$i]);
-                                $this->salida->setNo_Pedido($_POST['pedido_'.$i]);
-                                $orden = json_encode($this->salida->insertarOrden());
-                            }
-                        }
-    
-                        echo $aux;
-                    } else {
-                        echo 2;
-                    }
+                echo 0;
+            }
+        }
+
+        public function registrar_factura () {
+            if (isset($_POST['cantidad_factura']) && isset($_POST['kilos_factura']) && isset($_POST['Factura']) && isset($_POST['Empaque']) && isset($_POST['empresa_factura'])) {
+                $this->factura->setId_Pedido($_POST['pedido_factura']);
+                $this->factura->setFactura($_POST['Factura']);
+                $this->factura->setEmpaque($_POST['Empaque']);
+                $this->factura->setCantidad_Entregar($_POST['cantidad_factura']);
+                $this->factura->setKilos_entregados($_POST['kilos_factura']);
+                if (isset($_POST['concepto_factura'])) {
+                    $this->factura->setConcepto($_POST['concepto_factura']);
                 } else {
-                    echo 0;
+                    $this->factura->setConcepto(0);
                 }
+                $this->factura->setId_Empresa($_POST['empresa_factura']);
+
+                $result = $this->factura->insertar_factura();
+
+                if ($result) {
+                    echo 1;
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 0;
             }
         }
 
