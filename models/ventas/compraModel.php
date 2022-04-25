@@ -75,8 +75,8 @@
 
         public function ingresar_orden () {
             $tabla = 't_orden_compra';
-            $columnas = 'Fecha,Solicitado,Terminos,Contacto,FK_Proveedor,FK_Empresa,Id_Folio_FK';
-            $valores = "'$this->fecha','$this->solicitado','$this->terminos','$this->contacto','$this->id_proveedor','$this->id_empresa','$this->id_salida'";
+            $columnas = 'Fecha,Solicitado,Terminos,Contacto,FK_Proveedor,FK_Empresa';
+            $valores = "'$this->fecha','$this->solicitado','$this->terminos','$this->contacto','$this->id_proveedor','$this->id_empresa'";
             $result = Model::insertar($tabla,$columnas,$valores);
             return $result;
         }
@@ -91,6 +91,12 @@
             $valores = "'$this->codigo','$this->producto','$this->cantidad','$this->precio','".$id_pedido[0]['Id_Compra']."'";
             $result = $obj->insertar($tabla,$columnas,$valores);
             return $result;
+        }
+
+        public function ultima_orden () {
+            $obj_2 = new Model();
+            $id_pedido = $obj_2->buscar_personalizado('t_orden_compra', 'Id_Compra', '1 ORDER BY Id_Compra DESC LIMIT 1');
+            return $id_pedido;
         }
 
         public function actualizar_compra () {

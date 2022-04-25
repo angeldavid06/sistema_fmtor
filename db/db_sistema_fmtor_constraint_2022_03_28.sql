@@ -111,13 +111,11 @@ OR REPLACE TABLE t_orden_compra (
   Solicitado VARCHAR(50),
   Terminos VARCHAR(350),
   Contacto VARCHAR(350),
-  Id_Folio_FK INT,
   FK_Proveedor INT,
   FK_Empresa INT,
   CONSTRAINT PK_Compra PRIMARY KEY (Id_Compra),
   CONSTRAINT FK_Proveedor FOREIGN KEY (FK_Proveedor) REFERENCES t_proveedores(Id_Proveedor),
   CONSTRAINT FK_Empresa FOREIGN KEY (FK_Empresa) REFERENCES t_informacion_empresa(Id_Empresa),
-  CONSTRAINT FK_Id_Folio_FK_2 FOREIGN KEY (Id_Folio_FK) REFERENCES t_salida_almacen(Id_Folio)
 );
 
 CREATE
@@ -130,8 +128,10 @@ OR REPLACE TABLE t_pedido_compra (
   Cantidad BIGINT,
   Precio FLOAT,
   FK_Orden_Compra INT,
+  Id_Pedido_FK BIGINT,
   CONSTRAINT PK_Compra PRIMARY KEY (Id_Pedido_Compra),
-  CONSTRAINT FK_Orden_Compra FOREIGN KEY (FK_Orden_Compra) REFERENCES t_orden_compra(Id_Compra) ON DELETE CASCADE
+  CONSTRAINT FK_Orden_Compra_2 FOREIGN KEY (FK_Orden_Compra) REFERENCES t_orden_compra(Id_Compra) ON DELETE CASCADE,
+  CONSTRAINT FK_Id_Pedido_FK_2 FOREIGN KEY (Id_Pedido_FK) REFERENCES t_pedido(Id_Pedido) ON DELETE CASCADE
 );
 
 CREATE

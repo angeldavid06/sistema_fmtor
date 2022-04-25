@@ -59,7 +59,6 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
     </div>
 </div>
 <?php
-require_once 'public/modules/ventas/salidas_almacen_modal.php';
 require_once 'public/modules/ventas/salidas_modal.php';
 
 ?>

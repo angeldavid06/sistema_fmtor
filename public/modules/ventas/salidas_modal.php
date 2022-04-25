@@ -2,23 +2,52 @@
 if ($_SESSION['cm9s'] == 'Administrativo') {
 ?>
     <div id="modal-ingresar" class="modal modal-derecha width-04">
-        <div class="titulo_modal d-flex justify-between align-content-center">
+        <div class="titulo_modal d-flex justify-between align-content-center" style="padding: 0px 0px 15px 0px;">
             <h2>Nueva Salida</h2>
             <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>
         </div>
         <div class="contenido_modal">
             <form id="form_reg_salida" style="padding: 0px 5px;">
                 <p style="padding: 0px 0px 15px 0px;" class="txt-right">Información general:</p>
-                <div class="d-grid g-1 grid-gap-0">
-                    <p>Fecha:</p>
-                    <input class="input" type="date" name="Fecha" id="Fecha">
-                    <input type="text" name="cantidad_tornillos" id="cantidad_tornillos" hidden>
+                <div class="d-grid g-2">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Fecha:</p>
+                        <input class="input" type="date" name="Fecha" id="Fecha">
+                        <input type="text" name="cantidad_tornillos" id="cantidad_tornillos" hidden>
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label for="concepto" style="margin: 0px;">Cotización</label>
+                        <select class="input" name="cotizacion" id="cotizacion">
+                            <option id="concepto-opcion" value="">Selecciona una cotización</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="d-grid g-1 grid-gap-0">
-                    <label for="concepto" style="margin: 0px;">Cotización</label>
-                    <select class="input" name="cotizacion" id="cotizacion">
-                        <option id="concepto-opcion" value="">Selecciona una cotización</option>
-                    </select>
+                <div class="d-grid g-2" id="contenedor_compra_general" style="display: none;">
+                    <p style="padding: 0px 0px 0px 0px; grid-column: 1 / 3;" class="txt-right">Orden de compra:</p>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label for="proveedor_general" style="margin: 0px;">Proveedor:</label>
+                        <select style="margin: 15px 0px 0px 0px;" class="input" name="proveedor_general" id="proveedor_general" disabled>
+                            <option value="">Selecciona un proveedor</option>
+                        </select>
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label for="empresa_general" style="margin: 0px;">Empresa:</label>
+                        <select style="margin: 15px 0px 0px 0px;" class="input" name="empresa_general" id="empresa_general" disabled>
+                            <option value="">Selecciona una empresa</option>
+                        </select>
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label for="solicitado_general" style="margin: 0px;">Solicitado por:</label>
+                        <input style="margin: 15px 0px 0px 0px;" type="text" name="solicitado_general" id="solicitado_general" disabled>
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label for="terminos_general" style="margin: 0px;">Terminos de pago:</label>
+                        <input style="margin: 15px 0px 0px 0px;" type="text" name="terminos_general" id="terminos_general" disabled>
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <label for="contacto_general" style="margin: 0px;">Contacto:</label>
+                        <input type="text" name="contacto_general" id="contacto_general" disabled>
+                    </div>
                 </div>
                 <div id="tornillos">
                 </div>

@@ -2,6 +2,7 @@
     require_once "models/Model.php";
     require_once "models/ventas/salidaModel.php";
     require_once "models/ventas/facturaModel.php";
+    require_once "models/ventas/compraModel.php";
     require_once "models/produccion/t_op.php";
     require_once "routes/web.php";
 
@@ -9,6 +10,7 @@
     {
         public $model;
         public $model_op;
+        public $compra;
         public $web;
         public $salida;
         public $factura;
@@ -19,6 +21,7 @@
             $this->web = new Web();
             $this->model = new Model();
             $this->model_op = new t_op();
+            $this->compra = new compraModel();
             $this->factura = new facturaModel();
         }
 
@@ -143,12 +146,33 @@
 
                 $result = $this->salida->insertarSalida();
                 if ($result) {
-                    for ($i = 1; $i <= $_POST['cantidad_tornillos']; $i++) {
-                        if (!isset($_POST['sin_op_'.$i])) {
-                            $this->salida->setDibujo($_POST['Dibujo_'.$i]);
-                            $this->salida->setCantidad_producir($_POST['cantidad_producir_'.$i]);
-                            $this->salida->setNo_Pedido($_POST['pedido_'.$i]);
-                            $orden = json_encode($this->salida->insertarOrden());
+                    if (!isset($_POST['general_00[]'])) {
+                        for ($i = 1; $i <= $_POST['cantidad_tornillos']; $i++) {
+                            if (isset($_POST['radio_0'.$i]) && $_POST['radio_0'.$i] == 'op_'.$i) {
+                                $this->salida->setDibujo($_POST['Dibujo_'.$i]);
+                                $this->salida->setCantidad_producir($_POST['cantidad_producir_'.$i]);
+                                $this->salida->setNo_Pedido($_POST['pedido_'.$i]);
+                                $orden = json_encode($this->salida->insertarOrden());
+                                if ($orden) {
+                                    $aux = true;
+                                } else {
+                                    $aux = false;
+                                }
+                            }
+                        }
+                    } else if (false) {
+                        $this->compra->setFecha($_POST['Fecha']);
+                        $this->compra->setSolicitado($_POST['solicitado_general']);
+                        $this->compra->setTerminos($_POST['terminos_general']);
+                        $this->compra->setContacto($_POST['contacto_general']);
+                        $this->compra->setId_Empresa($_POST['empresa_general']);
+                        $this->compra->setId_Proveedor($_POST['proveedor_general']);
+
+                        $result = $this->model_compra->ingresar_orden();
+                        if ($result) {
+                            $aux = true;
+                        } else {
+                            $aux = false;
                         }
                     }
 
