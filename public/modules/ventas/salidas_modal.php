@@ -189,33 +189,6 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                     <p>Fecha:</p>
                     <input class="input" type="date" name="Fecha_e" id="Fecha_e">
                 </div>
-                <p style="padding: 10px 0px 30px 0px;" class="txt-right">Facturación:</p>
-                <div class="d-grid g-2">
-                    <div class="d-grid g-1 grid-gap-0">
-                        <p>Factura:</p>
-                        <input class="input" type="text" name="Factura" id="Factura">
-                    </div>
-                    <div class="d-grid g-1 grid-gap-0">
-                        <p>Empaque:</p>
-                        <input class="input" type="text" name="Empaque" id="Empaque">
-                    </div>
-                </div>
-                <div class="d-grid g-2">
-                    <div class="d-grid g-1 grid-gap-0">
-                        <p>Cantidad:</p>
-                        <input class="input" type="text" name="cantidad" id="cantidad">
-                    </div>
-                    <div class="d-grid g-1 grid-gap-0">
-                        <p>Kilos:</p>
-                        <input class="input" type="text" name="kilos" id="kilos">
-                    </div>
-                </div>
-                <div class="d-grid g-1 grid-gap-0">
-                    <p>Empresa:</p>
-                    <select type="text" name="empresa" id="empresa">
-                        <option value="">Selecciona la empresa</option>
-                        <select>
-                </div>
                 <div class="opciones d-flex flex-column">
                     <button data-btn="actualizar" class="btn" id="btn-form-control-actualizar">Actualizar</button>
                     <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-actualizar-salida">Cancelar</label>

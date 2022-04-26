@@ -16,7 +16,6 @@ FROM
 WHERE
     t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
     AND t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
-    AND not exists (select 1 from t_orden_compra where t_salida_almacen.Id_Folio = t_orden_compra.Id_Folio_FK)
 ORDER BY
     t_salida_almacen.Id_Folio DESC;
 
@@ -32,19 +31,14 @@ SELECT
     t_informacion_empresa.Id_Empresa AS id_empresa,
     t_informacion_empresa.Empresa AS empresa,
     t_salida_almacen.Fecha AS fecha,
-    t_orden_compra.Id_Compra AS id_compra,
     t_salida_almacen.Estado AS estado,
     t_cotizacion.Id_Cotizacion AS id_cotizacion
 FROM
     t_cotizacion,
-    t_orden_compra,
     t_informacion_empresa,
     t_salida_almacen,
     t_clientes
-WHERE
-    t_salida_almacen.Id_Folio = t_orden_compra.Id_Folio_FK
-    AND t_informacion_empresa.Id_Empresa = t_orden_compra.FK_Empresa
-    AND t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
+WHERE t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
     AND t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
 ORDER BY
     t_salida_almacen.Id_Folio DESC;
@@ -84,8 +78,6 @@ SELECT
     t_pedido.Codigo AS no_parte,
     t_pedido.Pedido_pza AS pedido_cliente,
     t_pedido.Precio_millar AS costo,
-    t_facturacion.Factura AS factura,
-    t_facturacion.Empaque AS empaque,
     t_pedido.Fecha_entrega AS fecha_entrega,
     t_pedido.Medida AS medida,
     t_pedido.Descripcion AS descripcion,
@@ -97,13 +89,11 @@ FROM
     t_salida_almacen,
     t_clientes,
     t_pedido,
-    t_cotizacion,
-    t_facturacion
+    t_cotizacion
 WHERE
     t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
     AND t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
     AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
-    AND t_facturacion.Id_Pedido_FK = t_pedido.Id_Pedido
 ORDER BY
     t_salida_almacen.Id_Folio DESC;
 
@@ -338,8 +328,7 @@ SELECT
     t_proveedores.Proveedor,
     t_informacion_empresa.Empresa,
     t_orden_compra.FK_Empresa,
-    t_orden_compra.FK_Proveedor,
-    t_orden_compra.Id_Folio_FK
+    t_orden_compra.FK_Proveedor
 FROM 
     t_orden_compra,
     t_proveedores,
@@ -361,14 +350,23 @@ SELECT
     t_pedido_compra.Factor AS factor,
     t_pedido_compra.Medida AS medida,
     t_pedido_compra.Cantidad AS cantidad,
-    t_pedido_compra.Precio AS precio
+    t_pedido_compra.Precio AS precio,
+    t_pedido_compra.Id_Pedido_Compra AS id_pedido_compra,
+    t_pedido.Id_Pedido AS id_pedido,
+    t_proveedores.Proveedor AS proveedor
 FROM
     t_salida_almacen,
     t_orden_compra,
     t_informacion_empresa,
-    t_pedido_compra
+    t_pedido_compra,
+    t_pedido,
+    t_cotizacion,
+    t_proveedores
 WHERE
-    t_salida_almacen.Id_Folio = t_orden_compra.Id_Folio_FK
+    t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
+    AND t_orden_compra.FK_Proveedor = t_proveedores.Id_Proveedor
+    AND t_salida_almacen.Id_Cotizacion_FK = t_cotizacion.Id_Cotizacion
+    AND t_pedido.Id_Pedido = t_pedido_compra.Id_Pedido_FK
     AND t_informacion_empresa.Id_Empresa = t_orden_compra.FK_Empresa
     AND t_orden_compra.Id_Compra = t_pedido_compra.FK_Orden_Compra
 ORDER BY t_orden_compra.Id_Compra;

@@ -115,23 +115,7 @@ OR REPLACE TABLE t_orden_compra (
   FK_Empresa INT,
   CONSTRAINT PK_Compra PRIMARY KEY (Id_Compra),
   CONSTRAINT FK_Proveedor FOREIGN KEY (FK_Proveedor) REFERENCES t_proveedores(Id_Proveedor),
-  CONSTRAINT FK_Empresa FOREIGN KEY (FK_Empresa) REFERENCES t_informacion_empresa(Id_Empresa),
-);
-
-CREATE
-OR REPLACE TABLE t_pedido_compra (
-  Id_Pedido_Compra INT AUTO_INCREMENT,
-  Codigo VARCHAR(50),
-  Producto VARCHAR(350),
-  Factor FLOAT,
-  Medida VARCHAR(50),
-  Cantidad BIGINT,
-  Precio FLOAT,
-  FK_Orden_Compra INT,
-  Id_Pedido_FK BIGINT,
-  CONSTRAINT PK_Compra PRIMARY KEY (Id_Pedido_Compra),
-  CONSTRAINT FK_Orden_Compra_2 FOREIGN KEY (FK_Orden_Compra) REFERENCES t_orden_compra(Id_Compra) ON DELETE CASCADE,
-  CONSTRAINT FK_Id_Pedido_FK_2 FOREIGN KEY (Id_Pedido_FK) REFERENCES t_pedido(Id_Pedido) ON DELETE CASCADE
+  CONSTRAINT FK_Empresa FOREIGN KEY (FK_Empresa) REFERENCES t_informacion_empresa(Id_Empresa)
 );
 
 CREATE
@@ -151,6 +135,22 @@ OR REPLACE TABLE t_pedido (
   Id_Cotizacion_FK INT,
   CONSTRAINT PK_Pedido PRIMARY KEY (Id_Pedido),
   CONSTRAINT FK_Id_Cotizacion_1 FOREIGN KEY (Id_Cotizacion_FK) REFERENCES t_cotizacion(Id_Cotizacion) ON DELETE CASCADE
+);
+
+CREATE
+OR REPLACE TABLE t_pedido_compra (
+  Id_Pedido_Compra INT AUTO_INCREMENT,
+  Codigo VARCHAR(50),
+  Producto VARCHAR(350),
+  Factor FLOAT,
+  Medida VARCHAR(50),
+  Cantidad BIGINT,
+  Precio FLOAT,
+  FK_Orden_Compra INT,
+  Id_Pedido_FK BIGINT,
+  CONSTRAINT PK_Compra PRIMARY KEY (Id_Pedido_Compra),
+  CONSTRAINT FK_Orden_Compra_2 FOREIGN KEY (FK_Orden_Compra) REFERENCES t_orden_compra(Id_Compra) ON DELETE CASCADE,
+  CONSTRAINT FK_Id_Pedido_FK_2 FOREIGN KEY (Id_Pedido_FK) REFERENCES t_pedido(Id_Pedido) ON DELETE CASCADE
 );
 
 CREATE
@@ -218,8 +218,8 @@ OR REPLACE TABLE t_programa_forjado (
   CONSTRAINT FK_Id_Produccion_FK_1 FOREIGN KEY (Id_Produccion_FK) REFERENCES t_orden_produccion(Id_Produccion) ON DELETE CASCADE
 );
 
-CREATE TABLE
-OR REPLACE t_inventario_productos_finalizados(
+create
+OR REPLACE TABLE t_inventario_productos_finalizados(
   Id_productos_finalizados INT NOT NULL,
   Kardex_pf INT NOT NULL,
   Anaquel_fila_pf VARCHAR(50) NOT NULL,
@@ -234,8 +234,8 @@ OR REPLACE t_inventario_productos_finalizados(
   CONSTRAINT FK_Id_Salida_FK_3 FOREIGN KEY (Id_Folio_FK) REFERENCES t_salida_almacen(Id_Folio) ON DELETE CASCADE
 );
 
-CREATE TABLE
-OR REPLACE t_inventario_productos_comprados(
+CREATE
+OR REPLACE TABLE t_inventario_productos_comprados(
   Id_productos_comprados INT NOT NULL,
   Kardex_pc INT NOT NULL,
   Id_Proveedor_FK INT,
@@ -254,8 +254,8 @@ OR REPLACE t_inventario_productos_comprados(
   CONSTRAINT FK_Proveedores FOREIGN KEY (Id_Proveedor_FK) REFERENCES t_proveedores(Id_Proveedor) ON DELETE CASCADE
 );
 
-CREATE TABLE
-OR REPLACE t_materia_prima(
+CREATE
+OR REPLACE TABLE t_materia_prima(
   Id_materia_prima INT NOT NULL,
   Medida_mp VARCHAR(50) NOT NULL,
   Num_rollo INT NOT NULL,

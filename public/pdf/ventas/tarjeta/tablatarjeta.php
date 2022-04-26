@@ -16,7 +16,7 @@ $Cantidad_millares= " ";
     for ($i=0; $i < count($data); $i++) { 
          
         $Id_Folio = $data[$i]['Id_Folio'];
-        // $Codigo = $data[$i]['codigo'];
+        $Codigo = $data[$i]['codigo'];
         $Tratamiento    = $data[$i]['tratamiento'];
         $Descripcion    = $data[$i]['descripcion'];
         $Medida         = $data[$i]['medida'];

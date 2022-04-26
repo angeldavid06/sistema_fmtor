@@ -55,14 +55,6 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                     <input class="input" type="text" name="contacto" id="contacto">
                     <input class="input" type="number" name="Cantidad_Tornillos" id="Cantidad_Tornillos" value="1" hidden>
                 </div>
-                <div class="d-grid g-1">
-                    <div class="d-grid g-1 grid-gap-0">
-                        <p>Salida de Almacen:</p>
-                        <select class="input" name="salida_compra" id="salida_compra">
-                            <option value="">Selecciona la Salida de Almacen</option>
-                        </select>
-                    </div>
-                </div>
                 <div class="d-grid g-2">
                     <div class="d-grid g-1">
                         <p style="padding: 15px 0px 30px 0px;" class="txt-left" id="cantidad_tornillos_pedidos">Información del producto (1):</p>

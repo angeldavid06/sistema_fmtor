@@ -16,6 +16,7 @@
         public $id_empresa;
         public $id_proveedor;
         public $id_salida;
+        public $id_pedido_fk;
 
         public function __construct(){
             parent::__construct();
@@ -73,11 +74,16 @@
             $this->id_proveedor = $id_proveedor;
         }
 
+        public function setId_Pedido ($id_pedido_fk) : void {
+            $this->id_pedido_fk = $id_pedido_fk;
+        }
+
         public function ingresar_orden () {
+            $obj = new Model();
             $tabla = 't_orden_compra';
             $columnas = 'Fecha,Solicitado,Terminos,Contacto,FK_Proveedor,FK_Empresa';
             $valores = "'$this->fecha','$this->solicitado','$this->terminos','$this->contacto','$this->id_proveedor','$this->id_empresa'";
-            $result = Model::insertar($tabla,$columnas,$valores);
+            $result = $obj->insertar($tabla,$columnas,$valores);
             return $result;
         }
 
@@ -87,16 +93,16 @@
 
             $obj = new Model();
             $tabla = 't_pedido_compra';
-            $columnas = 'Codigo,Producto,Cantidad,Precio,FK_Orden_Compra';
-            $valores = "'$this->codigo','$this->producto','$this->cantidad','$this->precio','".$id_pedido[0]['Id_Compra']."'";
+            $columnas = 'Codigo,Producto,Cantidad,Precio,FK_Orden_Compra,Id_Pedido_FK';
+            $valores = "'$this->codigo','$this->producto','$this->cantidad','$this->precio','".$id_pedido[0]['Id_Compra']."','$this->id_pedido_fk'";
             $result = $obj->insertar($tabla,$columnas,$valores);
             return $result;
         }
 
         public function ultima_orden () {
             $obj_2 = new Model();
-            $id_pedido = $obj_2->buscar_personalizado('t_orden_compra', 'Id_Compra', '1 ORDER BY Id_Compra DESC LIMIT 1');
-            return $id_pedido;
+            $orden = $obj_2->buscar_personalizado('t_orden_compra', 'Id_Compra', '1 ORDER BY Id_Compra DESC LIMIT 1');
+            return $orden;
         }
 
         public function actualizar_compra () {

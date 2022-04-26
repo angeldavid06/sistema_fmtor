@@ -3,13 +3,33 @@
     $total_pzas = 0;
     $total_costo = 0;
     $plano = '-';
+    $op = '-';
+    $compra = '-';
+    $factura = [];
 
     for ($i=0; $i < count($data['salida']); $i++) { 
+        $factura[] = ['-','-'];
+
         for ($j=0; $j < count($data['ordenes']); $j++) { 
             if ($data['ordenes'][$j]['Id_Pedido'] == $data['salida'][$i]['Id_Pedido']) {
                 $plano = $data['ordenes'][$j]['Id_Catalogo'];
+                $op = $data['ordenes'][$j]['Id_Folio'];
             }
         }
+
+        for ($k=0; $k < count($data['facturas']); $k++) { 
+            if ($data['facturas'][$k]['Id_Pedido_FK'] == $data['salida'][$i]['Id_Pedido']) {
+                $factura = [];
+                $factura[] = [$data['facturas'][$k]['Factura'], $data['facturas'][$k]['Empaque']];
+            }
+        }
+
+        for ($k=0; $k < count($data['compras']); $k++) { 
+            if ($data['compras'][$k]['id_pedido'] == $data['salida'][$i]['Id_Pedido']) {
+                $compra = 'Compra '.explode(' ',$data['compras'][$k]['proveedor'])[0]. ' ' . explode(' ', $data['compras'][$k]['proveedor'])[1];
+            }
+        }
+
         echo '<tr>'.
                 '<td class="txt-right">'.$data['salida'][$i]['cantidad'].'</td>'.
                 '<td>'.$data['salida'][$i]['no_parte'].'</td>'.
@@ -18,13 +38,33 @@
                 '<td>'.$data['salida'][$i]['descripcion'].'</td>'.
                 '<td>'.$data['salida'][$i]['acabados'].'</td>'.
                 '<td class="txt-right">$ '.$data['salida'][$i]['costo'].'</td>'.
-                '<td>'.$data['salida'][$i]['factura'].'</td>'. 
-                '<td>'.$data['salida'][$i]['empaque'].'</td>'.
+                '<td>'.$factura[0][0].'</td>'. 
+                '<td>'.$factura[0][1].'</td>'.
                 '<td>'.$plano.'</td>'.
             '</tr>';
+
+        if ($op != '-') {
+             echo '<tr>'. 
+                '<td colspan="9" style="border: none;"></td>'.
+                '<td class="th-estado">OP: '.$op.'</td>'.
+            '</tr>';
+        } else if ($compra != '-') {
+             echo '<tr>'. 
+                '<td colspan="3" style="border: none;"></td>'.
+                '<td colspan="2" class="th-estado">'.$compra.'</td>'.
+                '<td colspan="5" style="border: none;"></td>'.
+            '</tr>';
+        }
+
+        echo '<tr>'.
+                '<td style="border: none;" colspan="10"></td>'.
+            '</tr>';
+
         $total_pzas += $data['salida'][$i]['cantidad'];
         $total_costo += $data['salida'][$i]['costo'];
         $plano = '-';
+        $op = '-';
+        $compra = '-';
     }
 
     echo '<tr>' .

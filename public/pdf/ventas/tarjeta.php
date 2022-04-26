@@ -37,14 +37,14 @@
                                 <td class="txt-center" style="font-size: 7pt;"></td>
                                 <td class="txt-center" style="font-size: 7pt;"><?php echo  $Codigo; ?></td>
                                 <td colspan="2" class="txt-center" style="font-size: 7pt; background-color: #C4D79B;"><?php echo  $Tratamiento; ?></td>
-                                <td class="txt-center" style="font-size: 7pt;"><?php echo  $_GET['bote']; ?></td>
+                                <td class="txt-center" style="font-size: 16pt;"><?php echo  $_GET['bote']; ?></td>
                             </tr>
                             <tr>
                                 <td class="txt-center" rowspan="2" style="font-size: 6pt;">KG<br><br></td>
                                 <td class="txt-right" style=" font-size: 7pt;">DESCRIPCION</td>
                                 <td style="font-size: 7pt;"><?php echo $Descripcion; ?></td>
                                 <td class="txt-center" style="font-size: 7pt;"><?php echo $Medida ?></td>
-                                <td class="txt-center" style="font-size: 7pt;">$ -</td>
+                                <td class="txt-center" style="font-size: 7pt;"><?php echo $Acabado; ?></td>
                                 <td colspan="2" class="txt-center" style="font-size: 7pt;">DIBUJO</td>
                                 <td class="txt-center" style="font-size: 7pt; background: yellow;"><?php echo $Dibujo; ?></td>
                             </tr>
@@ -145,7 +145,7 @@
                                 <td style="font-size: 7pt; background: #EBF1DE;">FACTOR:<br><br></td>
                                 <td rowspan="2" style="font-size: 7pt;"></td>
                                 <td colspan="3" rowspan="2" style="font-size: 7pt;"><br><br></td>
-                                <td style="background: #538DD5;"></td>
+                                <td style="background: #538DD5;" class="txt-center" style="font-size: 16pt;"><?php echo $Cantidad_millares; ?></td>
                             </tr>
                             <tr>
                                 <td style="font-size: 7pt; background: #EBF1DE;">MAQUINA<br><br></td>

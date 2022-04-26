@@ -4,67 +4,40 @@ let empresas = '';
 const render_salida = (json) => {
     const body = document.getElementById('table')
     body.innerHTML = ''
-    json.salidas.forEach((el) => {
-        let estado = ''
-        if (el.estado == 1) {
-            estado = 'CANCELADO'
-        } else {
-            estado = ''
-        }
-        body.innerHTML += '<tr>'+
-                                '<td style="padding: 5px;">'+
-                                    '<div id="'+el.id_folio+'" class="mas_opciones_tablas">'+
-                                        '<div class="opcion">'+
-                                            '<button data-opciones="'+el.id_folio+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
+    if (json.salidas.length > 0) {
+        json.salidas.forEach((el) => {
+            let estado = ''
+            if (el.estado == 1) {
+                estado = 'CANCELADO'
+            } else {
+                estado = ''
+            }
+            body.innerHTML += '<tr>'+
+                                    '<td style="padding: 5px;">'+
+                                        '<div id="'+el.id_folio+'" class="mas_opciones_tablas">'+
+                                            '<div class="opcion">'+
+                                                '<button data-opciones="'+el.id_folio+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
+                                            '</div>'+
+                                            '<div class="opciones" id="opciones-'+el.id_folio+'">'+
+                                                '<button style="margin: 0px 5px 0px 0px;" class="btn btn-amarillo btn-icon-self material-icons-outlined" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button>'+
+                                                '<button style="margin: 0px 5px;" data-salida="'+el.id_folio+'" data-historial="' +el.id_cotizacion +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial">toc</button>'+
+                                                '<button style="margin: 0px 5px;" class="btn btn-icon-self material-icons-outlined" data-impresion="'+el.id_folio+'">warehouse</button>'+  
+                                                '<button style="margin: 0px 0px 0px 5px;" title="Cancelar Salida de Almacen: '+el.id_folio+'" data-cancelar="'+el.id_folio+'" class="btn btn-icon-self material-icons-outlined btn-rojo">do_not_disturb_on</button>'+  
+                                            '</div>'+
                                         '</div>'+
-                                        '<div class="opciones" id="opciones-'+el.id_folio+'">'+
-                                            '<button style="margin: 0px 5px 0px 0px;" class="btn btn-amarillo btn-icon-self material-icons-outlined" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button>'+
-                                            '<button style="margin: 0px 5px;" data-salida="'+el.id_folio+'" data-historial="' +el.id_cotizacion +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial">toc</button>'+
-                                            '<button style="margin: 0px 5px;" class="btn btn-icon-self material-icons-outlined" data-impresion="'+el.id_folio+'">warehouse</button>'+  
-                                            '<button style="margin: 0px 0px 0px 5px;" title="Cancelar Salida de Almacen: '+el.id_folio+'" data-cancelar="'+el.id_folio+'" class="btn btn-icon-self material-icons-outlined btn-rojo">do_not_disturb_on</button>'+  
-                                        '</div>'+
-                                    '</div>'+
-                                '</td>'+
-                                '<td>'+el.id_folio+'</td>'+
-                                '<td>'+el.razon_social+'</td>'+
-                                '<td>'+el.fecha+'</td>'+
-                                '<td>'+estado+'</td>'+
-                        '</tr>'
-    })
-    render_externo(json.externo)
+                                    '</td>'+
+                                    '<td>'+el.id_folio+'</td>'+
+                                    '<td>'+el.razon_social+'</td>'+
+                                    '<td>'+el.fecha+'</td>'+
+                                    '<td>'+estado+'</td>'+
+                            '</tr>'
+        })
+    } else {
+        body.innerHTML += '<tr><td colspan="5">No hay salidas de almacen registradas.</td></tr>'
+    }
 }
 
 const render_externo = (json) => {
-    const body = document.getElementById('body_externo')
-    body.innerHTML = ''
-    json.forEach(el => {
-        let estado = ''
-        if (el.estado == 1) {
-            estado = 'CANCELADO'
-        } else {
-            estado = ''
-        }
-        body.innerHTML += '<tr>'+
-                                '<td>'+
-                                    '<div id="'+el.id_folio+'" class="mas_opciones_tablas">'+
-                                        '<div class="opcion">'+
-                                            '<button data-opciones="'+el.id_folio+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
-                                        '</div>'+
-                                        '<div class="opciones" id="opciones-'+el.id_folio+'">'+
-                                            '<button style="margin: 0px 5px 0px 0px;" class="btn btn-amarillo btn-icon-self material-icons-outlined" data-modal="modal-actualizar-salida" data-editar="'+el.id_folio+'">edit</button>'+
-                                            '<button style="margin: 0px 5px;" data-salida="'+el.id_folio+'" data-historial="' +el.id_cotizacion +'" class="btn btn-transparent btn-icon-self material-icons" data-modal="modal-historial">toc</button>'+
-                                            '<button style="margin: 0px 5px;" class="btn btn-icon-self material-icons-outlined" data-impresion="'+el.id_folio+'">warehouse</button>'+  
-                                            '<button style="margin: 0px 0px 0px 5px;" title="Cancelar Salida de Almacen: '+el.id_folio+'" data-cancelar="'+el.id_folio+'" class="btn btn-icon-self material-icons-outlined btn-rojo">do_not_disturb_on</button>'+  
-                                        '</div>'+
-                                    '</div>'+
-                                '</td>'+
-                                '<td>'+el.id_folio+'</td>'+
-                                '<td>'+el.razon_social+'</td>'+
-                                '<td>'+el.empresa+'</td>'+
-                                '<td>'+el.fecha+'</td>'+
-                                '<td>'+estado+'</td>'+
-                        '</tr>'
-    })
 }
 
 const form = document.getElementById('form_reg_salida')
@@ -140,7 +113,7 @@ const generar_form = (cantidad) => {
                                             '<p style="padding: 15px 0px 5px 0px;" id="pedido-'+i+'">Descripción y Medida</p>'+
                                         '</div>'+
                                         '<div class="d-grid g-3">'+
-                                            '<input type="radio" name="radio_0'+i+'" id="stock_'+i+'" value="compra_'+i+'" checked>'+
+                                            '<input type="radio" name="radio_0'+i+'" id="stock_'+i+'" value="stock_'+i+'" checked>'+
                                             '<label class="lbl-radio" data-pedido="'+i+'" data-stock="true" id="lbl_checkbox_salida" for="stock_'+i+'" style="margin: 0 0 15px 0;">Stock</label>'+
                                             '<input type="radio" name="radio_0'+i+'" id="op_'+i+'" value="op_'+i+'">'+
                                             '<label class="lbl-radio" data-pedido="'+i+'" data-op="true" id="lbl_checkbox_salida" for="op_'+i+'" style="margin: 0 0 15px 0;">O.P.</label>'+
@@ -516,6 +489,7 @@ const cancelar = () => {
 }
 
 const render_pedidos = (json) => {
+    console.log(json.length);
     document.getElementById('cantidad_tornillos').value = json.length
     generar_form(json.length)
     asignar_valores(json)
@@ -626,7 +600,6 @@ document.addEventListener('click', (evt) => {
             cantidad = document.getElementsByClassName("aux");
             ocultar_compra(evt.target.dataset.pedido);
             mostrar_op(evt.target.dataset.pedido);
-            console.log(cantidad.length);
             if (cantidad.length == 0) {
                 ocultar_compra_general()
             }

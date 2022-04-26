@@ -202,9 +202,7 @@
         }
 
         public function actualizarSoloSalida () {
-            $values = "Fecha = '$this->Fecha', 
-                        Factura = '$this->Factura',
-                        Empaque = '$this->Empaque'";
+            $values = "Fecha = '$this->Fecha'";
             $condicion = "Id_Folio = '$this->Salida'";
             $validacion = Model::actualizar('t_salida_almacen', $values, $condicion);
             return $validacion;

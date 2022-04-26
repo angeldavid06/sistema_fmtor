@@ -16,11 +16,11 @@
             <tr>
                 <th class="th"></th>
             </tr>
-            <tr>
+            <!-- <tr>
                 <th colspan="11" style="background-color: rgb(144, 202, 249);">
                     <h2>SALIDA DE ALMACÉN DE PRODUCTO TERMINADO</h2>
                 </th>
-            </tr>
+            </tr> -->
             <tr>
                 <th colspan="3" style="border: none; padding: 10px 0px;">No. Salida: <?php echo  $data['salida'][0]['id_folio']; ?></th>
                 <th colspan="4" style="border: none; padding: 10px 0px;">Fecha: <?php echo  $data['salida'][0]['fecha']; ?></th>
@@ -75,7 +75,7 @@
                     <span>S.A. DE C.V.</span>
                 </div>
                 <div class="nombre txt-right">
-                    <p>SALIDA DE ALMACÉN</p>
+                    <p>SALIDA DE ALMACÉN DE PRODUCTO TERMINADO</p>
                 </div>
             </div>
         </div>

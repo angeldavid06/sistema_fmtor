@@ -56,10 +56,16 @@
             $salida = $this->model->buscar('v_historial_salidas_almacen', $_GET['atributo'], $_GET['value']);
             $this->model = new Model();
             $ordenes = $this->model->mostrar('v_ordenes'); 
+            $this->model = new Model();
+            $facturas = $this->model->mostrar('t_facturacion'); 
+            $this->model = new Model();
+            $compras = $this->model->mostrar('v_historial_compra'); 
 
             $data = [
                 'salida' => $salida,
-                'ordenes' => $ordenes
+                'ordenes' => $ordenes,
+                'facturas' => $facturas,
+                'compras' => $compras
             ];
 
             $this->web->PDF('ventas/salida', $data);
@@ -146,7 +152,9 @@
 
                 $result = $this->salida->insertarSalida();
                 if ($result) {
-                    if (!isset($_POST['general_00[]'])) {
+                // if (true) {
+                    if (!isset($_POST['general_00'])) {
+                        // echo 'Metodo 1';
                         for ($i = 1; $i <= $_POST['cantidad_tornillos']; $i++) {
                             if (isset($_POST['radio_0'.$i]) && $_POST['radio_0'.$i] == 'op_'.$i) {
                                 $this->salida->setDibujo($_POST['Dibujo_'.$i]);
@@ -160,7 +168,8 @@
                                 }
                             }
                         }
-                    } else if (false) {
+                    } else if (count($_POST['general_00']) == $_POST['cantidad_tornillos']) { 
+                        // echo 'Metodo 2';
                         $this->compra->setFecha($_POST['Fecha']);
                         $this->compra->setSolicitado($_POST['solicitado_general']);
                         $this->compra->setTerminos($_POST['terminos_general']);
@@ -168,14 +177,103 @@
                         $this->compra->setId_Empresa($_POST['empresa_general']);
                         $this->compra->setId_Proveedor($_POST['proveedor_general']);
 
-                        $result = $this->model_compra->ingresar_orden();
+                        $result = $this->compra->ingresar_orden();
                         if ($result) {
-                            $aux = true;
+                            for ($i=1; $i <= $_POST['cantidad_tornillos']; $i++) { 
+                                $this->compra->setCodigo($_POST['codigo_'.$i]);
+                                $this->compra->setProducto($_POST['producto_'.$i]);
+                                $this->compra->setCantidad($_POST['cantidad_'.$i]);
+                                $this->compra->setPrecio($_POST['precio_'.$i]);
+                                $this->compra->setId_Pedido($_POST['pedido_'.$i]);
+
+                                $result = $this->compra->ingresar_pedido();
+                                if ($result) {
+                                    $aux = true;
+                                } else {
+                                    $aux = false;
+                                }
+                            }
                         } else {
                             $aux = false;
                         }
-                    }
+                    } else if (isset($_POST['general_00']) && count($_POST['general_00']) != $_POST['cantidad_tornillos']) {
+                        // echo 'Metodo 3';
+                        $arr = array();
+                        $contador = 0;
+                        for ($i=0; $i <= $_POST['cantidad_tornillos']; $i++) { 
+                            if (isset($_POST['radio_0' . $i]) && $_POST['radio_0' . $i] == 'op_' . $i) {
+                                $arr[] = $_POST['pedido_'.$i].' Orden de producción';
+                                $this->salida->setDibujo($_POST['Dibujo_'.$i]);
+                                $this->salida->setCantidad_producir($_POST['cantidad_producir_'.$i]);
+                                $this->salida->setNo_Pedido($_POST['pedido_'.$i]);
+                                $orden = $this->salida->insertarOrden();
+                                if ($orden) {
+                                    $aux = true;
+                                } else {
+                                    $aux = false;
+                                }
+                            } else if (isset($_POST['radio_0' . $i]) && $_POST['radio_0' . $i] == 'compra_' . $i) {
+                                $arr[] = $_POST['pedido_'.$i].' Orden de Compra General';
+                                // var_dump($_POST['general_00']);
+                                if (isset($_POST['general_00']) && $contador < count($_POST['general_00'])) {
+                                    if ($_POST['general_00'][$contador] == $_POST['pedido_'.$i]) {
+                                        $this->compra->setFecha($_POST['Fecha']);
+                                        $this->compra->setSolicitado($_POST['solicitado_general']);
+                                        $this->compra->setTerminos($_POST['terminos_general']);
+                                        $this->compra->setContacto($_POST['contacto_general']);
+                                        $this->compra->setId_Empresa($_POST['empresa_general']);
+                                        $this->compra->setId_Proveedor($_POST['proveedor_general']);
 
+                                        $result = $this->compra->ingresar_orden();
+                                        if ($result) {
+                                                $this->compra->setCodigo($_POST['codigo_' . ($i)]);
+                                                $this->compra->setProducto($_POST['producto_' . ($i)]);
+                                                $this->compra->setCantidad($_POST['cantidad_' . ($i)]);
+                                                $this->compra->setPrecio($_POST['precio_' . ($i)]);
+                                                $this->compra->setId_Pedido($_POST['pedido_' . ($i)]);
+
+                                                $result = $this->compra->ingresar_pedido();
+                                                if ($result) {
+                                                    $aux = true;
+                                                } else {
+                                                    $aux = false;
+                                                }
+                                        } else {
+                                            $aux = false;
+                                        }
+                                    }
+                                    $contador++;
+                                } else {
+                                    $arr[] = $_POST['pedido_'.$i].' Orden independiente';
+                                    $this->compra->setFecha($_POST['Fecha']);
+                                    $this->compra->setSolicitado($_POST['solicitado_'.$i]);
+                                    $this->compra->setTerminos($_POST['terminos_'.$i]);
+                                    $this->compra->setContacto($_POST['contacto_'.$i]);
+                                    $this->compra->setId_Empresa($_POST['empresa_'.$i]);
+                                    $this->compra->setId_Proveedor($_POST['Proveedor_'.$i]);
+
+                                    $result = $this->compra->ingresar_orden();
+                                    if ($result) {
+                                            $this->compra->setCodigo($_POST['codigo_' . ($i)]);
+                                            $this->compra->setProducto($_POST['producto_' . ($i)]);
+                                            $this->compra->setCantidad($_POST['cantidad_' . ($i)]);
+                                            $this->compra->setPrecio($_POST['precio_' . ($i)]);
+                                            $this->compra->setId_Pedido($_POST['pedido_' . ($i)]);
+
+                                            $result = $this->compra->ingresar_pedido();
+                                            if ($result) {
+                                                $aux = true;
+                                            } else {
+                                                $aux = false;
+                                            }
+                                    } else {
+                                        $aux = false;
+                                    }
+                                }
+                            } 
+                        }
+                        // var_dump($arr);
+                    }
                     echo $aux;
                 } else {
                     echo 2;
@@ -215,8 +313,6 @@
             if (isset($_POST['Salida_e']) && $_POST['Salida_e'] != '') {
                 $this->salida->setSalida($_POST['Salida_e']);
                 $this->salida->setFecha($_POST['Fecha_e']);
-                $this->salida->setEmpaque($_POST['Empaque']);
-                $this->salida->setFactura($_POST['Factura']);
                 $result = $this->salida->actualizarSoloSalida();
 
                 if ($result) {
@@ -288,15 +384,9 @@
                     $this->model_op->setCampo('Id_Folio');
                     $this->model_op->setValorBuscar($_POST['f_salida']);
                     $op = $this->model_op->buscar_informacion();
-                    $this->model_op = new t_op();
-                    $this->model_op->setVista('v_salidas_almacen_externo');
-                    $this->model_op->setCampo('id_folio');
-                    $this->model_op->setValorBuscar($_POST['f_salida']);
-                    $externo = $this->model_op->buscar_informacion();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $op,
-                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -317,16 +407,9 @@
                     $this->model_op->setOp($_POST['f_r_salida_m']);
                     $this->model_op->setOpFin($_POST['f_r_salida_M']);
                     $result = $this->model_op->rango_op();
-                    $this->model_op = new t_op();
-                    $this->model_op->setVista('v_salidas_almacen_externo');
-                    $this->model_op->setCampo('id_folio');
-                    $this->model_op->setOp($_POST['f_r_salida_m']);
-                    $this->model_op->setOpFin($_POST['f_r_salida_M']);
-                    $externo = $this->model_op->rango_op();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
-                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -342,15 +425,9 @@
                     $this->model_op->setCampo('Id_Folio');
                     $this->model_op->setValorBuscar($_POST['f_op']);
                     $op = $this->model_op->buscar_informacion();
-                    $this->model_op = new t_op();
-                    $this->model_op->setVista('v_salidas_almacen_externo');
-                    $this->model_op->setCampo('id_folio');
-                    $this->model_op->setValorBuscar($_POST['f_op']);
-                    $externo = $this->model_op->buscar_informacion();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $op,
-                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -387,16 +464,9 @@
                     $this->model_op->setFecha($_POST['f_r_fecha_m']);
                     $this->model_op->setFechaFin($_POST['f_r_fecha_M']);
                     $result = $this->model_op->rango_fecha();
-                    $this->model_op = new t_op();
-                    $this->model_op->setVista('v_salidas_almacen_externo');
-                    $this->model_op->setCampo('fecha');
-                    $this->model_op->setFecha($_POST['f_r_fecha_m']);
-                    $this->model_op->setFechaFin($_POST['f_r_fecha_M']);
-                    $externo = $this->model_op->rango_fecha();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
-                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -412,15 +482,9 @@
                     $this->model_op->setCampo('fecha');
                     $this->model_op->setValorBuscar($_POST['f_fecha']);
                     $result = $this->model_op->buscar_informacion();
-                    $this->model_op = new t_op();
-                    $this->model_op->setVista('v_salidas_almacen_externo');
-                    $this->model_op->setCampo('fecha');
-                    $this->model_op->setValorBuscar($_POST['f_fecha']);
-                    $externo = $this->model_op->buscar_informacion();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
-                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -438,15 +502,9 @@
                     $this->model_op->setCampo('fecha');
                     $this->model_op->setValorBuscar($value);
                     $result = $this->model_op->filtrar_informacion();
-                    $this->model_op = new t_op();
-                    $this->model_op->setVista('v_salidas_almacen_externo');
-                    $this->model_op->setCampo('fecha');
-                    $this->model_op->setValorBuscar($value);
-                    $externo = $this->model_op->filtrar_informacion();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
-                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -464,15 +522,9 @@
                     $this->model_op->setCampo('fecha');
                     $this->model_op->setValorBuscar($value);
                     $result = $this->model_op->filtrar_informacion();
-                    $this->model_op = new t_op();
-                    $this->model_op->setVista('v_salidas_almacen_externo');
-                    $this->model_op->setCampo('fecha');
-                    $this->model_op->setValorBuscar($value);
-                    $externo = $this->model_op->filtrar_informacion();
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
-                        'externo' => $externo,
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);
@@ -491,7 +543,6 @@
                     $ordenes = $this->model->mostrar('v_ordenes');
                     $data = [
                         'salidas' => $result,
-                        'externo' => [],
                         'ordenes' => $ordenes
                     ];
                     echo json_encode($data);

@@ -47,7 +47,7 @@ const buscar_historial_compra = (salida) => {
 
 //pdf
 const obtener_pdf = (id) => {
-    printPage(url + "/ventas/salida/generarpdf?atributo=Id_Folio&value=" + id);
+    printPage(url + "/ventas/salida/generarpdf?atributo=id_folio&value=" + id);
 };
 
 const obtener_cotizacion_pdf = (id) => {

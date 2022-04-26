@@ -15,52 +15,21 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
         <button title="Filtrar Información" class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-filtrar">filter_alt</button>
     </div>
 </div>
-<div class="acordeon tarjeta-transparente">
-    <div class="acordeon_opcion">
-        <div class="titulo_acordeon">
-            <h3 data-acordeon="interno">Fabricación</h3>
-        </div>
-        <div id="interno" class="contenido_acordeon mostrar_contenido">
-            <div class="tabla tarjeta" style="padding: 0;">
-                <table class="table table_salida lista_salida">
-                    <thead>
-                        <th style="max-width: 80px;"></th>
-                        <th style="min-width: 80px;">N° de salida </th>
-                        <th style="min-width: 150px;">Cliente</th>
-                        <th style="min-width: 100px;">Fecha</th>
-                        <th style="min-width: 50px;"></th>
-                    </thead>
-                    <tbody id="table" class="body body_salida"></tbody>
-                    <tfoot class="tfoot"></tfoot>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="acordeon_opcion">
-        <div class="titulo_acordeon">
-            <h3 data-acordeon="externo">Compra</h3>
-        </div>
-        <div id="externo" class="contenido_acordeon mostrar_contenido">
-            <div class="tabla tarjeta" style="padding: 0;">
-                <table class="table table_externo lista_externo">
-                    <thead>
-                        <th style="max-width: 80px;"></th>
-                        <th style="min-width: 80px;">N° de salida </th>
-                        <th style="min-width: 50px;">Cliente</th>
-                        <th style="min-width: 150px;">Empresa</th>
-                        <th style="min-width: 100px;">Fecha</th>
-                        <th style="min-width: 50px;"></th>
-                    </thead>
-                    <tbody id="body_externo" class="body body_salida"></tbody>
-                    <tfoot class="tfoot"></tfoot>
-                </table>
-            </div>
-        </div>
-    </div>
+<div class="tabla tarjeta" style="padding: 0;">
+    <table class="table table_salida lista_salida">
+        <thead>
+            <th style="max-width: 80px;"></th>
+            <th style="min-width: 80px;">N° de salida </th>
+            <th style="min-width: 150px;">Cliente</th>
+            <th style="min-width: 100px;">Fecha</th>
+            <th style="min-width: 50px;"></th>
+        </thead>
+        <tbody id="table" class="body body_salida"></tbody>
+        <tfoot class="tfoot"></tfoot>
+    </table>
 </div>
 <?php
 require_once 'public/modules/ventas/salidas_modal.php';
-
 ?>
 <script src="../public/js/ventas/functions_salida.js?1.3"></script>
 <script src="../public/js/ventas/filtros.js"></script>
