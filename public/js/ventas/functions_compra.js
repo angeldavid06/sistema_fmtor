@@ -62,8 +62,6 @@ const limpiar_formulario = (form) => {
     for (let i = 1; i < inputs.length; i++) {
         inputs[i].value = "";
     }
-    render_form_tornillo(1);
-    document.getElementById("Cantidad_Tornillos").value = 1;
 };
 
 const restaurar_formulario = () => {

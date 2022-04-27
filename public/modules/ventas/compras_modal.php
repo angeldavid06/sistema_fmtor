@@ -9,7 +9,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
         </div>
         <div class="contenido_modal">
             <form id="form_reg_orden" style="padding: 0px 5px;">
-                <div class="d-grid g-2">
+                <!-- <div class="d-grid g-2">
                     <span style="margin: 0;" data-pegar="pegar-cliente" class="btn btn-icon d-flex justify-center" title="Pegar información del portapapeles">
                         <i data-pegar="pegar-cliente" class="material-icons-round">content_paste_go</i>
                         Pegar inf. O. C.
@@ -18,7 +18,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                         <i data-pegar="pegar-todo" class="material-icons-round">content_paste_go</i>
                         Pegar todo el pedido
                     </span>
-                </div>
+                </div> -->
                 <p style="padding: 15px 0px 30px 0px;" class="txt-right">Información general:</p>
                 <div class="d-grid g-2">
                     <div class="d-grid g-1 grid-gap-0">
@@ -57,6 +57,16 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                 </div>
                 <div class="d-grid g-2">
                     <div class="d-grid g-1">
+                        <input type="radio" name="radio" id="pedido" value="pedido" checked>
+                        <label class="lbl-radio" id="lbl_checkbox_salida" for="pedido" style="margin: 0 0 15px 0;">Salida de Almacen</label>
+                    </div>
+                    <div class="d-flex justify-right align-content-center">
+                        <input type="radio" name="radio" id="material" value="material">
+                        <label class="lbl-radio" id="lbl_checkbox_salida" for="material" style="margin: 0 0 15px 0;">Material</label>
+                    </div>
+                </div>
+                <div id="mas_menos" class="d-grid g-2 grid-gap-0" style="display: none;">
+                    <div class="d-grid g-1">
                         <p style="padding: 15px 0px 30px 0px;" class="txt-left" id="cantidad_tornillos_pedidos">Información del producto (1):</p>
                     </div>
                     <div class="d-flex justify-right align-content-center">
@@ -64,36 +74,47 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                         <span data-tornillo="menos" class="btn btn-transparent btn-icon-self material-icons">remove</span>
                     </div>
                 </div>
-                <div id="pedido_compra">
+                <div id="pedido_compra" style="display: none;">
                     <div id="pedido_1" class="pedido">
-                        <div class="d-grid g-2">
+                        <div class="d-grid g-1">
                             <div class="d-grid g-1">
                                 <p style="padding: 15px 0px 30px 0px;" class="txt-left">TORNILLO 1:</p>
                             </div>
-                            <div class="d-flex justify-right align-content-center">
+                            <!-- <div class="d-flex justify-right align-content-center">
                                 <label title="Pegar información del tornillo 1" data-p="1" class="btn btn-icon-self material-icons">content_paste_go</label>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="d-grid g-2">
                             <div class="d-grid g-1 grid-gap-0">
                                 <p>Código:</p>
-                                <input class="input" type="number" name="codigo_1" id="codigo_1">
+                                <input class="input" type="number" name="codigo_1" id="codigo_1" disabled hidden>
                             </div>
                             <div class="d-grid g-1 grid-gap-0">
                                 <p>Producto:</p>
-                                <input class="input" type="text" name="producto_1" id="producto_1">
+                                <input class="input" type="text" name="producto_1" id="producto_1" disabled hidden>
                             </div>
                         </div>
                         <div class="d-grid g-2">
                             <div class="d-grid g-1 grid-gap-0">
                                 <p>Cantidad:</p>
-                                <input class="input" type="text" name="cantidad_1" id="cantidad_1">
+                                <input class="input" type="text" name="cantidad_1" id="cantidad_1" disabled hidden>
                             </div>
                             <div class="d-grid g-1 grid-gap-0">
                                 <p>Precio Unitario:</p>
-                                <input class="input" type="text" name="precio_1" id="precio_1">
+                                <input class="input" type="text" name="precio_1" id="precio_1" disabled hidden>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div id="pedido_salida">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <!-- <label for="salida_compra" style="margin: 0px;">Salida de Almacen:</label> -->
+                        <select name="salida_compra" id="salida_compra" style="margin-top: 0px;">
+                            <option value="">Seleccione una salida de almacen</option>
+                        </select>
+                    </div>
+                    <div id="contenedor_salidas">
+
                     </div>
                 </div>
                 <div class="d-grid g-1">

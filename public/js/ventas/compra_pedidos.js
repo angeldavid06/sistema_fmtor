@@ -65,13 +65,13 @@ const render_form_tornillo = (c) => {
     document.getElementById("cantidad_tornillos_pedidos").innerText = 'Información del producto ('+c+'):';
     for (let t = 1; t <= c; t++) {
         contenedor_tornillos.innerHTML += '<div id="pedido_'+t+'"  class="pedido">'+
-                                            '<div class="d-grid g-2">'+
+                                            '<div class="d-grid g-1">'+
                                                 '<div class="d-grid g-1">'+
                                                     '<p style="padding: 15px 0px 30px 0px;" class="txt-left">TORNILLO '+t+':</p>'+
                                                 '</div>'+
-                                                '<div class="d-flex justify-right align-content-center">'+
-                                                    '<label title="Pegar información del tornillo '+t+'" data-p="'+t+'" class="btn btn-icon-self material-icons">content_paste_go</label>'+
-                                                '</div>'+
+                                                // '<div class="d-flex justify-right align-content-center">'+
+                                                //     '<label title="Pegar información del tornillo '+t+'" data-p="'+t+'" class="btn btn-icon-self material-icons">content_paste_go</label>'+
+                                                // '</div>'+
                                             '</div>'+
                                             '<div class="d-grid g-2">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+

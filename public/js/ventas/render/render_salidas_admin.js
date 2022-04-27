@@ -489,7 +489,6 @@ const cancelar = () => {
 }
 
 const render_pedidos = (json) => {
-    console.log(json.length);
     document.getElementById('cantidad_tornillos').value = json.length
     generar_form(json.length)
     asignar_valores(json)
@@ -533,7 +532,6 @@ const obtener_salida = (id) => {
             document.getElementById('Fecha_e').value = el.Fecha
             document.getElementById('Factura').value = el.Factura
             document.getElementById('Empaque').value = el.Empaque
-            // document.getElementById('Id_Clientes_2_e').value = el.Id_Cotizacion_FK
         })
     })
 }
@@ -627,6 +625,12 @@ document.addEventListener('click', (evt) => {
         document.getElementById('pedido_factura').value = evt.target.dataset.factura;
         document.getElementById('cantidad_factura').value = new Intl.NumberFormat("es-MX").format(evt.target.dataset.cantidad);
         document.getElementById('kilos_factura').value = parseFloat(evt.target.dataset.cantidad * evt.target.dataset.factor);
+        empresas.then(json => {
+            document.getElementById('empresa_factura').innerHTML = '<option value="">Selecciona una empresa</option>'
+            json.forEach(el => {
+                document.getElementById('empresa_factura').innerHTML += '<option value="'+el.Id_Empresa+'">'+el.Empresa+'</option>';
+            })
+        })
     }
 })
 

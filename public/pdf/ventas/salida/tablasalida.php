@@ -26,7 +26,7 @@
 
         for ($k=0; $k < count($data['compras']); $k++) { 
             if ($data['compras'][$k]['id_pedido'] == $data['salida'][$i]['Id_Pedido']) {
-                $compra = 'Compra '.explode(' ',$data['compras'][$k]['proveedor'])[0]. ' ' . explode(' ', $data['compras'][$k]['proveedor'])[1];
+                $compra = 'Compra '.explode(' ',$data['compras'][$k]['proveedor'])[0];
             }
         }
 

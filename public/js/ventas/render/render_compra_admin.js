@@ -1,6 +1,8 @@
 const form_orden_ingresar = document.getElementById("form_reg_orden");
 const form_orden_actualizar = document.getElementById("form_act_orden");
 const form_orden_actualizar_pedido = document.getElementById("form_act_orden_pedido");
+const check_concepto_pedido = document.getElementById('pedido')
+const check_concepto_material = document.getElementById('material')
 const auxiliar = {dato: 0}
 
 form_orden_ingresar.addEventListener('submit', (evt) => {
@@ -22,9 +24,16 @@ const ingresar_orden = () => {
     const respuesta = fetchAPI(form_orden_ingresar,url+'/ventas/compras/insertar','POST')
     respuesta.then(json => {
         if (json == 1) {
+            open_alert('Orden de compra fue registrada correctamente','verde')
             obtener_ordenes()
             limpiar_formulario(form_orden_ingresar)
-            open_alert('Orden de compra fue registrada correctamente','verde')
+            if (check_concepto_pedido.checked) {
+                vaciar_contenedor();
+                document.getElementById("salida_compra").value = '';
+            } else {
+                render_form_tornillo(1);
+                document.getElementById("Cantidad_Tornillos").value = 1;
+            }
         } else {
             open_alert('El registro no pudo ser realizado','rojo')
         }
@@ -59,28 +68,32 @@ const actualizar_orden_pedido = () => {
 const render_ordenes = (json) => {
     const body = document.getElementById('body')
     body.innerHTML = ''
-    json.forEach(el => {
-        body.innerHTML += "<tr>" + 
-                            '<td style="padding: 5px;">'+
-                                '<div id="'+el.Id_Compra+'" class="mas_opciones_tablas">'+
-                                    '<div class="opcion">'+
-                                        '<button data-opciones="'+el.Id_Compra+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
+    if (json.length == 0) {
+        body.innerHTML += "<tr><td colspan='6'>No existe ningún registro</td></tr>";
+    } else {
+        json.forEach(el => {
+            body.innerHTML += "<tr>" + 
+                                '<td style="padding: 5px;">'+
+                                    '<div id="'+el.Id_Compra+'" class="mas_opciones_tablas">'+
+                                        '<div class="opcion">'+
+                                            '<button data-opciones="'+el.Id_Compra+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
+                                        '</div>'+
+                                        '<div class="opciones" id="opciones-'+el.Id_Compra+'">'+
+                                            '<button style="margin: 0px 5px 0px 0px;" data-modal="modal-actualizar" data-act="'+el.Id_Compra+'" class="btn btn-icon-self btn-amarillo material-icons-outlined">edit</button>'+
+                                            '<button style="margin: 0px 5px;" data-copiar="'+el.Id_Compra+'" class="btn btn-transparent btn-icon-self material-icons">copy_all</button>'+
+                                            '<button style="margin: 0px 5px;" data-modal="modal-historial" data-compra="'+el.Id_Compra+'" class="btn btn-icon-self btn-transparent material-icons-outlined">toc</button>'+
+                                            '<button style="margin: 0px 0px 0px 5px;" class="btn btn-icon-self btn- material-icons-outlined" data-imprimir="'+el.Id_Compra+'" data-empresa="'+el.FK_Empresa+'">print</button>'+
+                                        '</div>'+
                                     '</div>'+
-                                    '<div class="opciones" id="opciones-'+el.Id_Compra+'">'+
-                                        '<button style="margin: 0px 5px 0px 0px;" data-modal="modal-actualizar" data-act="'+el.Id_Compra+'" class="btn btn-icon-self btn-amarillo material-icons-outlined">edit</button>'+
-                                        '<button style="margin: 0px 5px;" data-copiar="'+el.Id_Compra+'" class="btn btn-transparent btn-icon-self material-icons">copy_all</button>'+
-                                        '<button style="margin: 0px 5px;" data-modal="modal-historial" data-compra="'+el.Id_Compra+'" class="btn btn-icon-self btn-transparent material-icons-outlined">toc</button>'+
-                                        '<button style="margin: 0px 0px 0px 5px;" class="btn btn-icon-self btn- material-icons-outlined" data-imprimir="'+el.Id_Compra+'" data-empresa="'+el.FK_Empresa+'">print</button>'+
-                                    '</div>'+
-                                '</div>'+
-                            '</td>'+
-                            "<td>"+el.Id_Compra+"</td>"+
-                            "<td>"+el.Fecha+"</td>"+
-                            "<td>"+el.Empresa+"</td>"+
-                            "<td>"+el.Solicitado+"</td>"+
-                            "<td>"+el.Proveedor+"</td>"+
-                        "</tr>";
-    })
+                                '</td>'+
+                                "<td>"+el.Id_Compra+"</td>"+
+                                "<td>"+el.Fecha+"</td>"+
+                                "<td>"+el.Empresa+"</td>"+
+                                "<td>"+el.Solicitado+"</td>"+
+                                "<td>"+el.Proveedor+"</td>"+
+                            "</tr>";
+        })
+    }
 }
 
 const render_pedidos = (json) => {
@@ -260,6 +273,14 @@ const obtener_salidas = () => {
     })
 }
 
+check_concepto_pedido.addEventListener('change', () => {
+    mostrar_form_pedido();
+})
+
+check_concepto_material.addEventListener('change', () => {
+    mostrar_form_material();
+})
+
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.tornillo) {
         if (evt.target.dataset.tornillo == "mas") {
@@ -284,6 +305,8 @@ document.addEventListener('click', (evt) => {
         } else if (evt.target.dataset.pegar == 'pegar-todo') {
             pegar_todo()
         }
+    } else if (evt.target.dataset.activar) {
+        activar_desactivar(evt.target.dataset.activar);
     }
 })
 

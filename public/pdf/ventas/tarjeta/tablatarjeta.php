@@ -24,7 +24,7 @@ $Cantidad_millares= " ";
         $Dibujo         = $data[$i]['Id_Catalogo'];
         $Id_Clientes_2  = $data[$i]['Clientes'].' '.explode(' ', $data[$i]['razon_social'])[0];
         $Salida         = $data[$i]['Id_Salida_FK'];  
-        $Fecha          = $data[$i]['Fecha'];
+        $Fecha          = explode('-',$data[$i]['Fecha']);
         $Cantidad_millares = $data[$i]['cantidad_elaborar'];
     }
 ?>

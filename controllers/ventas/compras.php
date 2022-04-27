@@ -92,7 +92,7 @@
 
         public function insertar () {
             if (isset($_POST['solicitado']) && $_POST['solicitado'] != '') {
-                $this->model_compra->setSalida($_POST['salida_compra']);
+                // $this->model_compra->setSalida($_POST['salida_compra']);
                 $this->model_compra->setFecha($_POST['Fecha']);
                 $this->model_compra->setSolicitado($_POST['solicitado']);
                 $this->model_compra->setTerminos($_POST['terminos']);
@@ -103,15 +103,31 @@
                 $result = $this->model_compra->ingresar_orden();
                 
                 if ($result) {
-                    for ($i=1; $i <= $_POST['Cantidad_Tornillos']; $i++) { 
-                        $this->model_compra->setCodigo($_POST['codigo_'.$i]);
-                        $this->model_compra->setProducto($_POST['producto_'.$i]);
-                        $this->model_compra->setCantidad($_POST['cantidad_'.$i]);
-                        $this->model_compra->setPrecio($_POST['precio_'.$i]);
+                    if (isset($_POST['radio']) && $_POST['radio'] == 'material'){
+                        for ($i=1; $i <= $_POST['Cantidad_Tornillos']; $i++) { 
+                            $this->model_compra->setCodigo($_POST['codigo_'.$i]);
+                            $this->model_compra->setProducto($_POST['producto_'.$i]);
+                            $this->model_compra->setCantidad($_POST['cantidad_'.$i]);
+                            $this->model_compra->setPrecio($_POST['precio_'.$i]);
+    
+                            $result = $this->model_compra->ingresar_pedido();
+                        }
 
-                        $result = $this->model_compra->ingresar_pedido();
+                        echo 1;
+                    } else if (isset($_POST['radio']) && $_POST['radio'] == 'pedido') {
+                        for ($i=1; $i <= $_POST['Cantidad_Tornillos']; $i++) { 
+                            if (isset($_POST['sin_sa_'.$i])) {
+                                $this->model_compra->setCodigo($_POST['codigo_0'.$i]);
+                                $this->model_compra->setProducto($_POST['producto_0'.$i]);
+                                $this->model_compra->setCantidad($_POST['cantidad_0'.$i]);
+                                $this->model_compra->setPrecio($_POST['precio_0'.$i]);
+                                $this->model_compra->setId_Pedido($_POST['id_pedido_'.$i]);
+        
+                                $result = $this->model_compra->ingresar_pedido();
+                            }
+                        }
+                        echo 1;
                     }
-                    echo 1;
                 } else {
                     echo 0;
                 }

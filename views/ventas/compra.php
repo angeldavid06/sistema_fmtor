@@ -37,6 +37,7 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
 <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
     <script src="../public/js/ventas/compra_pedidos.js"></script>
     <script src="../public/js/ventas/render/render_compra_admin.js"></script>
+    <script src="../public/js/ventas/render/forms_compras.js"></script>
 <?php } else { ?>
     <script src="../public/js/ventas/render/render_compra_usuario.js"></script>
 <?php } ?>

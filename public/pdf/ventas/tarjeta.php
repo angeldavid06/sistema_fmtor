@@ -37,7 +37,9 @@
                                 <td class="txt-center" style="font-size: 7pt;"></td>
                                 <td class="txt-center" style="font-size: 7pt;"><?php echo  $Codigo; ?></td>
                                 <td colspan="2" class="txt-center" style="font-size: 7pt; background-color: #C4D79B;"><?php echo  $Tratamiento; ?></td>
-                                <td class="txt-center" style="font-size: 16pt;"><?php echo  $_GET['bote']; ?></td>
+                                <td class="txt-center" style="font-size: 12pt;">
+                                    <b><?php echo  $_GET['bote']; ?></b>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="txt-center" rowspan="2" style="font-size: 6pt;">KG<br><br></td>
@@ -54,7 +56,7 @@
                                 <td class="txt-right" style="font-size: 7pt;">SALIDA</td>
                                 <td class="txt-center" style="font-size: 7pt;"><?php echo $Salida; ?></td>
                                 <td colspan="2" class="txt-right" style="font-size: 7pt;">FECHA</td>
-                                <td class="txt-center" style="font-size: 7pt;"></td>
+                                <td class="txt-center" style="font-size: 7pt;"><?php echo $Fecha[2].'/'. $Fecha[1].'/'. $Fecha[0]; ?></td>
                             </tr>
                             <tr>
                                 <td class="txt-center" style="font-size: 7pt;">PZAS</td>
@@ -145,7 +147,9 @@
                                 <td style="font-size: 7pt; background: #EBF1DE;">FACTOR:<br><br></td>
                                 <td rowspan="2" style="font-size: 7pt;"></td>
                                 <td colspan="3" rowspan="2" style="font-size: 7pt;"><br><br></td>
-                                <td style="background: #538DD5;" class="txt-center" style="font-size: 16pt;"><?php echo $Cantidad_millares; ?></td>
+                                <td style="background: #538DD5; font-size: 12pt;" class="txt-center">
+                                    <i><b><?php echo number_format($Cantidad_millares * 1000); ?></b></i>
+                                </td>
                             </tr>
                             <tr>
                                 <td style="font-size: 7pt; background: #EBF1DE;">MAQUINA<br><br></td>
@@ -432,18 +436,15 @@
         </div>
     </div>
     <div class="footer">
-        <div class="d-grid g-4">
+        <div class="d-grid g-3">
             <div class="d-flex align-content-bottom">
                 <p>Clave: FOR-VEN-06 </p>
             </div>
             <div class="d-flex align-content-bottom">
-                <p>Versión: 0 </p>
+                <p>Versión: 2 </p>
             </div>
             <div class="d-flex align-content-bottom">
                 <p>Fecha de validación: </p>
-            </div>
-            <div class="d-flex align-content-bottom">
-                <p>Página: </p>
             </div>
         </div>
     </div>

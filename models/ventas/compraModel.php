@@ -93,8 +93,15 @@
 
             $obj = new Model();
             $tabla = 't_pedido_compra';
-            $columnas = 'Codigo,Producto,Cantidad,Precio,FK_Orden_Compra,Id_Pedido_FK';
-            $valores = "'$this->codigo','$this->producto','$this->cantidad','$this->precio','".$id_pedido[0]['Id_Compra']."','$this->id_pedido_fk'";
+            
+            if ($this->id_pedido_fk != '') {
+                $columnas = 'Codigo,Producto,Cantidad,Precio,FK_Orden_Compra,Id_Pedido_FK';
+                $valores = "'$this->codigo','$this->producto','$this->cantidad','$this->precio','".$id_pedido[0]['Id_Compra']."','$this->id_pedido_fk'";
+            } else {
+                $columnas = 'Codigo,Producto,Cantidad,Precio,FK_Orden_Compra';
+                $valores = "'$this->codigo','$this->producto','$this->cantidad','$this->precio','".$id_pedido[0]['Id_Compra']."'";
+            }
+
             $result = $obj->insertar($tabla,$columnas,$valores);
             return $result;
         }
