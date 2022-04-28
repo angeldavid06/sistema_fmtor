@@ -247,7 +247,7 @@
         {
             if (isset($_POST['buscar_por'])) {
                 if (isset($_POST['f_fecha_mes'])) {
-                    $value = '-' . $_POST['f_fecha_mes'] . '-';
+                    $value = $_POST['f_fecha_mes'] . '-';
 
                     $this->model_op->setVista('v_cotizacion');
                     $this->model_op->setCampo('fecha');

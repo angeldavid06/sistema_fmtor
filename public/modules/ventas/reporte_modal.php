@@ -6,33 +6,6 @@
     <div class="contenido_modal">
         <form id="form-filtros">
             <div class="contenedor_filtros">
-                <!-- <h3>Filtrar Salidas de Almacen</h3>
-                <input type="text" name="tabla" id="tabla" value="v_salidas_almacen" hidden>
-                <div class="filtro fecha">
-                    <input type="radio" data-radio="radio" name="buscar_por_fecha" id="salida" value="salida">
-                    <label class="lbl-radio" id="lbl_radio_salida" for="salida">Buscar Salida de Almacen:</label>
-                    <input class="input" type="number" name="f_salida" id="f_salida" disabled>
-                    <input type="radio" data-radio="radio" name="buscar_por_fecha" id="rango_salidas" value="rango_salida">
-                    <label class="lbl-radio" id="lbl_radio_rango_salida" for="rango_salidas">Filtrar por rango de Salidas de Almacen: </label>
-                    <div class="d-grid g-2">
-                        <input class="input" type="number" name="f_r_salida_m" id="f_r_salida_m" disabled>
-
-                        <input class="input" type="number" name="f_r_salida_M" id="f_r_salida_M" disabled>
-                    </div>
-                </div> -->
-                <!-- <h3>Filtrar Ordenes de Producción</h3>
-                <div class="filtro fecha">
-                    <input type="radio" data-radio="radio" name="buscar_por" id="op" value="op">
-                    <label class="lbl-radio" id="lbl_radio_op" for="op">Buscar O.P.:</label>
-                    <input class="input" type="number" name="f_op" id="f_op" disabled>
-                    <input type="radio" data-radio="radio" name="buscar_por" id="rango_op" value="rango_op">
-                    <label class="lbl-radio" id="lbl_radio_rango_op" for="rango_op">Filtrar por rango de O.P.: </label>
-                    <div class="d-grid g-2">
-                        <input class="input" type="number" name="f_r_op_m" id="f_r_op_m" disabled>
-
-                        <input class="input" type="number" name="f_r_op_M" id="f_r_op_M" disabled>
-                    </div>
-                </div> -->
                 <h3>Filtrar por fecha:</h3>
                 <div class="filtro fecha">
                     <input type="radio" data-radio="radio" name="buscar_por_fecha" id="fecha" value="fecha">
@@ -58,22 +31,6 @@
                     <select name="f_cliente" id="f_cliente" class="input" disabled></select>
                     <!-- <input class="input" type="text" name="f_cliente" id="f_cliente" disabled> -->
                 </div>
-                <!-- <h3>Filtrar por estado:</h3>
-                <div class="filtro fecha">
-                    <input type="radio" data-radio="radio" name="buscar_por" id="estado" value="estado">
-                    <label class="lbl-radio" id="lbl_radio_estado" for="estado">Selecciona el estado de las O.P.:</label>
-                    <select class="input" name="f_estado" id="f_estado" disabled>
-                        <option value="FORJADO">FORJADO</option>
-                        <option value="RANURADO">RANURADO</option>
-                        <option value="ROLADO">ROLADO</option>
-                        <option value="SHANK">SHANK</option>
-                        <option value="CEMENTADO">CEMENTADO</option>
-                        <option value="ACABADO">ACABADO</option>
-                        <option value="PENDIENTE">PENDIENTE</option>
-                        <option value="TERMINADO">TERMINADO</option>
-                        <option value="CANCELADO">CANCELADO</option>
-                    </select>
-                </div> -->
                 <div class="d-flex flex-column">
                     <div class="d-grid g-1">
                         <button class="btn">Buscar</button>

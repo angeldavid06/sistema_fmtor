@@ -413,6 +413,37 @@ if (document.getElementById('btn-toggle-iniciar')) {
     });
 }
 
+const validar = (data) => {
+    let auxiliar = true;
+    const keys = Object.keys(data);
+
+    keys.forEach(el => {
+        document.getElementById(el).classList.remove("input-error");
+        if (document.getElementById(el).value == "") {
+            document.getElementById(el).classList.add("input-error");
+            auxiliar = false;
+        }
+    })
+    
+    if (!auxiliar) {
+        open_alert('Debes introducir correctamente los campos','rojo')
+    }
+    
+    return auxiliar;
+}
+
+const limpiar_form = (form) => {
+    const data = Object.fromEntries(new FormData(form));
+    let auxiliar = true;
+    const keys = Object.keys(data);
+
+    keys.forEach(el => {
+        document.getElementById(el).value = '';
+    })
+    
+    return auxiliar;
+}
+
 // console.log('%c¡ADVENTENCIA!','color:red;font-size: 4em;')
 // console.log('%cEste sitio se encuentra protegido y cualquier intento de acceso indebido, será registrado y reportado a las autoridades','color:white;font-size: 2em;')
 

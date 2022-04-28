@@ -13,7 +13,7 @@
                     </div>
                     <div class="d-grid g-1 grid-gap-0">
                         <label style="margin-top: 0;" for="">Fecha entrega:</label>
-                        <input class="input" type="text" name="fecha_entrega" id="fecha_entrega">
+                        <input class="input" type="date" name="fecha_entrega" id="fecha_entrega">
                     </div>
                 </div>
                 <div class="d-grid g-2">

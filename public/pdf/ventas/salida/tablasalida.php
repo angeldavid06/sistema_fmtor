@@ -54,6 +54,12 @@
                 '<td colspan="2" class="th-estado">'.$compra.'</td>'.
                 '<td colspan="5" style="border: none;"></td>'.
             '</tr>';
+        } else if ($data['salida'][$i]['kardex'] != '0') {
+             echo '<tr>'. 
+                '<td colspan="3" style="border: none;"></td>'.
+                '<td colspan="2" class="th-estado">Kardex '. $data['salida'][$i]['kardex'].'</td>'.
+                '<td colspan="5" style="border: none;"></td>'.
+            '</tr>';
         }
 
         echo '<tr>'.

@@ -4,12 +4,28 @@ const auxiliar = {dato: 0}
 
 form_proveedor_ingresar.addEventListener('submit', (evt) => {
     evt.preventDefault()
-    insertar()
+    const data = Object.fromEntries(
+        new FormData(evt.target)
+    )
+
+    const validacion = validar(data)
+
+    if (validacion) {
+        open_confirm('¿Desea registrar a este proveedor?',insertar)
+    }
 })
 
 form_proveedor_actualizar.addEventListener('submit', (evt) => {
     evt.preventDefault()
-    actualizar()
+    const data = Object.fromEntries(
+        new FormData(evt.target)
+    )
+
+    const validacion = validar(data)
+
+    if (validacion) {
+        open_confirm('¿Desea modificar a este proveedor?',actualizar)
+    }
 })
 
 const insertar = () => {
@@ -17,6 +33,7 @@ const insertar = () => {
     respuesta.then(json => {
         if (json == 1) {
             obtener_proveedores()
+            limpiar_form(form_proveedor_ingresar);
             open_alert('El registro fue realizado con exito','verde')
         } else {
             open_alert('El registro no pudo ser realizado', 'rojo')

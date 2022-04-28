@@ -32,7 +32,6 @@ const render_filas = (body,array) => {
     let total_concepto_costo = 0
     let total_concepto_impuestos = 0
     let total_concepto_total = 0
-    
     array.forEach(el => {
         total_concepto_costo += el[1]
         total_concepto_impuestos += (el[1] / 100) * 6.25;
@@ -109,6 +108,7 @@ const render_reporte = (json) => {
     body[0].innerHTML = "";
     body[0].innerHTML = '<tr><td class="txt-center" colspan="9">FACTURACIÓN</td></tr>'
 
+    
     if (json.terminadas.length == 0) {
         body[0].innerHTML += '<tr><td class="txt-center" colspan="9">No existe ningún registro</td></tr>';
     } else {
@@ -118,8 +118,20 @@ const render_reporte = (json) => {
     body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
                             '<tr><td class="txt-center" colspan="9">COMPRA</td></tr>';
 
+    if (json.compras.length == 0) {
+        body[0].innerHTML += '<tr style="background: var(--background-aux);"><td class="txt-center" colspan="9">No existe ningún registro</td></tr>';
+    } else {
+        render_salidas(json.compras,body)
+    }
+
     body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
                         '<tr><td class="txt-center" colspan="9">RDG</td></tr>';
+
+    if (json.rdg.length == 0) {
+        body[0].innerHTML += '<tr style="background: var(--background-aux);"><td class="txt-center" colspan="9">No existe ningún registro</td></tr>';
+    } else {
+        render_salidas(json.rdg,body)
+    }
 
     body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
                             '<tr><td class="txt-center" colspan="9">CANCELADAS</td></tr>';
@@ -132,14 +144,15 @@ const render_reporte = (json) => {
     
     body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
                             '<tr><td class="txt-center" colspan="9">NOTAS DE CREDITO</td></tr>';
-    if (json.canceladas.length == 0) {
+    if (json.notas.length == 0) {
         body[0].innerHTML += '<tr style="background: var(--background-aux);"><td class="txt-center" colspan="9">No existe ningún registro</td></tr>';
     } else {
         render_salidas(json.notas,body)
     }
+
     body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
                             '<tr><td class="txt-center" colspan="9">FACTURAS SIN COMISIÓN</td></tr>';
-    if (json.canceladas.length == 0) {
+    if (json.comision.length == 0) {
         body[0].innerHTML += '<tr style="background: var(--background-aux);"><td class="txt-center" colspan="9">No existe ningún registro</td></tr>';
     } else {
         render_salidas(json.comision,body)

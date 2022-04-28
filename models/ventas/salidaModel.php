@@ -25,10 +25,16 @@
         public $Tratamiento;
         public $No_Pedido;
         public $estado;
+        public $kardex;
 
         public function __construct()
         {
             parent::__construct();
+        }
+
+        public function setKardex($kardex): void
+        {
+            $this->kardex = $kardex;
         }
 
         public function setSalida($Salida): void
@@ -163,6 +169,15 @@
             $parametros = 'Id_Catalogo_FK,cantidad,Id_Pedido_FK';
             $values = "'$this->Dibujo','$this->Cantidad_producir','$this->No_Pedido'";
             $result = $obj->insertar($tabla, $parametros, $values);
+            return $result;
+        }
+
+        public function insertarKardex () {
+            $obj = new Model();
+            $tabla = 't_pedido';
+            $parametros = "Kardex = '$this->kardex'";
+            $values = "Id_Pedido = '$this->No_Pedido'";
+            $result = $obj->actualizar($tabla, $parametros, $values);
             return $result;
         }
 

@@ -53,21 +53,23 @@
                 <th class="th"></th>
             </tr>
             <tr>
-                <th class="th-estado" style="padding: 10px 0px; ">CAL.</th>
-                <th class="th-estado" style="padding: 10px 0px; ">Kg.</th>
-                <th class="th-estado" style="padding: 10px 0px; ">Factor</th>
-                <th class="th-estado" style="padding: 10px 0px; ">N° O.P.</th>
-                <th class="th-estado" style="padding: 10px 0px; min-width: 80px;">Fecha de O.P.</th>
-                <th class="th-estado" style="padding: 10px 0px; min-width: 60px;">Cliente</th>
-                <th class="th-estado" style="padding: 10px 0px;  min-width: 80px;">Medida</th>
-                <th class="th-estado" style="padding: 10px 0px; min-width: 120px;">Descripción</th>
-                <th class="th-estado" style="padding: 10px 0px; min-width: 80px;">Acabado</th>
-                <th class="th-estado" style="padding: 10px 0px; ">Cant.</th>
-                <th class="th-estado" style="padding: 10px 0px; min-width: 60px;">Precio</th>
-                <th class="th-estado" style="padding: 10px 0px; min-width: 80px;">Fecha<br>Entrega</th>
-                <th class="th-estado" style="padding: 10px 0px; ">Herramental</th>
-                <th class="th-estado" style="padding: 10px 0px; min-width: 120px;">Tratamiento</th>
-                <th class="th-estado" style="padding: 10px 0px; "></th>
+                <th rowspan="2" class="th-estado" style="padding: 5px 0px; ">CAL.</th>
+                <th rowspan="2" class="th-estado" style="padding: 5px 0px; ">KIL.</th>
+                <th rowspan="2" class="th-estado" style="padding: 5px 0px; ">FACTOR</th>
+                <th rowspan="2" class="th-estado" style="padding: 5px 0px; ">N° O.P.</th>
+                <th colspan="2" class="th-estado" style="padding: 5px 0px; min-width: 80px;">Fecha</th>
+                <th rowspan="2" class="th-estado" style="padding: 5px 0px; min-width: 60px;">Cliente</th>
+                <th rowspan="2" class="th-estado" style="padding: 5px 0px;  min-width: 150px;">Descripción</th>
+                <th rowspan="2" class="th-estado" style="padding: 5px 0px; min-width: 80px;">Acabado</th>
+                <th rowspan="2" class="th-estado" style="padding: 5px 0px; ">Cant.</th>
+                <th rowspan="2" class="th-estado" style="padding: 5px 0px; min-width: 60px;">Precio</th>
+                <th rowspan="2" class="th-estado" style="padding: 5px 0px; ">Herramental</th>
+                <!-- <th rowspan="2" class="th-estado" style="padding: 10px 0px; min-width: 120px;">Tratamiento</th> -->
+                <!-- <th rowspan="2" class="th-estado" style="padding: 10px 0px; "></th> -->
+            </tr>
+            <tr>
+                <th class="th-estado">OP</th>
+                <th class="th-estado">ENTREGA</th>
             </tr>
         </thead>
         <tbody>

@@ -6,7 +6,11 @@ let costos_obtenidos = null;
 
 form.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    open_confirm("¿Esta seguro de guardar la Cotización?", insertar_cotizacion);
+    const data = Object.fromEntries(new FormData(evt.target))
+    const validacion = validar(data)
+    if (validacion) {
+        open_confirm("¿Esta seguro de guardar la Cotización?", insertar_cotizacion);
+    }
 })
 
 form_act_cot.addEventListener('submit', (evt) => {

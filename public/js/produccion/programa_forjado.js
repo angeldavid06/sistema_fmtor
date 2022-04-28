@@ -15,7 +15,7 @@ const agrupar_por_maquina = (json) => {
     for (let i = 0; i < maquinas.length; i++) {
         if (json.length == 0) {
              const body = document.getElementById("body_maquina_" + maquinas[i]);
-             body.innerHTML = '<tr><td class="txt-center" colspan="17">No hay ningún registro</td></tr>';
+             body.innerHTML = '<tr><td class="txt-center" style="background: var(--background-aux);" colspan="17">No hay ningún registro</td></tr>';
         } else {
             json.forEach(el => {
                 if (maquinas[i] == el.no_maquina) {

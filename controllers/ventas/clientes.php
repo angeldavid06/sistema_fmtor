@@ -43,7 +43,12 @@
                                 if (isset($_POST['Direccion']) && $_POST['Direccion'] != '') {
                                     $this->clientes->setDireccion($_POST['Direccion']);
 
-                                    echo json_encode($this->clientes->insertarCliente());
+                                    $result = $this->clientes->insertarCliente();
+                                    if ($result) {
+                                        echo 1;
+                                    } else {
+                                        echo 6;
+                                    }
                                 } else {
                                     echo 5;
                                 }

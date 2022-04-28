@@ -1,6 +1,20 @@
 const form_ingresar = document.getElementById('op_programa')
 const form_editar = document.getElementById('op_programa_editar')
 const opciones = {dato: ''}
+const meses = [
+    'ENE',
+    'FEB',
+    'MAR',
+    'ABR',
+    'MAY',
+    'JUN',
+    'JUL',
+    'AGO',
+    'SEP',
+    'OCT',
+    'NOV',
+    'DIC'
+]
 
 const obtener_registro = (id) => {
     const respuesta = fetchAPI('',url+'/produccion/op/obtener_registro?id='+id,'')
@@ -98,17 +112,17 @@ const render_programa = (registros,maquina) => {
                             '<td class="txt-right '+registros.producto_desc+'">'+new Intl.NumberFormat('es-MX').format((registros.factor*registros.cantidad_elaborar))+'</td>'+
                             '<td class="txt-right '+registros.producto_desc+'">'+registros.factor+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Id_Produccion+'</td>'+
-                            '<td class="'+registros.producto_desc+'">'+registros.Fecha+'</td>'+
+                            '<td class="'+registros.producto_desc+'">'+registros.Fecha.split('-')[2] + '-' + (meses[parseInt(registros.Fecha.split('-')[1])]) +'</td>'+
+                            '<td class="'+registros.producto_desc+'">'+registros.Fecha_entrega.split('-')[2] + '-' + (meses[parseInt(registros.Fecha_entrega.split('-')[1])])+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Clientes+'</td>'+
-                            '<td class="'+registros.producto_desc+'">'+registros.medida+'</td>'+
-                            '<td class="'+registros.producto_desc+'">'+registros.descripcion+'</td>'+
+                            '<td class="'+registros.producto_desc+'">'+registros.medida + ' '+ registros.descripcion+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.acabados+'</td>'+
-                            '<td class="txt-right '+registros.producto_desc+'">'+registros.cantidad_elaborar+'</td>'+
+                            '<td class="txt-right '+registros.producto_desc+'">'+new Intl.NumberFormat('es-MX').format(registros.cantidad_elaborar)+'</td>'+
+                            '<td class="'+registros.producto_desc+'"></td>'+
                             '<td class="txt-right '+registros.producto_desc+'">$ '+new Intl.NumberFormat('es-MX').format(registros.precio_millar)+'</td>'+
-                            '<td class="'+registros.producto_desc+'">'+registros.Fecha_entrega+'</td>'+
                             '<td class="'+registros.producto_desc+'">'+registros.Herramental+'</td>'+
-                            '<td class="'+registros.producto_desc+'">'+registros.tratamiento+'</td>'+
-                            '<td class="txt-right '+registros.producto_desc+'">$ '+new Intl.NumberFormat('es-MX').format(registros.TOTAL)+'</td>'+
+                            // '<td class="'+registros.producto_desc+'">'+registros.tratamiento+'</td>'+
+                            // '<td class="txt-right '+registros.producto_desc+'">$ '+new Intl.NumberFormat('es-MX').format(registros.TOTAL)+'</td>'+
                         '</tr>'
 }
 

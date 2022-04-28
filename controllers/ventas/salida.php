@@ -166,6 +166,15 @@
                                 } else {
                                     $aux = false;
                                 }
+                            } else if (isset($_POST['radio_0' . $i]) && $_POST['radio_0' . $i] == 'stock_' . $i) {
+                                $this->salida->setKardex($_POST['Kardex_'.$i]);
+                                $this->salida->setNo_Pedido($_POST['pedido_' . $i]);
+                                $orden = $this->salida->insertarKardex();
+                                if ($orden) {
+                                    $aux = true;
+                                } else {
+                                    $aux = false;
+                                }
                             }
                         }
                     } else if (count($_POST['general_00']) == $_POST['cantidad_tornillos']) { 

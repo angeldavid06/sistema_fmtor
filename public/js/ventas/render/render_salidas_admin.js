@@ -63,6 +63,8 @@ const registrar_salida = () => {
     const respuesta = fetchAPI(form,url+'/ventas/salida/NuevaSalida','POST')
     respuesta.then(json => {
         if (json == 1) {
+            generar_form(0)
+            document.getElementById('cotizacion').value=''
             open_alert('Registro exitoso','verde')
             buscar_mes_actual();
         } else {
@@ -123,6 +125,10 @@ const generar_form = (cantidad) => {
                                     '</div>'+
                                     '<div class="d-grid g-1 grid-gap-0">'+
                                         '<input class="input" type="text" name="pedido_'+i+'" id="pedido_'+i+'"  hidden>'+
+                                        '<div class="d-grid g-1 grid-gap-0" id="contenedor_op_'+i+'">'+
+                                            '<p id="t_kardex_'+i+'">Kardex:</p>'+
+                                            '<input class="input" type="text" name="Kardex_'+i+'" id="Kardex_'+i+'" placeholder="Ingrese el kardex">'+
+                                        '</div>'+
                                         '<div class="d-grid g-2" id="contenedor_op_'+i+'">'+
                                             '<div class="d-grid g-1 grid-gap-0">'+
                                                 '<p id="t_plano_'+i+'" hidden>No. de Dibujo:</p>'+
@@ -442,6 +448,24 @@ const ocultar_compra = (id) => {
     precio.setAttribute("disabled",'');
 }
 
+const mostrar_kardex = (id) => {
+    const kardex = document.getElementById("Kardex_" + id);
+    const t_kardex = document.getElementById("t_kardex_" + id);
+
+    t_kardex.removeAttribute("hidden");
+    kardex.removeAttribute("hidden");
+    kardex.removeAttribute("disabled");
+}
+
+const ocultar_kardex = (id) => {
+    const kardex = document.getElementById("Kardex_" + id);
+    const t_kardex = document.getElementById("t_kardex_" + id);
+
+    t_kardex.setAttribute("hidden", "");
+    kardex.setAttribute("hidden", "");
+    kardex.setAttribute("disabled", "");
+}
+
 const mostrar_op = (id) => {
     const plano = document.getElementById("Dibujo_" + id);
     const cantidad = document.getElementById("cantidad_producir_" + id);
@@ -530,8 +554,6 @@ const obtener_salida = (id) => {
         json.forEach(el => {
             document.getElementById("Salida_e").value = el.Id_Folio;
             document.getElementById('Fecha_e').value = el.Fecha
-            document.getElementById('Factura').value = el.Factura
-            document.getElementById('Empaque').value = el.Empaque
         })
     })
 }
@@ -589,7 +611,7 @@ document.addEventListener('click', (evt) => {
             cantidad = document.getElementsByClassName("aux");
             ocultar_compra(evt.target.dataset.pedido);
             ocultar_op(evt.target.dataset.pedido);
-            console.log(cantidad.length);
+            mostrar_kardex(evt.target.dataset.pedido);
             if (cantidad.length == 0) {
                 ocultar_compra_general()
             }
@@ -597,12 +619,14 @@ document.addEventListener('click', (evt) => {
             document.getElementById('contenedor_compra_'+evt.target.dataset.pedido).classList.remove('aux')
             cantidad = document.getElementsByClassName("aux");
             ocultar_compra(evt.target.dataset.pedido);
+            ocultar_kardex(evt.target.dataset.pedido);
             mostrar_op(evt.target.dataset.pedido);
             if (cantidad.length == 0) {
                 ocultar_compra_general()
             }
         } else if (evt.target.dataset.compra) {
             ocultar_op(evt.target.dataset.pedido);
+            ocultar_kardex(evt.target.dataset.pedido);
             mostrar_compra(evt.target.dataset.pedido);
             cantidad = document.getElementsByClassName("aux");
             if (cantidad.length == 0) {

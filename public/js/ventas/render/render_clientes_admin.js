@@ -53,22 +53,6 @@ const pintarModal = (json) => {
     })
 }
 
-const Id_Clientes_r = document.getElementById('Id_Clientes');
-const Razon_social_r = document.getElementById('Razon_social');
-const Nombre_r = document.getElementById('Nombre');
-const Telefono_r = document.getElementById('Telefono');
-const Correo_r = document.getElementById('Correo');
-const Direccion_r = document.getElementById('Direccion');
-  
-const nuevoRegistro = () => {
-    Id_Clientes_r.value ='';
-    Razon_social_r.value ='';
-    Nombre_r.value ='';
-    Telefono_r.value ='';
-    Correo_r.value = '';
-    Direccion_r.value ='';
-}
-
 const eliminarRegistro =()=>{
     const respuesta = fetchAPI('',url+'/ventas/clientes/eliminarCliente?dato='+dato.aux,'')
     respuesta.then(json => {
@@ -80,14 +64,22 @@ const form = document.getElementById('form_reg_cliente');
 
 form.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    insertarCliente();
-    nuevoRegistro();
+    const data = Object.fromEntries(
+        new FormData(evt.target)
+    )
+
+    const validacion = validar(data)
+
+    if (validacion) {
+        open_confirm('¿Desea registrar a este cliente?',insertarCliente);
+    }
 })
   
 const insertarCliente = () => {
     const respuesta = fetchAPI(form,url+'/ventas/clientes/NuevoCliente','POST')
     respuesta.then(json => {
         if (json == 1) {
+            limpiar_form(form);
             open_alert('El registro ha sido actualizado correctamente', 'verde')
             obtener();
         } else {
@@ -100,7 +92,15 @@ const formactualizar = document.getElementById('form_act_cliente');
 
 formactualizar.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    actualizar_Cliente();
+    const data = Object.fromEntries(
+        new FormData(evt.target)
+    )
+
+    const validacion = validar(data)
+
+    if (validacion) {
+        open_confirm("¿Desea modificar a este cliente?", actualizar_Cliente);
+    }
 })
 
 const actualizar_Cliente = () => {

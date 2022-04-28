@@ -42,6 +42,7 @@ const buscar_mes_actual = () => {
     } else {
         aux = fecha[1];
     }
+    document.getElementById("f_fecha_mes").toggleAttribute('disabled');
     document.getElementById("f_fecha_mes").value = aux;
     buscar_dato("buscar_mes");
 }

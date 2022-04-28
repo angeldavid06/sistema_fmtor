@@ -1,4 +1,4 @@
-<div id="modal-ingresar" class="modal modal-izquierda">
+<div id="modal-ingresar" class="modal modal-derecha">
     <div class="titulo_modal d-flex justify-between align-content-center">
         <h2>Nuevo Proveedor</h2>
         <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-ingresar">close</button>

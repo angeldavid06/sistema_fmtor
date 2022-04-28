@@ -233,11 +233,15 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                 </div>
                 <div class="d-grid g-1 grid-gap-0">
                     <p>Concepto:</p>
-                    <div class="d-grid g-1 grid-gap-0">
+                    <div class="d-grid g-2 grid-gap-0">
+                        <input type="radio" name="concepto_factura" id="concepto_terminada" value="0">
+                        <label style="margin: 5px 0px 5px 0px;" for="concepto_terminada" class="lbl-radio">Terminada</label>
                         <input type="radio" name="concepto_factura" id="concepto_nota" value="1">
-                        <label for="concepto_nota" class="lbl-radio">Nota de crédito</label>
+                        <label style="margin: 0px 0px 5px 0px;" for="concepto_nota" class="lbl-radio">Nota de crédito</label>
                         <input type="radio" name="concepto_factura" id="concepto_sin_comision" value="2">
-                        <label style="margin: 5px 0px 5px 0px;" for="concepto_sin_comision" class="lbl-radio">Sin comisión</label>
+                        <label style="margin: 0px 0px 5px 0px;" for="concepto_sin_comision" class="lbl-radio">Sin comisión</label>
+                        <input type="radio" name="concepto_factura" id="concepto_compra" value="3">
+                        <label style="margin: 0px 0px 5px 0px;" for="concepto_compra" class="lbl-radio">Compra</label>
                     </div>
                 </div>
                 <div class="opciones d-flex flex-column">

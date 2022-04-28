@@ -132,6 +132,7 @@ OR REPLACE TABLE t_pedido (
   Precio_millar double,
   Codigo varchar(50),
   Tratamiento VARCHAR(100) DEFAULT '0',
+  Kardex INT,
   Id_Cotizacion_FK INT,
   CONSTRAINT PK_Pedido PRIMARY KEY (Id_Pedido),
   CONSTRAINT FK_Id_Cotizacion_1 FOREIGN KEY (Id_Cotizacion_FK) REFERENCES t_cotizacion(Id_Cotizacion) ON DELETE CASCADE
