@@ -47,6 +47,9 @@
                     if ($_SESSION['ZGVwdG8='] == 'Ventas' || $_SESSION['ZGVwdG8='] == 'ventas'  || $_SESSION['cm9s'] == 'SuperUsuario') {
                         require_once 'public/modules/menus/menu_principal_ventas.php';
                     }
+                    if ($_SESSION['ZGVwdG8='] == 'Compras' || $_SESSION['ZGVwdG8='] == 'compras'  || $_SESSION['cm9s'] == 'SuperUsuario') {
+                        require_once 'public/modules/menus/menu_principal_compras.php';
+                    }
                     
                     if ($_SESSION['ZGVwdG8='] == 'Produccion' || $_SESSION['ZGVwdG8='] == 'Producción'  || $_SESSION['cm9s'] == 'SuperUsuario') {
                         require_once 'public/modules/menus/menu_principal_produccion.php';

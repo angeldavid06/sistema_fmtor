@@ -96,7 +96,15 @@ const obtener_clientes = () => {
 
 const obtener_valores_cotizacion = () => {
     const respuesta = fetchAPI('', url + "/config/auxiliar_doc_ventas.json","")
-    costos_obtenidos=respuesta
+    costos_obtenidos = respuesta
+    costos_obtenidos.then(json => {
+        console.log(json.cotizacion.costo);
+            document.getElementById('costo_acabado').value = json.cotizacion.costo.acabado
+            document.getElementById('costo_acero').value = json.cotizacion.costo.acero
+            document.getElementById('costo_iva').value = json.cotizacion.costo.iva
+            document.getElementById('costo_laton').value = json.cotizacion.costo.laton
+            document.getElementById('costo_tratamiento').value = json.cotizacion.costo.tratamiento
+    })
 }
 
 const eliminarPedido = () => {

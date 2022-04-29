@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
+if ($_SESSION['ZGVwdG8='] != 'Compras' && $_SESSION['cm9s'] != 'SuperUsuario') {
     header('Location: ' . $this->url_server . '/usuario/principal');
 }
 ?>
@@ -10,6 +10,7 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
     <div class="d-flex justify-right align-content-center">
         <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
             <button title="Nueva Orden de Compra" class="material-icons btn btn-icon-self" data-modal="modal-ingresar">add</button>
+            <button title="Actualizar Costos" class="material-icons-outlined btn btn-icon-self btn-transparent" data-modal="modal-costos">attach_money</button>
         <?php } ?>
         <button title="Recargar" class="material-icons btn btn-icon-self btn-transparent" data-recarga="true">loop</button>
         <button title="Filtrar Información" class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-filtrar">filter_alt</button>
@@ -30,7 +31,7 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
     </table>
 </div>
 <?php
-    require_once 'public/modules/ventas/compras_modal.php';
+require_once 'public/modules/ventas/compras_modal.php';
 ?>
 <script src="../public/js/ventas/functions_compra.js"></script>
 <script src="../public/js/ventas/filtro_compra.js"></script>

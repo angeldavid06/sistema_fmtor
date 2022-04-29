@@ -70,11 +70,11 @@
         }
 
         public function compra () {
-            $this->web_layout->View('ventas/compra','');
+            $this->web_layout->View('compras/compra','');
         }
 
         public function proveedores () {
-            $this->web_layout->View('ventas/proveedores','');
+            $this->web_layout->View('compras/proveedores','');
         }
     }
 ?>

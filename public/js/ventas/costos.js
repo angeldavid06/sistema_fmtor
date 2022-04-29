@@ -1,11 +1,30 @@
+const form_costos = document.getElementById('form_costos')
+
+form_costos.addEventListener('submit', (evt) => {
+  evt.preventDefault()
+  actualizar_costos()
+})
+
+const actualizar_costos = () => {
+  const respuesta = fetchAPI(form_costos,url+'/ventas/cotizacion/actualizar_costos','POST')
+  respuesta.then(json => {
+    if (json == 1) {
+      open_alert('Los costos fueron modificados correctamente','verde')
+      obtener_valores_cotizacion();
+    } else {
+      open_alert('No se pudo modificar ningún costo','rojo')
+    }
+  })
+}
+
+
 // REVISAR FORMULA DEL PULIDO
 
 const calcular = (costo) => {
-    const input_cantidad = document.getElementById("Cantidad_millares_"+costo)
-    const input_factor = document.getElementById("factor_"+costo)
-    const acabado = document.getElementById("Acabado_"+costo);
-    const tratamiento = document.getElementById("tratamiento_"+costo);
-
+  const input_factor = document.getElementById("factor_"+costo)
+  const input_cantidad = document.getElementById("Cantidad_millares_"+costo)
+  const acabado = document.getElementById("Acabado_"+costo);
+  const tratamiento = document.getElementById("tratamiento_"+costo);
     if (input_cantidad.value == "") {
         open_alert("No ha introducido la cantidad", "naranja");
         input_cantidad.focus();

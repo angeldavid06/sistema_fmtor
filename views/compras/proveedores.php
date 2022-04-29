@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
+if ($_SESSION['ZGVwdG8='] != 'Compras' && $_SESSION['cm9s'] != 'SuperUsuario') {
     header('Location: ' . $this->url_server . '/usuario/principal');
 }
 ?>

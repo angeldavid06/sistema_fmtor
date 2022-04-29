@@ -28,6 +28,7 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
     <div class="d-flex justify-right align-content-center">
         <?php if ($_SESSION['cm9s'] == 'Administrativo') { ?>
             <button title="Nueva Salida de Almacen" class="material-icons btn btn-icon-self" data-modal="modal-ingresar">add</button>
+            <button title="Actualizar Costos" class="material-icons-outlined btn btn-icon-self btn-transparent" data-modal="modal-costos">attach_money</button>
         <?php } ?>
         <button title="Recargar" class="material-icons btn btn-icon-self btn-transparent" data-recarga="true">loop</button>
         <button title="Filtrar Información" class="material-icons btn btn-icon-self btn-transparent" data-modal="modal-filtrar">filter_alt</button>

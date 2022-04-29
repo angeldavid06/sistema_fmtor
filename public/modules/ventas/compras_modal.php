@@ -216,6 +216,28 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
             </form>
         </div>
     </div>
+
+    <div id="modal-costos" class="modal modal-derecha">
+        <div class="titulo_modal d-flex justify-between align-content-center">
+            <h2>Actualizar costos</h2>
+            <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-costos">close</button>
+        </div>
+        <div class="contenido_modal">
+            <form id="form_costos">
+                <input type="number" name="id_folio_edit" id="id_folio_edit" hidden>
+                <div class="d-grid g-1" style="padding: 0px 5px;">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>IVA:</p>
+                        <input class="input" type="text" name="costo_iva" id="costo_iva" placeholder="Ingresa el costo del IVA">
+                    </div>
+                </div>
+                <div class="opciones d-flex flex-column">
+                    <button data-btn="actualizar" class="btn" id="btn-form-control-actualizar">Actualizar costos</button>
+                    <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-costos">Cancelar</label>
+                </div>
+            </form>
+        </div>
+    </div>
 <?php
 }
 ?>

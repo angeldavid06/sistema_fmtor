@@ -394,6 +394,44 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
             </form>
         </div>
     </div>
+
+    <div id="modal-costos" class="modal modal-derecha">
+        <div class="titulo_modal d-flex justify-between align-content-center">
+            <h2>Actualizar costos</h2>
+            <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-costos">close</button>
+        </div>
+        <div class="contenido_modal">
+            <form id="form_costos">
+                <input type="number" name="id_folio_edit" id="id_folio_edit" hidden>
+                <div class="d-grid g-2" style="padding: 0px 5px;">
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Acabado:</p>
+                        <input style="margin-bottom: 0px;" class="input" type="text" name="costo_acabado" id="costo_acabado" placeholder="Ingresa el costo del acabado">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Acero:</p>
+                        <input style="margin-bottom: 0px;" class="input" type="text" name="costo_acero" id="costo_acero" placeholder="Ingresa el costo del acero">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>IVA:</p>
+                        <input style="margin-bottom: 0px;" class="input" type="text" name="costo_iva" id="costo_iva" placeholder="Ingresa el costo del IVA">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Laton:</p>
+                        <input style="margin-bottom: 0px;" class="input" type="text" name="costo_laton" id="costo_laton" placeholder="Ingresa el costo del laton">
+                    </div>
+                    <div class="d-grid g-1 grid-gap-0">
+                        <p>Tratamiento:</p>
+                        <input class="input" type="text" name="costo_tratamiento" id="costo_tratamiento" placeholder="Ingresa el costo del Tratamiento">
+                    </div>
+                </div>
+                <div class="opciones d-flex flex-column">
+                    <button data-btn="actualizar" class="btn" id="btn-form-control-actualizar">Actualizar costos</button>
+                    <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-costos">Cancelar</label>
+                </div>
+            </form>
+        </div>
+    </div>
 <?php } ?>
 
 <div id="modal-filtrar" class="modal modal-derecha">
@@ -425,7 +463,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                     <input class="input" type="date" name="f_fecha" id="f_fecha" disabled>
                     <input type="radio" data-radio="radio" name="buscar_por" id="fecha_mes" value="fecha_mes" checked>
                     <label class="lbl-radio" id="lbl_radio_fecha_mes" for="fecha_mes">Filtrar por mes: </label>
-                    <input class="input" type="month"name="f_fecha_mes" id="f_fecha_mes" disabled>
+                    <input class="input" type="month" name="f_fecha_mes" id="f_fecha_mes" disabled>
                     <input type="radio" data-radio="radio" name="buscar_por" id="fecha_anio" value="fecha_anio">
                     <label class="lbl-radio" id="lbl_radio_fecha_anio" for="fecha_anio">Filtrar por año: </label>
                     <input class="input" type="number" name="f_fecha_anio" id="f_fecha_anio" disabled>

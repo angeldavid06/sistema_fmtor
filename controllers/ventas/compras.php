@@ -281,6 +281,23 @@
                 echo 0;
             }
         }
+
+        public function actualizar_costos () {
+            if (isset($_POST['costo_iva'])) {
+                $url = "config/auxiliar_doc_ventas.json";
+                $data = file_get_contents($url);
+                $json = json_decode($data, true);
+                
+                $json['orden_de_compra']['costo']['iva'] = $_POST['costo_iva'];
+                
+                $newJsonString = json_encode($json);
+                file_put_contents($url, $newJsonString);
+
+                echo 1;
+            } else {
+                echo 0;
+            }
+        }
     }
 
 ?>

@@ -42,6 +42,11 @@
             }
         ?>
         <?php 
+            if ($_SESSION['ZGVwdG8='] == 'Compras' || $_SESSION['cm9s'] == 'SuperUsuario') {
+                require_once 'compras.php';
+            }
+        ?>
+        <?php 
             if ($_SESSION['ZGVwdG8='] == 'Produccion' || $_SESSION['cm9s'] == 'SuperUsuario') {
                 require_once 'produccion.php';
             }

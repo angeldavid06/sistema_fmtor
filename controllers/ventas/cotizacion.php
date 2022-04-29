@@ -285,4 +285,25 @@
                 }
             }
         }
+
+        public function actualizar_costos () {
+            if (isset($_POST['costo_acabado'])) {
+                $url = "config/auxiliar_doc_ventas.json";
+                $data = file_get_contents($url);
+                $json = json_decode($data, true);
+
+                $json['cotizacion']['costo']['acero'] = $_POST['costo_acero'];
+                $json['cotizacion']['costo']['acabado'] = $_POST['costo_acabado'];
+                $json['cotizacion']['costo']['laton'] = $_POST['costo_laton'];
+                $json['cotizacion']['costo']['iva'] = $_POST['costo_iva'];
+                $json['cotizacion']['costo']['tratamiento'] = $_POST['costo_tratamiento'];
+                
+                $newJsonString = json_encode($json);
+                file_put_contents($url, $newJsonString);
+
+                echo 1;
+            } else {
+                echo 0;
+            }
+        }
     }

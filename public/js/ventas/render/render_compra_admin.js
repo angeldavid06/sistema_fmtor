@@ -5,6 +5,35 @@ const check_concepto_pedido = document.getElementById('pedido')
 const check_concepto_material = document.getElementById('material')
 const auxiliar = {dato: 0}
 
+const form_costos = document.getElementById('form_costos')
+
+form_costos.addEventListener('submit', (evt) => {
+    evt.preventDefault()
+    actualizar_costos()
+})
+
+const actualizar_costos = () => {
+    const respuesta = fetchAPI(form_costos,url+'/ventas/compras/actualizar_costos','POST')
+    respuesta.then(json => {
+        if (json == 1) {
+            open_alert('Los costos fueron modificados correctamente','verde')
+            obtener_valores_cotizacion();
+        } else {
+            open_alert('No se pudo modificar ningún costo','rojo')
+        }
+    })
+}
+
+const obtener_valores_cotizacion = () => {
+    const respuesta = fetchAPI('', url + "/config/auxiliar_doc_ventas.json","")
+    costos_obtenidos = respuesta
+    costos_obtenidos.then(json => {
+        console.log(json.orden_de_compra.costo);
+            document.getElementById('costo_iva').value = json.orden_de_compra.costo.iva
+    })
+}
+
+
 form_orden_ingresar.addEventListener('submit', (evt) => {
     evt.preventDefault();
     open_confirm('¿Esta seguro de realizar el registro?',ingresar_orden)
@@ -312,4 +341,5 @@ document.addEventListener('click', (evt) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     obtener_salidas()
+    obtener_valores_cotizacion();
 })
