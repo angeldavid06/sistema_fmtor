@@ -41,8 +41,7 @@ const render_ordenes = (json) => {
     
             if (aux > 0 && mes != (fecha[0]+'-'+fecha[1]) && (fecha[0]+'-'+fecha[1]) != '0000-00') {
                 tr_totales.innerHTML = '<tr>'+
-                                            '<td colspan="3"></td>' +
-                                            '<td class="txt-right">Kilos mensuales: </td>'+
+                                            '<td colspan="2" class="txt-right">Kilos mensuales: </td>'+
                                             '<td class="txt-right">'+ new Intl.NumberFormat('es-MX').format(total_kilos_mensual)+'</td>'+
                                             '<td colspan="11" class="txt-right">Acumulado mensual:</td>'+
                                             '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado_mensual) + '</td>'+
@@ -69,7 +68,7 @@ const render_ordenes = (json) => {
             total_acumulado += parseFloat(el.TOTAL)
             total_kilos += (el.factor*el.cantidad_elaborar)
     
-            tr.innerHTML += '<td>'+
+            tr.innerHTML += '<td style="padding: 5px 10px;">'+
                                 '<div id="'+el.Id_Folio+'" class="mas_opciones_tablas">'+
                                     '<div class="opcion">'+
                                         '<button data-opciones="'+el.Id_Folio+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
@@ -92,18 +91,17 @@ const render_ordenes = (json) => {
                             '<td>'+el.tratamiento+'</td>'+
                             '<td>'+el.material+'</td>'+
                             '<td>'+el.acabados+'</td>'+
-                            '<td class="number">'+el.cantidad_elaborar+'</td>'+
-                            '<td class="txt-right" class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
-                            '<td class="txt-right" class="number">$ ' + new Intl.NumberFormat('es-MX').format(el.TOTAL)+'</td>'+
-                            '<td data-plano="'+el.Id_Catalogo+'" class="number txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado) + '</td>'+
+                            '<td class="txt-right number">'+new Intl.NumberFormat('es-MX').format(el.cantidad_elaborar)+'</td>'+
+                            '<td class="txt-right number">$ ' + new Intl.NumberFormat('es-MX').format(el.precio_millar)+'</td>'+
+                            '<td class="txt-right number">$ ' + new Intl.NumberFormat('es-MX').format(el.TOTAL)+'</td>'+
+                            '<td class="txt-right number">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado) + '</td>'+
                             '<td>' + el.estado_general+'</td>'
             t_body[0].appendChild(tr)
         }
     })
     const tr_totales = document.createElement('tr')
     tr_totales.innerHTML = '<tr>'+
-                                '<td colspan="3"></td>' +
-                                '<td class="txt-right">Kilos mensuales: </td>'+
+                                '<td colspan="2" class="txt-right">Kilos mensuales: </td>'+
                                 '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(total_kilos_mensual)+'</td>'+
                                 '<td colspan="11" class="txt-right">Acumulado mensual:</td>'+
                                 '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado_mensual) + '</td>'+
@@ -117,8 +115,7 @@ const render_ordenes = (json) => {
     const tfoot = document.createElement('tfoot');
     tfoot.classList.add('tfoot')
     tfoot.innerHTML = '<tr>'+
-                            '<td colspan="3"></td>' +
-                            '<td class="txt-right">Total kilos: </td>'+
+                            '<td colspan="2" class="txt-right">Total kilos: </td>'+
                             '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(total_kilos)+'</td>'+
                             '<td colspan="12" class="txt-right">Total acumulado</td>'+
                             '<td class="txt-right">$ ' + new Intl.NumberFormat('es-MX').format(total_acumulado) + '</td>'+
@@ -192,23 +189,24 @@ const generar_PDF = () => {
 }
 
 const restaurar_formulario = () => {
-    const inputs_radio = document.getElementsByName('buscar_por');
+    const inputs_radio = document.getElementsByName("buscar_por");
     for (let i = 0; i < inputs_radio.length; i++) {
         inputs_radio[i].checked = false;
     }
 
-    const inputs = document.getElementsByClassName('input');
+    const inputs = form_filtros.getElementsByClassName("input");
     for (let i = 0; i < inputs.length; i++) {
-        inputs_radio.value = '';
+        inputs[i].value = '';
+        inputs[i].setAttribute('disabled','')
     }
 }
 
 const btn_reset = document.getElementById('btn_resetear');
 
 btn_reset.addEventListener('click', () => {
-    limpiar_tabla()
-    obtener_ordenes()
+    // limpiar_tabla()
     restaurar_formulario()
+    buscar_mes_actual();
 })
 
 const form_calibre = document.getElementById('op_calibre')
@@ -251,9 +249,24 @@ const generar_tarjeta = (bote) => {
     printPage(url+'/ventas/tarjeta/pdftarjeta?value='+auxiliar.dato+"&bote="+bote)
 }
 
+const buscar_mes_actual = () => {
+    const fecha_actual = new Date().toLocaleDateString();
+    const fecha = fecha_actual.split("/");
+
+    if (parseInt(fecha[1]) < 10) {
+        aux = fecha[2] + "-0" + fecha[1];
+    } else {
+        aux = fecha[2] + '-' +fecha[1];
+    }
+    document.getElementById("f_fecha_mes").value = aux;
+    document.getElementById("f_fecha_mes").removeAttribute('disabled','');
+    document.getElementById("fecha_mes").checked = true;
+    buscar_dato("buscar_mes");
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    obtener_ordenes()
+    // obtener_ordenes()
+    buscar_mes_actual()
 });
 
 document.addEventListener('click', (evt) => {

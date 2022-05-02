@@ -1,3 +1,8 @@
+/**
+ * It takes a JSON object, loops through it, and creates a table row for each object in the JSON
+ * object.
+ * @param json - is the data that I get from the server.
+ */
 const render_ordenes = (json) => {
     const body = document.getElementById('body')
     body.innerHTML = ''
@@ -23,6 +28,11 @@ const render_ordenes = (json) => {
     })
 }
 
+/**
+ * It takes a JSON object, clears the table body, and then iterates over the JSON object, adding a row
+ * to the table for each element in the JSON object.
+ * @param json - the JSON data you want to render
+ */
 const render_pedidos = (json) => {
     const body = document.getElementById("body_historial");
     body.innerHTML = ''
@@ -36,6 +46,10 @@ const render_pedidos = (json) => {
     })
 }
 
+/**
+ * It takes a JSON object and adds it to a select element.
+ * @param json - the JSON object that you want to iterate over.
+ */
 const colocar_empresas = (json) => {
     const select_b = document.getElementById('f_empresa_b')
     json.forEach(el => {
@@ -43,6 +57,10 @@ const colocar_empresas = (json) => {
     });
 }
 
+/**
+ * It takes a JSON object and adds it to a select element.
+ * @param json - the JSON object that you want to iterate over.
+ */
 const colocar_proveedores = (json) => {
     const select_b = document.getElementById('f_proveedor_b')
     json.forEach(el => {

@@ -1,3 +1,4 @@
+/* A table of values. */
 const tabla_factor = [
     ['DIAMETRO','AMERICANO','2.32','3-48','4-40','5-40','6-32','8-18','10-32','12-28','1/4-28','5/16','´3/8-16','´7/16','´1/2',''],
     ['DIAMETRO','MILIMETRICO','','M2.5','','M3','3.5','M4','´3/16','M5','M6','M8','','','',''],
@@ -26,6 +27,9 @@ const tabla_factor = [
     ['3','76.20','','','','','','','8.99','','','45.40','','','','3'],
 ];
 
+/**
+ * It renders a table with the data from the array tabla_factor.
+ */
 const render_factor = () => {
     const tabla = document.getElementById("factores");
     const start_tr = '<tr class="tr">'

@@ -4,20 +4,24 @@ const render_control = (vista,json) => {
     const body = document.getElementsByClassName('body')
 
     quitar_filas(vista)
-
-    json.forEach(el => {
+    if (json.length == 0) {
         body[0].innerHTML += '<tr>'+
-                                '<td>'+el.bote+'</td>'+
-                                '<td>'+el.fecha+'</td>'+
-                                '<td>'+el.observaciones+'</td>'+
-                                '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+
-                                '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
-                                '<td class="txt-right">'+el.no_maquina+'</td>'+
+                                '<td colspan="7">No existe ningún registro</td>'+
                             '</tr>';
-        totales.total_kg += parseFloat(el.kilos)
-        totales.total_pzas  += parseInt(el.pzas)
-    });
-
+    } else {
+        json.forEach(el => {
+            body[0].innerHTML += '<tr>'+
+                                    '<td>'+el.bote+'</td>'+
+                                    '<td>'+el.fecha+'</td>'+
+                                    '<td>'+el.observaciones+'</td>'+
+                                    '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+
+                                    '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
+                                    '<td class="txt-right">'+el.no_maquina+'</td>'+
+                                '</tr>';
+            totales.total_kg += parseFloat(el.kilos)
+            totales.total_pzas  += parseInt(el.pzas)
+        });
+    }
     const total_kilogramos = document.getElementsByClassName('total_kg')
     const total_acumuladas = document.getElementsByClassName('total_acumuladas')
 

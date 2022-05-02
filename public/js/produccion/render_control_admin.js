@@ -161,29 +161,36 @@ const render_control = (vista,json) => {
 
     quitar_filas(vista)
 
-    json.forEach(el => {
+    if (json.length == 0) {
         body[0].innerHTML += '<tr>'+
-                                '<td>'+
-                                    '<div id="'+el.id_registro_diario+'" class="mas_opciones_tablas">'+
-                                        '<div class="opcion">'+
-                                            '<button data-opciones="'+el.id_registro_diario+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
-                                        '</div>'+
-                                        '<div class="opciones" id="opciones-'+el.id_registro_diario+'">'+
-                                            '<button style="margin: 0px 5px 0px 0px;" class="btn btn-icon-self btn-rojo material-icons" data-opcion="cerrar" data-eliminar='+el.id_registro_diario+'>delete</button>'+
-                                            '<button style="margin: 0px 0px 0px 5px;" class="btn btn-icon-self btn-amarillo material-icons" data-modal="modal-actualizar" data-opcion="actualizar"  data-edit="'+el.id_registro_diario+'">edit</button>'+
-                                        '</div>'+
-                                    '</div>'+
-                                '</td>'+
-                                '<td>'+el.bote+'</td>'+
-                                '<td>'+el.fecha+'</td>'+
-                                '<td>'+el.observaciones+'</td>'+
-                                '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+
-                                '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
-                                '<td class="txt-right">'+el.no_maquina+'</td>'+
+                                '<td colspan="7">No existe ningún registro</td>'+
                             '</tr>';
-        totales.total_kg += parseFloat(el.kilos)
-        totales.total_pzas  += parseInt(el.pzas)
-    });
+    } else {
+        json.forEach(el => {
+            body[0].innerHTML += '<tr>'+
+                                    '<td>'+
+                                        '<div id="'+el.id_registro_diario+'" class="mas_opciones_tablas">'+
+                                            '<div class="opcion">'+
+                                                '<button data-opciones="'+el.id_registro_diario+'"  class="mas btn btn-icon-self material-icons">more_vert</button>'+
+                                            '</div>'+
+                                            '<div class="opciones" id="opciones-'+el.id_registro_diario+'">'+
+                                                '<button style="margin: 0px 5px 0px 0px;" class="btn btn-icon-self btn-rojo material-icons" data-opcion="cerrar" data-eliminar='+el.id_registro_diario+'>delete</button>'+
+                                                '<button style="margin: 0px 0px 0px 5px;" class="btn btn-icon-self btn-amarillo material-icons" data-modal="modal-actualizar" data-opcion="actualizar"  data-edit="'+el.id_registro_diario+'">edit</button>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</td>'+
+                                    '<td>'+el.bote+'</td>'+
+                                    '<td>'+el.fecha+'</td>'+
+                                    '<td>'+el.observaciones+'</td>'+
+                                    '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.pzas)+'</td>'+
+                                    '<td class="txt-right">'+new Intl.NumberFormat('es-MX').format(el.kilos)+'</td>'+
+                                    '<td class="txt-right">'+el.no_maquina+'</td>'+
+                                '</tr>';
+            totales.total_kg += parseFloat(el.kilos)
+            totales.total_pzas  += parseInt(el.pzas)
+        });
+    }
+
 
     const total_kilogramos = document.getElementsByClassName('total_kg')
     const total_acumuladas = document.getElementsByClassName('total_acumuladas')

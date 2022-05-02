@@ -169,6 +169,7 @@
             $parametros = 'Id_Catalogo_FK,cantidad,Id_Pedido_FK';
             $values = "'$this->Dibujo','$this->Cantidad_producir','$this->No_Pedido'";
             $result = $obj->insertar($tabla, $parametros, $values);
+            self::insertarKardex();
             return $result;
         }
 

@@ -19,7 +19,7 @@ SELECT
     t_pedido.Material AS material,
     t_pedido.Acabado AS acabados,
     t_pedido.Precio_millar AS precio_millar,
-    t_pedido.Precio_millar * t_pedido.Cantidad_millares AS TOTAL,
+    t_pedido.Precio_millar * t_orden_produccion.Cantidad AS TOTAL,
     t_pedido.Fecha_entrega AS fecha_entrega,
     t_pedido.Codigo AS codigo,
     t_pedido.Pedido_pza

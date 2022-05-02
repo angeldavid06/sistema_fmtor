@@ -1,6 +1,11 @@
+/* Declaring two variables. */
 let proveedores = '';
 let empresas = '';
 
+/**
+ * It takes a JSON object, and renders it to the DOM.
+ * @param json - the json object that is returned from the server
+ */
 const render_salida = (json) => {
     const body = document.getElementById('table')
     body.innerHTML = ''
@@ -37,28 +42,35 @@ const render_salida = (json) => {
     }
 }
 
-const render_externo = (json) => {
-}
-
+/* Getting the form element by its id. */
 const form = document.getElementById('form_reg_salida')
 const form_act = document.getElementById("form_act_solo_salida");
 const form_facura = document.getElementById("form_act_factura");
 
+/* Adding an event listener to the form. When the form is submitted, it will prevent the default action
+and call the open_confirm function. */
 form.addEventListener('submit', (evt) => {
     evt.preventDefault()
     open_confirm('¿Estas seguro de registrar la salida de almacen?',registrar_salida)
 })
 
+/* Adding an event listener to the form_act element. */
 form_act.addEventListener('submit', (evt) => {
     evt.preventDefault()
     open_confirm('¿Esta seguro de registrar los cambios?',actualizar_salida)
 })
 
+/* Listening for a submit event on the form_facura element. When the event is triggered, it prevents
+the default action and calls the open_confirm function. */
 form_facura.addEventListener('submit', (evt) => {
     evt.preventDefault()
     open_confirm('¿Estas seguro de registrar esta factura?',registrar_factura)
 })
 
+/**
+ * It sends a POST request to the server, and if the server responds with a 1, it will clear the form
+ * and display a success message.
+ */
 const registrar_salida = () => {
     const respuesta = fetchAPI(form,url+'/ventas/salida/NuevaSalida','POST')
     respuesta.then(json => {
@@ -73,6 +85,9 @@ const registrar_salida = () => {
     })
 }
 
+/**
+ * It takes the form data, sends it to the server, and then displays a message based on the response.
+ */
 const actualizar_salida = () => {
     const respuesta = fetchAPI(form_act,url+'/ventas/salida/actualizar_solo_salida','POST')
     respuesta.then(json => {
@@ -85,6 +100,10 @@ const actualizar_salida = () => {
     })
 }
 
+/**
+ * It takes the form data from the form_factura form, sends it to the server, and then displays a
+ * message based on the response from the server.
+ */
 const registrar_factura = () => {
     const respuesta = fetchAPI(form_facura,url+'/ventas/salida/registrar_factura','POST')
     respuesta.then(json => {
@@ -97,14 +116,22 @@ const registrar_factura = () => {
     })
 }
 
+/* Getting the element by ID. */
 const select_filtros = document.getElementById("f_cliente");
 const select_cotizaciones = document.getElementById("cotizacion");
 const select_cotizaciones_2 = document.getElementById("Id_Clientes_2_e");
 
+/* Adding an event listener to the select_cotizaciones element. When the value of the
+select_cotizaciones element changes, the obtener_pedidos function is called with the value of the
+select_cotizaciones element as the argument. */
 select_cotizaciones.addEventListener('change', () => {
     obtener_pedidos(select_cotizaciones.value);
 })
 
+/**
+ * It creates a form with a number of inputs equal to the number passed as an argument.
+ * @param cantidad - number of forms to generate
+ */
 const generar_form = (cantidad) => {
     const contenedor = document.getElementById('tornillos')
     contenedor.innerHTML = ''
@@ -192,6 +219,10 @@ const generar_form = (cantidad) => {
     }
 } 
 
+/**
+ * It takes a JSON object and assigns the values to the corresponding HTML elements.
+ * @param json - is the array of objects that I'm getting from the database.
+ */
 const asignar_valores = (json) => {
     let i = 1;
     json.forEach(el => {
@@ -202,6 +233,23 @@ const asignar_valores = (json) => {
     })
 }
 
+/**
+ * It removes the hidden attribute from the elements with the id's of proveedor_general,
+ * empresa_general, solicitado_general, terminos_general, and contacto_general.
+ * 
+ * It also removes the disabled attribute from the elements with the id's of proveedor_general,
+ * empresa_general, solicitado_general, terminos_general, and contacto_general.
+ * 
+ * The function is called when the user clicks on the button with the id of mostrar_compra_general.
+ * 
+ * The button with the id of mostrar_compra_general is inside of a div with the id of
+ * contenedor_compra_general.
+ * 
+ * The div with the id of contenedor_compra_general is inside of a div with the id of
+ * contenedor_compra_general_padre.
+ * 
+ * The div with
+ */
 const mostrar_compra_general = () => {
     const contenedor = document.getElementById("contenedor_compra_general");
     contenedor.style.display = 'grid';
@@ -225,6 +273,9 @@ const mostrar_compra_general = () => {
     contacto_general.removeAttribute('disabled');
 }
 
+/**
+ * It takes the data from the promises and renders it to the DOM.
+ */
 const render_info_compra = () => {
     empresas.then(json => {
         empresa_general.innerHTML = '<option value="">Selecciona una empresa</option>'
@@ -241,6 +292,11 @@ const render_info_compra = () => {
     })
 }
 
+/**
+ * It hides the div with id "contenedor_compra_general" and disables the inputs with the ids
+ * "proveedor_general", "empresa_general", "solicitado_general", "terminos_general", and
+ * "contacto_general".
+ */
 const ocultar_compra_general = () => {
     const contenedor = document.getElementById("contenedor_compra_general");
     contenedor.style.display = 'none';
@@ -263,6 +319,11 @@ const ocultar_compra_general = () => {
     contacto_general.setAttribute("disabled", "");  
 }
 
+/**
+ * If the checkbox is checked, show the div and populate the select elements with the data from the
+ * promises. If the checkbox is unchecked, hide the div and clear the select elements.
+ * @param id - the id of the element that is being checked.
+ */
 const compra_independiente = (id) => {
     const compra_general_00 = document.getElementById("compra_general_00" + id);
     const proveedor = document.getElementById("Proveedor_" + id);
@@ -275,8 +336,6 @@ const compra_independiente = (id) => {
     const t_solicitado = document.getElementById("t_solicitado_" + id);
     const t_terminos = document.getElementById("t_terminos_" + id);
     const t_contacto = document.getElementById("t_contacto_" + id);
-
-    console.log(compra_general_00.checked);
 
     if (compra_general_00.checked) {
         document.getElementById("contenedor_compra_"+id).style.display = 'grid';
@@ -342,6 +401,10 @@ const compra_independiente = (id) => {
     }
 }
 
+/**
+ * It removes the hidden attribute from the elements with the id's that are passed to it.
+ * @param id - the id of the row
+ */
 const mostrar_compra = (id) => {
     const contenedor = document.getElementById('contenedor_compra_'+id)
     const contenedor_pedido = document.getElementById("contenedor_pedido_" + id);
@@ -380,6 +443,10 @@ const mostrar_compra = (id) => {
     precio.removeAttribute("disabled");
 }
 
+/**
+ * It hides a bunch of elements.
+ * @param id - the id of the row
+ */
 const ocultar_compra = (id) => {
     const contenedor = document.getElementById("contenedor_compra_" + id);
     const contenedor_pedido = document.getElementById("contenedor_pedido_" + id);
@@ -448,6 +515,10 @@ const ocultar_compra = (id) => {
     precio.setAttribute("disabled",'');
 }
 
+/**
+ * When the user clicks on the button, the table and the button will be displayed.
+ * @param id - the id of the row in the table
+ */
 const mostrar_kardex = (id) => {
     const kardex = document.getElementById("Kardex_" + id);
     const t_kardex = document.getElementById("t_kardex_" + id);
@@ -457,6 +528,11 @@ const mostrar_kardex = (id) => {
     kardex.removeAttribute("disabled");
 }
 
+/**
+ * It takes an id as a parameter, finds the element with that id, and sets the hidden and disabled
+ * attributes on it.
+ * @param id - the id of the row
+ */
 const ocultar_kardex = (id) => {
     const kardex = document.getElementById("Kardex_" + id);
     const t_kardex = document.getElementById("t_kardex_" + id);
@@ -466,6 +542,12 @@ const ocultar_kardex = (id) => {
     kardex.setAttribute("disabled", "");
 }
 
+/**
+ * It removes the hidden attribute from the elements with the IDs t_plano_id and t_cantidad_id, and
+ * removes the hidden and disabled attributes from the elements with the IDs Dibujo_id and
+ * cantidad_producir_id.
+ * @param id - the id of the row
+ */
 const mostrar_op = (id) => {
     const plano = document.getElementById("Dibujo_" + id);
     const cantidad = document.getElementById("cantidad_producir_" + id);
@@ -481,6 +563,10 @@ const mostrar_op = (id) => {
     cantidad.removeAttribute("disabled");
 }
 
+/**
+ * It hides the elements with the given id.
+ * @param id - the id of the row
+ */
 const ocultar_op = (id) => {
     const plano = document.getElementById("Dibujo_" + id);
     const cantidad = document.getElementById("cantidad_producir_" + id);
@@ -495,11 +581,16 @@ const ocultar_op = (id) => {
     cantidad.setAttribute("disabled", "");
 }
 
+
 const cancelar_salida = (id) => {
     auxiliar = id
     open_confirm('¿Desea cancelar esta salida de almacen?',cancelar)
 }
 
+/**
+ * It sends a request to the server to cancel a sale, and if the server responds with a 1, it displays
+ * a message to the user.
+ */
 const cancelar = () => {
     const respuesta = fetchAPI('', url+'/ventas/salida/cancelar_salida?id='+auxiliar, '')
     respuesta.then(json =>{ 
@@ -512,12 +603,22 @@ const cancelar = () => {
     })
 }
 
+/**
+ * It takes a JSON object, and then it sets the value of an input field to the length of the JSON
+ * object, then it calls a function to generate a form, and then it calls a function to assign values
+ * to the form.
+ * @param json - is the data that I'm getting from the server
+ */
 const render_pedidos = (json) => {
     document.getElementById('cantidad_tornillos').value = json.length
     generar_form(json.length)
     asignar_valores(json)
 }
 
+/**
+ * It takes a JSON object and renders it as HTML.
+ * @param json - is the data that I'm getting from the server.
+ */
 const render_cotizaciones = (json) => {
     select_cotizaciones.innerHTML = '<option id="concepto-opcion" value="">Selecciona una cotización</option>';
     json.forEach(el => {
@@ -525,6 +626,10 @@ const render_cotizaciones = (json) => {
     });
 }
 
+/**
+ * It's a function that makes a fetch request to a server, and then adds the response to a select
+ * element.
+ */
 const obtener_clientes = () => {
     const respuesta = fetchAPI("", url + "/ventas/salida/obtener_clientes", "");
     respuesta.then((json) => {
@@ -534,6 +639,10 @@ const obtener_clientes = () => {
     });
 };
 
+/**
+ * It takes a JSON object and renders it as an HTML select element.
+ * @param json - is the data that I'm getting from the server.
+ */
 const render_ordenes_compra = (json) => {
     select_cotizaciones.innerHTML = '<option id="concepto-opcion" value="">Selecciona una orden de compra</option>';
     json.forEach(el => {
@@ -541,6 +650,10 @@ const render_ordenes_compra = (json) => {
     });
 }
 
+/**
+ * It fetches data from an API and then renders it to the page.
+ * @param id - the id of the client
+ */
 const obtener_pedidos = (id) => {
     const respuesta = fetchAPI('',url+'/ventas/cotizacion/historial?id='+id,'')
     respuesta.then(json => {
@@ -548,6 +661,11 @@ const obtener_pedidos = (id) => {
     })
 }
 
+/**
+ * It takes an id, makes a fetch request, and then sets the value of two inputs to the values of two
+ * properties of the response.
+ * @param id - id of the row that was clicked
+ */
 const obtener_salida = (id) => {
     const respuesta = fetchAPI('',url+'/ventas/salida/obtener_salida?aux='+id,'')
     respuesta.then(json => {
@@ -558,6 +676,9 @@ const obtener_salida = (id) => {
     })
 }
 
+/**
+ * It fetches data from a server and then renders it to the page.
+ */
 const obtener_cotizaciones = () => {
     const respuesta = fetchAPI('',url+'/ventas/cotizacion/obtener_cotizaciones','')
     respuesta.then(json => {
@@ -565,6 +686,9 @@ const obtener_cotizaciones = () => {
     })
 }
 
+/**
+ * It fetches data from an API and then renders it to the DOM.
+ */
 const obtener_ordenes_compra = () => {
     const respuesta = fetchAPI('',url+'/ventas/compras/obtener','')
     respuesta.then(json => {
@@ -572,16 +696,26 @@ const obtener_ordenes_compra = () => {
     })
 }
 
+/**
+ * It fetches data from a server and stores it in a variable.
+ */
 const obtener_proveedores = () => {
     const respuesta = fetchAPI('', url+'/ventas/compras/obtener_proveedores','')
     proveedores = respuesta;
 }
 
+/**
+ * It fetches data from a server and stores it in a variable.
+ */
 const obtener_empresas = () => {
     const respuesta = fetchAPI('',url+'/ventas/compras/obtener_empresas','')
     empresas = respuesta;
 }
 
+/**
+ * It takes the current date, formats it to a string, splits it into an array, then adds the elements
+ * of the array to a string in the format YYYY-MM-DD.
+ */
 const colocar_fecha = () => {
     const fecha = new Date();
     const local = fecha.toLocaleDateString();
@@ -603,6 +737,7 @@ const colocar_fecha = () => {
     document.getElementById('Fecha').value = aux
 }
 
+/* Adding an event listener to the document. */
 document.addEventListener('click', (evt) => {
     let cantidad = document.getElementsByClassName("aux");
     if (evt.target.dataset.pedido) {
@@ -619,7 +754,6 @@ document.addEventListener('click', (evt) => {
             document.getElementById('contenedor_compra_'+evt.target.dataset.pedido).classList.remove('aux')
             cantidad = document.getElementsByClassName("aux");
             ocultar_compra(evt.target.dataset.pedido);
-            ocultar_kardex(evt.target.dataset.pedido);
             mostrar_op(evt.target.dataset.pedido);
             if (cantidad.length == 0) {
                 ocultar_compra_general()
@@ -658,6 +792,7 @@ document.addEventListener('click', (evt) => {
     }
 })
 
+/* Adding an event listener to the DOMContentLoaded event. */
 document.addEventListener('DOMContentLoaded', () => {
     obtener_cotizaciones()
     obtener_clientes();

@@ -26,8 +26,8 @@
                 <th>Descripción: <?php echo $data['control'][0]['descripcion']; ?></th>
             </tr>
             <tr>
-                <th style="background: #C4D79B;" colspan="2">Tratamiento: <?php echo $data['control'][0]['tratamiento']; ?></th>
-                <th>Material: <?php echo $data['control'][0]['material']; ?></th>
+                <th style="background: #C4D79B;" colspan="3">Tratamiento: <?php echo $data['control'][0]['tratamiento']; ?></th>
+                <!-- <th>Material: <?php //echo $data['control'][0]['material']; ?></th> -->
             </tr>
         </thead>
         <tbody>

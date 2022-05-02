@@ -33,8 +33,6 @@
     </div>
     <div class="contenido_modal">
         <form id="form_act_cliente" style="padding: 0px 5px;">
-
-
             <p>Numero de identificacion :</p>
             <input class="input " type="number" name="Id_Clientes_edit" id="Id_Clientes_edit" placeholder="Ingresa el numero de identificacion">
             <p>Razon Social :</p>
@@ -52,5 +50,27 @@
                 <label class="btn btn-transparent txt-center" id="btn-form-control-cancel" data-modal="modal-actualizar">Cancelar</label>
             </div>
         </form>
+    </div>
+</div>
+<div id="modal-historial-cliente" class="modal modal-derecha width-06">
+    <div class="titulo_modal d-flex justify-between align-content-center">
+        <h2>Historial del cliente</h2>
+        <button class="btn btn-icon-self btn-transparent material-icons" id="close_modal" data-modal="modal-historial-cliente">close</button>
+    </div>
+    <div class="contenido_modal">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th>Medida</th>
+                    <th>Acabado</th>
+                    <th>Cantidad</th>
+                    <th>Costo</th>
+                </tr>
+            </thead>
+            <tbody id="body-historial">
+            </tbody>
+        </table>
     </div>
 </div>

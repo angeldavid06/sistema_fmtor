@@ -1,3 +1,8 @@
+/**
+ * It takes a JSON object, clears the HTML of the element with the class name 'body_clientes', then
+ * loops through the JSON object and adds a row to the table for each element in the JSON object.
+ * @param json - the JSON object you want to render
+ */
 const render_clientes = (json) => {
     const body = document.getElementsByClassName('body_clientes');
     body[0].innerHTML = '';  

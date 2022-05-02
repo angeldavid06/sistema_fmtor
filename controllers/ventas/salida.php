@@ -152,11 +152,15 @@
 
                 $result = $this->salida->insertarSalida();
                 if ($result) {
-                // if (true) {
                     if (!isset($_POST['general_00'])) {
-                        // echo 'Metodo 1';
                         for ($i = 1; $i <= $_POST['cantidad_tornillos']; $i++) {
                             if (isset($_POST['radio_0'.$i]) && $_POST['radio_0'.$i] == 'op_'.$i) {
+                                if (isset($_POST['Kardex_'.$i])) {
+                                    $this->salida->setKardex($_POST['Kardex_'.$i]);
+                                } else {
+                                    $this->salida->setKardex(0);
+                                }
+
                                 $this->salida->setDibujo($_POST['Dibujo_'.$i]);
                                 $this->salida->setCantidad_producir($_POST['cantidad_producir_'.$i]);
                                 $this->salida->setNo_Pedido($_POST['pedido_'.$i]);
@@ -178,7 +182,6 @@
                             }
                         }
                     } else if (count($_POST['general_00']) == $_POST['cantidad_tornillos']) { 
-                        // echo 'Metodo 2';
                         $this->compra->setFecha($_POST['Fecha']);
                         $this->compra->setSolicitado($_POST['solicitado_general']);
                         $this->compra->setTerminos($_POST['terminos_general']);
@@ -206,7 +209,6 @@
                             $aux = false;
                         }
                     } else if (isset($_POST['general_00']) && count($_POST['general_00']) != $_POST['cantidad_tornillos']) {
-                        // echo 'Metodo 3';
                         $arr = array();
                         $contador = 0;
                         for ($i=0; $i <= $_POST['cantidad_tornillos']; $i++) { 
@@ -223,7 +225,6 @@
                                 }
                             } else if (isset($_POST['radio_0' . $i]) && $_POST['radio_0' . $i] == 'compra_' . $i) {
                                 $arr[] = $_POST['pedido_'.$i].' Orden de Compra General';
-                                // var_dump($_POST['general_00']);
                                 if (isset($_POST['general_00']) && $contador < count($_POST['general_00'])) {
                                     if ($_POST['general_00'][$contador] == $_POST['pedido_'.$i]) {
                                         $this->compra->setFecha($_POST['Fecha']);
@@ -281,7 +282,6 @@
                                 }
                             } 
                         }
-                        // var_dump($arr);
                     }
                     echo $aux;
                 } else {

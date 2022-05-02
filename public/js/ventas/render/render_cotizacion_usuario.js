@@ -1,3 +1,7 @@
+/**
+ * It takes a JSON array and renders it as a table.
+ * @param json - the data that is being passed to the function
+ */
 const render_historial = (json) => {
     const body = document.getElementById("body_historial");
     body.innerHTML = "";
@@ -18,6 +22,10 @@ const render_historial = (json) => {
         "</tr>";
     });
 };
+/**
+ * It takes a JSON object and renders it as a table.
+ * @param json - is the data that I get from the server.
+ */
 const render_cotizaciones = (json) => {
     let aux = 0;
     const body = document.getElementsByClassName('body')[0]
@@ -51,6 +59,9 @@ const render_cotizaciones = (json) => {
     }
 }
 
+/**
+ * It gets a list of clients from a database and adds them to a select element.
+ */
 const obtener_clientes = () => {
     const respuesta = fetchAPI("", url + "/ventas/salida/obtener_clientes", "");
     respuesta.then((json) => {
@@ -60,6 +71,7 @@ const obtener_clientes = () => {
     });
 };
 
+/* Waiting for the DOM to be loaded and then it calls the function `obtener_clientes()` */
 document.addEventListener("DOMContentLoaded", () => {
     obtener_clientes();
 });

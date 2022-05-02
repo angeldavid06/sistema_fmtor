@@ -1,3 +1,6 @@
+/**
+ * It shows the form for the purchase order.
+ */
 const mostrar_form_pedido = () => {
     document.getElementById("pedido_salida").style.display = "block";
     document.getElementById("pedido_compra").style.display = "none";
@@ -5,6 +8,10 @@ const mostrar_form_pedido = () => {
     cambiar_atributos();
 }
 
+/**
+ * When the user clicks on the button, the function will hide the first form, show the second form, and
+ * then call the function cambiar_atributos()
+ */
 const mostrar_form_material = () => {
     document.getElementById("pedido_salida").style.display = "none";
     document.getElementById("pedido_compra").style.display = "block";
@@ -12,6 +19,11 @@ const mostrar_form_material = () => {
     cambiar_atributos();
 }
 
+/**
+ * It toggles the hidden and disabled attributes of the elements with the ids codigo_1, producto_1,
+ * cantidad_1, precio_1, and salida_compra.
+ * @param form - the form that contains the fields
+ */
 const cambiar_atributos = (form) => {
     document.getElementById("codigo_1").toggleAttribute("hidden");
     document.getElementById("producto_1").toggleAttribute("hidden");
@@ -27,11 +39,18 @@ const cambiar_atributos = (form) => {
     document.getElementById("salida_compra").toggleAttribute("hidden");
 }
 
+/**
+ * It takes the element with the id "contenedor_salidas" and sets its innerHTML to an empty string.
+ */
 const vaciar_contenedor = () => {
     const contenedor = document.getElementById("contenedor_salidas");
     contenedor.innerHTML = ''
 }
 
+/**
+ * It creates a form with a checkbox and some inputs.
+ * @param json - is the data that comes from the server, it is an array of objects.
+ */
 const render_form_tornillo_salida = (json) => {
     const contenedor = document.getElementById('contenedor_salidas')
     cantidad.value = json.length;
@@ -73,6 +92,10 @@ const render_form_tornillo_salida = (json) => {
     })
 }
 
+/**
+ * It fetches data from an API, then renders a form with the data.
+ * @param id - the id of the sale
+ */
 const obtener_pedidos_salidas = (id) => {
     const respuesta = fetchAPI('',url+'/ventas/salida/historial?salida='+id,'')
     respuesta.then(json => {
@@ -81,6 +104,10 @@ const obtener_pedidos_salidas = (id) => {
     })
 }
 
+/**
+ * It toggles the attribute of the element with the id passed to it.
+ * @param id - the id of the row
+ */
 const activar_desactivar = (id) => {
     document.getElementById('codigo_0'+id).toggleAttribute('disabled')
     document.getElementById('codigo_0'+id).toggleAttribute('hidden')
@@ -97,8 +124,11 @@ const activar_desactivar = (id) => {
     document.getElementById('t_pe_0'+id).toggleAttribute('hidden')
 }
 
+/* Getting the element with the id "salida_compra" and assigning it to the variable select_salidas. */
 const select_salidas = document.getElementById("salida_compra");
 
+/* Listening for a change in the select element with the id "salida_compra". When the user changes the
+value of the select element, the function obtener_pedidos_salidas() is called. */
 select_salidas.addEventListener('change', () => {
     obtener_pedidos_salidas(select_salidas.value)
 })

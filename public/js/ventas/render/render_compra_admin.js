@@ -1,3 +1,4 @@
+/* Declaring variables and assigning them to DOM elements. */
 const form_orden_ingresar = document.getElementById("form_reg_orden");
 const form_orden_actualizar = document.getElementById("form_act_orden");
 const form_orden_actualizar_pedido = document.getElementById("form_act_orden_pedido");
@@ -5,13 +6,18 @@ const check_concepto_pedido = document.getElementById('pedido')
 const check_concepto_material = document.getElementById('material')
 const auxiliar = {dato: 0}
 
+/* Getting the form element with the id of form_costos. */
 const form_costos = document.getElementById('form_costos')
 
+/* Preventing the default action of the form from happening. */
 form_costos.addEventListener('submit', (evt) => {
     evt.preventDefault()
     actualizar_costos()
 })
 
+/**
+ * It takes the form data, sends it to the server, and then updates the page with the new data.
+ */
 const actualizar_costos = () => {
     const respuesta = fetchAPI(form_costos,url+'/ventas/compras/actualizar_costos','POST')
     respuesta.then(json => {
@@ -24,6 +30,10 @@ const actualizar_costos = () => {
     })
 }
 
+/**
+ * It fetches a JSON file from a URL, and then it sets the value of an input field to the value of a
+ * key in the JSON file.
+ */
 const obtener_valores_cotizacion = () => {
     const respuesta = fetchAPI('', url + "/config/auxiliar_doc_ventas.json","")
     costos_obtenidos = respuesta
@@ -33,22 +43,28 @@ const obtener_valores_cotizacion = () => {
     })
 }
 
-
+/* Preventing the default action of the form and then calling a function called open_confirm. */
 form_orden_ingresar.addEventListener('submit', (evt) => {
     evt.preventDefault();
     open_confirm('¿Esta seguro de realizar el registro?',ingresar_orden)
 })
 
+/* Adding an event listener to the form_orden_actualizar form. */
 form_orden_actualizar.addEventListener('submit', (evt) => {
     evt.preventDefault();
     open_confirm("¿Esta seguro de modificar este registro?", actualizar_orden);
 })
 
+/* A form that is being submitted. */
 form_orden_actualizar_pedido.addEventListener('submit', (evt) => {
     evt.preventDefault();
     open_confirm("¿Esta seguro de modificar este registro?", actualizar_orden_pedido);
 })
 
+/**
+ * It sends a POST request to the server, and if the server responds with a 1, it will clear the form
+ * and render a new form.
+ */
 const ingresar_orden = () => {
     const respuesta = fetchAPI(form_orden_ingresar,url+'/ventas/compras/insertar','POST')
     respuesta.then(json => {
@@ -69,6 +85,10 @@ const ingresar_orden = () => {
     })
 }
 
+/**
+ * It takes the form data from the form_orden_actualizar form, sends it to the server, and then updates
+ * the page with the new data.
+ */
 const actualizar_orden = () => {
     const respuesta = fetchAPI(form_orden_actualizar,url+'/ventas/compras/actualizar','POST');
     respuesta.then(json => {
@@ -81,6 +101,10 @@ const actualizar_orden = () => {
     })
 };
 
+/**
+ * It sends a POST request to the server, and if the server responds with a 1, it calls two functions
+ * and displays a message.
+ */
 const actualizar_orden_pedido = () => {
     const respuesta = fetchAPI(form_orden_actualizar_pedido,url+'/ventas/compras/actualizar_pedido','POST');
     respuesta.then(json => {
@@ -94,6 +118,10 @@ const actualizar_orden_pedido = () => {
     })
 };
 
+/**
+ * It takes a JSON object and renders it to the DOM.
+ * @param json - the data that is returned from the server
+ */
 const render_ordenes = (json) => {
     const body = document.getElementById('body')
     body.innerHTML = ''
@@ -125,6 +153,10 @@ const render_ordenes = (json) => {
     }
 }
 
+/**
+ * It takes a JSON object, loops through it, and creates a table row for each object in the JSON.
+ * @param json - is the data that I'm getting from the server.
+ */
 const render_pedidos = (json) => {
     const body = document.getElementById("body_historial");
     body.innerHTML = ''
@@ -150,6 +182,10 @@ const render_pedidos = (json) => {
     })
 }
 
+/**
+ * It takes a JSON object and adds it to the HTML select element.
+ * @param json - the JSON object that you want to iterate over.
+ */
 const colocar_empresas = (json) => {
     const select = document.getElementById('empresas')
     const select_p = document.getElementById('empresas_p')
@@ -161,6 +197,10 @@ const colocar_empresas = (json) => {
     });
 }
 
+/**
+ * It takes a JSON array and adds it to the innerHTML of three different select elements.
+ * @param json - the data you get from the server
+ */
 const colocar_proveedores = (json) => {
     const select = document.getElementById('proveedores')
     const select_p = document.getElementById('proveedores_p')
@@ -172,6 +212,11 @@ const colocar_proveedores = (json) => {
     })
 }
 
+/**
+ * It takes a JSON object and uses it to populate the values of the input elements in the HTML form.
+ * @param json - [{Id_Pedido_Compra: "1", Codigo: "1", Producto: "Producto 1", Cantidad: "1", Precio:
+ * "1"},…]
+ */
 const render_pedido = (json) => {
     json.forEach((el) => {
         document.getElementById("id_pedido").value = el.Id_Pedido_Compra
@@ -182,6 +227,11 @@ const render_pedido = (json) => {
     })
 }
 
+/**
+ * It takes a JSON object and uses it to populate the values of a form.
+ * @param json - [{Id_Compra: "1", Fecha: "2019-01-01", FK_Empresa: "1", FK_Proveedor: "1", Solicitado:
+ * "1", Terminos: "1", Contacto: "1
+ */
 const render_compra = (json) => {
     json.forEach(el => {
         document.getElementById('Id_Compra_p').value = el.Id_Compra
@@ -194,6 +244,9 @@ const render_compra = (json) => {
     })
 }
 
+/**
+ * It takes the clipboard text, parses it as JSON, and then uses the data to populate the form.
+ */
 const pegar_orden = () => {
     navigator.clipboard.readText().then(clipText => {
         const json = JSON.parse(clipText)
@@ -209,6 +262,11 @@ const pegar_orden = () => {
     })
 }
 
+/**
+ * It takes a JSON object, iterates over it, and populates the form with the values from the JSON
+ * object.
+ * @param json - is the array of objects that I want to iterate over.
+ */
 const generar_tornillos = (json) => {
     let aux = 1;
     console.log(json);
@@ -222,6 +280,11 @@ const generar_tornillos = (json) => {
     })
 }
 
+/**
+ * It takes the clipboard text, parses it as JSON, and then fills in the form fields with the values
+ * from the JSON.
+ * @param id - the id of the row that the user is currently on
+ */
 const pegar_pedido = (id) => {
     navigator.clipboard.readText().then(clipText => {
         const json = JSON.parse(clipText)
@@ -234,6 +297,9 @@ const pegar_pedido = (id) => {
     })
 }
 
+/**
+ * It takes the clipboard text, parses it as JSON, and then uses the data to populate the form.
+ */
 const pegar_todo = () => {
     navigator.clipboard.readText().then(clipText => {
         const json = JSON.parse(clipText)
@@ -249,6 +315,10 @@ const pegar_todo = () => {
     })
 }
 
+/**
+ * It fetches a JSON object from a URL, then copies it to the clipboard.
+ * @param id - the id of the item
+ */
 const buscar_informacion = (id) => {
     const respuesta = fetchAPI('',url+'/ventas/compras/buscar_informacion?id='+id,'')
     respuesta.then(json => {
@@ -261,6 +331,10 @@ const buscar_informacion = (id) => {
     })
 }
 
+/**
+ * It takes an id, makes a fetch request to a url, and then copies the response to the clipboard.
+ * @param id - the id of the order
+ */
 const buscar_pedido = (id) => {
     const respuesta = fetchAPI('',url+'/ventas/compras/buscar_pedido?id='+id,'')
     respuesta.then(json => {
@@ -273,12 +347,18 @@ const buscar_pedido = (id) => {
     })
 }
 
+/* Getting the element with the id of btn-limpiar */
 const btn_limpiar_ingresar = document.getElementById('btn-limpiar')
 
+/* Adding an event listener to the button. */
 btn_limpiar_ingresar.addEventListener('click',() => {
     limpiar_formulario(form_orden_ingresar);
 })
 
+/**
+ * It takes an id, makes a fetch request to a url, and then renders the response.
+ * @param id - the id of the order to be retrieved
+ */
 const obtener_orden = (id) => {
     const respuesta = fetchAPI('',url+'/ventas/compras/obtener_orden?id='+id,'')
     respuesta.then(json => {
@@ -286,6 +366,10 @@ const obtener_orden = (id) => {
     })
 }
 
+/**
+ * It takes an id, makes a fetch request to a url, and then renders the response.
+ * @param id - the id of the order
+ */
 const obtener_pedido = (id) => {
     const respuesta = fetchAPI('', url+'/ventas/compras/obtener_informacion_pedido?id='+id,'')
     respuesta.then(json => {
@@ -293,6 +377,9 @@ const obtener_pedido = (id) => {
     })
 }
 
+/**
+ * It gets a list of available sales from the database and adds them to a select element.
+ */
 const obtener_salidas = () => {
     const respuesta = fetchAPI('',url+'/ventas/salida/obtener_salidas_disponibles', '')
     respuesta.then(json => {
@@ -302,14 +389,18 @@ const obtener_salidas = () => {
     })
 }
 
+/* Adding an event listener to the checkbox. */
 check_concepto_pedido.addEventListener('change', () => {
     mostrar_form_pedido();
 })
 
+/* Adding an event listener to the checkbox. When the checkbox is checked, it will call the function
+mostrar_form_material(). */
 check_concepto_material.addEventListener('change', () => {
     mostrar_form_material();
 })
 
+/* Adding an event listener to the document. */
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.tornillo) {
         if (evt.target.dataset.tornillo == "mas") {
@@ -339,6 +430,7 @@ document.addEventListener('click', (evt) => {
     }
 })
 
+/* Adding an event listener to the DOMContentLoaded event. */
 document.addEventListener('DOMContentLoaded', () => {
     obtener_salidas()
     obtener_valores_cotizacion();

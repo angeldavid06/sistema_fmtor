@@ -64,8 +64,29 @@ BEGIN
 	END IF;
 END |
 DELIMITER ;
-s
 
 
-{ "orden" :[{"Id_Compra":"29","Fecha":"2022-03-09","Solicitado":"ING. GERARDO FLORES","Terminos":"-","Contacto":"-","Proveedor":"OMAR CALZADA ","Empresa":"RDG TORNILLOS","FK_Empresa":"2","FK_Proveedor":"8"}],
-"pedidos" :[{"Id_Pedido_Compra":"29","Codigo":"13400","Producto":"TORNILLO DE PRUEBA 07","Factor":"0","Medida":"","Cantidad":"20000","Precio":"10.5","FK_Orden_Compra":"29"},{"Id_Pedido_Compra":"30","Codigo":"13400","Producto":"TORNILLO 1","Factor":"0","Medida":"","Cantidad":"20000","Precio":"10.5","FK_Orden_Compra":"29"}] }
+DELIMITER |
+CREATE OR REPLACE TRIGGER cancelar_factura AFTER UPDATE ON t_salida_almacen
+FOR EACH ROW
+BEGIN
+
+	IF (NEW.Estado = 1) THEN
+		UPDATE 
+			t_salida_almacen,
+			t_clientes,
+			t_pedido,
+			t_cotizacion,
+			t_facturacion
+		SET 
+			t_facturacion.Concepto = 4 
+		WHERE 
+			t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
+			AND t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
+			AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
+			AND t_facturacion.Id_Pedido_FK = t_pedido.Id_Pedido
+			AND t_cotizacion.Id_Cotizacion = NEW.Id_Cotizacion_FK;
+	END IF;
+
+END |
+DELIMITER ;

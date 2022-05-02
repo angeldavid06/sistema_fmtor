@@ -1,3 +1,4 @@
+/* It's an array that contains the months of the year. */
 const meses = [
     "ENERO",
     "FEBRERO",
@@ -12,9 +13,14 @@ const meses = [
     "NOVIEMBRE",
     "DICIEMBRE",
 ];
+/* It's a global variable that is used to store the id of the sale. */
 let auxiliar = 0;
 
 //posible copia de busqueda
+/**
+ * It takes a string as an argument, and returns a promise that resolves to a JSON object.
+ * @param clave - is the key of the report
+ */
 
 const obtener_clave_reporte = (clave) => {
     const respuesta = fetchAPI("",url + "/ventas/salida/buscar?clave=" + clave,"");
@@ -23,13 +29,25 @@ const obtener_clave_reporte = (clave) => {
     });
 };
 
-//vista
+/**
+ * Const obtener = () => {
+ *     const respuesta = fetchAPI("", url + "/ventas/salida/obtener", "");
+ *     respuesta.then((json) => {
+ *         render_salida(json);
+ *     });
+ * };
+ */
 const obtener = () => {
     const respuesta = fetchAPI("", url + "/ventas/salida/obtener", "");
     respuesta.then((json) => {
         render_salida(json);
     });
 };
+/**
+ * It takes a parameter, salida, and uses it to make a fetch request to a url, then renders the
+ * response to the page.
+ * @param salida - is the id of the sale
+ */
 
 const buscar_historial = (salida) => {
     const respuesta = fetchAPI("",url + "/ventas/cotizacion/historial?id=" + salida,"");
@@ -38,6 +56,10 @@ const buscar_historial = (salida) => {
     });
 };
 
+/**
+ * It fetches data from an API and then renders it to the page.
+ * @param salida - is the id of the sale
+ */
 const buscar_historial_compra = (salida) => {
     const respuesta = fetchAPI("",url + "/ventas/salida/historial_compra?id=" + salida,"");
     respuesta.then((json) => {
@@ -45,15 +67,27 @@ const buscar_historial_compra = (salida) => {
     });
 };
 
-//pdf
+
+/**
+ * It takes an id, and then it calls a function called printPage, passing it a url and the id.
+ * @param id - the id of the document
+ */
 const obtener_pdf = (id) => {
     printPage(url + "/ventas/salida/generarpdf?atributo=id_folio&value=" + id);
 };
 
+/**
+ * It takes an id, and then it prints a page.
+ * @param id - the id of the record you want to print
+ */
 const obtener_cotizacion_pdf = (id) => {
     printPage(url + "/ventas/cotizacion/generarpdf?id=" + id);
 };
 
+/**
+ * It takes a JSON object and renders it to a table.
+ * @param json - is the data that I'm getting from the server.
+ */
 const render_historial = (json) => {
     const body = document.getElementById("body_historial");
     body.innerHTML = "";
@@ -79,6 +113,10 @@ const render_historial = (json) => {
     });
 };
 
+/**
+ * It takes a JSON object and renders it as a table.
+ * @param json - the data that is being passed to the function
+ */
 const render_historial_compra = (json) => {
     const body = document.getElementById("body_historial_compra");
     body.innerHTML = "";
@@ -97,6 +135,9 @@ const render_historial_compra = (json) => {
     });
 };
 
+/**
+ * It disables all the inputs in the form.
+ */
 const restaurar_formulario = () => {
     const inputs_radio = document.getElementsByName("buscar_por");
     const inputs_radio_fecha = document.getElementsByName("buscar_por_fecha");
@@ -115,6 +156,10 @@ const restaurar_formulario = () => {
     }
 };
 
+/* It's an event listener that listens for a click event, and then it checks if the target of the event
+has a dataset called historial, if it does, then it assigns the value of the dataset to a variable
+called auxiliar, and then it calls a function called buscar_historial, passing it the value of the
+dataset. */
 document.addEventListener("click", (evt) => {
     if (evt.target.dataset.historial) {
         auxiliar = evt.target.dataset.historial;
@@ -134,6 +179,29 @@ document.addEventListener("click", (evt) => {
     } 
 });
 
+/**
+ * It takes the current date, splits it into an array, and then uses the month and year to create a
+ * string in the format YYYY-MM. 
+ * 
+ * The function then sets the value of an input element to this string, and then calls another
+ * function. 
+ * 
+ * The function is called when the page loads. 
+ * 
+ * The problem is that the function is not working in IE11. 
+ * 
+ * I've tried using the following code to get the current date: 
+ * 
+ * const fecha_actual = new Date();
+ * const fecha = fecha_actual.toLocaleDateString().split("/");
+ * 
+ * But this doesn't work either. 
+ * 
+ * I've also tried using the following code to get the current date: 
+ * 
+ * const fecha_actual = new Date();
+ * const fecha = fecha_
+ */
 const buscar_mes_actual = () => {
     const fecha_actual = new Date().toLocaleDateString();
     const fecha = fecha_actual.split("/");
@@ -144,10 +212,13 @@ const buscar_mes_actual = () => {
         aux = fecha[2] + '-' +fecha[1];
     }
     document.getElementById("f_fecha_mes").value = aux;
+    document.getElementById("f_fecha_mes").removeAttribute('disabled','');
     document.getElementById("fecha_mes").checked = true;
     buscar_dato("buscar_mes");
 }
 
+/* It's an event listener that listens for the DOMContentLoaded event, and then it calls a function
+called buscar_mes_actual. */
 document.addEventListener("DOMContentLoaded", () => {
     buscar_mes_actual()
 });

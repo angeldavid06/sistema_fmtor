@@ -47,22 +47,9 @@
                     <input type="radio" data-radio="radio" name="buscar_por" id="fecha" value="fecha">
                     <label class="lbl-radio" id="lbl_radio_fecha" for="fecha" value="fecha">Filtrar por fecha especifica:</label>
                     <input class="input" type="date" name="f_fecha" id="f_fecha" disabled>
-                    <input type="radio" data-radio="radio" name="buscar_por" id="fecha_mes" value="fecha_mes">
+                    <input type="radio" data-radio="radio" name="buscar_por" id="fecha_mes" checked value="fecha_mes">
                     <label class="lbl-radio" id="lbl_radio_fecha_mes" for="fecha_mes">Filtrar por mes: </label>
-                    <select class="input" name="f_fecha_mes" id="f_fecha_mes" disabled>
-                        <option value="01">Enero</option>
-                        <option value="02">Febrero</option>
-                        <option value="03">Marzo</option>
-                        <option value="04">Abril</option>
-                        <option value="05">Mayo</option>
-                        <option value="06">Junio</option>
-                        <option value="07">Julio</option>
-                        <option value="08">Agosto</option>
-                        <option value="09">Septiembre</option>
-                        <option value="10">Octubre</option>
-                        <option value="11">Noviembre</option>
-                        <option value="12">Diciembre</option>
-                    </select>
+                    <input type="month" name="f_fecha_mes" id="f_fecha_mes" class="input">
                     <input type="radio" data-radio="radio" name="buscar_por" id="fecha_anio" value="fecha_anio">
                     <label class="lbl-radio" id="lbl_radio_fecha_anio" for="fecha_anio">Filtrar por año: </label>
                     <input class="input" type="number" name="f_fecha_anio" id="f_fecha_anio" disabled>

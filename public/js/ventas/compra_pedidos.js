@@ -1,6 +1,13 @@
+/* Getting the elements with the id of "Cantidad_Tornillos" and "pedido_compra" and then storing them
+in the variables of "cantidad" and "contenedor_tornillos". */
 const cantidad = document.getElementById('Cantidad_Tornillos');
 const contenedor_tornillos = document.getElementById("pedido_compra");
 
+/**
+ * It creates a new div element, sets its id attribute, adds a class to it, and then adds some HTML to
+ * it.
+ * @param cantidad - the number of the current screw
+ */
 const render_nuevo_tornillo = (cantidad) => {
     let t = cantidad + 1;
     const tornillo = document.createElement('div');
@@ -38,12 +45,21 @@ const render_nuevo_tornillo = (cantidad) => {
     contenedor_tornillos.appendChild(tornillo)
 }
 
+/* Getting the number of elements with the class of "pedido". */
 const cantidad_tornillos = document.getElementsByClassName("pedido");
+
+/**
+ * It adds a new screw to the list of screws.
+ */
 const tornillo_mas = () => {
     render_nuevo_tornillo(cantidad_tornillos.length)
     cantidad.value = cantidad_tornillos.length;
 } 
 
+/**
+ * It removes the last child of the div with the id of "contenedor_tornillos" and then updates the text
+ * of the element with the id of "cantidad_tornillos_pedidos" to reflect the new number of tornillos.
+ */
 const tornillo_menos = () => {
     let tornillos = cantidad_tornillos.length
     if ((tornillos - 1) >= 1) {
@@ -55,10 +71,17 @@ const tornillo_menos = () => {
     }
 }
 
+/**
+ * This function empties the contents of the container that holds the screws.
+ */
 const vaciar_tornillos = () => {
     contenedor_tornillos.innerHTML = "";
 }
 
+/**
+ * It creates a form with a number of inputs equal to the number passed as an argument.
+ * @param c - is the number of products that the user wants to add.
+ */
 const render_form_tornillo = (c) => {
     vaciar_tornillos()
     cantidad.value = c
@@ -97,6 +120,7 @@ const render_form_tornillo = (c) => {
     }
 }
 
+/* Listening for a keyup event on the cantidad input. */
 cantidad.addEventListener('keyup', () => {
     if (cantidad.value <= 0) {
         open_alert('Es necesario incluir por lo menos un tornillo','naranja')

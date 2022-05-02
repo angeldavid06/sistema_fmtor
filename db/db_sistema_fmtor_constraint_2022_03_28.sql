@@ -157,6 +157,7 @@ OR REPLACE TABLE t_pedido_compra (
 CREATE
 OR REPLACE TABLE t_facturacion (
   Id_Facutracion BIGINT AUTO_INCREMENT,
+  Fecha DATE,
   Factura VARCHAR(30) DEFAULT '-',
   Empaque VARCHAR(30) DEFAULT '-',
   Cantidad_Entregada BIGINT,

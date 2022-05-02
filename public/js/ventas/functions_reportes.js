@@ -16,6 +16,7 @@ const meses =
 let total_mes_costo = 0
 let total_mes_impuestos = 0
 let total_mes_total = 0
+let totales = []
 
 const render_totales = () => {
     const body = document.getElementsByClassName("body_reporte");
@@ -62,6 +63,8 @@ const render_filas = (body,array) => {
                                 '<td class="txt-right">$ '+ new Intl.NumberFormat('es-MX').format(total_concepto_total) + '</td>'+
                             '</tr>';
 
+    totales.push(total_concepto_costo);
+
 }
 
 const render_salidas = (json,body) => {
@@ -101,10 +104,61 @@ const render_salidas = (json,body) => {
     render_filas(body,array)
 }
 
+const suma_total = () => {
+    if (totales.length == 0) {
+        totales = [0,0,0,0,0,0]
+    }
+
+    document.getElementById('forjadora').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(totales[0]+totales[1])
+    document.getElementById('rdg').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(totales[2])
+    document.getElementById('notas').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(totales[3])
+    document.getElementById('canceladas').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(totales[4])
+    document.getElementById('sin').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(totales[5])
+    document.getElementById('total').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(
+        totales[0]+
+        totales[1]+
+        totales[2]-
+        totales[3]-
+        totales[4]-
+        totales[5])
+    document.getElementById('total-porcentaje').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(
+        (((totales[0]+
+        totales[1]+
+        totales[2]-
+        totales[3]-
+        totales[4]-
+        totales[5]) / 100) * 0.16))
+    document.getElementById('total-total').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(
+        (((totales[0]+
+        totales[1]+
+        totales[2]-
+        totales[3]-
+        totales[4]-
+        totales[5]) / 100) * 0.16) + totales[0]+
+        totales[1]+
+        totales[2]-
+        totales[3]-
+        totales[4]-
+        totales[5])
+}
+
+const limpio_total = () => {
+    totales = []
+    document.getElementById('forjadora').innerText = '$ 0.00'
+    document.getElementById('rdg').innerText = '$ 0.00'
+    document.getElementById('notas').innerText = '$ 0.00'
+    document.getElementById('canceladas').innerText = '$ 0.00'
+    document.getElementById('sin').innerText = '$ 0.00'
+    document.getElementById('total').innerText = '$ 0.00' 
+    document.getElementById('total-porcentaje').innerText = '$ 0.00'
+    document.getElementById('total-total').innerText = '$ 0.00'
+}
+
 const render_reporte = (json) => {
     let aux = 0;
     const body = document.getElementsByClassName("body_reporte");
     
+    limpio_total();
     body[0].innerHTML = "";
     body[0].innerHTML = '<tr><td class="txt-center" colspan="9">FACTURACIÓN</td></tr>'
 
@@ -157,6 +211,8 @@ const render_reporte = (json) => {
     } else {
         render_salidas(json.comision,body)
     }
+
+    suma_total()
 };
 
 const mostrarModal = (id) => {
@@ -166,31 +222,6 @@ const mostrarModal = (id) => {
     });
 }
 
-const Id_reporte = document.getElementById('Id_reporte_edit');
-const Mes_de_creacion = document.getElementById('Mes_de_creacion_edit');
-const ReportePDF = document.getElementById('ReportePDF_edit');
-
-const pintarModal = (json) => {
-    json.forEach(element => {
-        Id_reporte.value = element.Id_reporte;
-        Mes_de_creacion.value = element.Mes_de_creacion;
-    })
-}
-
-const Id_reporte_r = document.getElementById('Id_reporte');
-const Mes_de_creacion_r = document.getElementById('Mes_de_creacion');
-
-const nuevoreporte = () => {
-    Id_reporte_r.value = '';
-    Mes_de_creacion_r.value = '';
-}
-
-const obtener_clave_reporte = (clave) => {
-    const respuesta = fetchAPI('',url+'/ventas/reportes/buscar?clave='+clave,'');
-    respuesta.then(json => {
-        render_reporte(json)
-    })
-}
 
 const obtener = () => {
     const mes = document.getElementById('mes')
@@ -203,15 +234,6 @@ const obtener = () => {
         render_totales();
     })
 };
-
-const obtener_clientes = () => {
-  const respuesta = fetchAPI('',url+'/ventas/salida/obtener_clientes','')
-  respuesta.then(json => {
-    json.forEach(el => {
-      document.getElementById('f_cliente').innerHTML += '<option value="'+el.Razon_social+'">'+el.Razon_social+'</option>'
-    })
-  })
-}
 
 const colocar_mes = () => {
     let date = new Date().toLocaleDateString()
@@ -248,5 +270,4 @@ document.addEventListener('click', evt => {
 document.addEventListener('DOMContentLoaded', () => {
     colocar_mes()
     obtener();
-    obtener_clientes()
 })

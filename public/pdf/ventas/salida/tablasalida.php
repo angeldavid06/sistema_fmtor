@@ -44,10 +44,21 @@
             '</tr>';
 
         if ($op != '-') {
-             echo '<tr>'. 
-                '<td colspan="9" style="border: none;"></td>'.
-                '<td class="th-estado">OP: '.$op.'</td>'.
-            '</tr>';
+            $kardex = $data['salida'][$i]['kardex'];
+            if ($kardex != 0) {
+                echo '<tr>'.
+                       '<td colspan="3" style="border: none;"></td>' .
+                       '<td colspan="2" class="th-estado">Kardex: '.$kardex.'</td>'.
+                       '<td colspan="4" style="border: none;"></td>' .
+                       '<td class="th-estado">OP: '.$op.'</td>'.
+                   '</tr>';
+            } else {
+                echo '<tr>'.
+                       '<td colspan="9" style="border: none;"></td>' .
+                       '<td class="th-estado">OP: '.$op.'</td>'.
+                   '</tr>';
+
+            }
         } else if ($compra != '-') {
              echo '<tr>'. 
                 '<td colspan="3" style="border: none;"></td>'.

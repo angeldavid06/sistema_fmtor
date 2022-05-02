@@ -1,7 +1,9 @@
+/* This is a variable declaration. */
 const form_proveedor_ingresar = document.getElementById("form_reg_proveedor");
 const form_proveedor_actualizar = document.getElementById("form_act_proveedor");
 const auxiliar = {dato: 0}
 
+/* A function that is called when the form is submitted. */
 form_proveedor_ingresar.addEventListener('submit', (evt) => {
     evt.preventDefault()
     const data = Object.fromEntries(
@@ -15,6 +17,7 @@ form_proveedor_ingresar.addEventListener('submit', (evt) => {
     }
 })
 
+/* A function that is called when the form is submitted. */
 form_proveedor_actualizar.addEventListener('submit', (evt) => {
     evt.preventDefault()
     const data = Object.fromEntries(
@@ -28,6 +31,11 @@ form_proveedor_actualizar.addEventListener('submit', (evt) => {
     }
 })
 
+/**
+ * It sends a POST request to the server, and if the server responds with a 1, it calls the function
+ * obtener_proveedores() and then calls the function open_alert() with the arguments 'El registro fue
+ * realizado con exito' and 'verde'.
+ */
 const insertar = () => {
     const respuesta = fetchAPI(form_proveedor_ingresar,url+'/ventas/proveedores/insertar','POST')
     respuesta.then(json => {
@@ -41,6 +49,10 @@ const insertar = () => {
     })
 }
 
+/**
+ * It takes the data from a form, sends it to a PHP file, and then displays a message based on the
+ * response from the PHP file.
+ */
 const actualizar = () => {
     const respuesta = fetchAPI(form_proveedor_actualizar,url+'/ventas/proveedores/actualizar','POST')
     respuesta.then(json => {
@@ -53,6 +65,9 @@ const actualizar = () => {
     })
 }
 
+/**
+ * It takes a string, a url, and another string, and returns a promise that resolves to a json object.
+ */
 const eliminar_proveedor = () => {
     const respuesta = fetchAPI('',url+'/ventas/proveedores/eliminar?id='+auxiliar.dato,'')
     respuesta.then(json => {
@@ -65,6 +80,10 @@ const eliminar_proveedor = () => {
     })
 }
 
+/**
+ * It takes a JSON object, and renders it to the DOM.
+ * @param json - the data you want to render
+ */
 const render_proveedores = (json) => {
     const body = document.getElementById('body_proveedores')
     body.innerHTML = ''
@@ -91,6 +110,11 @@ const render_proveedores = (json) => {
     });
 }
 
+/**
+ * It takes a JSON object and populates the form with the values from the JSON object.
+ * @param json - [{Id_Proveedor: "1", Proveedor: "Proveedor 1", Direccion: "Direccion 1", Ciudad:
+ * "Ciudad 1", Telefono: "Telefono 1", Correo:
+ */
 const colocar_proveedor = (json) => {
     json.forEach(el => {
         document.getElementById('Id_Proveedor').value = el.Id_Proveedor
@@ -102,6 +126,10 @@ const colocar_proveedor = (json) => {
     })
 }
 
+/**
+ * It takes an id, makes a fetch request to a url, and then calls another function with the response.
+ * @param id - the id of the supplier
+ */
 const buscar_proveedor = (id) => {
     const respuesta = fetchAPI('',url+'/ventas/proveedores/obtener_proveedor?id='+id,'')
     respuesta.then(json => {
@@ -109,6 +137,11 @@ const buscar_proveedor = (id) => {
     })
 }
 
+/* Listening for a click event, and if the event target has a data-eliminar attribute, it sets the
+value of the auxiliar.dato property to the value of the data-eliminar attribute, and then calls the
+open_confirm() function with the arguments '¿Desea eliminar este registro?' and eliminar_proveedor.
+If the event target has a data-editar attribute, it calls the buscar_proveedor() function with the
+value of the data-editar attribute as the argument. */
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.eliminar) {
         auxiliar.dato = evt.target.dataset.eliminar

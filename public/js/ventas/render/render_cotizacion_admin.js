@@ -1,9 +1,15 @@
+/* Declaring some variables. */
 const dato = {aux: 0}
 const form = document.getElementById("form_reg_cotizacion");
 const form_act_cot = document.getElementById("form_act_solo_cotizacion");
 const form_act_pedido = document.getElementById("form_act_cotizacion");
 let costos_obtenidos = null;
 
+/* Listening for a submit event on the form. When the form is submitted, it prevents the default action
+(which is to submit the form to the server). It then creates an object from the form data. It then
+calls a function called validar, which I assume is validating the form data. If the form data is
+valid, it calls a function called open_confirm, which I assume is opening a confirmation dialog. If
+the user confirms, it calls a function called insertar_cotizacion. */
 form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const data = Object.fromEntries(new FormData(evt.target))
@@ -13,16 +19,22 @@ form.addEventListener('submit', (evt) => {
     }
 })
 
+/* A form that is being submitted. */
 form_act_cot.addEventListener('submit', (evt) => {
     evt.preventDefault()
     open_confirm("¿Esta seguro de modificar la Cotización?", actualizar_solo_salida)
 })
 
+/* Adding an event listener to the form_act_pedido form. */
 form_act_pedido.addEventListener('submit', (evt) => {
     evt.preventDefault()
     open_confirm("¿Esta seguro de modificar el pedido?", actualizar_pedido);
 })
 
+/**
+ * It clears the form.
+ * @param form - The form that is being submitted.
+ */
 const limpiar_formulario = (form) => {
     const inputs = form.getElementsByClassName("input");
     for (let i = 1; i < inputs.length; i++) {
@@ -32,6 +44,10 @@ const limpiar_formulario = (form) => {
     document.getElementById("Cantidad_Tornillos").value = 1;
 };
 
+/**
+ * It takes the form data, sends it to the server, and then if the server returns true, it clears the
+ * form and displays a success message.
+ */
 const insertar_cotizacion = () => {
     const respuesta = fetchAPI(form,url+'/ventas/cotizacion/insertar','POST')
     respuesta.then(json => {
@@ -45,6 +61,10 @@ const insertar_cotizacion = () => {
     })
 }
 
+/**
+ * It takes the form data from the form_act_cot form, sends it to the server, and then if the server
+ * returns 1, it calls the buscar_mes_actual function.
+ */
 const actualizar_solo_salida = () => {
     const respuesta = fetchAPI(form_act_cot,url+'/ventas/cotizacion/actualizar_solo_cotizacion','POST')
     respuesta.then(json => {
@@ -57,6 +77,10 @@ const actualizar_solo_salida = () => {
     })
 }
 
+/**
+ * It sends a POST request to the server with the data from the form_act_pedido form, and then it does
+ * something with the response.
+ */
 const actualizar_pedido = () => {
     const respuesta = fetchAPI(form_act_pedido, url+'/ventas/cotizacion/actualizar_pedido','POST')
     respuesta.then(json => {
@@ -69,6 +93,10 @@ const actualizar_pedido = () => {
     })
 }
 
+/**
+ * It takes an id, makes a fetch request to a url, and then renders the response.
+ * @param id - the id of the quote
+ */
 const obtener_cotizacion = (id) => {
     const respuesta = fetchAPI('',url+'/ventas/cotizacion/obtener_cotizacion?id='+id, '')
     respuesta.then(json => {
@@ -76,6 +104,10 @@ const obtener_cotizacion = (id) => {
     })
 }
 
+/**
+ * It fetches data from a server, then renders it to the page.
+ * @param id - the id of the order to be retrieved
+ */
 const obtener_pedido = (id) => {
     const respuesta = fetchAPI('',url+'/ventas/cotizacion/obtener_pedido?id='+id,'')
     respuesta.then(json => {
@@ -83,6 +115,9 @@ const obtener_pedido = (id) => {
     })
 }
 
+/**
+ * It gets a list of clients from a database and adds them to a select element.
+ */
 const obtener_clientes = () => {
     const respuesta = fetchAPI("", url + "/ventas/salida/obtener_clientes", "");
     respuesta.then((json) => {
@@ -94,6 +129,10 @@ const obtener_clientes = () => {
     });
 };
 
+/**
+ * It fetches a JSON file from a server, and then it fills some input fields with the data from the
+ * JSON file.
+ */
 const obtener_valores_cotizacion = () => {
     const respuesta = fetchAPI('', url + "/config/auxiliar_doc_ventas.json","")
     costos_obtenidos = respuesta
@@ -107,6 +146,10 @@ const obtener_valores_cotizacion = () => {
     })
 }
 
+/**
+ * It makes a fetch request to a url, and if the response is 1, it calls a function called open_alert,
+ * otherwise it calls another function called open_alert.
+ */
 const eliminarPedido = () => {
     const respuesta = fetchAPI('',url+'/ventas/cotizacion/eliminar_pedido?id='+dato.aux,'')
     respuesta.then(json => {
@@ -119,6 +162,11 @@ const eliminarPedido = () => {
     })    
 }
 
+/**
+ * It removes the selected attribute from all options, then adds it to the option that matches the
+ * cliente parameter.
+ * @param cliente - The name of the client to be selected.
+ */
 const colocar_cliente = (cliente) => {
     const select = document.getElementById("Id_Clientes_2");
     const options = select.getElementsByTagName("option");
@@ -132,6 +180,14 @@ const colocar_cliente = (cliente) => {
     }
 };
 
+/**
+ * It takes an acabado and a j, and then it finds the select element with the id Acabado_j, and then it
+ * finds all the options in that select element, and then it loops through all the options, and then it
+ * checks if the value of the option is equal to the acabado, and if it is, then it sets the selected
+ * attribute of that option to an empty string.
+ * @param acabado - the value of the option to be selected
+ * @param j - the index of the row
+ */
 const colocar_acabado = (acabado, j) => {
     const select = document.getElementById("Acabado_" + j);
     const options = select.getElementsByTagName("option");
@@ -142,12 +198,22 @@ const colocar_acabado = (acabado, j) => {
     }
 };
 
+/**
+ * It takes an array of objects and a number, and then sets the value of two elements on the page to
+ * the values of the first object in the array.
+ * @param op - [{cantidad_elaborar: "1", Id_Catalogo: "1"}]
+ * @param contador - is the number of the row in the table
+ */
 const colocar_informacion_op = (op, contador) => {
     document.getElementById("cantidad_producir_" + contador).value =
         op[0].cantidad_elaborar;
     document.getElementById("Dibujo_" + contador).value = op[0].Id_Catalogo;
 };
 
+/**
+ * It takes an array of objects, and for each object, it sets the value of a bunch of inputs.
+ * @param pedidos - is an array of objects that contains the data that I want to put in the inputs.
+ */
 const colocar_informacion_tornillos = (pedidos) => {
     let i = 1;
     pedidos.forEach((el) => {
@@ -168,6 +234,11 @@ const colocar_informacion_tornillos = (pedidos) => {
     });
 };
 
+/**
+ * It takes a form number as an argument, reads the clipboard, parses the JSON, and then fills in the
+ * form with the data.
+ * @param form - the form number
+ */
 const portapapeles_pegar_tornillo = (form) => {
     navigator.clipboard.readText().then((clipText) => {
         const json = JSON.parse(clipText);
@@ -188,6 +259,10 @@ const portapapeles_pegar_tornillo = (form) => {
     });
 }
 
+/**
+ * It reads the clipboard, parses the JSON, and then calls a bunch of other functions to fill in the
+ * form.
+ */
 const portapapeles_pegar = () => {
     navigator.clipboard.readText().then((clipText) => {
         const json = JSON.parse(clipText);
@@ -201,6 +276,12 @@ const portapapeles_pegar = () => {
     });
 };
 
+/**
+ * It takes a string as an argument, and then it tries to copy that string to the clipboard. If it
+ * succeeds, it opens an alert with the text "Factor copiado: " and the string that was passed to the
+ * function. If it fails, it opens an alert with the text "Contenido no copiado".
+ * @param factor - the number that I want to copy to the clipboard
+ */
 const portapapeles_copiar_factor = (factor) => {
     navigator.clipboard.writeText(factor).then(
         function () {
@@ -212,6 +293,12 @@ const portapapeles_copiar_factor = (factor) => {
     );
 }
 
+/**
+ * It takes two parameters, one is a string and the other is a number. It then makes a fetch request to
+ * a url and passes the two parameters as part of the url. It then returns a json object.
+ * @param el - is the id of the element that is clicked
+ * @param pedido - is the id of the order
+ */
 const portapapeles_copiar = (el, pedido) => {
     const respuesta = fetchAPI("",url + "/ventas/cotizacion/copiar_informacion?aux=" + el + "&pedido=" + pedido,"");
     respuesta.then((json) => {
@@ -227,6 +314,10 @@ const portapapeles_copiar = (el, pedido) => {
     });
 };
 
+/**
+ * It takes a JSON object and renders it to a table.
+ * @param json - is the data that I'm getting from the server.
+ */
 const render_historial = (json) => {
     const body = document.getElementById("body_historial");
     body.innerHTML = "";
@@ -260,6 +351,10 @@ const render_historial = (json) => {
     });
 };
 
+/**
+ * It takes a JSON object and renders it to the DOM.
+ * @param json - is the data that I get from the server
+ */
 const render_cotizaciones = (json) => {
     let aux = 0;
     const body = document.getElementsByClassName('body')[0]
@@ -296,6 +391,10 @@ const render_cotizaciones = (json) => {
     }
 }
 
+/**
+ * It takes a JSON object and uses it to populate the values of some form fields.
+ * @param json - is the data that is returned from the server
+ */
 const render_cotizacion = (json) => {
     json.forEach(el => {
         document.getElementById("Cotizacion_e").value = el.Id_Cotizacion;
@@ -304,6 +403,11 @@ const render_cotizacion = (json) => {
     })
 }
 
+/**
+ * It takes a JSON object and uses it to populate the values of a form.
+ * @param json - [{Id_Pedido: "1", Fecha_entrega: "2020-01-01", Codigo: "1", Pedido_pza: "1",
+ * Cantidad_millares: "1", Descripcion: "1", Medida:
+ */
 const render_pedido = (json) => {
     json.forEach(el => {
         document.getElementById('Pedido_p').value = el.Id_Pedido
@@ -320,6 +424,7 @@ const render_pedido = (json) => {
     })
 }
 
+/* Adding an event listener to the document. */
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.tornillo) {
         if (evt.target.dataset.tornillo == "mas") {
@@ -353,6 +458,7 @@ document.addEventListener('click', (evt) => {
     }
 })
 
+/* Adding an event listener to the DOMContentLoaded event. */
 document.addEventListener('DOMContentLoaded', () => {
     obtener_clientes();
     obtener_valores_cotizacion();

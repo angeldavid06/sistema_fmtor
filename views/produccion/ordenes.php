@@ -41,6 +41,7 @@
                         <th>Estado</th>
                     </thead>
                     <tbody class="body"></tbody>
+                    <tfoot class="tfoot"></tfoot>
                 </table>
             </div>
         </div>

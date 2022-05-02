@@ -168,7 +168,7 @@
         public function buscar_mes(){
             if(isset($_POST['buscar_por'])){
                 if(isset($_POST['f_fecha_mes'])){
-                    $value ='-'.$_POST['f_fecha_mes'].'-';
+                    $value = $_POST['f_fecha_mes'].'-';
                     
                     $this->model_op->setVista($_POST['tabla']);
                     $this->model_op->setCampo('fecha');

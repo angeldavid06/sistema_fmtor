@@ -1,3 +1,7 @@
+/**
+ * It takes a JSON object and renders it to a table.
+ * @param json - is the data that I get from the server.
+ */
 
 const render_orden = (json) => {
     const body = document.getElementById("body_orden");
