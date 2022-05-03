@@ -18,6 +18,9 @@ let total_mes_impuestos = 0
 let total_mes_total = 0
 let totales = []
 
+/**
+ * It adds a row to the table with the totals of the previous rows.
+ */
 const render_totales = () => {
     const body = document.getElementsByClassName("body_reporte");
     body[0].innerHTML += '<tr><td colspan="9"></td></tr>'+
@@ -29,6 +32,13 @@ const render_totales = () => {
                             '</tr>';
 
 }
+
+/**
+ * It takes an array of arrays, and renders a table row for each array in the array.
+ * @param body - the table body
+ * @param array - [{fecha: "2019-01-01", razon_social: "Cliente 1", id_folio: "1", costo: "100",
+ * impuestos: "6.25", total: "106.25"}, {fecha: "2019
+ */
 const render_filas = (body,array) => {
     let total_concepto_costo = 0
     let total_concepto_impuestos = 0
@@ -67,6 +77,11 @@ const render_filas = (body,array) => {
 
 }
 
+/**
+ * It takes a JSON object and a table body element and renders the table body with the JSON data.
+ * @param json - is the array of objects that I'm using to render the table.
+ * @param body - is the table body
+ */
 const render_salidas = (json,body) => {
     let aux = 0;
     let array = []
@@ -104,6 +119,11 @@ const render_salidas = (json,body) => {
     render_filas(body,array)
 }
 
+/**
+ * It takes the values of the array totales and adds them up, then it adds the total to the HTML
+ * elements with the IDs forjadora, rdg, notas, canceladas, sin, total, total-porcentaje, and
+ * total-total.
+ */
 const suma_total = () => {
     if (totales.length == 0) {
         totales = [0,0,0,0,0,0]
@@ -142,6 +162,9 @@ const suma_total = () => {
         totales[5])
 }
 
+/**
+ * It sets the innerText of all the elements with the id's listed to '$ 0.00'
+ */
 const limpio_total = () => {
     totales = []
     document.getElementById('forjadora').innerText = '$ 0.00'
@@ -154,6 +177,10 @@ const limpio_total = () => {
     document.getElementById('total-total').innerText = '$ 0.00'
 }
 
+/**
+ * It takes a JSON object, and renders it to the DOM.
+ * @param json - the data that is being passed to the function
+ */
 const render_reporte = (json) => {
     let aux = 0;
     const body = document.getElementsByClassName("body_reporte");
@@ -215,6 +242,10 @@ const render_reporte = (json) => {
     suma_total()
 };
 
+/**
+ * It fetches data from a server and then displays it in a modal.
+ * @param id - id of the row that was clicked
+ */
 const mostrarModal = (id) => {
     const respues = fetchAPI('', url+'/ventas/reportes/obtener_per?aux=' + id + '', '');
     respues.then(json => {
@@ -223,6 +254,10 @@ const mostrarModal = (id) => {
 }
 
 
+/**
+ * It gets the value of the select element, then it makes a fetch request to the server, then it
+ * renders the data in the table.
+ */
 const obtener = () => {
     const mes = document.getElementById('mes')
     const respuesta = fetchAPI('',url+'/ventas/reportes/obtener?mes='+mes.value, '')
@@ -235,6 +270,11 @@ const obtener = () => {
     })
 };
 
+/**
+ * It takes the current date, splits it into an array, and then checks if the month is less than 10. If
+ * it is, it adds a 0 to the beginning of the month. Then it sets the value of the input to the year
+ * and month.
+ */
 const colocar_mes = () => {
     let date = new Date().toLocaleDateString()
     let fecha = date.split('/')
@@ -249,8 +289,12 @@ const colocar_mes = () => {
     document.getElementById('mes').value = aux
 }
 
+/* The above code is creating a variable called input_mes and assigning it to the HTML element with the
+id of mes. */
 const input_mes = document.getElementById('mes')
 
+/* Adding an event listener to the input_mes element. When the input_mes element changes, the obtener()
+function is called. */
 input_mes.addEventListener('change', () => {
     obtener()
 })
@@ -267,6 +311,7 @@ document.addEventListener('click', evt => {
 
 })
 
+/* Adding an event listener to the DOMContentLoaded event. */
 document.addEventListener('DOMContentLoaded', () => {
     colocar_mes()
     obtener();

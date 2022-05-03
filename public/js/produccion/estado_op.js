@@ -1,3 +1,7 @@
+/* Creating a variable called contador_aux and assigning it a value of 0. It is also creating a
+variable called retraso and assigning it a value of false. It is also creating a variable called
+retrasos and assigning it a value of an empty array. It is also creating a variable called meses and
+assigning it a value of an array of strings. */
 let contador_aux = 0
 let retraso = false
 let retrasos = []
@@ -16,6 +20,10 @@ const meses = [
     'DIC'
 ]
 
+/**
+ * It takes an array of objects, creates a table, and then appends the objects to the table.
+ * @param ops - Array of objects
+ */
 const render_retrasos = (ops) => {
     const contenedor = document.getElementById('estados')
 
@@ -57,6 +65,27 @@ const render_retrasos = (ops) => {
     })
 }
 
+/**
+ * It takes an array of dates, and an array of objects, and renders a table with the dates as headers,
+ * and the objects as rows.
+ * 
+ * The dates are formatted as "DD / MMM / YYYY"
+ * 
+ * The objects are formatted as "Id_Folio, Clientes, descripcion, tratamiento, material,
+ * cantidad_elaborar, precio_millar, cantidad_elaborar * precio_millar, estado_general"
+ * 
+ * The function is called like this:
+ * 
+ * render_estado(semana_1,semana_3,semana_5,ops)
+ * 
+ * Where semana_1, semana_3, and semana_5 are arrays of dates, and ops is an array of objects.
+ * 
+ * I'm trying to make it so
+ * @param semana_1 - ["2020-01-06", "2020-01-12"]
+ * @param semana_3 - ["2020-01-06", "2020-01-12"]
+ * @param semana_5 - ["2020-01-06", "2020-01-12"]
+ * @param ops - Array of objects
+ */
 const render_estado = (semana_1,semana_3,semana_5,ops) => {
     const contenedor = document.getElementById('estados')
     let mes_sem1_a = semana_1[0].split('-')[0]+' / '+meses[parseInt(semana_1[0].split('-')[1])-1]+' / '+semana_1[0].split('-')[2]
@@ -115,6 +144,15 @@ const render_estado = (semana_1,semana_3,semana_5,ops) => {
     contador_aux++;
 }
 
+/**
+ * It takes an array of dates, a range of dates, and an array of objects, and returns a table with the
+ * dates and objects.
+ * @param semanas - Array of arrays, each array has two elements, the first one is the week number and
+ * the second one is the date of the last day of the week.
+ * @param rango - [2019-10-28, 2019-11-03]
+ * @param ops - [{op: 'op1', semana: '2019-01-01'}, {op: 'op2', semana: '2019-01-01'}, {op: 'op3',
+ * semana: '2019-01-01'}, {op: 'op
+ */
 const crear_tabla = (semanas,rango, ops) => {
     let semana_3 = []
     let semana_5 = []
@@ -167,6 +205,13 @@ const crear_tabla = (semanas,rango, ops) => {
     }
 }
 
+/**
+ * It takes an array of arrays of objects, and an array of arrays of dates, and creates a table for
+ * each array of dates.
+ * @param registros - Array of arrays of objects.
+ * @param semanas -
+ * [["2019-01-01","2019-01-07"],["2019-01-08","2019-01-14"],["2019-01-15","2019-01-21"],["2019-01-22","2019-01-28"],["2019-01-29","
+ */
 const agrupar_registros = (registros,semanas) => {
     let fecha_anterior = ''
     let rango_anterior = []
@@ -249,6 +294,12 @@ const agrupar_registros = (registros,semanas) => {
     crear_tabla(semanas,rango_anterior,ops)
 }
 
+/**
+ * It takes an array of months and returns an array of weeks.
+ * @param meses - ['2019-01', '2019-02', '2019-03', '2019-04', '2019-05', '2019-06', '2019-07',
+ * '2019-08', '2019-09', '2019-10', '2019-11', '2019-12']
+ * @returns An array of arrays. Each array contains the dates of a week.
+ */
 const obtener_semanas = (meses) => {
     let dias = []
     let semanas = []
@@ -287,6 +338,13 @@ const obtener_semanas = (meses) => {
     return semanas;
 }
 
+/**
+ * It takes an array of objects and an array of months, and returns an array of arrays of objects,
+ * grouped by month.
+ * @param json - is the data that I'm working with
+ * @param meses -
+ * ['2019-01','2019-02','2019-03','2019-04','2019-05','2019-06','2019-07','2019-08','2019-09','2019-10','2019-11','2019-12']
+ */
 const dividir_registros = (json,meses) => {
     let registros = []
     let aux = []
@@ -312,6 +370,11 @@ const dividir_registros = (json,meses) => {
     agrupar_registros(registros,semanas)
 }
 
+/**
+ * It takes a JSON array and returns an array of strings that represent the months in which the JSON
+ * array has data.
+ * @param json - is the data that I'm working with
+ */
 const extraer_meses = (json) => {
     const meses = [];
     let aux = '';
@@ -352,6 +415,9 @@ const extraer_meses = (json) => {
     dividir_registros(json,meses)
 }
 
+/**
+ * It makes a fetch request to a url, and if the response is not empty, it calls another function.
+ */
 const obtener_ordenes = () => {
     const respuesta = fetchAPI('',url+'/produccion/estado/obtener','')
     respuesta.then(json => {
@@ -361,12 +427,17 @@ const obtener_ordenes = () => {
     })
 };
 
+/* Listening for a click event on the document. If the click event is on an element with the
+data-impresion attribute, it will call the printPage function with the
+url+'/produccion/estado/pdf_estado' as the argument. */
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.impresion) {
         printPage(url+'/produccion/estado/pdf_estado');
     }
 })
 
+/* Listening for the DOMContentLoaded event, and when it is fired, it calls the obtener_ordenes()
+function. */
 document.addEventListener('DOMContentLoaded', () => {
     obtener_ordenes()
 })

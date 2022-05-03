@@ -1,3 +1,6 @@
+/**
+ * It removes all the children of the first element with the class name "body" from the DOM.
+ */
 const limpiar_tabla = () => {
   const tbody = document.getElementsByClassName("body");
   const table = document.getElementById("table");
@@ -10,12 +13,19 @@ const limpiar_tabla = () => {
   // console.log(tfoot);
 };
 
+/* Getting the form element with the id "form-filtros" and assigning it to the variable form_filtros. */
 const form_filtros = document.getElementById("form-filtros");
+
+/* Listening for a submit event on the form. */
 form_filtros.addEventListener("submit", (evt) => {
   evt.preventDefault();
   enviar_datos();
 });
 
+/**
+ * If the checkbox with the id of "salida" is checked, then call the function buscar_dato with the
+ * argument "buscar_salida".
+ */
 const enviar_datos = () => {
   const salida = document.getElementById("salida");
   const op = document.getElementById("op");
@@ -49,6 +59,10 @@ const enviar_datos = () => {
   }
 };
 
+/**
+ * It takes a parameter, and then it makes a fetch request to an API, and then it renders the response.
+ * @param metodo - is the method that I want to call from the API
+ */
 const buscar_dato = (metodo) => {
   const respuesta = fetchAPI(
     form_filtros,
@@ -61,6 +75,9 @@ const buscar_dato = (metodo) => {
   });
 };
 
+/**
+ * It disables all the inputs in the form.
+ */
 const deshabilitar_inputs = () => {
   const f_inputs = form_filtros.getElementsByClassName("input");
   for (let i = 0; i < f_inputs.length; i++) {
@@ -68,6 +85,10 @@ const deshabilitar_inputs = () => {
   }
 };
 
+/* Listening for a click event on the document, and then it is checking if the target of the event has
+a dataset with the name of "radio", and if it does, then it calls the function deshabilitar_inputs,
+and then it checks if the element with the id of "f_" + evt.target.value exists, and if it does,
+then it removes the attribute "disabled" from the element. */
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.radio) {
     deshabilitar_inputs();

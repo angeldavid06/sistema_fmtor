@@ -1,3 +1,4 @@
+/* Getting the form elements from the HTML. */
 const form_control = document.getElementById('form-control');
 const form_actualizar = document.getElementById('form-control-actualizar');
 
@@ -51,6 +52,12 @@ form_actualizar.addEventListener('submit', (evt) => {
     }
 })
 
+/**
+ * The function obtener_registro takes an id as an argument, and then calls the function fetchAPI with
+ * the arguments '', url+'/produccion/control/obtener_registro?registro='+id, '' and then calls the
+ * function cargar_registro with the argument json.
+ * @param id - the id of the record to be retrieved
+ */
 const obtener_registro = (id) => {
     const respuesta = fetchAPI('',url+'/produccion/control/obtener_registro?registro='+id, '')
     respuesta.then(json => {
@@ -58,6 +65,9 @@ const obtener_registro = (id) => {
     })
 }
 
+/**
+ * It takes the data from a form, sends it to a PHP file, and then returns a response.
+ */
 const actualizar_registro = () => {
     const respuesta = fetchAPI(form_actualizar, url+'/produccion/control/actualizar','POST')
     respuesta.then(json => {
@@ -71,6 +81,11 @@ const actualizar_registro = () => {
     })
 }
 
+/**
+ * It makes a fetch request to a url, and if the response is true, it opens an alert with the text
+ * "Orden de Producción terminada" and the color green, otherwise it opens an alert with the text "No
+ * se pudo terminar la Orden de Producción" and the color orange.
+ */
 const terminar_orden = () => {
     const respuesta = fetchAPI('',url+'/produccion/op/terminar?orden='+data_aux.dato,'')
     respuesta.then(json => {
@@ -83,6 +98,10 @@ const terminar_orden = () => {
 }
 
 
+/**
+ * It sends a POST request to the server, and if the server returns 1, it displays a success message,
+ * otherwise it displays an error message.
+ */
 const registrar_control = () => {
     const respuesta = fetchAPI(form_control,url+'/produccion/control/insertar','POST')
     respuesta.then(json => {
@@ -98,6 +117,9 @@ const registrar_control = () => {
     })
 }
 
+/**
+ * It takes the form data, sends it to the server, and then displays a message based on the response.
+ */
 const registrar_sin_op = () => {
     const respuesta = fetchAPI(form_control,url+'/produccion/control/insertar_sin_op', 'POST')
     respuesta.then(json => {
@@ -109,6 +131,10 @@ const registrar_sin_op = () => {
     })
 }
 
+/**
+ * It's a function that sends a request to a server, and then, if the response is 1, it sends another
+ * request to the server.
+ */
 function eliminar () {
     const respuesta = fetchAPI('',url+'/produccion/control/eliminar?dato='+data_aux.dato,'')
     respuesta.then(json => {
@@ -122,10 +148,18 @@ function eliminar () {
     })
 }
 
+/**
+ * It opens a confirmation box and if the user clicks "OK" it calls the function "eliminar"
+ */
 const eliminar_registro = () => {
     open_confirm('¿Estas seguro de eliminar este registro?', eliminar)
 }
 
+/**
+ * It takes a JSON object and populates a form with the data.
+ * @param json - [{id_registro_diario: "1", no_maquina: "1", fecha: "2019-07-01 00:00:00", bote: "1",
+ * pzas: "1", kilos: "1", turno:
+ */
 const cargar_registro = (json) => {
     const op = document.getElementById('a_op')
     const no_maquina = document.getElementById('a_no_maquina')
@@ -154,6 +188,11 @@ const cargar_registro = (json) => {
     })
 }
 
+/**
+ * It takes a json object and renders it to a table.
+ * @param vista - is the table where the data is going to be displayed
+ * @param json - is the data that is being passed to the function
+ */
 const render_control = (vista,json) => {
     totales.total_kg = 0.0;
     totales.total_pzas = 0;
@@ -199,6 +238,10 @@ const render_control = (vista,json) => {
     total_acumuladas[0].innerHTML = 'Pzas. Acumuladas: <br>' + new Intl.NumberFormat('es-MX').format(totales.total_pzas)
 }
 
+/* Adding an event listener to the button with the id of btn-form-control. When the button is clicked,
+it is getting the element with the class of active_estado and the element with the id of op_control.
+It is then getting the elements with the id of op and estado. It is then setting the value of op to
+the value of op_control and the value of estado to the value of active_estado. */
 const btn_form_control = document.getElementById('btn-form-control');
 
 btn_form_control.addEventListener('click', () => {
@@ -211,6 +254,10 @@ btn_form_control.addEventListener('click', () => {
     op.value = op_control.value
     input.value = estado[0].dataset.id
 });
+/**
+ * It takes a JSON object and creates a button for each element in the object.
+ * @param json - is the data that I get from the database
+ */
 
 const render_botones_estados = (json) => {
     const botones = document.getElementsByClassName("botones")
@@ -225,8 +272,10 @@ const render_botones_estados = (json) => {
     })
 }
 
+/* Getting the element with the id of form-reporte-diario */
 const form_diario = document.getElementById('form-reporte-diario')
 
+/* A form that is being submitted. */
 form_diario.addEventListener('submit', (evt) => {
     evt.preventDefault();
     

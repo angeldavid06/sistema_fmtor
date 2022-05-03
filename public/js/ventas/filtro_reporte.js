@@ -1,3 +1,6 @@
+/**
+ * It removes all the children of the tbody element and the tfoot element.
+ */
 const limpiar_tabla = () => {
   const tbody = document.getElementsByClassName("body");
   const table = document.getElementById("table");
@@ -10,12 +13,19 @@ const limpiar_tabla = () => {
   // console.log(tfoot);
 };
 
+/* Getting the form element with the id "form-filtros" and assigning it to the variable form_filtros. */
 const form_filtros = document.getElementById("form-filtros");
+
+/* Preventing the default action of the form. */
 form_filtros.addEventListener("submit", (evt) => {
   evt.preventDefault();
   enviar_datos();
 });
 
+/**
+ * If the user checks the "fecha" checkbox, then the function will call the "buscar_dato" function with
+ * the parameter "buscar_fecha".
+ */
 const enviar_datos = () => {
     const salida = document.getElementById("salida");
     const op = document.getElementById("op");
@@ -41,6 +51,11 @@ const enviar_datos = () => {
     }
 };
 
+/**
+ * It takes a string as an argument, and then it makes a fetch request to a url, and then it renders
+ * the response.
+ * @param metodo - is the method that I want to call from the API
+ */
 const buscar_dato = (metodo) => {
   const respuesta = fetchAPI(
     form_filtros,
@@ -52,6 +67,9 @@ const buscar_dato = (metodo) => {
   });
 };
 
+/**
+ * If the value of the input is empty, disable the input.
+ */
 const deshabilitar_inputs = () => {
     const f_inputs = form_filtros.getElementsByClassName("input");
     for (let i = 0; i < f_inputs.length; i++) {
@@ -61,6 +79,7 @@ const deshabilitar_inputs = () => {
     }
 };
 
+/* A function that is being called when the user clicks on the radio buttons. */
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.radio) {
     deshabilitar_inputs();

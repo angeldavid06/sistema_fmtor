@@ -1,3 +1,8 @@
+/**
+ * It takes a json object and renders it to a table.
+ * @param vista - is the table id
+ * @param json - is the data that I'm getting from the server.
+ */
 const render_control = (vista,json) => {
     totales.total_kg = 0.0;
     totales.total_pzas = 0;
@@ -29,6 +34,10 @@ const render_control = (vista,json) => {
     total_acumuladas[0].innerHTML = 'Pzas. Acumuladas: <br>' + new Intl.NumberFormat('es-MX').format(totales.total_pzas)
 }
 
+/**
+ * It takes a JSON object and creates a button for each object in the JSON object.
+ * @param json - is the data that I'm getting from the database
+ */
 const render_botones_estados = (json) => {
     const botones = document.getElementsByClassName("botones")
     json.forEach(el => {

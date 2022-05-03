@@ -1,3 +1,7 @@
+/**
+ * While the first child of the first element with the class name 'body' exists, remove it from the
+ * DOM.
+ */
 const limpiar_tabla = () => {
     const tbody = document.getElementsByClassName("body");
     const table = document.getElementById("table");
@@ -7,12 +11,17 @@ const limpiar_tabla = () => {
     }
 };
 
+/* Adding an event listener to the form. */
 const form_filtros = document.getElementById("form-filtros");
 form_filtros.addEventListener("submit", (evt) => {
     evt.preventDefault();
     enviar_datos();
 });
 
+/**
+ * If the radio button is checked, then call the function buscar_dato with the value of the radio
+ * button as the argument.
+ */
 const enviar_datos = () => {
     const salida = document.getElementById("salida");
     const fecha = document.getElementById("fecha");
@@ -39,6 +48,11 @@ const enviar_datos = () => {
     }
 };
 
+/**
+ * It takes a parameter, and then it makes a fetch request to an API, and then it renders the response
+ * to a table.
+ * @param metodo - is the method that I want to call from the API
+ */
 const buscar_dato = (metodo) => {
   const respuesta = fetchAPI(form_filtros,url + "/ventas/cotizacion/" + metodo,"POST");
   respuesta.then((json) => {
@@ -47,6 +61,9 @@ const buscar_dato = (metodo) => {
   });
 };
 
+/**
+ * It disables all the inputs in the form.
+ */
 const deshabilitar_inputs = () => {
   const f_inputs = form_filtros.getElementsByClassName("input");
   for (let i = 0; i < f_inputs.length; i++) {
@@ -54,6 +71,10 @@ const deshabilitar_inputs = () => {
   }
 };
 
+/* An event listener that listens to the click event, and then it checks if the target of the event has
+the attribute data-radio, and if it does, then it disables all the inputs in the form, and then it
+checks if the target of the event has the value of the id of an input, and if it does, then it
+removes the attribute disabled from the input. */
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.radio) {
     deshabilitar_inputs();

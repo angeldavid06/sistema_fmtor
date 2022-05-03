@@ -1,3 +1,6 @@
+/**
+ * It removes all the children of the element with the id 'body_maquina_'+cuerpos[i]
+ */
 const limpiar_tablas = () => {
     const cuerpos = [1,2,3,4,5,6,7,8,9]
     for (let i = 0; i < cuerpos.length; i++) {
@@ -8,6 +11,16 @@ const limpiar_tablas = () => {
     }
 }
 
+/**
+ * It loops through an array of numbers, and for each number, it loops through an array of objects, and
+ * for each object, it checks if the number is equal to a property of the object, and if it is, it
+ * calls a function that renders the object.
+ * 
+ * If the array of objects is empty, it renders a message.
+ * 
+ * If the number is the last number in the array of numbers, it renders a total.
+ * @param json - is the data that I'm getting from the server
+ */
 const agrupar_por_maquina = (json) => {
     let kilos = 0 
     let acumulado = 0
@@ -35,6 +48,9 @@ const agrupar_por_maquina = (json) => {
     }
 }
 
+/**
+ * It fetches data from a server, then calls another function to process the data.
+ */
 const obtener_programa = () => {
     const respuesta = fetchAPI('',url+'/produccion/op/obtener_programa','')
     respuesta.then(json => {
@@ -42,10 +58,14 @@ const obtener_programa = () => {
     })
 }
 
+/* Listening for the DOM to be loaded, and when it is, it calls the function `obtener_programa()` */
 document.addEventListener('DOMContentLoaded', () => {
     obtener_programa()
 });
 
+/* Listening for a click event, and when it happens, it checks if the target of the event has a data
+attribute called `impresion`, and if it does, it calls a function called `printPage()` and passes it
+a URL. */
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.impresion) {
         printPage(url+'/produccion/op/pdf_programa_forjado')

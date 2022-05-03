@@ -1,10 +1,15 @@
+/* Getting the form element with the id of form_costos. */
 const form_costos = document.getElementById('form_costos')
 
+/* Preventing the default action of the form from happening. */
 form_costos.addEventListener('submit', (evt) => {
   evt.preventDefault()
   actualizar_costos()
 })
 
+/**
+ * It takes the form data, sends it to the server, and then updates the page with the new data.
+ */
 const actualizar_costos = () => {
   const respuesta = fetchAPI(form_costos,url+'/ventas/cotizacion/actualizar_costos','POST')
   respuesta.then(json => {
@@ -20,6 +25,11 @@ const actualizar_costos = () => {
 
 // REVISAR FORMULA DEL PULIDO
 
+/**
+ * If the input_cantidad is less than 100, call the menos_100k function, otherwise call the mas_100k
+ * function.
+ * @param costo - is the id of the row in the table
+ */
 const calcular = (costo) => {
   const input_factor = document.getElementById("factor_"+costo)
   const input_cantidad = document.getElementById("Cantidad_millares_"+costo)
@@ -45,6 +55,13 @@ const calcular = (costo) => {
     }
 }
 
+/**
+ * It takes in a bunch of parameters, does some math, and then outputs a number.
+ * @param input_factor - The input where the user enters the number of units
+ * @param acabado - is the finish of the product
+ * @param costo - is the id of the input where the price will be displayed
+ * @param tratamiento - checkbox
+ */
 const menos_100k = (input_factor,acabado,costo,tratamiento) => {
     let costo_final = 0;
     let tratamiento_mas = 0;
@@ -141,6 +158,14 @@ const menos_100k = (input_factor,acabado,costo,tratamiento) => {
     }
 }
 
+/**
+ * It takes the value of an input, and depending on the value of another input, it will calculate the
+ * price of the product.
+ * @param input_factor - The input where the user enters the quantity of the product
+ * @param acabado - is the finish of the product
+ * @param costo - is the id of the input where the price will be displayed
+ * @param tratamiento - checkbox
+ */
 const mas_100k = (input_factor,acabado,costo,tratamiento) => {
     let costo_final = 0;
     let tratamiento_mas = 0; 

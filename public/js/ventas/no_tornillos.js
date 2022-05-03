@@ -1,6 +1,11 @@
+/* Getting the element with the id of Cantidad_Tornillos and the element with the id of tornillos. */
 const cantidad = document.getElementById('Cantidad_Tornillos');
 const contenedor_tornillos = document.getElementById('tornillos');
 
+/**
+ * It creates a new div element, adds some HTML to it, and then appends it to the DOM.
+ * @param cantidad_t - the number of screws that are already created
+ */
 const render_nuevo_tornillo = (cantidad_t) => {
     let t = cantidad_t + 1;
     cantidad.value = cantidad_t
@@ -91,12 +96,21 @@ const render_nuevo_tornillo = (cantidad_t) => {
     contenedor_tornillos.appendChild(tornillo)
 }
 
+/* Getting the elements with the class name 'tornillo' */
 const cantidad_tornillos = document.getElementsByClassName('tornillo')
+
+/**
+ * It adds a new screw to the list of screws.
+ */
 const tornillo_mas = () => {
     render_nuevo_tornillo(cantidad_tornillos.length)
     cantidad.value = cantidad_tornillos.length
 } 
 
+/**
+ * It removes the last child of the div with the id "contenedor_tornillos" and updates the text of the
+ * element with the id "cantidad_tornillos_pedidos" to reflect the new number of children.
+ */
 const tornillo_menos = () => {
     let tornillos = cantidad_tornillos.length
     if ((tornillos - 1) >= 1) {
@@ -109,10 +123,17 @@ const tornillo_menos = () => {
     }
 }
 
+/**
+ * This function empties the contents of the container that holds the screws.
+ */
 const vaciar_tornillos = () => {
     contenedor_tornillos.innerHTML = "";
 }
 
+/**
+ * It creates a form with the number of inputs that the user has selected.
+ * @param c - is the number of screws that the user wants to add.
+ */
 const render_form_tornillo = (c) => {
    vaciar_tornillos()
     cantidad.value = c
@@ -203,6 +224,10 @@ const render_form_tornillo = (c) => {
     }
 }
 
+/**
+ * It takes the current date, splits it into an array, and then reassembles it into a string in the
+ * format YYYY-MM-DD.
+ */
 const generar_fecha = () => {
     const fecha_actual = new Date().toLocaleDateString();
     const fecha = fecha_actual.split("/");
@@ -223,6 +248,9 @@ const generar_fecha = () => {
     document.getElementById("Fecha").value = aux;
 };
 
+/* Listening for a keyup event on the cantidad input. If the value is less than or equal to 0, it will
+call the open_alert function and pass in two arguments. If the value is greater than 0, it will call
+the render_form_tornillo function and pass in the value of the cantidad input. */
 cantidad.addEventListener('keyup', () => {
     if (cantidad.value <= 0) {
         open_alert('Es necesario incluir por lo menos un tornillo','naranja')
@@ -233,6 +261,8 @@ cantidad.addEventListener('keyup', () => {
     }
 })
 
+/* Adding an event listener to the DOMContentLoaded event. When the DOMContentLoaded event is fired,
+the function generar_fecha() is called. */
 document.addEventListener('DOMContentLoaded', () => {
     generar_fecha();
 })

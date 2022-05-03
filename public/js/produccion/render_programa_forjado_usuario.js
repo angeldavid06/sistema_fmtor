@@ -1,3 +1,9 @@
+/**
+ * It takes an object and a number, and then appends a row to the table with the id of "body_maquina_"
+ * + the number.
+ * @param registros - is an object that contains the data to be displayed
+ * @param maquina - is the machine number
+ */
 const render_programa = (registros,maquina) => {
     const body = document.getElementById('body_maquina_'+maquina);
     body.innerHTML += '<tr>'+

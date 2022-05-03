@@ -1,6 +1,11 @@
+/* Getting the form elements from the HTML. */
 const form_control = document.getElementById('form-control-diario');
 const form_actualizar = document.getElementById("form-control-diario-editar");
 
+/**
+ * It takes the form data, sends it to the server, and then if the server returns a 1, it calls a
+ * function to get the data from the server and display it.
+ */
 const registrar_sin_op = () => {
     const respuesta = fetchAPI(form_control,url+'/produccion/control/insertar_sin_op', 'POST')
     respuesta.then(json => {
@@ -13,6 +18,9 @@ const registrar_sin_op = () => {
     })
 }
 
+/* A function that is called when the form is submitted. It prevents the default action of the form,
+which is to reload the page. Then it checks if all the inputs are filled, if they are, it calls the
+function to register the data. If not, it shows an alert. */
 form_control.addEventListener('submit', (evt)=> {
     evt.preventDefault();
     let aux = true;
@@ -37,6 +45,9 @@ form_control.addEventListener('submit', (evt)=> {
     }
 });
 
+/* A function that is called when the form is submitted. It prevents the default action of the form,
+which is to reload the page. Then it checks if all the inputs are filled, if they are, it calls the
+function to register the data. If not, it shows an alert. */
 form_actualizar.addEventListener('submit', (evt) => {
     evt.preventDefault()
     let aux = true;
@@ -57,7 +68,12 @@ form_actualizar.addEventListener('submit', (evt) => {
     }
 })
 
+/* Getting the element with the class `select-estado` and storing it in the variable `select_estado`. */
 const select_estado = document.getElementsByClassName('select-estado')
+/* Adding an event listener to the select element with the class `select-estado`. When the value of the
+select element changes, it gets the element with the class `no_maquina_sp` and if the value of the
+select element is 6, it disables the element and sets its value to 0. If the value of the select
+element is not 6, it removes the disabled attribute from the element. */
 select_estado[0].addEventListener('change', () => {
     const maquina = document.getElementsByClassName('no_maquina_sp')
     if (select_estado[0].value == 6) {
@@ -68,6 +84,13 @@ select_estado[0].addEventListener('change', () => {
     }
 })
 
+/**
+ * It takes the form data from the form_actualizar form and sends it to the server via a POST request. 
+ * 
+ * If the server returns a 1, it calls the obtener_registros_diarios() function and displays a success
+ * message. 
+ * If the server returns anything else, it displays an error message.
+ */
 const actualizar_registro = () => {
     const respuesta = fetchAPI(form_actualizar, url+'/produccion/control/actualizar_e','POST')
     respuesta.then(json => {
@@ -80,6 +103,10 @@ const actualizar_registro = () => {
     })
 }
 
+/**
+ * It takes the form data, sends it to the server, and then if the server returns a 1, it calls another
+ * function to update the page.
+ */
 const registrar_control = () => {
     const respuesta = fetchAPI(form_control,url+'/produccion/control/insertar','POST')
     respuesta.then(json => {
@@ -92,6 +119,12 @@ const registrar_control = () => {
     })
 }
 
+/**
+ * It creates a table row for each element in the json array, and if the element has an Id_Folio
+ * property that is not equal to 1, it creates a table row with 10 columns, otherwise it creates a
+ * table row with 9 columns.
+ * @param json - the data you want to render
+ */
 const render_registros_diarios = (json) => {
     const body = document.getElementById('body')
     if (json.length == 0) {
@@ -150,6 +183,11 @@ const render_registros_diarios = (json) => {
     }
 }
 
+/**
+ * It takes a JSON object and populates a form with the data.
+ * @param json - [{id_registro_diario: "1", Id_Produccion_FK_1: "1", no_maquina: "1", fecha:
+ * "2020-01-01 00:00:00", bote: "1", pzas
+ */
 const cargar_registro = (json) => {
     const registro = document.getElementById('registro')
     const op = document.getElementById('op_d')
@@ -188,6 +226,10 @@ const cargar_registro = (json) => {
     })
 }
 
+/**
+ * It takes an id, makes a fetch request to a url, and then calls another function with the response.
+ * @param id - the id of the record to be retrieved
+ */
 const obtener_registro = (id) => {
     const respuesta = fetchAPI('',url+'/produccion/control/obtener_registro_diario?registro='+id, '')
     respuesta.then(json => {
@@ -195,6 +237,10 @@ const obtener_registro = (id) => {
     })
 }
 
+/**
+ * It's a function that sends a request to a server, and then, if the response is 1, it calls another
+ * function, and if the response is not 1, it calls another function.
+ */
 function eliminar () {
     const respuesta = fetchAPI('',url+'/produccion/control/eliminar?dato='+data_aux.dato,'')
     respuesta.then(json => {

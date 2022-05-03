@@ -1,4 +1,9 @@
 
+/**
+ * It creates a table row element, sets the innerHTML of the row to the values of the current element
+ * in the array, and then appends the row to the table body.
+ * @param json - the JSON object that you want to render
+ */
 const render_registros_diarios = (json) => {
     const body = document.getElementById('body')
     json.forEach(el => {

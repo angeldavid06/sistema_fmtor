@@ -122,9 +122,7 @@ FROM
     t_cotizacion
 WHERE
     t_cotizacion.Id_Clientes_FK = t_clientes.Id_Clientes
-    AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
-ORDER BY
-    t_salida_almacen.Id_Folio DESC;
+    AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK;
 
 -- FACTURACIÓN TERMINADAS FORJADORA
 

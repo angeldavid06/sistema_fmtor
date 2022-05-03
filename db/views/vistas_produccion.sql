@@ -449,7 +449,6 @@ WHERE
     AND t_orden_produccion.Estado_general != 'TERMINADO'
     AND t_orden_produccion.Estado_general != 'CANCELADA'
     AND t_salida_almacen.Fecha != '0000-00-00'
-    AND t_orden_produccion.Id_Produccion != 1
 ORDER BY
     t_orden_produccion.Id_Produccion,t_salida_almacen.Fecha ASC;
 

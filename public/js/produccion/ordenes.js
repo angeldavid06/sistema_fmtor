@@ -1,5 +1,7 @@
+/* Creating an object with a property called dato and a value of 0. */
 const auxiliar = {dato : 0}
 
+/* Creating an array of months. */
 const meses = ['ENERO',
                 'FEBRERO',
                 'MARZO',
@@ -13,6 +15,11 @@ const meses = ['ENERO',
                 'NOVIEMBRE',
                 'DICIEMBRE']
 
+/**
+ * It creates a table row for each element in the json array, and then creates a table footer with the
+ * totals.
+ * @param json - the data you want to render
+ */
 const render_ordenes = (json) => {
     const t_body= document.getElementsByClassName('body')
     let total_acumulado = 0
@@ -124,6 +131,9 @@ const render_ordenes = (json) => {
     table.appendChild(tfoot)
 }
 
+/**
+ * It fetches data from a server and then renders it to the page.
+ */
 const obtener_ordenes = () => {
     const respuesta = fetchAPI('',url+'/produccion/op/obtener_ordenes','')
     respuesta.then(json => {
@@ -131,6 +141,10 @@ const obtener_ordenes = () => {
     })
 }
 
+/**
+ * It fetches a blob from a url, then creates an embed element and appends it to a div.
+ * @param id_catalogo - the id of the file
+ */
 const obtener_plano = (id_catalogo) => {
     const plano = fetchBlob(url+'/produccion/op/obtener_plano?id_plano='+id_catalogo)
     plano.then(blob => {
@@ -147,6 +161,10 @@ const obtener_plano = (id_catalogo) => {
     })
 }
 
+/**
+ * It takes a url and adds a query string to it.
+ * @param url_pdf - the url of the page to be printed
+ */
 const tipo_consulta = (url_pdf) => {
     const op = document.getElementById('op')
     const fecha = document.getElementById('fecha')
@@ -180,14 +198,24 @@ const tipo_consulta = (url_pdf) => {
     printPage(url_pdf);
 }
 
+/**
+ * It's a function that takes a URL and appends it to the end of another URL.
+ */
 const consulta_PDF = () => {
     tipo_consulta(url+'/produccion/op/pdf_ordenes?formato=v_ordenes')
 }
 
+/**
+ * It's a function that calls another function.
+ */
 const generar_PDF = () => {
     consulta_PDF()
 }
 
+/**
+ * It loops through all the radio buttons, unchecks them, then loops through all the inputs, clears
+ * them, and disables them.
+ */
 const restaurar_formulario = () => {
     const inputs_radio = document.getElementsByName("buscar_por");
     for (let i = 0; i < inputs_radio.length; i++) {
@@ -201,16 +229,24 @@ const restaurar_formulario = () => {
     }
 }
 
+/* Getting the element with the id of btn_resetear. */
 const btn_reset = document.getElementById('btn_resetear');
 
+/* Adding an event listener to the button. */
 btn_reset.addEventListener('click', () => {
     // limpiar_tabla()
     restaurar_formulario()
     buscar_mes_actual();
 })
 
+/* Getting the element with the id of op_calibre and assigning it to the variable form_calibre. */
 const form_calibre = document.getElementById('op_calibre')
 
+/**
+ * It sends a POST request to a PHP file, which returns a 1 or 0. 
+ * If the PHP file returns a 1, the function will call another function to update a table. 
+ * If the PHP file returns a 0, the function will display an error message.
+ */
 const actualizar_calibre = () => {
     const respuesta = fetchAPI(form_calibre,url+'/produccion/op/actualizar_calibre','POST')
     respuesta.then(json => {
@@ -224,11 +260,33 @@ const actualizar_calibre = () => {
     })
 }
 
+/* Preventing the default action of the form. */
 form_calibre.addEventListener('submit', (evt) => {
     evt.preventDefault()
     actualizar_calibre()
 })
 
+/**
+ * "When the user clicks on a button, the value of the button is assigned to the value of the input
+ * field."
+ * 
+ * The function is called when the user clicks on a button. The function takes two arguments: the value
+ * of the button that was clicked, and the value of the input field.
+ * 
+ * The function then assigns the value of the button to the value of the input field.
+ * 
+ * The function is called when the user clicks on a button. The function takes two arguments: the value
+ * of the button that was clicked, and the value of the input field.
+ * 
+ * The function then assigns the value of the button to the value of the input field.
+ * 
+ * The function is called when the user clicks on a button. The function takes two arguments: the value
+ * of the button that was clicked, and the value of the input field.
+ * 
+ * The function then assigns the value of the
+ * @param click_op - The value of the option selected in the first select box
+ * @param click_calibre - The value of the clicked button
+ */
 const obtener_calibre = (click_op,click_calibre) => {
     const op = document.getElementById('calibre_op')
     const calibre = document.getElementById('calibre')
@@ -237,18 +295,54 @@ const obtener_calibre = (click_op,click_calibre) => {
     calibre.value = click_calibre
 }
 
+/**
+ * It takes a value, appends it to a URL, and then calls a function called printPage with the URL as a
+ * parameter.
+ * @param valor - is the id of the record
+ */
 const generar_control_vacio = (valor) => {
     printPage(url + "/produccion/control/pdf_control_vacio?valor=" + valor);
 };
 
+/**
+ * It takes an id, and then it prints a page.
+ * @param id - The id of the order
+ */
 const generar_orden_produccion = (id) => {
     printPage(url + "/ventas/orden/pdforden?atributo=Id_Folio&value=" + id);
 };
 
+/**
+ * It takes a parameter, and then it calls another function with two parameters
+ * @param bote - is the amount of money
+ */
 const generar_tarjeta = (bote) => {
     printPage(url+'/ventas/tarjeta/pdftarjeta?value='+auxiliar.dato+"&bote="+bote)
 }
 
+/**
+ * It takes the current date, splits it into an array, and then uses the month and year to create a
+ * string in the format YYYY-MM. 
+ * 
+ * The function then sets the value of an input element to this string, and then calls another
+ * function. 
+ * 
+ * The function is called when the page loads. 
+ * 
+ * The problem is that the function is not working in IE11. 
+ * 
+ * I've tried using the following code to get the current date: 
+ * 
+ * const fecha_actual = new Date();
+ * const fecha = fecha_actual.toLocaleDateString().split("/");
+ * 
+ * But this doesn't work either. 
+ * 
+ * I've also tried using the following code to get the current date: 
+ * 
+ * const fecha_actual = new Date();
+ * const fecha = fecha_
+ */
 const buscar_mes_actual = () => {
     const fecha_actual = new Date().toLocaleDateString();
     const fecha = fecha_actual.split("/");
@@ -264,11 +358,13 @@ const buscar_mes_actual = () => {
     buscar_dato("buscar_mes");
 }
 
+/* Adding an event listener to the DOMContentLoaded event. */
 document.addEventListener('DOMContentLoaded', () => {
     // obtener_ordenes()
     buscar_mes_actual()
 });
 
+/* Adding an event listener to the document. */
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.plano) {
         obtener_plano(evt.target.dataset.plano);

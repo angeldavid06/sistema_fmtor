@@ -1,7 +1,10 @@
+/* Creating an object called dias and assigning it a property called nombre. The property nombre is an
+array of strings. */
 const dias = {
     nombre: ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"]
 }
 
+/* Creating an object called maquinas. */
 const maquinas = {
     forjado: 9,
     ranurado: 4,
@@ -9,10 +12,15 @@ const maquinas = {
     shank: 3
 }
 
+/* Getting the elements from the HTML page. */
 const input = document.getElementById('fecha_reporte')
 const select = document.getElementById('pzas_kilos')
 const estado = document.getElementById('estado')
         
+/**
+ * It removes the element with the id of 'acordeon' from the second element with the class of
+ * 'informacion' if the element with the id of 'acordeon' exists.
+ */
 const quitar_semanas = () => {
     if (document.getElementById('acordeon')) {
         const acordeon = document.getElementById('acordeon')
@@ -21,6 +29,11 @@ const quitar_semanas = () => {
     }
 }
 
+/**
+ * It takes a JSON array and a string, and then it renders a table with the data from the JSON array.
+ * @param json - the data you're working with
+ * @param semana - week number
+ */
 const render_semana = (json,semana) => {
     const turnos = []
 
@@ -139,6 +152,11 @@ const render_semana = (json,semana) => {
     }
 }
 
+/**
+ * It takes a JSON object and a string, and then it does some stuff
+ * @param json - the data that I'm getting from the server
+ * @param semana - is the week number
+ */
 const render_semana_ranurado = (json,semana) => {
     const turnos = []
 
@@ -247,6 +265,11 @@ const render_semana_ranurado = (json,semana) => {
     }
 }
 
+/**
+ * It takes a JSON object and a string, and then it renders a table.
+ * @param json - the data that I'm getting from the server
+ * @param semana - is the week number
+ */
 const render_semana_shank = (json,semana) => {
     let turnos = []
     let totales_semanales = [0,0,0,0,0,0]
@@ -352,6 +375,12 @@ const render_semana_shank = (json,semana) => {
     }
 }
 
+/**
+ * It takes an array of objects, and returns an array of objects, where each object is the sum of the
+ * values of the original objects, grouped by the value of the property "turno".
+ * @param json - the data you're working with
+ * @param semana - week number
+ */
 const render_semana_acabo = (json,semana) => {
     const turnos = []
     let turno = 0;
@@ -419,6 +448,11 @@ const render_semana_acabo = (json,semana) => {
     }
 }
 
+/**
+ * It takes a JSON object and a string, and then it renders a table with the data from the JSON object
+ * @param json - is the data that I'm getting from the server
+ * @param semana - is the week number
+ */
 const render_semana_rolado = (json,semana) => {
     const turnos = []
 
@@ -532,8 +566,13 @@ const render_semana_rolado = (json,semana) => {
     }
 }
 
+/**
+ * It creates a table for each week of the month.
+ * @param limite_semana - [1,8,15,22,29]
+ * @param anio - 2020
+ * @param mes - month
+ */
 const render_encabezado_forjado = (limite_semana,anio, mes) => {
-    console.log(limite_semana);
 
     let inicio = 1
     let fin = 0
@@ -603,6 +642,12 @@ const render_encabezado_forjado = (limite_semana,anio, mes) => {
     }
 }
 
+/**
+ * It creates a table for each week of the month.
+ * @param limite_semana - [1,7,14,21,28]
+ * @param anio - year
+ * @param mes - month
+ */
 const render_encabezado_ranurado = (limite_semana,anio, mes) => {
     let inicio = 1
     let fin = 0
@@ -666,6 +711,12 @@ const render_encabezado_ranurado = (limite_semana,anio, mes) => {
     }
 }
 
+/**
+ * It creates a table for each week of the month.
+ * @param limite_semana - [1,7,14,21,28]
+ * @param anio - year
+ * @param mes - month
+ */
 const render_encabezado_shank = (limite_semana,anio, mes) => {
     let inicio = 1
     let fin = 0
@@ -728,6 +779,12 @@ const render_encabezado_shank = (limite_semana,anio, mes) => {
     }
 }
 
+/**
+ * It creates a table for each week of the month.
+ * @param limite_semana - [1,7,14,21,28]
+ * @param anio - year
+ * @param mes - month
+ */
 const render_encabezado_rolado = (limite_semana,anio,mes) => {
     let inicio = 1
     let fin = 0
@@ -795,6 +852,12 @@ const render_encabezado_rolado = (limite_semana,anio,mes) => {
     }
 }
 
+/**
+ * It creates a table for each week of the month.
+ * @param limite_semana - [1,7,14,21,28]
+ * @param anio - year
+ * @param mes - month
+ */
 const render_encabezado_acabado = (limite_semana,anio,mes) => {
     let inicio = 1
     let fin = 0
@@ -852,6 +915,12 @@ const render_encabezado_acabado = (limite_semana,anio,mes) => {
     }
 }
 
+/**
+ * It takes a year, a month, and a state, and then it renders a header for a table.
+ * @param anio - year
+ * @param mes - month
+ * @param estado_seleccionado - is the value of the select option.
+ */
 const obtener_semanas = (anio, mes, estado_seleccionado) => {    
     let limite_semana = []
 
@@ -877,6 +946,15 @@ const obtener_semanas = (anio, mes, estado_seleccionado) => {
     }
 }
 
+/**
+ * It takes in 5 parameters, and then makes a fetch request to a url, and then depending on the value
+ * of the first parameter, it will call a different function to render the data.
+ * @param vista - 1,2,3,4,6
+ * @param concepto - 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,
+ * @param inicio - 2019-01-01
+ * @param fin - "2019-12-31"
+ * @param semana - is the week number
+ */
 const obtener_dias = (vista, concepto, inicio, fin, semana) => {
     const respuesta = fetchAPI('',url+'/produccion/maquinas/obtener_reporte?vista='+vista+'&concepto='+concepto+'&inicio='+inicio+'&fin='+fin,'')
     respuesta.then(json => {
@@ -894,6 +972,14 @@ const obtener_dias = (vista, concepto, inicio, fin, semana) => {
     })
 }
 
+/**
+ * It takes three arguments, and if all three are not empty, it splits the first argument into an
+ * array, calls a function to remove some elements from the DOM, and then calls a function to add some
+ * elements to the DOM.
+ * @param input - the date input value
+ * @param select - is the select element
+ * @param estado - is the state of the country
+ */
 const generar_reporte = (input,select,estado) => {
     if (input != '' && select != '' && estado != '') {
         const fecha = input.split('-')
@@ -902,22 +988,35 @@ const generar_reporte = (input,select,estado) => {
     }
 }
 
+/**
+ * It takes three parameters, and then it calls the printPage function with a URL that contains the
+ * three parameters.
+ * @param fecha - is a date input
+ * @param kilos_pzas - is a select option with the values of "kilos" and "piezas"
+ * @param estado - is a select option
+ */
 const generar_PDF = (fecha,kilos_pzas,estado) => {
     printPage(url+'/produccion/maquinas/pdf_maquinas?fecha_reporte='+fecha.value+'&kilos_pzas='+kilos_pzas.value+'&estado='+estado.value);
 }
 
+/* Listening for a change in the input field and then calling the function generar_reporte() with the
+input value, select value, and estado value. */
 input.addEventListener('change', () => {
     generar_reporte(input.value,select.value,estado.value)
 }) 
 
+/* Adding an event listener to the select element. When the select element changes, it calls the
+generar_reporte function. */
 select.addEventListener('change', () => {
     generar_reporte(input.value,select.value,estado.value)
 })
 
+/* Adding an event listener to the select element. */
 estado.addEventListener('change', () => {
     generar_reporte(input.value,select.value,estado.value)
 })
 
+/* Listening for a click event on the button with the data-impresion attribute. */
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.impresion) {
         const fecha = document.getElementById('fecha_reporte')
@@ -939,6 +1038,13 @@ document.addEventListener('click', (evt) => {
     }
 })
 
+/**
+ * If the month is less than 10, then the value of the input will be the year plus a zero plus the
+ * month plus one. 
+ * 
+ * If the month is greater than 10, then the value of the input will be the year plus the month plus
+ * one.
+ */
 const auto = () => {
     const hoy = new Date()
     const year = hoy.getFullYear();
@@ -951,6 +1057,8 @@ const auto = () => {
     }
 }
 
+/* Adding an event listener to the DOMContentLoaded event. When the DOMContentLoaded event fires, the
+auto() function is called. */
 document.addEventListener('DOMContentLoaded', () => {
     auto()
 })

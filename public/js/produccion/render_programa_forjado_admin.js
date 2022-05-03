@@ -1,3 +1,4 @@
+/* A JavaScript code. */
 const form_ingresar = document.getElementById('op_programa')
 const form_editar = document.getElementById('op_programa_editar')
 const opciones = {dato: ''}
@@ -16,6 +17,11 @@ const meses = [
     'DIC'
 ]
 
+/**
+ * It takes an id, makes a fetch request to a url, and then sets the value of some inputs to the
+ * response.
+ * @param id - id of the record to be updated
+ */
 const obtener_registro = (id) => {
     const respuesta = fetchAPI('',url+'/produccion/op/obtener_registro?id='+id,'')
     respuesta.then(json => {
@@ -26,6 +32,9 @@ const obtener_registro = (id) => {
     })
 }
 
+/**
+ * It sends a POST request to a PHP script, which returns a 1 or 0.
+ */
 const editar_programa = () => {
     const respuesta = fetchAPI(form_editar,url+'/produccion/op/editar_programa','POST')
     respuesta.then(json => {
@@ -39,6 +48,10 @@ const editar_programa = () => {
     })
 }
 
+/* A function that is executed when the form is submitted. It prevents the default action of the form,
+which is to reload the page. Then it gets all the inputs of the form and checks if they are empty.
+If they are, it adds a class to them, and if they are not, it calls the function
+`editar_programa()`. */
 form_editar.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const inputs = form_editar.getElementsByClassName('input')
@@ -60,6 +73,9 @@ form_editar.addEventListener('submit', (evt) => {
     }
 })
 
+/**
+ * It takes the data from a form, sends it to a PHP file, and then returns a response.
+ */
 const insertar_programa = () => {
     const respuesta = fetchAPI(form_ingresar,url+'/produccion/op/insertar_programa','POST')
     respuesta.then(json => {
@@ -73,6 +89,10 @@ const insertar_programa = () => {
     })
 }
 
+/* A function that is executed when the form is submitted. It prevents the default action of the form,
+which is to reload the page. Then it gets all the inputs of the form and checks if they are empty.
+If they are, it adds a class to them, and if they are not, it calls the function
+`insertar_programa()`. */
 form_ingresar.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const inputs = form_ingresar.getElementsByClassName('input')
@@ -94,6 +114,12 @@ form_ingresar.addEventListener('submit', (evt) => {
     }
 })
 
+/**
+ * It takes an object and a number, and appends a table row to the table body with the id of
+ * "body_maquina_" + the number.
+ * @param registros - is an object that contains the data to be displayed in the table.
+ * @param maquina - is the machine number
+ */
 const render_programa = (registros,maquina) => {
     const body = document.getElementById('body_maquina_'+maquina);
     body.innerHTML += '<tr>'+
@@ -126,6 +152,10 @@ const render_programa = (registros,maquina) => {
                         '</tr>'
 }
 
+/**
+ * It sends a request to the server to delete a record from the database, and if the server responds
+ * with a 1, it clears the table and reloads the data.
+ */
 function eliminar_registro () {
     const respuesta = fetchAPI('',url+'/produccion/op/eliminar_programa?id='+opciones.dato,'')
     respuesta.then(json => {
@@ -139,6 +169,13 @@ function eliminar_registro () {
     })
 }
 
+/* An event listener that listens for a click event. If the target of the click event has a data
+attribute called "editar", it gets the element with the id "registro" and sets its value to the
+value of the data attribute "editar". Then it calls the function `obtener_registro()` with the value
+of the data attribute "editar" as an argument. If the target of the click event has a data attribute
+called "eliminar", it sets the value of the property "dato" of the object "opciones" to the value of
+the data attribute "eliminar", and then calls the function `open_confirm()` with the arguments
+'¿Desea eliminar este registro?', and `eliminar_registro()`. */
 document.addEventListener('click', (evt) => {
     if (evt.target.dataset.editar) {
         const input = document.getElementById('registro')

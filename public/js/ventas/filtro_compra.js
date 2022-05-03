@@ -1,3 +1,6 @@
+/**
+ * It removes all the children of the first element with the class name "body" from the DOM.
+ */
 const limpiar_tabla = () => {
   const tbody = document.getElementsByClassName("body");
   const table = document.getElementById("table");
@@ -10,12 +13,17 @@ const limpiar_tabla = () => {
   // console.log(tfoot);
 };
 
+/* Adding an event listener to the form. */
 const form_filtros = document.getElementById("form-filtros");
 form_filtros.addEventListener("submit", (evt) => {
   evt.preventDefault();
   enviar_datos();
 });
 
+/**
+ * If the checkbox with the id of "salida" is checked, then call the function buscar_dato with the
+ * parameter "buscar_salida".
+ */
 const enviar_datos = () => {
     const salida = document.getElementById("salida");
     // const op = document.getElementById("op");
@@ -51,6 +59,10 @@ const enviar_datos = () => {
 //   }
 };
 
+/**
+ * It takes a parameter, then it makes a fetch request, then it renders the data.
+ * @param metodo - is the method that I want to call from the API
+ */
 const buscar_dato = (metodo) => {
   const respuesta = fetchAPI(
     form_filtros,
@@ -63,6 +75,9 @@ const buscar_dato = (metodo) => {
   });
 };
 
+/**
+ * It disables all the inputs in the form.
+ */
 const deshabilitar_inputs = () => {
   const f_inputs = form_filtros.getElementsByClassName("input");
   for (let i = 0; i < f_inputs.length; i++) {
@@ -70,6 +85,7 @@ const deshabilitar_inputs = () => {
   }
 };
 
+/* Disabling all the inputs in the form. */
 document.addEventListener("click", (evt) => {
   if (evt.target.dataset.radio) {
     deshabilitar_inputs();
