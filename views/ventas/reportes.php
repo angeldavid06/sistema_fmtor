@@ -8,7 +8,7 @@ if ($_SESSION['ZGVwdG8='] != 'Ventas' && $_SESSION['cm9s'] != 'SuperUsuario') {
         <h1>Reporte Mensual</h1>
     </div>
     <div class="d-flex justify-right align-content-center">
-        <input type="month" style="max-width: 200px; background: var(--background-aux);" name="mes" id="mes">
+        <input type="month" style="max-width: 200px; margin: 0px; background: var(--background-aux);" name="mes" id="mes">
         <button class="btn btn-icon btn-transparent">
             <i class="material-icons">print</i>
             Generar Reporte
