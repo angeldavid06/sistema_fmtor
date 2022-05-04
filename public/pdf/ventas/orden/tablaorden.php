@@ -1,17 +1,4 @@
 <?php
-    $Id_Folio = ""; 
-    $Id_Clientes_2 = " ";
-    $Precio_millar     = " ";
-    $Fecha  = " ";
-    $Descripcion       = " ";
-    $Medida = " ";
-    $Cantidad_millares = " ";
-    $Acabado           = " ";
-    $Codigo = " ";
-    $Tratamiento= " ";
-    $Fecha_entrega     = " ";
-    $Dibujo = " ";
-    $Salida=" ";
 
         $Id_Folio = $data[0]['Id_Folio'];
         $Id_Clientes_2  = $data[0]['Clientes'];
@@ -26,6 +13,7 @@
         $Fecha_entrega     = $data[0]['fecha_entrega'];
         $Dibujo = $data[0]['Id_Catalogo'];
         $Salida           = $data[0]['Id_Salida_FK'];
+        $Factor           = $data[0]['factor'];
 
         echo '<tr>';
             echo '<td style="padding: 5px;border: none;">'.$Descripcion.'</td>';
@@ -51,20 +39,6 @@
         echo '<td  style="padding: 5px;border: none;" colspan="4" class="txt-right">SALIDA</td>';
         echo '<td class="txt-center" style="padding: 5px;background: #F2F2F2; font-weight: bold; border: none;">'. $Salida.'</td>';
         echo '</tr>';
-        // echo '<tr>';
-        //     echo '<td style="padding: 5px;border: none;"></td>';
-        //     echo '<td style="padding: 5px;border: none; background: #BFBFBF;" class="txt-center">MP</td>';
-        //     echo '<td style="padding: 5px;border: none; background: #BFBFBF;" class="txt-center">ACA Y CEM</td>';
-        //     echo '<td style="padding: 5px;border: none; background: #BFBFBF;" class="txt-center">PRECIO FACTOR</td>';
-        //     echo '<td style="padding: 5px;border: none; background: #BFBFBF;" class="txt-center">COSTO</td>';
-        // echo '</tr>';
-        // echo '<tr>';
-        //     echo '<td style="padding: 5px;border: none;"></td>';
-        //     echo '<td style="padding: 5px;border: none; " class="txt-center"></td>';
-        //     echo '<td style="padding: 5px;border: none; " class="txt-center"></td>';
-        //     echo '<td style="padding: 5px;border: none; " class="txt-center"></td>';
-        //     echo '<td style="padding: 5px;border: none; " class="txt-center"></td>';
-        // echo '</tr>';
         echo '<tr>';
             echo '<td style="padding: 5px;border: none;"></td>';
             echo '<td style="padding: 5px;border: none;" class="txt-center"></td>';
@@ -74,8 +48,8 @@
         echo '</tr>';
         echo '<tr>';
             echo '<td style="padding: 5px;border: none;"></td>';
-            echo '<td style="padding: 5px;border: none; background: #A6A6A6;" class="txt-center">0</td>';
+            echo '<td style="padding: 5px;border: none; background: #A6A6A6;" class="txt-center">'.$Factor.'</td>';
             echo '<td style="padding: 5px;border: none;" class="txt-center"></td>';
             echo '<td style="padding: 5px;border: none;" class="txt-center"></td>';
-            echo '<td style="padding: 5px;border: none;" class="txt-center">$ </td>';
+            echo '<td style="padding: 5px;border: none;" class="txt-center">$ '.number_format(($Factor*1.3*26*3.4),2).'</td>';
         echo '</tr>';

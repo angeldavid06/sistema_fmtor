@@ -85,7 +85,7 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                                 <input class="input" type="text" name="factor_1" id="factor_1">
                             </div>
                         </div>
-                        <div class="d-grid g-2">
+                        <div class="d-grid g-1">
                             <div class="d-grid g-1 grid-gap-0">
                                 <p>Acabado:</p>
                                 <select class="input" name="Acabado_1" id="Acabado_1">
@@ -103,10 +103,10 @@ if ($_SESSION['cm9s'] == 'Administrativo') {
                                     <option value="VERDE OLIVO">VERDE OLIVO</option>
                                 </select>
                             </div>
-                            <div class="d-grid g-1 grid-gap-0">
+                            <!-- <div class="d-grid g-1 grid-gap-0">
                                 <p>Material:</p>
                                 <input class="input" type="text" name="Material_1" id="Material_1">
-                            </div>
+                            </div> -->
                         </div>
                         <div class="d-grid g-2">
                             <div class="d-flex justify-center align-content-center">

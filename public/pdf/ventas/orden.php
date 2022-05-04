@@ -49,7 +49,7 @@
                     </tr>
                     <tr>
                         <th style="padding: 5px;border: none;" class="txt-left" colspan="2">Pedido no.: <?php echo $data[0]['codigo']; ?></th>
-                        <th style="padding: 5px;border: none;" class="txt-left">Precio: <?php echo number_format($data[0]['precio_millar'], 2); ?></th>
+                        <th style="padding: 5px;border: none;" class="txt-left">Precio: $ <?php echo number_format($data[0]['precio_millar'], 2); ?></th>
                         <th style="padding: 5px;border: none;" class="txt-left" colspan="2">Fecha: <?php echo $data[0]['Fecha']; ?></th>
                     </tr>
                     <tr>

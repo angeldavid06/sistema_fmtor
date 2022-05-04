@@ -55,7 +55,7 @@ const render_nuevo_tornillo = (cantidad_t) => {
                                                     '<input class="input" type="text" name="factor_'+t+'" id="factor_'+t+'">'+
                                                 '</div>'+
                                             '</div>'+
-                                            '<div class="d-grid g-2">'+
+                                            '<div class="d-grid g-1">'+
                                                 '<div class="d-grid g-1 grid-gap-0">'+
                                                     '<p>Acabado:</p>'+
                                                     '<select class="input" name="Acabado_'+t+'" id="Acabado_'+t+'">'+
@@ -73,10 +73,10 @@ const render_nuevo_tornillo = (cantidad_t) => {
                                                         '<option value="VERDE OLIVO">VERDE OLIVO</option>'+
                                                     '</select>'+
                                                 '</div>'+
-                                                '<div class="d-grid g-1 grid-gap-0">'+
-                                                    '<p>Material:</p>'+
-                                                    '<input class="input" type="text" name="Material_'+t+'" id="Material_'+t+'">'+
-                                                '</div>'+
+                                                // '<div class="d-grid g-1 grid-gap-0">'+
+                                                //     '<p>Material:</p>'+
+                                                //     '<input class="input" type="text" name="Material_'+t+'" id="Material_'+t+'">'+
+                                                // '</div>'+
                                             '</div>'+
                                             '<div class="d-grid g-2">'+
                                                 '<div class="d-flex justify-center align-content-center">'+
