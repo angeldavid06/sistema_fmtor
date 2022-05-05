@@ -17,7 +17,11 @@
 
         public function cerrar_sesion () {
             $result = $this->model->cerrar_sesion();
-            echo $result;
+            if ($result == 1) {
+                header("Location: http://localhost/sistema_fmtor/");
+            } else {
+                return 0;
+            }
         }
 
         public function iniciar () {

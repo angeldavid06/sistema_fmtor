@@ -275,4 +275,64 @@
                 }
             }
         }
+
+        public function actualizar_precios () {
+            if (isset($_POST['comision_1'])) {
+                $url = "config/auxiliar_doc_ventas.json";
+                $data = file_get_contents($url);
+                $json = json_decode($data, true);
+
+                $json['comisiones']['pendiente'] = $_POST['comision_1'];
+                $json['comisiones']['sola_basic'] = $_POST['sola_1'];
+                $json['comisiones']['nomina_agosto'] = $_POST['nomina_1'];
+                
+                $newJsonString = json_encode($json);
+                file_put_contents($url, $newJsonString);
+
+                echo 1;
+            } else {
+                echo 0;
+            }
+        }
     }
+
+
+//     { 
+//     "cotizacion": {
+//         "costo": {
+//             "acero":"40",
+//             "acabado":"1.2",
+//             "laton":"300",
+//             "tratamiento":"12",
+//             "iva":"0.16"
+//         },
+//         "documento": {
+//             "responsable": "ARACELI GONZALES",
+//             "clave": "FOR-VEN-0", 
+//             "version": 2,
+//             "fecha_validacion": "0000-00-00",
+//             "terminos": ""
+//         }
+//     },
+//     "orden_de_compra": {
+//         "costo": {
+//             "iva":"0.16"
+//         },
+//         "documento": {
+//             "solicitado_por": "GERARDO FLORES",
+//             "terminos": "",
+//             "contacto": "", 
+//             "comentarios":"FAVOR DE PRESENTAR ORIGINAL Y 2 COPIAS DE LA FACTURA Y ORDEN DE COMPRA PARA ENTREGAR MATERIAL",
+//             "hecho_por":"PATSY TORRES",
+//             "autorizado_por":"ING. GERARDO FLORES",
+//             "clave":"FOR-VEN-0",
+//             "version":2,
+//             "fecha_validacion":"0000-00-00"
+//         }
+//     },
+//     "comisiones" : {
+//         "pendiente" : "10000.00",
+//         "sola_basic" : "4250.00",
+//         "nomina_agosto" : "9077.00"
+//     }
+// }

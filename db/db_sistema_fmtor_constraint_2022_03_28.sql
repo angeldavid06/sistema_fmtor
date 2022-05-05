@@ -125,7 +125,7 @@ OR REPLACE TABLE t_pedido (
   Medida VARCHAR(50),
   Acabado VARCHAR(50),
   Factor FLOAT,
-  Material VARCHAR(100),
+  Material VARCHAR(100) DEFAULT '-',
   Cantidad_millares int(11),
   Pedido_pza VARCHAR(100) DEFAULT '-',
   Fecha_entrega date,

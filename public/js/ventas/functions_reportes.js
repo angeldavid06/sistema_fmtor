@@ -134,32 +134,6 @@ const suma_total = () => {
     document.getElementById('notas').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(totales[3])
     document.getElementById('canceladas').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(totales[4])
     document.getElementById('sin').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(totales[5])
-    document.getElementById('total').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(
-        totales[0]+
-        totales[1]+
-        totales[2]-
-        totales[3]-
-        totales[4]-
-        totales[5])
-    document.getElementById('total-porcentaje').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(
-        (((totales[0]+
-        totales[1]+
-        totales[2]-
-        totales[3]-
-        totales[4]-
-        totales[5]) / 100) * 0.16))
-    document.getElementById('total-total').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(
-        (((totales[0]+
-        totales[1]+
-        totales[2]-
-        totales[3]-
-        totales[4]-
-        totales[5]) / 100) * 0.16) + totales[0]+
-        totales[1]+
-        totales[2]-
-        totales[3]-
-        totales[4]-
-        totales[5])
 }
 
 /**
@@ -299,6 +273,80 @@ input_mes.addEventListener('change', () => {
     obtener()
 })
 
+const form_precios = document.getElementById('form-precios')
+
+form_precios.addEventListener('submit', (evt) => {
+    evt.preventDefault()
+    actualizar_precios()
+})
+
+const actualizar_precios = () => {
+    const respuesta = fetchAPI(form_precios,url+'/ventas/reportes/actualizar_precios','POST')
+    respuesta.then(json => {
+        console.log(json);
+        if (json == 1) {
+            open_alert('Actualización correcta','verde')
+            obtener_comisiones();
+            abrir_modal("modal-precios");
+        } else {
+            open_alert('Error al actualizar las comisiones','rojo')
+        }
+    })
+}
+
+const obtener_comisiones = () => {
+    const respuesta = fetchAPI("", url + "/config/auxiliar_doc_ventas.json", "");
+    respuesta.then(json => {
+        console.log(json);
+        let comision = json.comisiones.pendiente
+        let total_comsion = (totales[0]+totales[1]+totales[2]-totales[3]-totales[4]-totales[5]+parseFloat(json.comisiones.pendiente)) - json.comisiones.sola_basic
+        let porcentaje_com =(totales[0] +totales[1] +totales[2] -totales[3] -totales[4] -totales[5] +parseFloat(json.comisiones.pendiente) -json.comisiones.sola_basic) *0.02;
+        let victor = ((totales[0] +totales[1] +totales[2] -totales[3] -totales[4] -totales[5] +parseFloat(json.comisiones.pendiente) -json.comisiones.sola_basic) * 0.02) * 0.08;
+        let total_comsion_mes = porcentaje_com - json.comisiones.nomina_agosto - victor;
+
+        document.getElementById("comision_1").value = json.comisiones.pendiente;
+        document.getElementById("sola_1").value = json.comisiones.sola_basic;
+        document.getElementById('nomina_1').value = json.comisiones.nomina_agosto
+        document.getElementById('pendiente').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(comision);
+        document.getElementById('total').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(
+            totales[0]+
+            totales[1]+
+            totales[2]-
+            totales[3]-
+            totales[4]-
+            totales[5]+
+            parseFloat(json.comisiones.pendiente))
+        document.getElementById('total-porcentaje').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(
+            ((totales[0]+
+            totales[1]+
+            totales[2]-
+            totales[3]-
+            totales[4]-
+            totales[5]+
+            parseFloat(json.comisiones.pendiente)) * 0.16))
+        document.getElementById('total-total').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(
+            ((totales[0]+
+            totales[1]+
+            totales[2]-
+            totales[3]-
+            totales[4]-
+            totales[5]+
+            parseFloat(json.comisiones.pendiente)) * 0.16) + totales[0]+
+            totales[1]+
+            totales[2]-
+            totales[3]-
+            totales[4]-
+            totales[5]+
+            parseFloat(json.comisiones.pendiente))
+        document.getElementById('sola_basic').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(json.comisiones.sola_basic);
+        document.getElementById('total_Ventas_comision').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(total_comsion)
+        document.getElementById('porcentaje_comision').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(porcentaje_com);
+        document.getElementById('nomina').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(json.comisiones.nomina_agosto);
+        document.getElementById('victor').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(victor);
+        document.getElementById('total_comision_mes').innerText = '$ ' + new Intl.NumberFormat('es-MX').format(total_comsion_mes);
+    })
+}
+
 //posible copia de busqueda 
 document.addEventListener('click', evt => {
     if (evt.target.dataset.recarga) {
@@ -307,8 +355,10 @@ document.addEventListener('click', evt => {
     } else if (evt.target.dataset.limpiar) {
         obtener();
         restaurar_formulario();
+    } else if (evt.target.dataset.comisiones) {
+        obtener_comisiones()
+        abrir_modal('modal-comisiones')
     }
-
 })
 
 /* Adding an event listener to the DOMContentLoaded event. */

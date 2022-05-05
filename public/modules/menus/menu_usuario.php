@@ -1,7 +1,7 @@
 <div class="menu hidde_menu" id="menu">
     <div class="informacion">
         <div class="foto">
-            <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['Zm90bw=='])?>" alt="">
+            <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['Zm90bw==']) ?>" alt="">
         </div>
         <div class="nombre">
             <p>
@@ -36,20 +36,20 @@
                 Prestamos
             </a>
         </nav>
-        <?php 
-            if ($_SESSION['ZGVwdG8='] == 'Ventas' || $_SESSION['cm9s'] == 'SuperUsuario') {
-                require_once 'ventas.php';
-            }
+        <?php
+        if ($_SESSION['ZGVwdG8='] == 'Ventas' || $_SESSION['cm9s'] == 'SuperUsuario') {
+            require_once 'ventas.php';
+        }
         ?>
-        <?php 
-            if ($_SESSION['ZGVwdG8='] == 'Compras' || $_SESSION['cm9s'] == 'SuperUsuario') {
-                require_once 'compras.php';
-            }
+        <?php
+        if ($_SESSION['ZGVwdG8='] == 'Compras' || $_SESSION['cm9s'] == 'SuperUsuario') {
+            require_once 'compras.php';
+        }
         ?>
-        <?php 
-            if ($_SESSION['ZGVwdG8='] == 'Produccion' || $_SESSION['cm9s'] == 'SuperUsuario') {
-                require_once 'produccion.php';
-            }
+        <?php
+        if ($_SESSION['ZGVwdG8='] == 'Produccion' || $_SESSION['cm9s'] == 'SuperUsuario') {
+            require_once 'produccion.php';
+        }
         ?>
         <div class="titulo_categoria_menu">
             <p>Ayuda</p>
@@ -59,8 +59,8 @@
                 <i class="material-icons-round">help</i>
                 Ayuda
             </a>
-            <a href="" id="cerrar-sesion">
-                <i class="material-icons-round">logout</i>
+            <a href="<?php echo  $this->url_server; ?>/main/cerrar_sesion">
+                <i class=" material-icons-round">logout</i>
                 Cerrar Sesión
             </a>
         </nav>
