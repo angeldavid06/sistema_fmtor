@@ -27,7 +27,8 @@
             </tr>
             <tr>
                 <th style="background: #C4D79B;" colspan="3">Tratamiento: <?php echo $data['control'][0]['tratamiento']; ?></th>
-                <!-- <th>Material: <?php //echo $data['control'][0]['material']; ?></th> -->
+                <!-- <th>Material: <?php //echo $data['control'][0]['material']; 
+                                    ?></th> -->
             </tr>
         </thead>
         <tbody>
@@ -43,7 +44,7 @@
                                 <th>Botes</th>
                                 <th>Fecha</th>
                                 <th>Pzas.</th>
-                                <th>Pzas. Acumuladas</th>
+                                <th width="50px">Pzas. Acumuladas</th>
                                 <th>K.g.</th>
                             </tr>
                         </thead>
@@ -79,7 +80,7 @@
                                 <th>Botes</th>
                                 <th>Fecha</th>
                                 <th>Pzas.</th>
-                                <th>Pzas. Acumuladas</th>
+                                <th width="50px">Pzas. Acumuladas</th>
                                 <th>K.g.</th>
                             </tr>
                         </thead>
@@ -115,7 +116,7 @@
                                 <th>Botes</th>
                                 <th>Fecha</th>
                                 <th>Pzas.</th>
-                                <th>Pzas. Acumuladas</th>
+                                <th width="50px">Pzas. Acumuladas</th>
                                 <th>K.g.</th>
                             </tr>
                         </thead>
@@ -153,7 +154,7 @@
                                 <th>Botes</th>
                                 <th>Fecha</th>
                                 <th>Pzas.</th>
-                                <th>Pzas. Acumuladas</th>
+                                <th width="50px">Pzas. Acumuladas</th>
                                 <th>K.g.</th>
                             </tr>
                         </thead>
@@ -189,7 +190,7 @@
                                 <th>Botes</th>
                                 <th>Fecha</th>
                                 <th>Pzas.</th>
-                                <th>Pzas. Acumuladas</th>
+                                <th width="50px">Pzas. Acumuladas</th>
                                 <th>K.g.</th>
                             </tr>
                         </thead>
@@ -225,7 +226,7 @@
                                 <th>Botes</th>
                                 <th>Fecha</th>
                                 <th>Pzas.</th>
-                                <th>Pzas. Acumuladas</th>
+                                <th width="50px">Pzas. Acumuladas</th>
                                 <th>K.g.</th>
                             </tr>
                         </thead>

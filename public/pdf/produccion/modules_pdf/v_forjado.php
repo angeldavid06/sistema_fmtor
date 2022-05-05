@@ -8,7 +8,7 @@
             <th>Bote</th>
             <th>Fecha</th>
             <th>Pzas.</th>
-            <th>Pzas. Acumuladas</th>
+            <th width="50px">Pzas. Acumuladas</th>
             <th>K.g.</th>
         </tr>
     </thead>
@@ -66,22 +66,22 @@
 
         for ($i = 0; $i < count($fechas); $i++) {
             $fila = '<tr>' .
-                        '<td class="txt-right">' . $botes[$i] . '</td>' .
-                        '<td>' . $fechas[$i] . '</td>' .
-                        '<td class="txt-right">' . $pzas[$i] . '</td>' .
-                        '<td class="txt-right">' . $total_pzas[$i] . '</td>' .
-                        '<td class="txt-right">' . $kilos[$i] . '</td>' .
-                    '</tr>';
+                '<td class="txt-right">' . $botes[$i] . '</td>' .
+                '<td>' . $fechas[$i] . '</td>' .
+                '<td class="txt-right">' . $pzas[$i] . '</td>' .
+                '<td class="txt-right">' . $total_pzas[$i] . '</td>' .
+                '<td class="txt-right">' . $kilos[$i] . '</td>' .
+                '</tr>';
             echo $fila;
         }
 
-        for ($i=count($fechas); $i < 11; $i++) { 
-            echo '<tr>'.
-                    '<td style="height: 10px;"></td>'.
-                    '<td style="height: 10px;"></td>'.
-                    '<td style="height: 10px;"></td>'.
-                    '<td style="height: 10px;"></td>'.
-                    '<td style="height: 10px;"></td>'.
+        for ($i = count($fechas); $i < 11; $i++) {
+            echo '<tr>' .
+                '<td style="height: 10px;"></td>' .
+                '<td style="height: 10px;"></td>' .
+                '<td style="height: 10px;"></td>' .
+                '<td style="height: 10px;"></td>' .
+                '<td style="height: 10px;"></td>' .
                 '<tr>';
         }
         ?>

@@ -74,8 +74,8 @@
         echo '</tr>';
         echo '<tr>';
             echo '<td style="padding: 5px;border: none;"></td>';
-            echo '<td style="padding: 5px;border: none; background: #A6A6A6;" class="txt-center">0</td>';
+            echo '<td style="padding: 5px;border: none; background: #A6A6A6;" class="txt-center">'.$Factor.'</td>';
             echo '<td style="padding: 5px;border: none;" class="txt-center"></td>';
             echo '<td style="padding: 5px;border: none;" class="txt-center"></td>';
-            echo '<td style="padding: 5px;border: none;" class="txt-center">$ </td>';
+            echo '<td style="padding: 5px;border: none;" class="txt-center">$ '.number_format(($Factor*1.3*26*3.4),2).'</td>';
         echo '</tr>';

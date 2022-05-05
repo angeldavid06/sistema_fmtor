@@ -8,7 +8,7 @@
             <th>Bote</th>
             <th>Fecha</th>
             <th>Pzas.</th>
-            <th>Pzas. Acumuladas</th>
+            <th width="50px">Pzas. Acumuladas</th>
             <th>K.g.</th>
         </tr>
     </thead>
