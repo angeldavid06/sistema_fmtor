@@ -130,6 +130,3 @@
     } else {
         echo '<td class="txt-center" colspan="'.($cant_th+5).'">Sin registros</td>';
     }
-
-
-?>

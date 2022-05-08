@@ -51,9 +51,9 @@ const render_semana = (json,semana) => {
         json.forEach(el => {
             if ((turno_anterior == '' || turno_anterior == el.turno) && (fecha_anterior == '' || fecha_anterior == el.fecha)) {
                 if (select.value == 'kilos') {
-                    aux[el.no_maquina-1] = el.kilos
+                    aux[el.no_maquina-1] += parseInt(el.kilos)
                 } else if (select.value == 'pzas') {
-                    aux[el.no_maquina-1] = el.pzas
+                    aux[el.no_maquina-1] += parseInt(el.pzas)
                 }
                 a = el.observaciones.replace(/\s+/g, '_')
                 aux_observaciones[el.no_maquina-1] = a
@@ -70,9 +70,9 @@ const render_semana = (json,semana) => {
                 aux = [0,0,0,0,0,0,0,0,0]
                 aux_observaciones = [0,0,0,0,0,0,0,0,0]
                 if (select.value == 'kilos') {
-                    aux[el.no_maquina-1] = el.kilos
+                    aux[el.no_maquina-1] = parseInt(el.kilos)
                 } else if (select.value == 'pzas') {
-                    aux[el.no_maquina-1] = el.pzas
+                    aux[el.no_maquina-1] = parseInt(el.pzas)
                 }
                 a = el.observaciones.replace(/\s+/g, '_')
                 aux_observaciones[el.no_maquina-1] = a
@@ -174,9 +174,9 @@ const render_semana_ranurado = (json,semana) => {
         json.forEach(el => {
             if ((turno_anterior == '' || turno_anterior == el.turno) && (fecha_anterior == '' || fecha_anterior == el.fecha)) {
                 if (select.value == 'kilos') {
-                    aux[el.no_maquina-1] = el.kilos
+                    aux[el.no_maquina-1] += parseInt(el.kilos)
                 } else if (select.value == 'pzas') {
-                    aux[el.no_maquina-1] = el.pzas
+                    aux[el.no_maquina-1] += parseInt(el.pzas)
                 }
                 a = el.observaciones.replace(/\s+/g, '_')
                 aux_observaciones[el.no_maquina-1] = a
@@ -193,9 +193,9 @@ const render_semana_ranurado = (json,semana) => {
                 aux = [0,0,0,0]
                 aux_observaciones = [0,0,0,0]
                 if (select.value == 'kilos') {
-                    aux[el.no_maquina-1] = el.kilos
+                    aux[el.no_maquina-1] = parseInt(el.kilos)
                 } else if (select.value == 'pzas') {
-                    aux[el.no_maquina-1] = el.pzas
+                    aux[el.no_maquina-1] = parseInt(el.pzas)
                 }
                 a = el.observaciones.replace(/\s+/g, '_')
                 aux_observaciones[el.no_maquina-1] = a
@@ -286,9 +286,9 @@ const render_semana_shank = (json,semana) => {
         json.forEach(el => {
             if ((turno_anterior == '' || turno_anterior == el.turno) && (fecha_anterior == '' || fecha_anterior == el.fecha)) {
                 if (select.value == 'kilos') {
-                    aux[el.no_maquina-1] = el.kilos
+                    aux[el.no_maquina-1] += parseInt(el.kilos)
                 } else if (select.value == 'pzas') {
-                    aux[el.no_maquina-1] = el.pzas
+                    aux[el.no_maquina-1] += parseInt(el.pzas)
                 }
                 a = el.observaciones.replace(/\s+/g, '_')
                 aux_observaciones[el.no_maquina-1] = a
@@ -305,9 +305,9 @@ const render_semana_shank = (json,semana) => {
                 aux = [0,0,0]
                 aux_observaciones = [0,0,0]
                 if (select.value == 'kilos') {
-                    aux[el.no_maquina-1] = el.kilos
+                    aux[el.no_maquina-1] = parseInt(el.kilos)
                 } else if (select.value == 'pzas') {
-                    aux[el.no_maquina-1] = el.pzas
+                    aux[el.no_maquina-1] = parseInt(el.pzas)
                 }
                 a = el.observaciones.replace(/\s+/g, '_')
                 aux_observaciones[el.no_maquina-1] = a
@@ -470,9 +470,9 @@ const render_semana_rolado = (json,semana) => {
         json.forEach(el => {
             if ((turno_anterior == '' || turno_anterior == el.turno) && (fecha_anterior == '' || fecha_anterior == el.fecha)) {
                 if (select.value == 'kilos') {
-                    aux[el.no_maquina-1] = el.kilos
+                    aux[el.no_maquina-1] += parseInt(el.kilos)
                 } else if (select.value == 'pzas') {
-                    aux[el.no_maquina-1] = el.pzas
+                    aux[el.no_maquina-1] += parseInt(el.pzas)
                 }
                 a = el.observaciones.replace(/\s+/g, '_')
                 aux_observaciones[el.no_maquina-1] = a
@@ -489,9 +489,9 @@ const render_semana_rolado = (json,semana) => {
                 aux = [0,0,0,0,0,0,0]
                 aux_observaciones = [0,0,0,0,0,0,0]
                 if (select.value == 'kilos') {
-                    aux[el.no_maquina-1] = el.kilos
+                    aux[el.no_maquina-1] = parseInt(el.kilos)
                 } else if (select.value == 'pzas') {
-                    aux[el.no_maquina-1] = el.pzas
+                    aux[el.no_maquina-1] = parseInt(el.pzas)
                 }
                 a = el.observaciones.replace(/\s+/g, '_')
                 aux_observaciones[el.no_maquina-1] = a

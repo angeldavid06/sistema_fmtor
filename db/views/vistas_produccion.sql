@@ -447,7 +447,9 @@ WHERE
     AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK
     AND t_pedido.Id_Pedido = t_orden_produccion.Id_Pedido_FK
     AND t_orden_produccion.Estado_general != 'TERMINADO'
+    AND t_orden_produccion.Estado_general != 'TERMINADA'
     AND t_orden_produccion.Estado_general != 'CANCELADA'
+    AND t_orden_produccion.Estado_general != 'CANCELADO'
     AND t_salida_almacen.Fecha != '0000-00-00'
 ORDER BY
     t_orden_produccion.Id_Produccion,t_salida_almacen.Fecha ASC;

@@ -175,7 +175,7 @@ OR REPLACE TABLE t_orden_produccion (
   Id_Produccion BIGINT AUTO_INCREMENT,
   Id_Catalogo_FK VARCHAR(50),
   Calibre FLOAT DEFAULT 0.0,
-  Cantidad BIGINT,
+  Cantidad DOUBLE,
   Estado_general varchar(25) DEFAULT 'PENDIENTE',
   Id_Pedido_FK BIGINT,
   CONSTRAINT PK_Id_Produccion PRIMARY KEY (Id_Produccion),
