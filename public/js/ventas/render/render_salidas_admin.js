@@ -79,6 +79,7 @@ const registrar_salida = () => {
             document.getElementById('cotizacion').value=''
             open_alert('Registro exitoso','verde')
             buscar_mes_actual();
+            ocultar_compra_general();
         } else {
             open_alert('La salida de almacen no pudo ser registrada','rojo')
         }
@@ -755,12 +756,13 @@ document.addEventListener('click', (evt) => {
             cantidad = document.getElementsByClassName("aux");
             ocultar_compra(evt.target.dataset.pedido);
             mostrar_op(evt.target.dataset.pedido);
+            mostrar_kardex(evt.target.dataset.pedido);
             if (cantidad.length == 0) {
                 ocultar_compra_general()
             }
         } else if (evt.target.dataset.compra) {
             ocultar_op(evt.target.dataset.pedido);
-            ocultar_kardex(evt.target.dataset.pedido);
+            mostrar_kardex(evt.target.dataset.pedido);
             mostrar_compra(evt.target.dataset.pedido);
             cantidad = document.getElementsByClassName("aux");
             if (cantidad.length == 0) {

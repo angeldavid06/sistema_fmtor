@@ -612,7 +612,7 @@ const render_encabezado_forjado = (limite_semana,anio, mes) => {
                                             '<table id="tabla_'+(i+1)+'">'+
                                                 '<thead>'+
                                                     '<tr>'+
-                                                        '<th rowspan="2">Día</th>'+
+                                                        '<th style="min-width:100px;" rowspan="2">Día</th>'+
                                                         '<th colspan="9">REPORTE DIARIO POR MAQUINA</th>'+
                                                         '<th></th>'+
                                                         '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
@@ -687,7 +687,7 @@ const render_encabezado_ranurado = (limite_semana,anio, mes) => {
                                             '<table id="tabla_'+(i+1)+'">'+
                                                 '<thead>'+
                                                     '<tr>'+
-                                                        '<th rowspan="2">Día</th>'+
+                                                        '<th style="min-width:100px;" rowspan="2">Día</th>'+
                                                         '<th colspan="4">REPORTE DIARIO POR MAQUINA</th>'+
                                                         '<th></th>'+
                                                         '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
@@ -756,7 +756,7 @@ const render_encabezado_shank = (limite_semana,anio, mes) => {
                                             '<table id="tabla_'+(i+1)+'">'+
                                                 '<thead>'+
                                                     '<tr>'+
-                                                        '<th rowspan="2">Día</th>'+
+                                                        '<th style="min-width:100px;" rowspan="2">Día</th>'+
                                                         '<th colspan="3">REPORTE DIARIO POR MAQUINA</th>'+
                                                         '<th></th>'+
                                                         '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
@@ -825,7 +825,7 @@ const render_encabezado_rolado = (limite_semana,anio,mes) => {
                                             '<table id="tabla_'+(i+1)+'">'+
                                                 '<thead>'+
                                                     '<tr>'+
-                                                        '<th rowspan="2">Día</th>'+
+                                                        '<th style="min-width:100px;" rowspan="2">Día</th>'+
                                                         '<th colspan="7">REPORTE DIARIO POR MAQUINA</th>'+
                                                         '<th></th>'+
                                                         '<th colspan="2">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
@@ -897,7 +897,7 @@ const render_encabezado_acabado = (limite_semana,anio,mes) => {
                                             '<table id="tabla_'+(i+1)+'">'+
                                                 '<thead>'+
                                                     '<tr>'+
-                                                        '<th rowspan="2">Día</th>'+
+                                                        '<th style="min-width:100px;" rowspan="2">Día</th>'+
                                                         '<th colspan="1">REGISTRO DIARIO DE PRODUCCIÓN</th>'+
                                                     '</tr>'+
                                                     '<tr>'+

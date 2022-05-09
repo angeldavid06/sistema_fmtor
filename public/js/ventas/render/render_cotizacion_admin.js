@@ -122,9 +122,11 @@ const obtener_clientes = () => {
     const respuesta = fetchAPI("", url + "/ventas/salida/obtener_clientes", "");
     respuesta.then((json) => {
         json.forEach((el) => {
-            document.getElementById("Id_Clientes_2").innerHTML +='<option value="' +el.Id_Clientes +'">' +el.Razon_social.trim() +"</option>";
-            document.getElementById("Id_Clientes_2_e").innerHTML +='<option value="' +el.Id_Clientes +'">' +el.Razon_social.trim() +"</option>";
-            document.getElementById("f_cliente").innerHTML +='<option value="' +el.Id_Clientes+'">' +el.Razon_social +"</option>";
+            if(el.Razon_social != null) {
+                document.getElementById("Id_Clientes_2").innerHTML +='<option value="' +el.Id_Clientes +'">' +el.Razon_social.trim() +"</option>";
+                document.getElementById("Id_Clientes_2_e").innerHTML +='<option value="' +el.Id_Clientes +'">' +el.Razon_social.trim() +"</option>";
+                document.getElementById("f_cliente").innerHTML +='<option value="' +el.Id_Clientes+'">' +el.Razon_social +"</option>";
+            }
         });
     });
 };

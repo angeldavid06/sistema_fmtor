@@ -60,11 +60,25 @@
 
             }
         } else if ($compra != '-') {
-             echo '<tr>'. 
-                '<td colspan="3" style="border: none;"></td>'.
-                '<td colspan="2" class="th-estado">'.$compra.'</td>'.
-                '<td colspan="5" style="border: none;"></td>'.
-            '</tr>';
+            $kardex = $data['salida'][$i]['kardex'];
+            if ($kardex != 0) {
+                echo '<tr>' .
+                    '<td colspan="3" style="border: none;"></td>' .
+                    '<td colspan="2" class="th-estado">' . $compra . '</td>' .
+                    '<td colspan="5" style="border: none;"></td>' .
+                    '</tr>';
+                echo '<tr>' .
+                    '<td colspan="3" style="border: none;"></td>' .
+                    '<td colspan="2" class="th-estado">Kardex ' . $kardex . '</td>' .
+                    '<td colspan="5" style="border: none;"></td>' .
+                    '</tr>';
+            } else {
+                echo '<tr>' .
+                    '<td colspan="3" style="border: none;"></td>' .
+                    '<td colspan="2" class="th-estado">' . $compra . '</td>' .
+                    '<td colspan="5" style="border: none;"></td>' .
+                    '</tr>';
+            }
         } else if ($data['salida'][$i]['kardex'] != '0') {
              echo '<tr>'. 
                 '<td colspan="3" style="border: none;"></td>'.

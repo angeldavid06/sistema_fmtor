@@ -191,7 +191,12 @@
 
                         $result = $this->compra->ingresar_orden();
                         if ($result) {
-                            for ($i=1; $i <= $_POST['cantidad_tornillos']; $i++) { 
+                            for ($i=1; $i <= $_POST['cantidad_tornillos']; $i++) {
+                                if (isset($_POST['Kardex_' . $i]) && $_POST['Kardex_' . $i] != '') {
+                                    $this->salida->setKardex($_POST['Kardex_' . $i]);
+                                    $this->salida->setNo_Pedido($_POST['pedido_' . $i]);
+                                    $res2 = $this->salida->insertarKardex();
+                                } 
                                 $this->compra->setCodigo($_POST['codigo_'.$i]);
                                 $this->compra->setProducto($_POST['producto_'.$i]);
                                 $this->compra->setCantidad($_POST['cantidad_'.$i]);
@@ -227,6 +232,11 @@
                                 $arr[] = $_POST['pedido_'.$i].' Orden de Compra General';
                                 if (isset($_POST['general_00']) && $contador < count($_POST['general_00'])) {
                                     if ($_POST['general_00'][$contador] == $_POST['pedido_'.$i]) {
+                                        if (isset($_POST['Kardex_' . $i]) && $_POST['Kardex_' . $i] != '') {
+                                            $this->salida->setKardex($_POST['Kardex_' . $i]);
+                                            $this->salida->setNo_Pedido($_POST['pedido_' . $i]);
+                                            $orden = $this->salida->insertarKardex();
+                                        }
                                         $this->compra->setFecha($_POST['Fecha']);
                                         $this->compra->setSolicitado($_POST['solicitado_general']);
                                         $this->compra->setTerminos($_POST['terminos_general']);
@@ -236,18 +246,18 @@
 
                                         $result = $this->compra->ingresar_orden();
                                         if ($result) {
-                                                $this->compra->setCodigo($_POST['codigo_' . ($i)]);
-                                                $this->compra->setProducto($_POST['producto_' . ($i)]);
-                                                $this->compra->setCantidad($_POST['cantidad_' . ($i)]);
-                                                $this->compra->setPrecio($_POST['precio_' . ($i)]);
-                                                $this->compra->setId_Pedido($_POST['pedido_' . ($i)]);
+                                            $this->compra->setCodigo($_POST['codigo_' . ($i)]);
+                                            $this->compra->setProducto($_POST['producto_' . ($i)]);
+                                            $this->compra->setCantidad($_POST['cantidad_' . ($i)]);
+                                            $this->compra->setPrecio($_POST['precio_' . ($i)]);
+                                            $this->compra->setId_Pedido($_POST['pedido_' . ($i)]);
 
-                                                $result = $this->compra->ingresar_pedido();
-                                                if ($result) {
-                                                    $aux = true;
-                                                } else {
-                                                    $aux = false;
-                                                }
+                                            $result = $this->compra->ingresar_pedido();
+                                            if ($result) {
+                                                $aux = true;
+                                            } else {
+                                                $aux = false;
+                                            }
                                         } else {
                                             $aux = false;
                                         }
@@ -264,6 +274,11 @@
 
                                     $result = $this->compra->ingresar_orden();
                                     if ($result) {
+                                        if (isset($_POST['Kardex_' . $i]) && $_POST['Kardex_' . $i] != '') {
+                                            $this->salida->setKardex($_POST['Kardex_' . $i]);
+                                            $this->salida->setNo_Pedido($_POST['pedido_' . $i]);
+                                            $orden = $this->salida->insertarKardex();
+                                        }
                                             $this->compra->setCodigo($_POST['codigo_' . ($i)]);
                                             $this->compra->setProducto($_POST['producto_' . ($i)]);
                                             $this->compra->setCantidad($_POST['cantidad_' . ($i)]);
