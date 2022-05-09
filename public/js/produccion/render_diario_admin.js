@@ -164,7 +164,7 @@ const render_registros_diarios = (json) => {
                                             '<button data-opciones="'+el.id_registro_diario+'"  class="mas btn btn-transparent btn-icon-self material-icons">more_vert</button>'+
                                         '</div>'+
                                         '<div class="opciones" id="opciones-'+el.id_registro_diario+'">'+
-                                            '<button style="margin: 0px 5px 0px 0px;" data-modal="modal-actualizar" data-editar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-amarillo">edit</button>'+
+                                            '<button style="margin: 0px 5px 0px 0px;" data-modal="modal-editar-diario" data-editar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-amarillo">edit</button>'+
                                             '<button style="margin: 0px 0px 0px 5px;" data-eliminar="'+el.id_registro_diario+'" class="material-icons btn btn-icon-self btn-rojo">delete</button>'+
                                         '</div>'+
                                     '</div>'+

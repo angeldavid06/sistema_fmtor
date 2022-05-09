@@ -285,7 +285,6 @@ FROM
     t_control_produccion,
     t_registro_diario,
     t_estados,
-    t_salida_almacen,
     t_orden_produccion,
     t_pedido,
     t_cotizacion
@@ -294,7 +293,6 @@ WHERE
     AND t_orden_produccion.Id_Produccion = t_control_produccion.Id_Produccion_FK_1
     AND t_orden_produccion.Id_Pedido_FK = t_pedido.Id_Pedido
     AND t_control_produccion.Id_estado_1 = t_estados.id_estados
-    AND t_cotizacion.Id_Cotizacion = t_salida_almacen.Id_Cotizacion_FK
     AND t_cotizacion.Id_Cotizacion = t_pedido.Id_Cotizacion_FK;  
 
 /*------------------------------------------------ Vista Forjado -----------------------------------------------*/
