@@ -33,6 +33,7 @@
                 $this->model_maquinas->setVista($vista);
                 $result = $this->model_maquinas->obtener_reporte_maquinas();
                 echo json_encode($result);
+                // echo 'Hola';
             } else {
                 echo 0;
             }

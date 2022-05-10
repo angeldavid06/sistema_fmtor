@@ -31,7 +31,7 @@
                         echo '</div>';
                     echo '</div>';
                 echo '<script src="'.$this->url_server.'/public/js/fmtor_libreria.js?1.1"></script>';
-                echo '<script src="'.$this->url_server.'/public/js/worker/script.js"></script>';
+                // echo '<script src="'.$this->url_server.'/public/js/worker/script.js"></script>';
             echo '</body>';
             echo '</html>';
         }
