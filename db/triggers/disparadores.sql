@@ -23,7 +23,7 @@ BEGIN
 	DECLARE primer_registro INT;
 
 	SET op  = (
-				SELECT cantidad
+				SELECT Cantidad
 				FROM t_orden_produccion, t_control_produccion
 				WHERE t_control_produccion.Id_Produccion_FK_1 = t_orden_produccion.Id_Produccion
 				AND t_control_produccion.id_control_produccion = NEW.Id_control_produccion_1
@@ -47,18 +47,72 @@ BEGIN
 							SELECT count(id_registro_diario) 
 							FROM t_registro_diario, t_control_produccion 
 							WHERE t_registro_diario.Id_control_produccion_1 = t_control_produccion.id_control_produccion
+							AND t_registro_diario.Id_control_produccion_1 = NEW.id_control_produccion_1
 							AND t_control_produccion.Id_estado_1 = 1
 						);
 
 
 	IF (p >= op) THEN
 		UPDATE t_orden_produccion, t_control_produccion
-		SET estado_general = estado 
+		SET Estado_general = estado 
 		WHERE id_control_produccion = NEW.Id_control_produccion_1
 		AND t_orden_produccion.Id_Produccion = t_control_produccion.Id_Produccion_FK_1;
 	ELSEIF (primer_registro = 1) THEN
 		UPDATE t_orden_produccion, t_control_produccion
-		SET estado_general = 'FORJADO'
+		SET Estado_general = 'FORJADO'
+		WHERE id_control_produccion =  NEW.Id_control_produccion_1
+		AND t_orden_produccion.Id_Produccion = t_control_produccion.Id_Produccion_FK_1;
+	END IF;
+END |
+DELIMITER ;
+
+DELIMITER |
+CREATE OR REPLACE TRIGGER modificar_estado_general AFTER UPDATE ON t_registro_diario
+FOR EACH ROW
+BEGIN
+    DECLARE op INT;
+	DECLARE p INT;
+	DECLARE estado VARCHAR(25);
+	DECLARE primer_registro INT;
+
+	SET op  = (
+				SELECT Cantidad
+				FROM t_orden_produccion, t_control_produccion
+				WHERE t_control_produccion.Id_Produccion_FK_1 = t_orden_produccion.Id_Produccion
+				AND t_control_produccion.id_control_produccion = NEW.Id_control_produccion_1
+				);
+	
+	SET p  = (
+				SELECT SUM(pzas) 
+				FROM t_registro_diario, t_control_produccion 
+				WHERE t_control_produccion.id_control_produccion = t_registro_diario.id_control_produccion_1
+				AND t_control_produccion.id_control_produccion = NEW.Id_control_produccion_1
+			);
+
+	SET estado = (
+					SELECT estados 
+					FROM t_estados, t_control_produccion 
+					WHERE t_estados.id_estados = t_control_produccion.Id_estado_1
+					AND t_control_produccion.id_control_produccion = NEW.Id_control_produccion_1
+				);
+
+	SET primer_registro = (
+							SELECT count(id_registro_diario) 
+							FROM t_registro_diario, t_control_produccion 
+							WHERE t_registro_diario.Id_control_produccion_1 = t_control_produccion.id_control_produccion
+							AND t_registro_diario.Id_control_produccion_1 = NEW.id_control_produccion_1
+							AND t_control_produccion.Id_estado_1 = 1
+						);
+
+
+	IF (p >= op) THEN
+		UPDATE t_orden_produccion, t_control_produccion
+		SET Estado_general = estado 
+		WHERE id_control_produccion = NEW.Id_control_produccion_1
+		AND t_orden_produccion.Id_Produccion = t_control_produccion.Id_Produccion_FK_1;
+	ELSEIF (primer_registro = 1) THEN
+		UPDATE t_orden_produccion, t_control_produccion
+		SET Estado_general = 'FORJADO'
 		WHERE id_control_produccion =  NEW.Id_control_produccion_1
 		AND t_orden_produccion.Id_Produccion = t_control_produccion.Id_Produccion_FK_1;
 	END IF;
