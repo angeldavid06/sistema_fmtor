@@ -16,25 +16,12 @@ const iniciar_sesion = () => {
         const respuesta = fetchAPI(form,url+'/main/iniciar','POST');
         respuesta.then(json => {
             if (json.depto) {
-                window.location.href = url+'/usuario/principal'
+                window.location.href = url+'/usuario/principal';
             } else {
-                auxiliar.intentos++
-                if (json == 0) {
-                    usu.classList.add('input-error')
-                    pass.classList.add('input-error')
-                    open_alert('El usuario o contraseña introducidos son incorrectos','rojo');
-                } else if (json == 2) {
-                    usu.classList.add('input-error')
-                    open_alert('El usuario introducido es incorrecto','rojo');
-                } else if (json == 3) {
-                    pass.classList.add('input-error')
-                    open_alert('La contraseña introducida es incorrecta','rojo');
-                } else if (json == 4) {
-                    open_alert('Este usuario ya inicio sesión en otro dispositivo','amarillo');
-                } else if (json == 5) {
-                    usu.classList.add('input-error')
-                    open_alert('El usuario "'+usu.value+'" no existe','rojo');
-                }
+                auxiliar.intentos++;
+                usu.classList.add('input-error')
+                pass.classList.add('input-error')
+                open_alert('El usuario o contraseña introducidos son incorrectos','rojo');
             }
         })
     } else {
@@ -49,13 +36,13 @@ form.addEventListener('submit', (evt) => {
     if (usu.value == '' && pass.value == '') {
         usu.classList.add('input-error')
         pass.classList.add('input-error')
-        open_alert('No ha introducido el nombre de usuario y contraseña','rojo');
+        open_alert('No ha introducido el nombre de usuario y contraseña','amarillo');
     } else if (pass.value == '') {
         pass.classList.add('input-error')
-        open_alert('No ha introducido la contraseña','rojo');
+        open_alert('No ha introducido la contraseña','roamarillojo');
     } else if (usu.value == '') {
         usu.classList.add('input-error')
-        open_alert('No ha introducido el nombre de usuario','rojo');
+        open_alert('No ha introducido el nombre de usuario','amarillo');
     } else {
         iniciar_sesion()
     }

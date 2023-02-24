@@ -59,7 +59,6 @@
         </div>
     </div>
     <script src="<?php echo $this->url_server;?>/public/js/fmtor_libreria.js"></script>
-    <script src="<?php echo $this->url_server;?>/public/js/worker/script.js"></script>
 </body>
 
 </html>

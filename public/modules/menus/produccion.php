@@ -2,14 +2,14 @@
     <p>Producción</p>
 </div>
 <nav class="opciones">
-    <a class="<?php if ($this->item_menu[1] == 'programa') { echo 'active'; } else { echo ''; }; ?>" href="<?php echo $this->url_server; ?>/usuario/programa">
+    <!-- <a class="<?php // if ($this->item_menu[1] == 'programa') { echo 'active'; } else { echo ''; }; ?>" href="<?php //echo $this->url_server; ?>/usuario/programa">
         <i class="material-icons-round">format_list_bulleted</i>
         Programa de Forjado
     </a>
-    <a class="<?php if ($this->item_menu[1] == 'explosion') { echo 'active'; } else { echo ''; }; ?>" href="<?php echo $this->url_server; ?>/usuario/explosion">
+    <a class="<?php // if ($this->item_menu[1] == 'explosion') { echo 'active'; } else { echo ''; }; ?>" href="<?php //echo $this->url_server; ?>/usuario/explosion">
         <i class="material-icons-round">scale</i>
         Explosión de Alambre
-    </a>
+    </a> -->
     <a class="<?php if ($this->item_menu[1] == 'ordenes') { echo 'active'; } else { echo ''; }; ?>" href="<?php echo $this->url_server; ?>/usuario/ordenes">
         <i class="material-icons-round">engineering</i>
         Ordenes de Producción

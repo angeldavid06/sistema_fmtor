@@ -19,15 +19,7 @@ const CACHE_NAME = "fmtor_rdg_v1.1",
     "http://localhost/sistema_fmtor/public/js/login.js",
     "http://localhost/sistema_fmtor/script.js",
     "http://localhost/sistema_fmtor/public/img/planta4.mp4",
-    "http://localhost/sistema_fmtor/main/login",
-    // "http://localhost/sistema_fmtor/usuario/principal",
-    // "http://localhost/sistema_fmtor/usuario/programa",
-    // "http://localhost/sistema_fmtor/usuario/explosion",
-    // "http://localhost/sistema_fmtor/usuario/ordenes",
-    // "http://localhost/sistema_fmtor/usuario/control",
-    // "http://localhost/sistema_fmtor/usuario/diario",
-    // "http://localhost/sistema_fmtor/usuario/maquinas",
-    // "http://localhost/sistema_fmtor/usuario/estados",
+    "http://localhost/sistema_fmtor/main/login"
   ];
 
 self.addEventListener('install', e => {

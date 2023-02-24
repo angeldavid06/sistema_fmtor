@@ -1,20 +1,20 @@
 <div class="tarjeta-transparente menu-principal">
     <h2>Producción</h2>
     <div class="d-grid g-3">
-        <a class="btn btn-transparent" href="<?php echo $this->url_server; ?>/usuario/programa">
+        <!-- <a class="btn btn-transparent" href="<?php // echo $this->url_server; ?>/usuario/programa">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">format_list_bulleted</i>
                 <span class="material-icons-outlined icon">format_list_bulleted</span>
                 <p>PROGRAMA DE FORJADO</p>
             </div>
         </a>
-        <a class="btn btn-transparent" href="<?php echo $this->url_server; ?>/usuario/explosion">
+        <a class="btn btn-transparent" href="<?php // echo $this->url_server; ?>/usuario/explosion">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">scale</i>
                 <span class="material-icons-outlined icon">scale</span>
                 <p>EXPLOSIÓN DE ALAMBRE</p>
             </div>
-        </a>
+        </a> -->
         <a class="btn btn-transparent" href="<?php echo $this->url_server; ?>/usuario/ordenes">
             <div class="d-grid g-1">
                 <i class="material-icons-outlined icon">engineering</i>

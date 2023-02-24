@@ -92,7 +92,7 @@ const render_ordenes = (json) => {
                             '<td>'+el.factor+'</td>'+
                             '<td>'+el.Id_Folio+'</td>'+
                             '<td>'+el.Fecha.split(' ')[0]+'</td>'+
-                            '<td>'+(el.Clientes + ' ' + el.razon_social.split(' ')[0].trim())+'</td>'+
+                            '<td>'+(el.Clientes + ' ' + el.razon_social)+'</td>'+
                             '<td>'+el.medida+'</td>'+
                             '<td>'+el.descripcion+'</td>'+
                             '<td>'+el.tratamiento+'</td>'+
